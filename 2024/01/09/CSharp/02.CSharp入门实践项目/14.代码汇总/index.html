@@ -1,0 +1,1139 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>【C#入门实践项目】| 14.代码汇总 | 人间自有韬哥在的游戏开发博客</title>
+  <meta name="keywords" content=" CSharp , CSharp入门 , 实践项目 ">
+  <meta name="description" content="【C#入门实践项目】| 14.代码汇总 | 人间自有韬哥在的游戏开发博客">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="17.总结 17.1 知识点 学习的主要内容 强调">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【C#基础语法知识】| 17.总结">
+<meta property="og:url" content="https://linwentao785293209.github.io/2024/01/10/CSharp/03.Csharp%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/17.%E6%80%BB%E7%BB%93/index.html">
+<meta property="og:site_name" content="人间自有韬哥在的游戏开发博客">
+<meta property="og:description" content="17.总结 17.1 知识点 学习的主要内容 强调">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/CSharp/03.Csharp%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/17.%E6%80%BB%E7%BB%93/1.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/CSharp/03.Csharp%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/17.%E6%80%BB%E7%BB%93/2.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/CSharp/03.Csharp%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/17.%E6%80%BB%E7%BB%93/3.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/CSharp/03.Csharp%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/17.%E6%80%BB%E7%BB%93/4.png">
+<meta property="article:published_time" content="2024-01-10T12:44:39.000Z">
+<meta property="article:modified_time" content="2024-01-10T12:44:41.164Z">
+<meta property="article:author" content="人间自有韬哥在">
+<meta property="article:tag" content="CSharp">
+<meta property="article:tag" content="语法知识">
+<meta property="article:tag" content="CSharp基础">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://linwentao785293209.github.io/images/CSharp/03.Csharp%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/17.%E6%80%BB%E7%BB%93/1.png">
+
+
+<link rel="icon" href="/img/avatar.jpg">
+
+<link href="/css/style.css?v=1.1.0" rel="stylesheet">
+
+<link href="/css/hl_theme/atom-light.css?v=1.1.0" rel="stylesheet">
+
+<link href="//cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" rel="stylesheet">
+
+<script src="//cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="/js/titleTip.js?v=1.1.0" ></script>
+
+<script src="//cdn.jsdelivr.net/npm/highlightjs@9.16.2/highlight.pack.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/jquery.cookie@1.4.1/jquery.cookie.min.js" ></script>
+
+<script src="/js/iconfont.js?v=1.1.0" ></script>
+
+<meta name="generator" content="Hexo 7.0.0"></head>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="">
+  <input class="theme_blog_path" value="">
+  <input id="theme_shortcut" value="true" />
+  <input id="theme_highlight_on" value="true" />
+  <input id="theme_code_copy" value="true" />
+</div>
+
+
+
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/"
+   class="avatar_target">
+    <img class="avatar"
+         src="/img/avatar.jpg"/>
+</a>
+<div class="author">
+    <span>人间自有韬哥在</span>
+</div>
+
+<div class="icon">
+    
+        
+    
+        
+            <a title="github"
+               href="https://github.com/linwentao785293209"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-github"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            <a title="email"
+               href="mailto:785293209@qq.com"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-email"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="qq"
+               href="http://wpa.qq.com/msgrd?v=3&uin=785293209&site=qq&menu=yes"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-qq"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+    
+        
+    
+</div>
+
+
+
+
+
+<ul>
+    <li>
+        <div class="all active" data-rel="全部文章">全部文章
+            
+                <small>(56)</small>
+            
+        </div>
+    </li>
+    
+        
+            
+                
+    <li>
+        <div data-rel="CSharp">
+            <i class="fold iconfont icon-right"></i>
+            CSharp
+            <small>(56)</small>
+        </div>
+        
+            <ul class="sub hide">
+                
+                    
+    <li>
+        <div data-rel="CSharp&lt;---&gt;CSharp入门语法知识">
+            
+            CSharp入门语法知识
+            <small>(24)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="CSharp&lt;---&gt;CSharp入门实践项目">
+            
+            CSharp入门实践项目
+            <small>(15)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="CSharp&lt;---&gt;CSharp基础语法知识">
+            
+            CSharp基础语法知识
+            <small>(17)</small>
+        </div>
+        
+    </li>
+
+                
+            </ul>
+        
+    </li>
+
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+        
+            
+        
+    
+</ul>
+<div class="left-bottom">
+    <div class="menus">
+        
+            
+            
+            
+    </div>
+    <div>
+        
+        <a 
+                                           class="friends">友链</a>
+        
+    </div>
+</div>
+<input type="hidden" id="yelog_site_posts_number" value="56">
+
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        友情链接
+        <i class="iconfont icon-left"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+            <li><a target="_blank" href="http://yelog.org/">叶落阁</a></li>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <div class="right-top">
+        <div id="default-panel">
+            <i class="iconfont icon-search" data-title="搜索 快捷键 i"></i>
+            <div class="right-title">全部文章</div>
+            <i class="iconfont icon-file-tree" data-title="切换到大纲视图 快捷键 w"></i>
+        </div>
+        <div id="search-panel">
+            <i class="iconfont icon-left" data-title="返回"></i>
+            <input id="local-search-input" autocomplete="off"/>
+            <label class="border-line" for="input"></label>
+            <i class="iconfont icon-case-sensitive" data-title="大小写敏感"></i>
+            <i class="iconfont icon-tag" data-title="标签"></i>
+        </div>
+        <div id="outline-panel" style="display: none">
+            <div class="right-title">大纲</div>
+            <i class="iconfont icon-list" data-title="切换到文章列表"></i>
+        </div>
+    </div>
+
+    <div class="tags-list">
+    <input id="tag-search" />
+    <div class="tag-wrapper">
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>必备知识点</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>复杂数据类型</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>函数</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>开发环境</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>类型转换</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>排序</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>实践项目</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>条件分支语句</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>循环语句</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>语法知识</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>运算符</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>值类型和引用类型</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>CSharp</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>CSharp基础</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>CSharp入门</a>
+            </li>
+        
+    </div>
+
+</div>
+
+    
+    <nav id="title-list-nav">
+        
+        
+        <a  class="全部文章 CSharp CSharp基础语法知识 "
+           href="/2024/01/10/CSharp/03.Csharp%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/17.%E6%80%BB%E7%BB%93/"
+           data-tag="CSharp,语法知识,CSharp基础"
+           data-author="" >
+            <span class="post-title" title="【C#基础语法知识】| 17.总结">【C#基础语法知识】| 17.总结</span>
+            <span class="post-date" title="2024-01-10 20:44:39">2024/01/10</span>
+        </a>
+        
+        
+        <a  class="全部文章 CSharp CSharp基础语法知识 "
+           href="/2024/01/10/CSharp/03.Csharp%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/16.%E6%8E%92%E5%BA%8F-%E9%80%89%E6%8B%A9%E6%8E%92%E5%BA%8F/"
+           data-tag="CSharp,语法知识,CSharp基础,排序"
+           data-author="" >
+            <span class="post-title" title="【C#基础语法知识】| 16.排序-选择排序">【C#基础语法知识】| 16.排序-选择排序</span>
+            <span class="post-date" title="2024-01-10 20:26:46">2024/01/10</span>
+        </a>
+        
+        
+        <a  class="全部文章 CSharp CSharp基础语法知识 "
+           href="/2024/01/10/CSharp/03.Csharp%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/15.%E6%8E%92%E5%BA%8F-%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F/"
+           data-tag="CSharp,语法知识,CSharp基础,排序"
+           data-author="" >
+            <span class="post-title" title="【C#基础语法知识】| 15.排序-冒泡排序">【C#基础语法知识】| 15.排序-冒泡排序</span>
+            <span class="post-date" title="2024-01-10 20:24:55">2024/01/10</span>
+        </a>
+        
+        
+        <a  class="全部文章 CSharp CSharp基础语法知识 "
+           href="/2024/01/10/CSharp/03.Csharp%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/14.%E5%A4%8D%E6%9D%82%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B-%E7%BB%93%E6%9E%84%E4%BD%93/"
+           data-tag="CSharp,语法知识,CSharp基础,复杂数据类型"
+           data-author="" >
+            <span class="post-title" title="【C#基础语法知识】| 14.复杂数据类型-结构体">【C#基础语法知识】| 14.复杂数据类型-结构体</span>
+            <span class="post-date" title="2024-01-10 20:06:45">2024/01/10</span>
+        </a>
+        
+        
+        <a  class="全部文章 CSharp CSharp基础语法知识 "
+           href="/2024/01/10/CSharp/03.Csharp%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/13.%E5%87%BD%E6%95%B0-%E9%80%92%E5%BD%92%E5%87%BD%E6%95%B0/"
+           data-tag="CSharp,语法知识,CSharp基础,函数"
+           data-author="" >
+            <span class="post-title" title="【C#基础语法知识】| 13.函数-递归函数">【C#基础语法知识】| 13.函数-递归函数</span>
+            <span class="post-date" title="2024-01-10 20:01:00">2024/01/10</span>
+        </a>
+        
+        
+        <a  class="全部文章 CSharp CSharp基础语法知识 "
+           href="/2024/01/10/CSharp/03.Csharp%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/12.%E5%87%BD%E6%95%B0-%E5%87%BD%E6%95%B0%E9%87%8D%E8%BD%BD/"
+           data-tag="CSharp,语法知识,CSharp基础,函数"
+           data-author="" >
+            <span class="post-title" title="【C#基础语法知识】| 12.函数-函数重载">【C#基础语法知识】| 12.函数-函数重载</span>
+            <span class="post-date" title="2024-01-10 19:53:12">2024/01/10</span>
+        </a>
+        
+        
+        <a  class="全部文章 CSharp CSharp基础语法知识 "
+           href="/2024/01/10/CSharp/03.Csharp%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/11.%E5%87%BD%E6%95%B0-%E5%8F%98%E9%95%BF%E5%8F%82%E6%95%B0%E5%92%8C%E5%8F%82%E6%95%B0%E9%BB%98%E8%AE%A4%E5%80%BC/"
+           data-tag="CSharp,语法知识,CSharp基础,函数"
+           data-author="" >
+            <span class="post-title" title="【C#基础语法知识】| 11.函数-变长参数和参数默认值">【C#基础语法知识】| 11.函数-变长参数和参数默认值</span>
+            <span class="post-date" title="2024-01-10 13:15:01">2024/01/10</span>
+        </a>
+        
+        
+        <a  class="全部文章 CSharp CSharp基础语法知识 "
+           href="/2024/01/10/CSharp/03.Csharp%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/10.%E5%87%BD%E6%95%B0-ref%E5%92%8Cout/"
+           data-tag="CSharp,语法知识,CSharp基础,函数"
+           data-author="" >
+            <span class="post-title" title="【C#基础语法知识】| 10.函数-ref和out">【C#基础语法知识】| 10.函数-ref和out</span>
+            <span class="post-date" title="2024-01-10 13:01:20">2024/01/10</span>
+        </a>
+        
+        
+        <a  class="全部文章 CSharp CSharp基础语法知识 "
+           href="/2024/01/10/CSharp/03.Csharp%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/9.%E5%87%BD%E6%95%B0-%E5%87%BD%E6%95%B0%E5%9F%BA%E7%A1%80/"
+           data-tag="CSharp,语法知识,CSharp基础,函数"
+           data-author="" >
+            <span class="post-title" title="【C#基础语法知识】| 9.函数-函数基础">【C#基础语法知识】| 9.函数-函数基础</span>
+            <span class="post-date" title="2024-01-10 09:41:50">2024/01/10</span>
+        </a>
+        
+        
+        <a  class="全部文章 CSharp CSharp基础语法知识 "
+           href="/2024/01/10/CSharp/03.Csharp%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/8.%E5%80%BC%E7%B1%BB%E5%9E%8B%E5%92%8C%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B-%E7%89%B9%E6%AE%8A%E7%9A%84%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8Bstring/"
+           data-tag="CSharp,语法知识,CSharp基础,值类型和引用类型"
+           data-author="" >
+            <span class="post-title" title="【C#基础语法知识】| 8.值类型和引用类型-特殊的引用类型string">【C#基础语法知识】| 8.值类型和引用类型-特殊的引用类型string</span>
+            <span class="post-date" title="2024-01-10 07:10:27">2024/01/10</span>
+        </a>
+        
+        
+        <a  class="全部文章 CSharp CSharp基础语法知识 "
+           href="/2024/01/10/CSharp/03.Csharp%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/7.%E5%80%BC%E7%B1%BB%E5%9E%8B%E5%92%8C%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B-%E4%BD%BF%E7%94%A8%E5%92%8C%E5%AD%98%E5%82%A8%E4%B8%8A%E7%9A%84%E5%8C%BA%E5%88%AB/"
+           data-tag="CSharp,语法知识,CSharp基础,值类型和引用类型"
+           data-author="" >
+            <span class="post-title" title="【C#基础语法知识】| 7.值类型和引用类型-使用和存储上的区别">【C#基础语法知识】| 7.值类型和引用类型-使用和存储上的区别</span>
+            <span class="post-date" title="2024-01-10 06:57:44">2024/01/10</span>
+        </a>
+        
+        
+        <a  class="全部文章 CSharp CSharp基础语法知识 "
+           href="/2024/01/10/CSharp/03.Csharp%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/6.%E5%A4%8D%E6%9D%82%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B-%E6%95%B0%E7%BB%84-%E4%BA%A4%E9%94%99%E6%95%B0%E7%BB%84/"
+           data-tag="CSharp,语法知识,CSharp基础,复杂数据类型"
+           data-author="" >
+            <span class="post-title" title="【C#基础语法知识】| 6.复杂数据类型-数组-交错数组">【C#基础语法知识】| 6.复杂数据类型-数组-交错数组</span>
+            <span class="post-date" title="2024-01-10 06:55:06">2024/01/10</span>
+        </a>
+        
+        
+        <a  class="全部文章 CSharp CSharp基础语法知识 "
+           href="/2024/01/10/CSharp/03.Csharp%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/5.%E5%A4%8D%E6%9D%82%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B-%E6%95%B0%E7%BB%84-%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84/"
+           data-tag="CSharp,语法知识,CSharp基础,复杂数据类型"
+           data-author="" >
+            <span class="post-title" title="【C#基础语法知识】| 5.复杂数据类型-数组-二维数组">【C#基础语法知识】| 5.复杂数据类型-数组-二维数组</span>
+            <span class="post-date" title="2024-01-10 06:47:26">2024/01/10</span>
+        </a>
+        
+        
+        <a  class="全部文章 CSharp CSharp基础语法知识 "
+           href="/2024/01/10/CSharp/03.Csharp%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/4.%E5%A4%8D%E6%9D%82%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B-%E6%95%B0%E7%BB%84-%E4%B8%80%E7%BB%B4%E6%95%B0%E7%BB%84/"
+           data-tag="CSharp,语法知识,CSharp基础,复杂数据类型"
+           data-author="" >
+            <span class="post-title" title="【C#基础语法知识】| 4.复杂数据类型-数组-一维数组">【C#基础语法知识】| 4.复杂数据类型-数组-一维数组</span>
+            <span class="post-date" title="2024-01-10 06:35:45">2024/01/10</span>
+        </a>
+        
+        
+        <a  class="全部文章 CSharp CSharp基础语法知识 "
+           href="/2024/01/10/CSharp/03.Csharp%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/3.%E5%A4%8D%E6%9D%82%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B-%E6%9E%9A%E4%B8%BE/"
+           data-tag="CSharp,语法知识,CSharp基础,复杂数据类型"
+           data-author="" >
+            <span class="post-title" title="【C#基础语法知识】| 3.复杂数据类型-枚举">【C#基础语法知识】| 3.复杂数据类型-枚举</span>
+            <span class="post-date" title="2024-01-10 06:15:40">2024/01/10</span>
+        </a>
+        
+        
+        <a  class="全部文章 CSharp CSharp基础语法知识 "
+           href="/2024/01/09/CSharp/03.Csharp%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/2.%E5%A4%8D%E6%9D%82%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B-%E6%A6%82%E8%BF%B0/"
+           data-tag="CSharp,语法知识,CSharp基础,复杂数据类型"
+           data-author="" >
+            <span class="post-title" title="【C#基础语法知识】| 2.复杂数据类型-概述">【C#基础语法知识】| 2.复杂数据类型-概述</span>
+            <span class="post-date" title="2024-01-09 13:02:59">2024/01/09</span>
+        </a>
+        
+        
+        <a  class="全部文章 CSharp CSharp基础语法知识 "
+           href="/2024/01/09/CSharp/03.Csharp%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/1.%E6%A6%82%E8%BF%B0/"
+           data-tag="CSharp,语法知识,CSharp基础"
+           data-author="" >
+            <span class="post-title" title="【C#基础语法知识】| 1.概述">【C#基础语法知识】| 1.概述</span>
+            <span class="post-date" title="2024-01-09 12:59:24">2024/01/09</span>
+        </a>
+        
+        
+        <a  class="全部文章 CSharp CSharp入门实践项目 "
+           href="/2024/01/09/CSharp/02.CSharp%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/15.%E6%80%BB%E7%BB%93/"
+           data-tag="CSharp,CSharp入门,实践项目"
+           data-author="" >
+            <span class="post-title" title="【C#入门实践项目】| 15.总结">【C#入门实践项目】| 15.总结</span>
+            <span class="post-date" title="2024-01-09 00:25:15">2024/01/09</span>
+        </a>
+        
+        
+        <a  class="全部文章 CSharp CSharp入门实践项目 "
+           href="/2024/01/09/CSharp/02.CSharp%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/14.%E4%BB%A3%E7%A0%81%E6%B1%87%E6%80%BB/"
+           data-tag="CSharp,CSharp入门,实践项目"
+           data-author="" >
+            <span class="post-title" title="【C#入门实践项目】| 14.代码汇总">【C#入门实践项目】| 14.代码汇总</span>
+            <span class="post-date" title="2024-01-09 00:16:50">2024/01/09</span>
+        </a>
+        
+        
+        <a  class="全部文章 CSharp CSharp入门实践项目 "
+           href="/2024/01/09/CSharp/02.CSharp%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/13.%E7%BB%93%E6%9D%9F%E5%9C%BA%E6%99%AF/"
+           data-tag="CSharp,CSharp入门,实践项目"
+           data-author="" >
+            <span class="post-title" title="【C#入门实践项目】| 13.结束场景">【C#入门实践项目】| 13.结束场景</span>
+            <span class="post-date" title="2024-01-09 00:14:54">2024/01/09</span>
+        </a>
+        
+        
+        <a  class="全部文章 CSharp CSharp入门实践项目 "
+           href="/2024/01/08/CSharp/02.CSharp%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/11.%E6%B8%B8%E6%88%8F%E5%9C%BA%E6%99%AF-%E7%8E%A9%E5%AE%B6%E6%88%98%E6%96%97%E7%9B%B8%E5%85%B3/"
+           data-tag="CSharp,CSharp入门,实践项目"
+           data-author="" >
+            <span class="post-title" title="【C#入门实践项目】| 11.游戏场景-玩家战斗相关">【C#入门实践项目】| 11.游戏场景-玩家战斗相关</span>
+            <span class="post-date" title="2024-01-08 21:53:48">2024/01/08</span>
+        </a>
+        
+        
+        <a  class="全部文章 CSharp CSharp入门实践项目 "
+           href="/2024/01/08/CSharp/02.CSharp%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/12.%E6%B8%B8%E6%88%8F%E5%9C%BA%E6%99%AF-%E5%85%AC%E4%B8%BB%E7%9B%B8%E5%85%B3/"
+           data-tag="CSharp,CSharp入门,实践项目"
+           data-author="" >
+            <span class="post-title" title="【C#入门实践项目】| 12.游戏场景-公主相关">【C#入门实践项目】| 12.游戏场景-公主相关</span>
+            <span class="post-date" title="2024-01-08 21:53:48">2024/01/08</span>
+        </a>
+        
+        
+        <a  class="全部文章 CSharp CSharp入门实践项目 "
+           href="/2024/01/08/CSharp/02.CSharp%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/10.%E6%B8%B8%E6%88%8F%E5%9C%BA%E6%99%AF-%E7%8E%A9%E5%AE%B6%E7%A7%BB%E5%8A%A8%E7%9B%B8%E5%85%B3/"
+           data-tag="CSharp,CSharp入门,实践项目"
+           data-author="" >
+            <span class="post-title" title="【C#入门实践项目】| 10.游戏场景-玩家移动相关">【C#入门实践项目】| 10.游戏场景-玩家移动相关</span>
+            <span class="post-date" title="2024-01-08 21:41:44">2024/01/08</span>
+        </a>
+        
+        
+        <a  class="全部文章 CSharp CSharp入门实践项目 "
+           href="/2024/01/08/CSharp/02.CSharp%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/9.%E6%B8%B8%E6%88%8F%E5%9C%BA%E6%99%AF-Boss%E7%9B%B8%E5%85%B3/"
+           data-tag="CSharp,CSharp入门,实践项目"
+           data-author="" >
+            <span class="post-title" title="【C#入门实践项目】| 9.游戏场景-Boss相关">【C#入门实践项目】| 9.游戏场景-Boss相关</span>
+            <span class="post-date" title="2024-01-08 21:41:27">2024/01/08</span>
+        </a>
+        
+        
+        <a  class="全部文章 CSharp CSharp入门实践项目 "
+           href="/2024/01/08/CSharp/02.CSharp%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/8.%E6%B8%B8%E6%88%8F%E5%9C%BA%E6%99%AF-%E4%B8%8D%E5%8F%98%E7%9A%84%E7%BA%A2%E5%A2%99/"
+           data-tag="CSharp,CSharp入门,实践项目"
+           data-author="" >
+            <span class="post-title" title="【C#入门实践项目】| 8.游戏场景-不变的红墙">【C#入门实践项目】| 8.游戏场景-不变的红墙</span>
+            <span class="post-date" title="2024-01-08 20:25:15">2024/01/08</span>
+        </a>
+        
+        
+        <a  class="全部文章 CSharp CSharp入门实践项目 "
+           href="/2024/01/08/CSharp/02.CSharp%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/7.%E5%BC%80%E5%A7%8B%E5%9C%BA%E6%99%AF/"
+           data-tag="CSharp,CSharp入门,实践项目"
+           data-author="" >
+            <span class="post-title" title="【C#入门实践项目】| 7.开始场景">【C#入门实践项目】| 7.开始场景</span>
+            <span class="post-date" title="2024-01-08 19:50:40">2024/01/08</span>
+        </a>
+        
+        
+        <a  class="全部文章 CSharp CSharp入门实践项目 "
+           href="/2024/01/07/CSharp/02.CSharp%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/6.%E5%A4%9A%E4%B8%AA%E5%9C%BA%E6%99%AF/"
+           data-tag="CSharp,CSharp入门,实践项目"
+           data-author="" >
+            <span class="post-title" title="【C#入门实践项目】| 6.多个场景">【C#入门实践项目】| 6.多个场景</span>
+            <span class="post-date" title="2024-01-07 01:29:24">2024/01/07</span>
+        </a>
+        
+        
+        <a  class="全部文章 CSharp CSharp入门实践项目 "
+           href="/2024/01/07/CSharp/02.CSharp%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/5.%E6%8E%A7%E5%88%B6%E5%8F%B0%E5%9F%BA%E7%A1%80%E8%AE%BE%E7%BD%AE/"
+           data-tag="CSharp,CSharp入门,实践项目"
+           data-author="" >
+            <span class="post-title" title="【C#入门实践项目】| 5.控制台基础设置">【C#入门实践项目】| 5.控制台基础设置</span>
+            <span class="post-date" title="2024-01-07 01:23:03">2024/01/07</span>
+        </a>
+        
+        
+        <a  class="全部文章 CSharp CSharp入门实践项目 "
+           href="/2024/01/07/CSharp/02.CSharp%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/4.%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90/"
+           data-tag="CSharp,CSharp入门,实践项目"
+           data-author="" >
+            <span class="post-title" title="【C#入门实践项目】| 4.需求分析">【C#入门实践项目】| 4.需求分析</span>
+            <span class="post-date" title="2024-01-07 01:20:03">2024/01/07</span>
+        </a>
+        
+        
+        <a  class="全部文章 CSharp CSharp入门实践项目 "
+           href="/2024/01/07/CSharp/02.CSharp%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/3.%E5%BF%85%E5%A4%87%E7%9F%A5%E8%AF%86%E7%82%B9-%E9%A1%B9%E7%9B%AE%E8%B0%83%E8%AF%95/"
+           data-tag="CSharp,CSharp入门,实践项目,必备知识点"
+           data-author="" >
+            <span class="post-title" title="【C#入门实践项目】| 3.必备知识点-项目调试">【C#入门实践项目】| 3.必备知识点-项目调试</span>
+            <span class="post-date" title="2024-01-07 01:15:50">2024/01/07</span>
+        </a>
+        
+        
+        <a  class="全部文章 CSharp CSharp入门实践项目 "
+           href="/2024/01/07/CSharp/02.CSharp%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/2.%E5%BF%85%E5%A4%87%E7%9F%A5%E8%AF%86%E7%82%B9-%E9%9A%8F%E6%9C%BA%E6%95%B0/"
+           data-tag="CSharp,CSharp入门,实践项目,必备知识点"
+           data-author="" >
+            <span class="post-title" title="【C#入门实践项目】| 2.必备知识点-随机数">【C#入门实践项目】| 2.必备知识点-随机数</span>
+            <span class="post-date" title="2024-01-07 01:11:50">2024/01/07</span>
+        </a>
+        
+        
+        <a  class="全部文章 CSharp CSharp入门实践项目 "
+           href="/2024/01/06/CSharp/02.CSharp%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/1.%E5%BF%85%E5%A4%87%E7%9F%A5%E8%AF%86%E7%82%B9-%E6%8E%A7%E5%88%B6%E5%8F%B0%E7%9B%B8%E5%85%B3%E6%96%B9%E6%B3%95/"
+           data-tag="CSharp,CSharp入门,实践项目,必备知识点"
+           data-author="" >
+            <span class="post-title" title="【C#入门实践项目】| 1.必备知识点-控制台相关方法">【C#入门实践项目】| 1.必备知识点-控制台相关方法</span>
+            <span class="post-date" title="2024-01-06 22:33:16">2024/01/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 CSharp CSharp入门语法知识 "
+           href="/2024/01/06/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/24.%E6%80%BB%E7%BB%93/"
+           data-tag="CSharp,CSharp入门,语法知识"
+           data-author="" >
+            <span class="post-title" title="【C#入门语法知识】| 24.总结">【C#入门语法知识】| 24.总结</span>
+            <span class="post-date" title="2024-01-06 22:24:11">2024/01/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 CSharp CSharp入门语法知识 "
+           href="/2024/01/06/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/23.%E5%BE%AA%E7%8E%AF%E8%AF%AD%E5%8F%A5-for/"
+           data-tag="CSharp,CSharp入门,语法知识,循环语句"
+           data-author="" >
+            <span class="post-title" title="【C#入门语法知识】| 23.循环语句-for">【C#入门语法知识】| 23.循环语句-for</span>
+            <span class="post-date" title="2024-01-06 22:04:57">2024/01/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 CSharp CSharp入门语法知识 "
+           href="/2024/01/06/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/22.%E5%BE%AA%E7%8E%AF%E8%AF%AD%E5%8F%A5-dowhile/"
+           data-tag="CSharp,CSharp入门,语法知识,循环语句"
+           data-author="" >
+            <span class="post-title" title="【C#入门语法知识】| 22.循环语句-dowhile">【C#入门语法知识】| 22.循环语句-dowhile</span>
+            <span class="post-date" title="2024-01-06 22:03:57">2024/01/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 CSharp CSharp入门语法知识 "
+           href="/2024/01/06/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/21.%E5%BE%AA%E7%8E%AF%E8%AF%AD%E5%8F%A5-while/"
+           data-tag="CSharp,CSharp入门,语法知识,循环语句"
+           data-author="" >
+            <span class="post-title" title="【C#入门语法知识】| 21.循环语句-while">【C#入门语法知识】| 21.循环语句-while</span>
+            <span class="post-date" title="2024-01-06 20:26:05">2024/01/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 CSharp CSharp入门语法知识 "
+           href="/2024/01/06/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/20.%E6%9D%A1%E4%BB%B6%E5%88%86%E6%94%AF%E8%AF%AD%E5%8F%A5-switch/"
+           data-tag="CSharp,CSharp入门,语法知识,条件分支语句"
+           data-author="" >
+            <span class="post-title" title="【C#入门语法知识】| 20.条件分支语句-switch">【C#入门语法知识】| 20.条件分支语句-switch</span>
+            <span class="post-date" title="2024-01-06 20:25:05">2024/01/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 CSharp CSharp入门语法知识 "
+           href="/2024/01/06/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/19.%E6%9D%A1%E4%BB%B6%E5%88%86%E6%94%AF%E8%AF%AD%E5%8F%A5-if/"
+           data-tag="CSharp,CSharp入门,语法知识,条件分支语句"
+           data-author="" >
+            <span class="post-title" title="【C#入门语法知识】| 19.条件分支语句-if">【C#入门语法知识】| 19.条件分支语句-if</span>
+            <span class="post-date" title="2024-01-06 20:14:55">2024/01/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 CSharp CSharp入门语法知识 "
+           href="/2024/01/06/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/18.%E8%BF%90%E7%AE%97%E7%AC%A6-%E4%B8%89%E7%9B%AE%E8%BF%90%E7%AE%97%E7%AC%A6/"
+           data-tag="CSharp,CSharp入门,语法知识,运算符"
+           data-author="" >
+            <span class="post-title" title="【C#入门语法知识】| 18.运算符-三目运算符">【C#入门语法知识】| 18.运算符-三目运算符</span>
+            <span class="post-date" title="2024-01-06 19:54:11">2024/01/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 CSharp CSharp入门语法知识 "
+           href="/2024/01/06/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/17.%E8%BF%90%E7%AE%97%E7%AC%A6-%E4%BD%8D%E8%BF%90%E7%AE%97%E7%AC%A6/"
+           data-tag="CSharp,CSharp入门,语法知识,运算符"
+           data-author="" >
+            <span class="post-title" title="【C#入门语法知识】| 17.运算符-位运算符">【C#入门语法知识】| 17.运算符-位运算符</span>
+            <span class="post-date" title="2024-01-06 19:41:40">2024/01/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 CSharp CSharp入门语法知识 "
+           href="/2024/01/06/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/16.%E8%BF%90%E7%AE%97%E7%AC%A6-%E9%80%BB%E8%BE%91%E8%BF%90%E7%AE%97%E7%AC%A6/"
+           data-tag="CSharp,CSharp入门,语法知识,运算符"
+           data-author="" >
+            <span class="post-title" title="【C#入门语法知识】| 16.运算符-逻辑运算符">【C#入门语法知识】| 16.运算符-逻辑运算符</span>
+            <span class="post-date" title="2024-01-06 19:35:01">2024/01/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 CSharp CSharp入门语法知识 "
+           href="/2024/01/06/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/15.%E8%BF%90%E7%AE%97%E7%AC%A6-%E6%9D%A1%E4%BB%B6%E8%BF%90%E7%AE%97%E7%AC%A6/"
+           data-tag="CSharp,CSharp入门,语法知识,运算符"
+           data-author="" >
+            <span class="post-title" title="【C#入门语法知识】| 15.运算符-条件运算符">【C#入门语法知识】| 15.运算符-条件运算符</span>
+            <span class="post-date" title="2024-01-06 13:01:21">2024/01/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 CSharp CSharp入门语法知识 "
+           href="/2024/01/06/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/14.%E8%BF%90%E7%AE%97%E7%AC%A6-%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%8B%BC%E6%8E%A5/"
+           data-tag="CSharp,CSharp入门,语法知识,运算符"
+           data-author="" >
+            <span class="post-title" title="【C#入门语法知识】| 14.运算符-字符串拼接">【C#入门语法知识】| 14.运算符-字符串拼接</span>
+            <span class="post-date" title="2024-01-06 12:01:14">2024/01/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 CSharp CSharp入门语法知识 "
+           href="/2024/01/06/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/13.%E8%BF%90%E7%AE%97%E7%AC%A6-%E7%AE%97%E6%9C%AF%E8%BF%90%E7%AE%97%E7%AC%A6/"
+           data-tag="CSharp,CSharp入门,语法知识,运算符"
+           data-author="" >
+            <span class="post-title" title="【C#入门语法知识】| 13.运算符-算术运算符">【C#入门语法知识】| 13.运算符-算术运算符</span>
+            <span class="post-date" title="2024-01-06 11:16:43">2024/01/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 CSharp CSharp入门语法知识 "
+           href="/2024/01/06/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/12.%E5%BC%82%E5%B8%B8%E6%8D%95%E8%8E%B7/"
+           data-tag="CSharp,CSharp入门,语法知识"
+           data-author="" >
+            <span class="post-title" title="【C#入门语法知识】| 12.异常捕获">【C#入门语法知识】| 12.异常捕获</span>
+            <span class="post-date" title="2024-01-06 10:51:02">2024/01/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 CSharp CSharp入门语法知识 "
+           href="/2024/01/06/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/11.%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2-%E6%98%BE%E5%BC%8F%E8%BD%AC%E6%8D%A2/"
+           data-tag="CSharp,CSharp入门,语法知识,类型转换"
+           data-author="" >
+            <span class="post-title" title="【C#入门语法知识】| 11.类型转换-显式转换">【C#入门语法知识】| 11.类型转换-显式转换</span>
+            <span class="post-date" title="2024-01-06 10:36:38">2024/01/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 CSharp CSharp入门语法知识 "
+           href="/2024/01/06/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/10.%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2-%E9%9A%90%E5%BC%8F%E8%BD%AC%E6%8D%A2/"
+           data-tag="CSharp,CSharp入门,语法知识,类型转换"
+           data-author="" >
+            <span class="post-title" title="【C#入门语法知识】| 10.类型转换-隐式转换">【C#入门语法知识】| 10.类型转换-隐式转换</span>
+            <span class="post-date" title="2024-01-06 10:26:31">2024/01/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 CSharp CSharp入门语法知识 "
+           href="/2024/01/06/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/9.%E8%BD%AC%E4%B9%89%E5%AD%97%E7%AC%A6/"
+           data-tag="CSharp,CSharp入门,语法知识"
+           data-author="" >
+            <span class="post-title" title="【C#入门语法知识】| 9.转义字符">【C#入门语法知识】| 9.转义字符</span>
+            <span class="post-date" title="2024-01-06 10:05:44">2024/01/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 CSharp CSharp入门语法知识 "
+           href="/2024/01/06/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/8.%E5%B8%B8%E9%87%8F/"
+           data-tag="CSharp,CSharp入门,语法知识"
+           data-author="" >
+            <span class="post-title" title="【C#入门语法知识】| 8.常量">【C#入门语法知识】| 8.常量</span>
+            <span class="post-date" title="2024-01-06 10:00:10">2024/01/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 CSharp CSharp入门语法知识 "
+           href="/2024/01/05/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/7.%E5%8F%98%E9%87%8F%E7%9A%84%E5%91%BD%E5%90%8D%E8%A7%84%E5%88%99/"
+           data-tag="CSharp,CSharp入门,语法知识"
+           data-author="" >
+            <span class="post-title" title="【C#入门语法知识】| 7.变量的命名规则">【C#入门语法知识】| 7.变量的命名规则</span>
+            <span class="post-date" title="2024-01-05 20:19:52">2024/01/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 CSharp CSharp入门语法知识 "
+           href="/2024/01/05/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/6.%E5%8F%98%E9%87%8F%E7%9A%84%E6%9C%AC%E8%B4%A8/"
+           data-tag="CSharp,CSharp入门,语法知识"
+           data-author="" >
+            <span class="post-title" title="【C#入门语法知识】| 6.变量的本质">【C#入门语法知识】| 6.变量的本质</span>
+            <span class="post-date" title="2024-01-05 19:39:42">2024/01/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 CSharp CSharp入门语法知识 "
+           href="/2024/01/05/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/5.%E5%8F%98%E9%87%8F/"
+           data-tag="CSharp,CSharp入门,语法知识"
+           data-author="" >
+            <span class="post-title" title="【C#入门语法知识】| 5.变量">【C#入门语法知识】| 5.变量</span>
+            <span class="post-date" title="2024-01-05 12:52:35">2024/01/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 CSharp CSharp入门语法知识 "
+           href="/2024/01/04/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/4.%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F/"
+           data-tag="CSharp,CSharp入门,语法知识"
+           data-author="" >
+            <span class="post-title" title="【C#入门语法知识】| 4.第一个应用程序">【C#入门语法知识】| 4.第一个应用程序</span>
+            <span class="post-date" title="2024-01-04 19:40:52">2024/01/04</span>
+        </a>
+        
+        
+        <a  class="全部文章 CSharp CSharp入门语法知识 "
+           href="/2024/01/03/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/3.%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E7%9A%84%E6%90%AD%E5%BB%BA/"
+           data-tag="CSharp,CSharp入门,语法知识,开发环境"
+           data-author="" >
+            <span class="post-title" title="【C#入门语法知识】| 3.开发环境的搭建">【C#入门语法知识】| 3.开发环境的搭建</span>
+            <span class="post-date" title="2024-01-03 23:35:11">2024/01/03</span>
+        </a>
+        
+        
+        <a  class="全部文章 CSharp CSharp入门语法知识 "
+           href="/2024/01/02/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/2.%E7%A8%8B%E5%BA%8F%E8%AF%AD%E8%A8%80%E6%98%AF%E4%BB%80%E4%B9%88/"
+           data-tag="CSharp,CSharp入门,语法知识"
+           data-author="" >
+            <span class="post-title" title="【C#入门语法知识】| 2.程序语言是什么">【C#入门语法知识】| 2.程序语言是什么</span>
+            <span class="post-date" title="2024-01-02 21:20:00">2024/01/02</span>
+        </a>
+        
+        
+        <a  class="全部文章 CSharp CSharp入门语法知识 "
+           href="/2024/01/01/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/1.%E6%A6%82%E8%BF%B0/"
+           data-tag="CSharp,CSharp入门,语法知识"
+           data-author="" >
+            <span class="post-title" title="【C#入门语法知识】| 1.概述">【C#入门语法知识】| 1.概述</span>
+            <span class="post-date" title="2024-01-01 12:41:48">2024/01/01</span>
+        </a>
+        
+        <div id="no-item-tips">
+
+        </div>
+    </nav>
+    <div id="outline-list">
+    </div>
+</div>
+
+    </div>
+    <div class="hide-list">
+        <div class="semicircle" data-title="切换全屏 快捷键 s">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div>
+</aside>
+<div id="post">
+    <div class="pjax">
+        <article id="post-CSharp/02.CSharp入门实践项目/14.代码汇总" class="article article-type-post" itemscope itemprop="blogPost">
+    
+        <h1 class="article-title">【C#入门实践项目】| 14.代码汇总</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            <i class="iconfont icon-category"></i>
+            
+            
+            <a  data-rel="CSharp">CSharp</a> > 
+            
+            <a  data-rel="CSharp&lt;---&gt;CSharp入门实践项目">CSharp入门实践项目</a>
+            
+        </span>
+        
+        
+        <span class="tag">
+            <i class="iconfont icon-tag"></i>
+            
+            <a class="color2">CSharp</a>
+            
+            <a class="color4">CSharp入门</a>
+            
+            <a class="color5">实践项目</a>
+            
+        </span>
+        
+    </div>
+    <div class="article-meta">
+        
+            发布时间 : <time class="date" title='最后更新: 2024-01-09 00:16:52'>2024-01-09 00:16</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        
+        <span id="busuanzi_container_page_pv">
+            阅读 :<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#14-%E4%BB%A3%E7%A0%81%E6%B1%87%E6%80%BB"><span class="toc-text">14.代码汇总</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#14-1-%E4%BB%A3%E7%A0%81%E6%B1%87%E6%80%BB"><span class="toc-text">14.1 代码汇总</span></a></li></ol></li></ol>
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-3 i,
+    .toc-level-3 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="14-代码汇总"><a href="#14-代码汇总" class="headerlink" title="14.代码汇总"></a>14.代码汇总</h1><hr>
+<h2 id="14-1-代码汇总"><a href="#14-1-代码汇总" class="headerlink" title="14.1 代码汇总"></a>14.1 代码汇总</h2><figure class="highlight csharp"><table><tr><td class="code"><pre><code class="hljs csharp"><span class="hljs-keyword">using</span> System;<br><br><span class="hljs-keyword">namespace</span> 入门实践<br>&#123;<br>    <span class="hljs-keyword">class</span> <span class="hljs-title">Program</span><br>    &#123;<br>        <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Main</span>(<span class="hljs-params"><span class="hljs-built_in">string</span>[] args</span>)</span><br>        &#123;<br>            <span class="hljs-meta">#<span class="hljs-keyword">region</span> 1 控制台基础设置</span><br><br>            <span class="hljs-comment">//隐藏光标</span><br>            Console.CursorVisible = <span class="hljs-literal">false</span>;<br><br>            <span class="hljs-comment">//设置两个变量来存储 舞台的大小</span><br>            <span class="hljs-built_in">int</span> w = <span class="hljs-number">50</span>;<br>            <span class="hljs-built_in">int</span> h = <span class="hljs-number">30</span>;<br><br>            <span class="hljs-comment">//设置舞台（控制台）的大小</span><br>            Console.SetWindowSize(w, h);<br>            Console.SetBufferSize(w, h);<br>            <span class="hljs-meta">#<span class="hljs-keyword">endregion</span></span><br><br>            <span class="hljs-meta">#<span class="hljs-keyword">region</span> 2 多个场景</span><br>            <span class="hljs-comment">//定义场景编号变量</span><br>            <span class="hljs-comment">//设置当前所在场景的编号</span><br>            <span class="hljs-comment">//1是开始界面 2是游戏界面 3是结束界面</span><br>            <span class="hljs-built_in">int</span> nowSceneID = <span class="hljs-number">1</span>;<br><br>            <span class="hljs-meta">#<span class="hljs-keyword">region</span> 9 结束场景相关</span><br><br>            <span class="hljs-comment">//游戏游戏主逻辑死循环外 声明结束场景信息字符串变量</span><br><br>            <span class="hljs-comment">//用于在结束场景显示相应的文字提示内容</span><br>            <span class="hljs-built_in">string</span> gameOverInfo = <span class="hljs-string">&quot;&quot;</span>;<br>            <span class="hljs-meta">#<span class="hljs-keyword">endregion</span></span><br><br>            <span class="hljs-comment">//设置游戏主逻辑死循环</span><br>            <span class="hljs-keyword">while</span> (<span class="hljs-literal">true</span>)<br>            &#123;<br>                <span class="hljs-comment">//游戏主逻辑死循环内 根据场景ID设置条件分支</span><br>                <span class="hljs-comment">//不同的场景ID 进行不同的逻辑处理</span><br>                <span class="hljs-keyword">switch</span> (nowSceneID)<br>                &#123;<br>                    <span class="hljs-comment">//开始场景</span><br>                    <span class="hljs-keyword">case</span> <span class="hljs-number">1</span>:<br>                        Console.Clear();<br>                        <span class="hljs-meta">#<span class="hljs-keyword">region</span> 3 开始场景逻辑</span><br><br>                        <span class="hljs-comment">//设置开始场景标题</span><br>                        Console.SetCursorPosition(w / <span class="hljs-number">2</span> - <span class="hljs-number">7</span>, <span class="hljs-number">8</span>);<br>                        Console.Write(<span class="hljs-string">&quot;韬老狮营救公主&quot;</span>);<br><br>                        <span class="hljs-comment">//设置当前选项的编号变量 并进行初始化</span><br>                        <span class="hljs-comment">//0是开始游戏 1是退出游戏</span><br>                        <span class="hljs-built_in">int</span> nowSelIndex = <span class="hljs-number">0</span>;<br><br>                        <span class="hljs-comment">//设置开始场景死循环</span><br>                        <span class="hljs-comment">//因为在开始场景要不停的进行输入 输入ws进行选项的更换</span><br>                        <span class="hljs-comment">//所以我们可以构造一个 开始界面自己的 死循环</span><br>                        <span class="hljs-comment">//专门用来处理 开始场景相关的逻辑</span><br>                        <span class="hljs-keyword">while</span> (<span class="hljs-literal">true</span>)<br>                        &#123;<br>                            <span class="hljs-comment">//开始场景死循环内 声明一个是否退出开始场景死循环的标识</span><br><br>                            <span class="hljs-comment">//处理在开始场景死循环内的检测输入内容进行条件分支的switch逻辑执行时</span><br>                            <span class="hljs-comment">//假如希望退出开始场景死循环 改变标识 末尾处补上对应判断语句即可</span><br>                            <span class="hljs-built_in">bool</span> isQuitBeginWhile = <span class="hljs-literal">false</span>;<br><br><br><br>                            <span class="hljs-comment">//开始场景死循环内 设置显示两个选项的内容</span><br><br>                            <span class="hljs-comment">//先设置光标位置 再输入显示对应选项的文本内容</span><br>                            Console.SetCursorPosition(w / <span class="hljs-number">2</span> - <span class="hljs-number">4</span>, <span class="hljs-number">13</span>);<br>                            <span class="hljs-comment">//根据当前选择的编号来决定当前的选项是否应该变色是否变色</span><br>                            Console.ForegroundColor = nowSelIndex == <span class="hljs-number">0</span> ? ConsoleColor.Red : ConsoleColor.White;<br>                            Console.Write(<span class="hljs-string">&quot;开始游戏&quot;</span>);<br><br>                            <span class="hljs-comment">//先设置光标位置 再输入显示对应选项的文本内容</span><br>                            Console.SetCursorPosition(w / <span class="hljs-number">2</span> - <span class="hljs-number">4</span>, <span class="hljs-number">15</span>);<br>                            <span class="hljs-comment">//根据当前选择的编号来决定当前的选项是否应该变色是否变色</span><br>                            Console.ForegroundColor = nowSelIndex == <span class="hljs-number">1</span> ? ConsoleColor.Red : ConsoleColor.White;<br>                            Console.Write(<span class="hljs-string">&quot;退出游戏&quot;</span>);<br><br><br><br>                            <span class="hljs-comment">//开始场景死循环内 检测玩家输入</span><br><br>                            <span class="hljs-comment">//检测玩家输入的一个键内容 并且设置不会再控制台上显示输入的内容</span><br>                            <span class="hljs-built_in">char</span> input = Console.ReadKey(<span class="hljs-literal">true</span>).KeyChar;<br><br>                            <span class="hljs-comment">//开始场景死循环内 获得玩家输入的值 根据输入的值进行条件分支 执行对应的逻辑</span><br>                            <span class="hljs-comment">//W让选项往上 S让选项往下 J确认进入当前选项</span><br>                            <span class="hljs-keyword">switch</span> (input)<br>                            &#123;<br>                                <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;W&#x27;</span>:<br>                                <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;w&#x27;</span>:<br>                                    <span class="hljs-comment">//选项的编号减小 进行边界判断</span><br>                                    --nowSelIndex;<br>                                    <span class="hljs-keyword">if</span> (nowSelIndex &lt; <span class="hljs-number">0</span>)<br>                                    &#123;<br>                                        nowSelIndex = <span class="hljs-number">0</span>;<br>                                    &#125;<br>                                    <span class="hljs-keyword">break</span>;<br>                                <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;S&#x27;</span>:<br>                                <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;s&#x27;</span>:<br>                                    <span class="hljs-comment">//选项的编号增大 进行边界判断</span><br>                                    ++nowSelIndex;<br>                                    <span class="hljs-keyword">if</span> (nowSelIndex &gt; <span class="hljs-number">1</span>)<br>                                    &#123;<br>                                        nowSelIndex = <span class="hljs-number">1</span>;<br>                                    &#125;<br>                                    <span class="hljs-keyword">break</span>;<br>                                <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;J&#x27;</span>:<br>                                <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;j&#x27;</span>:<br>                                    <span class="hljs-comment">//根据当前的选项编号执行不同逻辑</span><br>                                    <span class="hljs-keyword">if</span> (nowSelIndex == <span class="hljs-number">0</span>)<br>                                    &#123;<br>                                        <span class="hljs-comment">//改变当前选择的场景ID 改为2游戏场景</span><br>                                        <span class="hljs-comment">//退出开始场景死循环后 重新进入游戏主逻辑死循环时会进入到游戏场景的分支选项</span><br>                                        nowSceneID = <span class="hljs-number">2</span>;<br><br>                                        <span class="hljs-comment">//进入游戏场景要退出开始场景 更改开始场景死循环的标识</span><br>                                        isQuitBeginWhile = <span class="hljs-literal">true</span>;<br>                                    &#125;<br>                                    <span class="hljs-keyword">else</span><br>                                    &#123;<br>                                        <span class="hljs-comment">//关闭控制台 退出游戏</span><br>                                        Environment.Exit(<span class="hljs-number">0</span>);<br>                                    &#125;<br>                                    <span class="hljs-keyword">break</span>;<br>                            &#125;<br><br>                            <span class="hljs-comment">//开始场景死循环内 根据是否要退出开始场景死循环标识 判断是否要退出开始场景死循环 </span><br>                            <span class="hljs-keyword">if</span> (isQuitBeginWhile)<br>                            &#123;<br>                                <span class="hljs-keyword">break</span>;<br>                            &#125;<br>                        &#125;<br>                        <span class="hljs-meta">#<span class="hljs-keyword">endregion</span></span><br>                        <span class="hljs-keyword">break</span>;<br>                    <span class="hljs-comment">//游戏场景</span><br>                    <span class="hljs-keyword">case</span> <span class="hljs-number">2</span>:<br>                        Console.Clear();<br>                        <span class="hljs-meta">#<span class="hljs-keyword">region</span> 4-8 游戏场景逻辑</span><br>                        <span class="hljs-meta">#<span class="hljs-keyword">region</span> 4 不变的红墙</span><br><br>                        <span class="hljs-comment">//设置颜色为红色 为画出红墙做准备</span><br>                        Console.ForegroundColor = ConsoleColor.Red;<br><br>                        <span class="hljs-comment">//开始画墙</span><br><br>                        <span class="hljs-comment">//横着的墙</span><br>                        <span class="hljs-keyword">for</span> (<span class="hljs-built_in">int</span> i = <span class="hljs-number">0</span>; i &lt; w; i += <span class="hljs-number">2</span>)<br>                        &#123;<br>                            <span class="hljs-comment">//上方墙</span><br>                            Console.SetCursorPosition(i, <span class="hljs-number">0</span>);<br>                            Console.Write(<span class="hljs-string">&quot;■&quot;</span>);<br>                            <span class="hljs-comment">//下方墙</span><br>                            Console.SetCursorPosition(i, h - <span class="hljs-number">1</span>);<br>                            Console.Write(<span class="hljs-string">&quot;■&quot;</span>);<br>                            <span class="hljs-comment">//中间墙</span><br>                            Console.SetCursorPosition(i, h - <span class="hljs-number">6</span>);<br>                            Console.Write(<span class="hljs-string">&quot;■&quot;</span>);<br>                        &#125;<br><br>                        <span class="hljs-comment">//竖着的墙</span><br>                        <span class="hljs-keyword">for</span> (<span class="hljs-built_in">int</span> i = <span class="hljs-number">0</span>; i &lt; h; i++)<br>                        &#123;<br>                            <span class="hljs-comment">//左边的墙</span><br>                            Console.SetCursorPosition(<span class="hljs-number">0</span>, i);<br>                            Console.Write(<span class="hljs-string">&quot;■&quot;</span>);<br>                            <span class="hljs-comment">//右边的墙</span><br>                            Console.SetCursorPosition(w - <span class="hljs-number">2</span>, i);<br>                            Console.Write(<span class="hljs-string">&quot;■&quot;</span>);<br>                        &#125;<br><br>                        <span class="hljs-meta">#<span class="hljs-keyword">endregion</span></span><br><br>                        <span class="hljs-meta">#<span class="hljs-keyword">region</span> 5 Boss相关</span><br><br>                        <span class="hljs-comment">//声明boss的相关属性</span><br><br>                        <span class="hljs-comment">//包括位置坐标 最大最小攻击力 血量 boss图标 boss颜色</span><br>                        <span class="hljs-built_in">int</span> bossX = <span class="hljs-number">24</span>;<br>                        <span class="hljs-built_in">int</span> bossY = <span class="hljs-number">15</span>;<br>                        <span class="hljs-built_in">int</span> bossAtkMin = <span class="hljs-number">7</span>;<br>                        <span class="hljs-built_in">int</span> bossAtkMax = <span class="hljs-number">13</span>;<br>                        <span class="hljs-built_in">int</span> bossHp = <span class="hljs-number">100</span>;<br>                        <span class="hljs-built_in">string</span> bossIcon = <span class="hljs-string">&quot;■&quot;</span>;<br>                        <span class="hljs-comment">//声明一个颜色变量 用于绘制boss时使用</span><br>                        ConsoleColor bossColor = ConsoleColor.Green;<br><br>                        <span class="hljs-meta">#<span class="hljs-keyword">endregion</span></span><br><br>                        <span class="hljs-meta">#<span class="hljs-keyword">region</span> 6 玩家属性相关</span><br><br>                        <span class="hljs-comment">//声明玩家的相关属性</span><br><br>                        <span class="hljs-comment">//包括位置坐标 最大最小攻击力 血量 玩家图标 玩家颜色 输入的内容</span><br>                        <span class="hljs-built_in">int</span> playerX = <span class="hljs-number">4</span>;<br>                        <span class="hljs-built_in">int</span> playerY = <span class="hljs-number">5</span>;<br>                        <span class="hljs-built_in">int</span> playerAtkMin = <span class="hljs-number">8</span>;<br>                        <span class="hljs-built_in">int</span> playerAtkMax = <span class="hljs-number">12</span>;<br>                        <span class="hljs-built_in">int</span> playerHp = <span class="hljs-number">100</span>;<br>                        <span class="hljs-built_in">string</span> playerIcon = <span class="hljs-string">&quot;●&quot;</span>;<br>                        <span class="hljs-comment">//声明一个颜色变量 用于绘制玩家时使用</span><br>                        ConsoleColor playerColor = ConsoleColor.Yellow;<br>                        <span class="hljs-comment">//声明一个字符型变量来存储玩家输入的内容  在外面声明可以节约性能</span><br>                        <span class="hljs-built_in">char</span> playerInput;<br><br><br>                        <span class="hljs-meta">#<span class="hljs-keyword">endregion</span></span><br><br>                        <span class="hljs-meta">#<span class="hljs-keyword">region</span> 8 公主相关</span><br><br>                        <span class="hljs-comment">//声明公主的相关属性</span><br><br>                        <span class="hljs-built_in">int</span> princessX = <span class="hljs-number">24</span>;<br>                        <span class="hljs-built_in">int</span> princessY = <span class="hljs-number">5</span>;<br>                        <span class="hljs-built_in">string</span> princessIcon = <span class="hljs-string">&quot;★&quot;</span>;<br>                        ConsoleColor princessColor = ConsoleColor.Blue;<br><br>                        <span class="hljs-comment">//声明成功拯救公主后跳出游戏主逻辑死循环的标识</span><br><br>                        <span class="hljs-comment">//作用是 从while循环内部的switch 改变标识 用来跳出外层的while循环</span><br>                        <span class="hljs-built_in">bool</span> isOver = <span class="hljs-literal">false</span>;<br>                        <span class="hljs-meta">#<span class="hljs-keyword">endregion</span></span><br><br>                        <span class="hljs-meta">#<span class="hljs-keyword">region</span> 7 玩家战斗相关</span><br><br>                        <span class="hljs-comment">//声明战斗状态标识</span><br>                        <span class="hljs-built_in">bool</span> isFight = <span class="hljs-literal">false</span>;<br><br>                        <span class="hljs-meta">#<span class="hljs-keyword">endregion</span></span><br><br><br><br>                        <span class="hljs-comment">//设置游戏场景死循环</span><br>                        <span class="hljs-comment">//专门用来 检测 玩家输入相关循环</span><br>                        <span class="hljs-keyword">while</span> (<span class="hljs-literal">true</span>)<br>                        &#123;<br>                            <span class="hljs-meta">#<span class="hljs-keyword">region</span> 5 Boss相关</span><br><br>                            <span class="hljs-comment">//游戏场景死循环内 把boss绘制出来</span><br><br>                            <span class="hljs-comment">//boss活着时才绘制</span><br>                            <span class="hljs-keyword">if</span> (bossHp &gt; <span class="hljs-number">0</span>)<br>                            &#123;<br>                                <span class="hljs-comment">//设置光标位置和颜色 绘制boss图标</span><br>                                Console.SetCursorPosition(bossX, bossY);<br>                                Console.ForegroundColor = bossColor;<br>                                Console.Write(bossIcon);<br>                            &#125;<br>                            <span class="hljs-meta">#<span class="hljs-keyword">endregion</span></span><br><br>                            <span class="hljs-meta">#<span class="hljs-keyword">region</span> 8 公主相关</span><br><br>                            <span class="hljs-comment">//游戏场景死循环内 boss死亡时 添加逻辑分支 把公主绘制出来</span><br><br>                            <span class="hljs-keyword">else</span><br>                            &#123;<br>                                Console.SetCursorPosition(princessX, princessY);<br>                                Console.ForegroundColor = princessColor;<br>                                Console.Write(princessIcon);<br>                            &#125;<br><br>                            <span class="hljs-meta">#<span class="hljs-keyword">endregion</span></span><br><br>                            <span class="hljs-meta">#<span class="hljs-keyword">region</span> 6 玩家移动相关</span><br><br>                            <span class="hljs-comment">//游戏场景死循环内 把玩家绘制出来</span><br><br>                            <span class="hljs-comment">//设置光标位置和颜色 绘制玩家图标</span><br>                            Console.SetCursorPosition(playerX, playerY);<br>                            Console.ForegroundColor = playerColor;<br>                            Console.Write(playerIcon);<br><br><br>                            <span class="hljs-comment">//游戏场景死循环内 得到玩家输入</span><br>                            playerInput = Console.ReadKey(<span class="hljs-literal">true</span>).KeyChar;<br>                            <span class="hljs-meta">#<span class="hljs-keyword">endregion</span></span><br><br>                            <span class="hljs-comment">//游戏场景死循环内 根据是否是战斗状态处理不同逻辑 把绘制玩家图形和玩家输入枚举放在非战斗状态的分支中</span><br><br>                            <span class="hljs-comment">//战斗状态处理什么逻辑</span><br>                            <span class="hljs-keyword">if</span> (isFight)<br>                            &#123;<br>                                <span class="hljs-comment">//玩家战斗相关逻辑</span><br>                                <span class="hljs-meta">#<span class="hljs-keyword">region</span> 7 玩家战斗相关</span><br><br>                                <span class="hljs-comment">//游戏场景死循环内 处理进入战斗状态后按j键的逻辑</span><br><br>                                <span class="hljs-comment">//如果是战斗状态 应该做什么</span><br>                                <span class="hljs-comment">//只会处理J键的逻辑 </span><br>                                <span class="hljs-keyword">if</span> (playerInput == <span class="hljs-string">&#x27;J&#x27;</span> || playerInput == <span class="hljs-string">&#x27;j&#x27;</span>)<br>                                &#123;<br><br>                                    <span class="hljs-comment">//在这判断 玩家或者boss 是否死亡 如果死亡了 继续之后的流程</span><br><br>                                    <span class="hljs-comment">//如果玩家死亡</span><br>                                    <span class="hljs-keyword">if</span> (playerHp &lt;= <span class="hljs-number">0</span>)<br>                                    &#123;<br>                                        <span class="hljs-comment">//游戏结束</span><br>                                        <span class="hljs-comment">//输掉了 应该直接显示 我们的 游戏结束界面</span><br>                                        <span class="hljs-comment">//切换场景id</span><br>                                        nowSceneID = <span class="hljs-number">3</span>;<br>                                        gameOverInfo = <span class="hljs-string">&quot;游戏失败&quot;</span>;<br>                                        <span class="hljs-keyword">break</span>;<br>                                    &#125;<br><br>                                    <span class="hljs-comment">//如果boss死亡</span><br>                                    <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (bossHp &lt;= <span class="hljs-number">0</span>)<br>                                    &#123;<br>                                        <span class="hljs-comment">//去营救公主</span><br>                                        <span class="hljs-comment">//boss擦除</span><br>                                        Console.SetCursorPosition(bossX, bossY);<br>                                        Console.Write(<span class="hljs-string">&quot;  &quot;</span>);<br>                                        isFight = <span class="hljs-literal">false</span>;<br>                                    &#125;<br><br>                                    <span class="hljs-comment">//玩家和boss都没死 处理按J键对战逻辑</span><br>                                    <span class="hljs-keyword">else</span><br>                                    &#123;<br>                                        <span class="hljs-comment">//得到随机对象</span><br>                                        Random r = <span class="hljs-keyword">new</span> Random();<br><br>                                        <span class="hljs-comment">//玩家打boss</span><br><br>                                        <span class="hljs-comment">//随机出玩家的攻击力</span><br>                                        <span class="hljs-built_in">int</span> atk = r.Next(playerAtkMin, playerAtkMax);<br><br>                                        <span class="hljs-comment">//boss血量减对应的攻击力</span><br>                                        bossHp -= atk;<br><br>                                        <span class="hljs-comment">//打印玩家的攻击信息</span><br><br>                                        <span class="hljs-comment">//设置输出的字体颜色</span><br>                                        Console.ForegroundColor = ConsoleColor.Green;<br><br>                                        <span class="hljs-comment">//先擦除这一行 上次显示的内容</span><br>                                        Console.SetCursorPosition(<span class="hljs-number">2</span>, h - <span class="hljs-number">4</span>);<br>                                        Console.Write(<span class="hljs-string">&quot;                                           &quot;</span>);<br><br>                                        <span class="hljs-comment">//再来写新的信息</span><br><br>                                        <span class="hljs-comment">//输出玩家对boss的伤害信息</span><br>                                        Console.SetCursorPosition(<span class="hljs-number">2</span>, h - <span class="hljs-number">4</span>);<br>                                        Console.Write(<span class="hljs-string">&quot;你对boss造成了&#123;0&#125;点伤害，boss剩余血量为&#123;1&#125;&quot;</span>, atk, bossHp);<br><br>                                        <span class="hljs-comment">//boss打玩家</span><br><br>                                        <span class="hljs-comment">//boss大于0才可以对玩家进行攻击</span><br>                                        <span class="hljs-keyword">if</span> (bossHp &gt; <span class="hljs-number">0</span>)<br>                                        &#123;<br>                                            <span class="hljs-comment">//随机出boss的攻击力</span><br>                                            atk = r.Next(bossAtkMin, bossAtkMax);<br><br>                                            <span class="hljs-comment">//玩家血量减对应的攻击力</span><br>                                            playerHp -= atk;<br><br>                                            <span class="hljs-comment">//打印boss的攻击信息</span><br><br>                                            <span class="hljs-comment">//设置输出的字体颜色</span><br>                                            Console.ForegroundColor = ConsoleColor.Yellow;<br><br>                                            <span class="hljs-comment">//先擦除这一行 上次显示的内容</span><br>                                            Console.SetCursorPosition(<span class="hljs-number">2</span>, h - <span class="hljs-number">3</span>);<br>                                            Console.Write(<span class="hljs-string">&quot;                                           &quot;</span>);<br><br>                                            <span class="hljs-comment">//再来写新的信息</span><br><br><br>                                            <span class="hljs-comment">//如果boss把玩家打死了</span><br>                                            <span class="hljs-keyword">if</span> (playerHp &lt;= <span class="hljs-number">0</span>)<br>                                            &#123;<br>                                                <span class="hljs-comment">//输出失败信息</span><br>                                                Console.SetCursorPosition(<span class="hljs-number">2</span>, h - <span class="hljs-number">3</span>);<br>                                                Console.Write(<span class="hljs-string">&quot;很遗憾，你未能通过boss的试炼，战败了&quot;</span>);<br>                                            &#125;<br><br>                                            <span class="hljs-comment">//boss没有把玩家打死</span><br>                                            <span class="hljs-keyword">else</span><br>                                            &#123;<br>                                                <span class="hljs-comment">//输出boss对玩家的伤害信息</span><br>                                                Console.SetCursorPosition(<span class="hljs-number">2</span>, h - <span class="hljs-number">3</span>);<br>                                                Console.Write(<span class="hljs-string">&quot;boss对你造成了&#123;0&#125;点伤害，你的剩余血量为&#123;1&#125;&quot;</span>, atk, playerHp);<br>                                            &#125;<br><br><br>                                        &#125;<br><br>                                        <span class="hljs-comment">//boss血量小于等于boss死亡了</span><br>                                        <span class="hljs-keyword">else</span><br>                                        &#123;<br>                                            <span class="hljs-comment">//擦除之前的战斗信息</span><br>                                            Console.SetCursorPosition(<span class="hljs-number">2</span>, h - <span class="hljs-number">5</span>);<br>                                            Console.Write(<span class="hljs-string">&quot;                                           &quot;</span>);<br>                                            Console.SetCursorPosition(<span class="hljs-number">2</span>, h - <span class="hljs-number">4</span>);<br>                                            Console.Write(<span class="hljs-string">&quot;                                           &quot;</span>);<br>                                            Console.SetCursorPosition(<span class="hljs-number">2</span>, h - <span class="hljs-number">3</span>);<br>                                            Console.Write(<span class="hljs-string">&quot;                                           &quot;</span>);<br><br>                                            <span class="hljs-comment">//显示恭喜胜利的信息</span><br>                                            Console.SetCursorPosition(<span class="hljs-number">2</span>, h - <span class="hljs-number">5</span>);<br>                                            Console.Write(<span class="hljs-string">&quot;你战胜了boss，快去营救公主&quot;</span>);<br>                                            Console.SetCursorPosition(<span class="hljs-number">2</span>, h - <span class="hljs-number">4</span>);<br>                                            Console.Write(<span class="hljs-string">&quot;前往公主身边按J键继续&quot;</span>);<br>                                        &#125;<br>                                    &#125;<br>                                &#125;<br>                                <span class="hljs-meta">#<span class="hljs-keyword">endregion</span></span><br>                            &#125;<br><br>                            <span class="hljs-comment">//非战斗状态处理什么逻辑</span><br>                            <span class="hljs-keyword">else</span><br>                            &#123;<br>                                <span class="hljs-comment">//玩家移动相关逻辑</span><br>                                <span class="hljs-comment">//包括擦除上一次玩家所在位置绘制的玩家图形和根据玩家输入的字符枚举获得新的位置信息的switch</span><br>                                <span class="hljs-meta">#<span class="hljs-keyword">region</span> 6 玩家移动相关</span><br><br>                                <span class="hljs-comment">//游戏场景死循环内 擦除上一次玩家所在位置绘制的玩家图形</span><br>                                Console.SetCursorPosition(playerX, playerY);<br>                                Console.Write(<span class="hljs-string">&quot;  &quot;</span>);<br><br>                                <span class="hljs-comment">//游戏场景死循环内 根据玩家输入的字符枚举获得新的位置信息</span><br>                                <span class="hljs-keyword">switch</span> (playerInput)<br>                                &#123;<br>                                    <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;W&#x27;</span>:<br>                                    <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;w&#x27;</span>:<br>                                        --playerY;<br>                                        <span class="hljs-keyword">if</span> (playerY &lt; <span class="hljs-number">1</span>)<br>                                        &#123;<br>                                            playerY = <span class="hljs-number">1</span>;<br>                                        &#125;<br>                                        <span class="hljs-comment">//位置如果和boss重合了 并且boss没有死</span><br>                                        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (playerX == bossX &amp;&amp; playerY == bossY &amp;&amp; bossHp &gt; <span class="hljs-number">0</span>)<br>                                        &#123;<br>                                            <span class="hljs-comment">//拉回去</span><br>                                            ++playerY;<br>                                        &#125;<br>                                        <span class="hljs-comment">//游戏场景死循环内的玩家输入枚举分支中 wasd上下左右移动过程中</span><br>                                        <span class="hljs-comment">//如果boss死亡且位置和公主重合了要回退 不能将公主覆盖</span><br>                                        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> ( playerX == princessX &amp;&amp; playerY == princessY &amp;&amp; bossHp &lt;= <span class="hljs-number">0</span> )<br>                                        &#123;<br>                                            <span class="hljs-comment">//拉回去</span><br>                                            ++playerY;<br>                                        &#125;<br>                                        <span class="hljs-keyword">break</span>;<br>                                    <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;A&#x27;</span>:<br>                                    <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;a&#x27;</span>:<br>                                        playerX -= <span class="hljs-number">2</span>;<br>                                        <span class="hljs-keyword">if</span> (playerX &lt; <span class="hljs-number">2</span>)<br>                                        &#123;<br>                                            playerX = <span class="hljs-number">2</span>;<br>                                        &#125;<br>                                        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (playerX == bossX &amp;&amp; playerY == bossY &amp;&amp; bossHp &gt; <span class="hljs-number">0</span>)<br>                                        &#123;<br>                                            <span class="hljs-comment">//拉回去</span><br>                                            playerX += <span class="hljs-number">2</span>;<br>                                        &#125;<br>                                        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (playerX == princessX &amp;&amp; playerY == princessY &amp;&amp; bossHp &lt;= <span class="hljs-number">0</span>)<br>                                        &#123;<br>                                            <span class="hljs-comment">//拉回去</span><br>                                            playerX += <span class="hljs-number">2</span>;<br>                                        &#125;<br>                                        <span class="hljs-keyword">break</span>;<br>                                    <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;S&#x27;</span>:<br>                                    <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;s&#x27;</span>:<br>                                        ++playerY;<br>                                        <span class="hljs-keyword">if</span> (playerY &gt; h - <span class="hljs-number">7</span>)<br>                                        &#123;<br>                                            playerY = h - <span class="hljs-number">7</span>;<br>                                        &#125;<br>                                        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (playerX == bossX &amp;&amp; playerY == bossY &amp;&amp; bossHp &gt; <span class="hljs-number">0</span>)<br>                                        &#123;<br>                                            <span class="hljs-comment">//拉回去</span><br>                                            --playerY;<br>                                        &#125;<br>                                        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (playerX == princessX &amp;&amp; playerY == princessY &amp;&amp; bossHp &lt;= <span class="hljs-number">0</span>)<br>                                        &#123;<br>                                            <span class="hljs-comment">//拉回去</span><br>                                            --playerY;<br>                                        &#125;<br>                                        <span class="hljs-keyword">break</span>;<br>                                    <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;D&#x27;</span>:<br>                                    <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;d&#x27;</span>:<br>                                        playerX += <span class="hljs-number">2</span>;<br>                                        <span class="hljs-keyword">if</span> (playerX &gt; w - <span class="hljs-number">4</span>)<br>                                        &#123;<br>                                            playerX = w - <span class="hljs-number">4</span>;<br>                                        &#125;<br>                                        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (playerX == bossX &amp;&amp; playerY == bossY &amp;&amp; bossHp &gt; <span class="hljs-number">0</span>)<br>                                        &#123;<br>                                            <span class="hljs-comment">//拉回去</span><br>                                            playerX -= <span class="hljs-number">2</span>;<br>                                        &#125;<br>                                        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (playerX == princessX &amp;&amp; playerY == princessY &amp;&amp; bossHp &lt;= <span class="hljs-number">0</span>)<br>                                        &#123;<br>                                            <span class="hljs-comment">//拉回去</span><br>                                            playerX -= <span class="hljs-number">2</span>;<br>                                        &#125;<br>                                        <span class="hljs-keyword">break</span>;<br><br>                                    <span class="hljs-comment">//游戏场景死循环内的玩家输入枚举分支中 添加按j键的分支逻辑</span><br>                                    <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;J&#x27;</span>:<br>                                    <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;j&#x27;</span>:<br><br>                                        <span class="hljs-meta">#<span class="hljs-keyword">region</span> 7 玩家战斗相关</span><br><br>                                        <span class="hljs-comment">//游戏场景死循环内的玩家输入枚举分支中的j键的分支中 添加玩家战斗相关逻辑</span><br><br>                                        <span class="hljs-comment">//要让玩家不能再移动</span><br>                                        <span class="hljs-comment">//更改战斗状态标识 可以跳出当前游戏场景死循环 就进入战斗状态逻辑 不会进入非战斗状态的移动逻辑</span><br>                                        <span class="hljs-comment">//下方能够显示信息</span><br><br>                                        <span class="hljs-comment">// 当玩家在boss身边一格且boss血量大于0的时候可以开始战斗</span><br>                                        <span class="hljs-keyword">if</span> ((playerX == bossX &amp;&amp; playerY == bossY - <span class="hljs-number">1</span> ||<br>                                            playerX == bossX &amp;&amp; playerY == bossY + <span class="hljs-number">1</span> ||<br>                                            playerX == bossX - <span class="hljs-number">2</span> &amp;&amp; playerY == bossY ||<br>                                            playerX == bossX + <span class="hljs-number">2</span> &amp;&amp; playerY == bossY) &amp;&amp; bossHp &gt; <span class="hljs-number">0</span>)<br>                                        &#123;<br>                                            <span class="hljs-comment">//可以开始战斗 更改战斗状态标识</span><br>                                            isFight = <span class="hljs-literal">true</span>;<br><br><br>                                            <span class="hljs-comment">//输出战斗中的对战信息</span><br>                                            Console.SetCursorPosition(<span class="hljs-number">2</span>, h - <span class="hljs-number">5</span>);<br>                                            Console.ForegroundColor = ConsoleColor.White;<br>                                            Console.Write(<span class="hljs-string">&quot;开始和Boss战斗了，按J键继续&quot;</span>);<br>                                            Console.SetCursorPosition(<span class="hljs-number">2</span>, h - <span class="hljs-number">4</span>);<br>                                            Console.Write(<span class="hljs-string">&quot;玩家当前血量为&#123;0&#125;&quot;</span>, playerHp);<br>                                            Console.SetCursorPosition(<span class="hljs-number">2</span>, h - <span class="hljs-number">3</span>);<br>                                            Console.Write(<span class="hljs-string">&quot;boss当前血量为&#123;0&#125;&quot;</span>, bossHp);<br>                                        &#125;<br>                                        <span class="hljs-meta">#<span class="hljs-keyword">endregion</span></span><br><br>                                        <span class="hljs-meta">#<span class="hljs-keyword">region</span> 8 公主相关</span><br>                                        <span class="hljs-comment">//判断是否在公主身边按J键</span><br>                                        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> ((playerX == princessX &amp;&amp; playerY == princessY - <span class="hljs-number">1</span> ||<br>                                            playerX == princessX &amp;&amp; playerY == princessY + <span class="hljs-number">1</span> ||<br>                                            playerX == princessX - <span class="hljs-number">2</span> &amp;&amp; playerY == princessY ||<br>                                            playerX == princessX + <span class="hljs-number">2</span> &amp;&amp; playerY == princessY) &amp;&amp; bossHp &lt;= <span class="hljs-number">0</span>)<br>                                        &#123;<br>                                            <span class="hljs-comment">//改变 场景ID</span><br>                                            nowSceneID = <span class="hljs-number">3</span>;<br><br>                                            gameOverInfo = <span class="hljs-string">&quot;游戏通关&quot;</span>;<br><br>                                            <span class="hljs-comment">//改变跳出成功拯救公主后跳出游戏主逻辑死循环的标识</span><br>                                            <span class="hljs-comment">//跳出 游戏界面的while循环 回到主循环</span><br>                                            isOver = <span class="hljs-literal">true</span>;<br>                                        &#125;<br>                                        <span class="hljs-meta">#<span class="hljs-keyword">endregion</span></span><br>                                        <span class="hljs-keyword">break</span>;<br>                                &#125;<br>                                <span class="hljs-meta">#<span class="hljs-keyword">endregion</span></span><br>                            &#125;<br><br>                            <span class="hljs-meta">#<span class="hljs-keyword">region</span> 8 公主相关</span><br><br>                            <span class="hljs-comment">//游戏场景逻辑末尾添加跳出是否跳出循环判断逻辑</span><br><br>                            <span class="hljs-comment">//外层while循环逻辑</span><br>                            <span class="hljs-keyword">if</span> (isOver)<br>                            &#123;<br>                                <span class="hljs-comment">//就是和while配对</span><br>                                <span class="hljs-keyword">break</span>;<br>                            &#125;<br>                            <span class="hljs-meta">#<span class="hljs-keyword">endregion</span></span><br>                        &#125;<br><br>                        <span class="hljs-meta">#<span class="hljs-keyword">endregion</span></span><br>                        <span class="hljs-keyword">break</span>;<br>                    <span class="hljs-comment">//结束场景</span><br>                    <span class="hljs-keyword">case</span> <span class="hljs-number">3</span>:<br>                        Console.Clear();<br>                        <span class="hljs-meta">#<span class="hljs-keyword">region</span> 9 结束场景逻辑</span><br><br>                        <span class="hljs-comment">//设置结束场景标题</span><br>                        Console.SetCursorPosition(w / <span class="hljs-number">2</span> - <span class="hljs-number">4</span>, <span class="hljs-number">5</span>);<br>                        Console.ForegroundColor = ConsoleColor.White;<br>                        Console.Write(<span class="hljs-string">&quot;GameOver&quot;</span>);<br><br>                        <span class="hljs-comment">//设置结束场景可变内容的显示信息</span><br>                        <span class="hljs-comment">//可变内容的显示 根据失败或者 成功显示的内容不一样</span><br>                        Console.SetCursorPosition(w / <span class="hljs-number">2</span> - <span class="hljs-number">4</span>, <span class="hljs-number">7</span>);<br>                        Console.ForegroundColor = ConsoleColor.Green;<br>                        Console.Write(gameOverInfo);<br><br>                        <br><br>                        <span class="hljs-comment">//设置当前选项的编号变量 并进行初始化</span><br>                        <span class="hljs-comment">//0是回到开始界面 1是退出游戏</span><br>                        <span class="hljs-built_in">int</span> nowSelEndIndex = <span class="hljs-number">0</span>;<br><br>                        <span class="hljs-comment">//设置结束场景死循环 逻辑和开始场景死循环逻辑类似</span><br>                        <span class="hljs-keyword">while</span> (<span class="hljs-literal">true</span>)<br>                        &#123;<br>                            <span class="hljs-comment">//退出游戏主逻辑死循环标识</span><br>                            <span class="hljs-built_in">bool</span> isQuitEndWhile = <span class="hljs-literal">false</span>;<br><br>                            <span class="hljs-comment">//设置结束场景的两个选项</span><br>                            Console.SetCursorPosition(w / <span class="hljs-number">2</span> - <span class="hljs-number">6</span>, <span class="hljs-number">9</span>);<br>                            Console.ForegroundColor = nowSelEndIndex == <span class="hljs-number">0</span> ? ConsoleColor.Red : ConsoleColor.White;<br>                            Console.Write(<span class="hljs-string">&quot;回到开始界面&quot;</span>);<br>                            Console.SetCursorPosition(w / <span class="hljs-number">2</span> - <span class="hljs-number">4</span>, <span class="hljs-number">11</span>);<br>                            Console.ForegroundColor = nowSelEndIndex == <span class="hljs-number">1</span> ? ConsoleColor.Red : ConsoleColor.White;<br>                            Console.Write(<span class="hljs-string">&quot;退出游戏&quot;</span>);<br><br>                            <span class="hljs-comment">//让玩家进行输入 获得输入的内容</span><br>                            <span class="hljs-built_in">char</span> input = Console.ReadKey(<span class="hljs-literal">true</span>).KeyChar;<br><br>                            <span class="hljs-comment">//根据输入内容执行对应的逻辑</span><br>                            <span class="hljs-keyword">switch</span> (input)<br>                            &#123;<br>                                <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;W&#x27;</span>:<br>                                <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;w&#x27;</span>:<br>                                    --nowSelEndIndex;<br>                                    <span class="hljs-keyword">if</span> (nowSelEndIndex &lt; <span class="hljs-number">0</span>)<br>                                    &#123;<br>                                        nowSelEndIndex = <span class="hljs-number">0</span>;<br>                                    &#125;<br>                                    <span class="hljs-keyword">break</span>;<br>                                <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;S&#x27;</span>:<br>                                <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;s&#x27;</span>:<br>                                    ++nowSelEndIndex;<br>                                    <span class="hljs-keyword">if</span> (nowSelEndIndex &gt; <span class="hljs-number">1</span>)<br>                                    &#123;<br>                                        nowSelEndIndex = <span class="hljs-number">1</span>;<br>                                    &#125;<br>                                    <span class="hljs-keyword">break</span>;<br>                                <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;J&#x27;</span>:<br>                                <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;j&#x27;</span>:<br>                                    <span class="hljs-keyword">if</span> (nowSelEndIndex == <span class="hljs-number">0</span>)<br>                                    &#123;<br>                                        nowSceneID = <span class="hljs-number">1</span>;<br>                                        isQuitEndWhile = <span class="hljs-literal">true</span>;<br>                                    &#125;<br>                                    <span class="hljs-keyword">else</span><br>                                    &#123;<br>                                        Environment.Exit(<span class="hljs-number">0</span>);<br>                                    &#125;<br>                                    <span class="hljs-keyword">break</span>;<br>                            &#125;<br><br>                            <span class="hljs-comment">//判断是否跳出游戏主逻辑死循环</span><br>                            <span class="hljs-comment">//为了 从switch中跳出上一层的 while循环 加的标识</span><br>                            <span class="hljs-keyword">if</span> (isQuitEndWhile)<br>                            &#123;<br>                                <span class="hljs-keyword">break</span>;<br>                            &#125;<br>                        &#125;<br>                        <span class="hljs-meta">#<span class="hljs-keyword">endregion</span></span><br>                        <span class="hljs-keyword">break</span>;<br>                &#125;<br>            &#125;<br>            <span class="hljs-meta">#<span class="hljs-keyword">endregion</span></span><br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<hr>
+
+      
+       <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 785293209@qq.com </span>
+    </div>
+</article>
+
+
+<p>
+    <a  class="dashang" onclick="dashangToggle()">赏</a>
+</p>
+
+
+
+
+
+
+    
+
+
+
+
+    </div>
+    <div class="copyright">
+        <p class="footer-entry">
+    ©2016-2024 Tao
+</p>
+<p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
+
+    </div>
+    <div class="full-toc">
+        <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
+<a class="" id="rocket" ></a>
+
+    </div>
+</div>
+
+<div class="hide_box" onclick="dashangToggle()"></div>
+<div class="shang_box">
+    <a class="shang_close"  onclick="dashangToggle()">×</a>
+    <div class="shang_tit">
+        <p>喜欢就点赞,疼爱就打赏</p>
+    </div>
+    <div class="shang_payimg">
+        <div class="pay_img">
+            <img src="/img/alipay.jpg" class="alipay" title="扫码支持">
+            <img src="/img/weixin.jpg" class="weixin" title="扫码支持">
+        </div>
+    </div>
+    <div class="shang_payselect">
+        <span><label><input type="radio" name="pay" checked value="alipay">支付宝</label></span><span><label><input type="radio" name="pay" value="weixin">微信</label></span>
+    </div>
+</div>
+
+
+</body>
+<script src="/js/jquery.pjax.js?v=1.1.0" ></script>
+
+<script src="/js/script.js?v=1.1.0" ></script>
+<script>
+    var img_resize = 'default';
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $("#post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+        $("input[name=pay]").on("click", function () {
+            if($("input[name=pay]:checked").val()=="weixin"){
+                $(".shang_box .shang_payimg .pay_img").addClass("weixin_img");
+            } else {
+                $(".shang_box .shang_payimg .pay_img").removeClass("weixin_img");
+            }
+        })
+        
+
+        /*高亮代码块行号*/
+        
+
+        /*访问数量*/
+        
+        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+    function dashangToggle() {
+        $(".shang_box").fadeToggle();
+        $(".hide_box").fadeToggle();
+    }
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<!--自定义样式设置-->
+<style>
+    
+    
+    .nav {
+        width: 622px;
+    }
+    .nav.fullscreen {
+        margin-left: -622px;
+    }
+    .nav-left {
+        width: 200px;
+    }
+    
+    
+    @media screen and (max-width: 1468px) {
+        .nav {
+            width: 572px;
+        }
+        .nav.fullscreen {
+            margin-left: -572px;
+        }
+        .nav-left {
+            width: 180px;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1024px) {
+        .nav {
+            width: 572px;
+            margin-left: -572px
+        }
+        .nav.fullscreen {
+            margin-left: 0;
+        }
+    }
+    
+    @media screen and (max-width: 426px) {
+        .nav {
+            width: 100%;
+        }
+        .nav-left {
+            width: 100%;
+        }
+    }
+    
+    
+    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
+        color: #383636;
+    }
+    
+    
+    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
+        color: #5e5e5f;
+    }
+    
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
+    
+    
+
+    /*列表样式*/
+    
+
+    /* 背景图样式 */
+    
+    
+
+
+    /*引用块样式*/
+    
+
+    /*文章列表背景图*/
+    
+
+    
+</style>
+
+
+
+
+
+
+
+</html>
