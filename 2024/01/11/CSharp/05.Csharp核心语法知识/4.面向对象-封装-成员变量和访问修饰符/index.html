@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>【C#基础实践项目】| 8.游戏场景-玩家和电脑结构体 | 人间自有韬哥在的游戏开发博客</title>
-  <meta name="keywords" content=" CSharp , CSharp基础 , 实践项目 ">
-  <meta name="description" content="【C#基础实践项目】| 8.游戏场景-玩家和电脑结构体 | 人间自有韬哥在的游戏开发博客">
+  <title>【C#核心语法知识】| 4.面向对象-封装-成员变量和访问修饰符 | 人间自有韬哥在的游戏开发博客</title>
+  <meta name="keywords" content=" CSharp , 语法知识 , CSharp核心 , 面向对象 , 封装 ">
+  <meta name="description" content="【C#核心语法知识】| 4.面向对象-封装-成员变量和访问修饰符 | 人间自有韬哥在的游戏开发博客">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="4.面向对象-封装-成员变量和访问修饰符 4.1 知识点知识回顾类和对象&#x2F;&#x2F; 申明类 class Person &#123;     &#x2F;&#x2F; 特征——成员变量     &#x2F;&#x2F; 行为——成员方法     &#x2F;&#x2F; 保护特征——成员属性     &#x2F;&#x2F; 构造函数和析构函数     &#x2F;&#x2F; 索引器     &#x2F;&#x2F; 运算符重载函数     &#x2F;&#x2F; 静态函数 &#125;  实例化对象Person 变量名; Person">
 <meta property="og:type" content="article">
@@ -1053,9 +1053,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-CSharp/04.CSharp基础语法知识/8.游戏场景-玩家和电脑结构体" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-CSharp/05.Csharp核心语法知识/4.面向对象-封装-成员变量和访问修饰符" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">【C#基础实践项目】| 8.游戏场景-玩家和电脑结构体</h1>
+        <h1 class="article-title">【C#核心语法知识】| 4.面向对象-封装-成员变量和访问修饰符</h1>
     
     <div class="article-meta">
         
@@ -1067,7 +1067,7 @@
             
             <a  data-rel="CSharp">CSharp</a> > 
             
-            <a  data-rel="CSharp&lt;---&gt;CSharp基础实践项目">CSharp基础实践项目</a>
+            <a  data-rel="CSharp&lt;---&gt;CSharp核心语法知识">CSharp核心语法知识</a>
             
         </span>
         
@@ -1077,16 +1077,20 @@
             
             <a class="color2">CSharp</a>
             
-            <a class="color4">CSharp基础</a>
+            <a class="color5">语法知识</a>
             
-            <a class="color5">实践项目</a>
+            <a class="color4">CSharp核心</a>
+            
+            <a class="color5">面向对象</a>
+            
+            <a class="color3">封装</a>
             
         </span>
         
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2024-01-11 20:29:28'>2024-01-11 20:25</time>
+            发布时间 : <time class="date" title='最后更新: 2024-01-11 23:30:33'>2024-01-11 23:08</time>
         
     </div>
     <div class="article-meta">
@@ -1108,7 +1112,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#8-%E6%B8%B8%E6%88%8F%E5%9C%BA%E6%99%AF-%E7%8E%A9%E5%AE%B6%E5%92%8C%E7%94%B5%E8%84%91%E7%BB%93%E6%9E%84%E4%BD%93"><span class="toc-text">8.游戏场景-玩家和电脑结构体</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#8-1-%E7%9F%A5%E8%AF%86%E7%82%B9"><span class="toc-text">8.1 知识点</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#class-%E8%AF%AD%E5%8F%A5%E5%9D%97%E5%A4%96-namespace-%E8%AF%AD%E5%8F%A5%E5%9D%97%E5%86%85"><span class="toc-text">class 语句块外 namespace 语句块内</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E7%8E%A9%E5%AE%B6%E7%B1%BB%E5%9E%8B%E6%9E%9A%E4%B8%BE"><span class="toc-text">创建玩家类型枚举</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E7%8E%A9%E5%AE%B6%E7%BB%93%E6%9E%84%E4%BD%93"><span class="toc-text">创建玩家结构体</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#class-%E8%AF%AD%E5%8F%A5%E5%9D%97%E5%86%85-%E4%B8%BB%E5%87%BD%E6%95%B0%E5%A4%96"><span class="toc-text">class 语句块内 主函数外</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E7%BB%98%E5%88%B6%E7%8E%A9%E5%AE%B6%E5%92%8C%E7%94%B5%E8%84%91%E5%87%BD%E6%95%B0"><span class="toc-text">创建绘制玩家和电脑函数</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#class-%E8%AF%AD%E5%8F%A5%E5%9D%97%E5%86%85-%E4%B8%BB%E5%87%BD%E6%95%B0%E5%A4%96-%E6%B8%B8%E6%88%8F%E5%9C%BA%E6%99%AF%E9%80%BB%E8%BE%91%E5%87%BD%E6%95%B0%E5%86%85"><span class="toc-text">class 语句块内 主函数外 游戏场景逻辑函数内</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E7%8E%A9%E5%AE%B6%E5%92%8C%E7%94%B5%E8%84%91"><span class="toc-text">创建玩家和电脑</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BB%98%E5%88%B6%E7%8E%A9%E5%AE%B6%E5%92%8C%E7%94%B5%E8%84%91"><span class="toc-text">绘制玩家和电脑</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-2-%E7%9F%A5%E8%AF%86%E7%82%B9%E4%BB%A3%E7%A0%81"><span class="toc-text">8.2 知识点代码</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#class%E8%AF%AD%E5%8F%A5%E5%9D%97%E5%A4%96-namespace%E8%AF%AD%E5%8F%A5%E5%9D%97%E5%86%85"><span class="toc-text">class语句块外 namespace语句块内</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#class%E8%AF%AD%E5%8F%A5%E5%9D%97%E5%86%85-%E4%B8%BB%E5%87%BD%E6%95%B0%E5%A4%96"><span class="toc-text">class语句块内 主函数外</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#class%E8%AF%AD%E5%8F%A5%E5%9D%97%E5%86%85-%E4%B8%BB%E5%87%BD%E6%95%B0%E5%A4%96-%E6%B8%B8%E6%88%8F%E5%9C%BA%E6%99%AF%E9%80%BB%E8%BE%91%E5%87%BD%E6%95%B0%E5%86%85"><span class="toc-text">class语句块内 主函数外 游戏场景逻辑函数内</span></a></li></ol></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#4-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E5%B0%81%E8%A3%85-%E6%88%90%E5%91%98%E5%8F%98%E9%87%8F%E5%92%8C%E8%AE%BF%E9%97%AE%E4%BF%AE%E9%A5%B0%E7%AC%A6"><span class="toc-text">4.面向对象-封装-成员变量和访问修饰符</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#4-1-%E7%9F%A5%E8%AF%86%E7%82%B9"><span class="toc-text">4.1 知识点</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9F%A5%E8%AF%86%E5%9B%9E%E9%A1%BE"><span class="toc-text">知识回顾</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%B1%BB%E5%92%8C%E5%AF%B9%E8%B1%A1"><span class="toc-text">类和对象</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9E%E4%BE%8B%E5%8C%96%E5%AF%B9%E8%B1%A1"><span class="toc-text">实例化对象</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%88%90%E5%91%98%E5%8F%98%E9%87%8F"><span class="toc-text">成员变量</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E8%A7%84%E5%88%99"><span class="toc-text">基本规则</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%80%A7%E5%88%AB%E6%9E%9A%E4%B8%BE"><span class="toc-text">性别枚举</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%8D%E7%BD%AE%E7%BB%93%E6%9E%84%E4%BD%93"><span class="toc-text">位置结构体</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%A0%E7%89%A9%E7%B1%BB"><span class="toc-text">宠物类</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BA%BA%E7%B1%BB"><span class="toc-text">人类</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%BF%E9%97%AE%E4%BF%AE%E9%A5%B0%E7%AC%A6"><span class="toc-text">访问修饰符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%88%90%E5%91%98%E5%8F%98%E9%87%8F%E7%9A%84%E4%BD%BF%E7%94%A8%E5%92%8C%E5%88%9D%E5%A7%8B%E5%80%BC"><span class="toc-text">成员变量的使用和初始值</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%BB%E5%87%BD%E6%95%B0%E5%86%85"><span class="toc-text">主函数内</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-text">总结</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-2-%E7%9F%A5%E8%AF%86%E7%82%B9%E4%BB%A3%E7%A0%81"><span class="toc-text">4.2 知识点代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-3-%E7%BB%83%E4%B9%A0%E9%A2%98"><span class="toc-text">4.3 练习题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3P%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-text">3P是什么？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89%E4%B8%80%E4%B8%AA%E4%BA%BA%E7%B1%BB%EF%BC%8C%E6%9C%89%E5%A7%93%E5%90%8D%EF%BC%8C%E8%BA%AB%E9%AB%98%EF%BC%8C%E5%B9%B4%E9%BE%84%EF%BC%8C%E5%AE%B6%E5%BA%AD%E4%BD%8F%E5%9D%80%E7%AD%89%E7%89%B9%E5%BE%81%E3%80%82%E7%94%A8%E4%BA%BA%E5%88%9B%E5%BB%BA%E8%8B%A5%E5%B9%B2%E4%B8%AA%E5%AF%B9%E8%B1%A1"><span class="toc-text">定义一个人类，有姓名，身高，年龄，家庭住址等特征。用人创建若干个对象</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#class%E8%AF%AD%E5%8F%A5%E5%9D%97%E5%A4%96-namespace%E8%AF%AD%E5%8F%A5%E5%9D%97%E5%86%85"><span class="toc-text">class语句块外 namespace语句块内</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%BB%E5%87%BD%E6%95%B0%E5%86%85-1"><span class="toc-text">主函数内</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89%E4%B8%80%E4%B8%AA%E5%AD%A6%E7%94%9F%E7%B1%BB%EF%BC%8C%E6%9C%89%E5%A7%93%E5%90%8D%EF%BC%8C%E5%AD%A6%E5%8F%B7%EF%BC%8C%E5%B9%B4%E9%BE%84%EF%BC%8C%E5%90%8C%E6%A1%8C%E7%AD%89%E7%89%B9%E5%BE%81%E3%80%82%E7%94%A8%E5%AD%A6%E7%94%9F%E7%B1%BB%E5%88%9B%E5%BB%BA%E8%8B%A5%E5%B9%B2%E4%B8%AA%E5%AD%A6%E7%94%9F"><span class="toc-text">定义一个学生类，有姓名，学号，年龄，同桌等特征。用学生类创建若干个学生</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#class%E8%AF%AD%E5%8F%A5%E5%9D%97%E5%A4%96-namespace%E8%AF%AD%E5%8F%A5%E5%9D%97%E5%86%85-1"><span class="toc-text">class语句块外 namespace语句块内</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%BB%E5%87%BD%E6%95%B0%E5%86%85-2"><span class="toc-text">主函数内</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89%E4%B8%80%E4%B8%AA%E7%8F%AD%E7%BA%A7%E7%B1%BB%EF%BC%8C%E6%9C%89%E4%B8%93%E4%B8%9A%E5%90%8D%E7%A7%B0%EF%BC%8C%E6%95%99%E5%AE%A4%E5%AE%B9%E9%87%8F%EF%BC%8C%E5%AD%A6%E7%94%9F%E7%AD%89%E3%80%82%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA%E7%8F%AD%E7%BA%A7%E5%AF%B9%E8%B1%A1"><span class="toc-text">定义一个班级类，有专业名称，教室容量，学生等。创建一个班级对象</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#class%E8%AF%AD%E5%8F%A5%E5%9D%97%E5%A4%96-namespace%E8%AF%AD%E5%8F%A5%E5%9D%97%E5%86%85-2"><span class="toc-text">class语句块外 namespace语句块内</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%BB%E5%87%BD%E6%95%B0%E5%86%85-3"><span class="toc-text">主函数内</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%82%E5%AF%9F%E4%BB%A3%E7%A0%81"><span class="toc-text">观察代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%82%E5%AF%9F%E4%BB%A3%E7%A0%81-1"><span class="toc-text">观察代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%82%E5%AF%9F%E4%BB%A3%E7%A0%81-2"><span class="toc-text">观察代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%82%E5%AF%9F%E4%BB%A3%E7%A0%81-3"><span class="toc-text">观察代码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-4-%E7%BB%83%E4%B9%A0%E9%A2%98%E4%BB%A3%E7%A0%81"><span class="toc-text">4.4 练习题代码</span></a></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -1124,197 +1128,573 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="8-游戏场景-玩家和电脑结构体"><a href="#8-游戏场景-玩家和电脑结构体" class="headerlink" title="8.游戏场景-玩家和电脑结构体"></a>8.游戏场景-玩家和电脑结构体</h1><hr>
-<h2 id="8-1-知识点"><a href="#8-1-知识点" class="headerlink" title="8.1 知识点"></a>8.1 知识点</h2><h3 id="class-语句块外-namespace-语句块内"><a href="#class-语句块外-namespace-语句块内" class="headerlink" title="class 语句块外 namespace 语句块内"></a>class 语句块外 namespace 语句块内</h3><h4 id="创建玩家类型枚举"><a href="#创建玩家类型枚举" class="headerlink" title="创建玩家类型枚举"></a>创建玩家类型枚举</h4><pre><code class="csharp">/// &lt;summary&gt;
-/// 玩家类型枚举
-/// &lt;/summary&gt;
-enum E_PlayerType
+        <h1 id="4-面向对象-封装-成员变量和访问修饰符"><a href="#4-面向对象-封装-成员变量和访问修饰符" class="headerlink" title="4.面向对象-封装-成员变量和访问修饰符"></a>4.面向对象-封装-成员变量和访问修饰符</h1><hr>
+<h2 id="4-1-知识点"><a href="#4-1-知识点" class="headerlink" title="4.1 知识点"></a>4.1 知识点</h2><h3 id="知识回顾"><a href="#知识回顾" class="headerlink" title="知识回顾"></a>知识回顾</h3><h4 id="类和对象"><a href="#类和对象" class="headerlink" title="类和对象"></a>类和对象</h4><pre><code class="csharp">// 申明类
+class Person
 &#123;
-    /// &lt;summary&gt;
-    /// 玩家
-    /// &lt;/summary&gt;
-    Player,
-    /// &lt;summary&gt;
-    /// 电脑
-    /// &lt;/summary&gt;
-    Computer,
+    // 特征——成员变量
+    // 行为——成员方法
+    // 保护特征——成员属性
+    // 构造函数和析构函数
+    // 索引器
+    // 运算符重载函数
+    // 静态函数
 &#125;
 </code></pre>
-<h4 id="创建玩家结构体"><a href="#创建玩家结构体" class="headerlink" title="创建玩家结构体"></a>创建玩家结构体</h4><pre><code class="csharp">struct Player
+<h4 id="实例化对象"><a href="#实例化对象" class="headerlink" title="实例化对象"></a>实例化对象</h4><pre><code class="csharp">Person 变量名;
+Person 变量名 = null;
+Person 变量名 = new Person();
+</code></pre>
+<h3 id="成员变量"><a href="#成员变量" class="headerlink" title="成员变量"></a>成员变量</h3><h4 id="基本规则"><a href="#基本规则" class="headerlink" title="基本规则"></a>基本规则</h4><ul>
+<li>申明在类语句块中</li>
+<li>用来描述对象的特征</li>
+<li>可以是任意变量类型</li>
+<li>数量不做限制</li>
+<li>是否赋值根据需求来定</li>
+</ul>
+<h4 id="性别枚举"><a href="#性别枚举" class="headerlink" title="性别枚举"></a>性别枚举</h4><pre><code class="csharp">enum E_SexType
 &#123;
-    // 玩家结构体变量
+    Man,
+    Woman,
+&#125;
+</code></pre>
+<h4 id="位置结构体"><a href="#位置结构体" class="headerlink" title="位置结构体"></a>位置结构体</h4><pre><code class="csharp">struct Position
+&#123;
+    // Your code here
+&#125;
+</code></pre>
+<h4 id="宠物类"><a href="#宠物类" class="headerlink" title="宠物类"></a>宠物类</h4><pre><code class="csharp">class Pet
+&#123;
+    // Your code here
+&#125;
+</code></pre>
+<h4 id="人类"><a href="#人类" class="headerlink" title="人类"></a>人类</h4><pre><code class="csharp">class Person
+&#123;
+    // 特征——成员变量
+
+    // 姓名
+    public string name = &quot;韬老狮&quot;;
+
+    // 年龄
+    public int age;
+
+    // 性别
+    public E_SexType sex;
+
+    // 结构体不能在结构体中申明一个和自己相同类型的成员变量
+    // 类可以在类中申明一个和自己相同类型的成员变量
+    // 如果要在类中申明一个和自己相同类型的成员变量时不能对它进行实例化（不能 new）
+
+    // 女朋友
+    public Person gridFriend;
+    // public Person gridFriend = null;
+
+    // 朋友
+    public Person[] friends;
+
+    // 位置
+    public Position pos;
+
+    // 宠物
+    private Pet pet = new Pet();
+&#125;
+</code></pre>
+<h3 id="访问修饰符"><a href="#访问修饰符" class="headerlink" title="访问修饰符"></a>访问修饰符</h3><ul>
+<li><code>public</code> —— 公共的，自己（内部）和别人（外部）都能访问和使用</li>
+<li><code>private</code> —— 私有的，自己（内部）才能访问和使用，不写默认为 <code>private</code></li>
+<li><code>protected</code> —— 保护的，自己（内部）和子类才能访问和使用</li>
+<li>目前决定类内部的成员的访问权限</li>
+</ul>
+<h3 id="成员变量的使用和初始值"><a href="#成员变量的使用和初始值" class="headerlink" title="成员变量的使用和初始值"></a>成员变量的使用和初始值</h3><h4 id="主函数内"><a href="#主函数内" class="headerlink" title="主函数内"></a>主函数内</h4><pre><code class="csharp">// 实例化一个人
+Person p = new Person();
+
+// 值类型来说
+// 数字类型默认值都是 0
+// bool 类型默认为 false
+// 引用类型的默认值都是 null
+// 交给大家一个看默认值的小技巧：default(变量类型) 就能得到默认值
+Console.WriteLine(default(Person)); // null
+Console.WriteLine(default(int)); // 0
+Console.WriteLine(default(bool)); // False
+
+p.age = 10;
+Console.WriteLine(p.age); // 10
+</code></pre>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ul>
+<li>成员变量<ul>
+<li>描述特征</li>
+<li>类中声明</li>
+<li>赋值随意</li>
+<li>默认值不相同</li>
+<li>值类型来说<ul>
+<li>数字类型默认值都是 0</li>
+<li>bool 类型默认为 false</li>
+</ul>
+</li>
+<li>引用类型的默认值都是 null</li>
+<li>交给大家一个看默认值的小技巧：<code>default(变量类型)</code> 就能得到默认值</li>
+<li>任意类型</li>
+<li>任意数量</li>
+</ul>
+</li>
+<li>访问修饰符<ul>
+<li>3P<ul>
+<li><code>public</code> 公共，内外</li>
+<li><code>private</code> 私有的，内</li>
+<li><code>protected</code> 保护的，内和子类</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="4-2-知识点代码"><a href="#4-2-知识点代码" class="headerlink" title="4.2 知识点代码"></a>4.2 知识点代码</h2><pre><code class="csharp">using System;
+
+namespace Lesson2_封装_成员变量和访问修饰符
+&#123;
+    #region 知识回顾
+    // 类和对象
+    // 申明类
+    //class Person
+    //&#123;
+    //    //特征——成员变量
+    //    //行为——成员方法
+    //    //保护特征——成员属性
+
+    //    //构造函数和析构函数
+    //    //索引器
+    //    //运算符重载函数
+    //    //静态函数
+    //&#125;
+
+    // 实例化对象
+    // Person 变量名;
+    // Person 变量名 = null;
+    // Person 变量名 = new Person();
+    #endregion
+
+    #region 知识点一 成员变量
+    //基本规则
+    //1.申明在类语句块中
+    //2.用来描述对象的特征
+    //3.可以是任意变量类型
+    //4.数量不做限制
+    //5.是否赋值根据需求来定
     
-    // 玩家类型
-    public E_PlayerType type;
-    // 当前所在地图哪一个索引的格子
-    public int nowIndex;
-    // 是否暂停的标识
-    public bool isPause;
-    
-    // 玩家结构体构造函数
-    public Player(int index, E_PlayerType type)
+
+    //性别枚举
+    enum E_SexType
     &#123;
-        nowIndex = index;
-        this.type = type;
-        isPause = false;
+        Man,
+        Woman,
     &#125;
-    
-    /// &lt;summary&gt;
-    /// 绘制当前玩家函数
-    /// &lt;/summary&gt;
-    /// &lt;param name=&quot;mapInfo&quot;&gt;传入地图&lt;/param&gt;
-    public void Draw(Map mapInfo)
+
+    //位置结构体
+    struct Position
     &#123;
-        // 必须要先得到地图才能够得到我在地图上的哪一个格子
-        // 从传入的地图中得到格子信息
-        Grid grid = mapInfo.grids[nowIndex];
-        
-        // 设置位置
-        Console.SetCursorPosition(grid.pos.x, grid.pos.y);
-        
-        // 画 设置颜色 设置图标
-        switch (type)
+
+    &#125;
+
+    //宠物 类
+    class Pet
+    &#123;
+
+    &#125;
+
+    //人 类
+    class Person
+    &#123;
+        //特征——成员变量
+
+        //姓名
+        public string name = &quot;韬老狮&quot;;
+
+        //年龄
+        public int age;
+
+        //性别
+        public E_SexType sex;
+
+        //结构体不能在结构体中申明一个和自己相同类型的成员变量
+        //类可以在类中申明一个和自己相同类型的成员变量
+        //如果要在类中申明一个和自己相同类型的成员变量时 不能对它进行实例化（不能new）
+
+        //女朋友
+        public Person gridFriend;
+        //public Person gridFriend = null;
+
+        //朋友
+        public Person[] friends;
+
+        //位置
+        public Position pos;
+
+        //宠物
+        private Pet pet = new Pet();
+    &#125;
+
+    #endregion
+
+    #region 知识点二 访问修饰符
+    // public —— 公共的  自己(内部)和别人(外部)都能访问和使用
+    // private —— 私有的  自己(内部)才能访问和使用  不写 默认为private
+    // protected —— 保护的  自己(内部)和子类才能访问和使用
+    // 目前决定类内部的成员 的 访问权限
+    #endregion
+
+    class Program
+    &#123;
+        static void Main(string[] args)
         &#123;
-            case E_PlayerType.Player:
-                Console.ForegroundColor = ConsoleColor.Cyan;
-                Console.Write(&quot;★&quot;);
-                break;
-            case E_PlayerType.Computer:
-                Console.ForegroundColor = ConsoleColor.Magenta;
-                Console.Write(&quot;▲&quot;);
-                break;
+            Console.WriteLine(&quot;成员变量和访问修饰符&quot;);
+
+            #region 知识点三 成员变量的使用和初始值
+
+            //主函数内
+
+            //实例化一个 人
+            Person p = new Person();
+
+            //值类型来说
+            //数字类型 默认值都是0
+            //bool类型 false  
+            //引用类型的 默认值都是null
+            //交给大家一个看默认值的小技巧  default(变量类型) 就能得到默认值
+            Console.WriteLine(default(Person));//null
+            Console.WriteLine(default(int));//0
+            Console.WriteLine(default(bool));//False
+
+            p.age = 10;
+            Console.WriteLine(p.age);//10
+
+            #endregion
         &#125;
     &#125;
+
+    //总结
+
+    //成员变量
+    //描述特征
+    //类中申明
+    //赋值随意
+    //默认值不相同
+    //值类型来说
+    //数字类型 默认值都是0
+    //bool类型 false  
+    //引用类型的 默认值都是null
+    //交给大家一个看默认值的小技巧  default(变量类型) 就能得到默认值
+    //任意类型
+    //任意数量
+
+    //访问修饰符
+    //3P
+    //public 公共 内外
+    //private 私有的 内
+    //protected 保护的 内和子类
 &#125;
-</code></pre>
-<h3 id="class-语句块内-主函数外"><a href="#class-语句块内-主函数外" class="headerlink" title="class 语句块内 主函数外"></a>class 语句块内 主函数外</h3><h4 id="创建绘制玩家和电脑函数"><a href="#创建绘制玩家和电脑函数" class="headerlink" title="创建绘制玩家和电脑函数"></a>创建绘制玩家和电脑函数</h4><pre><code class="csharp">/// &lt;summary&gt;
-/// 
-/// &lt;/summary&gt;
-/// &lt;param name=&quot;player&quot;&gt;玩家&lt;/param&gt;
-/// &lt;param name=&quot;computer&quot;&gt;电脑&lt;/param&gt;
-/// &lt;param name=&quot;map&quot;&gt;地图&lt;/param&gt;
-static void DrawPlayer(Player player, Player computer, Map map)
-&#123;
-    // 重合时
-    if (player.nowIndex == computer.nowIndex)
-    &#123;
-        // 得到重合的位置 画出重合图案
-        Grid grid = map.grids[player.nowIndex];
-        Console.SetCursorPosition(grid.pos.x, grid.pos.y);
-        Console.ForegroundColor = ConsoleColor.DarkGreen;
-        Console.Write(&quot;◎&quot;);
-    &#125;
-    // 不重合的时候
-    else
-    &#123;
-        // 逐个画出玩家和电脑
-        player.Draw(map);
-        computer.Draw(map);
-    &#125;
-&#125;
-</code></pre>
-<h3 id="class-语句块内-主函数外-游戏场景逻辑函数内"><a href="#class-语句块内-主函数外-游戏场景逻辑函数内" class="headerlink" title="class 语句块内 主函数外 游戏场景逻辑函数内"></a>class 语句块内 主函数外 游戏场景逻辑函数内</h3><h4 id="创建玩家和电脑"><a href="#创建玩家和电脑" class="headerlink" title="创建玩家和电脑"></a>创建玩家和电脑</h4><pre><code class="csharp">Player player = new Player(0, E_PlayerType.Player);
-Player computer = new Player(0, E_PlayerType.Computer);
-</code></pre>
-<h4 id="绘制玩家和电脑"><a href="#绘制玩家和电脑" class="headerlink" title="绘制玩家和电脑"></a>绘制玩家和电脑</h4><pre><code class="csharp">DrawPlayer(player, computer, map);
 </code></pre>
 <hr>
-<h2 id="8-2-知识点代码"><a href="#8-2-知识点代码" class="headerlink" title="8.2 知识点代码"></a>8.2 知识点代码</h2><h3 id="class语句块外-namespace语句块内"><a href="#class语句块外-namespace语句块内" class="headerlink" title="class语句块外 namespace语句块内"></a>class语句块外 namespace语句块内</h3><pre><code class="csharp">//创建玩家类型枚举
-/// &lt;summary&gt;
-/// 玩家类型枚举
-/// &lt;/summary&gt;
-enum E_PlayerType
+<h2 id="4-3-练习题"><a href="#4-3-练习题" class="headerlink" title="4.3 练习题"></a>4.3 练习题</h2><h3 id="3P是什么？"><a href="#3P是什么？" class="headerlink" title="3P是什么？"></a>3P是什么？</h3><ul>
+<li>访问修饰符<ul>
+<li>public：公共，内外可访问</li>
+<li>private：私有的，仅内部可访问</li>
+<li>protected：保护的，内部和子类可访问</li>
+</ul>
+</li>
+</ul>
+<h3 id="定义一个人类，有姓名，身高，年龄，家庭住址等特征。用人创建若干个对象"><a href="#定义一个人类，有姓名，身高，年龄，家庭住址等特征。用人创建若干个对象" class="headerlink" title="定义一个人类，有姓名，身高，年龄，家庭住址等特征。用人创建若干个对象"></a>定义一个人类，有姓名，身高，年龄，家庭住址等特征。用人创建若干个对象</h3><h4 id="class语句块外-namespace语句块内"><a href="#class语句块外-namespace语句块内" class="headerlink" title="class语句块外 namespace语句块内"></a>class语句块外 namespace语句块内</h4><pre><code class="csharp">//创建人类
+class Person
 &#123;
-    /// &lt;summary&gt;
-    /// 玩家
-    /// &lt;/summary&gt;
-    Player,
-    /// &lt;summary&gt;
-    /// 电脑
-    /// &lt;/summary&gt;
-    Computer,
+    //成员变量
+    public string name;
+    public float height;
+    public int age;
+    public string homeAddress;
 &#125;
+</code></pre>
+<h4 id="主函数内-1"><a href="#主函数内-1" class="headerlink" title="主函数内"></a>主函数内</h4><pre><code class="csharp">Person p1 = new Person();
+p1.age = 10;
+p1.name = &quot;林文韬&quot;;
+p1.height = 178f;
+p1.homeAddress = &quot;广州&quot;;
 
-//创建玩家结构体
-struct Player
+Person p2 = new Person();
+p2.age = 20;
+p2.name = &quot;小红&quot;;
+p2.height = 180f;
+p2.homeAddress = &quot;火星&quot;;
+</code></pre>
+<h3 id="定义一个学生类，有姓名，学号，年龄，同桌等特征。用学生类创建若干个学生"><a href="#定义一个学生类，有姓名，学号，年龄，同桌等特征。用学生类创建若干个学生" class="headerlink" title="定义一个学生类，有姓名，学号，年龄，同桌等特征。用学生类创建若干个学生"></a>定义一个学生类，有姓名，学号，年龄，同桌等特征。用学生类创建若干个学生</h3><h4 id="class语句块外-namespace语句块内-1"><a href="#class语句块外-namespace语句块内-1" class="headerlink" title="class语句块外 namespace语句块内"></a>class语句块外 namespace语句块内</h4><pre><code class="csharp">//创建学生类
+class Student
 &#123;
-    //玩家结构体变量
+    //成员变量
+    public string name;
+    public int number;
+    public int age;
+    public Student deskmate;
+&#125;
+</code></pre>
+<h4 id="主函数内-2"><a href="#主函数内-2" class="headerlink" title="主函数内"></a>主函数内</h4><pre><code class="csharp">Student s1 = new Student();
+s1.name = &quot;火山哥&quot;;
+s1.number = 1;
+s1.age = 22;
 
-    //玩家类型
-    public E_PlayerType type;
-    //当前所在地图哪一个索引的格子
-    public int nowIndex;
-    //是否暂停的标识
-    public bool isPause;
+Student s2 = new Student();
+s2.name = &quot;小明&quot;;
+s2.number = 2;
+s2.age = 18;
 
-    //玩家结构体构造函数
-    public Player(int index, E_PlayerType type)
+//火山哥的同桌是小明
+s1.deskmate = s2;
+//小明的同桌是火山哥
+s2.deskmate = s1;
+</code></pre>
+<h3 id="定义一个班级类，有专业名称，教室容量，学生等。创建一个班级对象"><a href="#定义一个班级类，有专业名称，教室容量，学生等。创建一个班级对象" class="headerlink" title="定义一个班级类，有专业名称，教室容量，学生等。创建一个班级对象"></a>定义一个班级类，有专业名称，教室容量，学生等。创建一个班级对象</h3><h4 id="class语句块外-namespace语句块内-2"><a href="#class语句块外-namespace语句块内-2" class="headerlink" title="class语句块外 namespace语句块内"></a>class语句块外 namespace语句块内</h4><pre><code class="csharp">//创建班级类
+class Class
+&#123;
+    //成员变量
+    public string name;
+    public int capacity;
+    public Student[] students;
+&#125;
+</code></pre>
+<h4 id="主函数内-3"><a href="#主函数内-3" class="headerlink" title="主函数内"></a>主函数内</h4><pre><code class="csharp">Class c1 = new Class();
+c1.name = &quot;银河补习班&quot;;
+c1.capacity = 999999999;
+c1.students = new Student[] &#123; s1, s2 &#125;;
+</code></pre>
+<h3 id="观察代码"><a href="#观察代码" class="headerlink" title="观察代码"></a>观察代码</h3><pre><code class="csharp">// 1.
+Person p1 = new Person();
+p1.age = 10;
+
+// 2.
+Person p2 = new Person();
+p2.age = 20;
+
+// 请问 p1.age 为多少？
+// 10 和 p2.age 完全没关系
+// Console.WriteLine(p1.age);//10
+</code></pre>
+<h3 id="观察代码-1"><a href="#观察代码-1" class="headerlink" title="观察代码"></a>观察代码</h3><pre><code class="csharp">// 1.
+Person p1 = new Person();
+p1.age = 10;
+
+// 2.
+Person p2 = p;
+p2.age = 20;
+
+// 请问 p1.age 为多少？
+// 20 p1 和 p2 指向同一个堆内存 更改 p2 会影响 p1
+// Console.WriteLine(p1.age);//20
+</code></pre>
+<h3 id="观察代码-2"><a href="#观察代码-2" class="headerlink" title="观察代码"></a>观察代码</h3><pre><code class="csharp">// 1.
+Student s1 = new Student();
+s1.age = 10;
+
+// 2.
+int age = s1.age;
+
+// 3.
+age = 20;
+
+// 请问 s1.age 为多少？
+// 10 age 是值类型 在栈上
+// 一开始只是让 age 等于 s1.age 的值
+// 更改栈上的 age 不会影响堆中的 s1.age
+// Console.WriteLine(s1.age);//10
+</code></pre>
+<h3 id="观察代码-3"><a href="#观察代码-3" class="headerlink" title="观察代码"></a>观察代码</h3><pre><code class="csharp">// 1.
+Student s1 = new Student();
+s1.deskmate = new Student();
+s1.deskmate.age = 10;
+
+// 2.
+Student s2 = s1.deskmate;
+s2.age = 20;
+
+// 请问 s1.deskmate.age 为多少？
+// 20 s2 和 s1.deskmate 指向同一个对象
+// 首先 new 了两个学生实例在堆上 给第二个学生年龄赋值
+// 再创建 s2 在栈上 值是 第二个学生在堆中的地址 
+// 在修改第二个学生的年龄
+// Console.WriteLine(s1.deskmate.age);//20
+</code></pre>
+<hr>
+<h2 id="4-4-练习题代码"><a href="#4-4-练习题代码" class="headerlink" title="4.4 练习题代码"></a>4.4 练习题代码</h2><pre><code class="csharp">using System;
+
+namespace Lesson2_练习题
+&#123;
+    #region 练习题一
+    //3P是什么？
+
+    //访问修饰符
+    //public 公共 内外
+    //private 私有的 内
+    //protected 保护的 内部和子类
+    #endregion
+
+    #region 练习题二
+    //定义一个人类，有姓名，身高，年龄，家庭住址等特征。用人创建若干个对象
+
+    //class语句块外 namespace语句块内
+
+    //创建 人 类
+    class Person
     &#123;
-        nowIndex = index;
-        this.type = type;
-        isPause = false;
+        //创建对应的成员变量
+        public string name;
+        public float height;
+        public int age;
+        public string homeAddress;
     &#125;
 
-    /// &lt;summary&gt;
-    /// 绘制当前玩家函数
-    /// &lt;/summary&gt;
-    /// &lt;param name=&quot;mapInfo&quot;&gt;传入地图&lt;/param&gt;
-    public void Draw(Map mapInfo)
+
+    #endregion
+
+    #region 练习题三
+    //定义一个学生类，有姓名，学号，年龄，同桌等特征。用学生类创建若干个学生
+
+    //class语句块外 namespace语句块内
+
+    //创建 学生 类
+    class Student
     &#123;
-        //必须要先得到地图 才能够 得到我在地图上的哪一个格子
-        //从传入的地图中 得到 格子信息
-        Grid grid = mapInfo.grids[nowIndex];
+        //创建对应的成员变量
+        public string name;
+        public int number;
+        public int age;
+        public Student deskmate;
+    &#125;
+    #endregion
 
-        //设置位置
-        Console.SetCursorPosition(grid.pos.x, grid.pos.y);
+    #region 练习题四
+    //定义一个班级类，有专业名称，教室容量，学生等。创建一个班级对象
 
-        //画 设置颜色 设置图标
-        switch (type)
+    //class语句块外 namespace语句块内
+
+    //创建 班级 类
+    class Class
+    &#123;
+        //创建对应的成员变量
+        public string name;
+        public int capacity;
+        public Student[] students;
+    &#125;
+
+
+    #endregion
+    class Program
+    &#123;
+        static void Main(string[] args)
         &#123;
-            case E_PlayerType.Player:
-                Console.ForegroundColor = ConsoleColor.Cyan;
-                Console.Write(&quot;★&quot;);
-                break;
-            case E_PlayerType.Computer:
-                Console.ForegroundColor = ConsoleColor.Magenta;
-                Console.Write(&quot;▲&quot;);
-                break;
+            Console.WriteLine(&quot;成员变量和访问修饰符练习题&quot;);
+            #region 练习题五
+
+            //Person p1 = new Person();
+            //p1.age = 10;
+            //Person p2 = new Person();
+            //p2.age = 20;
+            //请问p1.age为多少？
+
+            //10 和p2.age完全没关系
+            //Console.WriteLine(p1.age);//10
+            #endregion
+
+            #region 练习题六
+            //Person p1 = new Person();
+            //p1.age = 10;
+            //Person p2 = p1;
+            //p2.age = 20;
+            //请问p1.age为多少？
+
+            //20 p1和p2指向同一个堆内存 更改p2会影响p1
+            //Console.WriteLine(p1.age);//20
+
+            #endregion
+
+            #region 练习题七
+            //Student s1 = new Student();
+            //s1.age = 10;
+            //int age = s1.age;
+            //age = 20;
+            //请问s1.age为多少？
+
+            //10 age是值类型 在栈上
+            //一开始只是让age等于s1.age的值
+            //更改栈上的age不会影响堆中的s1.age
+            //Console.WriteLine(s1.age);//10
+            #endregion
+
+            #region 练习题八
+            //Student s1 = new Student();
+            //s1.deskmate = new Student();
+            //s1.deskmate.age = 10;
+            //Student s2 = s1.deskmate;
+            //s2.age = 20;
+            //请问s1.deskmate.age为多少？
+
+            //20 s2和s1.deskmate指向同一个对象
+            //首先new了两个学生实例在堆上 给第二个学生年龄赋值
+            //再创建s2在栈上 值是 第二个学生在堆中的地址 
+            //在修改第二个学生的年龄
+            //Console.WriteLine(s1.deskmate.age);//20
+            #endregion
+
+
+
+
+            #region 练习题二
+
+            //主函数内
+
+            Person p1 = new Person();
+            p1.age = 10;
+            p1.name = &quot;林文韬&quot;;
+            p1.height = 178f;
+            p1.homeAddress = &quot;广州&quot;;
+
+            Person p2 = new Person();
+            p2.age = 20;
+            p2.name = &quot;小红&quot;;
+            p2.height = 180f;
+            p2.homeAddress = &quot;火星&quot;;
+
+            #endregion
+
+            #region 练习题三
+
+            //主函数内
+
+            Student s1 = new Student();
+            s1.name = &quot;火山哥&quot;;
+            s1.number = 1;
+            s1.age = 22;
+
+            Student s2 = new Student();
+            s2.name = &quot;小明&quot;;
+            s2.number = 2;
+            s2.age = 18;
+
+            //火山哥的同桌是小明
+            s1.deskmate = s2;
+            //小明的同桌是火山哥
+            s2.deskmate = s1;
+
+            #endregion
+
+            #region 练习题三
+
+            //主函数内
+
+            Class c1 = new Class();
+            c1.name = &quot;银河补习班&quot;;
+            c1.capacity = 999999999;
+            c1.students = new Student[] &#123; s1, s2 &#125;;
+
+            #endregion
         &#125;
     &#125;
 &#125;
-</code></pre>
-<h3 id="class语句块内-主函数外"><a href="#class语句块内-主函数外" class="headerlink" title="class语句块内 主函数外"></a>class语句块内 主函数外</h3><pre><code class="csharp">//创建绘制玩家和电脑函数
-/// &lt;summary&gt;
-/// 
-/// &lt;/summary&gt;
-/// &lt;param name=&quot;player&quot;&gt;玩家&lt;/param&gt;
-/// &lt;param name=&quot;computer&quot;&gt;电脑&lt;/param&gt;
-/// &lt;param name=&quot;map&quot;&gt;地图&lt;/param&gt;
-static void DrawPlayer(Player player, Player computer, Map map)
-&#123;
-    //重合时
-    if (player.nowIndex == computer.nowIndex)
-    &#123;
-        //得到重合的位置 画出重合图案
-        Grid grid = map.grids[player.nowIndex];
-        Console.SetCursorPosition(grid.pos.x, grid.pos.y);
-        Console.ForegroundColor = ConsoleColor.DarkGreen;
-        Console.Write(&quot;◎&quot;);
-    &#125;
-    //不重合的时候
-    else
-    &#123;
-        //逐个画出玩家和电脑
-        player.Draw(map);
-        computer.Draw(map);
-    &#125;
-&#125;
-</code></pre>
-<h3 id="class语句块内-主函数外-游戏场景逻辑函数内"><a href="#class语句块内-主函数外-游戏场景逻辑函数内" class="headerlink" title="class语句块内 主函数外 游戏场景逻辑函数内"></a>class语句块内 主函数外 游戏场景逻辑函数内</h3><pre><code class="csharp">//创建玩家和电脑
-Player player = new Player(0, E_PlayerType.Player);
-Player computer = new Player(0, E_PlayerType.Computer);
-//绘制玩家和电脑
-DrawPlayer(player, computer, map);
 </code></pre>
 <hr>
 
