@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>【C#入门实践项目】| 4.需求分析 | 人间自有韬哥在的游戏开发博客</title>
-  <meta name="keywords" content=" CSharp , CSharp入门 , 实践项目 ">
-  <meta name="description" content="【C#入门实践项目】| 4.需求分析 | 人间自有韬哥在的游戏开发博客">
+  <title>【C#核心语法知识】| 6.面向对象-封装-构造函数和析构函数 | 人间自有韬哥在的游戏开发博客</title>
+  <meta name="keywords" content=" CSharp , 语法知识 , CSharp核心 , 面向对象 , 封装 , 垃圾回收 ">
+  <meta name="description" content="【C#核心语法知识】| 6.面向对象-封装-构造函数和析构函数 | 人间自有韬哥在的游戏开发博客">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="6.面向对象-封装-构造函数和析构函数 6.1 知识点构造函数基本概念 在实例化对象时，会调用用于初始化的函数。 如果不写，默认存在一个无参构造函数。  构造函数的写法 没有返回值。 函数名和类名必须相同。 一般为 public，除非有特殊需求。 构造函数可以被重载。 this 代表当前调用该函数的对象自己。  注意： 如果不自己实现无参构造函数而实现了有参构造函数，会失去默认的无参构造。  声明">
 <meta property="og:type" content="article">
@@ -1076,9 +1076,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-CSharp/02.CSharp入门实践项目/4.需求分析" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-CSharp/05.Csharp核心语法知识/6.面向对象-封装-构造函数和析构函数" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">【C#入门实践项目】| 4.需求分析</h1>
+        <h1 class="article-title">【C#核心语法知识】| 6.面向对象-封装-构造函数和析构函数</h1>
     
     <div class="article-meta">
         
@@ -1090,7 +1090,7 @@
             
             <a  data-rel="CSharp">CSharp</a> > 
             
-            <a  data-rel="CSharp&lt;---&gt;CSharp入门实践项目">CSharp入门实践项目</a>
+            <a  data-rel="CSharp&lt;---&gt;CSharp核心语法知识">CSharp核心语法知识</a>
             
         </span>
         
@@ -1100,16 +1100,22 @@
             
             <a class="color2">CSharp</a>
             
-            <a class="color4">CSharp入门</a>
+            <a class="color5">语法知识</a>
             
-            <a class="color5">实践项目</a>
+            <a class="color4">CSharp核心</a>
+            
+            <a class="color5">面向对象</a>
+            
+            <a class="color3">封装</a>
+            
+            <a class="color5">垃圾回收</a>
             
         </span>
         
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2024-01-08 19:51:49'>2024-01-07 01:20</time>
+            发布时间 : <time class="date" title='最后更新: 2024-01-12 20:08:11'>2024-01-12 20:01</time>
         
     </div>
     <div class="article-meta">
@@ -1131,7 +1137,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#4-%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90"><span class="toc-text">4.需求分析</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#4-1-%E5%BC%80%E5%A7%8B%E7%95%8C%E9%9D%A2"><span class="toc-text">4.1 开始界面</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A8%A1%E5%9D%97%E9%9C%80%E6%B1%82"><span class="toc-text">模块需求</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%A8%E5%88%B0%E7%9A%84%E7%9F%A5%E8%AF%86%E7%82%B9"><span class="toc-text">用到的知识点</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-2-%E6%B8%B8%E6%88%8F%E7%95%8C%E9%9D%A2"><span class="toc-text">4.2 游戏界面</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A8%A1%E5%9D%97%E9%9C%80%E6%B1%82-1"><span class="toc-text">模块需求</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%A8%E5%88%B0%E7%9A%84%E7%9F%A5%E8%AF%86%E7%82%B9-1"><span class="toc-text">用到的知识点</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-3-%E7%BB%93%E6%9D%9F%E7%95%8C%E9%9D%A2"><span class="toc-text">4.3 结束界面</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A8%A1%E5%9D%97%E9%9C%80%E6%B1%82-2"><span class="toc-text">模块需求</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%A8%E5%88%B0%E7%9A%84%E7%9F%A5%E8%AF%86%E7%82%B9-2"><span class="toc-text">用到的知识点</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-4-%E7%95%8C%E9%9D%A2%E9%97%B4%E7%9A%84%E5%88%87%E6%8D%A2"><span class="toc-text">4.4 界面间的切换</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#6-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E5%B0%81%E8%A3%85-%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E5%92%8C%E6%9E%90%E6%9E%84%E5%87%BD%E6%95%B0"><span class="toc-text">6.面向对象-封装-构造函数和析构函数</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#6-1-%E7%9F%A5%E8%AF%86%E7%82%B9"><span class="toc-text">6.1 知识点</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0"><span class="toc-text">构造函数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="toc-text">基本概念</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E7%9A%84%E5%86%99%E6%B3%95"><span class="toc-text">构造函数的写法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B3%A8%E6%84%8F%EF%BC%9A"><span class="toc-text">注意：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A3%B0%E6%98%8E%E4%BA%BA%E7%B1%BB"><span class="toc-text">声明人类</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BA%BA%E7%B1%BB%E5%86%85%E9%83%A8"><span class="toc-text">人类内部</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%BB%E5%87%BD%E6%95%B0%E5%86%85"><span class="toc-text">主函数内</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E7%89%B9%E6%AE%8A%E5%86%99%E6%B3%95"><span class="toc-text">构造函数特殊写法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BA%BA%E7%B1%BB%E5%86%85%E9%83%A8-1"><span class="toc-text">人类内部</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%BB%E5%87%BD%E6%95%B0%E5%86%85-1"><span class="toc-text">主函数内</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9E%90%E6%9E%84%E5%87%BD%E6%95%B0"><span class="toc-text">析构函数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5-1"><span class="toc-text">基本概念</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B3%A8%E6%84%8F%EF%BC%9A-1"><span class="toc-text">注意：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95"><span class="toc-text">基本语法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BA%BA%E7%B1%BB%E5%86%85%E9%83%A8-2"><span class="toc-text">人类内部</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%BB%E5%87%BD%E6%95%B0%E5%86%85-2"><span class="toc-text">主函数内</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E6%9C%BA%E5%88%B6"><span class="toc-text">垃圾回收机制</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5-2"><span class="toc-text">基本概念</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E7%AE%97%E6%B3%95"><span class="toc-text">垃圾回收算法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B3%A8%E6%84%8F%EF%BC%9A-2"><span class="toc-text">注意：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#C-%E4%B8%AD%E5%86%85%E5%AD%98%E5%9B%9E%E6%94%B6%E6%9C%BA%E5%88%B6%E7%9A%84%E5%A4%A7%E6%A6%82%E5%8E%9F%E7%90%86"><span class="toc-text">C#中内存回收机制的大概原理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%BB%E5%87%BD%E6%95%B0%E5%86%85-3"><span class="toc-text">主函数内</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-text">总结</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0-1"><span class="toc-text">构造函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9E%90%E6%9E%84%E5%87%BD%E6%95%B0-1"><span class="toc-text">析构函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E6%9C%BA%E5%88%B6-1"><span class="toc-text">垃圾回收机制</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-2-%E7%9F%A5%E8%AF%86%E7%82%B9%E4%BB%A3%E7%A0%81"><span class="toc-text">6.2 知识点代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-3-%E7%BB%83%E4%B9%A0%E9%A2%98"><span class="toc-text">6.3 练习题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8E%E6%88%90%E5%91%98%E6%96%B9%E6%B3%95%E7%BB%83%E4%B9%A0%E9%A2%98%EF%BC%8C%E5%AF%B9%E4%BA%BA%E7%B1%BB%E7%9A%84%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E8%BF%9B%E8%A1%8C%E9%87%8D%E8%BD%BD%EF%BC%8C%E7%94%A8%E4%BA%BA%E7%B1%BB%E5%88%9B%E5%BB%BA%E8%8B%A5%E5%B9%B2%E4%B8%AA%E5%AF%B9%E8%B1%A1"><span class="toc-text">基于成员方法练习题，对人类的构造函数进行重载，用人类创建若干个对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8E%E6%88%90%E5%91%98%E5%8F%98%E9%87%8F%E7%BB%83%E4%B9%A0%E9%A2%98%EF%BC%8C%E5%AF%B9%E7%8F%AD%E7%BA%A7%E7%B1%BB%E7%9A%84%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E8%BF%9B%E8%A1%8C%E9%87%8D%E8%BD%BD%EF%BC%8C%E7%94%A8%E7%8F%AD%E7%BA%A7%E7%B1%BB%E5%88%9B%E5%BB%BA%E8%8B%A5%E5%B9%B2%E4%B8%AA%E5%AF%B9%E8%B1%A1"><span class="toc-text">基于成员变量练习题，对班级类的构造函数进行重载，用班级类创建若干个对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%99%E4%B8%80%E4%B8%AATicket%E7%B1%BB%EF%BC%8C%E6%9C%89%E4%B8%80%E4%B8%AA%E8%B7%9D%E7%A6%BB%E5%8F%98%E9%87%8F%EF%BC%88%E5%9C%A8%E6%9E%84%E9%80%A0%E5%AF%B9%E8%B1%A1%E6%97%B6%E8%B5%8B%E5%80%BC%EF%BC%8C%E4%B8%8D%E8%83%BD%E4%B8%BA%E8%B4%9F%E6%95%B0%EF%BC%89%EF%BC%8C%E6%9C%89%E4%B8%80%E4%B8%AA%E4%BB%B7%E6%A0%BC%E7%89%B9%E5%BE%81%EF%BC%8C%E6%9C%89%E4%B8%80%E4%B8%AA%E6%96%B9%E6%B3%95GetPrice%E5%8F%AF%E4%BB%A5%E8%AF%BB%E5%8F%96%E5%88%B0%E4%BB%B7%E6%A0%BC%EF%BC%8C%E5%B9%B6%E4%B8%94%E6%A0%B9%E6%8D%AE%E8%B7%9D%E7%A6%BBdistance%E8%AE%A1%E7%AE%97%E4%BB%B7%E6%A0%BCprice%EF%BC%881%E5%85%83-%E5%85%AC%E9%87%8C%EF%BC%89"><span class="toc-text">写一个Ticket类，有一个距离变量（在构造对象时赋值，不能为负数），有一个价格特征，有一个方法GetPrice可以读取到价格，并且根据距离distance计算价格price（1元&#x2F;公里）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-4-%E7%BB%83%E4%B9%A0%E9%A2%98%E4%BB%A3%E7%A0%81"><span class="toc-text">6.4 练习题代码</span></a></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -1147,37 +1153,716 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="4-需求分析"><a href="#4-需求分析" class="headerlink" title="4.需求分析"></a>4.需求分析</h1><hr>
-<h2 id="4-1-开始界面"><a href="#4-1-开始界面" class="headerlink" title="4.1 开始界面"></a>4.1 开始界面</h2><h3 id="模块需求"><a href="#模块需求" class="headerlink" title="模块需求"></a>模块需求</h3><p>大字显示游戏名。菜单有开始游戏和退出游戏两个选项。用颜色标明当前正在选的选项，可以输入ws上下切换选项。回车确认进入对应选项，跳出开始界面，进入游戏界面或退出游戏。 </p>
-<h3 id="用到的知识点"><a href="#用到的知识点" class="headerlink" title="用到的知识点"></a>用到的知识点</h3><pre><code>控制台输出 
-控制台输入 
-控制台颜色变化 
+        <h1 id="6-面向对象-封装-构造函数和析构函数"><a href="#6-面向对象-封装-构造函数和析构函数" class="headerlink" title="6.面向对象-封装-构造函数和析构函数"></a>6.面向对象-封装-构造函数和析构函数</h1><hr>
+<h2 id="6-1-知识点"><a href="#6-1-知识点" class="headerlink" title="6.1 知识点"></a>6.1 知识点</h2><h3 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h3><h4 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h4><ul>
+<li>在实例化对象时，会调用用于初始化的函数。</li>
+<li>如果不写，默认存在一个无参构造函数。</li>
+</ul>
+<h4 id="构造函数的写法"><a href="#构造函数的写法" class="headerlink" title="构造函数的写法"></a>构造函数的写法</h4><ul>
+<li>没有返回值。</li>
+<li>函数名和类名必须相同。</li>
+<li>一般为 <code>public</code>，除非有特殊需求。</li>
+<li>构造函数可以被重载。</li>
+<li><code>this</code> 代表当前调用该函数的对象自己。</li>
+</ul>
+<h4 id="注意："><a href="#注意：" class="headerlink" title="注意："></a>注意：</h4><ul>
+<li>如果不自己实现无参构造函数而实现了有参构造函数，会失去默认的无参构造。</li>
+</ul>
+<h4 id="声明人类"><a href="#声明人类" class="headerlink" title="声明人类"></a>声明人类</h4><pre><code class="csharp">class Person
+&#123;
+    public string name;
+    public int age;
+    // 人类内部
+&#125;
+</code></pre>
+<h4 id="人类内部"><a href="#人类内部" class="headerlink" title="人类内部"></a>人类内部</h4><pre><code class="csharp">public Person()
+&#123;
+    name = &quot;小林&quot;;
+    age = 18;
+&#125;
+
+public Person(int personAge)
+&#123;
+    age = personAge;
+&#125;
+
+public Person(string name)
+&#123;
+    // this 代表当前调用该函数的对象自己 
+    // 有参构造函数参数名和自己成员变量名一样时使用 this
+    this.name = name;
+&#125;
+</code></pre>
+<h4 id="主函数内"><a href="#主函数内" class="headerlink" title="主函数内"></a>主函数内</h4><pre><code class="csharp">Person p1 = new Person();        // 无参构造函数
+Person p2 = new Person(20);      // 有参构造函数
+Person p3 = new Person(&quot;林浩僧&quot;);// 有参构造函数重载
+</code></pre>
+<h3 id="构造函数特殊写法"><a href="#构造函数特殊写法" class="headerlink" title="构造函数特殊写法"></a>构造函数特殊写法</h3><ul>
+<li>可以通过 <code>this</code> 重用构造函数代码。</li>
+<li>访问修饰符 构造函数名(参数列表):this(参数1,参数2….)。</li>
+<li>这样的话会先调用 <code>this</code> 后面重载的构造函数，再返回当前的构造函数。</li>
+<li>后面重载的构造函数的参数可以传任意对应的类型。</li>
+</ul>
+<h4 id="人类内部-1"><a href="#人类内部-1" class="headerlink" title="人类内部"></a>人类内部</h4><pre><code class="csharp">public Person(int age, string name):this(age + 10)
+&#123;
+    Console.WriteLine(&quot;Person两个参数构造函数调用&quot;);
+&#125;
+</code></pre>
+<h4 id="主函数内-1"><a href="#主函数内-1" class="headerlink" title="主函数内"></a>主函数内</h4><pre><code class="csharp">Person p4 = new Person(18, &quot;林文韬&quot;);
+Console.WriteLine(p4.age); // 28 
+// 通过 public Person(int age, string name): this(age + 10)
+// 重用构造函数代码，age比传进去的年龄+了10
+</code></pre>
+<h3 id="析构函数"><a href="#析构函数" class="headerlink" title="析构函数"></a>析构函数</h3><h4 id="基本概念-1"><a href="#基本概念-1" class="headerlink" title="基本概念"></a>基本概念</h4><ul>
+<li>当引用类型的堆内存被回收时，会调用该函数。</li>
+<li>在C#中，由于存在自动垃圾回收机制（GC），极少需要使用析构函数。</li>
+</ul>
+<h4 id="注意：-1"><a href="#注意：-1" class="headerlink" title="注意："></a>注意：</h4><ul>
+<li>在Unity开发中析构函数几乎不会使用，因此了解即可。</li>
+</ul>
+<h4 id="基本语法"><a href="#基本语法" class="headerlink" title="基本语法"></a>基本语法</h4><pre><code class="csharp">// ~类名()
+// &#123;
+// &#125;
+</code></pre>
+<h4 id="人类内部-2"><a href="#人类内部-2" class="headerlink" title="人类内部"></a>人类内部</h4><pre><code class="csharp">// 析构函数是当引用类型的堆内存（垃圾）真正被回收时才会调用的函数
+~Person()
+&#123;
+
+&#125;
+</code></pre>
+<h4 id="主函数内-2"><a href="#主函数内-2" class="headerlink" title="主函数内"></a>主函数内</h4><pre><code class="csharp">p4 = null;
+// 设置为 null 后，引用类型的堆内存虽然变成了垃圾，但是没有立即触发垃圾回收
+</code></pre>
+<h3 id="垃圾回收机制"><a href="#垃圾回收机制" class="headerlink" title="垃圾回收机制"></a>垃圾回收机制</h3><h4 id="基本概念-2"><a href="#基本概念-2" class="headerlink" title="基本概念"></a>基本概念</h4><ul>
+<li>垃圾回收，英文简写GC（Garbage Collector）。</li>
+<li>过程是在遍历堆（Heap）上动态分配的所有对象，通过识别是否被引用来确定哪些对象是垃圾，哪些对象仍需被使用。</li>
+<li>垃圾即没有被任何变量或对象引用的内容，需要被回收释放。</li>
+</ul>
+<h4 id="垃圾回收算法"><a href="#垃圾回收算法" class="headerlink" title="垃圾回收算法"></a>垃圾回收算法</h4><ul>
+<li>引用计数（Reference Counting）</li>
+<li>标记清除（Mark Sweep）</li>
+<li>标记整理（Mark Compact）</li>
+<li>复制集合（Copy Collection）</li>
+</ul>
+<h4 id="注意：-2"><a href="#注意：-2" class="headerlink" title="注意："></a>注意：</h4><ul>
+<li>GC只负责堆（Heap）内存的垃圾回收。</li>
+<li>引用类型都存在堆（Heap）中，因此它们的分配和释放都通过垃圾回收机制来管理。</li>
+<li>栈（Stack）上的内存是由系统自动管理的。</li>
+<li>值类型在栈（Stack）中分配内存，有自己的生命周期，不需要手动管理，会自动分配和释放。</li>
+</ul>
+<h4 id="C-中内存回收机制的大概原理"><a href="#C-中内存回收机制的大概原理" class="headerlink" title="C#中内存回收机制的大概原理"></a>C#中内存回收机制的大概原理</h4><ul>
+<li>垃圾会被分为 0代内存、</li>
+</ul>
+<p>1代内存、2代内存。</p>
+<ul>
+<li>代是垃圾回收机制使用的一种算法（分代算法）。</li>
+<li>新分配的对象都会被配置在第0代内存中。</li>
+<li>在一次内存回收过程开始时，垃圾回收器会认为堆中全是垃圾，进行以下两步：<ol>
+<li>标记对象：从根（静态字段、方法参数）开始检查引用对象，标记为可达对象，未标记为不可达对象，不可达对象即为垃圾。</li>
+<li>搬迁对象压缩堆：释放未标记的对象，搬迁可达对象，并修改引用地址。</li>
+</ol>
+</li>
+<li>大对象总被认为是第二代内存，目的是减少性能损耗，提高性能。</li>
+<li>不会对大对象进行搬迁压缩，85000字节（83kb）以上的对象为大对象。</li>
+</ul>
+<h4 id="主函数内-3"><a href="#主函数内-3" class="headerlink" title="主函数内"></a>主函数内</h4><pre><code class="csharp">// 手动触发垃圾回收的方法 
+// 一般情况下，不会频繁调用
+// 通常在 Loading 过场景时才调用
+GC.Collect();
+</code></pre>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><h4 id="构造函数-1"><a href="#构造函数-1" class="headerlink" title="构造函数"></a>构造函数</h4><ul>
+<li>实例化对象时调用的函数，主要用于初始化成员变量。<ul>
+<li>基本语法：<ul>
+<li>不写返回值。</li>
+<li>函数名和类名相同。</li>
+<li>访问修饰符根据需求而定，一般为 <code>public</code>。</li>
+</ul>
+</li>
+<li>注意：<ul>
+<li>可以重载构造函数。</li>
+<li>可以用 <code>this</code> 语法重用代码。</li>
+<li>可以在函数中用 <code>this</code> 区分同名参数和成员变量。</li>
+<li>有参构造会顶掉默认的无参构造。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="析构函数-1"><a href="#析构函数-1" class="headerlink" title="析构函数"></a>析构函数</h4><ul>
+<li>当对象被垃圾回收时调用，主要用于回收资源或特殊处理内存。<ul>
+<li>基本语法：<ul>
+<li>不写返回值。</li>
+<li>不写修饰符。</li>
+<li>不能有参数。</li>
+<li>函数名和类名相同，前面加 <code>~</code>.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="垃圾回收机制-1"><a href="#垃圾回收机制-1" class="headerlink" title="垃圾回收机制"></a>垃圾回收机制</h4><ul>
+<li>垃圾回收的过程是在遍历堆上动态分配的所有对象，通过识别是否被引用来确定哪些对象是垃圾。</li>
+<li>引用类型的分配和释放通过垃圾回收机制管理。</li>
+<li>C#中的垃圾回收算法有多种，通常采用分代算法。</li>
+<li>GC只负责堆内存的垃圾回收，栈上的内存由系统自动管理。</li>
+<li>值类型在栈上分配内存，有自己的生命周期，不需要手动管理。</li>
+</ul>
+<hr>
+<h2 id="6-2-知识点代码"><a href="#6-2-知识点代码" class="headerlink" title="6.2 知识点代码"></a>6.2 知识点代码</h2><pre><code class="csharp">using System;
+
+namespace Lesson4_封装_构造函数和析构函数
+&#123;
+    #region 人 类
+
+    //声明 人 类
+    class Person
+    &#123;
+        public string name;
+        public int age;
+
+        //人 类 内部
+
+        #region 知识点一 构造函数
+
+        //类中是允许自己申明无参构造函数的
+        //结构体是不允许 必须申明有参构造函数的
+
+        //无参构造函数
+        //不声明任何构造函数的话 默认就有无参构造函数
+        //声明有参构造函数但是不声明无参构造函数的话 默认的无参构造函数会被代替掉
+        public Person()
+        &#123;
+            name = &quot;小林&quot;;
+            age = 18;
+        &#125;
+
+        //有参构造函数
+        public Person(int personAge)
+        &#123;
+            age = personAge;
+        &#125;
+
+        //有参构造函数
+        public Person(string name)
+        &#123;
+            //this代表当前调用该函数的对象自己 
+            //有参构造函数参数名和自己成员变量名一样时 使用this
+            this.name = name;
+        &#125;
+
+        #endregion
+
+        #region 知识点二 构造函数特殊写法
+
+        //可以通过this 重用构造函数代码
+        //访问修饰符 构造函数名(参数列表):this(参数1,参数2....)
+        //这样的话会先调用this后面重载的构造函数 在返回当前的构造函数
+        //后面重载的构造函数的参数可以传任意对应的类型，写死也行
+        public Person(int age, string name) : this(age + 10)
+        &#123;
+            Console.WriteLine(&quot;Person两个参数构造函数调用&quot;);
+        &#125;
+
+        #endregion
+
+        #region 知识点三 析构函数
+
+        //析构函数 是当引用类型的堆内存（垃圾）真正被回收时 才会调用的函数
+        ~Person()
+        &#123;
+
+        &#125;
+
+        #endregion
+    &#125;
+
+    #endregion
+
+    #region 知识点一 构造函数
+    //基本概念
+    //在实例化对象时 会调用的用于初始化的函数
+    //如果不写 默认存在一个无参构造函数
+
+    //构造函数的写法
+    //1.没有返回值
+    //2.函数名和类名必须相同
+    //3.没有特殊需求时 一般都是public的
+    //4.构造函数可以被重载
+    //5.this代表当前调用该函数的对象自己
+
+    //注意：
+    // 如果不自己实现无参构造函数而实现了有参构造函数
+    // 会失去默认的无参构造
+    #endregion
+
+    #region 知识点二 构造函数特殊写法
+    //可以通过this 重用构造函数代码
+    //访问修饰符 构造函数名(参数列表):this(参数1,参数2....)
+    //这样的话会先调用this后面重载的构造函数 在返回当前的构造函数
+    //后面重载的构造函数的参数可以传任意对应的类型，写死也行
+    #endregion
+
+    #region 知识点三 析构函数
+    //基本概念
+    //当引用类型的堆内存被回收时，会调用该函数
+    //对于需要手动管理内存的语言（比如C++），需要在析构函数中做一些内存回收处理
+    //但是C#中存在自动垃圾回收机制GC
+    //所以我们几乎不会怎么使用析构函数。除非你想在某一个对象被垃圾回收时，做一些特殊处理
+
+    //注意：
+    //在Unity开发中析构函数几乎不会使用，所以该知识点只做了解即可
+
+    //基本语法
+    // ~类名()
+    // &#123;
+    // &#125;
+
+
+    #endregion
+
+    #region 知识点四 垃圾回收机制
+
+    //基本概念
+    //垃圾回收，英文简写GC（Garbage Collector）
+    //垃圾回收的过程是在遍历堆(Heap)上动态分配的所有对象
+    //通过识别它们是否被引用来确定哪些对象是垃圾，哪些对象仍要被使用
+    //所谓的垃圾就是没有被任何变量，对象引用的内容
+    //垃圾就需要被回收释放
+
+    //垃圾回收算法
+    //垃圾回收有很多种算法，比如
+    //引用计数(Reference Counting)
+    //标记清除(Mark Sweep)
+    //标记整理(Mark Compact)
+    //复制集合(Copy Collection)
+
+    //注意：
+    //GC只负责堆(Heap)内存的垃圾回收
+    //引用类型都是存在堆(Heap)中的，所以它的分配和释放都通过垃圾回收机制来管理
+    //栈(Stack)上的内存是由系统自动管理的
+    //值类型在栈(Stack)中分配内存的，他们有自己的生命周期，不用对他们进行管理，会自动分配和释放
+
+    //C#中内存回收机制的大概原理
+    //垃圾会被分为 0代内存     1代内存     2代内存
+    //代的概念：
+    //代是垃圾回收机制使用的一种算法（分代算法）
+    //新分配的对象都会被配置在第0代内存中
+    //每次分配都可能会进行垃圾回收以释放内存(0代内存满时) 
+
+    //在一次内存回收过程开始时，垃圾回收器会认为堆中全是垃圾，会进行以下两步
+    //1.标记对象 从根（静态字段、方法参数）开始检查引用对象，标记后为可达对象，未标记为不可达对象
+    //  不可达对象就认为是垃圾
+    //2.搬迁对象压缩堆（比如不是垃圾的0代会搬到1代去）  （挂起执行托管代码线程） 释放未标记的对象 搬迁可达对象 修改引用地址
+
+    //大对象总被认为是第二代内存  目的是减少性能损耗，提高性能
+    //不会对大对象进行搬迁压缩  85000字节（83kb）以上的对象为大对象
+    #endregion
+
+    class Program
+    &#123;
+        static void Main(string[] args)
+        &#123;
+            Console.WriteLine(&quot;构造函数和析构函数&quot;);
+
+            //主函数内
+
+            #region 知识点一 构造函数
+            Person p1 = new Person();//无参构造函数
+            Person p2 = new Person(20);//有参构造函数
+            Person p3 = new Person(&quot;林浩僧&quot;);//有参构造函数重载
+            #endregion
+
+            #region 知识点二 构造函数特殊写法
+            Person p4 = new Person(18,&quot;林文韬&quot;);
+            Console.WriteLine(p4.age);//28 
+            //通过public Person(int age, string name) : this(age + 10)
+            //重用构造函数代码 age比传进去的年龄+了10
+            #endregion
+
+            #region 知识点三 析构函数
+            p4 = null;
+            //设置为null后 引用类型的堆内存虽然变成了垃圾 但是没有立即触发垃圾回收
+            #endregion
+
+            #region 知识点四 垃圾回收机制
+            //手动触发垃圾回收的方法 
+            //一般情况下 我们不会频繁调用
+            //都是在 Loading过场景时 才调用
+            GC.Collect();
+            #endregion
+        &#125;
+    &#125;
+
+    //总结
+
+    //构造函数
+    //实例化对象时 调用的函数
+    //主要是用来初始化成员变量的
+
+    //基本语法
+    //不写返回值
+    //函数名和类名相同
+    //访问修饰符根据需求而定
+    //一般为public
+
+    //注意
+    //可以重载构造函数
+    //可以用this语法重用代码
+    //可以在函数中用this区分同名参数和成员变量
+    //有参构造会顶掉默认的无参构造
+
+    //析构函数
+    //当对象呗垃圾回收时 调用的，主要是用来回收资源或者特殊处理内存的
+
+    //基本语法
+    //不写返回值
+    //不写修饰符
+    //不能有参数
+    //函数名和类名相同
+    //前面加~
+&#125;
 </code></pre>
 <hr>
-<h2 id="4-2-游戏界面"><a href="#4-2-游戏界面" class="headerlink" title="4.2 游戏界面"></a>4.2 游戏界面</h2><h3 id="模块需求-1"><a href="#模块需求-1" class="headerlink" title="模块需求"></a>模块需求</h3><p>整个场景分成战斗区域和信息区域。可以输入wasd上下左右在战斗区域移动玩家。游戏开始前随机出玩家和敌人的攻击力和血量。四周有红墙限制玩家位置不会超出战斗区域。战斗区域中间有一个绿色敌人。玩家移动时不可以覆盖敌人。贴住敌人时可以按j键进行回合制战斗。每次按下j键进行一回合的战斗，下放信息区输出战斗信息。战斗时玩家禁止移动。直到敌人是我或玩家死亡时战斗结束，跳出游戏界面，进入结束界面。 </p>
-<h3 id="用到的知识点-1"><a href="#用到的知识点-1" class="headerlink" title="用到的知识点"></a>用到的知识点</h3><pre><code>控制台输出 
-控制台输入 
-控制台颜色变化 
-while 
-switch 
-判断 
-    条件运算符 
-    if语句 
-回合制战斗 
-    随机数 
-    循环 
-    if语句  
+<h2 id="6-3-练习题"><a href="#6-3-练习题" class="headerlink" title="6.3 练习题"></a>6.3 练习题</h2><h3 id="基于成员方法练习题，对人类的构造函数进行重载，用人类创建若干个对象"><a href="#基于成员方法练习题，对人类的构造函数进行重载，用人类创建若干个对象" class="headerlink" title="基于成员方法练习题，对人类的构造函数进行重载，用人类创建若干个对象"></a>基于成员方法练习题，对人类的构造函数进行重载，用人类创建若干个对象</h3><p><strong>class语句块外 namespace语句块内</strong></p>
+<pre><code class="csharp">// class语句块外 namespace语句块内
+// 人 类
+class Person
+&#123;
+    public string name;
+    public float height;
+    public int age;
+    public string homeAddress;
+
+    //有参数构造函数
+    public Person(string name, float height)
+    &#123;
+        this.name = name;
+        this.height = height;
+    &#125;
+
+    //有参数构造函数 特殊写法
+    public Person(string name, float height, int age, string homeAddress) : this(name, height)
+    &#123;
+        //this
+        this.age = age;
+        this.homeAddress = homeAddress;
+    &#125;
+
+    //成员方法
+    public void Speak(string str)
+    &#123;
+        Console.WriteLine(&quot;&#123;0&#125;说&#123;1&#125;&quot;, name, str);
+    &#125;
+
+    public void Walk()
+    &#123;
+        Console.WriteLine(&quot;&#123;0&#125;开始走路了&quot;, name);
+    &#125;
+
+    public void Eat(Food f)
+    &#123;
+        Console.WriteLine(&quot;&#123;0&#125;吃了&#123;1&#125;&quot;, name, f.name);
+    &#125;
+&#125;
+
+// 食物 类
+class Food
+&#123;
+    public string name;
+    public int kaluli;
+&#125;
+</code></pre>
+<p><strong>主函数内</strong></p>
+<pre><code class="csharp">// 主函数内
+Person p1 = new Person(&quot;林文韬&quot;, 177.5f, 18, &quot;成都&quot;);
+Person p2 = new Person(&quot;小火&quot;, 184.5f);
+//Person p3 = new Person();//写了有参构造函数 默认无参构造函数被顶掉 会报错
+</code></pre>
+<h3 id="基于成员变量练习题，对班级类的构造函数进行重载，用班级类创建若干个对象"><a href="#基于成员变量练习题，对班级类的构造函数进行重载，用班级类创建若干个对象" class="headerlink" title="基于成员变量练习题，对班级类的构造函数进行重载，用班级类创建若干个对象"></a>基于成员变量练习题，对班级类的构造函数进行重载，用班级类创建若干个对象</h3><p><strong>class语句块外 namespace语句块内</strong></p>
+<pre><code class="csharp">// class语句块外 namespace语句块内
+// 班级 类
+class Class
+&#123;
+    public string name;
+    public int capacity;
+    public Student[] students;
+
+    //有参数构造函数
+    public Class(string name, int capacity)
+    &#123;
+        this.name = name;
+        this.capacity = capacity;
+    &#125;
+
+    //有参数构造函数 特殊写法
+    public Class(string name, int capacity, Student[] students) : this(name, capacity)
+    &#123;
+        this.students = students;
+    &#125;
+&#125;
+
+// 学生 类
+class Student
+&#123;
+
+&#125;
+</code></pre>
+<p><strong>主函数内</strong></p>
+<pre><code class="csharp">// 主函数内
+Class c1 = new Class(&quot;Unity&quot;, 9999999);
+Class c2 = new Class(&quot;C#&quot;, 9999999, new Student[] &#123; new Student(), new Student() &#125;);
+</code></pre>
+<h3 id="写一个Ticket类，有一个距离变量（在构造对象时赋值，不能为负数），有一个价格特征，有一个方法GetPrice可以读取到价格，并且根据距离distance计算价格price（1元-公里）"><a href="#写一个Ticket类，有一个距离变量（在构造对象时赋值，不能为负数），有一个价格特征，有一个方法GetPrice可以读取到价格，并且根据距离distance计算价格price（1元-公里）" class="headerlink" title="写一个Ticket类，有一个距离变量（在构造对象时赋值，不能为负数），有一个价格特征，有一个方法GetPrice可以读取到价格，并且根据距离distance计算价格price（1元&#x2F;公里）"></a>写一个Ticket类，有一个距离变量（在构造对象时赋值，不能为负数），有一个价格特征，有一个方法GetPrice可以读取到价格，并且根据距离distance计算价格price（1元&#x2F;公里）</h3><ul>
+<li>0~100公里 不打折</li>
+<li>101~200公里 大9.5折</li>
+<li>201~300公里 打9折</li>
+<li>300公里以上 打8折</li>
+<li>有一个显示方法，可以显示这张票的信息。</li>
+<li>例如：100公里100块钱</li>
+</ul>
+<p><strong>class语句块外 namespace语句块内</strong></p>
+<pre><code class="csharp">// class语句块外 namespace语句块内
+// 票 类
+class Ticket
+&#123;
+    public uint distance;
+    public float price;
+
+    //有参数构造函数
+    public Ticket(uint distance)
+    &#123;
+        this.distance = distance;
+        price = GetPrice();
+    &#125;
+
+    //成员方法 
+
+    //获得价格
+    private float GetPrice()
+    &#123;
+        //0~100公里 不打折
+        //101~200公里 打9.5折
+        //201~300公里 打9折
+        //300公里以上 打8折
+        if (distance &gt; 300)
+        &#123;
+            return distance * 0.8f;
+        &#125;
+        else if (distance &gt;= 201 &amp;&amp; distance &lt;= 300)
+        &#123;
+            return distance * 0.9f;
+        &#125;
+        else if (distance &gt;= 101 &amp;&amp; distance &lt;= 200)
+        &#123;
+            return distance * 0.95f;
+        &#125;
+        else
+        &#123;
+            return distance;
+        &#125;
+    &#125;
+
+    //展示信息
+    public void ShowInfo()
+    &#123;
+        float perKMprice = price / distance;
+        Console.WriteLine(&quot;&#123;0&#125;公里&#123;1&#125;块钱&quot;, distance, price);
+        Console.WriteLine(&quot;平均每公里价格是&quot; + perKMprice + &quot;块钱&quot;);
+    &#125;
+&#125;
+</code></pre>
+<p><strong>主函数内</strong></p>
+<pre><code class="csharp">// 主函数内
+Ticket t = new Ticket(1000);
+t.ShowInfo();
+//1000公里800块钱
+//平均每公里价格是0.8块钱
 </code></pre>
 <hr>
-<h2 id="4-3-结束界面"><a href="#4-3-结束界面" class="headerlink" title="4.3 结束界面"></a>4.3 结束界面</h2><h3 id="模块需求-2"><a href="#模块需求-2" class="headerlink" title="模块需求"></a>模块需求</h3><p>大字显示游戏结束。菜单有回到开始界面和退出游戏两个选项。用颜色标明当前正在选的选项，可以输入ws上下切换选项。回车确认进入对应选项，跳出结束界面，回到开始界面或退出游戏。  </p>
-<h3 id="用到的知识点-2"><a href="#用到的知识点-2" class="headerlink" title="用到的知识点"></a>用到的知识点</h3><pre><code>控制台输出 
-控制台输入 
-控制台颜色变化 
-</code></pre>
-<hr>
-<h2 id="4-4-界面间的切换"><a href="#4-4-界面间的切换" class="headerlink" title="4.4 界面间的切换"></a>4.4 界面间的切换</h2><pre><code>开始界面-&gt; 游戏界面 退出游戏 
-游戏界面-&gt; 结束界面 
-结束界面-&gt; 开始界面 退出游戏 
+<h2 id="6-4-练习题代码"><a href="#6-4-练习题代码" class="headerlink" title="6.4 练习题代码"></a>6.4 练习题代码</h2><pre><code class="csharp">using System;
+
+namespace Lesson4_练习题
+&#123;
+    //class语句块外 namespace语句块内
+
+    #region 练习题一
+    //基于成员方法练习题
+    //对人类的构造函数进行重载，用人类创建若干个对象
+
+    // 人 类
+    class Person
+    &#123;
+        public string name;
+        public float height;
+        public int age;
+        public string homeAddress;
+
+        //有参数构造函数
+        public Person(string name, float height)
+        &#123;
+            this.name = name;
+            this.height = height;
+        &#125;
+
+        //有参数构造函数 特殊写法
+        public Person(string name, float height, int age, string homeAddress) : this(name, height)
+        &#123;
+            //this
+            this.age = age;
+            this.homeAddress = homeAddress;
+        &#125;
+
+        //成员方法
+
+        public void Speak(string str)
+        &#123;
+            Console.WriteLine(&quot;&#123;0&#125;说&#123;1&#125;&quot;, name, str);
+        &#125;
+
+        public void Walk()
+        &#123;
+            Console.WriteLine(&quot;&#123;0&#125;开始走路了&quot;, name);
+        &#125;
+
+        public void Eat(Food f)
+        &#123;
+            Console.WriteLine(&quot;&#123;0&#125;吃了&#123;1&#125;&quot;, name, f.name);
+        &#125;
+    &#125;
+
+    // 食物 类
+    class Food
+    &#123;
+        public string name;
+        public int kaluli;
+    &#125;
+
+    #endregion
+
+    #region 练习题二
+    //基于成员变量练习题
+    //对班级类的构造函数进行重载，用班级类创建若干个对象
+
+    // 班级 类
+    class Class
+    &#123;
+        public string name;
+        public int capacity;
+        public Student[] students;
+
+        //有参数构造函数
+        public Class(string name, int capacity)
+        &#123;
+            this.name = name;
+            this.capacity = capacity;
+        &#125;
+
+        //有参数构造函数 特殊写法
+        public Class(string name, int capacity, Student[] students):this(name, capacity)
+        &#123;
+            this.students = students;
+        &#125;
+    &#125;
+
+    // 学生 类
+    class Student
+    &#123;
+
+    &#125;
+    #endregion
+
+    #region 练习题三
+    //写一个Ticket类，有一个距离变量（在构造对象时赋值，不能为负数），有一个价格特征，
+    //有一个方法GetPrice可以读取到价格，并且根据距离distance计算价格price（1元/公里）
+    //0~100公里 不打折
+    //101~200公里 打9.5折
+    //201~300公里 打9折
+    //300公里以上 打8折
+    //有一个显示方法，可以显示这张票的信息。
+    //例如：100公里100块钱
+
+    // 票 类
+    class Ticket
+    &#123;
+        public uint distance;
+        public float price;
+
+        //有参数构造函数
+        public Ticket(uint distance)
+        &#123;
+            this.distance = distance;
+            price = GetPrice();
+        &#125;
+
+        //成员方法 
+
+        //获得价格
+        private float GetPrice()
+        &#123;
+            //0~100公里 不打折
+            //101~200公里 打9.5折
+            //201~300公里 打9折
+            //300公里以上 打8折
+            if ( distance &gt; 300 )
+            &#123;
+                return distance * 0.8f;
+            &#125;
+            else if( distance &gt;= 201 &amp;&amp; distance &lt;= 300 )
+            &#123;
+                return distance * 0.9f;
+            &#125;
+            else if (distance &gt;= 101 &amp;&amp; distance &lt;= 200)
+            &#123;
+                return distance * 0.95f;
+            &#125;
+            else
+            &#123;
+                return distance;
+            &#125;
+        &#125;
+
+        //展示信息
+        public void ShowInfo()
+        &#123;
+            float perKMprice = price / distance;
+            Console.WriteLine(&quot;&#123;0&#125;公里&#123;1&#125;块钱&quot;, distance, price);
+            Console.WriteLine(&quot;平均每公里价格是&quot;+perKMprice+&quot;块钱&quot;);
+        &#125;
+    &#125;
+    #endregion
+
+    class Program
+    &#123;
+        static void Main(string[] args)
+        &#123;
+            Console.WriteLine(&quot;构造函数析构函数练习题&quot;);
+
+            //主函数内
+
+            #region 练习题一
+            Person p1 = new Person(&quot;林文韬&quot;, 177.5f, 18, &quot;成都&quot;);
+            Person p2 = new Person(&quot;小火&quot;, 184.5f);
+            //Person p3 = new Person();//写了有参构造函数 默认无参构造函数被顶掉 会报错
+            #endregion
+
+            #region 练习题二
+
+            Class c1 = new Class(&quot;Unity&quot;, 9999999);
+            Class c2 = new Class(&quot;C#&quot;, 9999999, new Student[] &#123; new Student(), new Student() &#125;);
+
+            #endregion
+
+            #region 练习题三
+
+            Ticket t = new Ticket(1000);
+            t.ShowInfo();
+            //1000公里800块钱
+            //平均每公里价格是0.8块钱
+
+            #endregion
+        &#125;
+    &#125;
+&#125;
 </code></pre>
 <hr>
 
