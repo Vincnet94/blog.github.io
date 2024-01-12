@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>【C#入门语法知识】| 16.运算符-逻辑运算符 | 人间自有韬哥在的游戏开发博客</title>
-  <meta name="keywords" content=" CSharp , CSharp入门 , 语法知识 , 运算符 ">
-  <meta name="description" content="【C#入门语法知识】| 16.运算符-逻辑运算符 | 人间自有韬哥在的游戏开发博客">
+  <title>【C#核心语法知识】| 5.面向对象-封装-成员方法 | 人间自有韬哥在的游戏开发博客</title>
+  <meta name="keywords" content=" CSharp , 语法知识 , CSharp核心 , 面向对象 , 封装 ">
+  <meta name="description" content="【C#核心语法知识】| 5.面向对象-封装-成员方法 | 人间自有韬哥在的游戏开发博客">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="4.面向对象-封装-成员变量和访问修饰符 4.1 知识点知识回顾类和对象&#x2F;&#x2F; 申明类 class Person &#123;     &#x2F;&#x2F; 特征——成员变量     &#x2F;&#x2F; 行为——成员方法     &#x2F;&#x2F; 保护特征——成员属性     &#x2F;&#x2F; 构造函数和析构函数     &#x2F;&#x2F; 索引器     &#x2F;&#x2F; 运算符重载函数     &#x2F;&#x2F; 静态函数 &#125;  实例化对象Person 变量名; Person">
 <meta property="og:type" content="article">
@@ -1062,9 +1062,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-CSharp/01.CSharp入门语法知识/16.运算符-逻辑运算符" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-CSharp/05.Csharp核心语法知识/5.面向对象-封装-成员方法" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">【C#入门语法知识】| 16.运算符-逻辑运算符</h1>
+        <h1 class="article-title">【C#核心语法知识】| 5.面向对象-封装-成员方法</h1>
     
     <div class="article-meta">
         
@@ -1076,7 +1076,7 @@
             
             <a  data-rel="CSharp">CSharp</a> > 
             
-            <a  data-rel="CSharp&lt;---&gt;CSharp入门语法知识">CSharp入门语法知识</a>
+            <a  data-rel="CSharp&lt;---&gt;CSharp核心语法知识">CSharp核心语法知识</a>
             
         </span>
         
@@ -1086,18 +1086,20 @@
             
             <a class="color2">CSharp</a>
             
-            <a class="color4">CSharp入门</a>
-            
             <a class="color5">语法知识</a>
             
-            <a class="color4">运算符</a>
+            <a class="color4">CSharp核心</a>
+            
+            <a class="color5">面向对象</a>
+            
+            <a class="color3">封装</a>
             
         </span>
         
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2024-01-06 19:40:16'>2024-01-06 19:35</time>
+            发布时间 : <time class="date" title='最后更新: 2024-01-12 09:45:24'>2024-01-12 00:15</time>
         
     </div>
     <div class="article-meta">
@@ -1119,7 +1121,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#16-%E8%BF%90%E7%AE%97%E7%AC%A6-%E9%80%BB%E8%BE%91%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-text">16.运算符-逻辑运算符</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#16-1-%E7%9F%A5%E8%AF%86%E7%82%B9"><span class="toc-text">16.1 知识点</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%BB%E8%BE%91%E4%B8%8E"><span class="toc-text">逻辑与</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%BB%E8%BE%91%E6%88%96"><span class="toc-text">逻辑或</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%BB%E8%BE%91%E9%9D%9E"><span class="toc-text">逻辑非</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B7%B7%E5%90%88%E4%BD%BF%E7%94%A8%E4%BC%98%E5%85%88%E7%BA%A7%E9%97%AE%E9%A2%98"><span class="toc-text">混合使用优先级问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%BB%E8%BE%91%E8%BF%90%E7%AE%97%E7%AC%A6%E7%9A%84%E7%9F%AD%E8%B7%AF%E8%A7%84%E5%88%99"><span class="toc-text">逻辑运算符的短路规则</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#16-2-%E7%9F%A5%E8%AF%86%E7%82%B9%E4%BB%A3%E7%A0%81"><span class="toc-text">16.2 知识点代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#16-3-%E7%BB%83%E4%B9%A0%E9%A2%98"><span class="toc-text">16.3 练习题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B1%82%E6%89%93%E5%8D%B0%E7%BB%93%E6%9E%9C%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-text">求打印结果是什么？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B1%82%E6%89%93%E5%8D%B0%E7%BB%93%E6%9E%9C%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F-1"><span class="toc-text">求打印结果是什么？</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#16-4-%E7%BB%83%E4%B9%A0%E9%A2%98%E4%BB%A3%E7%A0%81"><span class="toc-text">16.4 练习题代码</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#5-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E5%B0%81%E8%A3%85-%E6%88%90%E5%91%98%E6%96%B9%E6%B3%95"><span class="toc-text">5.面向对象-封装-成员方法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#5-1-%E7%9F%A5%E8%AF%86%E7%82%B9"><span class="toc-text">5.1 知识点</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%88%90%E5%91%98%E6%96%B9%E6%B3%95%E7%94%B3%E6%98%8E"><span class="toc-text">成员方法申明</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="toc-text">基本概念</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B3%A8%E6%84%8F%EF%BC%9A"><span class="toc-text">注意：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%94%B3%E6%98%8E%E4%BA%BA%E7%B1%BB%E6%88%90%E5%91%98%E6%96%B9%E6%B3%95"><span class="toc-text">申明人类成员方法</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%88%90%E5%91%98%E6%96%B9%E6%B3%95%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-text">成员方法的使用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%BB%E5%87%BD%E6%95%B0%E5%86%85"><span class="toc-text">主函数内</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-text">总结</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-2-%E7%9F%A5%E8%AF%86%E7%82%B9%E4%BB%A3%E7%A0%81"><span class="toc-text">5.2 知识点代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-3-%E7%BB%83%E4%B9%A0%E9%A2%98"><span class="toc-text">5.3 练习题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8E%E6%88%90%E5%91%98%E5%8F%98%E9%87%8F%E7%BB%83%E4%B9%A0%E9%A2%98%EF%BC%8C%E4%B8%BA%E4%BA%BA%E7%B1%BB%E5%AE%9A%E4%B9%89%E8%AF%B4%E8%AF%9D%E3%80%81%E8%B5%B0%E8%B7%AF%E3%80%81%E5%90%83%E9%A5%AD%E7%AD%89%E6%96%B9%E6%B3%95"><span class="toc-text">基于成员变量练习题，为人类定义说话、走路、吃饭等方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8E%E6%88%90%E5%91%98%E5%8F%98%E9%87%8F%E7%BB%83%E4%B9%A0%E9%A2%98%EF%BC%8C%E4%B8%BA%E5%AD%A6%E7%94%9F%E7%B1%BB%E5%AE%9A%E4%B9%89%E5%AD%A6%E4%B9%A0%E3%80%81%E5%90%83%E9%A5%AD%E7%AD%89%E6%96%B9%E6%B3%95"><span class="toc-text">基于成员变量练习题，为学生类定义学习、吃饭等方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89%E4%B8%80%E4%B8%AA%E9%A3%9F%E7%89%A9%E7%B1%BB%EF%BC%8C%E6%9C%89%E5%90%8D%E7%A7%B0%EF%BC%8C%E7%83%AD%E9%87%8F%E7%AD%89%E7%89%B9%E5%BE%81%EF%BC%8C%E6%80%9D%E8%80%83%E5%A6%82%E4%BD%95%E5%92%8C%E4%BA%BA%E7%B1%BB%E4%BB%A5%E5%8F%8A%E5%AD%A6%E7%94%9F%E7%B1%BB%E8%81%94%E7%B3%BB%E8%B5%B7%E6%9D%A5"><span class="toc-text">定义一个食物类，有名称，热量等特征，思考如何和人类以及学生类联系起来</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-4-%E7%BB%83%E4%B9%A0%E9%A2%98%E4%BB%A3%E7%A0%81"><span class="toc-text">5.4 练习题代码</span></a></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -1135,298 +1137,453 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="16-运算符-逻辑运算符"><a href="#16-运算符-逻辑运算符" class="headerlink" title="16.运算符-逻辑运算符"></a>16.运算符-逻辑运算符</h1><hr>
-<h2 id="16-1-知识点"><a href="#16-1-知识点" class="headerlink" title="16.1 知识点"></a>16.1 知识点</h2><h3 id="逻辑与"><a href="#逻辑与" class="headerlink" title="逻辑与"></a>逻辑与</h3><pre><code class="csharp">// 符号 &amp;&amp;  并且 
-// 规则: 对两个bool值进行逻辑运算，有假则假，同真为真 
-
-bool result = true &amp;&amp; false; 
-Console.WriteLine(result);// false 
-
-result = true &amp;&amp; true; 
-Console.WriteLine(result);// true 
-
-result = false &amp;&amp; true; 
-Console.WriteLine(result);// false 
-
-// 使用逻辑运算符时，左右两边要都是bool相关的类型 
-// bool相关的类型有： bool变量  条件运算符 
-// 逻辑运算符优先级低于条件运算符 算术运算  
-// true &amp;&amp; true 
-result = 3 &gt; 1 &amp;&amp; 1 &lt; 2; 
-Console.WriteLine(result);// true 
-
-// 可以用逻辑运算符对变量的取值范围进行判断 
-int i = 3; 
-// 1 &lt; i &lt; 5; 
-// true &amp;&amp; true 
-result = i &gt; 1 &amp;&amp; i &lt; 5; 
-Console.WriteLine(result);// true 
-
-// 多个逻辑与 组合运用 
-int i2 = 5; 
-// 在没有括号的情况下，从左到右，依次看即可 
-// 有括号，先看括号内 
-// true &amp;&amp; false &amp;&amp; true &amp;&amp; true 
-result = i2 &gt; 1 &amp;&amp; i2 &lt; 5 &amp;&amp; i &gt; 1 &amp;&amp; i &lt; 5; 
-Console.WriteLine(result);// false 
-</code></pre>
-<h3 id="逻辑或"><a href="#逻辑或" class="headerlink" title="逻辑或"></a>逻辑或</h3><pre><code class="csharp">// 符号 || 或者 
-// 规则: 对两个bool值进行逻辑运算，有真则真，同假为假 
-
-result = true || false; 
-Console.WriteLine(result);// true 
-
-result = true || true; 
-Console.WriteLine(result);// true 
-
-result = false || true; 
-Console.WriteLine(result);// true 
-
-result = false || false; 
-Console.WriteLine(result);// false 
-
-// false || true 
-result = 3 &gt; 10 || 3 &lt; 5; 
-Console.WriteLine(result);// true 
-
-int a = 5; 
-int b = 11; 
-// true || true || false 
-result = a &gt; 1 || b &lt; 20 || a &gt; 5; 
-Console.WriteLine(result);// true 
-
-// ? &amp;&amp; ? 
-// ? || ? 
-// ? 可以是写死的bool变量 或者 bool值 
-// 还可以是 条件运算符相关 
-</code></pre>
-<h3 id="逻辑非"><a href="#逻辑非" class="headerlink" title="逻辑非"></a>逻辑非</h3><pre><code class="csharp">// 符号 ! 
-// 规则: 对一个bool值进行取反，真变假，假变真 
-
-result = !true; 
-Console.WriteLine(result);// false 
-
-result = !false; 
-Console.WriteLine(result);// true 
-
-result = !!true; 
-Console.WriteLine(result);// true 
-
-// 逻辑非的优先级比条件运算符高，后面进行条件运算符的时候要加括号 
-result = !(3 &gt; 2); 
-Console.WriteLine(result);// false 
-
-a = 5; 
-result = !(a &gt; 5); 
-Console.WriteLine(result);// true 
-</code></pre>
-<h3 id="混合使用优先级问题"><a href="#混合使用优先级问题" class="headerlink" title="混合使用优先级问题"></a>混合使用优先级问题</h3><pre><code class="csharp">// 规则: !(逻辑非)优先级最高   &amp;&amp;(逻辑与)优先级高于||(逻辑或) 
-// 逻辑运算符优先级低于算数运算符 条件运算符（逻辑非除外） 
-
-bool gameOver = false; 
-int hp = 100; 
-bool isDead = false; 
-bool isMustOver = true; 
-
-result = gameOver || hp &lt; 0 &amp;&amp; !isDead || isMustOver; 
-// false || false &amp;&amp; true || true; 
-// false || false || true; 
-Console.WriteLine(result);// true 
-</code></pre>
-<h3 id="逻辑运算符的短路规则"><a href="#逻辑运算符的短路规则" class="headerlink" title="逻辑运算符的短路规则"></a>逻辑运算符的短路规则</h3><pre><code class="csharp">int i3 = 1; 
-// 逻辑或 有真则真，左边只要为真了，右边就不重要，就不会运算了 
-result = i3 &gt; 0 || ++i3 &gt;= 1; 
-Console.WriteLine(i3);// 1 
-Console.WriteLine(result);// true 
-
-// 逻辑与 有假则假，左边只要为假了，右边就不重要，就不会运算了 
-result = i3 &lt; 0 &amp;&amp; i3++ &gt; 1; 
-Console.WriteLine(i3);// 1 
-Console.WriteLine(result);// false 
-// false &amp;&amp; i3 ++ &gt; 1; 抛弃后面不去计算 
-// 若左边不满足条件，还是会进行右边或者下一步的运算 
-</code></pre>
-<hr>
-<h2 id="16-2-知识点代码"><a href="#16-2-知识点代码" class="headerlink" title="16.2 知识点代码"></a>16.2 知识点代码</h2><pre><code class="csharp">using System;
-
-namespace Lesson13_逻辑运算符
+        <h1 id="5-面向对象-封装-成员方法"><a href="#5-面向对象-封装-成员方法" class="headerlink" title="5.面向对象-封装-成员方法"></a>5.面向对象-封装-成员方法</h1><hr>
+<h2 id="5-1-知识点"><a href="#5-1-知识点" class="headerlink" title="5.1 知识点"></a>5.1 知识点</h2><h3 id="成员方法申明"><a href="#成员方法申明" class="headerlink" title="成员方法申明"></a>成员方法申明</h3><h4 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h4><ul>
+<li>成员方法（函数）用来表现对象行为</li>
+<li>申明在类语句块中</li>
+<li>用来描述对象的行为</li>
+<li>规则和函数申明规则相同</li>
+<li>受到访问修饰符规则影响</li>
+<li>返回值参数不做限制</li>
+<li>方法数量不做限制</li>
+</ul>
+<h4 id="注意："><a href="#注意：" class="headerlink" title="注意："></a>注意：</h4><ul>
+<li>成员方法不要加 <code>static</code> 关键字</li>
+<li>成员方法必须实例化出对象再通过对象来使用，相当于该对象执行了某个行为</li>
+<li>成员方法受到访问修饰符影响</li>
+</ul>
+<h4 id="申明人类成员方法"><a href="#申明人类成员方法" class="headerlink" title="申明人类成员方法"></a>申明人类成员方法</h4><pre><code class="csharp">// 人类
+class Person
 &#123;
-    class Program
+    // 成员变量，有些人习惯把它写在成员方法后面也可以
+
+    public string name; // 名字
+    public int age; // 年龄
+    public Person[] friends; // 朋友们
+
+    /// &lt;summary&gt;
+    /// 判断是否成年
+    /// &lt;/summary&gt;
+    /// &lt;returns&gt;&lt;/returns&gt;
+    public bool IsAdult()
     &#123;
-        static void Main(string[] args)
+        return age &gt;= 18;
+    &#125;
+
+    /// &lt;summary&gt;
+    /// 说话的行为
+    /// &lt;/summary&gt;
+    /// &lt;param name=&quot;str&quot;&gt;说话的内容&lt;/param&gt;
+    public void Speak(string str)
+    &#123;
+        Console.WriteLine(&quot;&#123;0&#125;说&#123;1&#125;&quot;, name, str);
+    &#125;
+
+    /// &lt;summary&gt;
+    /// 添加朋友的方法
+    /// &lt;/summary&gt;
+    /// &lt;param name=&quot;p&quot;&gt;传入新朋友&lt;/param&gt;
+    public void AddFriend(Person p)
+    &#123;
+        // 如果朋友数组是空
+        if (friends == null)
         &#123;
-            Console.WriteLine(&quot;逻辑运算符&quot;);
-            //逻辑运算符 其实就是对bool类型 进行逻辑运算
+            // new一个朋友们数组，把当前朋友传进去 
+            friends = new Person[] &#123; p &#125;;
+        &#125;
+        // 否则有朋友数组
+        else
+        &#123;
+            // 新建一个新朋友数组，长度是老朋友数组+1
+            Person[] newFriends = new Person[friends.Length + 1];
 
-            #region 知识点一 逻辑与
-            //符号 &amp;&amp;  并且
-            //规则 对两个bool值进行逻辑运算 有假则假 同真为真
+            // 遍历逐个搬家
+            for (int i = 0; i &lt; friends.Length; i++)
+            &#123;
+                newFriends[i] = friends[i];
+            &#125;
 
-            bool result = true &amp;&amp; false;
-            Console.WriteLine(result);//false
-            result = true &amp;&amp; true;
-            Console.WriteLine(result);//true
-            result = false &amp;&amp; true;
-            Console.WriteLine(result);//false
+            // 把新加的朋友放到最后一个
+            newFriends[newFriends.Length - 1] = p;
 
-            //使用逻辑运算符时 左右两边要都是bool相关的类型
-            //bool相关的类型有： bool变量  条件运算符 
-            //逻辑运算符优先级 低于 条件运算符 算术运算
-            // true &amp;&amp; true
-            result = 3 &gt; 1 &amp;&amp; 1 &lt; 2;
-            Console.WriteLine(result);//true
-
-            //可以用逻辑运算符对变量的取值范围进行判断
-            int i = 3;
-            // 1 &lt; i &lt; 5;
-            // true &amp;&amp; true
-            result = i &gt; 1 &amp;&amp; i &lt; 5;
-            Console.WriteLine(result);//true
-
-            //多个逻辑与 组合运用
-            int i2 = 5;
-            //在没有括号的情况下 从左到右 依次看即可
-            //有括号 先看括号内
-            // true &amp;&amp; false &amp;&amp; true &amp;&amp; true
-            result = i2 &gt; 1 &amp;&amp; i2 &lt; 5 &amp;&amp; i &gt; 1 &amp;&amp; i &lt; 5;
-            Console.WriteLine(result);//false
-
-            #endregion
-
-            #region 知识点二 逻辑或
-            //符号 || 或者
-            //规则 对两个bool值进行逻辑运算 有真则真 同假为假
-            result = true || false;
-            Console.WriteLine(result);//true
-            result = true || true;
-            Console.WriteLine(result);//true
-            result = false || true;
-            Console.WriteLine(result);//true
-            result = false || false;
-            Console.WriteLine(result);//false
-
-            // false || true
-            result = 3 &gt; 10 || 3 &lt; 5;
-            Console.WriteLine(result);//true
-
-            int a = 5;
-            int b = 11;
-            // true || true || false
-            result = a &gt; 1 || b &lt; 20 || a &gt; 5;
-            Console.WriteLine(result);//true
-
-            // ? &amp;&amp; ?
-            // ? || ?
-            // ? 可以是写死的bool变量 或者 bool值
-            // 还可以是 条件运算符相关
-            #endregion
-
-            #region 知识点三 逻辑非
-            //符号 !
-            //规则 对一个bool值进行取反  真变假  假变真
-
-            result = !true;
-            Console.WriteLine(result);//false
-            result = !false;
-            Console.WriteLine(result);//true
-            result = !!true;
-            Console.WriteLine(result);//true
-            //逻辑非的 优先级 比条件运算符高 后面进行条件运算符的时候要加括号
-            result = !(3 &gt; 2);
-            Console.WriteLine(result);//false
-
-            a = 5;
-            result = !(a &gt; 5);
-            Console.WriteLine(result);//true
-            #endregion
-
-            #region 知识点四 混合使用优先级问题
-            // 规则  !(逻辑非)优先级最高   &amp;&amp;(逻辑与)优先级高于||(逻辑或)
-            // 逻辑运算符优先级 低于 算术运算符 条件运算符（逻辑非除外）
-
-            bool gameOver = false;
-            int hp = 100;
-            bool isDead = false;
-            bool isMustOver = true;
-
-
-            result = gameOver || hp &lt; 0 &amp;&amp; !isDead || isMustOver;
-            //false || false &amp;&amp; true || true;
-            //false || false || true;
-            Console.WriteLine(result);//true
-
-            #endregion
-
-            #region 知识点五 逻辑运算符短路规则
-
-            int i3 = 1;
-
-            //逻辑或 有真则真 左边只要为真了 右边就不重要 就不会运算了
-            result = i3 &gt; 0 || ++i3 &gt;= 1;
-            Console.WriteLine(i3);//1
-            Console.WriteLine(result);//true
-            // || 有真则真
-            // 只要 逻辑与或者逻辑或 左边满足了条件 
-            // 例如左边的i3 &gt; 0已经为true 
-            // 那么 右边的内容 对于我们来说 已经不重要 右边的内容就不会运算了
-
-            //逻辑与 有假则假 左边只要为假了 右边就不重要 就不会运算了
-            result = i3 &lt; 0 &amp;&amp; i3++ &gt; 1;
-            Console.WriteLine(i3);//1
-            Console.WriteLine(result);//false
-            // false &amp;&amp; i3 ++ &gt; 1;抛弃后面不去计算
-
-            //若左边不满足条件 还是会进行右边或者下一步的运算
-            #endregion
+            // 地址重定向
+            friends = newFriends;
         &#125;
     &#125;
 &#125;
 </code></pre>
-<hr>
-<h2 id="16-3-练习题"><a href="#16-3-练习题" class="headerlink" title="16.3 练习题"></a>16.3 练习题</h2><h3 id="求打印结果是什么？"><a href="#求打印结果是什么？" class="headerlink" title="求打印结果是什么？"></a>求打印结果是什么？</h3><pre><code class="csharp">Console.WriteLine(true || true); // true 
-Console.WriteLine(false || true); // true 
-Console.WriteLine(true &amp;&amp; true); // true 
-Console.WriteLine(true &amp;&amp; false); // false 
-Console.WriteLine(!true); // false
-</code></pre>
-<h3 id="求打印结果是什么？-1"><a href="#求打印结果是什么？-1" class="headerlink" title="求打印结果是什么？"></a>求打印结果是什么？</h3><pre><code class="csharp">bool gameOver;
-bool isWin;
-int health = 100;
+<h3 id="成员方法的使用"><a href="#成员方法的使用" class="headerlink" title="成员方法的使用"></a>成员方法的使用</h3><h4 id="主函数内"><a href="#主函数内" class="headerlink" title="主函数内"></a>主函数内</h4><pre><code class="csharp">// 成员方法必须实例化出对象再通过对象来使用，相当于该对象执行了某个行为
+Person p1 = new Person();
+p1.name = &quot;林文韬&quot;;
+p1.age = 18;
+p1.Speak(&quot;我爱你&quot;); // 林文韬说我爱你
 
-gameOver = true;
-isWin = false;
-
-Console.Write(gameOver || isWin &amp;&amp; health &gt; 0); // true || false &amp;&amp; true
-Console.Write(gameOver || isWin &amp;&amp; health &gt; 0); // true
-</code></pre>
-<hr>
-<h2 id="16-4-练习题代码"><a href="#16-4-练习题代码" class="headerlink" title="16.4 练习题代码"></a>16.4 练习题代码</h2><pre><code class="csharp">using System;
-
-namespace Lesson13_练习题
+if (p1.IsAdult()) // 年龄大于18才会输出
 &#123;
+    p1.Speak(&quot;我要耍朋友&quot;);
+&#125;
+
+Person p2 = new Person();
+p2.name = &quot;火山哥&quot;;
+p2.age = 16;
+
+p1.AddFriend(p2); // p1添加新朋友p2
+
+// 遍历p1朋友数组，输出p1所有朋友的名字
+for (int i = 0; i &lt; p1.friends.Length; i++)
+&#123;
+    Console.WriteLine(p1.friends[i].name); // 火山哥
+&#125;
+</code></pre>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ul>
+<li>成员方法<ul>
+<li>描述行为</li>
+<li>类中声明</li>
+<li>任意数量</li>
+<li>返回值和参数根据需求决定</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="5-2-知识点代码"><a href="#5-2-知识点代码" class="headerlink" title="5.2 知识点代码"></a>5.2 知识点代码</h2><pre><code class="csharp">using System;
+
+namespace Lesson3_封装_成员方法
+&#123;
+    #region 知识点一 成员方法申明
+
+    //基本概念
+    //成员方法(函数) 用来表现对象行为
+    // 1.申明在类语句块中
+    // 2.是用来描述对象的行为的
+    // 3.规则和函数申明规则相同
+    // 4.受到访问修饰符规则影响
+    // 5.返回值参数不做限制
+    // 6.方法数量不做限制
+
+    //注意：
+    //1.成员方法不要加static关键字
+    //2.成员方法 必须实例化出对象 再通过对象来使用 相当于该对象执行了某个行为
+    //3.成员方法 受到访问修饰符影响
+
+    //人 类
+    class Person
+    &#123;
+        //成员变量 有些人习惯把他写在成员方法后面 都可以
+
+        public string name;//名字
+        public int age;//年龄
+        public Person[] friends;//朋友们
+
+        /// &lt;summary&gt;
+        /// 判断是否成年
+        /// &lt;/summary&gt;
+        /// &lt;returns&gt;&lt;/returns&gt;
+        public bool IsAdult()
+        &#123;
+            return age &gt;= 18;
+        &#125;
+
+        /// &lt;summary&gt;
+        /// 说话的行为
+        /// &lt;/summary&gt;
+        /// &lt;param name=&quot;str&quot;&gt;说话的内容&lt;/param&gt;
+        public void Speak(string str)
+        &#123;
+            Console.WriteLine(&quot;&#123;0&#125;说&#123;1&#125;&quot;, name, str);
+        &#125;
+
+        /// &lt;summary&gt;
+        /// 添加朋友的方法
+        /// &lt;/summary&gt;
+        /// &lt;param name=&quot;p&quot;&gt;传入新朋友&lt;/param&gt;
+        public void AddFriend(Person p)
+        &#123;
+            //如果朋友数组是空
+            if(friends == null)
+            &#123;
+                //new一个朋友们数组 把当前朋友传进去 
+                friends = new Person[] &#123; p &#125;;
+            &#125;
+            //否则有朋友数组
+            else
+            &#123;
+                //新建一个 新朋友数组 长度是老朋友数组+1
+                Person[] newFriends = new Person[friends.Length + 1];
+
+                //遍历逐个搬家
+                for (int i = 0; i &lt; friends.Length; i++)
+                &#123;
+                    newFriends[i] = friends[i];
+                &#125;
+
+                //把新加的朋友放到最后一个
+                newFriends[newFriends.Length - 1] = p;
+
+                //地址重定向
+                friends = newFriends;
+            &#125;
+        &#125;
+    &#125;
+
+    #endregion
+
     class Program
     &#123;
         static void Main(string[] args)
         &#123;
-            Console.WriteLine(&quot;逻辑运算符练习题&quot;);
-            #region 练习题一
-            //求打印结果是什么？
-            Console.WriteLine(true || true);// true
-            Console.WriteLine(false || true);// true
-            Console.WriteLine(true &amp;&amp; true);// true
-            Console.WriteLine(true &amp;&amp; false);//false
-            Console.WriteLine(!true);//false
-            #endregion
+            Console.WriteLine(&quot;成员方法&quot;);
 
-            #region 练习题二
-            //求打印结果是什么？
-            bool gameOver;
-            bool isWin;
-            int health = 100;
-            gameOver = true;
-            isWin = false;
-            // true || false &amp;&amp; true
-            Console.Write(gameOver || isWin &amp;&amp; health &gt; 0);//true
+            #region 知识点二 成员方法的使用
+
+            //主函数内
+
+            //成员方法 必须实例化出对象 再通过对象来使用 相当于该对象执行了某个行为
+            Person p1 = new Person();
+            p1.name = &quot;林文韬&quot;;
+            p1.age = 18;
+            p1.Speak(&quot;我爱你&quot;);//林文韬说我爱你
+
+
+            if (p1.IsAdult())//年龄大于18才会输出
+            &#123;
+                p1.Speak(&quot;我要耍朋友&quot;);
+            &#125;
+
+            Person p2 = new Person();
+            p2.name = &quot;火山哥&quot;;
+            p2.age = 16;
+
+            p1.AddFriend(p2);//p1添加新朋友p2
+
+            //遍历p1朋友数组 输出p1所有朋友的名字
+            for (int i = 0; i &lt; p1.friends.Length; i++)
+            &#123;
+                Console.WriteLine(p1.friends[i].name);//火山哥
+            &#125;
+
+            #endregion
+        &#125;
+    &#125;
+    //总结
+    //成员方法
+    //描述行为
+    //类中申明
+    //任意数量
+    //返回值和参数根据需求决定
+&#125;
+</code></pre>
+<hr>
+<h2 id="5-3-练习题"><a href="#5-3-练习题" class="headerlink" title="5.3 练习题"></a>5.3 练习题</h2><h3 id="基于成员变量练习题，为人类定义说话、走路、吃饭等方法"><a href="#基于成员变量练习题，为人类定义说话、走路、吃饭等方法" class="headerlink" title="基于成员变量练习题，为人类定义说话、走路、吃饭等方法"></a>基于成员变量练习题，为人类定义说话、走路、吃饭等方法</h3><p><strong>class语句块外 namespace语句块内</strong></p>
+<pre><code class="csharp">// class语句块外 namespace语句块内
+//声明人类
+class Person
+&#123;
+    //成员变量
+    public string name;
+    public float height;
+    public int age;
+    public string homeAddress;
+
+    //成员方法
+    public void Speak(string str)
+    &#123;
+        Console.WriteLine(&quot;&#123;0&#125;说&#123;1&#125;&quot;, name, str);
+    &#125;
+
+    public void Walk()
+    &#123;
+        Console.WriteLine(&quot;&#123;0&#125;开始走路了&quot;, name);
+    &#125;
+
+    public void Eat(Food f)
+    &#123;
+        Console.WriteLine(&quot;&#123;0&#125;吃了&#123;1&#125;&quot;, name, f.name);
+    &#125;
+&#125;
+</code></pre>
+<h3 id="基于成员变量练习题，为学生类定义学习、吃饭等方法"><a href="#基于成员变量练习题，为学生类定义学习、吃饭等方法" class="headerlink" title="基于成员变量练习题，为学生类定义学习、吃饭等方法"></a>基于成员变量练习题，为学生类定义学习、吃饭等方法</h3><p><strong>class语句块外 namespace语句块内</strong></p>
+<pre><code class="csharp">// class语句块外 namespace语句块内
+//声明学生类
+class Student
+&#123;
+    //成员变量
+    public string name;
+    public int number;
+    public int age;
+    public Student deskmate;
+
+    //成员方法
+    public void Learn()
+    &#123;
+        Console.WriteLine(&quot;&#123;0&#125;在学习&quot;, name);
+    &#125;
+
+    public void Eat(Food f)
+    &#123;
+        Console.WriteLine(&quot;&#123;0&#125;开始吃&#123;1&#125;&quot;, name, f.name);
+    &#125;
+&#125;
+</code></pre>
+<h3 id="定义一个食物类，有名称，热量等特征，思考如何和人类以及学生类联系起来"><a href="#定义一个食物类，有名称，热量等特征，思考如何和人类以及学生类联系起来" class="headerlink" title="定义一个食物类，有名称，热量等特征，思考如何和人类以及学生类联系起来"></a>定义一个食物类，有名称，热量等特征，思考如何和人类以及学生类联系起来</h3><p><strong>class语句块外 namespace语句块内</strong></p>
+<pre><code class="csharp">// class语句块外 namespace语句块内
+//声明食物类
+class Food
+&#123;
+    //成员变量
+    public string name;
+    public int kaLuli;
+
+    //成员方法
+    //吃食物不同参数的成员方法重载
+    public void BeiEat(Person p)
+    &#123;
+        Console.WriteLine(&quot;&#123;0&#125;吃了&#123;1&#125;&quot;, p.name, name);
+    &#125;
+
+    public void BeiEat(Student s)
+    &#123;
+        Console.WriteLine(&quot;&#123;0&#125;吃了&#123;1&#125;&quot;, s.name, name);
+    &#125;
+&#125;
+</code></pre>
+<p><strong>主函数内</strong></p>
+<pre><code class="csharp">// 主函数内
+Person p = new Person();
+p.name = &quot;林文韬&quot;;
+
+Student s = new Student();
+s.name = &quot;小火&quot;;
+
+Food f = new Food();
+f.name = &quot;火龙果&quot;;
+
+p.Eat(f);   // 林文韬吃了火龙果
+s.Eat(f);   // 小火开始吃火龙果
+
+f.BeiEat(p);   // 林文韬吃了火龙果
+f.BeiEat(s);   // 小火吃了火龙果
+</code></pre>
+<hr>
+<h2 id="5-4-练习题代码"><a href="#5-4-练习题代码" class="headerlink" title="5.4 练习题代码"></a>5.4 练习题代码</h2><pre><code class="csharp">using System;
+
+namespace Lesson3_练习题
+&#123;
+    #region 练习题一
+    //基于成员变量练习题
+    //为人类定义说话、走路、吃饭等方法
+
+    //class语句块外 namespace语句块内
+
+    //声明 人 类
+    class Person
+    &#123;
+        //成员变量
+        public string name;
+        public float height;
+        public int age;
+        public string homeAddress;
+
+        //成员方法
+        public void Speak(string str)
+        &#123;
+            Console.WriteLine(&quot;&#123;0&#125;说&#123;1&#125;&quot;, name, str);
+        &#125;
+
+        public void Walk()
+        &#123;
+            Console.WriteLine(&quot;&#123;0&#125;开始走路了&quot;, name);
+        &#125;
+
+        public void Eat( Food f )
+        &#123;
+            Console.WriteLine(&quot;&#123;0&#125;吃了&#123;1&#125;&quot;, name, f.name);
+        &#125;
+    &#125;
+
+    #endregion
+
+    #region 练习题二
+    //基于成员变量练习题
+    //为学生类定义学习、吃饭等方法
+
+    //class语句块外 namespace语句块内
+
+    //声明 学生 类
+    class Student
+    &#123;
+        //成员变量
+        public string name;
+        public int number;
+        public int age;
+        public Student deskmate;
+
+        //成员方法
+        public void Learn()
+        &#123;
+            Console.WriteLine(&quot;&#123;0&#125;在学习&quot;, name);
+        &#125;
+
+        public void Eat(Food f)
+        &#123;
+            Console.WriteLine(&quot;&#123;0&#125;开始吃&#123;1&#125;&quot;, name, f.name);
+        &#125;
+    &#125;
+
+    #endregion
+
+    #region 练习题三
+    //定义一个食物类，有名称，热量等特征
+    //思考如何和人类以及学生类联系起来
+
+    //class语句块外 namespace语句块内
+
+    //声明 食物 类
+    class Food
+    &#123;
+        //成员变量
+        public string name;
+        public int kaLuli;
+
+        //成员方法
+        //吃食物不同参数的成员方法重载
+        public void BeiEat(Person p)
+        &#123;
+            Console.WriteLine(&quot;&#123;0&#125;吃了&#123;1&#125;&quot;, p.name, name);
+        &#125;
+
+        public void BeiEat(Student s)
+        &#123;
+            Console.WriteLine(&quot;&#123;0&#125;吃了&#123;1&#125;&quot;, s.name, name);
+        &#125;
+    &#125;
+
+    #endregion
+
+    class Program
+    &#123;
+        static void Main(string[] args)
+        &#123;
+            Console.WriteLine(&quot;成员方法练习题&quot;);
+
+            #region 练习题三
+
+            //主函数内
+
+            Person p = new Person();
+            p.name = &quot;林文韬&quot;;
+
+            Student s = new Student();
+            s.name = &quot;小火&quot;;
+            
+            Food f = new Food();
+            f.name = &quot;火龙果&quot;;
+
+            p.Eat(f);//林文韬吃了火龙果
+            s.Eat(f);//小火开始吃火龙果
+
+            f.BeiEat(p);//林文韬吃了火龙果
+            f.BeiEat(s);//小火吃了火龙果
+
             #endregion
         &#125;
     &#125;
