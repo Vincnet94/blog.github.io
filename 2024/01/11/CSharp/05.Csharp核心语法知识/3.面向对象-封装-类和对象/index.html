@@ -6,25 +6,22 @@
   <meta name="keywords" content=" CSharp , 语法知识 , CSharp核心 , 面向对象 , 封装 ">
   <meta name="description" content="【C#核心语法知识】| 3.面向对象-封装-类和对象 | 人间自有韬哥在的游戏开发博客">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="6.面向对象-封装-构造函数和析构函数 6.1 知识点构造函数基本概念 在实例化对象时，会调用用于初始化的函数。 如果不写，默认存在一个无参构造函数。  构造函数的写法 没有返回值。 函数名和类名必须相同。 一般为 public，除非有特殊需求。 构造函数可以被重载。 this 代表当前调用该函数的对象自己。  注意： 如果不自己实现无参构造函数而实现了有参构造函数，会失去默认的无参构造。  声明">
+<meta name="description" content="8.面向对象-封装-索引器 8.1 知识点知识回顾class 类名 &#123;     #region 特征——成员变量     #endregion      #region 行为——成员方法     #endregion      #region 初始化调用——构造方法     #endregion      #region 释放时调用——析构方法     #endregion      #">
 <meta property="og:type" content="article">
-<meta property="og:title" content="【C#核心语法知识】| 6.面向对象-封装-构造函数和析构函数">
-<meta property="og:url" content="https://linwentao785293209.github.io/2024/01/12/CSharp/05.Csharp%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/6.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E5%B0%81%E8%A3%85-%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E5%92%8C%E6%9E%90%E6%9E%84%E5%87%BD%E6%95%B0/index.html">
+<meta property="og:title" content="【C#核心语法知识】| 8.面向对象-封装-索引器">
+<meta property="og:url" content="https://linwentao785293209.github.io/2024/01/13/CSharp/05.Csharp%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/8.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E5%B0%81%E8%A3%85-%E7%B4%A2%E5%BC%95%E5%99%A8/index.html">
 <meta property="og:site_name" content="人间自有韬哥在的游戏开发博客">
-<meta property="og:description" content="6.面向对象-封装-构造函数和析构函数 6.1 知识点构造函数基本概念 在实例化对象时，会调用用于初始化的函数。 如果不写，默认存在一个无参构造函数。  构造函数的写法 没有返回值。 函数名和类名必须相同。 一般为 public，除非有特殊需求。 构造函数可以被重载。 this 代表当前调用该函数的对象自己。  注意： 如果不自己实现无参构造函数而实现了有参构造函数，会失去默认的无参构造。  声明">
+<meta property="og:description" content="8.面向对象-封装-索引器 8.1 知识点知识回顾class 类名 &#123;     #region 特征——成员变量     #endregion      #region 行为——成员方法     #endregion      #region 初始化调用——构造方法     #endregion      #region 释放时调用——析构方法     #endregion      #">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/CSharp/05.Csharp%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/6.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E5%B0%81%E8%A3%85-%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E5%92%8C%E6%9E%90%E6%9E%84%E5%87%BD%E6%95%B0/1.png">
-<meta property="article:published_time" content="2024-01-12T12:01:14.000Z">
-<meta property="article:modified_time" content="2024-01-12T12:14:29.680Z">
+<meta property="article:published_time" content="2024-01-13T03:49:14.000Z">
+<meta property="article:modified_time" content="2024-01-13T04:05:06.181Z">
 <meta property="article:author" content="人间自有韬哥在">
 <meta property="article:tag" content="CSharp">
 <meta property="article:tag" content="语法知识">
 <meta property="article:tag" content="CSharp核心">
 <meta property="article:tag" content="面向对象">
 <meta property="article:tag" content="封装">
-<meta property="article:tag" content="垃圾回收">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://linwentao785293209.github.io/images/CSharp/05.Csharp%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/6.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E5%B0%81%E8%A3%85-%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E5%92%8C%E6%9E%90%E6%9E%84%E5%87%BD%E6%95%B0/1.png">
 
 
 <link rel="icon" href="/img/avatar.jpg">
@@ -151,7 +148,7 @@
     <li>
         <div class="all active" data-rel="全部文章">全部文章
             
-                <small>(74)</small>
+                <small>(76)</small>
             
         </div>
     </li>
@@ -163,7 +160,7 @@
         <div data-rel="CSharp">
             <i class="fold iconfont icon-right"></i>
             CSharp
-            <small>(74)</small>
+            <small>(76)</small>
         </div>
         
             <ul class="sub hide">
@@ -217,7 +214,7 @@
         <div data-rel="CSharp&lt;---&gt;CSharp核心语法知识">
             
             CSharp核心语法知识
-            <small>(6)</small>
+            <small>(8)</small>
         </div>
         
     </li>
@@ -265,7 +262,7 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="74">
+<input type="hidden" id="yelog_site_posts_number" value="76">
 
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
@@ -393,6 +390,24 @@
 
     
     <nav id="title-list-nav">
+        
+        
+        <a  class="全部文章 CSharp CSharp核心语法知识 "
+           href="/2024/01/13/CSharp/05.Csharp%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/8.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E5%B0%81%E8%A3%85-%E7%B4%A2%E5%BC%95%E5%99%A8/"
+           data-tag="CSharp,语法知识,CSharp核心,面向对象,封装"
+           data-author="" >
+            <span class="post-title" title="【C#核心语法知识】| 8.面向对象-封装-索引器">【C#核心语法知识】| 8.面向对象-封装-索引器</span>
+            <span class="post-date" title="2024-01-13 11:49:14">2024/01/13</span>
+        </a>
+        
+        
+        <a  class="全部文章 CSharp CSharp核心语法知识 "
+           href="/2024/01/13/CSharp/05.Csharp%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/7.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E5%B0%81%E8%A3%85-%E6%88%90%E5%91%98%E5%B1%9E%E6%80%A7/"
+           data-tag="CSharp,语法知识,CSharp核心,面向对象,封装"
+           data-author="" >
+            <span class="post-title" title="【C#核心语法知识】| 7.面向对象-封装-成员属性">【C#核心语法知识】| 7.面向对象-封装-成员属性</span>
+            <span class="post-date" title="2024-01-13 11:39:00">2024/01/13</span>
+        </a>
         
         
         <a  class="全部文章 CSharp CSharp核心语法知识 "
