@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>【C#核心语法知识】| 10.面向对象-封装-静态类和静态构造函数 | 人间自有韬哥在的游戏开发博客</title>
+  <title>【C#核心语法知识】| 12.面向对象-封装-运算符重载 | 人间自有韬哥在的游戏开发博客</title>
   <meta name="keywords" content=" CSharp , 语法知识 , CSharp核心 , 面向对象 , 封装 ">
-  <meta name="description" content="【C#核心语法知识】| 10.面向对象-封装-静态类和静态构造函数 | 人间自有韬哥在的游戏开发博客">
+  <meta name="description" content="【C#核心语法知识】| 12.面向对象-封装-运算符重载 | 人间自有韬哥在的游戏开发博客">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="12.面向对象-封装-运算符重载 12.1 知识点运算符重载的基本概念概念：让自定义类和结构体能够使用运算符  使用关键字: operator   特点：  一定是一个公共的静态方法 返回值写在 operator 前 逻辑处理自定义  作用：让自定义类和结构体对象可以进行运算  注意：  条件运算符需要成对实现 一个符号可以多个重载 不能使用 ref 和 out  运算符重载的基本语法public">
 <meta property="og:type" content="article">
@@ -1129,9 +1129,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-CSharp/05.Csharp核心语法知识/10.面向对象-封装-静态类和静态构造函数" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-CSharp/05.Csharp核心语法知识/12.面向对象-封装-运算符重载" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">【C#核心语法知识】| 10.面向对象-封装-静态类和静态构造函数</h1>
+        <h1 class="article-title">【C#核心语法知识】| 12.面向对象-封装-运算符重载</h1>
     
     <div class="article-meta">
         
@@ -1166,7 +1166,7 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2024-01-15 22:40:31'>2024-01-14 22:04</time>
+            发布时间 : <time class="date" title='最后更新: 2024-01-16 00:12:45'>2024-01-15 23:38</time>
         
     </div>
     <div class="article-meta">
@@ -1188,7 +1188,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#10-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E5%B0%81%E8%A3%85-%E9%9D%99%E6%80%81%E7%B1%BB%E5%92%8C%E9%9D%99%E6%80%81%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0"><span class="toc-text">10.面向对象-封装-静态类和静态构造函数</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#10-1-%E7%9F%A5%E8%AF%86%E7%82%B9"><span class="toc-text">10.1 知识点</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9F%A5%E8%AF%86%E5%9B%9E%E9%A1%BE"><span class="toc-text">知识回顾</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9D%99%E6%80%81%E7%B1%BB"><span class="toc-text">静态类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9D%99%E6%80%81%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0"><span class="toc-text">静态构造函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-text">总结</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10-2-%E7%9F%A5%E8%AF%86%E7%82%B9%E4%BB%A3%E7%A0%81"><span class="toc-text">10.2 知识点代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10-3-%E7%BB%83%E4%B9%A0%E9%A2%98"><span class="toc-text">10.3 练习题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%99%E4%B8%80%E4%B8%AA%E7%94%A8%E4%BA%8E%E6%95%B0%E5%AD%A6%E8%AE%A1%E7%AE%97%E7%9A%84%E9%9D%99%E6%80%81%E7%B1%BB-%E8%AF%A5%E7%B1%BB%E4%B8%AD%E6%8F%90%E4%BE%9B%E8%AE%A1%E7%AE%97%E5%9C%86%E9%9D%A2%E7%A7%AF%EF%BC%8C%E5%9C%86%E5%91%A8%E9%95%BF%EF%BC%8C%E7%9F%A9%E5%BD%A2%E9%9D%A2%E7%A7%AF%EF%BC%8C%E7%9F%A9%E5%BD%A2%E5%91%A8%E9%95%BF%EF%BC%8C%E5%8F%96%E4%B8%80%E4%B8%AA%E6%95%B0%E7%9A%84%E7%BB%9D%E5%AF%B9%E5%80%BC%E7%AD%89%E6%96%B9%E6%B3%95"><span class="toc-text">写一个用于数学计算的静态类,该类中提供计算圆面积，圆周长，矩形面积，矩形周长，取一个数的绝对值等方法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10-4-%E7%BB%83%E4%B9%A0%E9%A2%98%E4%BB%A3%E7%A0%81"><span class="toc-text">10.4 练习题代码</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#12-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E5%B0%81%E8%A3%85-%E8%BF%90%E7%AE%97%E7%AC%A6%E9%87%8D%E8%BD%BD"><span class="toc-text">12.面向对象-封装-运算符重载</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#12-1-%E7%9F%A5%E8%AF%86%E7%82%B9"><span class="toc-text">12.1 知识点</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%90%E7%AE%97%E7%AC%A6%E9%87%8D%E8%BD%BD%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="toc-text">运算符重载的基本概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%90%E7%AE%97%E7%AC%A6%E9%87%8D%E8%BD%BD%E7%9A%84%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95"><span class="toc-text">运算符重载的基本语法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%90%E7%AE%97%E7%AC%A6%E9%87%8D%E8%BD%BD%E7%9A%84%E5%AE%9E%E4%BE%8B"><span class="toc-text">运算符重载的实例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%90%E7%AE%97%E7%AC%A6%E9%87%8D%E8%BD%BD%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-text">运算符重载的使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%AF%E9%87%8D%E8%BD%BD%E5%92%8C%E4%B8%8D%E5%8F%AF%E9%87%8D%E8%BD%BD%E7%9A%84%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-text">可重载和不可重载的运算符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-text">总结</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#12-2-%E7%9F%A5%E8%AF%86%E7%82%B9%E4%BB%A3%E7%A0%81"><span class="toc-text">12.2 知识点代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#12-3-%E7%BB%83%E4%B9%A0%E9%A2%98"><span class="toc-text">12.3 练习题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89%E4%B8%80%E4%B8%AA%E4%BD%8D%E7%BD%AE%E7%BB%93%E6%9E%84%E4%BD%93%EF%BC%8C%E9%87%8D%E8%BD%BD%E5%88%A4%E6%96%AD%E6%98%AF%E5%90%A6%E7%9B%B8%E7%AD%89%E7%9A%84%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-text">定义一个位置结构体，重载判断是否相等的运算符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89%E4%B8%80%E4%B8%AAVector3%E7%B1%BB%EF%BC%8C%E9%80%9A%E8%BF%87%E9%87%8D%E8%BD%BD%E8%BF%90%E7%AE%97%E7%AC%A6%E5%AE%9E%E7%8E%B0%E8%BF%90%E7%AE%97"><span class="toc-text">定义一个Vector3类，通过重载运算符实现运算</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#12-4-%E7%BB%83%E4%B9%A0%E9%A2%98%E4%BB%A3%E7%A0%81"><span class="toc-text">12.4 练习题代码</span></a></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -1204,322 +1204,365 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="10-面向对象-封装-静态类和静态构造函数"><a href="#10-面向对象-封装-静态类和静态构造函数" class="headerlink" title="10.面向对象-封装-静态类和静态构造函数"></a>10.面向对象-封装-静态类和静态构造函数</h1><hr>
-<h2 id="10-1-知识点"><a href="#10-1-知识点" class="headerlink" title="10.1 知识点"></a>10.1 知识点</h2><h3 id="知识回顾"><a href="#知识回顾" class="headerlink" title="知识回顾"></a>知识回顾</h3><pre><code class="csharp">class Person
-&#123;
-    #region 特征——成员变量
-    #endregion
-    #region 行为——成员方法
-    #endregion
-    #region 初始化调用——构造函数
-    #endregion
-    #region 释放时调用——析构函数
-    #endregion
-    #region 成员属性
-    #endregion
-    #region 索引器
-    #endregion
-    #region 静态成员
-    #endregion
-&#125;
+        <h1 id="12-面向对象-封装-运算符重载"><a href="#12-面向对象-封装-运算符重载" class="headerlink" title="12.面向对象-封装-运算符重载"></a>12.面向对象-封装-运算符重载</h1><hr>
+<h2 id="12-1-知识点"><a href="#12-1-知识点" class="headerlink" title="12.1 知识点"></a>12.1 知识点</h2><h3 id="运算符重载的基本概念"><a href="#运算符重载的基本概念" class="headerlink" title="运算符重载的基本概念"></a>运算符重载的基本概念</h3><p>概念：让自定义类和结构体能够使用运算符 </p>
+<p>使用关键字: <code>operator</code>  </p>
+<p>特点：</p>
+<ul>
+<li>一定是一个公共的静态方法</li>
+<li>返回值写在 <code>operator</code> 前</li>
+<li>逻辑处理自定义</li>
+</ul>
+<p>作用：让自定义类和结构体对象可以进行运算 </p>
+<p>注意：</p>
+<ul>
+<li>条件运算符需要成对实现</li>
+<li>一个符号可以多个重载</li>
+<li>不能使用 <code>ref</code> 和 <code>out</code></li>
+</ul>
+<h3 id="运算符重载的基本语法"><a href="#运算符重载的基本语法" class="headerlink" title="运算符重载的基本语法"></a>运算符重载的基本语法</h3><pre><code class="csharp">public static 返回类型 operator 运算符(参数列表)
 </code></pre>
-<h3 id="静态类"><a href="#静态类" class="headerlink" title="静态类"></a>静态类</h3><ul>
-<li>定义：<ul>
-<li>类语句块外，<code>namespace</code> 语句块内。</li>
-<li>用 <code>static</code> 修饰的类。</li>
-</ul>
-</li>
-<li>特点：<ul>
-<li>只能包含静态成员。</li>
-<li>不能被实例化。</li>
-</ul>
-</li>
-<li>作用：<ul>
-<li>将常用的静态成员写在静态类中，方便使用。</li>
-<li>静态类不能被实例化，更能体现工具类的唯一性。</li>
-</ul>
-</li>
-<li>示例：<pre><code class="csharp">// 静态工具类
-static class Tools
+<h3 id="运算符重载的实例"><a href="#运算符重载的实例" class="headerlink" title="运算符重载的实例"></a>运算符重载的实例</h3><p><strong>class 语句块外 namespace 语句块内</strong></p>
+<pre><code class="csharp">// 点类
+class Point
 &#123;
-    // 静态成员变量
-    public static int testIndex = 0;
+    // x y 坐标
+    public int x;
+    public int y;
 
-    // 静态成员方法
-    public static void TestFun()
+    // 重载加法 两个点相加
+    public static Point operator +(Point p1, Point p2)
     &#123;
-
+        Point p = new Point();
+        p.x = p1.x + p2.x;
+        p.y = p1.y + p2.y;
+        return p;
     &#125;
 
-    // 静态成员属性
-    public static int TestIndex
+    // 重载加法 点和值相加
+    public static Point operator +(Point p1, int value)
     &#123;
-        get;
-        set;
+        Point p = new Point();
+        p.x = p1.x + value;
+        p.y = p1.y + value;
+        return p;
     &#125;
-&#125;
-</code></pre>
-</li>
-<li>主函数内：<pre><code class="csharp">// 无法创建静态类实例
-// Console c = new Console();
-</code></pre>
-</li>
-</ul>
-<h3 id="静态构造函数"><a href="#静态构造函数" class="headerlink" title="静态构造函数"></a>静态构造函数</h3><ul>
-<li>定义：<ul>
-<li>类语句块外，<code>namespace</code> 语句块内。</li>
-<li>在构造函数上加上 <code>static</code> 修饰。</li>
-</ul>
-</li>
-<li>特点：<ul>
-<li>静态类和普通类都可以有静态构造函数。</li>
-<li>不能使用访问修饰符。</li>
-<li>不能有参数。</li>
-<li>只会自动调用一次。</li>
-</ul>
-</li>
-<li>作用：<ul>
-<li>在静态构造函数中初始化静态变量。</li>
-</ul>
-</li>
-<li>使用：<ul>
-<li><strong>静态类中的静态构造函数</strong>：<pre><code class="csharp">static class StaticClass
-&#123;
-    public static int testInt = 100;
-    public static int testInt2 = 100;
 
-    // 不能使用访问修饰符，3P无效
-    static StaticClass()
+    // 重载加法 值和点相加 参数顺序不一样 会影响重载的使用
+    public static Point operator +(int value, Point p1)
     &#123;
-        Console.WriteLine(&quot;静态类中的静态构造&quot;);
-        // 初始化成员变量
-        testInt = 200;
-        testInt2 = 300;
+        Point p = new Point();
+        p.x = p1.x + value;
+        p.y = p1.y + value;
+        return p;
     &#125;
 &#125;
 </code></pre>
-</li>
-<li><strong>普通类中的静态构造函数</strong>：<pre><code class="csharp">class NormalClass
-&#123;
-    public static int testInt = 200;
+<h3 id="运算符重载的使用"><a href="#运算符重载的使用" class="headerlink" title="运算符重载的使用"></a>运算符重载的使用</h3><p><strong>主函数内</strong></p>
+<pre><code class="csharp">Point p1 = new Point();
+p1.x = 1;
+p1.y = 1;
 
-    // 不能使用访问修饰符，3P无效
-    // 静态构造函数
-    static NormalClass()
-    &#123;
-        Console.WriteLine(&quot;普通类中的静态构造&quot;);
-    &#125;
+Point p2 = new Point();
+p2.x = 2;
+p2.y = 2;
 
-    // 成员构造函数
-    public NormalClass()
-    &#123;
-        Console.WriteLine(&quot;普通类中的普通构造&quot;);
-    &#125;
-&#125;
+// 重载加法 两个点相加
+Point p3 = p1 + p2; // p3(3,3)
+
+// 重载了加法 点和值相加
+// public static Point operator +(Point p1, int value)
+Point p4 = p3 + 1; // p4(4,4)
+
+// 重载加法 值和点相加 参数顺序不一样 会影响运算符重载的使用
+// public static Point operator +(int value, Point p1)
+// 必须有这个运算符重载 p5 才不会报错
+Point p5 = 1 + p4; // p5(5,5)
 </code></pre>
-</li>
+<h3 id="可重载和不可重载的运算符"><a href="#可重载和不可重载的运算符" class="headerlink" title="可重载和不可重载的运算符"></a>可重载和不可重载的运算符</h3><p><strong>可重载的运算符</strong></p>
+<ul>
+<li>算数运算符: <code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>, <code>%</code>, <code>++</code>, <code>--</code></li>
+<li>逻辑运算符: <code>!</code></li>
+<li>位运算符: <code>|</code>, <code>&amp;</code>, <code>^</code>, <code>&lt;&lt;</code>, <code>&gt;&gt;</code>, <code>~</code></li>
+<li>条件运算符: <code>&gt;</code>, <code>&lt;</code>, <code>&gt;=</code>, <code>&lt;=</code>, <code>==</code>, <code>!=</code>, <code>true</code>, <code>false</code></li>
 </ul>
-</li>
-<li>主函数内：<pre><code class="csharp">// 使用静态类的成员时，静态构造函数会自动调用一次
-// 会打印出 &quot;静态类中的静态构造&quot;
-Console.WriteLine(StaticClass.testInt); // 200
-Console.WriteLine(StaticClass.testInt2); // 300
-Console.WriteLine(StaticClass.testInt); // 200
-
-// 静态构造函数会自动调用一次
-// 会打印出 &quot;普通类中的静态构造&quot;
-Console.WriteLine(NormalClass.testInt); // 200
-NormalClass t = new NormalClass(); // 普通类中的普通构造
-NormalClass t2 = new NormalClass(); // 普通类中的普通构造
-</code></pre>
-</li>
+<p><strong>不可重载的运算符</strong></p>
+<ul>
+<li>逻辑与(<code>&amp;&amp;</code>)、逻辑或(<code>||</code>)</li>
+<li>索引符 <code>[]</code></li>
+<li>强转运算符 <code>()</code></li>
+<li>特殊运算符，如点<code>.</code>、三目运算符<code>? :</code>、赋值符号<code>=</code></li>
 </ul>
 <h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ul>
-<li><strong>静态类</strong>：<ul>
-<li>用 <code>static</code> 修饰的类。</li>
-<li>特点：<ul>
-<li>只能包含静态成员。</li>
-<li>不能实例化。</li>
-</ul>
-</li>
-<li>作用：<ul>
-<li>工具类。</li>
-<li>拓展方法。</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><strong>静态构造函数</strong>：<ul>
-<li>用 <code>static</code> 修饰的构造函数。</li>
-<li>特点：<ul>
-<li>静态类和普通类都可以有。</li>
-<li>不能使用访问修饰符。</li>
-<li>不能有参数。</li>
-<li>只会自动调用一次。</li>
-</ul>
-</li>
-<li>作用：<ul>
-<li>初始化静态成员。</li>
-</ul>
-</li>
+<li>关键词: <code>operator</code></li>
+<li>固定语法：<code>public static 返回值 operator 运算符(参数列表)</code></li>
+<li>作用：让自己定义类或结构体对象进行运算</li>
+<li>注意：<ul>
+<li>参数的数量</li>
+<li>条件运算符的配对实现</li>
+<li>一个符号可以多个重载</li>
+<li>不能用 <code>ref</code> 和 <code>out</code></li>
 </ul>
 </li>
 </ul>
 <hr>
-<h2 id="10-2-知识点代码"><a href="#10-2-知识点代码" class="headerlink" title="10.2 知识点代码"></a>10.2 知识点代码</h2><pre><code class="csharp">using System;
+<h2 id="12-2-知识点代码"><a href="#12-2-知识点代码" class="headerlink" title="12.2 知识点代码"></a>12.2 知识点代码</h2><pre><code class="csharp">using System;
 
-namespace Lesson8_封装_静态类和静态构造函数
+namespace Lesson10_封装_运算符重载
 &#123;
-    #region 知识回顾
-    class Person
-    &#123;
-        #region 特征——成员变量
+    #region 知识点一 运算符重载的基本概念
+    //概念
+    //让自定义类和结构体 能够使用运算符
 
-        #endregion
+    //使用关键字:operator
 
-        #region 行为——成员方法
+    //特点
+    //1.一定是一个公共的静态方法
+    //2.返回值写在operator前
+    //3.逻辑处理自定义
 
-        #endregion
+    //作用
+    //让自定义类和结构体对象可以进行运算
+    //注意
+    //1.条件运算符需要成对实现
+    //2.一个符号可以多个重载
+    //3.不能使用ref和out
+    #endregion
 
-        #region 初始化调用——构造函数
-
-        #endregion
-
-        #region 释放时调用——析构函数
-
-        #endregion
-
-        #region 成员属性
-
-        #endregion
-
-        #region 索引器
-
-        #endregion
-
-        #region 静态成员
-
-        #endregion
-    &#125;
+    #region 知识点二 运算符重载的基本语法
+    //public static 返回类型 operator 运算符(参数列表)
     #endregion
 
     //class语句块外 namespace语句块内
 
-    #region 知识点一 静态类
+    #region 知识点三  运算符重载的实例
 
-    //概念
-    //用static修饰的类
-
-    //特点
-    //只能包含静态成员
-    //不能被实例化
-
-    //作用
-    //1.将常用的静态成员写在静态类中 方便使用
-    //2.静态类不能被实例化，更能体现工具类的 唯一性
-    //比如 Console就是一个静态类
-
-    //示例
-    //静态 工具 类
-    static class Tools
+    //点类
+    class Point
     &#123;
-        //静态成员变量
-        public static int testIndex = 0;
+        //x y 坐标
+        public int x;
+        public int y;
 
-        //静态成员方法
-        public static void TestFun()
+        //重载加法 两个点相加
+        public static Point operator +(Point p1, Point p2)
         &#123;
-
+            Point p = new Point();
+            p.x = p1.x + p2.x;
+            p.y = p1.y + p2.y;
+            return p;
         &#125;
 
-        //静态成员属性
-        public static int TestIndex
+        //报错 二元运算符的参数之一必须是包含类型
+        //public static Point operator +(int p1, int p2)
+        //&#123;
+        //    Point p = new Point();
+        //    return p;
+        //&#125;
+
+        //重载加法 点和值相加
+        public static Point operator +(Point p1, int value)
         &#123;
-            get;
-            set;
+            Point p = new Point();
+            p.x = p1.x + value;
+            p.y = p1.y + value;
+            return p;
         &#125;
+
+        //重载加法 值和点相加 参数顺序不一样 会影响重载的使用
+        public static Point operator +(int value, Point p1)
+        &#123;
+            Point p = new Point();
+            p.x = p1.x + value;
+            p.y = p1.y + value;
+            return p;
+        &#125;
+
+        //报错 二元运算符的定义必须有两个参数。
+        //public static Point operator +(Point p1, Point p2,Point p3)
+        //&#123;
+        //    Point p = new Point();
+        //    return p;
+        //&#125;
+
+
+        #region 知识点五 可重载和不可重载的运算符
+
+        #region 可重载的运算符
+
+        #region 算数运算符
+
+        //注意 符号需要两个参数还是一个参数
+        //两个参数 - * / %
+        //一个参数 ++ --
+
+        public static Point operator -(Point p1, Point P2)
+        &#123;
+            return null;
+        &#125;
+        public static Point operator *(Point p1, Point P2)
+        &#123;
+            return null;
+        &#125;
+        public static Point operator /(Point p1, Point P2)
+        &#123;
+            return null;
+        &#125;
+        public static Point operator %(Point p1, Point P2)
+        &#123;
+            return null;
+        &#125;
+
+        public static Point operator ++(Point p1)
+        &#123;
+            return null;
+        &#125;
+        public static Point operator --(Point p1)
+        &#123;
+            return null;
+        &#125;
+        #endregion
+
+        #region 逻辑运算符
+
+        //注意 符号需要两个参数还是一个参数
+        //逻辑运算符只有 ! 可重载
+        public static bool operator !(Point p1)
+        &#123;
+            return false;
+        &#125;
+
+        #endregion
+
+        #region 位运算符
+
+        //注意 符号需要两个参数还是一个参数
+        //两个参数 | &amp; ^ &lt;&lt; &gt;&gt;
+        //一个参数 ~ 
+        public static Point operator |(Point p1, Point p2)
+        &#123;
+            return null;
+        &#125;
+        public static Point operator &amp;(Point p1, Point p2)
+        &#123;
+            return null;
+        &#125;
+        public static Point operator ^(Point p1, Point p2)
+        &#123;
+            return null;
+        &#125;
+        public static Point operator &lt;&lt;(Point p1, int num)
+        &#123;
+            return null;
+        &#125;
+        public static Point operator &gt;&gt;(Point p1, int num)
+        &#123;
+            return null;
+        &#125;
+        public static Point operator ~(Point p1)
+        &#123;
+            return null;
+        &#125;
+
+        #endregion
+
+        #region 条件运算符
+        //1.返回值一般是bool值 也可以是其它的
+        //2.相关符号必须配对实现
+
+        //假如重载了大于 没有重载小于 会报错 其他同理
+        //运算符“operator”还需要定义一个匹配的运算符“missing_operator”
+        //用户定义的==运算符需要用户定义的!=运算符，反之亦然。
+        //这同样适用于用户定义的真运算符和用户定义的假运算符。
+
+        //两个参数 &gt; &lt; &gt;= &lt;= == !=
+        //一个参数 true false
+
+        public static bool operator &gt;(Point p1, Point p2)
+        &#123;
+            return false;
+        &#125;
+
+        public static bool operator &lt;(Point p1, Point p2)
+        &#123;
+            return false;
+        &#125;
+
+        public static bool operator &gt;=(Point p1, Point p2)
+        &#123;
+            return false;
+        &#125;
+        public static bool operator &lt;=(Point p1, Point p2)
+        &#123;
+            return false;
+        &#125;
+        public static bool operator ==(Point p1, Point p2)
+        &#123;
+            return false;
+        &#125;
+        public static bool operator !=(Point p1, Point p2)
+        &#123;
+            return false;
+        &#125;
+        public static bool operator true(Point p1)
+        &#123;
+            return false;
+        &#125;
+        public static bool operator false(Point p1)
+        &#123;
+            return false;
+        &#125;
+        #endregion
+
+        #endregion
+
+        #region 不可重载的运算符
+
+        //逻辑与(&amp;&amp;) 逻辑或(||)
+        //索引符 []
+        //强转运算符 ()
+        //特殊运算符 
+        //点.   三目运算符? :  赋值符号=
+
+        #endregion
+
+        #endregion
     &#125;
-
     #endregion
 
-    #region 知识点二 静态构造函数
-    //概念
-    // 在构造函数加上 static 修饰
 
-    //特点
-    //1.静态类和普通类都可以有
-    //2.不能使用访问修饰符
-    //3.不能有参数  
-    //4.只会自动调用一次  
 
-    //作用
-    //在静态构造函数中初始化 静态变量
 
-    //使用
-    //1.静态类中的静态构造函数
-    static class StaticClass
-    &#123;
-        public static int testInt = 100;
-        public static int testInt2 = 100;
-
-        //不能使用访问修饰符 3P无效
-        static StaticClass()
-        &#123;
-            Console.WriteLine(&quot;静态类中的静态构造&quot;);
-            //初始化成员变量
-            testInt = 200;
-            testInt2 = 300;
-        &#125;
-    &#125;
-
-    //2.普通类中的静态构造函数
-    class NormalClass
-    &#123;
-        public static int testInt = 200;
-
-        //不能使用访问修饰符 3P无效
-        //静态构造函数
-        static NormalClass()
-        &#123;
-            Console.WriteLine(&quot;普通类中的静态构造&quot;);
-        &#125;
-
-        //成员构造函数
-        public NormalClass()
-        &#123;
-            Console.WriteLine(&quot;普通类中的普通构造&quot;);
-        &#125;
-    &#125;
-    #endregion
     class Program
     &#123;
         static void Main(string[] args)
         &#123;
-            Console.WriteLine(&quot;静态类和静态构造函数!&quot;);
+            Console.WriteLine(&quot;运算符重载&quot;);
 
-            //主函数内
+            //主函数
 
-            #region 知识点一 静态类
+            #region 知识点四  运算符重载的使用
 
-            //Console c = new Console();
-            //报错 无法创建静态类实例
+            Point p1 = new Point();
+            p1.x = 1;
+            p1.y = 1;
 
-            #endregion
+            Point p2 = new Point();
+            p2.x = 2;
+            p2.y = 2;
 
-            #region 知识点二 静态构造函数
+            //重载加法 两个点相加
+            Point p3 = p1 + p2;//p3(3,3)
 
+            //重载了加法 点和值相加
+            //public static Point operator +(Point p1, int value)
+            Point p4 = p3 + 1;//p4(4,4)
 
-            //使用静态类的成员时 静态构造函数 会 自动调用一次  
-            //会打印出 静态类中的静态构造
-            Console.WriteLine(StaticClass.testInt);//200
-            Console.WriteLine(StaticClass.testInt2);//300
-            Console.WriteLine(StaticClass.testInt);//200
+            //重载加法 值和点相加 参数顺序不一样 会影响运算符重载的使用
+            //public static Point operator +(int value, Point p1)
+            //必须有这个运算符重载 p5才不会报错
+            Point p5 = 1 + p4;//p5(5,5)
 
-            //静态构造函数 会 自动调用一次 
-            //会打印出 普通类中的静态构造
-            Console.WriteLine(NormalClass.testInt);//200
-            NormalClass t = new NormalClass();//普通类中的普通构造
-            NormalClass t2 = new NormalClass();//普通类中的普通构造
 
             #endregion
         &#125;
@@ -1527,186 +1570,231 @@ namespace Lesson8_封装_静态类和静态构造函数
 
     //总结
 
-    //静态类
-    //用static 修饰的类
-    //特点
-    //只能包含静态成员
-    //不能实例化
-    //作用
-    //工具类
-    //拓展方法
-
-    //静态构造函数
-    //用static修饰的构造函数
-    //特点
-    //静态类和普通类都可以有静态构造函数
-    //不能使用访问修饰符
-    //不能有参数
-    //只会自动调用一次
-    //作用
-    //初始化静态成员
+    //关键词:operator
+    //固定语法：public static 返回值 operator 运算符(参数列表)
+    //作用：让自己定义类或结构体对象 进行运算
+    //注意：
+    //1.参数的数量
+    //2.条件运算符的配对实现
+    //3.一个符号可以多个重载
+    //4.不能用ref和out
 &#125;
 </code></pre>
 <hr>
-<h2 id="10-3-练习题"><a href="#10-3-练习题" class="headerlink" title="10.3 练习题"></a>10.3 练习题</h2><h3 id="写一个用于数学计算的静态类-该类中提供计算圆面积，圆周长，矩形面积，矩形周长，取一个数的绝对值等方法"><a href="#写一个用于数学计算的静态类-该类中提供计算圆面积，圆周长，矩形面积，矩形周长，取一个数的绝对值等方法" class="headerlink" title="写一个用于数学计算的静态类,该类中提供计算圆面积，圆周长，矩形面积，矩形周长，取一个数的绝对值等方法"></a>写一个用于数学计算的静态类,该类中提供计算圆面积，圆周长，矩形面积，矩形周长，取一个数的绝对值等方法</h3><p><strong>class语句块外 namespace语句块内</strong></p>
-<pre><code class="csharp">// class语句块外 namespace语句块内
-// 数学工具类
-static class MathTool
+<h2 id="12-3-练习题"><a href="#12-3-练习题" class="headerlink" title="12.3 练习题"></a>12.3 练习题</h2><h3 id="定义一个位置结构体，重载判断是否相等的运算符"><a href="#定义一个位置结构体，重载判断是否相等的运算符" class="headerlink" title="定义一个位置结构体，重载判断是否相等的运算符"></a>定义一个位置结构体，重载判断是否相等的运算符</h3><p>(x1,y1) &#x3D;&#x3D; (x2,y2)   &#x3D;&gt;  两个值同时相等才为true</p>
+<p><strong>class语句块外 namespace语句块内</strong></p>
+<pre><code class="csharp">//位置结构体 运算符重载也可以用到结构体中 和类一模一样
+struct Position
 &#123;
-    // 静态成员变量 π
-    public static float PI = 3.14f;
+    public int x;
+    public int y;
 
-    /// &lt;summary&gt;
-    /// 计算圆的面积
-    /// &lt;/summary&gt;
-    /// &lt;param name=&quot;r&quot;&gt;半径&lt;/param&gt;
-    /// &lt;returns&gt;面积&lt;/returns&gt;
-    public static float CalcCircularArea(float r)
+    //重载了==
+    public static bool operator ==(Position p1, Position p2)
     &#123;
-        return PI * r * r;
+        return p1.x == p2.x &amp;&amp; p1.y == p2.y;
     &#125;
 
-    /// &lt;summary&gt;
-    /// 计算圆的周长
-    /// &lt;/summary&gt;
-    /// &lt;param name=&quot;r&quot;&gt;半径&lt;/param&gt;
-    /// &lt;returns&gt;周长&lt;/returns&gt;
-    public static float CalcCircularLength(float r)
+    //因为重载了== 所以必须要重载!=
+    public static bool operator !=(Position p1, Position p2)
     &#123;
-        return 2 * PI * r;
-    &#125;
-
-    /// &lt;summary&gt;
-    /// 计算矩形的面积
-    /// &lt;/summary&gt;
-    /// &lt;param name=&quot;w&quot;&gt;宽&lt;/param&gt;
-    /// &lt;param name=&quot;h&quot;&gt;高&lt;/param&gt;
-    /// &lt;returns&gt;面积&lt;/returns&gt;
-    public static float CalcRectArea(float w, float h)
-    &#123;
-        return w * h;
-    &#125;
-
-    /// &lt;summary&gt;
-    /// 计算矩形的周长
-    /// &lt;/summary&gt;
-    /// &lt;param name=&quot;w&quot;&gt;宽&lt;/param&gt;
-    /// &lt;param name=&quot;h&quot;&gt;高&lt;/param&gt;
-    /// &lt;returns&gt;周长&lt;/returns&gt;
-    public static float CalcRectLength(float w, float h)
-    &#123;
-        return 2 * w + 2 * h;
-    &#125;
-
-    /// &lt;summary&gt;
-    /// 计算绝对值
-    /// &lt;/summary&gt;
-    /// &lt;param name=&quot;value&quot;&gt;去绝对值的变量&lt;/param&gt;
-    /// &lt;returns&gt;去绝对值后的值&lt;/returns&gt;
-    public static float GetABS(float value)
-    &#123;
-        if (value &lt; 0)
-        &#123;
-            return -value;
-        &#125;
-        return value;
+        return !(p1 == p2);
     &#125;
 &#125;
 </code></pre>
 <p><strong>主函数内</strong></p>
 <pre><code class="csharp">// 主函数内
-Console.WriteLine(MathTool.GetABS(-7));//7
-Console.WriteLine(MathTool.CalcCircularArea(2));//12.56
-Console.WriteLine(MathTool.CalcCircularLength(3));//18.84
-Console.WriteLine(MathTool.CalcRectArea(2, 3));//6
-Console.WriteLine(MathTool.CalcRectLength(2, 3));//10
+Position p1;
+p1.x = 1;
+p1.y = 1;
+
+Position p2;
+p2.x = 2;
+p2.y = 1;
+
+Position p3;
+p3.x = 1;
+p3.y = 1;
+
+if (p1 != p2)
+&#123;
+    Console.WriteLine(&quot;p1和p2不相等&quot;);//p1和p2不相等
+&#125;
+
+if (p1 == p3)
+&#123;
+    Console.WriteLine(&quot;p1和p3相等&quot;);//p1和p3相等
+&#125;
+</code></pre>
+<h3 id="定义一个Vector3类，通过重载运算符实现运算"><a href="#定义一个Vector3类，通过重载运算符实现运算" class="headerlink" title="定义一个Vector3类，通过重载运算符实现运算"></a>定义一个Vector3类，通过重载运算符实现运算</h3><p>(x1,y1,z1) + (x2,y2,z2) &#x3D; (x1+x2,y1+y2,z1+z2)<br>(x1,y1,z1) - (x2,y2,z2) &#x3D; (x1-x2,y1-y2,z1-z2)<br>(x1,y1,z1) * num &#x3D; (x1<em>num,y1</em>num,z1*num)</p>
+<p><strong>class语句块外 namespace语句块内</strong></p>
+<pre><code class="csharp">//三维向量类
+class Vector3
+&#123;
+    public int x;
+    public int y;
+    public int z;
+
+    public Vector3(int x, int y, int z)
+    &#123;
+        this.x = x;
+        this.y = y;
+        this.z = z;
+    &#125;
+
+    public static Vector3 operator +(Vector3 v1, Vector3 v2)
+    &#123;
+        return new Vector3(v1.x + v2.x, v1.y + v2.y, v1.z + v2.z);
+    &#125;
+
+    public static Vector3 operator -(Vector3 v1, Vector3 v2)
+    &#123;
+        return new Vector3(v1.x - v2.x, v1.y - v2.y, v1.z - v2.z);
+    &#125;
+
+    public static Vector3 operator *(Vector3 v1, int num)
+    &#123;
+        return new Vector3(v1.x * num, v1.y * num, v1.z * num);
+    &#125;
+&#125;
+</code></pre>
+<p><strong>主函数内</strong></p>
+<pre><code class="csharp">// 主函数内
+Vector3 v1 = new Vector3(1, 1, 1);
+Vector3 v2 = new Vector3(2, 2, 2);
+
+Vector3 v3 = v1 - v2;
+Console.WriteLine(&quot;v3 = v1 - v2，v3的坐标是:&#123;0&#125;|&#123;1&#125;|&#123;2&#125;&quot;, v3.x, v3.y, v3.z);
+//v3 = v1 - v2，v3的坐标是:-1|-1|-1
+
+v3 = v3 * 10;
+//v3 *= 10;//这样写也行
+Console.WriteLine(&quot;v3 *= 10，v3的坐标是:&#123;0&#125;|&#123;1&#125;|&#123;2&#125;&quot;, v3.x, v3.y, v3.z);
+//v3 *= 10，v3的坐标是:-10|-10|-10
 </code></pre>
 <hr>
-<h2 id="10-4-练习题代码"><a href="#10-4-练习题代码" class="headerlink" title="10.4 练习题代码"></a>10.4 练习题代码</h2><pre><code class="csharp">using System;
+<h2 id="12-4-练习题代码"><a href="#12-4-练习题代码" class="headerlink" title="12.4 练习题代码"></a>12.4 练习题代码</h2><pre><code class="csharp">using System;
 
-namespace Lesson8_练习题
+namespace Lesson10_练习题
 &#123;
-    #region 练习题一
-    //写一个用于数学计算的静态类
-    //该类中提供计算圆面积，圆周长，矩形面积，矩形周长，取一个数的绝对值 等方法
-
     //class语句块外 namespace语句块内
 
-    //数学工具类
-    static class MathTool
+    #region 练习题一
+    //定义一个位置结构体或类，为其重载判断是否相等的运算符
+    //(x1, y1) == (x2, y2)   =&gt;  两个值同时相等才为true
+
+    //位置结构体 运算符重载也可以用到结构体中 和类一模一样
+    struct Position
     &#123;
-        //静态成员变量 π
-        public static float PI = 3.14f;
+        public int x;
+        public int y;
 
-        /// &lt;summary&gt;
-        /// 计算圆的面积
-        /// &lt;/summary&gt;
-        /// &lt;param name=&quot;r&quot;&gt;半径&lt;/param&gt;
-        /// &lt;returns&gt;面积&lt;/returns&gt;
-        public static float CalcCircularArea(float r)
+        //重载了==
+        public static bool operator ==(Position p1, Position p2)
         &#123;
-            return PI * r * r;
-        &#125;
-
-        /// &lt;summary&gt;
-        /// 计算圆的周长
-        /// &lt;/summary&gt;
-        /// &lt;param name=&quot;r&quot;&gt;半径&lt;/param&gt;
-        /// &lt;returns&gt;周长&lt;/returns&gt;
-        public static float CalcCircularLength(float r)
-        &#123;
-            return 2 * PI * r;
-        &#125;
-
-        /// &lt;summary&gt;
-        /// 计算矩形的面积
-        /// &lt;/summary&gt;
-        /// &lt;param name=&quot;w&quot;&gt;宽&lt;/param&gt;
-        /// &lt;param name=&quot;h&quot;&gt;高&lt;/param&gt;
-        /// &lt;returns&gt;面积&lt;/returns&gt;
-        public static float CalcRectArea(float w, float h)
-        &#123;
-            return w * h;
-        &#125;
-
-        /// &lt;summary&gt;
-        /// 计算矩形的周长
-        /// &lt;/summary&gt;
-        /// &lt;param name=&quot;w&quot;&gt;宽&lt;/param&gt;
-        /// &lt;param name=&quot;h&quot;&gt;高&lt;/param&gt;
-        /// &lt;returns&gt;周长&lt;/returns&gt;
-        public static float CalcRectLength(float w, float h)
-        &#123;
-            return 2 * w + 2 * h;
-        &#125;
-
-        /// &lt;summary&gt;
-        /// 计算绝对值
-        /// &lt;/summary&gt;
-        /// &lt;param name=&quot;value&quot;&gt;去绝对值的变量&lt;/param&gt;
-        /// &lt;returns&gt;去绝对值后的值&lt;/returns&gt;
-        public static float GetABS(float value)
-        &#123;
-            if( value &lt; 0 )
+            if (p1.x == p2.x &amp;&amp; p1.y == p2.y)
             &#123;
-                return -value;
+                return true;
             &#125;
-            return value;
+            return false;
+        &#125;
+
+        //因为重载了== 所以必须要重载!=
+        public static bool operator !=(Position p1, Position p2)
+        &#123;
+            if (p1.x == p2.x &amp;&amp; p1.y == p2.y)
+            &#123;
+                return false;
+            &#125;
+            return true;
+        &#125;
+    &#125;
+
+    #endregion
+
+    #region 练习题二
+    //定义一个Vector3类（x,y,z）通过重载运算符实现以下运算
+    //(x1, y1, z1) + (x2, y2, z2) = (x1+x2,y1+y2,z1+z2)
+    //(x1, y1, z1) - (x2, y2, z2) = (x1-x2,y1-y2,z1-z2)
+    //(x1, y1, z1) * num = (x1 * num, y1 * num, z1 * num)
+
+    //三维向量类
+    class Vector3
+    &#123;
+        public int x;
+        public int y;
+        public int z;
+        public Vector3(int x, int y, int z)
+        &#123;
+            this.x = x;
+            this.y = y;
+            this.z = z;
+        &#125;
+
+        public static Vector3 operator +(Vector3 v1, Vector3 v2)
+        &#123;
+            return new Vector3(v1.x + v2.x, v1.y + v2.y, v1.z + v2.z);
+        &#125;
+        public static Vector3 operator -(Vector3 v1, Vector3 v2)
+        &#123;
+            return new Vector3(v1.x - v2.x, v1.y - v2.y, v1.z - v2.z);
+        &#125;
+
+        public static Vector3 operator *(Vector3 v1, int num)
+        &#123;
+            return new Vector3(v1.x * num, v1.y * num, v1.z * num);
         &#125;
     &#125;
     #endregion
+
     class Program
     &#123;
         static void Main(string[] args)
         &#123;
+            Console.WriteLine(&quot;运算符重载练习题&quot;);
+
             //主函数内
 
             #region 练习题一
-            Console.WriteLine(MathTool.GetABS(-7));//7
-            Console.WriteLine(MathTool.CalcCircularArea(2));//12.56
-            Console.WriteLine(MathTool.CalcCircularLength(3));//18.84
-            Console.WriteLine(MathTool.CalcRectArea(2, 3));//6
-            Console.WriteLine(MathTool.CalcRectLength(2, 3));//10
+
+            Position p1;
+            p1.x = 1;
+            p1.y = 1;
+
+            Position p2;
+            p2.x = 2;
+            p2.y = 1;
+
+            Position p3;
+            p3.x = 1;
+            p3.y = 1;
+
+            if (p1 != p2)
+            &#123;
+                Console.WriteLine(&quot;p1和p2不相等&quot;);//p1和p2不相等
+            &#125;
+
+            if (p1 == p3)
+            &#123;
+                Console.WriteLine(&quot;p1和p3相等&quot;);//p1和p3相等
+            &#125;
+
+            #endregion
+
+            #region 练习题二
+
+            Vector3 v1 = new Vector3(1, 1, 1);
+            Vector3 v2 = new Vector3(2, 2, 2);
+
+            Vector3 v3 = v1 - v2;
+            Console.WriteLine(&quot;v3 = v1 - v2，v3的坐标是:&#123;0&#125;|&#123;1&#125;|&#123;2&#125;&quot;, v3.x, v3.y, v3.z);
+            //v3 = v1 - v2，v3的坐标是:-1|-1|-1
+
+            v3 = v3 * 10;
+            //v3 *= 10;//这样写也行
+            Console.WriteLine(&quot;v3 *= 10，v3的坐标是:&#123;0&#125;|&#123;1&#125;|&#123;2&#125;&quot;, v3.x, v3.y, v3.z);
+            //v3 *= 10，v3的坐标是:-10|-10|-10
+
             #endregion
         &#125;
     &#125;
