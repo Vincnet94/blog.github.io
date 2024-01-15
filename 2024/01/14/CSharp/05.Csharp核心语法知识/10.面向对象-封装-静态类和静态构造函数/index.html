@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>【C#入门语法知识】| 11.类型转换-显式转换 | 人间自有韬哥在的游戏开发博客</title>
-  <meta name="keywords" content=" CSharp , CSharp入门 , 语法知识 , 类型转换 ">
-  <meta name="description" content="【C#入门语法知识】| 11.类型转换-显式转换 | 人间自有韬哥在的游戏开发博客">
+  <title>【C#核心语法知识】| 10.面向对象-封装-静态类和静态构造函数 | 人间自有韬哥在的游戏开发博客</title>
+  <meta name="keywords" content=" CSharp , 语法知识 , CSharp核心 , 面向对象 , 封装 ">
+  <meta name="description" content="【C#核心语法知识】| 10.面向对象-封装-静态类和静态构造函数 | 人间自有韬哥在的游戏开发博客">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="10.面向对象-封装-静态类和静态构造函数 10.1 知识点知识回顾class Person &#123;     #region 特征——成员变量     #endregion     #region 行为——成员方法     #endregion     #region 初始化调用——构造函数     #endregion     #region 释放时调用——析构函数     #endreg">
 <meta property="og:type" content="article">
@@ -1111,9 +1111,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-CSharp/01.CSharp入门语法知识/11.类型转换-显式转换" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-CSharp/05.Csharp核心语法知识/10.面向对象-封装-静态类和静态构造函数" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">【C#入门语法知识】| 11.类型转换-显式转换</h1>
+        <h1 class="article-title">【C#核心语法知识】| 10.面向对象-封装-静态类和静态构造函数</h1>
     
     <div class="article-meta">
         
@@ -1125,7 +1125,7 @@
             
             <a  data-rel="CSharp">CSharp</a> > 
             
-            <a  data-rel="CSharp&lt;---&gt;CSharp入门语法知识">CSharp入门语法知识</a>
+            <a  data-rel="CSharp&lt;---&gt;CSharp核心语法知识">CSharp核心语法知识</a>
             
         </span>
         
@@ -1135,18 +1135,20 @@
             
             <a class="color2">CSharp</a>
             
-            <a class="color4">CSharp入门</a>
-            
             <a class="color5">语法知识</a>
             
-            <a class="color5">类型转换</a>
+            <a class="color4">CSharp核心</a>
+            
+            <a class="color5">面向对象</a>
+            
+            <a class="color3">封装</a>
             
         </span>
         
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2024-01-06 11:28:33'>2024-01-06 10:36</time>
+            发布时间 : <time class="date" title='最后更新: 2024-01-15 22:11:56'>2024-01-14 22:04</time>
         
     </div>
     <div class="article-meta">
@@ -1168,7 +1170,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#11-%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2-%E6%98%BE%E5%BC%8F%E8%BD%AC%E6%8D%A2"><span class="toc-text">11.类型转换-显式转换</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#11-1-%E7%9F%A5%E8%AF%86%E7%82%B9"><span class="toc-text">11.1 知识点</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%98%BE%E7%A4%BA%E8%BD%AC%E6%8D%A2"><span class="toc-text">显示转换</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8B%AC%E5%8F%B7%E5%BC%BA%E8%BD%AC"><span class="toc-text">括号强转</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%8D%E5%90%8C%E7%B1%BB%E5%9E%8B%E7%9A%84%E8%BD%AC%E6%8D%A2"><span class="toc-text">不同类型的转换</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%97%A0%E7%AC%A6%E5%8F%B7%E5%92%8C%E6%9C%89%E7%AC%A6%E5%8F%B7"><span class="toc-text">无符号和有符号</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%B5%AE%E7%82%B9%E5%92%8C%E6%95%B4%E5%BD%A2"><span class="toc-text">浮点和整形</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#char%E5%92%8C%E6%95%B0%E5%80%BC%E7%B1%BB%E5%9E%8B"><span class="toc-text">char和数值类型</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Parse%E6%B3%95"><span class="toc-text">Parse法</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#Parse%E6%B3%95%E7%9A%84%E8%BD%AC%E6%8D%A2%E8%A7%84%E5%88%99"><span class="toc-text">Parse法的转换规则</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Parse%E6%B3%95%E6%8A%8A%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BD%AC%E6%8D%A2%E4%B8%BA%E5%AF%B9%E5%BA%94%E7%9A%84%E7%B1%BB%E5%9E%8B"><span class="toc-text">Parse法把字符串转换为对应的类型</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Convert%E6%B3%95"><span class="toc-text">Convert法</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-text">转字符串</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%9C%89%E7%AC%A6%E5%8F%B7"><span class="toc-text">有符号</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%97%A0%E7%AC%A6%E5%8F%B7"><span class="toc-text">无符号</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%B5%AE%E7%82%B9%E5%9E%8B"><span class="toc-text">浮点型</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%89%B9%E6%AE%8A%E7%B1%BB%E5%9E%8B"><span class="toc-text">特殊类型</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%B6%E5%AE%83%E7%B1%BB%E5%9E%8B%E8%BD%ACstring"><span class="toc-text">其它类型转string</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#11-2-%E7%9F%A5%E8%AF%86%E7%82%B9%E4%BB%A3%E7%A0%81"><span class="toc-text">11.2 知识点代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#11-3-%E7%BB%83%E4%B9%A0%E9%A2%98"><span class="toc-text">11.3 练习题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%98%BE%E7%A4%BA%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E5%BC%8F"><span class="toc-text">显示类型转换的几种方式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E6%8B%AC%E5%8F%B7%E5%BC%BA%E8%BD%AC"><span class="toc-text">1. 括号强转</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-Parse%E6%B3%95"><span class="toc-text">2. Parse法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-Convert%E6%B3%95"><span class="toc-text">3. Convert法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-ToString%E6%B3%95"><span class="toc-text">4. ToString法</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B0%8624069%E8%BD%AC%E6%88%90%E5%AD%97%E7%AC%A6%EF%BC%8C%E5%B9%B6%E6%89%93%E5%8D%B0"><span class="toc-text">将24069转成字符，并打印</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8F%90%E7%A4%BA%E7%94%A8%E6%88%B7%E8%BE%93%E5%85%A5%E5%A7%93%E5%90%8D%E3%80%81%E8%AF%AD%E6%96%87%E3%80%81%E6%95%B0%E5%AD%A6%E3%80%81%E8%8B%B1%E8%AF%AD%E6%88%90%E7%BB%A9%EF%BC%8C%E5%B9%B6%E5%B0%86%E8%BE%93%E5%85%A5%E7%9A%843%E9%97%A8%E6%88%90%E7%BB%A9%E7%94%A8%E6%95%B4%E5%BD%A2%E5%8F%98%E9%87%8F%E5%AD%98%E5%82%A8"><span class="toc-text">提示用户输入姓名、语文、数学、英语成绩，并将输入的3门成绩用整形变量存储</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#11-4-%E7%BB%83%E4%B9%A0%E9%A2%98%E4%BB%A3%E7%A0%81"><span class="toc-text">11.4 练习题代码</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#10-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E5%B0%81%E8%A3%85-%E9%9D%99%E6%80%81%E7%B1%BB%E5%92%8C%E9%9D%99%E6%80%81%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0"><span class="toc-text">10.面向对象-封装-静态类和静态构造函数</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#10-1-%E7%9F%A5%E8%AF%86%E7%82%B9"><span class="toc-text">10.1 知识点</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9F%A5%E8%AF%86%E5%9B%9E%E9%A1%BE"><span class="toc-text">知识回顾</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9D%99%E6%80%81%E7%B1%BB"><span class="toc-text">静态类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9D%99%E6%80%81%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0"><span class="toc-text">静态构造函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-text">总结</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10-2-%E7%9F%A5%E8%AF%86%E7%82%B9%E4%BB%A3%E7%A0%81"><span class="toc-text">10.2 知识点代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10-3-%E7%BB%83%E4%B9%A0%E9%A2%98"><span class="toc-text">10.3 练习题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%99%E4%B8%80%E4%B8%AA%E7%94%A8%E4%BA%8E%E6%95%B0%E5%AD%A6%E8%AE%A1%E7%AE%97%E7%9A%84%E9%9D%99%E6%80%81%E7%B1%BB-%E8%AF%A5%E7%B1%BB%E4%B8%AD%E6%8F%90%E4%BE%9B%E8%AE%A1%E7%AE%97%E5%9C%86%E9%9D%A2%E7%A7%AF%EF%BC%8C%E5%9C%86%E5%91%A8%E9%95%BF%EF%BC%8C%E7%9F%A9%E5%BD%A2%E9%9D%A2%E7%A7%AF%EF%BC%8C%E7%9F%A9%E5%BD%A2%E5%91%A8%E9%95%BF%EF%BC%8C%E5%8F%96%E4%B8%80%E4%B8%AA%E6%95%B0%E7%9A%84%E7%BB%9D%E5%AF%B9%E5%80%BC%E7%AD%89%E6%96%B9%E6%B3%95"><span class="toc-text">写一个用于数学计算的静态类,该类中提供计算圆面积，圆周长，矩形面积，矩形周长，取一个数的绝对值等方法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10-4-%E7%BB%83%E4%B9%A0%E9%A2%98%E4%BB%A3%E7%A0%81"><span class="toc-text">10.4 练习题代码</span></a></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -1184,500 +1186,510 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="11-类型转换-显式转换"><a href="#11-类型转换-显式转换" class="headerlink" title="11.类型转换-显式转换"></a>11.类型转换-显式转换</h1><hr>
-<h2 id="11-1-知识点"><a href="#11-1-知识点" class="headerlink" title="11.1 知识点"></a>11.1 知识点</h2><h3 id="显示转换"><a href="#显示转换" class="headerlink" title="显示转换"></a>显示转换</h3><p>显示转换其实就是手动处理，强制转换类型。</p>
-<h4 id="括号强转"><a href="#括号强转" class="headerlink" title="括号强转"></a>括号强转</h4><pre><code class="csharp">// 作用：一般情况下，将高精度的类型强制转换为低精度
-// 语法：变量类型 变量名 = (变量类型)变量;
-
-// 注意：精度问题、范围问题
-
-// 相同大类的整形的转换
-
-// 有符号整形
-sbyte sbyteValue = 1;
-short shortValue = 1;
-int intValue = 40000;
-long longValue = 1;
-
-shortValue = (short)intValue; // 括号强转可能会出现范围问题造成的异常
-Console.WriteLine(shortValue); // -25536
-
-intValue = (int)longValue;
-sbyteValue = (sbyte)shortValue;
-sbyteValue = (sbyte)intValue;
-sbyteValue = (sbyte)longValue;
-
-// 无符号整形
-byte byteValue = 1;
-uint uintValue = 1;
-byteValue = (byte)uintValue;
-Console.WriteLine(byteValue); // 1
-
-// 浮点之间
-float floatValue = 1.1f;
-double doubleValue = 1.1234567890123456789f;
-
-floatValue = (float)doubleValue; // 会只保留float的精度，舍弃double后面的精度
-Console.WriteLine(floatValue); // 1.1234568
-</code></pre>
-<h4 id="不同类型的转换"><a href="#不同类型的转换" class="headerlink" title="不同类型的转换"></a>不同类型的转换</h4><h5 id="无符号和有符号"><a href="#无符号和有符号" class="headerlink" title="无符号和有符号"></a>无符号和有符号</h5><pre><code class="csharp">// 无符号和有符号
-uint uintValue2 = 1;
-int intValue2 = -1;
-
-uintValue2 = (uint)intValue2; // 在强转时一定要注意范围，不然得到的结果可能有异常
-Console.WriteLine(uintValue2); // 4294967295
-
-intValue2 = (int)uintValue2;
-</code></pre>
-<h5 id="浮点和整形"><a href="#浮点和整形" class="headerlink" title="浮点和整形"></a>浮点和整形</h5><pre><code class="csharp">// 浮点和整形
-// 浮点数强转成整形时，会直接抛弃掉小数点后面的小数，不会四舍五入
-intValue2 = (int)1.64f;
-Console.WriteLine(intValue2); // 1
-</code></pre>
-<h5 id="char和数值类型"><a href="#char和数值类型" class="headerlink" title="char和数值类型"></a>char和数值类型</h5><pre><code class="csharp">// char和数值类型
-intValue2 = &#39;A&#39;;
-char charValue = (char)intValue2;
-Console.WriteLine(charValue);
-</code></pre>
-<p><strong>注意：bool和string是不能够通过括号强转的。</strong></p>
-<h4 id="Parse法"><a href="#Parse法" class="headerlink" title="Parse法"></a>Parse法</h4><p><strong>作用：</strong> 把字符串类型转换为对应的类型。</p>
-<p><strong>语法：</strong> <code>变量类型.Parse(&quot;字符串&quot;)</code></p>
-<p><strong>注意：</strong> 字符串必须能够转换成对应类型，否则报错。</p>
-<h5 id="Parse法的转换规则"><a href="#Parse法的转换规则" class="headerlink" title="Parse法的转换规则"></a>Parse法的转换规则</h5><pre><code class="csharp">// 我们填写字符串必须是要能够转成对应类型的字符，如果不符合规则，会报错
-// int intValue3 = int.Parse(&quot;123.45&quot;); // 报错，转换失败
-// Console.WriteLine(intValue3);
-
-// 值的范围必须是能够被变量存储的值，否则报错
-// short shortValue2 = short.Parse(&quot;40000&quot;);
-// Console.WriteLine(shortValue2);
-</code></pre>
-<h5 id="Parse法把字符串转换为对应的类型"><a href="#Parse法把字符串转换为对应的类型" class="headerlink" title="Parse法把字符串转换为对应的类型"></a>Parse法把字符串转换为对应的类型</h5><pre><code class="csharp">// 有符号
-string stringValue3 = &quot;123&quot;;
-int intValue4 = 123;
-
-// 可以直接传，不用传变量，填写的字符串符合规则可以转换
-intValue4 = int.Parse(&quot;123&quot;);
-Console.WriteLine(intValue4); // 123
-
-sbyte sbyteValue3 = sbyte.Parse(&quot;1&quot;);
-Console.WriteLine(sbyteValue3); // 1
-
-// 他们的意思是相同的
-Console.WriteLine(sbyte.Parse(&quot;1&quot;)); // 1
-Console.WriteLine(long.Parse(&quot;123123&quot;)); // 123123
-
-// 无符号
-Console.WriteLine(byte.Parse(&quot;1&quot;)); // 1
-Console.WriteLine(ushort.Parse(&quot;1&quot;)); // 1
-Console.WriteLine(ulong.Parse(&quot;1&quot;)); // 1
-Console.WriteLine(uint.Parse(&quot;1&quot;)); // 1
-
-// 浮点数
-float floatValue3 = float.Parse(&quot;1.2323&quot;);
-double doubleValue3 = double.Parse(&quot;1.2323&quot;);
-
-// 特殊类型
-bool boolValue2 = bool.Parse(&quot;true&quot;);
-Console.WriteLine(boolValue2); // True
-
-char charValue2 = char.Parse(&quot;A&quot;);
-Console.WriteLine(charValue2); // A
-</code></pre>
-<h4 id="Convert法"><a href="#Convert法" class="headerlink" title="Convert法"></a>Convert法</h4><p><strong>作用：</strong> 更准确的将各个类型之间进行相互转换。</p>
-<p><strong>语法：</strong> <code>Convert.To目标类型(变量或常量)</code></p>
-<p><strong>注意：</strong> 填写的变量或常量必须正确，否则出错。</p>
-<h5 id="转字符串"><a href="#转字符串" class="headerlink" title="转字符串"></a>转字符串</h5><pre><code class="csharp">// 转字符串
-// 如果是把字符串转对应类型，那字符串一定要合法合规
-int a = Convert.ToInt32(&quot;12&quot;);
-Console.WriteLine(a);
-
-// 精度更准确
-// 精度比括号强转好一点，会四舍五入
-a = Convert.ToInt32(1.45845f);
-Console.WriteLine(a); // 1
-
-// 特殊类型转换
-// 把bool类型也可以转成数值类型，true对应1，false对应0
-a = Convert.ToInt32(true);
-Console.WriteLine(a); // 1
-a = Convert.ToInt32(false);
-Console.WriteLine(a); // 0
-a = Convert.ToInt32(&#39;A&#39;);
-Console.WriteLine(a); // 65
-</code></pre>
-<h5 id="有符号"><a href="#有符号" class="headerlink" title="有符号"></a>有符号</h5><pre><code class="csharp">// 有符号
-sbyte sbyteValue5 = Convert.ToSByte(&quot;1&quot;);
-short shortValue5 = Convert.ToInt16(&quot;1&quot;);
-int intValue5 = Convert.ToInt32(&quot;1&quot;);
-long longValue5 = Convert.ToInt64(&quot;1&quot;);
-</code></pre>
-<h5 id="无符号"><a href="#无符号" class="headerlink" title="无符号"></a>无符号</h5><pre><code class="csharp">// 无符号
-byte byteValue5 = Convert.ToByte(&quot;1&quot;);
-ushort ushortValue5 = Convert.ToUInt16(&quot;1&quot;);
-uint uintValue5 = Convert.ToUInt32(&quot;1&quot;);
-ulong ulongValue5 = Convert.ToUInt64(&quot;1&quot;);
-</code></pre>
-<h5 id="浮点型"><a href="#浮点型" class="headerlink" title="浮点型"></a>浮点型</h5><pre><code class="csharp">// 浮点型
-float floatValue5 = Convert.ToSingle(&quot;13.2&quot;);
-double doubleValue5 = Convert.ToDouble(&quot;13.2&quot;);
-decimal decimalValue5 = Convert.ToDecimal(&quot;13.2&quot;);
-</code></pre>
-<h5 id="特殊类型"><a href="#特殊类型" class="headerlink" title="特殊类型"></a>特殊类型</h5><pre><code class="csharp">// 特殊类型
-bool boolValue5 = Convert.ToBoolean(&quot;true&quot;);
-char char
-
-Value5 = Convert.ToChar(&quot;A&quot;);
-string stringValue5 = Convert.ToString(123123);
-</code></pre>
-<h4 id="其它类型转string"><a href="#其它类型转string" class="headerlink" title="其它类型转string"></a>其它类型转string</h4><p><strong>作用：</strong> 拼接打印。</p>
-<p><strong>语法：</strong> <code>变量.toString();</code></p>
-<pre><code class="csharp">// 其它类型转string
-string stringValue6 = 1.ToString();
-stringValue6 = true.ToString();
-stringValue6 = &#39;A&#39;.ToString();
-stringValue6 = 1.2f.ToString();
-
-int aa = 1;
-stringValue6 = aa.ToString();
-
-bool bo6 = true;
-stringValue6 = bo6.ToString();
-
-// 当我们进行字符串拼接时就自动会调用tostring转成string
-Console.WriteLine(&quot;123123&quot; + 1 + true); // 1231231True
-
-stringValue6 = &quot;123123&quot; + 1 + true + 1.23;
-Console.WriteLine(stringValue6); // 1231231True1.23
-</code></pre>
-<hr>
-<h2 id="11-2-知识点代码"><a href="#11-2-知识点代码" class="headerlink" title="11.2 知识点代码"></a>11.2 知识点代码</h2><pre><code class="csharp">using System;
-
-namespace Lesson08_类型装换_显示转换_
+        <h1 id="10-面向对象-封装-静态类和静态构造函数"><a href="#10-面向对象-封装-静态类和静态构造函数" class="headerlink" title="10.面向对象-封装-静态类和静态构造函数"></a>10.面向对象-封装-静态类和静态构造函数</h1><hr>
+<h2 id="10-1-知识点"><a href="#10-1-知识点" class="headerlink" title="10.1 知识点"></a>10.1 知识点</h2><h3 id="知识回顾"><a href="#知识回顾" class="headerlink" title="知识回顾"></a>知识回顾</h3><pre><code class="csharp">class Person
 &#123;
+    #region 特征——成员变量
+    #endregion
+    #region 行为——成员方法
+    #endregion
+    #region 初始化调用——构造函数
+    #endregion
+    #region 释放时调用——析构函数
+    #endregion
+    #region 成员属性
+    #endregion
+    #region 索引器
+    #endregion
+    #region 静态成员
+    #endregion
+&#125;
+</code></pre>
+<h3 id="静态类"><a href="#静态类" class="headerlink" title="静态类"></a>静态类</h3><ul>
+<li>定义：<ul>
+<li>类语句块外，<code>namespace</code> 语句块内。</li>
+<li>用 <code>static</code> 修饰的类。</li>
+</ul>
+</li>
+<li>特点：<ul>
+<li>只能包含静态成员。</li>
+<li>不能被实例化。</li>
+</ul>
+</li>
+<li>作用：<ul>
+<li>将常用的静态成员写在静态类中，方便使用。</li>
+<li>静态类不能被实例化，更能体现工具类的唯一性。</li>
+</ul>
+</li>
+<li>示例：<pre><code class="csharp">// 静态工具类
+static class Tools
+&#123;
+    // 静态成员变量
+    public static int testIndex = 0;
+
+    // 静态成员方法
+    public static void TestFun()
+    &#123;
+
+    &#125;
+
+    // 静态成员属性
+    public static int TestIndex
+    &#123;
+        get;
+        set;
+    &#125;
+&#125;
+</code></pre>
+</li>
+<li>主函数内：<pre><code class="csharp">// 无法创建静态类实例
+// Console c = new Console();
+</code></pre>
+</li>
+</ul>
+<h3 id="静态构造函数"><a href="#静态构造函数" class="headerlink" title="静态构造函数"></a>静态构造函数</h3><ul>
+<li>定义：<ul>
+<li>类语句块外，<code>namespace</code> 语句块内。</li>
+<li>在构造函数上加上 <code>static</code> 修饰。</li>
+</ul>
+</li>
+<li>特点：<ul>
+<li>静态类和普通类都可以有静态构造函数。</li>
+<li>不能使用访问修饰符。</li>
+<li>不能有参数。</li>
+<li>只会自动调用一次。</li>
+</ul>
+</li>
+<li>作用：<ul>
+<li>在静态构造函数中初始化静态变量。</li>
+</ul>
+</li>
+<li>使用：<ul>
+<li><strong>静态类中的静态构造函数</strong>：<pre><code class="csharp">static class StaticClass
+&#123;
+    public static int testInt = 100;
+    public static int testInt2 = 100;
+
+    // 不能使用访问修饰符，3P无效
+    static StaticClass()
+    &#123;
+        Console.WriteLine(&quot;静态类中的静态构造&quot;);
+        // 初始化成员变量
+        testInt = 200;
+        testInt2 = 300;
+    &#125;
+&#125;
+</code></pre>
+</li>
+<li><strong>普通类中的静态构造函数</strong>：<pre><code class="csharp">class NormalClass
+&#123;
+    public static int testInt = 200;
+
+    // 不能使用访问修饰符，3P无效
+    // 静态构造函数
+    static NormalClass()
+    &#123;
+        Console.WriteLine(&quot;普通类中的静态构造&quot;);
+    &#125;
+
+    // 成员构造函数
+    public NormalClass()
+    &#123;
+        Console.WriteLine(&quot;普通类中的普通构造&quot;);
+    &#125;
+&#125;
+</code></pre>
+</li>
+</ul>
+</li>
+<li>主函数内：<pre><code class="csharp">// 使用静态类的成员时，静态构造函数会自动调用一次
+// 会打印出 &quot;静态类中的静态构造&quot;
+Console.WriteLine(StaticClass.testInt); // 200
+Console.WriteLine(StaticClass.testInt2); // 300
+Console.WriteLine(StaticClass.testInt); // 200
+
+// 静态构造函数会自动调用一次
+// 会打印出 &quot;普通类中的静态构造&quot;
+Console.WriteLine(NormalClass.testInt); // 200
+NormalClass t = new NormalClass(); // 普通类中的普通构造
+NormalClass t2 = new NormalClass(); // 普通类中的普通构造
+</code></pre>
+</li>
+</ul>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ul>
+<li><strong>静态类</strong>：<ul>
+<li>用 <code>static</code> 修饰的类。</li>
+<li>特点：<ul>
+<li>只能包含静态成员。</li>
+<li>不能实例化。</li>
+</ul>
+</li>
+<li>作用：<ul>
+<li>工具类。</li>
+<li>拓展方法。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>静态构造函数</strong>：<ul>
+<li>用 <code>static</code> 修饰的构造函数。</li>
+<li>特点：<ul>
+<li>静态类和普通类都可以有。</li>
+<li>不能使用访问修饰符。</li>
+<li>不能有参数。</li>
+<li>只会自动调用一次。</li>
+</ul>
+</li>
+<li>作用：<ul>
+<li>初始化静态成员。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="10-2-知识点代码"><a href="#10-2-知识点代码" class="headerlink" title="10.2 知识点代码"></a>10.2 知识点代码</h2><pre><code class="csharp">using System;
+
+namespace Lesson8_封装_静态类和静态构造函数
+&#123;
+    #region 知识回顾
+    class Person
+    &#123;
+        #region 特征——成员变量
+
+        #endregion
+
+        #region 行为——成员方法
+
+        #endregion
+
+        #region 初始化调用——构造函数
+
+        #endregion
+
+        #region 释放时调用——析构函数
+
+        #endregion
+
+        #region 成员属性
+
+        #endregion
+
+        #region 索引器
+
+        #endregion
+
+        #region 静态成员
+
+        #endregion
+    &#125;
+    #endregion
+
+    //class语句块外 namespace语句块内
+
+    #region 知识点一 静态类
+
+    //概念
+    //用static修饰的类
+
+    //特点
+    //只能包含静态成员
+    //不能被实例化
+
+    //作用
+    //1.将常用的静态成员写在静态类中 方便使用
+    //2.静态类不能被实例化，更能体现工具类的 唯一性
+    //比如 Console就是一个静态类
+
+    //示例
+    //静态 工具 类
+    static class Tools
+    &#123;
+        //静态成员变量
+        public static int testIndex = 0;
+
+        //静态成员方法
+        public static void TestFun()
+        &#123;
+
+        &#125;
+
+        //静态成员属性
+        public static int TestIndex
+        &#123;
+            get;
+            set;
+        &#125;
+    &#125;
+
+    #endregion
+
+    #region 知识点二 静态构造函数
+    //概念
+    // 在构造函数加上 static 修饰
+
+    //特点
+    //1.静态类和普通类都可以有
+    //2.不能使用访问修饰符
+    //3.不能有参数  
+    //4.只会自动调用一次  
+
+    //作用
+    //在静态构造函数中初始化 静态变量
+
+    //使用
+    //1.静态类中的静态构造函数
+    static class StaticClass
+    &#123;
+        public static int testInt = 100;
+        public static int testInt2 = 100;
+
+        //不能使用访问修饰符 3P无效
+        static StaticClass()
+        &#123;
+            Console.WriteLine(&quot;静态类中的静态构造&quot;);
+            //初始化成员变量
+            testInt = 200;
+            testInt2 = 300;
+        &#125;
+    &#125;
+
+    //2.普通类中的静态构造函数
+    class NormalClass
+    &#123;
+        public static int testInt = 200;
+
+        //不能使用访问修饰符 3P无效
+        //静态构造函数
+        static NormalClass()
+        &#123;
+            Console.WriteLine(&quot;普通类中的静态构造&quot;);
+        &#125;
+
+        //成员构造函数
+        public NormalClass()
+        &#123;
+            Console.WriteLine(&quot;普通类中的普通构造&quot;);
+        &#125;
+    &#125;
+    #endregion
     class Program
     &#123;
         static void Main(string[] args)
         &#123;
-            Console.WriteLine(&quot;类型转换——显示转换&quot;);
+            Console.WriteLine(&quot;静态类和静态构造函数!&quot;);
 
-            //显示转换其实就是手动处理，强制转换类型
+            //主函数内
 
-            #region 知识点一 括号强转
-            // 作用 一般情况下 将高精度的类型强制转换为低精度
-            // 语法： 变量类型 变量名 = (变量类型)变量;
-            // 注意： 精度问题 范围问题
+            #region 知识点一 静态类
 
-
-            //相同大类的整形的转换
-
-            //有符号整形
-            sbyte sbyteValue = 1;
-            short shortValue = 1;
-            int intValue = 40000;
-            long longValue = 1;
-            shortValue = (short)intValue;//括号强转 可能会出现范围问题 造成的异常
-            Console.WriteLine(shortValue);//-25536
-            intValue = (int)longValue;
-            sbyteValue = (sbyte)shortValue;
-            sbyteValue = (sbyte)intValue;
-            sbyteValue = (sbyte)longValue;
-
-            //无符号整形 
-            byte byteValue = 1;
-            uint uintValue = 1;
-            byteValue = (byte)uintValue;
-            Console.WriteLine(byteValue);//1
-
-            //浮点之间
-            float floatValue = 1.1f;
-            double doubleValue = 1.1234567890123456789f;
-            floatValue = (float)doubleValue;//会只保留float的精度 舍弃double后面的精度
-            Console.WriteLine(floatValue);//1.1234568
-
-
-            //不同类型的转换
-
-            //无符号和有符号
-            uint uintValue2 = 1;
-            int intValue2 = -1;
-            uintValue2 = (uint)intValue2;//在强转时 一定要注意范围 不然得到的结果 可能有异常
-            Console.WriteLine(uintValue2);//4294967295
-            intValue2 = (int)uintValue2;
-
-            //浮点和整形
-            //浮点数强转成整形时 会直接抛弃掉小数点后面的小数 
-            //不会四舍五入
-            intValue2 = (int)1.64f;
-            Console.WriteLine(intValue2);//1
-
-            //char和数值类型
-            intValue2 = &#39;A&#39;;
-            char charValue = (char)intValue2;
-            Console.WriteLine(charValue);
-
-            //bool和string 是不能够通过 括号强转的
-            bool boolValue = true;
-            //int intValue3 = (bool)boolValue;//报错
-            string stringValue = &quot;123&quot;;
-            //intValue3 = (int)stringValue;//报错
+            //Console c = new Console();
+            //报错 无法创建静态类实例
 
             #endregion
 
-            #region 知识点二 Parse法
-            //作用  把字符串类型转换为对应的类型
-            //语法： 变量类型.Parse(&quot;字符串&quot;)
-            //注意： 字符串必须能够转换成对应类型 否则报错
+            #region 知识点二 静态构造函数
 
 
-            //Parse法的转换规则
+            //使用静态类的成员时 静态构造函数 会 自动调用一次  
+            //会打印出 静态类中的静态构造
+            Console.WriteLine(StaticClass.testInt);//200
+            Console.WriteLine(StaticClass.testInt2);//300
+            Console.WriteLine(StaticClass.testInt);//200
 
-            //我们填写字符串 必须是要能够转成对应类型的字符 如果不符合规则 会报错
-            //int intValue3 = int.Parse(&quot;123.45&quot;);//报错 转换失败
-            //Console.WriteLine(intValue3);
-
-            //值的范围 必须是能够被变量存储的值 否则报错
-            //short shortValue2 = short.Parse(&quot;40000&quot;);
-            //Console.WriteLine(shortValue2);
-
-
-            //Parse法把字符串转换为对应的类型
-            //有符号
-            string stringValue3 = &quot;123&quot;;
-            int intValue4 = 123;
-            //intValue4 = int.Parse(stringValue3);
-            //可以直接传 不用传变量 填写的字符串符合规则 可以转换
-            intValue4 = int.Parse(&quot;123&quot;);
-            Console.WriteLine(intValue4);//123;
-            sbyte sbyteValue3 = sbyte.Parse(&quot;1&quot;);
-            Console.WriteLine(sbyteValue3);//1
-            //他们的意思是相同的 
-            Console.WriteLine(sbyte.Parse(&quot;1&quot;));//1
-            Console.WriteLine(long.Parse(&quot;123123&quot;));//123123
-
-            //无符号
-            Console.WriteLine(byte.Parse(&quot;1&quot;));//1
-            Console.WriteLine(ushort.Parse(&quot;1&quot;));//1
-            Console.WriteLine(ulong.Parse(&quot;1&quot;));//1
-            Console.WriteLine(uint.Parse(&quot;1&quot;));//1
-
-            //浮点数
-            float floatValue3 = float.Parse(&quot;1.2323&quot;);
-            double doubleValue3 = double.Parse(&quot;1.2323&quot;);
-
-            //特殊类型
-            bool boolValue2 = bool.Parse(&quot;true&quot;);
-            Console.WriteLine(boolValue2);//True
-            char charValue2 = char.Parse(&quot;A&quot;);
-            Console.WriteLine(charValue2);//A
-            //没有string.Parse这个方法 没有必要 直接赋值就行
-
-
-            #endregion
-
-            #region 知识点三 Convert法
-            //作用  更准确的将 各个类型之间进行相互转换 
-            //语法： Convert.To目标类型(变量或常量)
-            //注意： 填写的变量或常量必须正确 否则出错
-
-            //转字符串 如果是把字符串转对应类型 那字符串一定要合法合规
-            int a = Convert.ToInt32(&quot;12&quot;);
-            Console.WriteLine(a);//12
-
-            //精度更准确
-            //精度比括号强转好一点 会四舍五入
-            a = Convert.ToInt32(1.45845f);
-            Console.WriteLine(a);//1
-
-            //特殊类型转换
-            //把bool类型也可以转成 数值类型 true对应1 false对应0
-            a = Convert.ToInt32(true);
-            Console.WriteLine(a);//1
-            a = Convert.ToInt32(false);
-            Console.WriteLine(a);//0
-            a = Convert.ToInt32(&#39;A&#39;);
-            Console.WriteLine(a);//65
-
-            //每一个类型都存在对应的 Convert中的方法
-            sbyte sbyteValue5 = Convert.ToSByte(&quot;1&quot;);
-            short shortValue5 = Convert.ToInt16(&quot;1&quot;);
-            int intValue5 = Convert.ToInt32(&quot;1&quot;);
-            long longValue5 = Convert.ToInt64(&quot;1&quot;);
-
-            byte byteValue5 = Convert.ToByte(&quot;1&quot;);
-            ushort ushortValue5 = Convert.ToUInt16(&quot;1&quot;);
-            uint uintValue5 = Convert.ToUInt32(&quot;1&quot;);
-            ulong ulongValue5 = Convert.ToUInt64(&quot;1&quot;);
-
-            float floatValue5 = Convert.ToSingle(&quot;13.2&quot;);
-            double doubleValue5 = Convert.ToDouble(&quot;13.2&quot;);
-            decimal decimalValue5 = Convert.ToDecimal(&quot;13.2&quot;);
-
-            bool boolValue5 = Convert.ToBoolean(&quot;true&quot;);
-            char charValue5 = Convert.ToChar(&quot;A&quot;);
-
-            string stringValue5 = Convert.ToString(123123);
-
-            #endregion
-
-            #region 知识点四 其它类型转string
-            // 作用：拼接打印
-            // 语法：变量.toString();
-
-            string stringValue6 = 1.ToString();
-            stringValue6 = true.ToString();
-            stringValue6 = &#39;A&#39;.ToString();
-            stringValue6 = 1.2f.ToString();
-
-            int aa = 1;
-            stringValue6 = aa.ToString();
-            bool bo6 = true;
-            stringValue6 = bo6.ToString();
-
-            //当我们进行字符串拼接时 就自动会调用 tostring 转成string
-            Console.WriteLine(&quot;123123&quot; + 1 + true);//1231231True
-
-            stringValue6 = &quot;123123&quot; + 1 + true + 1.23;
-            Console.WriteLine(stringValue6);//1231231True1.23
+            //静态构造函数 会 自动调用一次 
+            //会打印出 普通类中的静态构造
+            Console.WriteLine(NormalClass.testInt);//200
+            NormalClass t = new NormalClass();//普通类中的普通构造
+            NormalClass t2 = new NormalClass();//普通类中的普通构造
 
             #endregion
         &#125;
     &#125;
+
+    //总结
+
+    //静态类
+    //用static 修饰的类
+    //特点
+    //只能包含静态成员
+    //不能实例化
+    //作用
+    //工具类
+    //拓展方法
+
+    //静态构造函数
+    //用static修饰的构造函数
+    //特点
+    //静态类和普通类都可以有静态构造函数
+    //不能使用访问修饰符
+    //不能有参数
+    //只会自动调用一次
+    //作用
+    //初始化静态成员
 &#125;
 </code></pre>
 <hr>
-<h2 id="11-3-练习题"><a href="#11-3-练习题" class="headerlink" title="11.3 练习题"></a>11.3 练习题</h2><h3 id="显示类型转换的几种方式"><a href="#显示类型转换的几种方式" class="headerlink" title="显示类型转换的几种方式"></a>显示类型转换的几种方式</h3><h4 id="1-括号强转"><a href="#1-括号强转" class="headerlink" title="1. 括号强转"></a>1. 括号强转</h4><pre><code class="csharp">// 1. 括号强转 数值之间的转换 低精度 装 高精度
-// 注意精度丢失问题和超出范围转换异常的问题
-
-int intValue = 1;
-long longValue = 1;
-
-intValue = (int)longValue;
-
-float floatValue = 1.1f;
-double doubleValue = 1.231231231231231231231;
-
-floatValue = (float)doubleValue;
-</code></pre>
-<h4 id="2-Parse法"><a href="#2-Parse法" class="headerlink" title="2. Parse法"></a>2. Parse法</h4><pre><code class="csharp">// 2. Parse法 把字符串 转成 对应的类型 变量类型.Parse(字符串)
-// 要能转换成对应类型且不超出范围 否则报错
-
-intValue = int.Parse(&quot;123&quot;);
-</code></pre>
-<h4 id="3-Convert法"><a href="#3-Convert法" class="headerlink" title="3. Convert法"></a>3. Convert法</h4><pre><code class="csharp">// 3. Convert法
-// 填写的变量或常量必须正确 否则出错
-
-intValue = Convert.ToInt32(12.23123);
-intValue = Convert.ToInt32(&quot;123123&quot;);
-
-string str = Convert.ToString(123123);
-</code></pre>
-<h4 id="4-ToString法"><a href="#4-ToString法" class="headerlink" title="4. ToString法"></a>4. ToString法</h4><pre><code class="csharp">// 4. ToString法
-
-str = 1.ToString();
-str = 1.23123f.ToString();
-</code></pre>
-<h3 id="将24069转成字符，并打印"><a href="#将24069转成字符，并打印" class="headerlink" title="将24069转成字符，并打印"></a>将24069转成字符，并打印</h3><pre><code class="csharp">char charValue = (char)24069;
-Console.WriteLine(charValue);// 帅
-
-charValue = Convert.ToChar(24069);
-Console.WriteLine(charValue);//帅
-</code></pre>
-<h3 id="提示用户输入姓名、语文、数学、英语成绩，并将输入的3门成绩用整形变量存储"><a href="#提示用户输入姓名、语文、数学、英语成绩，并将输入的3门成绩用整形变量存储" class="headerlink" title="提示用户输入姓名、语文、数学、英语成绩，并将输入的3门成绩用整形变量存储"></a>提示用户输入姓名、语文、数学、英语成绩，并将输入的3门成绩用整形变量存储</h3><pre><code class="csharp">Console.WriteLine(&quot;请输入你的姓名&quot;);
-
-// 通过字符串变量 把输入内容存起来
-string stringValue2 = Console.ReadLine();
-
-Console.WriteLine(&quot;请输入你的语文成绩&quot;);
-stringValue2 = Console.ReadLine();
-
-// 再把字符串转为 想要的类型
-int yuWen = int.Parse(stringValue2);
-
-Console.WriteLine(&quot;请输入你的数学成绩&quot;);
-stringValue2 = Console.ReadLine();
-int shuXue = int.Parse(stringValue2);
-
-Console.WriteLine(&quot;请输入你的英语成绩&quot;);
-stringValue2 = Console.ReadLine();
-int yingYu = int.Parse(stringValue2);
-
-Console.WriteLine(&quot;你的语文成绩：&quot; + yuWen);
-Console.WriteLine(&quot;你的数学成绩：&quot; + shuXue);
-Console.WriteLine(&quot;你的英语成绩：&quot; + yingYu);
-</code></pre>
-<hr>
-<h2 id="11-4-练习题代码"><a href="#11-4-练习题代码" class="headerlink" title="11.4 练习题代码"></a>11.4 练习题代码</h2><pre><code class="csharp">using System;
-
-namespace Lesson08_练习题
+<h2 id="10-3-练习题"><a href="#10-3-练习题" class="headerlink" title="10.3 练习题"></a>10.3 练习题</h2><h3 id="写一个用于数学计算的静态类-该类中提供计算圆面积，圆周长，矩形面积，矩形周长，取一个数的绝对值等方法"><a href="#写一个用于数学计算的静态类-该类中提供计算圆面积，圆周长，矩形面积，矩形周长，取一个数的绝对值等方法" class="headerlink" title="写一个用于数学计算的静态类,该类中提供计算圆面积，圆周长，矩形面积，矩形周长，取一个数的绝对值等方法"></a>写一个用于数学计算的静态类,该类中提供计算圆面积，圆周长，矩形面积，矩形周长，取一个数的绝对值等方法</h3><p><strong>class语句块外 namespace语句块内</strong></p>
+<pre><code class="csharp">// class语句块外 namespace语句块内
+// 数学工具类
+static class MathTool
 &#123;
+    // 静态成员变量 π
+    public static float PI = 3.14f;
+
+    /// &lt;summary&gt;
+    /// 计算圆的面积
+    /// &lt;/summary&gt;
+    /// &lt;param name=&quot;r&quot;&gt;半径&lt;/param&gt;
+    /// &lt;returns&gt;面积&lt;/returns&gt;
+    public static float CalcCircularArea(float r)
+    &#123;
+        return PI * r * r;
+    &#125;
+
+    /// &lt;summary&gt;
+    /// 计算圆的周长
+    /// &lt;/summary&gt;
+    /// &lt;param name=&quot;r&quot;&gt;半径&lt;/param&gt;
+    /// &lt;returns&gt;周长&lt;/returns&gt;
+    public static float CalcCircularLength(float r)
+    &#123;
+        return 2 * PI * r;
+    &#125;
+
+    /// &lt;summary&gt;
+    /// 计算矩形的面积
+    /// &lt;/summary&gt;
+    /// &lt;param name=&quot;w&quot;&gt;宽&lt;/param&gt;
+    /// &lt;param name=&quot;h&quot;&gt;高&lt;/param&gt;
+    /// &lt;returns&gt;面积&lt;/returns&gt;
+    public static float CalcRectArea(float w, float h)
+    &#123;
+        return w * h;
+    &#125;
+
+    /// &lt;summary&gt;
+    /// 计算矩形的周长
+    /// &lt;/summary&gt;
+    /// &lt;param name=&quot;w&quot;&gt;宽&lt;/param&gt;
+    /// &lt;param name=&quot;h&quot;&gt;高&lt;/param&gt;
+    /// &lt;returns&gt;周长&lt;/returns&gt;
+    public static float CalcRectLength(float w, float h)
+    &#123;
+        return 2 * w + 2 * h;
+    &#125;
+
+    /// &lt;summary&gt;
+    /// 计算绝对值
+    /// &lt;/summary&gt;
+    /// &lt;param name=&quot;value&quot;&gt;去绝对值的变量&lt;/param&gt;
+    /// &lt;returns&gt;去绝对值后的值&lt;/returns&gt;
+    public static float GetABS(float value)
+    &#123;
+        if (value &lt; 0)
+        &#123;
+            return -value;
+        &#125;
+        return value;
+    &#125;
+&#125;
+</code></pre>
+<p><strong>主函数内</strong></p>
+<pre><code class="csharp">// 主函数内
+Console.WriteLine(MathTool.GetABS(-7));//7
+Console.WriteLine(MathTool.CalcCircularArea(2));//12.56
+Console.WriteLine(MathTool.CalcCircularLength(3));//18.84
+Console.WriteLine(MathTool.CalcRectArea(2, 3));//6
+Console.WriteLine(MathTool.CalcRectLength(2, 3));//10
+</code></pre>
+<p>这个例子展示了一个用于数学计算的静态类 <code>MathTool</code>，其中包括计算圆的面积、圆的周长、矩形的面积、矩形的周长以及取绝对值的方法。通过静态类的方法，可以直接通过类名使用这些数学计算方法。</p>
+<hr>
+<h2 id="10-4-练习题代码"><a href="#10-4-练习题代码" class="headerlink" title="10.4 练习题代码"></a>10.4 练习题代码</h2><pre><code class="csharp">using System;
+
+namespace Lesson8_练习题
+&#123;
+    #region 练习题一
+    //写一个用于数学计算的静态类
+    //该类中提供计算圆面积，圆周长，矩形面积，矩形周长，取一个数的绝对值 等方法
+
+    //class语句块外 namespace语句块内
+
+    //数学工具类
+    static class MathTool
+    &#123;
+        //静态成员变量 π
+        public static float PI = 3.14f;
+
+        /// &lt;summary&gt;
+        /// 计算圆的面积
+        /// &lt;/summary&gt;
+        /// &lt;param name=&quot;r&quot;&gt;半径&lt;/param&gt;
+        /// &lt;returns&gt;面积&lt;/returns&gt;
+        public static float CalcCircularArea(float r)
+        &#123;
+            return PI * r * r;
+        &#125;
+
+        /// &lt;summary&gt;
+        /// 计算圆的周长
+        /// &lt;/summary&gt;
+        /// &lt;param name=&quot;r&quot;&gt;半径&lt;/param&gt;
+        /// &lt;returns&gt;周长&lt;/returns&gt;
+        public static float CalcCircularLength(float r)
+        &#123;
+            return 2 * PI * r;
+        &#125;
+
+        /// &lt;summary&gt;
+        /// 计算矩形的面积
+        /// &lt;/summary&gt;
+        /// &lt;param name=&quot;w&quot;&gt;宽&lt;/param&gt;
+        /// &lt;param name=&quot;h&quot;&gt;高&lt;/param&gt;
+        /// &lt;returns&gt;面积&lt;/returns&gt;
+        public static float CalcRectArea(float w, float h)
+        &#123;
+            return w * h;
+        &#125;
+
+        /// &lt;summary&gt;
+        /// 计算矩形的周长
+        /// &lt;/summary&gt;
+        /// &lt;param name=&quot;w&quot;&gt;宽&lt;/param&gt;
+        /// &lt;param name=&quot;h&quot;&gt;高&lt;/param&gt;
+        /// &lt;returns&gt;周长&lt;/returns&gt;
+        public static float CalcRectLength(float w, float h)
+        &#123;
+            return 2 * w + 2 * h;
+        &#125;
+
+        /// &lt;summary&gt;
+        /// 计算绝对值
+        /// &lt;/summary&gt;
+        /// &lt;param name=&quot;value&quot;&gt;去绝对值的变量&lt;/param&gt;
+        /// &lt;returns&gt;去绝对值后的值&lt;/returns&gt;
+        public static float GetABS(float value)
+        &#123;
+            if( value &lt; 0 )
+            &#123;
+                return -value;
+            &#125;
+            return value;
+        &#125;
+    &#125;
+    #endregion
     class Program
     &#123;
         static void Main(string[] args)
         &#123;
-            Console.WriteLine(&quot;类型转换——显示转换练习题&quot;);
+            //主函数内
 
             #region 练习题一
-            //显示类型转换有几种方式？他们分别是什么，请举例说明？
-
-            // 1.括号强转 数值之间的转换 低精度 装 高精度
-            // 注意精度丢失问题和超出范围转换异常的问题
-            int intValue = 1;
-            long longValue = 1;
-            intValue = (int)longValue;
-
-            float floatValue = 1.1f;
-            double doubleValue = 1.231231231231231231231;
-            floatValue = (float)doubleValue;
-
-            // 2.Parse法 把字符串 转成 对应的类型 变量类型.Parse(字符串)
-            // 要能转换成对应类型且不超出范围 否则报错
-            intValue = int.Parse(&quot;123&quot;);
-
-            // 3.Convert法
-            //填写的变量或常量必须正确 否则出错
-            intValue = Convert.ToInt32(12.23123);
-            intValue = Convert.ToInt32(&quot;123123&quot;);
-            string str = Convert.ToString(123123);
-
-            // 4.toString法
-            str = 1.ToString();
-            str = 1.23123f.ToString();
-            #endregion
-
-            #region 练习题二
-            //请将24069转成字符，并打印
-
-            char charValue = (char)24069;
-            Console.WriteLine(charValue);//帅
-
-            charValue = Convert.ToChar(24069);
-            Console.WriteLine(charValue);//帅
-
-            #endregion
-
-            #region 练习题三
-            //提示用户输入姓名、语文、数学、英语成绩，并将输入的3门成绩用整形变量存储
-
-            Console.WriteLine(&quot;请输入你的姓名&quot;);
-            //通过字符串变量 把输入内容存起来
-            string stringValue2 = Console.ReadLine();
-
-            Console.WriteLine(&quot;请输入你的语文成绩&quot;);
-            stringValue2 = Console.ReadLine();
-            //再把字符串转为 想要的类型
-            int yuWen = int.Parse(stringValue2);
-
-            Console.WriteLine(&quot;请输入你的数学成绩&quot;);
-            stringValue2 = Console.ReadLine();
-            int shuXue = int.Parse(stringValue2);
-
-            Console.WriteLine(&quot;请输入你的英语成绩&quot;);
-            stringValue2 = Console.ReadLine();
-            int yingYu = int.Parse(stringValue2);
-
-            Console.WriteLine(&quot;你的语文成绩：&quot; + yuWen);
-            Console.WriteLine(&quot;你的数学成绩：&quot; + shuXue);
-            Console.WriteLine(&quot;你的英语成绩：&quot; + yingYu);
+            Console.WriteLine(MathTool.GetABS(-7));//7
+            Console.WriteLine(MathTool.CalcCircularArea(2));//12.56
+            Console.WriteLine(MathTool.CalcCircularLength(3));//18.84
+            Console.WriteLine(MathTool.CalcRectArea(2, 3));//6
+            Console.WriteLine(MathTool.CalcRectLength(2, 3));//10
             #endregion
         &#125;
     &#125;
