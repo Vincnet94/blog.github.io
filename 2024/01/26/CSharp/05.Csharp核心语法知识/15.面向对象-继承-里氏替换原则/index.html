@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>【C#入门实践项目】| 12.公主相关 | 人间自有韬哥在的游戏开发博客</title>
-  <meta name="keywords" content=" CSharp , CSharp入门 , 实践项目 ">
-  <meta name="description" content="【C#入门实践项目】| 12.公主相关 | 人间自有韬哥在的游戏开发博客">
+  <title>【C#核心语法知识】| 15.里氏替换原则 | 人间自有韬哥在的游戏开发博客</title>
+  <meta name="keywords" content=" CSharp , 语法知识 , CSharp核心 , 面向对象 , 继承 ">
+  <meta name="description" content="【C#核心语法知识】| 15.里氏替换原则 | 人间自有韬哥在的游戏开发博客">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="15.面向对象-继承-里氏替换原则 15.1 知识点里氏替换原则的基本概念 里氏替换原则是面向对象七大原则中最重要的原则 概念：任何父类出现的地方，子类都可以替代 语法表现：父类容器装子类对象，因为子类对象包含了父类的所有内容 作用：方便进行对象存储和管理    里氏替换原则的基本实现class语句块外 namespace语句块内&#x2F;&#x2F;游戏对象类 class GameObject &#123;  &amp;">
 <meta property="og:type" content="article">
@@ -1160,9 +1160,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-CSharp/02.CSharp入门实践项目/12.游戏场景-公主相关" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-CSharp/05.Csharp核心语法知识/15.面向对象-继承-里氏替换原则" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">【C#入门实践项目】| 12.公主相关</h1>
+        <h1 class="article-title">【C#核心语法知识】| 15.里氏替换原则</h1>
     
     <div class="article-meta">
         
@@ -1174,7 +1174,7 @@
             
             <a  data-rel="CSharp">CSharp</a> > 
             
-            <a  data-rel="CSharp&lt;---&gt;CSharp入门实践项目">CSharp入门实践项目</a>
+            <a  data-rel="CSharp&lt;---&gt;CSharp核心语法知识">CSharp核心语法知识</a>
             
         </span>
         
@@ -1184,16 +1184,20 @@
             
             <a class="color2">CSharp</a>
             
-            <a class="color4">CSharp入门</a>
+            <a class="color5">语法知识</a>
             
-            <a class="color5">实践项目</a>
+            <a class="color4">CSharp核心</a>
+            
+            <a class="color5">面向对象</a>
+            
+            <a class="color3">继承</a>
             
         </span>
         
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2024-01-25 21:52:46'>2024-01-08 21:53</time>
+            发布时间 : <time class="date" title='最后更新: 2024-01-26 12:59:05'>2024-01-26 12:55</time>
         
     </div>
     <div class="article-meta">
@@ -1215,7 +1219,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#12-%E6%B8%B8%E6%88%8F%E5%9C%BA%E6%99%AF-%E5%85%AC%E4%B8%BB%E7%9B%B8%E5%85%B3"><span class="toc-text">12.游戏场景-公主相关</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#12-1-%E7%9F%A5%E8%AF%86%E7%82%B9"><span class="toc-text">12.1 知识点</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A3%B0%E6%98%8E%E5%85%AC%E4%B8%BB%E7%9A%84%E7%9B%B8%E5%85%B3%E5%B1%9E%E6%80%A7"><span class="toc-text">声明公主的相关属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A3%B0%E6%98%8E%E6%88%90%E5%8A%9F%E6%8B%AF%E6%95%91%E5%85%AC%E4%B8%BB%E5%90%8E%E8%B7%B3%E5%87%BA%E6%B8%B8%E6%88%8F%E4%B8%BB%E9%80%BB%E8%BE%91%E6%AD%BB%E5%BE%AA%E7%8E%AF%E7%9A%84%E6%A0%87%E8%AF%86"><span class="toc-text">声明成功拯救公主后跳出游戏主逻辑死循环的标识</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B8%B8%E6%88%8F%E5%9C%BA%E6%99%AF%E6%AD%BB%E5%BE%AA%E7%8E%AF%E5%86%85%EF%BC%8Cboss%E6%AD%BB%E4%BA%A1%E6%97%B6%E6%B7%BB%E5%8A%A0%E9%80%BB%E8%BE%91%E5%88%86%E6%94%AF%EF%BC%8C%E6%8A%8A%E5%85%AC%E4%B8%BB%E7%BB%98%E5%88%B6%E5%87%BA%E6%9D%A5"><span class="toc-text">游戏场景死循环内，boss死亡时添加逻辑分支，把公主绘制出来</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B8%B8%E6%88%8F%E5%9C%BA%E6%99%AF%E6%AD%BB%E5%BE%AA%E7%8E%AF%E5%86%85%E7%9A%84%E7%8E%A9%E5%AE%B6%E8%BE%93%E5%85%A5%E6%9E%9A%E4%B8%BE%E5%88%86%E6%94%AF%E4%B8%AD%EF%BC%8CWASD%E4%B8%8A%E4%B8%8B%E5%B7%A6%E5%8F%B3%E7%A7%BB%E5%8A%A8%E8%BF%87%E7%A8%8B%E4%B8%AD%EF%BC%8C%E5%A6%82%E6%9E%9Cboss%E6%AD%BB%E4%BA%A1%E4%B8%94%E4%BD%8D%E7%BD%AE%E5%92%8C%E5%85%AC%E4%B8%BB%E9%87%8D%E5%90%88%E4%BA%86%E8%A6%81%E5%9B%9E%E9%80%80%EF%BC%8C%E4%B8%8D%E8%83%BD%E5%B0%86%E5%85%AC%E4%B8%BB%E8%A6%86%E7%9B%96"><span class="toc-text">游戏场景死循环内的玩家输入枚举分支中，WASD上下左右移动过程中，如果boss死亡且位置和公主重合了要回退，不能将公主覆盖</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B8%B8%E6%88%8F%E5%9C%BA%E6%99%AF%E6%AD%BB%E5%BE%AA%E7%8E%AF%E5%86%85%E7%9A%84%E7%8E%A9%E5%AE%B6%E8%BE%93%E5%85%A5%E6%9E%9A%E4%B8%BE%E5%88%86%E6%94%AF%E4%B8%AD%EF%BC%8C%E6%B7%BB%E5%8A%A0%E6%8C%89J%E9%94%AE%E7%9A%84%E5%88%86%E6%94%AF%E9%80%BB%E8%BE%91"><span class="toc-text">游戏场景死循环内的玩家输入枚举分支中，添加按J键的分支逻辑</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B8%B8%E6%88%8F%E5%9C%BA%E6%99%AF%E9%80%BB%E8%BE%91%E6%9C%AB%E5%B0%BE%E6%B7%BB%E5%8A%A0%E8%B7%B3%E5%87%BA%E6%98%AF%E5%90%A6%E8%B7%B3%E5%87%BA%E5%BE%AA%E7%8E%AF%E5%88%A4%E6%96%AD%E9%80%BB%E8%BE%91"><span class="toc-text">游戏场景逻辑末尾添加跳出是否跳出循环判断逻辑</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#12-2-%E7%9F%A5%E8%AF%86%E7%82%B9%E4%BB%A3%E7%A0%81"><span class="toc-text">12.2 知识点代码</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#15-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E7%BB%A7%E6%89%BF-%E9%87%8C%E6%B0%8F%E6%9B%BF%E6%8D%A2%E5%8E%9F%E5%88%99"><span class="toc-text">15.面向对象-继承-里氏替换原则</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#15-1-%E7%9F%A5%E8%AF%86%E7%82%B9"><span class="toc-text">15.1 知识点</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%87%8C%E6%B0%8F%E6%9B%BF%E6%8D%A2%E5%8E%9F%E5%88%99%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="toc-text">里氏替换原则的基本概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%87%8C%E6%B0%8F%E6%9B%BF%E6%8D%A2%E5%8E%9F%E5%88%99%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%AE%9E%E7%8E%B0"><span class="toc-text">里氏替换原则的基本实现</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#class%E8%AF%AD%E5%8F%A5%E5%9D%97%E5%A4%96-namespace%E8%AF%AD%E5%8F%A5%E5%9D%97%E5%86%85"><span class="toc-text">class语句块外 namespace语句块内</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%BB%E5%87%BD%E6%95%B0%E5%86%85"><span class="toc-text">主函数内</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#is-%E5%92%8C-as"><span class="toc-text">is 和 as</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%BB%E5%87%BD%E6%95%B0%E5%86%85-1"><span class="toc-text">主函数内</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#is-%E5%92%8C-as-%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="toc-text">is 和 as 的基本概念</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#is-%E5%92%8C-as-%E7%9A%84%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95"><span class="toc-text">is 和 as 的基本语法</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#is-%E5%92%8C-as-%E7%9A%84%E5%AE%9E%E4%BE%8B"><span class="toc-text">is 和 as 的实例</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-text">总结</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#15-2-%E7%9F%A5%E8%AF%86%E7%82%B9%E4%BB%A3%E7%A0%81"><span class="toc-text">15.2 知识点代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#15-3-%E7%BB%83%E4%B9%A0%E9%A2%98"><span class="toc-text">15.3 练习题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#is%E5%92%8Cas%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-text">is和as的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%99%E4%B8%80%E4%B8%AAMonster%E7%B1%BB%EF%BC%8C%E5%AE%83%E6%B4%BE%E7%94%9F%E5%87%BABoss%E5%92%8CGoblin%E4%B8%A4%E4%B8%AA%E7%B1%BB%EF%BC%8CBoss%E6%9C%89%E6%8A%80%E8%83%BD%EF%BC%9B%E5%B0%8F%E6%80%AA%E6%9C%89%E6%94%BB%E5%87%BB%EF%BC%9B%E9%9A%8F%E6%9C%BA%E7%94%9F%E6%88%9010%E4%B8%AA%E6%80%AA%EF%BC%8C%E8%A3%85%E8%BD%BD%E5%88%B0%E6%95%B0%E7%BB%84%E4%B8%AD%EF%BC%8C%E9%81%8D%E5%8E%86%E8%BF%99%E4%B8%AA%E6%95%B0%E7%BB%84%EF%BC%8C%E8%B0%83%E7%94%A8%E4%BB%96%E4%BB%AC%E7%9A%84%E6%94%BB%E5%87%BB%E6%96%B9%E6%B3%95%EF%BC%8C%E5%A6%82%E6%9E%9C%E6%98%AFboss%E5%B0%B1%E9%87%8A%E6%94%BE%E6%8A%80%E8%83%BD"><span class="toc-text">写一个Monster类，它派生出Boss和Goblin两个类，Boss有技能；小怪有攻击；随机生成10个怪，装载到数组中，遍历这个数组，调用他们的攻击方法，如果是boss就释放技能</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#FPS%E6%B8%B8%E6%88%8F%E6%A8%A1%E6%8B%9F"><span class="toc-text">FPS游戏模拟</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#15-4-%E7%BB%83%E4%B9%A0%E9%A2%98%E4%BB%A3%E7%A0%81"><span class="toc-text">15.4 练习题代码</span></a></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -1231,480 +1235,537 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="12-游戏场景-公主相关"><a href="#12-游戏场景-公主相关" class="headerlink" title="12.游戏场景-公主相关"></a>12.游戏场景-公主相关</h1><hr>
-<h2 id="12-1-知识点"><a href="#12-1-知识点" class="headerlink" title="12.1 知识点"></a>12.1 知识点</h2><h3 id="声明公主的相关属性"><a href="#声明公主的相关属性" class="headerlink" title="声明公主的相关属性"></a>声明公主的相关属性</h3><pre><code class="csharp">int princessX = 24;
-int princessY = 5;
-string princessIcon = &quot;★&quot;;
-ConsoleColor princessColor = ConsoleColor.Blue;
-</code></pre>
-<h3 id="声明成功拯救公主后跳出游戏主逻辑死循环的标识"><a href="#声明成功拯救公主后跳出游戏主逻辑死循环的标识" class="headerlink" title="声明成功拯救公主后跳出游戏主逻辑死循环的标识"></a>声明成功拯救公主后跳出游戏主逻辑死循环的标识</h3><pre><code class="csharp">// 作用是从while循环内部的switch改变标识，用来跳出外层的while循环
-bool isOver = false;
-</code></pre>
-<h3 id="游戏场景死循环内，boss死亡时添加逻辑分支，把公主绘制出来"><a href="#游戏场景死循环内，boss死亡时添加逻辑分支，把公主绘制出来" class="headerlink" title="游戏场景死循环内，boss死亡时添加逻辑分支，把公主绘制出来"></a>游戏场景死循环内，boss死亡时添加逻辑分支，把公主绘制出来</h3><pre><code class="csharp">else
+        <h1 id="15-面向对象-继承-里氏替换原则"><a href="#15-面向对象-继承-里氏替换原则" class="headerlink" title="15.面向对象-继承-里氏替换原则"></a>15.面向对象-继承-里氏替换原则</h1><hr>
+<h2 id="15-1-知识点"><a href="#15-1-知识点" class="headerlink" title="15.1 知识点"></a>15.1 知识点</h2><h3 id="里氏替换原则的基本概念"><a href="#里氏替换原则的基本概念" class="headerlink" title="里氏替换原则的基本概念"></a>里氏替换原则的基本概念</h3><ul>
+<li>里氏替换原则是面向对象七大原则中最重要的原则<ul>
+<li>概念：任何父类出现的地方，子类都可以替代</li>
+<li>语法表现：父类容器装子类对象，因为子类对象包含了父类的所有内容</li>
+<li>作用：方便进行对象存储和管理</li>
+</ul>
+</li>
+</ul>
+<h3 id="里氏替换原则的基本实现"><a href="#里氏替换原则的基本实现" class="headerlink" title="里氏替换原则的基本实现"></a>里氏替换原则的基本实现</h3><h4 id="class语句块外-namespace语句块内"><a href="#class语句块外-namespace语句块内" class="headerlink" title="class语句块外 namespace语句块内"></a>class语句块外 namespace语句块内</h4><pre><code class="csharp">//游戏对象类
+class GameObject
 &#123;
-    Console.SetCursorPosition(princessX, princessY);
-    Console.ForegroundColor = princessColor;
-    Console.Write(princessIcon);
-&#125;
-</code></pre>
-<h3 id="游戏场景死循环内的玩家输入枚举分支中，WASD上下左右移动过程中，如果boss死亡且位置和公主重合了要回退，不能将公主覆盖"><a href="#游戏场景死循环内的玩家输入枚举分支中，WASD上下左右移动过程中，如果boss死亡且位置和公主重合了要回退，不能将公主覆盖" class="headerlink" title="游戏场景死循环内的玩家输入枚举分支中，WASD上下左右移动过程中，如果boss死亡且位置和公主重合了要回退，不能将公主覆盖"></a>游戏场景死循环内的玩家输入枚举分支中，WASD上下左右移动过程中，如果boss死亡且位置和公主重合了要回退，不能将公主覆盖</h3><pre><code class="csharp">else if (playerX == princessX &amp;&amp; playerY == princessY &amp;&amp; bossHp &lt;= 0)
-&#123;
-    // 拉回去
-    ++playerY;
-&#125;
-</code></pre>
-<h3 id="游戏场景死循环内的玩家输入枚举分支中，添加按J键的分支逻辑"><a href="#游戏场景死循环内的玩家输入枚举分支中，添加按J键的分支逻辑" class="headerlink" title="游戏场景死循环内的玩家输入枚举分支中，添加按J键的分支逻辑"></a>游戏场景死循环内的玩家输入枚举分支中，添加按J键的分支逻辑</h3><pre><code class="csharp">// 判断是否在公主身边按J键
-else if ((playerX == princessX &amp;&amp; playerY == princessY - 1 ||
-          playerX == princessX &amp;&amp; playerY == princessY + 1 ||
-          playerX == princessX - 2 &amp;&amp; playerY == princessY ||
-          playerX == princessX + 2 &amp;&amp; playerY == princessY) &amp;&amp; bossHp &lt;= 0)
-&#123;
-    // 改变场景ID
-    nowSceneID = 3;
-    gameOverInfo = &quot;游戏通关&quot;;
 
-    // 改变跳出成功拯救公主后跳出游戏主逻辑死循环的标识
-    // 跳出游戏界面的while循环，回到主循环
-    isOver = true;
+&#125;
+
+//玩家类
+class Player : GameObject
+&#123;
+    public void PlayerAtk()
+    &#123;
+        Console.WriteLine(&quot;玩家攻击&quot;);
+    &#125;
+&#125;
+
+//怪物类
+class Monster : GameObject
+&#123;
+    public void MonsterAtk()
+    &#123;
+        Console.WriteLine(&quot;怪物攻击&quot;);
+    &#125;
+&#125;
+
+//Boss类
+class Boss : GameObject
+&#123;
+    public void BossAtk()
+    &#123;
+        Console.WriteLine(&quot;Boss攻击&quot;);
+    &#125;
+</code></pre>
+<h4 id="主函数内"><a href="#主函数内" class="headerlink" title="主函数内"></a>主函数内</h4><pre><code class="csharp">//里氏替换原则 用父类容器 装载子类对象
+// 父类 变量名 = new 子类();
+GameObject player = new Player();
+GameObject monster = new Monster();
+GameObject boss = new Boss();
+
+GameObject[] objects = new GameObject[] &#123; new Player(), new Monster(), new Boss() &#125;;
+//Player p = new GameObject();//报错 不能用子类容器装父类对象
+</code></pre>
+<h3 id="is-和-as"><a href="#is-和-as" class="headerlink" title="is 和 as"></a><code>is</code> 和 <code>as</code></h3><h4 id="主函数内-1"><a href="#主函数内-1" class="headerlink" title="主函数内"></a>主函数内</h4><h5 id="is-和-as-的基本概念"><a href="#is-和-as-的基本概念" class="headerlink" title="is 和 as 的基本概念"></a>is 和 as 的基本概念</h5><pre><code class="csharp">// is：判断一个对象是否是指定类对象
+// 返回值：bool  是为真 不是为假
+// as：将一个对象转换为指定类对象
+// 返回值：指定类型对象
+// 成功返回指定类型对象，失败返回null
+</code></pre>
+<h5 id="is-和-as-的基本语法"><a href="#is-和-as-的基本语法" class="headerlink" title="is 和 as 的基本语法"></a>is 和 as 的基本语法</h5><pre><code class="csharp">// 类对象 is 类名   该语句块 会有一个 bool 返回值 true 和 false
+// 类对象 as 类名   该语句块 会有一个对象返回值 对象和 null
+</code></pre>
+<h5 id="is-和-as-的实例"><a href="#is-和-as-的实例" class="headerlink" title="is 和 as 的实例"></a>is 和 as 的实例</h5><pre><code class="csharp">//用is判断容器是GameObject容器的变量player的真实类型是不是Player类
+if (player is Player)
+&#123;
+    //用as将变量player转换为容器是Player的对象 用Player容器装
+    Player p1 = player as Player;
+
+    //转换失败会返回空
+    Player p2 = monster as Player;
+
+    //转换成功可以直接使用PlayerAtk()方法
+    p1.PlayerAtk();
+
+    //一步到位的写法
+    (player as Player).PlayerAtk();
+&#125;
+
+//遍历objects数组
+for (int i = 0; i &lt; objects.Length; i++)
+&#123;
+    //通过is和as具体判断，转换，转换成功后使用对应子类的内容
+    if (objects[i] is Player)
+    &#123;
+        (objects[i] as Player).PlayerAtk();
+    &#125;
+    else if (objects[i] is Monster)
+    &#123;
+        (objects[i] as Monster).MonsterAtk();
+    &#125;
+    else if (objects[i] is Boss)
+    &#123;
+        (objects[i] as Boss).BossAtk();
+    &#125;
 &#125;
 </code></pre>
-<h3 id="游戏场景逻辑末尾添加跳出是否跳出循环判断逻辑"><a href="#游戏场景逻辑末尾添加跳出是否跳出循环判断逻辑" class="headerlink" title="游戏场景逻辑末尾添加跳出是否跳出循环判断逻辑"></a>游戏场景逻辑末尾添加跳出是否跳出循环判断逻辑</h3><pre><code class="csharp">// 外层while循环逻辑
-if (isOver)
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ul>
+<li>概念：父类容器装子类对象</li>
+<li>作用：方便进行对象的存储和管理</li>
+<li>使用：<code>is</code> 和 <code>as</code> 用于判断和用于转换</li>
+<li>注意：不能用子类容器装父类对象</li>
+</ul>
+<hr>
+<h2 id="15-2-知识点代码"><a href="#15-2-知识点代码" class="headerlink" title="15.2 知识点代码"></a>15.2 知识点代码</h2><pre><code class="csharp">using System;
+
+namespace Lesson13_继承_里氏替换原则
 &#123;
-    // 就是和while配对
-    break;
+    #region 知识点一 里氏替换原则的基本概念
+    // 里氏替换原则是面向对象七大原则中最重要的原则
+    // 概念：任何父类出现的地方，子类都可以替代
+    // 重点：语法表现——父类容器装子类对象,因为子类对象包含了父类的所有内容
+    // 作用：方便进行对象存储和管理
+    #endregion
+
+    #region 知识点二 里氏替换原则的基本实现
+
+    //class语句块外 namespace语句块内
+
+    //游戏对象类
+    class GameObject
+    &#123;
+
+    &#125;
+
+    //玩家类
+    class Player:GameObject
+    &#123;
+        public void PlayerAtk()
+        &#123;
+            Console.WriteLine(&quot;玩家攻击&quot;);
+        &#125;
+    &#125;
+
+    //怪物类
+    class Monster:GameObject
+    &#123;
+        public void MonsterAtk()
+        &#123;
+            Console.WriteLine(&quot;怪物攻击&quot;);
+        &#125;
+    &#125;
+
+    //Boss类
+    class Boss:GameObject
+    &#123;
+        public void BossAtk()
+        &#123;
+            Console.WriteLine(&quot;Boss攻击&quot;);
+        &#125;
+    &#125;
+    #endregion
+
+    class Program
+    &#123;
+        static void Main(string[] args)
+        &#123;
+            Console.WriteLine(&quot;里氏替换原则&quot;);
+
+            //主函数内
+
+            #region 知识点二 里氏替换原则的基本实现
+
+            //里氏替换原则 用父类容器 装载子类对象
+            // 父类 变量名 = new 子类();
+            GameObject player = new Player();
+            GameObject monster = new Monster();
+            GameObject boss = new Boss();
+
+            GameObject[] objects = new GameObject[] &#123; new Player(), new Monster(), new Boss() &#125;;
+
+            //Player p = new GameObject();//报错 不能用子类容器装父类对象
+            #endregion
+
+            #region 知识点三 关键字 is和as
+            // is和as的基本概念 
+
+            // is：判断一个对象是否是指定类对象
+            // 返回值：bool  是为真 不是为假
+
+            // as：将一个对象转换为指定类对象
+            // 返回值：指定类型对象
+            // 成功返回指定类型对象，失败返回null
+
+            //is和as的基本语法
+            // 类对象 is 类名   该语句块 会有一个bool返回值 true和false
+            // 类对象 as 类名   该语句块 会有一个对象返回值 对象和null
+
+            // is和as的实例
+
+            //player.PlayerAtk();
+            //报错 变量player的真实类型现在是Gameobject 不能直接使用PlayerAtk()方法
+
+            //用is 判断容器是Gameobject容器的变量player的真实类型 是不是Player类
+            if ( player is Player )
+            &#123;
+                //用as 将变量player转换为容器是Player的对象 用Player容器装
+                Player p1 = player as Player;
+
+                //转换失败会返回空
+                Player p2 = monster as Player;
+
+                //转换成功可以直接使用PlayerAtk()方法
+                p1.PlayerAtk();
+
+                //一步到位的写法
+                (player as Player).PlayerAtk();
+            &#125;
+
+            //遍历objects数组
+            for (int i = 0; i &lt; objects.Length; i++)
+            &#123;
+                //通过is和as具体判断，转换，转换成功后使用对应子类的内容
+                if ( objects[i] is Player )
+                &#123;
+                    (objects[i] as Player).PlayerAtk();
+                &#125;
+                else if( objects[i] is Monster )
+                &#123;
+                    (objects[i] as Monster).MonsterAtk();
+                &#125;
+                else if (objects[i] is Boss)
+                &#123;
+                    (objects[i] as Boss).BossAtk();
+                &#125;
+            &#125;
+
+            #endregion
+        &#125;
+    &#125;
+    //总结
+    //概念：父类容器装子类对象
+    //作用：方便进行对象的存储和管理
+    //使用：is和as 用于判断和用于转换
+    // 注意：不能用子类容器装父类对象
 &#125;
 </code></pre>
 <hr>
-<h2 id="12-2-知识点代码"><a href="#12-2-知识点代码" class="headerlink" title="12.2 知识点代码"></a>12.2 知识点代码</h2><pre><code class="csharp">#region 4-8 游戏场景逻辑
-#region 4 不变的红墙
-
-//设置颜色为红色 为画出红墙做准备
-Console.ForegroundColor = ConsoleColor.Red;
-
-//开始画墙
-
-//横着的墙
-for (int i = 0; i &lt; w; i += 2)
+<h2 id="15-3-练习题"><a href="#15-3-练习题" class="headerlink" title="15.3 练习题"></a>15.3 练习题</h2><h3 id="is和as的区别"><a href="#is和as的区别" class="headerlink" title="is和as的区别"></a>is和as的区别</h3><ul>
+<li><code>is</code> 用于判断一个类对象是否是某一个类型的对象，返回 <code>bool</code>。</li>
+<li><code>as</code> 用于尝试将一个类对象转换成指定类型的对象，如果成功返回该类型的对象，否则返回 <code>null</code>。</li>
+</ul>
+<h3 id="写一个Monster类，它派生出Boss和Goblin两个类，Boss有技能；小怪有攻击；随机生成10个怪，装载到数组中，遍历这个数组，调用他们的攻击方法，如果是boss就释放技能"><a href="#写一个Monster类，它派生出Boss和Goblin两个类，Boss有技能；小怪有攻击；随机生成10个怪，装载到数组中，遍历这个数组，调用他们的攻击方法，如果是boss就释放技能" class="headerlink" title="写一个Monster类，它派生出Boss和Goblin两个类，Boss有技能；小怪有攻击；随机生成10个怪，装载到数组中，遍历这个数组，调用他们的攻击方法，如果是boss就释放技能"></a>写一个Monster类，它派生出Boss和Goblin两个类，Boss有技能；小怪有攻击；随机生成10个怪，装载到数组中，遍历这个数组，调用他们的攻击方法，如果是boss就释放技能</h3><p><strong>class语句块外 namespace语句块内</strong></p>
+<pre><code class="csharp">//怪物类
+class Monster
 &#123;
-    //上方墙
-    Console.SetCursorPosition(i, 0);
-    Console.Write(&quot;■&quot;);
-    //下方墙
-    Console.SetCursorPosition(i, h - 1);
-    Console.Write(&quot;■&quot;);
-    //中间墙
-    Console.SetCursorPosition(i, h - 6);
-    Console.Write(&quot;■&quot;);
+
 &#125;
 
-//竖着的墙
-for (int i = 0; i &lt; h; i++)
+//Boss类
+class Boss : Monster
 &#123;
-    //左边的墙
-    Console.SetCursorPosition(0, i);
-    Console.Write(&quot;■&quot;);
-    //右边的墙
-    Console.SetCursorPosition(w - 2, i);
-    Console.Write(&quot;■&quot;);
-&#125;
-
-#endregion
-
-#region 5 Boss相关
-
-//声明boss的相关属性
-
-//包括位置坐标 最大最小攻击力 血量 boss图标 boss颜色
-int bossX = 24;
-int bossY = 15;
-int bossAtkMin = 7;
-int bossAtkMax = 13;
-int bossHp = 100;
-string bossIcon = &quot;■&quot;;
-//申明一个颜色变量 用于绘制boss时使用
-ConsoleColor bossColor = ConsoleColor.Green;
-
-#endregion
-
-#region 6 玩家属性相关
-
-//声明玩家的相关属性
-
-//包括位置坐标 最大最小攻击力 血量 玩家图标 玩家颜色 输入的内容
-int playerX = 4;
-int playerY = 5;
-int playerAtkMin = 8;
-int playerAtkMax = 12;
-int playerHp = 100;
-string playerIcon = &quot;●&quot;;
-//申明一个颜色变量 用于绘制玩家时使用
-ConsoleColor playerColor = ConsoleColor.Yellow;
-//申明一个字符型变量来存储玩家输入的内容  在外面申明可以节约性能
-char playerInput;
-
-
-#endregion
-
-#region 8 公主相关
-
-//声明公主的相关属性
-
-int princessX = 24;
-int princessY = 5;
-string princessIcon = &quot;★&quot;;
-ConsoleColor princessColor = ConsoleColor.Blue;
-
-//声明成功拯救公主后跳出游戏主逻辑死循环的标识
-
-//作用是 从while循环内部的switch 改变标识 用来跳出外层的while循环
-bool isOver = false;
-#endregion
-
-#region 7 玩家战斗相关
-
-//声明战斗状态标识
-bool isFight = false;
-
-#endregion
-
-
-
-//设置游戏场景死循环
-//专门用来 检测 玩家输入相关循环
-while (true)
-&#123;
-    #region 5 Boss相关
-
-    //游戏场景死循环内 把boss绘制出来
-
-    //boss活着时才绘制
-    if (bossHp &gt; 0)
+    public void Skill()
     &#123;
-        //设置光标位置和颜色 绘制boss图标
-        Console.SetCursorPosition(bossX, bossY);
-        Console.ForegroundColor = bossColor;
-        Console.Write(bossIcon);
+        Console.WriteLine(&quot;boss技能&quot;);
     &#125;
-    #endregion
+&#125;
 
-    #region 8 公主相关
+//哥布林类
+class Goblin : Monster
+&#123;
+    public void Atk()
+    &#123;
+        Console.WriteLine(&quot;哥布林攻击&quot;);
+    &#125;
+&#125;
+</code></pre>
+<p><strong>主函数内</strong></p>
+<pre><code class="csharp">// 主函数内
+//随机变量
+Random r = new Random();
+int randomNum;
 
-    //游戏场景死循环内 boss死亡时 添加逻辑分支 把公主绘制出来
+//声明怪物数组
+Monster[] monsters = new Monster[10];
 
+//随机生成10个怪物 装载到怪物数组中
+for (int i = 0; i &lt; monsters.Length; i++)
+&#123;
+    randomNum = r.Next(1, 101);
+
+    //各百分之50的机会生成boss和哥布林
+    if (randomNum &lt; 50)
+    &#123;
+        monsters[i] = new Boss();
+    &#125;
     else
     &#123;
-        Console.SetCursorPosition(princessX, princessY);
-        Console.ForegroundColor = princessColor;
-        Console.Write(princessIcon);
+        monsters[i] = new Goblin();
+    &#125;
+&#125;
+
+//遍历10个怪物 执行对应子类的攻击方法
+for (int i = 0; i &lt; monsters.Length; i++)
+&#123;
+    if (monsters[i] is Boss)
+    &#123;
+        (monsters[i] as Boss).Skill();
+    &#125;
+    else
+    &#123;
+        (monsters[i] as Goblin).Atk();
+    &#125;
+&#125;
+</code></pre>
+<h3 id="FPS游戏模拟"><a href="#FPS游戏模拟" class="headerlink" title="FPS游戏模拟"></a>FPS游戏模拟</h3><p>写一个玩家类，玩家可以拥有各种武器<br>现在有四种武器，冲锋枪，散弹枪，手枪，匕首<br>玩家默认拥有匕首<br>请在玩家类中写一个方法，可以拾取不同的武器替换自己拥有的武器</p>
+<p><strong>class语句块外 namespace语句块内</strong></p>
+<pre><code class="csharp">//武器类
+class Weapon
+&#123;
+
+&#125;
+//冲锋枪
+class SubmachineGun : Weapon
+&#123;
+
+&#125;
+//散弹枪
+class ShotGun : Weapon
+&#123;
+
+&#125;
+//手枪
+class Pistol : Weapon
+&#123;
+
+&#125;
+//匕首
+class Dagger : Weapon
+&#123;
+
+&#125;
+
+//玩家类
+class Player
+&#123;
+    //玩家现在持有的武器
+    private Weapon nowHaveWeapon;
+
+    public Player()
+    &#123;
+        //玩家构造时 默认拥有匕首
+        nowHaveWeapon = new Dagger();
+    &#125;
+
+    //拾取切换武器方法 传入武器 可以是子类
+    public void PickUp(Weapon weapon)
+    &#123;
+        nowHaveWeapon = weapon;
+    &#125;
+&#125;
+</code></pre>
+<p><strong>主函数内</strong></p>
+<pre><code class="csharp">// 主函数内
+//创建玩家
+Player p = new Player();
+
+//创建冲锋枪
+SubmachineGun s = new SubmachineGun();
+//拾取冲锋枪
+p.PickUp(s);
+
+//创建散弹枪
+ShotGun sg = new ShotGun();
+//拾取散弹枪
+p.PickUp(sg);
+</code></pre>
+<hr>
+<h2 id="15-4-练习题代码"><a href="#15-4-练习题代码" class="headerlink" title="15.4 练习题代码"></a>15.4 练习题代码</h2><pre><code class="csharp">using System;
+
+namespace Lesson13_练习题
+&#123;
+    #region 练习题一
+    //is和as的区别是什么
+
+    // is 用于判断  类对象判断是不是某一个类型的对象   bool 
+    // as 用于转换  把一个类对象 转换成一个指定类型的对象   null
+    #endregion
+
+    //class语句块外 namespace语句块内
+
+    #region 练习题二
+    //写一个Monster类，它派生出Boss和Goblin两个类，
+    //Boss有技能；小怪有攻击；
+    //随机生成10个怪，装载到数组中
+    //遍历这个数组，调用他们的攻击方法，如果是boss就释放技能
+
+    //怪物类
+    class Monster
+    &#123;
+
+    &#125;
+
+    //Boss类
+    class Boss : Monster
+    &#123;
+        public void Skill()
+        &#123;
+            Console.WriteLine(&quot;boss技能&quot;);
+        &#125;
+    &#125;
+
+    //哥布林类
+    class Goblin:Monster
+    &#123;
+        public void Atk()
+        &#123;
+            Console.WriteLine(&quot;哥布林攻击&quot;);
+        &#125;
     &#125;
 
     #endregion
 
-    #region 6 玩家移动相关
+    #region 练习题三
+    //FPS游戏模拟
+    //写一个玩家类，玩家可以拥有各种武器
+    //现在有四种武器，冲锋枪，散弹枪，手枪，匕首
+    //玩家默认拥有匕首
+    //请在玩家类中写一个方法，可以拾取不同的武器替换自己拥有的武器
 
-    //游戏场景死循环内 把玩家绘制出来
+    //武器类
+    class Weapon
+    &#123;
 
-    //设置光标位置和颜色 绘制玩家图标
-    Console.SetCursorPosition(playerX, playerY);
-    Console.ForegroundColor = playerColor;
-    Console.Write(playerIcon);
+    &#125;
+    //冲锋枪
+    class SubmachineGun : Weapon
+    &#123;
 
+    &#125;
+    //散弹枪
+    class ShotGun : Weapon
+    &#123;
 
-    //游戏场景死循环内 得到玩家输入
-    playerInput = Console.ReadKey(true).KeyChar;
+    &#125;
+    //手枪
+    class Pistol : Weapon
+    &#123;
+
+    &#125;
+    //匕首
+    class Dagger:Weapon
+    &#123;
+
+    &#125;
+    
+    //玩家类
+    class Player
+    &#123;
+        //玩家现在持有的武器
+        private Weapon nowHaveWeapon;
+
+        public Player()
+        &#123;
+            //玩家构造时 默认拥有匕首
+            nowHaveWeapon = new Dagger();
+        &#125;
+
+        //拾取切换武器方法 传入武器 可以是子类
+        public void PickUp(Weapon weapon)
+        &#123;
+            nowHaveWeapon = weapon;
+        &#125;
+    &#125;
+
     #endregion
 
-    //游戏场景死循环内 根据是否是战斗状态处理不同逻辑 把绘制玩家图形和玩家输入枚举放在非战斗状态的分支中
-
-    //战斗状态处理什么逻辑
-    if (isFight)
+    class Program
     &#123;
-        //玩家战斗相关逻辑
-        #region 7 玩家战斗相关
-
-        //游戏场景死循环内 处理进入战斗状态后按j键的逻辑
-
-        //如果是战斗状态 应该做什么
-        //只会处理J键的逻辑 
-        if (playerInput == &#39;J&#39; || playerInput == &#39;j&#39;)
+        static void Main(string[] args)
         &#123;
+            Console.WriteLine(&quot;里氏替换练习题&quot;);
 
-            //在这判断 玩家或者boss 是否死亡 如果死亡了 继续之后的流程
+            //主函数内
 
-            //如果玩家死亡
-            if (playerHp &lt;= 0)
+            #region 练习题二
+
+            //随机变量
+            Random r = new Random();
+            int randomNum;
+
+            //声明怪物数组
+            Monster[] monsters = new Monster[10];
+
+            //随机生成10个怪物 装载到怪物数组中
+            for (int i = 0; i &lt; monsters.Length; i++)
             &#123;
-                //游戏结束
-                //输掉了 应该直接显示 我们的 游戏结束界面
-                //切换场景id
-                nowSceneID = 3;
-                gameOverInfo = &quot;游戏失败&quot;;
-                break;
-            &#125;
+                randomNum = r.Next(1, 101);
 
-            //如果boss死亡
-            else if (bossHp &lt;= 0)
-            &#123;
-                //去营救公主
-                //boss擦除
-                Console.SetCursorPosition(bossX, bossY);
-                Console.Write(&quot;  &quot;);
-                isFight = false;
-            &#125;
-
-            //玩家和boss都没死 处理按J键对战逻辑
-            else
-            &#123;
-                //得到随机对象
-                Random r = new Random();
-
-                //玩家打boss
-
-                //随机出玩家的攻击力
-                int atk = r.Next(playerAtkMin, playerAtkMax);
-
-                //boss血量减对应的攻击力
-                bossHp -= atk;
-
-                //打印玩家的攻击信息
-
-                //设置输出的字体颜色
-                Console.ForegroundColor = ConsoleColor.Green;
-
-                //先擦除这一行 上次显示的内容
-                Console.SetCursorPosition(2, h - 4);
-                Console.Write(&quot;                                           &quot;);
-
-                //再来写新的信息
-
-                //输出玩家对boss的伤害信息
-                Console.SetCursorPosition(2, h - 4);
-                Console.Write(&quot;你对boss造成了&#123;0&#125;点伤害，boss剩余血量为&#123;1&#125;&quot;, atk, bossHp);
-
-                //boss打玩家
-
-                //boss大于0才可以对玩家进行攻击
-                if (bossHp &gt; 0)
+                //各百分之50的机会生成boss和哥布林
+                if( randomNum &lt; 50 )
                 &#123;
-                    //随机出boss的攻击力
-                    atk = r.Next(bossAtkMin, bossAtkMax);
-
-                    //玩家血量减对应的攻击力
-                    playerHp -= atk;
-
-                    //打印boss的攻击信息
-
-                    //设置输出的字体颜色
-                    Console.ForegroundColor = ConsoleColor.Yellow;
-
-                    //先擦除这一行 上次显示的内容
-                    Console.SetCursorPosition(2, h - 3);
-                    Console.Write(&quot;                                           &quot;);
-
-                    //再来写新的信息
-
-
-                    //如果boss把玩家打死了
-                    if (playerHp &lt;= 0)
-                    &#123;
-                        //输出失败信息
-                        Console.SetCursorPosition(2, h - 3);
-                        Console.Write(&quot;很遗憾，你未能通过boss的试炼，战败了&quot;);
-                    &#125;
-
-                    //boss没有把玩家打死
-                    else
-                    &#123;
-                        //输出boss对玩家的伤害信息
-                        Console.SetCursorPosition(2, h - 3);
-                        Console.Write(&quot;boss对你造成了&#123;0&#125;点伤害，你的剩余血量为&#123;1&#125;&quot;, atk, playerHp);
-                    &#125;
-
-
+                    monsters[i] = new Boss();
                 &#125;
-
-                //boss血量小于等于boss死亡了
                 else
                 &#123;
-                    //擦除之前的战斗信息
-                    Console.SetCursorPosition(2, h - 5);
-                    Console.Write(&quot;                                           &quot;);
-                    Console.SetCursorPosition(2, h - 4);
-                    Console.Write(&quot;                                           &quot;);
-                    Console.SetCursorPosition(2, h - 3);
-                    Console.Write(&quot;                                           &quot;);
+                    monsters[i] = new Goblin();
+                &#125;
 
-                    //显示恭喜胜利的信息
-                    Console.SetCursorPosition(2, h - 5);
-                    Console.Write(&quot;你战胜了boss，快去营救公主&quot;);
-                    Console.SetCursorPosition(2, h - 4);
-                    Console.Write(&quot;前往公主身边按J键继续&quot;);
+            &#125;
+
+            //遍历10个怪物 执行对应子类的攻击方法
+            for (int i = 0; i &lt; monsters.Length; i++)
+            &#123;
+                if( monsters[i] is Boss )
+                &#123;
+                    (monsters[i] as Boss).Skill();
+                &#125;
+                else
+                &#123;
+                    (monsters[i] as Goblin).Atk();
                 &#125;
             &#125;
+
+            #endregion
+
+            #region 练习题三
+
+            //创建玩家
+            Player p = new Player();
+
+            //创建冲锋枪
+            SubmachineGun s = new SubmachineGun();
+            //拾取冲锋枪
+            p.PickUp(s);
+
+            //创建散弹枪
+            ShotGun sg = new ShotGun();
+            //拾取散弹枪
+            p.PickUp(sg);
+
+            #endregion
         &#125;
-        #endregion
     &#125;
-
-    //非战斗状态处理什么逻辑
-    else
-    &#123;
-        //玩家移动相关逻辑
-        //包括擦除上一次玩家所在位置绘制的玩家图形和根据玩家输入的字符枚举获得新的位置信息的switch
-        #region 6 玩家移动相关
-
-        //游戏场景死循环内 擦除上一次玩家所在位置绘制的玩家图形
-        Console.SetCursorPosition(playerX, playerY);
-        Console.Write(&quot;  &quot;);
-
-        //游戏场景死循环内 根据玩家输入的字符枚举获得新的位置信息
-        switch (playerInput)
-        &#123;
-            case &#39;W&#39;:
-            case &#39;w&#39;:
-                --playerY;
-                if (playerY &lt; 1)
-                &#123;
-                    playerY = 1;
-                &#125;
-                //位置如果和boss重合了 并且boss没有死
-                else if (playerX == bossX &amp;&amp; playerY == bossY &amp;&amp; bossHp &gt; 0)
-                &#123;
-                    //拉回去
-                    ++playerY;
-                &#125;
-                //游戏场景死循环内的玩家输入枚举分支中 wasd上下左右移动过程中
-                //如果boss死亡且位置和公主重合了要回退 不能将公主覆盖
-                else if ( playerX == princessX &amp;&amp; playerY == princessY &amp;&amp; bossHp &lt;= 0 )
-                &#123;
-                    //拉回去
-                    ++playerY;
-                &#125;
-                break;
-            case &#39;A&#39;:
-            case &#39;a&#39;:
-                playerX -= 2;
-                if (playerX &lt; 2)
-                &#123;
-                    playerX = 2;
-                &#125;
-                else if (playerX == bossX &amp;&amp; playerY == bossY &amp;&amp; bossHp &gt; 0)
-                &#123;
-                    //拉回去
-                    playerX += 2;
-                &#125;
-                else if (playerX == princessX &amp;&amp; playerY == princessY &amp;&amp; bossHp &lt;= 0)
-                &#123;
-                    //拉回去
-                    playerX += 2;
-                &#125;
-                break;
-            case &#39;S&#39;:
-            case &#39;s&#39;:
-                ++playerY;
-                if (playerY &gt; h - 7)
-                &#123;
-                    playerY = h - 7;
-                &#125;
-                else if (playerX == bossX &amp;&amp; playerY == bossY &amp;&amp; bossHp &gt; 0)
-                &#123;
-                    //拉回去
-                    --playerY;
-                &#125;
-                else if (playerX == princessX &amp;&amp; playerY == princessY &amp;&amp; bossHp &lt;= 0)
-                &#123;
-                    //拉回去
-                    --playerY;
-                &#125;
-                break;
-            case &#39;D&#39;:
-            case &#39;d&#39;:
-                playerX += 2;
-                if (playerX &gt; w - 4)
-                &#123;
-                    playerX = w - 4;
-                &#125;
-                else if (playerX == bossX &amp;&amp; playerY == bossY &amp;&amp; bossHp &gt; 0)
-                &#123;
-                    //拉回去
-                    playerX -= 2;
-                &#125;
-                else if (playerX == princessX &amp;&amp; playerY == princessY &amp;&amp; bossHp &lt;= 0)
-                &#123;
-                    //拉回去
-                    playerX -= 2;
-                &#125;
-                break;
-
-            //游戏场景死循环内的玩家输入枚举分支中 添加按j键的分支逻辑
-            case &#39;J&#39;:
-            case &#39;j&#39;:
-
-                #region 7 玩家战斗相关
-
-                //游戏场景死循环内的玩家输入枚举分支中的j键的分支中 添加玩家战斗相关逻辑
-
-                //要让玩家不能再移动
-                //更改战斗状态标识 可以跳出当前游戏场景死循环 就进入战斗状态逻辑 不会进入非战斗状态的移动逻辑
-                //下方能够显示信息
-
-                // 当玩家在boss身边一格且boss血量大于0的时候可以开始战斗
-                if ((playerX == bossX &amp;&amp; playerY == bossY - 1 ||
-                    playerX == bossX &amp;&amp; playerY == bossY + 1 ||
-                    playerX == bossX - 2 &amp;&amp; playerY == bossY ||
-                    playerX == bossX + 2 &amp;&amp; playerY == bossY) &amp;&amp; bossHp &gt; 0)
-                &#123;
-                    //可以开始战斗 更改战斗状态标识
-                    isFight = true;
-
-
-                    //输出战斗中的对战信息
-                    Console.SetCursorPosition(2, h - 5);
-                    Console.ForegroundColor = ConsoleColor.White;
-                    Console.Write(&quot;开始和Boss战斗了，按J键继续&quot;);
-                    Console.SetCursorPosition(2, h - 4);
-                    Console.Write(&quot;玩家当前血量为&#123;0&#125;&quot;, playerHp);
-                    Console.SetCursorPosition(2, h - 3);
-                    Console.Write(&quot;boss当前血量为&#123;0&#125;&quot;, bossHp);
-                &#125;
-                #endregion
-
-                #region 8 公主相关
-                //判断是否在公主身边按J键
-                else if ((playerX == princessX &amp;&amp; playerY == princessY - 1 ||
-                    playerX == princessX &amp;&amp; playerY == princessY + 1 ||
-                    playerX == princessX - 2 &amp;&amp; playerY == princessY ||
-                    playerX == princessX + 2 &amp;&amp; playerY == princessY) &amp;&amp; bossHp &lt;= 0)
-                &#123;
-                    //改变 场景ID
-                    nowSceneID = 3;
-
-                    gameOverInfo = &quot;游戏通关&quot;;
-
-                    //改变跳出成功拯救公主后跳出游戏主逻辑死循环的标识
-                    //跳出 游戏界面的while循环 回到主循环
-                    isOver = true;
-                &#125;
-                #endregion
-                break;
-        &#125;
-        #endregion
-    &#125;
-
-    #region 8 公主相关
-
-    //游戏场景逻辑末尾添加跳出是否跳出循环判断逻辑
-
-    //外层while循环逻辑
-    if (isOver)
-    &#123;
-        //就是和while配对
-        break;
-    &#125;
-    #endregion
 &#125;
-
-#endregion
 </code></pre>
 <hr>
 
