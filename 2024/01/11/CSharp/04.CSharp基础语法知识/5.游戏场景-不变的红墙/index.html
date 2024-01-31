@@ -3,24 +3,28 @@
 <head>
   <meta charset="utf-8">
   <title>【C#基础实践项目】| 5.不变的红墙 | 人间自有韬哥在的游戏开发博客</title>
-  <meta name="keywords" content=" CSharp , CSharp基础 , 实践项目 ">
+  <meta name="keywords" content=" CSharp , 实践项目 , CSharp基础 ">
   <meta name="description" content="【C#基础实践项目】| 5.不变的红墙 | 人间自有韬哥在的游戏开发博客">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="28.面向对象关联知识点-抽象类和接口的区别 28.1 知识点知识回顾抽象类和抽象方法&#x2F;&#x2F; abstract 修饰的类和方法 &#x2F;&#x2F; 抽象类不能实例化 &#x2F;&#x2F; 抽象方法只能在抽象类中声明，是个纯虚方法，必须在子类中实现  public abstract class AbstractClass &#123;     public abstract void AbstractMethod(); &amp;#125">
+<meta name="description" content="29.总结 29.1 知识点 学习的主要内容 强调">
 <meta property="og:type" content="article">
-<meta property="og:title" content="【C#核心语法知识】| 28.抽象类和接口的区别">
-<meta property="og:url" content="https://linwentao785293209.github.io/2024/01/31/CSharp/05.Csharp%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/28.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E5%85%B3%E8%81%94%E7%9F%A5%E8%AF%86%E7%82%B9-%E6%8A%BD%E8%B1%A1%E7%B1%BB%E5%92%8C%E6%8E%A5%E5%8F%A3%E7%9A%84%E5%8C%BA%E5%88%AB/index.html">
+<meta property="og:title" content="【C#核心语法知识】| 29.总结">
+<meta property="og:url" content="https://linwentao785293209.github.io/2024/01/31/CSharp/05.Csharp%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/29.%E6%80%BB%E7%BB%93/index.html">
 <meta property="og:site_name" content="人间自有韬哥在的游戏开发博客">
-<meta property="og:description" content="28.面向对象关联知识点-抽象类和接口的区别 28.1 知识点知识回顾抽象类和抽象方法&#x2F;&#x2F; abstract 修饰的类和方法 &#x2F;&#x2F; 抽象类不能实例化 &#x2F;&#x2F; 抽象方法只能在抽象类中声明，是个纯虚方法，必须在子类中实现  public abstract class AbstractClass &#123;     public abstract void AbstractMethod(); &amp;#125">
+<meta property="og:description" content="29.总结 29.1 知识点 学习的主要内容 强调">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-01-31T15:28:02.000Z">
-<meta property="article:modified_time" content="2024-01-31T15:29:57.992Z">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/CSharp/05.Csharp%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/29.%E6%80%BB%E7%BB%93/1.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/CSharp/05.Csharp%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/29.%E6%80%BB%E7%BB%93/2.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/CSharp/05.Csharp%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/29.%E6%80%BB%E7%BB%93/3.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/CSharp/05.Csharp%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/29.%E6%80%BB%E7%BB%93/4.png">
+<meta property="article:published_time" content="2024-01-31T15:34:21.000Z">
+<meta property="article:modified_time" content="2024-01-31T15:34:23.202Z">
 <meta property="article:author" content="人间自有韬哥在">
 <meta property="article:tag" content="CSharp">
 <meta property="article:tag" content="语法知识">
 <meta property="article:tag" content="CSharp核心">
-<meta property="article:tag" content="面向对象关联知识点">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://linwentao785293209.github.io/images/CSharp/05.Csharp%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/29.%E6%80%BB%E7%BB%93/1.png">
 
 
 <link rel="icon" href="/img/avatar.jpg">
@@ -147,7 +151,7 @@
     <li>
         <div class="all active" data-rel="全部文章">全部文章
             
-                <small>(96)</small>
+                <small>(97)</small>
             
         </div>
     </li>
@@ -159,7 +163,7 @@
         <div data-rel="CSharp">
             <i class="fold iconfont icon-right"></i>
             CSharp
-            <small>(96)</small>
+            <small>(97)</small>
         </div>
         
             <ul class="sub hide">
@@ -213,7 +217,7 @@
         <div data-rel="CSharp&lt;---&gt;CSharp核心语法知识">
             
             CSharp核心语法知识
-            <small>(28)</small>
+            <small>(29)</small>
         </div>
         
     </li>
@@ -261,7 +265,7 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="96">
+<input type="hidden" id="yelog_site_posts_number" value="97">
 
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
@@ -401,6 +405,15 @@
 
     
     <nav id="title-list-nav">
+        
+        
+        <a  class="全部文章 CSharp CSharp核心语法知识 "
+           href="/2024/01/31/CSharp/05.Csharp%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/29.%E6%80%BB%E7%BB%93/"
+           data-tag="CSharp,语法知识,CSharp核心"
+           data-author="" >
+            <span class="post-title" title="【C#核心语法知识】| 29.总结">【C#核心语法知识】| 29.总结</span>
+            <span class="post-date" title="2024-01-31 23:34:21">2024/01/31</span>
+        </a>
         
         
         <a  class="全部文章 CSharp CSharp核心语法知识 "
@@ -657,7 +670,7 @@
         
         <a  class="全部文章 CSharp CSharp基础实践项目 "
            href="/2024/01/11/CSharp/04.CSharp%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/12.%E6%80%BB%E7%BB%93/"
-           data-tag="CSharp,CSharp基础,实践项目"
+           data-tag="CSharp,实践项目,CSharp基础"
            data-author="" >
             <span class="post-title" title="【C#基础实践项目】| 12.总结">【C#基础实践项目】| 12.总结</span>
             <span class="post-date" title="2024-01-11 21:13:38">2024/01/11</span>
@@ -666,7 +679,7 @@
         
         <a  class="全部文章 CSharp CSharp基础实践项目 "
            href="/2024/01/11/CSharp/04.CSharp%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/11.%E4%BB%A3%E7%A0%81%E6%B1%87%E6%80%BB/"
-           data-tag="CSharp,CSharp基础,实践项目"
+           data-tag="CSharp,实践项目,CSharp基础"
            data-author="" >
             <span class="post-title" title="【C#基础实践项目】| 11.代码汇总">【C#基础实践项目】| 11.代码汇总</span>
             <span class="post-date" title="2024-01-11 21:07:59">2024/01/11</span>
@@ -675,7 +688,7 @@
         
         <a  class="全部文章 CSharp CSharp基础实践项目 "
            href="/2024/01/11/CSharp/04.CSharp%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/10.%E7%BB%93%E6%9D%9F%E5%9C%BA%E6%99%AF/"
-           data-tag="CSharp,CSharp基础,实践项目"
+           data-tag="CSharp,实践项目,CSharp基础"
            data-author="" >
             <span class="post-title" title="【C#基础实践项目】| 10.结束场景">【C#基础实践项目】| 10.结束场景</span>
             <span class="post-date" title="2024-01-11 20:57:28">2024/01/11</span>
@@ -684,7 +697,7 @@
         
         <a  class="全部文章 CSharp CSharp基础实践项目 "
            href="/2024/01/11/CSharp/04.CSharp%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/9.%E6%B8%B8%E6%88%8F%E5%9C%BA%E6%99%AF-%E6%89%94%E9%AA%B0%E5%AD%90/"
-           data-tag="CSharp,CSharp基础,实践项目"
+           data-tag="CSharp,实践项目,CSharp基础"
            data-author="" >
             <span class="post-title" title="【C#基础实践项目】| 9.扔骰子">【C#基础实践项目】| 9.扔骰子</span>
             <span class="post-date" title="2024-01-11 20:32:31">2024/01/11</span>
@@ -693,7 +706,7 @@
         
         <a  class="全部文章 CSharp CSharp基础实践项目 "
            href="/2024/01/11/CSharp/04.CSharp%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/8.%E6%B8%B8%E6%88%8F%E5%9C%BA%E6%99%AF-%E7%8E%A9%E5%AE%B6%E5%92%8C%E7%94%B5%E8%84%91%E7%BB%93%E6%9E%84%E4%BD%93/"
-           data-tag="CSharp,CSharp基础,实践项目"
+           data-tag="CSharp,实践项目,CSharp基础"
            data-author="" >
             <span class="post-title" title="【C#基础实践项目】| 8.玩家和电脑结构体">【C#基础实践项目】| 8.玩家和电脑结构体</span>
             <span class="post-date" title="2024-01-11 20:25:32">2024/01/11</span>
@@ -702,7 +715,7 @@
         
         <a  class="全部文章 CSharp CSharp基础实践项目 "
            href="/2024/01/11/CSharp/04.CSharp%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/7.%E6%B8%B8%E6%88%8F%E5%9C%BA%E6%99%AF-%E5%9C%B0%E5%9B%BE%E7%BB%93%E6%9E%84%E4%BD%93/"
-           data-tag="CSharp,CSharp基础,实践项目"
+           data-tag="CSharp,实践项目,CSharp基础"
            data-author="" >
             <span class="post-title" title="【C#基础实践项目】| 7.地图结构体">【C#基础实践项目】| 7.地图结构体</span>
             <span class="post-date" title="2024-01-11 20:22:00">2024/01/11</span>
@@ -711,7 +724,7 @@
         
         <a  class="全部文章 CSharp CSharp基础实践项目 "
            href="/2024/01/11/CSharp/04.CSharp%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/6.%E6%B8%B8%E6%88%8F%E5%9C%BA%E6%99%AF-%E6%A0%BC%E5%AD%90%E7%B1%BB%E5%9E%8B%E6%9E%9A%E4%B8%BE%E5%92%8C%E6%A0%BC%E5%AD%90%E7%BB%93%E6%9E%84%E4%BD%93/"
-           data-tag="CSharp,CSharp基础,实践项目"
+           data-tag="CSharp,实践项目,CSharp基础"
            data-author="" >
             <span class="post-title" title="【C#基础实践项目】| 6.格子类型枚举和格子结构体">【C#基础实践项目】| 6.格子类型枚举和格子结构体</span>
             <span class="post-date" title="2024-01-11 13:02:56">2024/01/11</span>
@@ -720,7 +733,7 @@
         
         <a  class="全部文章 CSharp CSharp基础实践项目 "
            href="/2024/01/11/CSharp/04.CSharp%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/5.%E6%B8%B8%E6%88%8F%E5%9C%BA%E6%99%AF-%E4%B8%8D%E5%8F%98%E7%9A%84%E7%BA%A2%E5%A2%99/"
-           data-tag="CSharp,CSharp基础,实践项目"
+           data-tag="CSharp,实践项目,CSharp基础"
            data-author="" >
             <span class="post-title" title="【C#基础实践项目】| 5.不变的红墙">【C#基础实践项目】| 5.不变的红墙</span>
             <span class="post-date" title="2024-01-11 13:02:47">2024/01/11</span>
@@ -729,7 +742,7 @@
         
         <a  class="全部文章 CSharp CSharp基础实践项目 "
            href="/2024/01/11/CSharp/04.CSharp%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/4.%E5%BC%80%E5%A7%8B%E5%9C%BA%E6%99%AF/"
-           data-tag="CSharp,CSharp基础,实践项目"
+           data-tag="CSharp,实践项目,CSharp基础"
            data-author="" >
             <span class="post-title" title="【C#基础实践项目】| 4.开始场景">【C#基础实践项目】| 4.开始场景</span>
             <span class="post-date" title="2024-01-11 00:05:38">2024/01/11</span>
@@ -738,7 +751,7 @@
         
         <a  class="全部文章 CSharp CSharp基础实践项目 "
            href="/2024/01/10/CSharp/04.CSharp%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/3.%E5%A4%9A%E4%B8%AA%E5%9C%BA%E6%99%AF/"
-           data-tag="CSharp,CSharp基础,实践项目"
+           data-tag="CSharp,实践项目,CSharp基础"
            data-author="" >
             <span class="post-title" title="【C#基础实践项目】| 3.多个场景">【C#基础实践项目】| 3.多个场景</span>
             <span class="post-date" title="2024-01-10 23:58:28">2024/01/10</span>
@@ -747,7 +760,7 @@
         
         <a  class="全部文章 CSharp CSharp基础实践项目 "
            href="/2024/01/10/CSharp/04.CSharp%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/2.%E6%8E%A7%E5%88%B6%E5%8F%B0%E5%9F%BA%E7%A1%80%E8%AE%BE%E7%BD%AE/"
-           data-tag="CSharp,CSharp基础,实践项目"
+           data-tag="CSharp,实践项目,CSharp基础"
            data-author="" >
             <span class="post-title" title="【C#基础实践项目】| 2.控制台基础设置">【C#基础实践项目】| 2.控制台基础设置</span>
             <span class="post-date" title="2024-01-10 23:58:23">2024/01/10</span>
@@ -756,7 +769,7 @@
         
         <a  class="全部文章 CSharp CSharp基础实践项目 "
            href="/2024/01/10/CSharp/04.CSharp%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/1.%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90/"
-           data-tag="CSharp,CSharp基础,实践项目"
+           data-tag="CSharp,实践项目,CSharp基础"
            data-author="" >
             <span class="post-title" title="【C#基础实践项目】| 1.需求分析">【C#基础实践项目】| 1.需求分析</span>
             <span class="post-date" title="2024-01-10 23:10:40">2024/01/10</span>
@@ -1308,9 +1321,9 @@
             
             <a class="color2">CSharp</a>
             
-            <a class="color4">CSharp基础</a>
-            
             <a class="color5">实践项目</a>
+            
+            <a class="color4">CSharp基础</a>
             
         </span>
         
