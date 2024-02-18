@@ -6,27 +6,22 @@
   <meta name="keywords" content=" CSharp , 语法知识 , CSharp基础 , 函数 ">
   <meta name="description" content="【C#基础语法知识】| 9.函数基础 | 人间自有韬哥在的游戏开发博客">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="4.需求分析 4.1 功能需求有开始场景，游戏场景，结束场景。游戏中有墙和蛇和果子。玩家wsad控制蛇移动。吃果子长身体，碰到自身或者墙游戏结束。  4.2 原型图开始场景 游戏场景 结束场景  4.3 UML类图总览类图 场景系统类图 游戏场景类图">
+<meta name="description" content="7.游戏场景-游戏对象基类、绘制接口和位置结构体 7.1 知识点将要实现的类图 创建绘制接口，里面有绘制方法&#x2F;&#x2F; 绘制接口 interface IDraw &#123;     &#x2F;&#x2F; 绘制方法     void Draw(); &#125;  创建位置结构体，包含xy坐标，进行&#x3D;&#x3D;和!&#x3D;的运算符重载，帮助判断对象的位置时候重合&#x2F;&#x2F;位置结构体 struct Positi">
 <meta property="og:type" content="article">
-<meta property="og:title" content="【C#核心实践项目】| 4.需求分析">
-<meta property="og:url" content="https://linwentao785293209.github.io/2024/02/17/CSharp/06.CSharp%E6%A0%B8%E5%BF%83%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/4.%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90/index.html">
+<meta property="og:title" content="【C#核心实践项目】| 7.游戏对象基类、绘制接口和位置结构体">
+<meta property="og:url" content="https://linwentao785293209.github.io/2024/02/18/CSharp/06.CSharp%E6%A0%B8%E5%BF%83%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/7.%E6%B8%B8%E6%88%8F%E5%9C%BA%E6%99%AF-%E6%B8%B8%E6%88%8F%E5%AF%B9%E8%B1%A1%E5%9F%BA%E7%B1%BB%E3%80%81%E7%BB%98%E5%88%B6%E6%8E%A5%E5%8F%A3%E5%92%8C%E4%BD%8D%E7%BD%AE%E7%BB%93%E6%9E%84%E4%BD%93/index.html">
 <meta property="og:site_name" content="人间自有韬哥在的游戏开发博客">
-<meta property="og:description" content="4.需求分析 4.1 功能需求有开始场景，游戏场景，结束场景。游戏中有墙和蛇和果子。玩家wsad控制蛇移动。吃果子长身体，碰到自身或者墙游戏结束。  4.2 原型图开始场景 游戏场景 结束场景  4.3 UML类图总览类图 场景系统类图 游戏场景类图">
+<meta property="og:description" content="7.游戏场景-游戏对象基类、绘制接口和位置结构体 7.1 知识点将要实现的类图 创建绘制接口，里面有绘制方法&#x2F;&#x2F; 绘制接口 interface IDraw &#123;     &#x2F;&#x2F; 绘制方法     void Draw(); &#125;  创建位置结构体，包含xy坐标，进行&#x3D;&#x3D;和!&#x3D;的运算符重载，帮助判断对象的位置时候重合&#x2F;&#x2F;位置结构体 struct Positi">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/CSharp/06.CSharp%E6%A0%B8%E5%BF%83%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/4.%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90/1.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/CSharp/06.CSharp%E6%A0%B8%E5%BF%83%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/4.%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90/2.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/CSharp/06.CSharp%E6%A0%B8%E5%BF%83%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/4.%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90/3.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/CSharp/06.CSharp%E6%A0%B8%E5%BF%83%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/4.%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90/4.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/CSharp/06.CSharp%E6%A0%B8%E5%BF%83%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/4.%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90/5.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/CSharp/06.CSharp%E6%A0%B8%E5%BF%83%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/4.%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90/6.png">
-<meta property="article:published_time" content="2024-02-17T14:40:09.000Z">
-<meta property="article:modified_time" content="2024-02-17T14:45:59.221Z">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/CSharp/06.CSharp%E6%A0%B8%E5%BF%83%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/7.%E6%B8%B8%E6%88%8F%E5%9C%BA%E6%99%AF-%E6%B8%B8%E6%88%8F%E5%AF%B9%E8%B1%A1%E5%9F%BA%E7%B1%BB%E3%80%81%E7%BB%98%E5%88%B6%E6%8E%A5%E5%8F%A3%E5%92%8C%E4%BD%8D%E7%BD%AE%E7%BB%93%E6%9E%84%E4%BD%93/1.png">
+<meta property="article:published_time" content="2024-02-18T12:01:16.000Z">
+<meta property="article:modified_time" content="2024-02-18T12:02:32.122Z">
 <meta property="article:author" content="人间自有韬哥在">
 <meta property="article:tag" content="CSharp">
 <meta property="article:tag" content="实践项目">
 <meta property="article:tag" content="CSharp核心">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://linwentao785293209.github.io/images/CSharp/06.CSharp%E6%A0%B8%E5%BF%83%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/4.%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90/1.png">
+<meta name="twitter:image" content="https://linwentao785293209.github.io/images/CSharp/06.CSharp%E6%A0%B8%E5%BF%83%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/7.%E6%B8%B8%E6%88%8F%E5%9C%BA%E6%99%AF-%E6%B8%B8%E6%88%8F%E5%AF%B9%E8%B1%A1%E5%9F%BA%E7%B1%BB%E3%80%81%E7%BB%98%E5%88%B6%E6%8E%A5%E5%8F%A3%E5%92%8C%E4%BD%8D%E7%BD%AE%E7%BB%93%E6%9E%84%E4%BD%93/1.png">
 
 
 <link rel="icon" href="/img/avatar.jpg">
@@ -153,7 +148,7 @@
     <li>
         <div class="all active" data-rel="全部文章">全部文章
             
-                <small>(101)</small>
+                <small>(104)</small>
             
         </div>
     </li>
@@ -165,7 +160,7 @@
         <div data-rel="CSharp">
             <i class="fold iconfont icon-right"></i>
             CSharp
-            <small>(101)</small>
+            <small>(104)</small>
         </div>
         
             <ul class="sub hide">
@@ -230,7 +225,7 @@
         <div data-rel="CSharp&lt;---&gt;CSharp核心实践项目">
             
             CSharp核心实践项目
-            <small>(4)</small>
+            <small>(7)</small>
         </div>
         
     </li>
@@ -282,7 +277,7 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="101">
+<input type="hidden" id="yelog_site_posts_number" value="104">
 
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
@@ -422,6 +417,33 @@
 
     
     <nav id="title-list-nav">
+        
+        
+        <a  class="全部文章 CSharp CSharp核心实践项目 "
+           href="/2024/02/18/CSharp/06.CSharp%E6%A0%B8%E5%BF%83%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/7.%E6%B8%B8%E6%88%8F%E5%9C%BA%E6%99%AF-%E6%B8%B8%E6%88%8F%E5%AF%B9%E8%B1%A1%E5%9F%BA%E7%B1%BB%E3%80%81%E7%BB%98%E5%88%B6%E6%8E%A5%E5%8F%A3%E5%92%8C%E4%BD%8D%E7%BD%AE%E7%BB%93%E6%9E%84%E4%BD%93/"
+           data-tag="CSharp,实践项目,CSharp核心"
+           data-author="" >
+            <span class="post-title" title="【C#核心实践项目】| 7.游戏对象基类、绘制接口和位置结构体">【C#核心实践项目】| 7.游戏对象基类、绘制接口和位置结构体</span>
+            <span class="post-date" title="2024-02-18 20:01:16">2024/02/18</span>
+        </a>
+        
+        
+        <a  class="全部文章 CSharp CSharp核心实践项目 "
+           href="/2024/02/17/CSharp/06.CSharp%E6%A0%B8%E5%BF%83%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/6.%E5%A4%9A%E5%9C%BA%E6%99%AF%E5%88%87%E6%8D%A2%E3%80%81%E5%BC%80%E5%A7%8B%E5%9C%BA%E6%99%AF%E5%92%8C%E7%BB%93%E6%9D%9F%E5%9C%BA%E6%99%AF/"
+           data-tag="CSharp,实践项目,CSharp核心"
+           data-author="" >
+            <span class="post-title" title="【C#核心实践项目】| 6.多场景切换、开始场景和结束场景">【C#核心实践项目】| 6.多场景切换、开始场景和结束场景</span>
+            <span class="post-date" title="2024-02-17 22:57:11">2024/02/17</span>
+        </a>
+        
+        
+        <a  class="全部文章 CSharp CSharp核心实践项目 "
+           href="/2024/02/17/CSharp/06.CSharp%E6%A0%B8%E5%BF%83%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/5.%E6%B8%B8%E6%88%8F%E4%B8%BB%E5%85%A5%E5%8F%A3%E3%80%81%E6%B8%B8%E6%88%8F%E7%B1%BB%E5%92%8C%E6%B8%B8%E6%88%8F%E5%B8%A7%E6%9B%B4%E6%96%B0%E6%8E%A5%E5%8F%A3/"
+           data-tag="CSharp,实践项目,CSharp核心"
+           data-author="" >
+            <span class="post-title" title="【C#核心实践项目】| 5.游戏主入口、游戏类和游戏帧更新接口">【C#核心实践项目】| 5.游戏主入口、游戏类和游戏帧更新接口</span>
+            <span class="post-date" title="2024-02-17 22:52:38">2024/02/17</span>
+        </a>
         
         
         <a  class="全部文章 CSharp CSharp核心实践项目 "
@@ -1010,19 +1032,19 @@
         
         
         <a  class="全部文章 CSharp CSharp入门实践项目 "
-           href="/2024/01/08/CSharp/02.CSharp%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/12.%E6%B8%B8%E6%88%8F%E5%9C%BA%E6%99%AF-%E5%85%AC%E4%B8%BB%E7%9B%B8%E5%85%B3/"
+           href="/2024/01/08/CSharp/02.CSharp%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/11.%E6%B8%B8%E6%88%8F%E5%9C%BA%E6%99%AF-%E7%8E%A9%E5%AE%B6%E6%88%98%E6%96%97%E7%9B%B8%E5%85%B3/"
            data-tag="CSharp,CSharp入门,实践项目"
            data-author="" >
-            <span class="post-title" title="【C#入门实践项目】| 12.公主相关">【C#入门实践项目】| 12.公主相关</span>
+            <span class="post-title" title="【C#入门实践项目】| 11.玩家战斗相关">【C#入门实践项目】| 11.玩家战斗相关</span>
             <span class="post-date" title="2024-01-08 21:53:48">2024/01/08</span>
         </a>
         
         
         <a  class="全部文章 CSharp CSharp入门实践项目 "
-           href="/2024/01/08/CSharp/02.CSharp%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/11.%E6%B8%B8%E6%88%8F%E5%9C%BA%E6%99%AF-%E7%8E%A9%E5%AE%B6%E6%88%98%E6%96%97%E7%9B%B8%E5%85%B3/"
+           href="/2024/01/08/CSharp/02.CSharp%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/12.%E6%B8%B8%E6%88%8F%E5%9C%BA%E6%99%AF-%E5%85%AC%E4%B8%BB%E7%9B%B8%E5%85%B3/"
            data-tag="CSharp,CSharp入门,实践项目"
            data-author="" >
-            <span class="post-title" title="【C#入门实践项目】| 11.玩家战斗相关">【C#入门实践项目】| 11.玩家战斗相关</span>
+            <span class="post-title" title="【C#入门实践项目】| 12.公主相关">【C#入门实践项目】| 12.公主相关</span>
             <span class="post-date" title="2024-01-08 21:53:48">2024/01/08</span>
         </a>
         
