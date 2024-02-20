@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>2.程序语言是什么 | 人间自有韬哥在的游戏开发博客</title>
-  <meta name="keywords" content=" CSharp , CSharp入门 , 语法知识 ">
-  <meta name="description" content="2.程序语言是什么 | 人间自有韬哥在的游戏开发博客">
+  <title>14.事件 | 人间自有韬哥在的游戏开发博客</title>
+  <meta name="keywords" content=" CSharp , 语法知识 , CSharp进阶 , 委托和事件 ">
+  <meta name="description" content="14.事件 | 人间自有韬哥在的游戏开发博客">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="14.委托和事件-事件 14.1 知识点事件是什么事件是基于委托的存在，是委托的安全包裹，让委托的使用更具有安全性。事件是一种特殊的变量类型。 事件的使用事件的基础知识申明语法： 访问修饰符 event 委托类型 事件名;  事件的使用：  事件是作为成员变量存在于类中。 委托怎么用，事件就怎么用。  事件相对于委托的区别：  不能在类外部赋值。 不能再类外部调用。  注意：它只能作为成员存在于类">
 <meta property="og:type" content="article">
@@ -1622,9 +1622,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-CSharp/01.CSharp入门语法知识/2.程序语言是什么" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-CSharp/07.Csharp进阶语法知识/14.委托和事件-事件" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">2.程序语言是什么</h1>
+        <h1 class="article-title">14.事件</h1>
     
     <div class="article-meta">
         
@@ -1636,7 +1636,7 @@
             
             <a  data-rel="CSharp">CSharp</a> > 
             
-            <a  data-rel="CSharp&lt;---&gt;CSharp入门语法知识">CSharp入门语法知识</a>
+            <a  data-rel="CSharp&lt;---&gt;CSharp进阶语法知识">CSharp进阶语法知识</a>
             
         </span>
         
@@ -1646,16 +1646,18 @@
             
             <a class="color2">CSharp</a>
             
-            <a class="color4">CSharp入门</a>
-            
             <a class="color5">语法知识</a>
+            
+            <a class="color4">CSharp进阶</a>
+            
+            <a class="color1">委托和事件</a>
             
         </span>
         
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2024-02-18 21:44:25'>2024-01-02 21:20</time>
+            发布时间 : <time class="date" title='最后更新: 2024-02-20 20:53:42'>2024-02-20 20:53</time>
         
     </div>
     <div class="article-meta">
@@ -1677,7 +1679,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#2-%E7%A8%8B%E5%BA%8F%E8%AF%AD%E8%A8%80%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-text">2.程序语言是什么</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-%E7%9F%A5%E8%AF%86%E7%82%B9"><span class="toc-text">2.1 知识点</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BB%E8%A6%81%E5%86%85%E5%AE%B9"><span class="toc-text">主要内容</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%86%E8%A7%A3%E7%A8%8B%E5%BA%8F%E8%AF%AD%E8%A8%80%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-text">了解程序语言是什么</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%86%E8%A7%A3%E5%B8%B8%E7%94%A8%E7%9A%84%E4%B8%8D%E5%90%8C%E7%A8%8B%E5%BA%8F%E8%AF%AD%E8%A8%80"><span class="toc-text">了解常用的不同程序语言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%86%E8%A7%A3%E4%B8%BA%E4%BD%95%E8%A6%81%E5%AD%A6%E4%B9%A0C-%E8%AF%AD%E8%A8%80"><span class="toc-text">了解为何要学习C#语言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-text">总结</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-%E7%BB%83%E4%B9%A0%E9%A2%98"><span class="toc-text">2.2 练习题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#6%E4%B8%AA%E6%9D%AF%E5%AD%90%E9%97%AE%E9%A2%98"><span class="toc-text">6个杯子问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%80%BC%E4%B8%8E%E5%80%BC%E4%BA%A4%E6%8D%A2%E7%9A%84%E6%80%9D%E7%BB%B4"><span class="toc-text">值与值交换的思维</span></a></li></ol></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#14-%E5%A7%94%E6%89%98%E5%92%8C%E4%BA%8B%E4%BB%B6-%E4%BA%8B%E4%BB%B6"><span class="toc-text">14.委托和事件-事件</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#14-1-%E7%9F%A5%E8%AF%86%E7%82%B9"><span class="toc-text">14.1 知识点</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8B%E4%BB%B6%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-text">事件是什么</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8B%E4%BB%B6%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-text">事件的使用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BA%8B%E4%BB%B6%E7%9A%84%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="toc-text">事件的基础知识</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#class%E8%AF%AD%E5%8F%A5%E5%9D%97%E5%A4%96-namespace%E8%AF%AD%E5%8F%A5%E5%9D%97%E5%86%85"><span class="toc-text">class语句块外 namespace语句块内</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#class%E8%AF%AD%E5%8F%A5%E5%9D%97%E5%86%85-%E4%B8%BB%E5%87%BD%E6%95%B0%E5%A4%96"><span class="toc-text">class语句块内 主函数外</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%BB%E5%87%BD%E6%95%B0%E5%86%85"><span class="toc-text">主函数内</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E6%9C%89%E4%BA%8B%E4%BB%B6"><span class="toc-text">为什么有事件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-text">总结</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#14-2-%E7%9F%A5%E8%AF%86%E7%82%B9%E4%BB%A3%E7%A0%81"><span class="toc-text">14.2 知识点代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#14-3-%E7%BB%83%E4%B9%A0%E9%A2%98"><span class="toc-text">14.3 练习题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%89%E4%B8%80%E4%B8%AA%E7%83%AD%E6%B0%B4%E5%99%A8%EF%BC%8C%E5%8C%85%E5%90%AB%E4%B8%80%E4%B8%AA%E5%8A%A0%E7%83%AD%E5%99%A8%EF%BC%8C%E4%B8%80%E4%B8%AA%E6%8A%A5%E8%AD%A6%E5%99%A8%EF%BC%8C%E4%B8%80%E4%B8%AA%E6%98%BE%E7%A4%BA%E5%99%A8%EF%BC%8C%E6%88%91%E4%BB%AC%E7%BB%99%E7%83%AD%E6%B0%B4%E5%99%A8%E9%80%9A%E4%B8%8A%E7%94%B5%EF%BC%8C%E5%BD%93%E6%B0%B4%E6%B8%A9%E8%B6%85%E8%BF%8795%E5%BA%A6%E6%97%B6%EF%BC%8C%E6%8A%A5%E8%AD%A6%E5%99%A8%E4%BC%9A%E5%BC%80%E5%A7%8B%E5%8F%91%E5%87%BA%E8%AF%AD%E9%9F%B3%EF%BC%8C%E5%91%8A%E8%AF%89%E4%BD%A0%E8%B0%81%E7%9A%84%E6%B8%A9%E5%BA%A6%EF%BC%8C%E6%98%BE%E7%A4%BA%E5%99%A8%E4%B9%9F%E4%BC%9A%E6%94%B9%E5%8F%98%E6%B0%B4%E6%B8%A9%E6%8F%90%E7%A4%BA%EF%BC%8C%E6%8F%90%E7%A4%BA%E6%B0%B4%E5%B7%B2%E7%BB%8F%E7%83%A7%E5%BC%80%E4%BA%86"><span class="toc-text">有一个热水器，包含一个加热器，一个报警器，一个显示器，我们给热水器通上电，当水温超过95度时，报警器会开始发出语音，告诉你谁的温度，显示器也会改变水温提示，提示水已经烧开了</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#14-4-%E7%BB%83%E4%B9%A0%E9%A2%98%E4%BB%A3%E7%A0%81"><span class="toc-text">14.4 练习题代码</span></a></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -1693,20 +1695,486 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="2-程序语言是什么"><a href="#2-程序语言是什么" class="headerlink" title="2.程序语言是什么"></a>2.程序语言是什么</h1><hr>
-<h2 id="2-1-知识点"><a href="#2-1-知识点" class="headerlink" title="2.1 知识点"></a>2.1 知识点</h2><p><img src="/../../../images/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/2.%E7%A8%8B%E5%BA%8F%E8%AF%AD%E8%A8%80%E6%98%AF%E4%BB%80%E4%B9%88/1.png"></p>
-<h3 id="主要内容"><a href="#主要内容" class="headerlink" title="主要内容"></a>主要内容</h3><p><img src="/../../../images/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/2.%E7%A8%8B%E5%BA%8F%E8%AF%AD%E8%A8%80%E6%98%AF%E4%BB%80%E4%B9%88/2.png"></p>
-<h3 id="了解程序语言是什么"><a href="#了解程序语言是什么" class="headerlink" title="了解程序语言是什么"></a>了解程序语言是什么</h3><p><img src="/../../../images/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/2.%E7%A8%8B%E5%BA%8F%E8%AF%AD%E8%A8%80%E6%98%AF%E4%BB%80%E4%B9%88/3.png"><br><img src="/../../../images/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/2.%E7%A8%8B%E5%BA%8F%E8%AF%AD%E8%A8%80%E6%98%AF%E4%BB%80%E4%B9%88/4.png"></p>
-<h3 id="了解常用的不同程序语言"><a href="#了解常用的不同程序语言" class="headerlink" title="了解常用的不同程序语言"></a>了解常用的不同程序语言</h3><p><img src="/../../../images/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/2.%E7%A8%8B%E5%BA%8F%E8%AF%AD%E8%A8%80%E6%98%AF%E4%BB%80%E4%B9%88/5.png"><br><img src="/../../../images/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/2.%E7%A8%8B%E5%BA%8F%E8%AF%AD%E8%A8%80%E6%98%AF%E4%BB%80%E4%B9%88/6.png"><br><img src="/../../../images/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/2.%E7%A8%8B%E5%BA%8F%E8%AF%AD%E8%A8%80%E6%98%AF%E4%BB%80%E4%B9%88/7.png"><br><img src="/../../../images/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/2.%E7%A8%8B%E5%BA%8F%E8%AF%AD%E8%A8%80%E6%98%AF%E4%BB%80%E4%B9%88/8.png"><br><img src="/../../../images/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/2.%E7%A8%8B%E5%BA%8F%E8%AF%AD%E8%A8%80%E6%98%AF%E4%BB%80%E4%B9%88/9.png"><br><img src="/../../../images/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/2.%E7%A8%8B%E5%BA%8F%E8%AF%AD%E8%A8%80%E6%98%AF%E4%BB%80%E4%B9%88/10.png"><br><img src="/../../../images/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/2.%E7%A8%8B%E5%BA%8F%E8%AF%AD%E8%A8%80%E6%98%AF%E4%BB%80%E4%B9%88/11.png"></p>
-<h3 id="了解为何要学习C-语言"><a href="#了解为何要学习C-语言" class="headerlink" title="了解为何要学习C#语言"></a>了解为何要学习C#语言</h3><p><img src="/../../../images/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/2.%E7%A8%8B%E5%BA%8F%E8%AF%AD%E8%A8%80%E6%98%AF%E4%BB%80%E4%B9%88/12.png"></p>
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p><img src="/../../../images/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/2.%E7%A8%8B%E5%BA%8F%E8%AF%AD%E8%A8%80%E6%98%AF%E4%BB%80%E4%B9%88/13.png"></p>
+        <h1 id="14-委托和事件-事件"><a href="#14-委托和事件-事件" class="headerlink" title="14.委托和事件-事件"></a>14.委托和事件-事件</h1><hr>
+<h2 id="14-1-知识点"><a href="#14-1-知识点" class="headerlink" title="14.1 知识点"></a>14.1 知识点</h2><h3 id="事件是什么"><a href="#事件是什么" class="headerlink" title="事件是什么"></a>事件是什么</h3><p>事件是基于委托的存在，是委托的安全包裹，让委托的使用更具有安全性。事件是一种特殊的变量类型。</p>
+<h3 id="事件的使用"><a href="#事件的使用" class="headerlink" title="事件的使用"></a>事件的使用</h3><h4 id="事件的基础知识"><a href="#事件的基础知识" class="headerlink" title="事件的基础知识"></a>事件的基础知识</h4><p>申明语法：</p>
+<pre><code class="csharp">访问修饰符 event 委托类型 事件名;
+</code></pre>
+<p>事件的使用：</p>
+<ol>
+<li>事件是作为成员变量存在于类中。</li>
+<li>委托怎么用，事件就怎么用。</li>
+</ol>
+<p>事件相对于委托的区别：</p>
+<ol>
+<li>不能在类外部赋值。</li>
+<li>不能再类外部调用。</li>
+</ol>
+<p>注意：它只能作为成员存在于类和接口以及结构体中。</p>
+<h4 id="class语句块外-namespace语句块内"><a href="#class语句块外-namespace语句块内" class="headerlink" title="class语句块外 namespace语句块内"></a>class语句块外 namespace语句块内</h4><p>测试事件类：</p>
+<pre><code class="csharp">class TestEvent
+&#123;
+    // 委托成员变量，用于存储函数的无参数无返回值
+    public Action myAction;
+
+    // 事件成员变量，用于存储函数的无参数无返回值
+    public event Action myEvent;
+
+    // 测试事件类构造函数
+    public TestEvent()
+    &#123;
+        // 事件的使用和委托一模一样，只是有些细微的区别
+        // 委托怎么用，事件就怎么用
+        myAction = Print123;
+        myAction += Print123;
+        myAction -= Print123;
+        myAction(); 
+        myAction.Invoke(); 
+
+        myEvent = Print123;
+        myEvent += Print123;
+        myEvent -= Print123;
+        myEvent(); 
+        myEvent.Invoke(); 
+    &#125;
+
+    // 封装的方法，执行事件
+    public void DoEvent()
+    &#123;
+        // 事件不为空的话，执行事件
+        if (myEvent != null)
+        &#123;
+            myEvent();
+        &#125;
+    &#125;
+
+    // 打印123函数
+    public void Print123()
+    &#123;
+        Console.WriteLine(&quot;123&quot;);
+    &#125;
+&#125;
+</code></pre>
+<h4 id="class语句块内-主函数外"><a href="#class语句块内-主函数外" class="headerlink" title="class语句块内 主函数外"></a>class语句块内 主函数外</h4><p>打印456函数：</p>
+<pre><code class="csharp">static void Print456()
+&#123;
+    Console.WriteLine(&quot;456&quot;);
+&#125;
+</code></pre>
+<h4 id="主函数内"><a href="#主函数内" class="headerlink" title="主函数内"></a>主函数内</h4><pre><code class="csharp">// 创建测试事件类
+TestEvent testEvent = new TestEvent();
+
+// 委托可以在外部赋值
+testEvent.myAction = null;
+testEvent.myAction = Print456;
+testEvent.myAction = testEvent.myAction + Print456;
+testEvent.myAction += Print456;
+
+// 事件是不能再外部赋值的，否则报错
+// testEvent.myEvent = null;//报错
+// testEvent.myEvent = Print123;//报错
+
+// 事件虽然不能直接赋值，但是可以加减去添加移除记录的函数
+testEvent.myEvent += Print456;
+// testEvent.myEvent = testEvent.myEvent + Print456;//报错，事件不支持这样写
+testEvent.myEvent -= Print456;
+
+// 委托是可以在外部调用的
+testEvent.myAction();
+testEvent.myAction.Invoke();
+
+// 事件不能再外部调用
+// testEvent.myEvent();//报错
+// testEvent.myEvent.Invoke();//报错
+// 只能在类的内部去封装调用
+testEvent.DoEvent();
+
+// 委托能作为临时变量在函数中使用
+Action a = Print456;
+// 事件是不能作为临时变量在函数中使用的
+// event Action eA = Print456;//报错
+</code></pre>
+<h3 id="为什么有事件"><a href="#为什么有事件" class="headerlink" title="为什么有事件"></a>为什么有事件</h3><ol>
+<li>防止外部随意置空委托。</li>
+<li>防止外部随意调用委托。</li>
+<li>事件相当于对委托进行了一次封装，让其更加安全。</li>
+</ol>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>事件和委托的区别：</p>
+<ul>
+<li>事件和委托的使用基本是一模一样的。</li>
+<li>事件就是特殊的委托。</li>
+</ul>
+<p>主要区别：</p>
+<ol>
+<li>事件不能再外部使用赋值&#x3D;符号，只能使用+ -。委托哪里都能用。</li>
+<li>事件不能再外部执行，委托哪里都能执行。</li>
+<li>事件不能作为函数中的临时变量，委托可以。</li>
+</ol>
 <hr>
-<h2 id="2-2-练习题"><a href="#2-2-练习题" class="headerlink" title="2.2 练习题"></a>2.2 练习题</h2><h3 id="6个杯子问题"><a href="#6个杯子问题" class="headerlink" title="6个杯子问题"></a>6个杯子问题</h3><p>6个杯子排成一排，右边3杯有水，左边3杯没有水。只移动一个杯子，让有水的和没水的杯子完全间隔，该怎么移动？</p>
-<p><img src="/../../../images/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/2.%E7%A8%8B%E5%BA%8F%E8%AF%AD%E8%A8%80%E6%98%AF%E4%BB%80%E4%B9%88/14.png"></p>
-<p>把第五杯水倒入第二杯中，在移动回来。</p>
-<h3 id="值与值交换的思维"><a href="#值与值交换的思维" class="headerlink" title="值与值交换的思维"></a>值与值交换的思维</h3><p>一个粗细均匀的长直管子，两端开口，里面有4个白球和4个黑球，球的直径、两端开口的直径等于管子的内径。现在白球和黑球的排列是wwwwbbbb，要求不取出任何一个球，使得排列变为bbwwwwbb，应该如何操作？</p>
-<p><img src="/../../../images/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/2.%E7%A8%8B%E5%BA%8F%E8%AF%AD%E8%A8%80%E6%98%AF%E4%BB%80%E4%B9%88/15.png"></p>
-<p>把管子首尾相连，让末尾两个黑球滚到最前面，在断开管子。循环链表的数据结构思想。</p>
+<h2 id="14-2-知识点代码"><a href="#14-2-知识点代码" class="headerlink" title="14.2 知识点代码"></a>14.2 知识点代码</h2><pre><code class="csharp">using System;
+
+namespace Lesson13_事件
+&#123;
+    #region 知识点一 事件是什么
+    //事件是基于委托的存在
+    //事件是委托的安全包裹
+    //让委托的使用更具有安全性
+    //事件 是一种特殊的变量类型
+    #endregion
+
+    //class语句块外 namespace语句块内
+
+    #region 知识点二 事件的使用
+
+    //事件的基础知识
+    //申明语法：访问修饰符 event 委托类型 事件名;
+    //事件的使用：
+    //1.事件是作为 成员变量存在于类中
+    //2.委托怎么用 事件就怎么用
+    //事件相对于委托的区别:
+    //1.不能在类外部 赋值
+    //2.不能再类外部 调用
+    //注意：它只能作为成员存在于类和接口以及结构体中
+
+    //测试事件类
+    class TestEvent
+    &#123;
+        //委托成员变量 用于存储 函数的 无参数无返回值
+        public Action myAction;
+
+        //事件成员变量 用于存储 函数的 无参数无返回值
+        public event Action myEvent;
+
+        //测试事件类构造函数
+        public TestEvent()
+        &#123;
+            //事件的使用和委托 一模一样 只是有些 细微的区别
+            //委托怎么用 事件就怎么用
+            myAction = Print123;
+            myAction += Print123;
+            myAction -= Print123;
+            myAction();//123
+            myAction.Invoke();//123
+            myAction = null;
+
+            myEvent = Print123;
+            myEvent += Print123;
+            myEvent -= Print123;
+            myEvent();//123
+            myEvent.Invoke();//123
+            myEvent = null;
+        &#125;
+
+        //封装的方法 执行事件
+        public void DoEvent()
+        &#123;
+            //事件不为空的话 执行事件
+            if (myEvent != null)
+            &#123;
+                myEvent();
+            &#125;
+        &#125;
+
+        //打印123函数
+        public void Print123()
+        &#123;
+            Console.WriteLine(&quot;123&quot;);
+        &#125;
+    &#125;
+
+    #endregion
+
+    #region 知识点三 为什么有事件
+    //1.防止外部随意置空委托
+    //2.防止外部随意调用委托
+    //3.事件相当于对委托进行了一次封装 让其更加安全
+    #endregion
+
+    class Program
+    &#123;
+        static void Main(string[] args)
+        &#123;
+            Console.WriteLine(&quot;事件&quot;);
+
+            //主函数内
+
+            #region 知识点二 事件的使用
+
+            //创建测试事件类
+            TestEvent testEvent = new TestEvent();
+
+
+            //委托可以在外部赋值
+            testEvent.myAction = null;
+            testEvent.myAction = Print456;
+            testEvent.myAction = testEvent.myAction + Print456;
+            testEvent.myAction += Print456;
+
+            //事件是不能再外部赋值的 否则报错
+            //testEvent.myEvent = null;//报错
+            //testEvent.myEvent = Print123;//报错
+
+            //事件虽然不能直接赋值 但是可以 加减 去添加移除记录的函数
+            testEvent.myEvent += Print456;
+            //testEvent.myEvent = testEvent.myEvent + Print456;//报错 事件不支持这样写
+            testEvent.myEvent -= Print456;
+
+            //委托是可以在外部调用的
+            testEvent.myAction();
+            testEvent.myAction.Invoke();
+
+            //事件不能再外部调用
+            //testEvent.myEvent();//报错
+            //testEvent.myEvent.Invoke();//报错
+            //只能在类的内部去封装 调用
+            testEvent.DoEvent();
+
+            //委托 能作为临时变量在函数中使用的
+            Action a = Print456;
+            //事件 是不能作为临时变量在函数中使用的
+            //event Action eA = Print456;//报错
+
+            #endregion
+        &#125;
+
+        //class语句块内 主函数外
+
+        #region 知识点二 事件的使用
+
+        //打印456函数
+        static void Print456()
+        &#123;
+            Console.WriteLine(&quot;456&quot;);
+        &#125;
+
+        #endregion
+    &#125;
+    //总结
+    //事件和委托的区别
+    //事件和委托的使用基本是一模一样的
+    //事件就是特殊的委托
+    //主要区别：
+    //1.事件不能再外部使用赋值=符号，只能使用+ - 委托 哪里都能用
+    //2.事件 不能再外部执行 委托哪里都能执行
+    //3.事件 不能作为 函数中的临时变量的 委托可以
+&#125;
+</code></pre>
+<hr>
+<h2 id="14-3-练习题"><a href="#14-3-练习题" class="headerlink" title="14.3 练习题"></a>14.3 练习题</h2><h3 id="有一个热水器，包含一个加热器，一个报警器，一个显示器，我们给热水器通上电，当水温超过95度时，报警器会开始发出语音，告诉你谁的温度，显示器也会改变水温提示，提示水已经烧开了"><a href="#有一个热水器，包含一个加热器，一个报警器，一个显示器，我们给热水器通上电，当水温超过95度时，报警器会开始发出语音，告诉你谁的温度，显示器也会改变水温提示，提示水已经烧开了" class="headerlink" title="有一个热水器，包含一个加热器，一个报警器，一个显示器，我们给热水器通上电，当水温超过95度时，报警器会开始发出语音，告诉你谁的温度，显示器也会改变水温提示，提示水已经烧开了"></a>有一个热水器，包含一个加热器，一个报警器，一个显示器，我们给热水器通上电，当水温超过95度时，报警器会开始发出语音，告诉你谁的温度，显示器也会改变水温提示，提示水已经烧开了</h3><p><strong>class语句块外 namespace语句块内</strong></p>
+<pre><code class="csharp">// 加热器
+class Heater
+&#123;
+    // 加热到95度是加热器执行的事件
+    public event Action&lt;int&gt; heaterEvnet;
+
+    // 当前摄氏度
+    private int celsius = 0;
+
+    // 加热方法
+    public void AddHot()
+    &#123;
+        // 帧数计数
+        int updateIndex = 0;
+        while (true)
+        &#123;
+            // 每9999999帧进一次循环
+            if (updateIndex % 9999999 == 0)
+            &#123;
+                ++celsius;
+                Console.WriteLine(&quot;加热到&#123;0&#125;摄氏度&quot;, celsius);
+
+                // 为了不频繁打印 超过100度 直接 不加热 测试用
+                if (celsius &gt;= 100)
+                &#123;
+                    break;
+                &#125;
+
+                // 温度超过95度 就触发 报警器和显示器显示信息
+                if (celsius &gt;= 95)
+                &#123;
+                    // 加热器事件不为空就执行
+                    heaterEvnet?.Invoke(celsius);
+                    // 如果只想提示一次 这清空事件容器即可
+                    heaterEvnet = null;
+                &#125;
+
+                // 隔一段时间 加一点温度
+                updateIndex = 0;
+            &#125;
+            // 增加帧数
+            ++updateIndex;
+        &#125;
+    &#125;
+&#125;
+
+// 报警器
+class Alarm
+&#123;
+    public void ShowInfo(int celsius)
+    &#123;
+        Console.WriteLine(&quot;警报！当前水温是&#123;0&#125;摄氏度！&quot;, celsius);
+    &#125;
+&#125;
+
+// 显示器
+class Display
+&#123;
+    public void ShowInfo(int celsius)
+    &#123;
+        Console.WriteLine(&quot;水开了，当前显示的水温是&#123;0&#125;摄氏度&quot;, celsius);
+    &#125;
+&#125;
+</code></pre>
+<p><strong>主函数内</strong></p>
+<pre><code class="csharp">// 创建一个加热器，一个报警器，一个显示器
+Heater heater = new Heater();
+Alarm alarm = new Alarm();
+Display display = new Display();
+
+// 报警器和显示器要做的事情加到加热器事件里
+heater.heaterEvnet += alarm.ShowInfo;
+heater.heaterEvnet += display.ShowInfo;
+
+// 加热器加热
+heater.AddHot();
+
+// 加热到1摄氏度
+// 加热到2摄氏度
+// 加热到3摄氏度
+// ...
+// 加热到94摄氏度
+// 加热到95摄氏度
+// 警报！当前水温是95摄氏度！
+// 水开了，当前显示的水温是95摄氏度
+// 加热到96摄氏度
+// 加热到97摄氏度
+// 加热到98摄氏度
+// 加热到99摄氏度
+// 加热到100摄氏度
+</code></pre>
+<hr>
+<h2 id="14-4-练习题代码"><a href="#14-4-练习题代码" class="headerlink" title="14.4 练习题代码"></a>14.4 练习题代码</h2><pre><code class="csharp">using System;
+
+namespace Lesson13_练习题
+&#123;
+    //class语句块外 namespace语句块内
+
+    #region 练习题一
+    //有一个热水器，包含一个加热器，一个报警器，一个显示器
+    //我们给热水器通上电，当水温超过95度时
+    //1.报警器会开始发出语音，告诉你水的温度
+    //2.显示器也会改变水温提示，提示水已经烧开了
+
+    //加热器
+    class Heater
+    &#123;
+        //加热到95度是加热器执行的事件
+        public event Action&lt;int&gt; heaterEvnet;
+
+        //当前摄氏度
+        private int celsius = 0;
+
+        //加热方法
+        public void AddHot()
+        &#123;
+            //帧数计数
+            int updateIndex = 0;
+            while (true)
+            &#123;
+                //每9999999帧进一次循环
+                if (updateIndex % 9999999 == 0)
+                &#123;
+                    ++celsius;
+                    Console.WriteLine(&quot;加热到&#123;0&#125;摄氏度&quot;, celsius);
+
+                    //为了不频繁打印 超过100度 直接 不加热 测试用
+                    if (celsius &gt;= 100)
+                    &#123;
+                        break;
+                    &#125;
+
+                    //温度超过95度 就触发 报警器和显示器显示信息
+                    if (celsius &gt;= 95)
+                    &#123;
+                        //加热器事件不为空就执行
+                        if (heaterEvnet != null)
+                        &#123;
+                            heaterEvnet(celsius);
+                        &#125;
+                        //如果只想提示一次 这清空事件容器即可
+                        heaterEvnet = null;
+                    &#125;
+
+                    //隔一段时间 加一点温度
+                    updateIndex = 0;
+                &#125;
+                //增加帧数
+                ++updateIndex;
+            &#125;
+        &#125;
+    &#125;
+
+    //报警器
+    class Alarm
+    &#123;
+        public void ShowInfo(int celsius)
+        &#123;
+            Console.WriteLine(&quot;警报！当前水温是&#123;0&#125;摄氏度！&quot;, celsius);
+        &#125;
+    &#125;
+
+    //显示器
+    class Display
+    &#123;
+        public void ShowInfo(int celsius)
+        &#123;
+            Console.WriteLine(&quot;水开了，当前显示的水温是&#123;0&#125;摄氏度&quot;, celsius);
+        &#125;
+    &#125;
+
+    #endregion
+
+    class Program
+    &#123;
+        static void Main(string[] args)
+        &#123;
+            Console.WriteLine(&quot;事件练习题&quot;);
+
+            //主函数内
+
+            #region 练习题一
+
+            //创建一个加热器，一个报警器，一个显示器
+            Heater heater = new Heater();
+            Alarm alarm = new Alarm();
+            Display display = new Display();
+
+            //报警器和显示器要做的事情加到加热器事件里
+            heater.heaterEvnet += alarm.ShowInfo;
+            heater.heaterEvnet += display.ShowInfo;
+
+            //加热器加热
+            heater.AddHot();
+
+            //加热到1摄氏度
+            //加热到2摄氏度
+            //加热到3摄氏度
+            //...
+            //加热到94摄氏度
+            //加热到95摄氏度
+            //警报！当前水温是95摄氏度！
+            //水开了，当前显示的水温是95摄氏度
+            //加热到96摄氏度
+            //加热到97摄氏度
+            //加热到98摄氏度
+            //加热到99摄氏度
+            //加热到100摄氏度
+
+            #endregion
+        &#125;
+    &#125;
+&#125;
+</code></pre>
 <hr>
 
       
