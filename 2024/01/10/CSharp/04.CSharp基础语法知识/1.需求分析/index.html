@@ -3,64 +3,106 @@
 <head>
   <meta charset="utf-8">
   <title>1.需求分析 | 人间自有韬哥在的游戏开发博客</title>
-  <meta name="keywords" content=" CSharp , CSharp基础 , 实践项目 ">
+  <meta name="keywords" content=" CSharp , 实践项目 , CSharp基础 ">
   <meta name="description" content="1.需求分析 | 人间自有韬哥在的游戏开发博客">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="2.Unity环境搭建 2.1 Unity引擎是什么 主要内容 什么是游戏引擎 游戏引擎对我们的意义 如何学习游戏引擎 总结  2.2 软件下载和安装 主要内容 软件下载 前往官网由于Unity官网服务器不在国内访问较慢，我们选择在Unity中国官网下载  Unity官网链接  Unity中国官网链接 注册账号 下载Unity  版本选择 关于版本号 下载UnityHUb 软件安装UnityHub">
+<meta name="description" content="3.Unity界面基础-Scene场景和Hierarchy层级 3.1 知识点 主要内容 窗口布局推荐2by3，可以调整好窗口后保存自定义布局，也可以删除某种布局或重置布局 Scene和Hierarchy Hierarchy层级窗口 Hierarchy层级窗口快捷键 Hierarchy层级窗口实践操作在Hierarchy层级窗口空位置右键或者点击加号可以创建对象选择对象右键可以复制、粘贴、重命名、">
 <meta property="og:type" content="article">
-<meta property="og:title" content="2.Unity环境搭建">
-<meta property="og:url" content="https://linwentao785293209.github.io/2024/02/22/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2.Unity%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/index.html">
+<meta property="og:title" content="3.Scene场景和Hierarchy层级">
+<meta property="og:url" content="https://linwentao785293209.github.io/2024/02/22/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/3.Unity%E7%95%8C%E9%9D%A2%E5%9F%BA%E7%A1%80-Scene%E5%9C%BA%E6%99%AF%E5%92%8CHierarchy%E5%B1%82%E7%BA%A7/index.html">
 <meta property="og:site_name" content="人间自有韬哥在的游戏开发博客">
-<meta property="og:description" content="2.Unity环境搭建 2.1 Unity引擎是什么 主要内容 什么是游戏引擎 游戏引擎对我们的意义 如何学习游戏引擎 总结  2.2 软件下载和安装 主要内容 软件下载 前往官网由于Unity官网服务器不在国内访问较慢，我们选择在Unity中国官网下载  Unity官网链接  Unity中国官网链接 注册账号 下载Unity  版本选择 关于版本号 下载UnityHUb 软件安装UnityHub">
+<meta property="og:description" content="3.Unity界面基础-Scene场景和Hierarchy层级 3.1 知识点 主要内容 窗口布局推荐2by3，可以调整好窗口后保存自定义布局，也可以删除某种布局或重置布局 Scene和Hierarchy Hierarchy层级窗口 Hierarchy层级窗口快捷键 Hierarchy层级窗口实践操作在Hierarchy层级窗口空位置右键或者点击加号可以创建对象选择对象右键可以复制、粘贴、重命名、">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2.Unity%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/1.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2.Unity%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/2.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2.Unity%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/3.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2.Unity%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/4.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2.Unity%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/5.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2.Unity%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/6.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2.Unity%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/7.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2.Unity%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/8.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2.Unity%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/9.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2.Unity%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/10.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2.Unity%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/11.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2.Unity%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/12.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2.Unity%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/13.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2.Unity%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/14.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2.Unity%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/15.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2.Unity%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/16.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2.Unity%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/17.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2.Unity%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/18.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2.Unity%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/19.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2.Unity%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/20.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2.Unity%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/21.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2.Unity%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/22.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2.Unity%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/23.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2.Unity%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/24.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2.Unity%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/25.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2.Unity%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/26.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2.Unity%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/27.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2.Unity%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/28.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2.Unity%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/29.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2.Unity%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/30.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2.Unity%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/31.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2.Unity%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/32.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2.Unity%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/33.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2.Unity%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/34.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2.Unity%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/35.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2.Unity%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/36.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2.Unity%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/37.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2.Unity%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/38.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2.Unity%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/39.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2.Unity%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/40.png">
-<meta property="article:published_time" content="2024-02-22T01:23:44.000Z">
-<meta property="article:modified_time" content="2024-02-22T04:52:52.916Z">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/3.Unity%E7%95%8C%E9%9D%A2%E5%9F%BA%E7%A1%80-Scene%E5%9C%BA%E6%99%AF%E5%92%8CHierarchy%E5%B1%82%E7%BA%A7/1.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/3.Unity%E7%95%8C%E9%9D%A2%E5%9F%BA%E7%A1%80-Scene%E5%9C%BA%E6%99%AF%E5%92%8CHierarchy%E5%B1%82%E7%BA%A7/2.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/3.Unity%E7%95%8C%E9%9D%A2%E5%9F%BA%E7%A1%80-Scene%E5%9C%BA%E6%99%AF%E5%92%8CHierarchy%E5%B1%82%E7%BA%A7/3.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/3.Unity%E7%95%8C%E9%9D%A2%E5%9F%BA%E7%A1%80-Scene%E5%9C%BA%E6%99%AF%E5%92%8CHierarchy%E5%B1%82%E7%BA%A7/4.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/3.Unity%E7%95%8C%E9%9D%A2%E5%9F%BA%E7%A1%80-Scene%E5%9C%BA%E6%99%AF%E5%92%8CHierarchy%E5%B1%82%E7%BA%A7/5.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/3.Unity%E7%95%8C%E9%9D%A2%E5%9F%BA%E7%A1%80-Scene%E5%9C%BA%E6%99%AF%E5%92%8CHierarchy%E5%B1%82%E7%BA%A7/6.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/3.Unity%E7%95%8C%E9%9D%A2%E5%9F%BA%E7%A1%80-Scene%E5%9C%BA%E6%99%AF%E5%92%8CHierarchy%E5%B1%82%E7%BA%A7/7.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/3.Unity%E7%95%8C%E9%9D%A2%E5%9F%BA%E7%A1%80-Scene%E5%9C%BA%E6%99%AF%E5%92%8CHierarchy%E5%B1%82%E7%BA%A7/8.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/3.Unity%E7%95%8C%E9%9D%A2%E5%9F%BA%E7%A1%80-Scene%E5%9C%BA%E6%99%AF%E5%92%8CHierarchy%E5%B1%82%E7%BA%A7/9.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/3.Unity%E7%95%8C%E9%9D%A2%E5%9F%BA%E7%A1%80-Scene%E5%9C%BA%E6%99%AF%E5%92%8CHierarchy%E5%B1%82%E7%BA%A7/10.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/3.Unity%E7%95%8C%E9%9D%A2%E5%9F%BA%E7%A1%80-Scene%E5%9C%BA%E6%99%AF%E5%92%8CHierarchy%E5%B1%82%E7%BA%A7/11.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/3.Unity%E7%95%8C%E9%9D%A2%E5%9F%BA%E7%A1%80-Scene%E5%9C%BA%E6%99%AF%E5%92%8CHierarchy%E5%B1%82%E7%BA%A7/12.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/3.Unity%E7%95%8C%E9%9D%A2%E5%9F%BA%E7%A1%80-Scene%E5%9C%BA%E6%99%AF%E5%92%8CHierarchy%E5%B1%82%E7%BA%A7/13.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/3.Unity%E7%95%8C%E9%9D%A2%E5%9F%BA%E7%A1%80-Scene%E5%9C%BA%E6%99%AF%E5%92%8CHierarchy%E5%B1%82%E7%BA%A7/14.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/3.Unity%E7%95%8C%E9%9D%A2%E5%9F%BA%E7%A1%80-Scene%E5%9C%BA%E6%99%AF%E5%92%8CHierarchy%E5%B1%82%E7%BA%A7/15.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/3.Unity%E7%95%8C%E9%9D%A2%E5%9F%BA%E7%A1%80-Scene%E5%9C%BA%E6%99%AF%E5%92%8CHierarchy%E5%B1%82%E7%BA%A7/16.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/3.Unity%E7%95%8C%E9%9D%A2%E5%9F%BA%E7%A1%80-Scene%E5%9C%BA%E6%99%AF%E5%92%8CHierarchy%E5%B1%82%E7%BA%A7/17.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/3.Unity%E7%95%8C%E9%9D%A2%E5%9F%BA%E7%A1%80-Scene%E5%9C%BA%E6%99%AF%E5%92%8CHierarchy%E5%B1%82%E7%BA%A7/18.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/3.Unity%E7%95%8C%E9%9D%A2%E5%9F%BA%E7%A1%80-Scene%E5%9C%BA%E6%99%AF%E5%92%8CHierarchy%E5%B1%82%E7%BA%A7/19.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/3.Unity%E7%95%8C%E9%9D%A2%E5%9F%BA%E7%A1%80-Scene%E5%9C%BA%E6%99%AF%E5%92%8CHierarchy%E5%B1%82%E7%BA%A7/20.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/3.Unity%E7%95%8C%E9%9D%A2%E5%9F%BA%E7%A1%80-Scene%E5%9C%BA%E6%99%AF%E5%92%8CHierarchy%E5%B1%82%E7%BA%A7/21.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/3.Unity%E7%95%8C%E9%9D%A2%E5%9F%BA%E7%A1%80-Scene%E5%9C%BA%E6%99%AF%E5%92%8CHierarchy%E5%B1%82%E7%BA%A7/22.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/3.Unity%E7%95%8C%E9%9D%A2%E5%9F%BA%E7%A1%80-Scene%E5%9C%BA%E6%99%AF%E5%92%8CHierarchy%E5%B1%82%E7%BA%A7/23.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/3.Unity%E7%95%8C%E9%9D%A2%E5%9F%BA%E7%A1%80-Scene%E5%9C%BA%E6%99%AF%E5%92%8CHierarchy%E5%B1%82%E7%BA%A7/24.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/3.Unity%E7%95%8C%E9%9D%A2%E5%9F%BA%E7%A1%80-Scene%E5%9C%BA%E6%99%AF%E5%92%8CHierarchy%E5%B1%82%E7%BA%A7/25.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/3.Unity%E7%95%8C%E9%9D%A2%E5%9F%BA%E7%A1%80-Scene%E5%9C%BA%E6%99%AF%E5%92%8CHierarchy%E5%B1%82%E7%BA%A7/26.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/3.Unity%E7%95%8C%E9%9D%A2%E5%9F%BA%E7%A1%80-Scene%E5%9C%BA%E6%99%AF%E5%92%8CHierarchy%E5%B1%82%E7%BA%A7/27.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/3.Unity%E7%95%8C%E9%9D%A2%E5%9F%BA%E7%A1%80-Scene%E5%9C%BA%E6%99%AF%E5%92%8CHierarchy%E5%B1%82%E7%BA%A7/28.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/3.Unity%E7%95%8C%E9%9D%A2%E5%9F%BA%E7%A1%80-Scene%E5%9C%BA%E6%99%AF%E5%92%8CHierarchy%E5%B1%82%E7%BA%A7/29.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/3.Unity%E7%95%8C%E9%9D%A2%E5%9F%BA%E7%A1%80-Scene%E5%9C%BA%E6%99%AF%E5%92%8CHierarchy%E5%B1%82%E7%BA%A7/30.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/3.Unity%E7%95%8C%E9%9D%A2%E5%9F%BA%E7%A1%80-Scene%E5%9C%BA%E6%99%AF%E5%92%8CHierarchy%E5%B1%82%E7%BA%A7/31.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/3.Unity%E7%95%8C%E9%9D%A2%E5%9F%BA%E7%A1%80-Scene%E5%9C%BA%E6%99%AF%E5%92%8CHierarchy%E5%B1%82%E7%BA%A7/32.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/3.Unity%E7%95%8C%E9%9D%A2%E5%9F%BA%E7%A1%80-Scene%E5%9C%BA%E6%99%AF%E5%92%8CHierarchy%E5%B1%82%E7%BA%A7/33.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/3.Unity%E7%95%8C%E9%9D%A2%E5%9F%BA%E7%A1%80-Scene%E5%9C%BA%E6%99%AF%E5%92%8CHierarchy%E5%B1%82%E7%BA%A7/34.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/3.Unity%E7%95%8C%E9%9D%A2%E5%9F%BA%E7%A1%80-Scene%E5%9C%BA%E6%99%AF%E5%92%8CHierarchy%E5%B1%82%E7%BA%A7/35.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/3.Unity%E7%95%8C%E9%9D%A2%E5%9F%BA%E7%A1%80-Scene%E5%9C%BA%E6%99%AF%E5%92%8CHierarchy%E5%B1%82%E7%BA%A7/36.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/3.Unity%E7%95%8C%E9%9D%A2%E5%9F%BA%E7%A1%80-Scene%E5%9C%BA%E6%99%AF%E5%92%8CHierarchy%E5%B1%82%E7%BA%A7/37.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/3.Unity%E7%95%8C%E9%9D%A2%E5%9F%BA%E7%A1%80-Scene%E5%9C%BA%E6%99%AF%E5%92%8CHierarchy%E5%B1%82%E7%BA%A7/38.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/3.Unity%E7%95%8C%E9%9D%A2%E5%9F%BA%E7%A1%80-Scene%E5%9C%BA%E6%99%AF%E5%92%8CHierarchy%E5%B1%82%E7%BA%A7/39.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/3.Unity%E7%95%8C%E9%9D%A2%E5%9F%BA%E7%A1%80-Scene%E5%9C%BA%E6%99%AF%E5%92%8CHierarchy%E5%B1%82%E7%BA%A7/40.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/3.Unity%E7%95%8C%E9%9D%A2%E5%9F%BA%E7%A1%80-Scene%E5%9C%BA%E6%99%AF%E5%92%8CHierarchy%E5%B1%82%E7%BA%A7/41.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/3.Unity%E7%95%8C%E9%9D%A2%E5%9F%BA%E7%A1%80-Scene%E5%9C%BA%E6%99%AF%E5%92%8CHierarchy%E5%B1%82%E7%BA%A7/42.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/3.Unity%E7%95%8C%E9%9D%A2%E5%9F%BA%E7%A1%80-Scene%E5%9C%BA%E6%99%AF%E5%92%8CHierarchy%E5%B1%82%E7%BA%A7/43.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/3.Unity%E7%95%8C%E9%9D%A2%E5%9F%BA%E7%A1%80-Scene%E5%9C%BA%E6%99%AF%E5%92%8CHierarchy%E5%B1%82%E7%BA%A7/44.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/3.Unity%E7%95%8C%E9%9D%A2%E5%9F%BA%E7%A1%80-Scene%E5%9C%BA%E6%99%AF%E5%92%8CHierarchy%E5%B1%82%E7%BA%A7/45.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/3.Unity%E7%95%8C%E9%9D%A2%E5%9F%BA%E7%A1%80-Scene%E5%9C%BA%E6%99%AF%E5%92%8CHierarchy%E5%B1%82%E7%BA%A7/46.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/3.Unity%E7%95%8C%E9%9D%A2%E5%9F%BA%E7%A1%80-Scene%E5%9C%BA%E6%99%AF%E5%92%8CHierarchy%E5%B1%82%E7%BA%A7/47.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/3.Unity%E7%95%8C%E9%9D%A2%E5%9F%BA%E7%A1%80-Scene%E5%9C%BA%E6%99%AF%E5%92%8CHierarchy%E5%B1%82%E7%BA%A7/44.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/3.Unity%E7%95%8C%E9%9D%A2%E5%9F%BA%E7%A1%80-Scene%E5%9C%BA%E6%99%AF%E5%92%8CHierarchy%E5%B1%82%E7%BA%A7/44.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/3.Unity%E7%95%8C%E9%9D%A2%E5%9F%BA%E7%A1%80-Scene%E5%9C%BA%E6%99%AF%E5%92%8CHierarchy%E5%B1%82%E7%BA%A7/50.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/3.Unity%E7%95%8C%E9%9D%A2%E5%9F%BA%E7%A1%80-Scene%E5%9C%BA%E6%99%AF%E5%92%8CHierarchy%E5%B1%82%E7%BA%A7/51.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/3.Unity%E7%95%8C%E9%9D%A2%E5%9F%BA%E7%A1%80-Scene%E5%9C%BA%E6%99%AF%E5%92%8CHierarchy%E5%B1%82%E7%BA%A7/52.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/3.Unity%E7%95%8C%E9%9D%A2%E5%9F%BA%E7%A1%80-Scene%E5%9C%BA%E6%99%AF%E5%92%8CHierarchy%E5%B1%82%E7%BA%A7/53.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/3.Unity%E7%95%8C%E9%9D%A2%E5%9F%BA%E7%A1%80-Scene%E5%9C%BA%E6%99%AF%E5%92%8CHierarchy%E5%B1%82%E7%BA%A7/54.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/3.Unity%E7%95%8C%E9%9D%A2%E5%9F%BA%E7%A1%80-Scene%E5%9C%BA%E6%99%AF%E5%92%8CHierarchy%E5%B1%82%E7%BA%A7/55.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/3.Unity%E7%95%8C%E9%9D%A2%E5%9F%BA%E7%A1%80-Scene%E5%9C%BA%E6%99%AF%E5%92%8CHierarchy%E5%B1%82%E7%BA%A7/56.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/3.Unity%E7%95%8C%E9%9D%A2%E5%9F%BA%E7%A1%80-Scene%E5%9C%BA%E6%99%AF%E5%92%8CHierarchy%E5%B1%82%E7%BA%A7/57.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/3.Unity%E7%95%8C%E9%9D%A2%E5%9F%BA%E7%A1%80-Scene%E5%9C%BA%E6%99%AF%E5%92%8CHierarchy%E5%B1%82%E7%BA%A7/58.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/3.Unity%E7%95%8C%E9%9D%A2%E5%9F%BA%E7%A1%80-Scene%E5%9C%BA%E6%99%AF%E5%92%8CHierarchy%E5%B1%82%E7%BA%A7/59.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/3.Unity%E7%95%8C%E9%9D%A2%E5%9F%BA%E7%A1%80-Scene%E5%9C%BA%E6%99%AF%E5%92%8CHierarchy%E5%B1%82%E7%BA%A7/60.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/3.Unity%E7%95%8C%E9%9D%A2%E5%9F%BA%E7%A1%80-Scene%E5%9C%BA%E6%99%AF%E5%92%8CHierarchy%E5%B1%82%E7%BA%A7/61.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/3.Unity%E7%95%8C%E9%9D%A2%E5%9F%BA%E7%A1%80-Scene%E5%9C%BA%E6%99%AF%E5%92%8CHierarchy%E5%B1%82%E7%BA%A7/62.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/3.Unity%E7%95%8C%E9%9D%A2%E5%9F%BA%E7%A1%80-Scene%E5%9C%BA%E6%99%AF%E5%92%8CHierarchy%E5%B1%82%E7%BA%A7/63.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/3.Unity%E7%95%8C%E9%9D%A2%E5%9F%BA%E7%A1%80-Scene%E5%9C%BA%E6%99%AF%E5%92%8CHierarchy%E5%B1%82%E7%BA%A7/64.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/3.Unity%E7%95%8C%E9%9D%A2%E5%9F%BA%E7%A1%80-Scene%E5%9C%BA%E6%99%AF%E5%92%8CHierarchy%E5%B1%82%E7%BA%A7/65.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/3.Unity%E7%95%8C%E9%9D%A2%E5%9F%BA%E7%A1%80-Scene%E5%9C%BA%E6%99%AF%E5%92%8CHierarchy%E5%B1%82%E7%BA%A7/66.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/3.Unity%E7%95%8C%E9%9D%A2%E5%9F%BA%E7%A1%80-Scene%E5%9C%BA%E6%99%AF%E5%92%8CHierarchy%E5%B1%82%E7%BA%A7/67.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/3.Unity%E7%95%8C%E9%9D%A2%E5%9F%BA%E7%A1%80-Scene%E5%9C%BA%E6%99%AF%E5%92%8CHierarchy%E5%B1%82%E7%BA%A7/68.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/3.Unity%E7%95%8C%E9%9D%A2%E5%9F%BA%E7%A1%80-Scene%E5%9C%BA%E6%99%AF%E5%92%8CHierarchy%E5%B1%82%E7%BA%A7/69.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/3.Unity%E7%95%8C%E9%9D%A2%E5%9F%BA%E7%A1%80-Scene%E5%9C%BA%E6%99%AF%E5%92%8CHierarchy%E5%B1%82%E7%BA%A7/70.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/3.Unity%E7%95%8C%E9%9D%A2%E5%9F%BA%E7%A1%80-Scene%E5%9C%BA%E6%99%AF%E5%92%8CHierarchy%E5%B1%82%E7%BA%A7/71.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/3.Unity%E7%95%8C%E9%9D%A2%E5%9F%BA%E7%A1%80-Scene%E5%9C%BA%E6%99%AF%E5%92%8CHierarchy%E5%B1%82%E7%BA%A7/72.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/3.Unity%E7%95%8C%E9%9D%A2%E5%9F%BA%E7%A1%80-Scene%E5%9C%BA%E6%99%AF%E5%92%8CHierarchy%E5%B1%82%E7%BA%A7/73.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/3.Unity%E7%95%8C%E9%9D%A2%E5%9F%BA%E7%A1%80-Scene%E5%9C%BA%E6%99%AF%E5%92%8CHierarchy%E5%B1%82%E7%BA%A7/74.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/3.Unity%E7%95%8C%E9%9D%A2%E5%9F%BA%E7%A1%80-Scene%E5%9C%BA%E6%99%AF%E5%92%8CHierarchy%E5%B1%82%E7%BA%A7/75.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/3.Unity%E7%95%8C%E9%9D%A2%E5%9F%BA%E7%A1%80-Scene%E5%9C%BA%E6%99%AF%E5%92%8CHierarchy%E5%B1%82%E7%BA%A7/76.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/3.Unity%E7%95%8C%E9%9D%A2%E5%9F%BA%E7%A1%80-Scene%E5%9C%BA%E6%99%AF%E5%92%8CHierarchy%E5%B1%82%E7%BA%A7/77.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/3.Unity%E7%95%8C%E9%9D%A2%E5%9F%BA%E7%A1%80-Scene%E5%9C%BA%E6%99%AF%E5%92%8CHierarchy%E5%B1%82%E7%BA%A7/78.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/3.Unity%E7%95%8C%E9%9D%A2%E5%9F%BA%E7%A1%80-Scene%E5%9C%BA%E6%99%AF%E5%92%8CHierarchy%E5%B1%82%E7%BA%A7/79.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/3.Unity%E7%95%8C%E9%9D%A2%E5%9F%BA%E7%A1%80-Scene%E5%9C%BA%E6%99%AF%E5%92%8CHierarchy%E5%B1%82%E7%BA%A7/80.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/3.Unity%E7%95%8C%E9%9D%A2%E5%9F%BA%E7%A1%80-Scene%E5%9C%BA%E6%99%AF%E5%92%8CHierarchy%E5%B1%82%E7%BA%A7/81.png">
+<meta property="article:published_time" content="2024-02-22T11:45:01.000Z">
+<meta property="article:modified_time" content="2024-02-22T12:29:27.877Z">
 <meta property="article:author" content="人间自有韬哥在">
 <meta property="article:tag" content="Unity">
 <meta property="article:tag" content="Unity入门">
 <meta property="article:tag" content="基础知识">
+<meta property="article:tag" content="Unity界面基础">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2.Unity%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/1.png">
+<meta name="twitter:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/3.Unity%E7%95%8C%E9%9D%A2%E5%9F%BA%E7%A1%80-Scene%E5%9C%BA%E6%99%AF%E5%92%8CHierarchy%E5%B1%82%E7%BA%A7/1.png">
 
 
 <link rel="icon" href="/img/avatar.jpg">
@@ -187,7 +229,7 @@
     <li>
         <div class="all active" data-rel="全部文章">全部文章
             
-                <small>(162)</small>
+                <small>(163)</small>
             
         </div>
     </li>
@@ -338,7 +380,7 @@
         <div data-rel="Unity">
             <i class="fold iconfont icon-right"></i>
             Unity
-            <small>(2)</small>
+            <small>(3)</small>
         </div>
         
             <ul class="sub hide">
@@ -348,7 +390,7 @@
         <div data-rel="Unity&lt;---&gt;Unity入门基础知识">
             
             Unity入门基础知识
-            <small>(2)</small>
+            <small>(3)</small>
         </div>
         
     </li>
@@ -380,8 +422,8 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="162">
-<input type="hidden" id="yelog_site_word_count" value="319.8k">
+<input type="hidden" id="yelog_site_posts_number" value="163">
+<input type="hidden" id="yelog_site_word_count" value="321.5k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -547,6 +589,10 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Unity界面基础</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>Unity入门</a>
             </li>
         
@@ -556,6 +602,15 @@
 
     
     <nav id="title-list-nav">
+        
+        
+        <a  class="全部文章 Unity Unity入门基础知识 "
+           href="/2024/02/22/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/3.Unity%E7%95%8C%E9%9D%A2%E5%9F%BA%E7%A1%80-Scene%E5%9C%BA%E6%99%AF%E5%92%8CHierarchy%E5%B1%82%E7%BA%A7/"
+           data-tag="Unity,Unity入门,基础知识,Unity界面基础"
+           data-author="" >
+            <span class="post-title" title="3.Scene场景和Hierarchy层级">3.Scene场景和Hierarchy层级</span>
+            <span class="post-date" title="2024-02-22 19:45:01">2024/02/22</span>
+        </a>
         
         
         <a  class="全部文章 Unity Unity入门基础知识 "
@@ -1406,7 +1461,7 @@
         
         <a  class="全部文章 CSharp CSharp基础实践项目 "
            href="/2024/01/11/CSharp/04.CSharp%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/12.%E6%80%BB%E7%BB%93/"
-           data-tag="CSharp,CSharp基础,实践项目"
+           data-tag="CSharp,实践项目,CSharp基础"
            data-author="" >
             <span class="post-title" title="12.总结">12.总结</span>
             <span class="post-date" title="2024-01-11 21:13:38">2024/01/11</span>
@@ -1415,7 +1470,7 @@
         
         <a  class="全部文章 CSharp CSharp基础实践项目 "
            href="/2024/01/11/CSharp/04.CSharp%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/11.%E4%BB%A3%E7%A0%81%E6%B1%87%E6%80%BB/"
-           data-tag="CSharp,CSharp基础,实践项目"
+           data-tag="CSharp,实践项目,CSharp基础"
            data-author="" >
             <span class="post-title" title="11.代码汇总">11.代码汇总</span>
             <span class="post-date" title="2024-01-11 21:07:59">2024/01/11</span>
@@ -1424,7 +1479,7 @@
         
         <a  class="全部文章 CSharp CSharp基础实践项目 "
            href="/2024/01/11/CSharp/04.CSharp%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/10.%E7%BB%93%E6%9D%9F%E5%9C%BA%E6%99%AF/"
-           data-tag="CSharp,CSharp基础,实践项目"
+           data-tag="CSharp,实践项目,CSharp基础"
            data-author="" >
             <span class="post-title" title="10.结束场景">10.结束场景</span>
             <span class="post-date" title="2024-01-11 20:57:28">2024/01/11</span>
@@ -1433,7 +1488,7 @@
         
         <a  class="全部文章 CSharp CSharp基础实践项目 "
            href="/2024/01/11/CSharp/04.CSharp%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/9.%E6%B8%B8%E6%88%8F%E5%9C%BA%E6%99%AF-%E6%89%94%E9%AA%B0%E5%AD%90/"
-           data-tag="CSharp,CSharp基础,实践项目"
+           data-tag="CSharp,实践项目,CSharp基础"
            data-author="" >
             <span class="post-title" title="9.扔骰子">9.扔骰子</span>
             <span class="post-date" title="2024-01-11 20:32:31">2024/01/11</span>
@@ -1442,7 +1497,7 @@
         
         <a  class="全部文章 CSharp CSharp基础实践项目 "
            href="/2024/01/11/CSharp/04.CSharp%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/8.%E6%B8%B8%E6%88%8F%E5%9C%BA%E6%99%AF-%E7%8E%A9%E5%AE%B6%E5%92%8C%E7%94%B5%E8%84%91%E7%BB%93%E6%9E%84%E4%BD%93/"
-           data-tag="CSharp,CSharp基础,实践项目"
+           data-tag="CSharp,实践项目,CSharp基础"
            data-author="" >
             <span class="post-title" title="8.玩家和电脑结构体">8.玩家和电脑结构体</span>
             <span class="post-date" title="2024-01-11 20:25:32">2024/01/11</span>
@@ -1451,7 +1506,7 @@
         
         <a  class="全部文章 CSharp CSharp基础实践项目 "
            href="/2024/01/11/CSharp/04.CSharp%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/7.%E6%B8%B8%E6%88%8F%E5%9C%BA%E6%99%AF-%E5%9C%B0%E5%9B%BE%E7%BB%93%E6%9E%84%E4%BD%93/"
-           data-tag="CSharp,CSharp基础,实践项目"
+           data-tag="CSharp,实践项目,CSharp基础"
            data-author="" >
             <span class="post-title" title="7.地图结构体">7.地图结构体</span>
             <span class="post-date" title="2024-01-11 20:22:00">2024/01/11</span>
@@ -1460,7 +1515,7 @@
         
         <a  class="全部文章 CSharp CSharp基础实践项目 "
            href="/2024/01/11/CSharp/04.CSharp%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/6.%E6%B8%B8%E6%88%8F%E5%9C%BA%E6%99%AF-%E6%A0%BC%E5%AD%90%E7%B1%BB%E5%9E%8B%E6%9E%9A%E4%B8%BE%E5%92%8C%E6%A0%BC%E5%AD%90%E7%BB%93%E6%9E%84%E4%BD%93/"
-           data-tag="CSharp,CSharp基础,实践项目"
+           data-tag="CSharp,实践项目,CSharp基础"
            data-author="" >
             <span class="post-title" title="6.格子类型枚举和格子结构体">6.格子类型枚举和格子结构体</span>
             <span class="post-date" title="2024-01-11 13:02:56">2024/01/11</span>
@@ -1469,7 +1524,7 @@
         
         <a  class="全部文章 CSharp CSharp基础实践项目 "
            href="/2024/01/11/CSharp/04.CSharp%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/5.%E6%B8%B8%E6%88%8F%E5%9C%BA%E6%99%AF-%E4%B8%8D%E5%8F%98%E7%9A%84%E7%BA%A2%E5%A2%99/"
-           data-tag="CSharp,CSharp基础,实践项目"
+           data-tag="CSharp,实践项目,CSharp基础"
            data-author="" >
             <span class="post-title" title="5.不变的红墙">5.不变的红墙</span>
             <span class="post-date" title="2024-01-11 13:02:47">2024/01/11</span>
@@ -1478,7 +1533,7 @@
         
         <a  class="全部文章 CSharp CSharp基础实践项目 "
            href="/2024/01/11/CSharp/04.CSharp%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/4.%E5%BC%80%E5%A7%8B%E5%9C%BA%E6%99%AF/"
-           data-tag="CSharp,CSharp基础,实践项目"
+           data-tag="CSharp,实践项目,CSharp基础"
            data-author="" >
             <span class="post-title" title="4.开始场景">4.开始场景</span>
             <span class="post-date" title="2024-01-11 00:05:38">2024/01/11</span>
@@ -1487,7 +1542,7 @@
         
         <a  class="全部文章 CSharp CSharp基础实践项目 "
            href="/2024/01/10/CSharp/04.CSharp%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/3.%E5%A4%9A%E4%B8%AA%E5%9C%BA%E6%99%AF/"
-           data-tag="CSharp,CSharp基础,实践项目"
+           data-tag="CSharp,实践项目,CSharp基础"
            data-author="" >
             <span class="post-title" title="3.多个场景">3.多个场景</span>
             <span class="post-date" title="2024-01-10 23:58:28">2024/01/10</span>
@@ -1496,7 +1551,7 @@
         
         <a  class="全部文章 CSharp CSharp基础实践项目 "
            href="/2024/01/10/CSharp/04.CSharp%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/2.%E6%8E%A7%E5%88%B6%E5%8F%B0%E5%9F%BA%E7%A1%80%E8%AE%BE%E7%BD%AE/"
-           data-tag="CSharp,CSharp基础,实践项目"
+           data-tag="CSharp,实践项目,CSharp基础"
            data-author="" >
             <span class="post-title" title="2.控制台基础设置">2.控制台基础设置</span>
             <span class="post-date" title="2024-01-10 23:58:23">2024/01/10</span>
@@ -1505,7 +1560,7 @@
         
         <a  class="全部文章 CSharp CSharp基础实践项目 "
            href="/2024/01/10/CSharp/04.CSharp%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/1.%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90/"
-           data-tag="CSharp,CSharp基础,实践项目"
+           data-tag="CSharp,实践项目,CSharp基础"
            data-author="" >
             <span class="post-title" title="1.需求分析">1.需求分析</span>
             <span class="post-date" title="2024-01-10 23:10:40">2024/01/10</span>
@@ -1693,19 +1748,19 @@
         
         
         <a  class="全部文章 CSharp CSharp入门实践项目 "
-           href="/2024/01/08/CSharp/02.CSharp%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/11.%E6%B8%B8%E6%88%8F%E5%9C%BA%E6%99%AF-%E7%8E%A9%E5%AE%B6%E6%88%98%E6%96%97%E7%9B%B8%E5%85%B3/"
+           href="/2024/01/08/CSharp/02.CSharp%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/12.%E6%B8%B8%E6%88%8F%E5%9C%BA%E6%99%AF-%E5%85%AC%E4%B8%BB%E7%9B%B8%E5%85%B3/"
            data-tag="CSharp,CSharp入门,实践项目"
            data-author="" >
-            <span class="post-title" title="11.玩家战斗相关">11.玩家战斗相关</span>
+            <span class="post-title" title="12.公主相关">12.公主相关</span>
             <span class="post-date" title="2024-01-08 21:53:48">2024/01/08</span>
         </a>
         
         
         <a  class="全部文章 CSharp CSharp入门实践项目 "
-           href="/2024/01/08/CSharp/02.CSharp%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/12.%E6%B8%B8%E6%88%8F%E5%9C%BA%E6%99%AF-%E5%85%AC%E4%B8%BB%E7%9B%B8%E5%85%B3/"
+           href="/2024/01/08/CSharp/02.CSharp%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/11.%E6%B8%B8%E6%88%8F%E5%9C%BA%E6%99%AF-%E7%8E%A9%E5%AE%B6%E6%88%98%E6%96%97%E7%9B%B8%E5%85%B3/"
            data-tag="CSharp,CSharp入门,实践项目"
            data-author="" >
-            <span class="post-title" title="12.公主相关">12.公主相关</span>
+            <span class="post-title" title="11.玩家战斗相关">11.玩家战斗相关</span>
             <span class="post-date" title="2024-01-08 21:53:48">2024/01/08</span>
         </a>
         
@@ -2057,9 +2112,9 @@
             
             <a class="color2">CSharp</a>
             
-            <a class="color4">CSharp基础</a>
-            
             <a class="color5">实践项目</a>
+            
+            <a class="color4">CSharp基础</a>
             
         </span>
         
@@ -2108,8 +2163,8 @@
     .left-col .switch-area {
         display: none;
     }
-    .toc-level-3 i,
-    .toc-level-3 ol {
+    .toc-level-6 i,
+    .toc-level-6 ol {
         display: none !important;
     }
 </style>
