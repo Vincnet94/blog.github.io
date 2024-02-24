@@ -6,45 +6,31 @@
   <meta name="keywords" content=" Unity , Unity入门 , 基础知识 , Unity工作原理 ">
   <meta name="description" content="8.预设体和资源包的导入导出 | 人间自有韬哥在的游戏开发博客">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="8.Unity工作原理-预设体和资源包的导入导出 8.1 知识点预设体（预制体）预设体是什么预设体是 Unity 3D 提供的一种保存游戏对象组件和属性的方法。通过预设体，可以快速实例化带有不同组件的游戏对象，从而减少开发难度，提高资源的利用率和开发效率。 预设体是 Unity 中非常重要的概念，可以理解为一个游戏对象及其组件的集合。其目的是使游戏对象及其资源能够重复使用。当修改预设体时，实例也会">
+<meta name="description" content="9.Unity脚本基础-脚本基本规则 9.1 知识点设置编程工具 打开首选项 选设置IDE  基本规则创建规则 可以不在VS中创建脚本了,可以直接在Project窗口右键创建脚本。 可以放在Assets文件夹下的任何位置，建议同一文件夹管理，比如文件名取名Scripts。 类名和文件名必须一致，不然不能挂载或者丢失（因为反射机制创建对象，会通过文件名去找Type）。 建议不要使用中文名命名 没有特">
 <meta property="og:type" content="article">
-<meta property="og:title" content="8.预设体和资源包的导入导出">
-<meta property="og:url" content="https://linwentao785293209.github.io/2024/02/24/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/8.Unity%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86-%E9%A2%84%E8%AE%BE%E4%BD%93%E5%92%8C%E8%B5%84%E6%BA%90%E5%8C%85%E7%9A%84%E5%AF%BC%E5%85%A5%E5%AF%BC%E5%87%BA/index.html">
+<meta property="og:title" content="9.脚本基本规则">
+<meta property="og:url" content="https://linwentao785293209.github.io/2024/02/24/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/9.Unity%E8%84%9A%E6%9C%AC%E5%9F%BA%E7%A1%80-%E8%84%9A%E6%9C%AC%E5%9F%BA%E6%9C%AC%E8%A7%84%E5%88%99/index.html">
 <meta property="og:site_name" content="人间自有韬哥在的游戏开发博客">
-<meta property="og:description" content="8.Unity工作原理-预设体和资源包的导入导出 8.1 知识点预设体（预制体）预设体是什么预设体是 Unity 3D 提供的一种保存游戏对象组件和属性的方法。通过预设体，可以快速实例化带有不同组件的游戏对象，从而减少开发难度，提高资源的利用率和开发效率。 预设体是 Unity 中非常重要的概念，可以理解为一个游戏对象及其组件的集合。其目的是使游戏对象及其资源能够重复使用。当修改预设体时，实例也会">
+<meta property="og:description" content="9.Unity脚本基础-脚本基本规则 9.1 知识点设置编程工具 打开首选项 选设置IDE  基本规则创建规则 可以不在VS中创建脚本了,可以直接在Project窗口右键创建脚本。 可以放在Assets文件夹下的任何位置，建议同一文件夹管理，比如文件名取名Scripts。 类名和文件名必须一致，不然不能挂载或者丢失（因为反射机制创建对象，会通过文件名去找Type）。 建议不要使用中文名命名 没有特">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/8.Unity%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86-%E9%A2%84%E8%AE%BE%E4%BD%93%E5%92%8C%E8%B5%84%E6%BA%90%E5%8C%85%E7%9A%84%E5%AF%BC%E5%85%A5%E5%AF%BC%E5%87%BA/1.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/8.Unity%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86-%E9%A2%84%E8%AE%BE%E4%BD%93%E5%92%8C%E8%B5%84%E6%BA%90%E5%8C%85%E7%9A%84%E5%AF%BC%E5%85%A5%E5%AF%BC%E5%87%BA/2.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/8.Unity%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86-%E9%A2%84%E8%AE%BE%E4%BD%93%E5%92%8C%E8%B5%84%E6%BA%90%E5%8C%85%E7%9A%84%E5%AF%BC%E5%85%A5%E5%AF%BC%E5%87%BA/3.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/8.Unity%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86-%E9%A2%84%E8%AE%BE%E4%BD%93%E5%92%8C%E8%B5%84%E6%BA%90%E5%8C%85%E7%9A%84%E5%AF%BC%E5%85%A5%E5%AF%BC%E5%87%BA/4.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/8.Unity%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86-%E9%A2%84%E8%AE%BE%E4%BD%93%E5%92%8C%E8%B5%84%E6%BA%90%E5%8C%85%E7%9A%84%E5%AF%BC%E5%85%A5%E5%AF%BC%E5%87%BA/5.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/8.Unity%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86-%E9%A2%84%E8%AE%BE%E4%BD%93%E5%92%8C%E8%B5%84%E6%BA%90%E5%8C%85%E7%9A%84%E5%AF%BC%E5%85%A5%E5%AF%BC%E5%87%BA/6.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/8.Unity%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86-%E9%A2%84%E8%AE%BE%E4%BD%93%E5%92%8C%E8%B5%84%E6%BA%90%E5%8C%85%E7%9A%84%E5%AF%BC%E5%85%A5%E5%AF%BC%E5%87%BA/7.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/8.Unity%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86-%E9%A2%84%E8%AE%BE%E4%BD%93%E5%92%8C%E8%B5%84%E6%BA%90%E5%8C%85%E7%9A%84%E5%AF%BC%E5%85%A5%E5%AF%BC%E5%87%BA/8.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/8.Unity%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86-%E9%A2%84%E8%AE%BE%E4%BD%93%E5%92%8C%E8%B5%84%E6%BA%90%E5%8C%85%E7%9A%84%E5%AF%BC%E5%85%A5%E5%AF%BC%E5%87%BA/9.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/8.Unity%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86-%E9%A2%84%E8%AE%BE%E4%BD%93%E5%92%8C%E8%B5%84%E6%BA%90%E5%8C%85%E7%9A%84%E5%AF%BC%E5%85%A5%E5%AF%BC%E5%87%BA/10.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/8.Unity%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86-%E9%A2%84%E8%AE%BE%E4%BD%93%E5%92%8C%E8%B5%84%E6%BA%90%E5%8C%85%E7%9A%84%E5%AF%BC%E5%85%A5%E5%AF%BC%E5%87%BA/11.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/8.Unity%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86-%E9%A2%84%E8%AE%BE%E4%BD%93%E5%92%8C%E8%B5%84%E6%BA%90%E5%8C%85%E7%9A%84%E5%AF%BC%E5%85%A5%E5%AF%BC%E5%87%BA/12.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/8.Unity%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86-%E9%A2%84%E8%AE%BE%E4%BD%93%E5%92%8C%E8%B5%84%E6%BA%90%E5%8C%85%E7%9A%84%E5%AF%BC%E5%85%A5%E5%AF%BC%E5%87%BA/13.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/8.Unity%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86-%E9%A2%84%E8%AE%BE%E4%BD%93%E5%92%8C%E8%B5%84%E6%BA%90%E5%8C%85%E7%9A%84%E5%AF%BC%E5%85%A5%E5%AF%BC%E5%87%BA/14.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/8.Unity%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86-%E9%A2%84%E8%AE%BE%E4%BD%93%E5%92%8C%E8%B5%84%E6%BA%90%E5%8C%85%E7%9A%84%E5%AF%BC%E5%85%A5%E5%AF%BC%E5%87%BA/15.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/8.Unity%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86-%E9%A2%84%E8%AE%BE%E4%BD%93%E5%92%8C%E8%B5%84%E6%BA%90%E5%8C%85%E7%9A%84%E5%AF%BC%E5%85%A5%E5%AF%BC%E5%87%BA/16.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/8.Unity%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86-%E9%A2%84%E8%AE%BE%E4%BD%93%E5%92%8C%E8%B5%84%E6%BA%90%E5%8C%85%E7%9A%84%E5%AF%BC%E5%85%A5%E5%AF%BC%E5%87%BA/17.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/8.Unity%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86-%E9%A2%84%E8%AE%BE%E4%BD%93%E5%92%8C%E8%B5%84%E6%BA%90%E5%8C%85%E7%9A%84%E5%AF%BC%E5%85%A5%E5%AF%BC%E5%87%BA/18.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/8.Unity%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86-%E9%A2%84%E8%AE%BE%E4%BD%93%E5%92%8C%E8%B5%84%E6%BA%90%E5%8C%85%E7%9A%84%E5%AF%BC%E5%85%A5%E5%AF%BC%E5%87%BA/19.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/8.Unity%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86-%E9%A2%84%E8%AE%BE%E4%BD%93%E5%92%8C%E8%B5%84%E6%BA%90%E5%8C%85%E7%9A%84%E5%AF%BC%E5%85%A5%E5%AF%BC%E5%87%BA/20.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/8.Unity%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86-%E9%A2%84%E8%AE%BE%E4%BD%93%E5%92%8C%E8%B5%84%E6%BA%90%E5%8C%85%E7%9A%84%E5%AF%BC%E5%85%A5%E5%AF%BC%E5%87%BA/21.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/8.Unity%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86-%E9%A2%84%E8%AE%BE%E4%BD%93%E5%92%8C%E8%B5%84%E6%BA%90%E5%8C%85%E7%9A%84%E5%AF%BC%E5%85%A5%E5%AF%BC%E5%87%BA/22.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/8.Unity%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86-%E9%A2%84%E8%AE%BE%E4%BD%93%E5%92%8C%E8%B5%84%E6%BA%90%E5%8C%85%E7%9A%84%E5%AF%BC%E5%85%A5%E5%AF%BC%E5%87%BA/23.png">
-<meta property="article:published_time" content="2024-02-24T03:01:49.000Z">
-<meta property="article:modified_time" content="2024-02-24T03:17:32.785Z">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/9.Unity%E8%84%9A%E6%9C%AC%E5%9F%BA%E7%A1%80-%E8%84%9A%E6%9C%AC%E5%9F%BA%E6%9C%AC%E8%A7%84%E5%88%99/1.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/9.Unity%E8%84%9A%E6%9C%AC%E5%9F%BA%E7%A1%80-%E8%84%9A%E6%9C%AC%E5%9F%BA%E6%9C%AC%E8%A7%84%E5%88%99/2.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/9.Unity%E8%84%9A%E6%9C%AC%E5%9F%BA%E7%A1%80-%E8%84%9A%E6%9C%AC%E5%9F%BA%E6%9C%AC%E8%A7%84%E5%88%99/3.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/9.Unity%E8%84%9A%E6%9C%AC%E5%9F%BA%E7%A1%80-%E8%84%9A%E6%9C%AC%E5%9F%BA%E6%9C%AC%E8%A7%84%E5%88%99/4.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/9.Unity%E8%84%9A%E6%9C%AC%E5%9F%BA%E7%A1%80-%E8%84%9A%E6%9C%AC%E5%9F%BA%E6%9C%AC%E8%A7%84%E5%88%99/5.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/9.Unity%E8%84%9A%E6%9C%AC%E5%9F%BA%E7%A1%80-%E8%84%9A%E6%9C%AC%E5%9F%BA%E6%9C%AC%E8%A7%84%E5%88%99/6.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/9.Unity%E8%84%9A%E6%9C%AC%E5%9F%BA%E7%A1%80-%E8%84%9A%E6%9C%AC%E5%9F%BA%E6%9C%AC%E8%A7%84%E5%88%99/7.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/9.Unity%E8%84%9A%E6%9C%AC%E5%9F%BA%E7%A1%80-%E8%84%9A%E6%9C%AC%E5%9F%BA%E6%9C%AC%E8%A7%84%E5%88%99/8.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/9.Unity%E8%84%9A%E6%9C%AC%E5%9F%BA%E7%A1%80-%E8%84%9A%E6%9C%AC%E5%9F%BA%E6%9C%AC%E8%A7%84%E5%88%99/9.png">
+<meta property="article:published_time" content="2024-02-24T03:03:49.000Z">
+<meta property="article:modified_time" content="2024-02-24T03:51:36.049Z">
 <meta property="article:author" content="人间自有韬哥在">
 <meta property="article:tag" content="Unity">
 <meta property="article:tag" content="Unity入门">
 <meta property="article:tag" content="基础知识">
-<meta property="article:tag" content="Unity工作原理">
+<meta property="article:tag" content="Unity脚本基础">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/8.Unity%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86-%E9%A2%84%E8%AE%BE%E4%BD%93%E5%92%8C%E8%B5%84%E6%BA%90%E5%8C%85%E7%9A%84%E5%AF%BC%E5%85%A5%E5%AF%BC%E5%87%BA/1.png">
+<meta name="twitter:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/9.Unity%E8%84%9A%E6%9C%AC%E5%9F%BA%E7%A1%80-%E8%84%9A%E6%9C%AC%E5%9F%BA%E6%9C%AC%E8%A7%84%E5%88%99/1.png">
 
 
 <link rel="icon" href="/img/avatar.jpg">
@@ -171,7 +157,7 @@
     <li>
         <div class="all active" data-rel="全部文章">全部文章
             
-                <small>(168)</small>
+                <small>(169)</small>
             
         </div>
     </li>
@@ -322,7 +308,7 @@
         <div data-rel="Unity">
             <i class="fold iconfont icon-right"></i>
             Unity
-            <small>(8)</small>
+            <small>(9)</small>
         </div>
         
             <ul class="sub hide">
@@ -332,7 +318,7 @@
         <div data-rel="Unity&lt;---&gt;Unity入门基础知识">
             
             Unity入门基础知识
-            <small>(8)</small>
+            <small>(9)</small>
         </div>
         
     </li>
@@ -364,8 +350,8 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="168">
-<input type="hidden" id="yelog_site_word_count" value="325.6k">
+<input type="hidden" id="yelog_site_posts_number" value="169">
+<input type="hidden" id="yelog_site_word_count" value="326.6k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -535,6 +521,10 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Unity脚本基础</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>Unity界面基础</a>
             </li>
         
@@ -548,6 +538,15 @@
 
     
     <nav id="title-list-nav">
+        
+        
+        <a  class="全部文章 Unity Unity入门基础知识 "
+           href="/2024/02/24/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/9.Unity%E8%84%9A%E6%9C%AC%E5%9F%BA%E7%A1%80-%E8%84%9A%E6%9C%AC%E5%9F%BA%E6%9C%AC%E8%A7%84%E5%88%99/"
+           data-tag="Unity,Unity入门,基础知识,Unity脚本基础"
+           data-author="" >
+            <span class="post-title" title="9.脚本基本规则">9.脚本基本规则</span>
+            <span class="post-date" title="2024-02-24 11:03:49">2024/02/24</span>
+        </a>
         
         
         <a  class="全部文章 Unity Unity入门基础知识 "
