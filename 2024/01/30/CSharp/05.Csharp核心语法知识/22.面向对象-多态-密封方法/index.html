@@ -6,21 +6,27 @@
   <meta name="keywords" content=" CSharp , 语法知识 , CSharp核心 , 面向对象 , 多态 ">
   <meta name="description" content="22.密封方法 | 人间自有韬哥在的游戏开发博客">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="24.Unity重要组件和API-Camera成员 24.1 知识点获取摄像机可以用之前的知识来获取摄像机。 重要静态成员main静态变量 - 获取主摄像机&#x2F;&#x2F; 第一个启用的摄像机标记为“MainCamera”。（只读） &#x2F;&#x2F; 如果想通过这种方式快速获取摄像机，那么场景上必须有一个 tag为MainCamera的摄像机，否则为空报错。 &#x2F;&#x2F; 如果场景上有多个 tag为MainCamera的摄像机，">
+<meta name="description" content="26.核心系统-光源系统-光面板 26.1 知识点在window窗口下拉框打开照明设置(光面板) Environment 环境相关设置Skybox Material 天空盒材质 可以改变天空盒 可以在project窗口右键创建材质，材质选择成天空盒着色器  Sun Source 太阳来源 不设置会默认使用场景中最亮的方向光代表太阳  Environment Lighting 环境光设置Source">
 <meta property="og:type" content="article">
-<meta property="og:title" content="24.Camera成员">
-<meta property="og:url" content="https://linwentao785293209.github.io/2024/02/24/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/24.Unity%E9%87%8D%E8%A6%81%E7%BB%84%E4%BB%B6%E5%92%8CAPI-Camera%E6%88%90%E5%91%98/index.html">
+<meta property="og:title" content="26.光面板">
+<meta property="og:url" content="https://linwentao785293209.github.io/2024/02/25/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/26.%E6%A0%B8%E5%BF%83%E7%B3%BB%E7%BB%9F-%E5%85%89%E6%BA%90%E7%B3%BB%E7%BB%9F-%E5%85%89%E9%9D%A2%E6%9D%BF/index.html">
 <meta property="og:site_name" content="人间自有韬哥在的游戏开发博客">
-<meta property="og:description" content="24.Unity重要组件和API-Camera成员 24.1 知识点获取摄像机可以用之前的知识来获取摄像机。 重要静态成员main静态变量 - 获取主摄像机&#x2F;&#x2F; 第一个启用的摄像机标记为“MainCamera”。（只读） &#x2F;&#x2F; 如果想通过这种方式快速获取摄像机，那么场景上必须有一个 tag为MainCamera的摄像机，否则为空报错。 &#x2F;&#x2F; 如果场景上有多个 tag为MainCamera的摄像机，">
+<meta property="og:description" content="26.核心系统-光源系统-光面板 26.1 知识点在window窗口下拉框打开照明设置(光面板) Environment 环境相关设置Skybox Material 天空盒材质 可以改变天空盒 可以在project窗口右键创建材质，材质选择成天空盒着色器  Sun Source 太阳来源 不设置会默认使用场景中最亮的方向光代表太阳  Environment Lighting 环境光设置Source">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-02-24T10:57:28.000Z">
-<meta property="article:modified_time" content="2024-02-24T11:01:22.544Z">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/26.%E6%A0%B8%E5%BF%83%E7%B3%BB%E7%BB%9F-%E5%85%89%E6%BA%90%E7%B3%BB%E7%BB%9F-%E5%85%89%E9%9D%A2%E6%9D%BF/1.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/26.%E6%A0%B8%E5%BF%83%E7%B3%BB%E7%BB%9F-%E5%85%89%E6%BA%90%E7%B3%BB%E7%BB%9F-%E5%85%89%E9%9D%A2%E6%9D%BF/2.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/26.%E6%A0%B8%E5%BF%83%E7%B3%BB%E7%BB%9F-%E5%85%89%E6%BA%90%E7%B3%BB%E7%BB%9F-%E5%85%89%E9%9D%A2%E6%9D%BF/3.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/26.%E6%A0%B8%E5%BF%83%E7%B3%BB%E7%BB%9F-%E5%85%89%E6%BA%90%E7%B3%BB%E7%BB%9F-%E5%85%89%E9%9D%A2%E6%9D%BF/4.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/26.%E6%A0%B8%E5%BF%83%E7%B3%BB%E7%BB%9F-%E5%85%89%E6%BA%90%E7%B3%BB%E7%BB%9F-%E5%85%89%E9%9D%A2%E6%9D%BF/5.png">
+<meta property="article:published_time" content="2024-02-24T16:19:19.000Z">
+<meta property="article:modified_time" content="2024-02-24T16:29:11.365Z">
 <meta property="article:author" content="人间自有韬哥在">
 <meta property="article:tag" content="Unity">
 <meta property="article:tag" content="Unity入门">
 <meta property="article:tag" content="基础知识">
-<meta property="article:tag" content="Unity重要组件和API">
+<meta property="article:tag" content="光源系统">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/26.%E6%A0%B8%E5%BF%83%E7%B3%BB%E7%BB%9F-%E5%85%89%E6%BA%90%E7%B3%BB%E7%BB%9F-%E5%85%89%E9%9D%A2%E6%9D%BF/1.png">
 
 
 <link rel="icon" href="/img/avatar.jpg">
@@ -147,7 +153,7 @@
     <li>
         <div class="all active" data-rel="全部文章">全部文章
             
-                <small>(184)</small>
+                <small>(186)</small>
             
         </div>
     </li>
@@ -298,7 +304,7 @@
         <div data-rel="Unity">
             <i class="fold iconfont icon-right"></i>
             Unity
-            <small>(24)</small>
+            <small>(26)</small>
         </div>
         
             <ul class="sub hide">
@@ -308,7 +314,7 @@
         <div data-rel="Unity&lt;---&gt;Unity入门基础知识">
             
             Unity入门基础知识
-            <small>(24)</small>
+            <small>(26)</small>
         </div>
         
     </li>
@@ -340,8 +346,8 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="184">
-<input type="hidden" id="yelog_site_word_count" value="366.8k">
+<input type="hidden" id="yelog_site_posts_number" value="186">
+<input type="hidden" id="yelog_site_word_count" value="368.2k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -412,6 +418,10 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>复杂数据类型</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>光源系统</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -503,6 +513,10 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>MonoBehavior中的重要内容</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>Unity</a>
             </li>
         
@@ -532,6 +546,24 @@
 
     
     <nav id="title-list-nav">
+        
+        
+        <a  class="全部文章 Unity Unity入门基础知识 "
+           href="/2024/02/25/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/26.%E6%A0%B8%E5%BF%83%E7%B3%BB%E7%BB%9F-%E5%85%89%E6%BA%90%E7%B3%BB%E7%BB%9F-%E5%85%89%E9%9D%A2%E6%9D%BF/"
+           data-tag="Unity,Unity入门,基础知识,光源系统"
+           data-author="" >
+            <span class="post-title" title="26.光面板">26.光面板</span>
+            <span class="post-date" title="2024-02-25 00:19:19">2024/02/25</span>
+        </a>
+        
+        
+        <a  class="全部文章 Unity Unity入门基础知识 "
+           href="/2024/02/25/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/25.%E6%A0%B8%E5%BF%83%E7%B3%BB%E7%BB%9F-%E5%85%89%E6%BA%90%E7%B3%BB%E7%BB%9F-%E5%85%89%E6%BA%90%E7%BB%84%E4%BB%B6/"
+           data-tag="Unity,Unity入门,基础知识,光源系统"
+           data-author="" >
+            <span class="post-title" title="25.光源组件">25.光源组件</span>
+            <span class="post-date" title="2024-02-25 00:01:43">2024/02/25</span>
+        </a>
         
         
         <a  class="全部文章 Unity Unity入门基础知识 "
@@ -644,7 +676,7 @@
         
         <a  class="全部文章 Unity Unity入门基础知识 "
            href="/2024/02/24/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/12.Unity%E8%84%9A%E6%9C%AC%E5%9F%BA%E7%A1%80-MonoBehavior%E4%B8%AD%E7%9A%84%E9%87%8D%E8%A6%81%E5%86%85%E5%AE%B9/"
-           data-tag="Unity,Unity入门,基础知识,Unity脚本基础"
+           data-tag="Unity,Unity入门,基础知识,Unity脚本基础,MonoBehavior中的重要内容"
            data-author="" >
             <span class="post-title" title="12.MonoBehavior中的重要内容">12.MonoBehavior中的重要内容</span>
             <span class="post-date" title="2024-02-24 13:20:17">2024/02/24</span>
