@@ -6,28 +6,21 @@
   <meta name="keywords" content=" CSharp , CSharp入门 , 语法知识 , 运算符 ">
   <meta name="description" content="15.条件运算符 | 人间自有韬哥在的游戏开发博客">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="20.Unity重要组件和API-Transform坐标转换 20.1 知识点目标向量print(&quot;目标向量（可以是点或方向） &quot; + Vector3.forward);&#x2F;&#x2F;001  世界坐标转本地坐标世界坐标系 转 本地坐标系 可以帮助我们大概判断一个相对位置如图，球当做原点，方块在（1,0,1）位置。尝将世界坐标系的点（0,0,1）或向量（0,0,1）转换成方块本地坐标系下">
+<meta name="description" content="24.Unity重要组件和API-Camera成员 24.1 知识点获取摄像机可以用之前的知识来获取摄像机。 重要静态成员main静态变量 - 获取主摄像机&#x2F;&#x2F; 第一个启用的摄像机标记为“MainCamera”。（只读） &#x2F;&#x2F; 如果想通过这种方式快速获取摄像机，那么场景上必须有一个 tag为MainCamera的摄像机，否则为空报错。 &#x2F;&#x2F; 如果场景上有多个 tag为MainCamera的摄像机，">
 <meta property="og:type" content="article">
-<meta property="og:title" content="20.Transform坐标转换">
-<meta property="og:url" content="https://linwentao785293209.github.io/2024/02/24/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/20.Unity%E9%87%8D%E8%A6%81%E7%BB%84%E4%BB%B6%E5%92%8CAPI-Transform%E5%9D%90%E6%A0%87%E8%BD%AC%E6%8D%A2/index.html">
+<meta property="og:title" content="24.Camera成员">
+<meta property="og:url" content="https://linwentao785293209.github.io/2024/02/24/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/24.Unity%E9%87%8D%E8%A6%81%E7%BB%84%E4%BB%B6%E5%92%8CAPI-Camera%E6%88%90%E5%91%98/index.html">
 <meta property="og:site_name" content="人间自有韬哥在的游戏开发博客">
-<meta property="og:description" content="20.Unity重要组件和API-Transform坐标转换 20.1 知识点目标向量print(&quot;目标向量（可以是点或方向） &quot; + Vector3.forward);&#x2F;&#x2F;001  世界坐标转本地坐标世界坐标系 转 本地坐标系 可以帮助我们大概判断一个相对位置如图，球当做原点，方块在（1,0,1）位置。尝将世界坐标系的点（0,0,1）或向量（0,0,1）转换成方块本地坐标系下">
+<meta property="og:description" content="24.Unity重要组件和API-Camera成员 24.1 知识点获取摄像机可以用之前的知识来获取摄像机。 重要静态成员main静态变量 - 获取主摄像机&#x2F;&#x2F; 第一个启用的摄像机标记为“MainCamera”。（只读） &#x2F;&#x2F; 如果想通过这种方式快速获取摄像机，那么场景上必须有一个 tag为MainCamera的摄像机，否则为空报错。 &#x2F;&#x2F; 如果场景上有多个 tag为MainCamera的摄像机，">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/20.Unity%E9%87%8D%E8%A6%81%E7%BB%84%E4%BB%B6%E5%92%8CAPI-Transform%E5%9D%90%E6%A0%87%E8%BD%AC%E6%8D%A2/1.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/20.Unity%E9%87%8D%E8%A6%81%E7%BB%84%E4%BB%B6%E5%92%8CAPI-Transform%E5%9D%90%E6%A0%87%E8%BD%AC%E6%8D%A2/2.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/20.Unity%E9%87%8D%E8%A6%81%E7%BB%84%E4%BB%B6%E5%92%8CAPI-Transform%E5%9D%90%E6%A0%87%E8%BD%AC%E6%8D%A2/5.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/20.Unity%E9%87%8D%E8%A6%81%E7%BB%84%E4%BB%B6%E5%92%8CAPI-Transform%E5%9D%90%E6%A0%87%E8%BD%AC%E6%8D%A2/3.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/20.Unity%E9%87%8D%E8%A6%81%E7%BB%84%E4%BB%B6%E5%92%8CAPI-Transform%E5%9D%90%E6%A0%87%E8%BD%AC%E6%8D%A2/4.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/20.Unity%E9%87%8D%E8%A6%81%E7%BB%84%E4%BB%B6%E5%92%8CAPI-Transform%E5%9D%90%E6%A0%87%E8%BD%AC%E6%8D%A2/6.png">
-<meta property="article:published_time" content="2024-02-24T08:33:35.000Z">
-<meta property="article:modified_time" content="2024-02-24T09:38:44.776Z">
+<meta property="article:published_time" content="2024-02-24T10:57:28.000Z">
+<meta property="article:modified_time" content="2024-02-24T11:01:22.544Z">
 <meta property="article:author" content="人间自有韬哥在">
 <meta property="article:tag" content="Unity">
 <meta property="article:tag" content="Unity入门">
 <meta property="article:tag" content="基础知识">
 <meta property="article:tag" content="Unity重要组件和API">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/20.Unity%E9%87%8D%E8%A6%81%E7%BB%84%E4%BB%B6%E5%92%8CAPI-Transform%E5%9D%90%E6%A0%87%E8%BD%AC%E6%8D%A2/1.png">
 
 
 <link rel="icon" href="/img/avatar.jpg">
@@ -154,7 +147,7 @@
     <li>
         <div class="all active" data-rel="全部文章">全部文章
             
-                <small>(180)</small>
+                <small>(184)</small>
             
         </div>
     </li>
@@ -305,7 +298,7 @@
         <div data-rel="Unity">
             <i class="fold iconfont icon-right"></i>
             Unity
-            <small>(20)</small>
+            <small>(24)</small>
         </div>
         
             <ul class="sub hide">
@@ -315,7 +308,7 @@
         <div data-rel="Unity&lt;---&gt;Unity入门基础知识">
             
             Unity入门基础知识
-            <small>(20)</small>
+            <small>(24)</small>
         </div>
         
     </li>
@@ -347,8 +340,8 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="180">
-<input type="hidden" id="yelog_site_word_count" value="356.2k">
+<input type="hidden" id="yelog_site_posts_number" value="184">
+<input type="hidden" id="yelog_site_word_count" value="366.8k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -542,6 +535,42 @@
         
         
         <a  class="全部文章 Unity Unity入门基础知识 "
+           href="/2024/02/24/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/24.Unity%E9%87%8D%E8%A6%81%E7%BB%84%E4%BB%B6%E5%92%8CAPI-Camera%E6%88%90%E5%91%98/"
+           data-tag="Unity,Unity入门,基础知识,Unity重要组件和API"
+           data-author="" >
+            <span class="post-title" title="24.Camera成员">24.Camera成员</span>
+            <span class="post-date" title="2024-02-24 18:57:28">2024/02/24</span>
+        </a>
+        
+        
+        <a  class="全部文章 Unity Unity入门基础知识 "
+           href="/2024/02/24/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/23.Unity%E9%87%8D%E8%A6%81%E7%BB%84%E4%BB%B6%E5%92%8CAPI-Camera%E5%8F%82%E6%95%B0/"
+           data-tag="Unity,Unity入门,基础知识,Unity重要组件和API"
+           data-author="" >
+            <span class="post-title" title="23.Camera参数">23.Camera参数</span>
+            <span class="post-date" title="2024-02-24 18:28:28">2024/02/24</span>
+        </a>
+        
+        
+        <a  class="全部文章 Unity Unity入门基础知识 "
+           href="/2024/02/24/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/22.Unity%E9%87%8D%E8%A6%81%E7%BB%84%E4%BB%B6%E5%92%8CAPI-Screen/"
+           data-tag="Unity,Unity入门,基础知识,Unity重要组件和API"
+           data-author="" >
+            <span class="post-title" title="22.Screen">22.Screen</span>
+            <span class="post-date" title="2024-02-24 18:16:50">2024/02/24</span>
+        </a>
+        
+        
+        <a  class="全部文章 Unity Unity入门基础知识 "
+           href="/2024/02/24/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/21.Unity%E9%87%8D%E8%A6%81%E7%BB%84%E4%BB%B6%E5%92%8CAPI-Input/"
+           data-tag="Unity,Unity入门,基础知识,Unity重要组件和API"
+           data-author="" >
+            <span class="post-title" title="21.Input">21.Input</span>
+            <span class="post-date" title="2024-02-24 18:00:02">2024/02/24</span>
+        </a>
+        
+        
+        <a  class="全部文章 Unity Unity入门基础知识 "
            href="/2024/02/24/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/20.Unity%E9%87%8D%E8%A6%81%E7%BB%84%E4%BB%B6%E5%92%8CAPI-Transform%E5%9D%90%E6%A0%87%E8%BD%AC%E6%8D%A2/"
            data-tag="Unity,Unity入门,基础知识,Unity重要组件和API"
            data-author="" >
@@ -624,7 +653,7 @@
         
         <a  class="全部文章 Unity Unity入门基础知识 "
            href="/2024/02/24/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/11.Unity%E8%84%9A%E6%9C%AC%E5%9F%BA%E7%A1%80-Inspector%E7%AA%97%E5%8F%A3%E5%8F%AF%E7%BC%96%E8%BE%91%E7%9A%84%E5%8F%98%E9%87%8F/"
-           data-tag="Unity,Unity入门,基础知识,Unity脚本基础,反射和特性"
+           data-tag="反射和特性,Unity,Unity入门,基础知识,Unity脚本基础"
            data-author="" >
             <span class="post-title" title="11.Inspector窗口可编辑的变量">11.Inspector窗口可编辑的变量</span>
             <span class="post-date" title="2024-02-24 12:38:36">2024/02/24</span>
@@ -660,7 +689,7 @@
         
         <a  class="全部文章 Unity Unity入门基础知识 "
            href="/2024/02/24/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/7.Unity%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86-%E5%8F%8D%E5%B0%84%E6%9C%BA%E5%88%B6%E5%92%8C%E6%B8%B8%E6%88%8F%E5%9C%BA%E6%99%AF/"
-           data-tag="Unity,Unity入门,基础知识,反射和特性,Unity工作原理"
+           data-tag="反射和特性,Unity,Unity入门,基础知识,Unity工作原理"
            data-author="" >
             <span class="post-title" title="7.反射机制和游戏场景">7.反射机制和游戏场景</span>
             <span class="post-date" title="2024-02-24 10:09:09">2024/02/24</span>
@@ -939,7 +968,7 @@
         
         <a  class="全部文章 CSharp CSharp进阶语法知识 "
            href="/2024/02/21/CSharp/07.Csharp%E8%BF%9B%E9%98%B6%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/22.%E5%8F%8D%E5%B0%84%E5%92%8C%E7%89%B9%E6%80%A7-%E7%89%B9%E6%80%A7/"
-           data-tag="CSharp,语法知识,反射和特性,CSharp进阶"
+           data-tag="CSharp,语法知识,CSharp进阶,反射和特性"
            data-author="" >
             <span class="post-title" title="22.特性">22.特性</span>
             <span class="post-date" title="2024-02-21 13:02:24">2024/02/21</span>
@@ -948,7 +977,7 @@
         
         <a  class="全部文章 CSharp CSharp进阶语法知识 "
            href="/2024/02/21/CSharp/07.Csharp%E8%BF%9B%E9%98%B6%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/21.%E5%8F%8D%E5%B0%84%E5%92%8C%E7%89%B9%E6%80%A7-%E5%8F%8D%E5%B0%84/"
-           data-tag="CSharp,语法知识,反射和特性,CSharp进阶"
+           data-tag="CSharp,语法知识,CSharp进阶,反射和特性"
            data-author="" >
             <span class="post-title" title="21.反射">21.反射</span>
             <span class="post-date" title="2024-02-21 09:49:59">2024/02/21</span>
@@ -1838,19 +1867,19 @@
         
         
         <a  class="全部文章 CSharp CSharp入门实践项目 "
-           href="/2024/01/08/CSharp/02.CSharp%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/12.%E6%B8%B8%E6%88%8F%E5%9C%BA%E6%99%AF-%E5%85%AC%E4%B8%BB%E7%9B%B8%E5%85%B3/"
+           href="/2024/01/08/CSharp/02.CSharp%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/11.%E6%B8%B8%E6%88%8F%E5%9C%BA%E6%99%AF-%E7%8E%A9%E5%AE%B6%E6%88%98%E6%96%97%E7%9B%B8%E5%85%B3/"
            data-tag="CSharp,CSharp入门,实践项目"
            data-author="" >
-            <span class="post-title" title="12.公主相关">12.公主相关</span>
+            <span class="post-title" title="11.玩家战斗相关">11.玩家战斗相关</span>
             <span class="post-date" title="2024-01-08 21:53:48">2024/01/08</span>
         </a>
         
         
         <a  class="全部文章 CSharp CSharp入门实践项目 "
-           href="/2024/01/08/CSharp/02.CSharp%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/11.%E6%B8%B8%E6%88%8F%E5%9C%BA%E6%99%AF-%E7%8E%A9%E5%AE%B6%E6%88%98%E6%96%97%E7%9B%B8%E5%85%B3/"
+           href="/2024/01/08/CSharp/02.CSharp%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/12.%E6%B8%B8%E6%88%8F%E5%9C%BA%E6%99%AF-%E5%85%AC%E4%B8%BB%E7%9B%B8%E5%85%B3/"
            data-tag="CSharp,CSharp入门,实践项目"
            data-author="" >
-            <span class="post-title" title="11.玩家战斗相关">11.玩家战斗相关</span>
+            <span class="post-title" title="12.公主相关">12.公主相关</span>
             <span class="post-date" title="2024-01-08 21:53:48">2024/01/08</span>
         </a>
         
