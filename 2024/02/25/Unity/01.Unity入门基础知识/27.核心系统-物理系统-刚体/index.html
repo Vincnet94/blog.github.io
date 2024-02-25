@@ -2,31 +2,31 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>24.Camera成员 | 人间自有韬哥在的游戏开发博客</title>
-  <meta name="keywords" content=" Unity , Unity入门 , 基础知识 , Unity重要组件和API ">
-  <meta name="description" content="24.Camera成员 | 人间自有韬哥在的游戏开发博客">
+  <title>27.刚体 | 人间自有韬哥在的游戏开发博客</title>
+  <meta name="keywords" content=" Unity , Unity入门 , 基础知识 , 核心系统 , 物理系统 ">
+  <meta name="description" content="27.刚体 | 人间自有韬哥在的游戏开发博客">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="26.核心系统-光源系统-光面板 26.1 知识点在window窗口下拉框打开照明设置(光面板) Environment 环境相关设置Skybox Material 天空盒材质 可以改变天空盒 可以在project窗口右键创建材质，材质选择成天空盒着色器  Sun Source 太阳来源 不设置会默认使用场景中最亮的方向光代表太阳  Environment Lighting 环境光设置Source">
+<meta name="description" content="36.总结 36.1 知识点 学习的主要内容 总结讲什么 学习Unity是学习什么 如何学好Unity 强调">
 <meta property="og:type" content="article">
-<meta property="og:title" content="26.光面板">
-<meta property="og:url" content="https://linwentao785293209.github.io/2024/02/25/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/26.%E6%A0%B8%E5%BF%83%E7%B3%BB%E7%BB%9F-%E5%85%89%E6%BA%90%E7%B3%BB%E7%BB%9F-%E5%85%89%E9%9D%A2%E6%9D%BF/index.html">
+<meta property="og:title" content="36.总结">
+<meta property="og:url" content="https://linwentao785293209.github.io/2024/02/25/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/36.%E6%80%BB%E7%BB%93/index.html">
 <meta property="og:site_name" content="人间自有韬哥在的游戏开发博客">
-<meta property="og:description" content="26.核心系统-光源系统-光面板 26.1 知识点在window窗口下拉框打开照明设置(光面板) Environment 环境相关设置Skybox Material 天空盒材质 可以改变天空盒 可以在project窗口右键创建材质，材质选择成天空盒着色器  Sun Source 太阳来源 不设置会默认使用场景中最亮的方向光代表太阳  Environment Lighting 环境光设置Source">
+<meta property="og:description" content="36.总结 36.1 知识点 学习的主要内容 总结讲什么 学习Unity是学习什么 如何学好Unity 强调">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/26.%E6%A0%B8%E5%BF%83%E7%B3%BB%E7%BB%9F-%E5%85%89%E6%BA%90%E7%B3%BB%E7%BB%9F-%E5%85%89%E9%9D%A2%E6%9D%BF/1.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/26.%E6%A0%B8%E5%BF%83%E7%B3%BB%E7%BB%9F-%E5%85%89%E6%BA%90%E7%B3%BB%E7%BB%9F-%E5%85%89%E9%9D%A2%E6%9D%BF/2.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/26.%E6%A0%B8%E5%BF%83%E7%B3%BB%E7%BB%9F-%E5%85%89%E6%BA%90%E7%B3%BB%E7%BB%9F-%E5%85%89%E9%9D%A2%E6%9D%BF/3.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/26.%E6%A0%B8%E5%BF%83%E7%B3%BB%E7%BB%9F-%E5%85%89%E6%BA%90%E7%B3%BB%E7%BB%9F-%E5%85%89%E9%9D%A2%E6%9D%BF/4.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/26.%E6%A0%B8%E5%BF%83%E7%B3%BB%E7%BB%9F-%E5%85%89%E6%BA%90%E7%B3%BB%E7%BB%9F-%E5%85%89%E9%9D%A2%E6%9D%BF/5.png">
-<meta property="article:published_time" content="2024-02-24T16:19:19.000Z">
-<meta property="article:modified_time" content="2024-02-24T16:29:11.365Z">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/36.%E6%80%BB%E7%BB%93/1.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/36.%E6%80%BB%E7%BB%93/2.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/36.%E6%80%BB%E7%BB%93/3.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/36.%E6%80%BB%E7%BB%93/4.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/36.%E6%80%BB%E7%BB%93/5.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/36.%E6%80%BB%E7%BB%93/6.png">
+<meta property="article:published_time" content="2024-02-25T06:23:58.000Z">
+<meta property="article:modified_time" content="2024-02-25T06:26:38.908Z">
 <meta property="article:author" content="人间自有韬哥在">
 <meta property="article:tag" content="Unity">
 <meta property="article:tag" content="Unity入门">
 <meta property="article:tag" content="基础知识">
-<meta property="article:tag" content="光源系统">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/26.%E6%A0%B8%E5%BF%83%E7%B3%BB%E7%BB%9F-%E5%85%89%E6%BA%90%E7%B3%BB%E7%BB%9F-%E5%85%89%E9%9D%A2%E6%9D%BF/1.png">
+<meta name="twitter:image" content="https://linwentao785293209.github.io/images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/36.%E6%80%BB%E7%BB%93/1.png">
 
 
 <link rel="icon" href="/img/avatar.jpg">
@@ -153,7 +153,7 @@
     <li>
         <div class="all active" data-rel="全部文章">全部文章
             
-                <small>(186)</small>
+                <small>(196)</small>
             
         </div>
     </li>
@@ -304,7 +304,7 @@
         <div data-rel="Unity">
             <i class="fold iconfont icon-right"></i>
             Unity
-            <small>(26)</small>
+            <small>(36)</small>
         </div>
         
             <ul class="sub hide">
@@ -314,7 +314,7 @@
         <div data-rel="Unity&lt;---&gt;Unity入门基础知识">
             
             Unity入门基础知识
-            <small>(26)</small>
+            <small>(36)</small>
         </div>
         
     </li>
@@ -346,8 +346,8 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="186">
-<input type="hidden" id="yelog_site_word_count" value="368.2k">
+<input type="hidden" id="yelog_site_posts_number" value="196">
+<input type="hidden" id="yelog_site_word_count" value="379.9k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -429,6 +429,10 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>核心系统</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>基础知识</a>
             </li>
         
@@ -477,7 +481,15 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>物理系统</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>循环语句</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>音效系统</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -549,8 +561,98 @@
         
         
         <a  class="全部文章 Unity Unity入门基础知识 "
+           href="/2024/02/25/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/36.%E6%80%BB%E7%BB%93/"
+           data-tag="Unity,Unity入门,基础知识"
+           data-author="" >
+            <span class="post-title" title="36.总结">36.总结</span>
+            <span class="post-date" title="2024-02-25 14:23:58">2024/02/25</span>
+        </a>
+        
+        
+        <a  class="全部文章 Unity Unity入门基础知识 "
+           href="/2024/02/25/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/35.%E6%A0%B8%E5%BF%83%E7%B3%BB%E7%BB%9F-%E9%9F%B3%E6%95%88%E7%B3%BB%E7%BB%9F-%E9%BA%A6%E5%85%8B%E9%A3%8E/"
+           data-tag="Unity,Unity入门,基础知识,核心系统,音效系统"
+           data-author="" >
+            <span class="post-title" title="35.麦克风">35.麦克风</span>
+            <span class="post-date" title="2024-02-25 14:17:13">2024/02/25</span>
+        </a>
+        
+        
+        <a  class="全部文章 Unity Unity入门基础知识 "
+           href="/2024/02/25/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/34.%E6%A0%B8%E5%BF%83%E7%B3%BB%E7%BB%9F-%E9%9F%B3%E6%95%88%E7%B3%BB%E7%BB%9F-%E9%9F%B3%E9%A2%91%E6%BA%90%E4%BB%A3%E7%A0%81%E6%8E%A7%E5%88%B6/"
+           data-tag="Unity,Unity入门,基础知识,核心系统,音效系统"
+           data-author="" >
+            <span class="post-title" title="34.音频源代码控制">34.音频源代码控制</span>
+            <span class="post-date" title="2024-02-25 14:03:34">2024/02/25</span>
+        </a>
+        
+        
+        <a  class="全部文章 Unity Unity入门基础知识 "
+           href="/2024/02/25/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/33.%E6%A0%B8%E5%BF%83%E7%B3%BB%E7%BB%9F-%E9%9F%B3%E6%95%88%E7%B3%BB%E7%BB%9F-%E9%9F%B3%E9%A2%91%E6%BA%90%E5%92%8C%E9%9F%B3%E9%A2%91%E7%9B%91%E5%90%AC%E8%84%9A%E6%9C%AC/"
+           data-tag="Unity,Unity入门,基础知识,核心系统,音效系统"
+           data-author="" >
+            <span class="post-title" title="33.音频源和音频监听脚本">33.音频源和音频监听脚本</span>
+            <span class="post-date" title="2024-02-25 13:54:41">2024/02/25</span>
+        </a>
+        
+        
+        <a  class="全部文章 Unity Unity入门基础知识 "
+           href="/2024/02/25/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/32.%E6%A0%B8%E5%BF%83%E7%B3%BB%E7%BB%9F-%E9%9F%B3%E6%95%88%E7%B3%BB%E7%BB%9F-%E9%9F%B3%E9%A2%91%E6%96%87%E4%BB%B6%E5%AF%BC%E5%85%A5/"
+           data-tag="Unity,Unity入门,基础知识,核心系统,音效系统"
+           data-author="" >
+            <span class="post-title" title="32.音频文件导入">32.音频文件导入</span>
+            <span class="post-date" title="2024-02-25 13:46:39">2024/02/25</span>
+        </a>
+        
+        
+        <a  class="全部文章 Unity Unity入门基础知识 "
+           href="/2024/02/25/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/31.%E6%A0%B8%E5%BF%83%E7%B3%BB%E7%BB%9F-%E7%89%A9%E7%90%86%E7%B3%BB%E7%BB%9F-%E5%88%9A%E4%BD%93%E5%8A%A0%E5%8A%9B/"
+           data-tag="Unity,Unity入门,基础知识,核心系统,物理系统"
+           data-author="" >
+            <span class="post-title" title="31.刚体加力">31.刚体加力</span>
+            <span class="post-date" title="2024-02-25 13:43:10">2024/02/25</span>
+        </a>
+        
+        
+        <a  class="全部文章 Unity Unity入门基础知识 "
+           href="/2024/02/25/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/30.%E6%A0%B8%E5%BF%83%E7%B3%BB%E7%BB%9F-%E7%89%A9%E7%90%86%E7%B3%BB%E7%BB%9F-%E7%A2%B0%E6%92%9E%E6%A3%80%E6%B5%8B%E5%87%BD%E6%95%B0/"
+           data-tag="Unity,Unity入门,基础知识,核心系统,物理系统"
+           data-author="" >
+            <span class="post-title" title="30.碰撞检测函数">30.碰撞检测函数</span>
+            <span class="post-date" title="2024-02-25 13:14:03">2024/02/25</span>
+        </a>
+        
+        
+        <a  class="全部文章 Unity Unity入门基础知识 "
+           href="/2024/02/25/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/29.%E6%A0%B8%E5%BF%83%E7%B3%BB%E7%BB%9F-%E7%89%A9%E7%90%86%E7%B3%BB%E7%BB%9F-%E7%89%A9%E7%90%86%E6%9D%90%E8%B4%A8/"
+           data-tag="Unity,Unity入门,基础知识,核心系统,物理系统"
+           data-author="" >
+            <span class="post-title" title="29.物理材质">29.物理材质</span>
+            <span class="post-date" title="2024-02-25 13:09:09">2024/02/25</span>
+        </a>
+        
+        
+        <a  class="全部文章 Unity Unity入门基础知识 "
+           href="/2024/02/25/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/28.%E6%A0%B8%E5%BF%83%E7%B3%BB%E7%BB%9F-%E7%89%A9%E7%90%86%E7%B3%BB%E7%BB%9F-%E7%A2%B0%E6%92%9E%E4%BD%93/"
+           data-tag="Unity,Unity入门,基础知识,核心系统,物理系统"
+           data-author="" >
+            <span class="post-title" title="28.碰撞体">28.碰撞体</span>
+            <span class="post-date" title="2024-02-25 13:02:21">2024/02/25</span>
+        </a>
+        
+        
+        <a  class="全部文章 Unity Unity入门基础知识 "
+           href="/2024/02/25/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/27.%E6%A0%B8%E5%BF%83%E7%B3%BB%E7%BB%9F-%E7%89%A9%E7%90%86%E7%B3%BB%E7%BB%9F-%E5%88%9A%E4%BD%93/"
+           data-tag="Unity,Unity入门,基础知识,核心系统,物理系统"
+           data-author="" >
+            <span class="post-title" title="27.刚体">27.刚体</span>
+            <span class="post-date" title="2024-02-25 12:56:03">2024/02/25</span>
+        </a>
+        
+        
+        <a  class="全部文章 Unity Unity入门基础知识 "
            href="/2024/02/25/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/26.%E6%A0%B8%E5%BF%83%E7%B3%BB%E7%BB%9F-%E5%85%89%E6%BA%90%E7%B3%BB%E7%BB%9F-%E5%85%89%E9%9D%A2%E6%9D%BF/"
-           data-tag="Unity,Unity入门,基础知识,光源系统"
+           data-tag="Unity,Unity入门,基础知识,核心系统,光源系统"
            data-author="" >
             <span class="post-title" title="26.光面板">26.光面板</span>
             <span class="post-date" title="2024-02-25 00:19:19">2024/02/25</span>
@@ -559,7 +661,7 @@
         
         <a  class="全部文章 Unity Unity入门基础知识 "
            href="/2024/02/25/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/25.%E6%A0%B8%E5%BF%83%E7%B3%BB%E7%BB%9F-%E5%85%89%E6%BA%90%E7%B3%BB%E7%BB%9F-%E5%85%89%E6%BA%90%E7%BB%84%E4%BB%B6/"
-           data-tag="Unity,Unity入门,基础知识,光源系统"
+           data-tag="Unity,Unity入门,基础知识,核心系统,光源系统"
            data-author="" >
             <span class="post-title" title="25.光源组件">25.光源组件</span>
             <span class="post-date" title="2024-02-25 00:01:43">2024/02/25</span>
@@ -567,10 +669,10 @@
         
         
         <a  class="全部文章 Unity Unity入门基础知识 "
-           href="/2024/02/24/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/24.Unity%E9%87%8D%E8%A6%81%E7%BB%84%E4%BB%B6%E5%92%8CAPI-Camera%E6%88%90%E5%91%98/"
+           href="/2024/02/24/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/24.Unity%E9%87%8D%E8%A6%81%E7%BB%84%E4%BB%B6%E5%92%8CAPI-Camera%E4%BB%A3%E7%A0%81%E6%8E%A7%E5%88%B6/"
            data-tag="Unity,Unity入门,基础知识,Unity重要组件和API"
            data-author="" >
-            <span class="post-title" title="24.Camera成员">24.Camera成员</span>
+            <span class="post-title" title="24.Camera代码控制">24.Camera代码控制</span>
             <span class="post-date" title="2024-02-24 18:57:28">2024/02/24</span>
         </a>
         
@@ -2239,9 +2341,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-Unity/01.Unity入门基础知识/24.Unity重要组件和API-Camera成员" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-Unity/01.Unity入门基础知识/27.核心系统-物理系统-刚体" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">24.Camera成员</h1>
+        <h1 class="article-title">27.刚体</h1>
     
     <div class="article-meta">
         
@@ -2267,19 +2369,21 @@
             
             <a class="color5">基础知识</a>
             
-            <a class="color4">Unity重要组件和API</a>
+            <a class="color5">核心系统</a>
+            
+            <a class="color5">物理系统</a>
             
         </span>
         
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2024-02-24 19:01:22'>2024-02-24 18:57</time>
+            发布时间 : <time class="date" title='最后更新: 2024-02-25 13:00:31'>2024-02-25 12:56</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:1.9k</span>
+        <span>字数:869</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -2309,7 +2413,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#24-Unity%E9%87%8D%E8%A6%81%E7%BB%84%E4%BB%B6%E5%92%8CAPI-Camera%E6%88%90%E5%91%98"><span class="toc-text">24.Unity重要组件和API-Camera成员</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#24-1-%E7%9F%A5%E8%AF%86%E7%82%B9"><span class="toc-text">24.1 知识点</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E6%91%84%E5%83%8F%E6%9C%BA"><span class="toc-text">获取摄像机</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%87%8D%E8%A6%81%E9%9D%99%E6%80%81%E6%88%90%E5%91%98"><span class="toc-text">重要静态成员</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#main%E9%9D%99%E6%80%81%E5%8F%98%E9%87%8F-%E8%8E%B7%E5%8F%96%E4%B8%BB%E6%91%84%E5%83%8F%E6%9C%BA"><span class="toc-text">main静态变量 - 获取主摄像机</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#allCamerasCount%E9%9D%99%E6%80%81%E5%8F%98%E9%87%8F-%E8%8E%B7%E5%8F%96%E6%91%84%E5%83%8F%E6%9C%BA%E7%9A%84%E6%95%B0%E9%87%8F"><span class="toc-text">allCamerasCount静态变量 - 获取摄像机的数量</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#allCameras%E9%9D%99%E6%80%81%E5%8F%98%E9%87%8F-%E5%BE%97%E5%88%B0%E6%89%80%E6%9C%89%E5%90%AF%E7%94%A8%E7%9A%84%E6%91%84%E5%83%8F%E6%9C%BA"><span class="toc-text">allCameras静态变量 - 得到所有启用的摄像机</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%B8%B2%E6%9F%93%E7%9B%B8%E5%85%B3%E7%9A%84%E5%A7%94%E6%89%98"><span class="toc-text">渲染相关的委托</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#onPreCull%E9%9D%99%E6%80%81%E5%8F%98%E9%87%8F-%E6%91%84%E5%83%8F%E6%9C%BA%E5%89%94%E9%99%A4%E5%89%8D%E5%A4%84%E7%90%86%E7%9A%84%E5%A7%94%E6%89%98%E5%87%BD%E6%95%B0"><span class="toc-text">onPreCull静态变量 - 摄像机剔除前处理的委托函数</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#onPreRender%E9%9D%99%E6%80%81%E5%8F%98%E9%87%8F-%E6%91%84%E5%83%8F%E6%9C%BA%E6%B8%B2%E6%9F%93%E5%89%8D%E5%A4%84%E7%90%86%E7%9A%84%E5%A7%94%E6%89%98"><span class="toc-text">onPreRender静态变量 - 摄像机渲染前处理的委托</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#onPostRender%E9%9D%99%E6%80%81%E5%8F%98%E9%87%8F-%E6%91%84%E5%83%8F%E6%9C%BA%E6%B8%B2%E6%9F%93%E5%90%8E%E5%A4%84%E7%90%86%E7%9A%84%E5%A7%94%E6%89%98"><span class="toc-text">onPostRender静态变量 - 摄像机渲染后处理的委托</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%87%8D%E8%A6%81%E6%88%90%E5%91%98"><span class="toc-text">重要成员</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%95%8C%E9%9D%A2%E4%B8%8A%E7%9A%84%E5%8F%82%E6%95%B0%E9%83%BD%E5%8F%AF%E4%BB%A5%E5%9C%A8Camera%E7%B1%BB%E4%B8%AD%E8%8E%B7%E5%8F%96%E5%88%B0%E3%80%82%E6%AF%94%E5%A6%82%E4%B8%8B%E9%9D%A2%E8%BF%99%E5%8F%A5%E4%BB%A3%E7%A0%81%E5%B0%B1%E6%98%AF%E5%BE%97%E5%88%B0%E4%B8%BB%E6%91%84%E5%83%8F%E6%9C%BA%E5%AF%B9%E8%B1%A1%E4%B8%8A%E7%9A%84%E6%B7%B1%E5%BA%A6%E8%BF%9B%E8%A1%8C%E8%AE%BE%E7%BD%AE%E3%80%82%E5%B0%B1%E4%B8%8D%E4%B8%80%E4%B8%80%E5%88%97%E4%B8%BE%E4%BA%86%EF%BC%8C%E7%94%A8%E5%88%B0%E4%BA%86%E5%8F%AF%E4%BB%A5%E6%9F%A5%E5%AE%98%E6%96%B9API%E3%80%82"><span class="toc-text">界面上的参数都可以在Camera类中获取到。比如下面这句代码就是得到主摄像机对象上的深度进行设置。就不一一列举了，用到了可以查官方API。</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#depth%E5%8F%98%E9%87%8F-%E8%AE%BE%E7%BD%AE%E6%91%84%E5%83%8F%E6%9C%BA%E7%9A%84%E6%B7%B1%E5%BA%A6"><span class="toc-text">depth变量 - 设置摄像机的深度</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#WorldToScreenPoint%E6%96%B9%E6%B3%95-%E4%B8%96%E7%95%8C%E5%9D%90%E6%A0%87%E8%BD%AC%E5%B1%8F%E5%B9%95%E5%9D%90%E6%A0%87"><span class="toc-text">WorldToScreenPoint方法 - 世界坐标转屏幕坐标</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ScreenToWorldPoint%E6%96%B9%E6%B3%95-%E5%B1%8F%E5%B9%95%E5%9D%90%E6%A0%87%E8%BD%AC%E4%B8%96%E7%95%8C%E5%9D%90%E6%A0%87"><span class="toc-text">ScreenToWorldPoint方法 - 屏幕坐标转世界坐标</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#24-2-%E7%9F%A5%E8%AF%86%E7%82%B9%E4%BB%A3%E7%A0%81"><span class="toc-text">24.2 知识点代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#24-3-%E7%BB%83%E4%B9%A0%E9%A2%98"><span class="toc-text">24.3 练习题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B8%B8%E6%88%8F%E7%94%BB%E9%9D%A2%E4%B8%AD%E5%A4%AE%E6%9C%89%E4%B8%80%E4%B8%AA%E7%AB%8B%E6%96%B9%E4%BD%93%EF%BC%8C%E8%AF%B7%E5%B0%86%E8%AF%A5%E7%AB%8B%E6%96%B9%E4%BD%93%E7%9A%84%E4%B8%96%E7%95%8C%E5%9D%90%E6%A0%87%E7%B3%BB%E4%BD%8D%E7%BD%AE%EF%BC%8C%E8%BD%AC%E6%8D%A2%E4%B8%BA%E5%B1%8F%E5%B9%95%E5%9D%90%E6%A0%87%EF%BC%8C%E5%B9%B6%E6%89%93%E5%8D%B0%E5%87%BA%E6%9D%A5"><span class="toc-text">游戏画面中央有一个立方体，请将该立方体的世界坐标系位置，转换为屏幕坐标，并打印出来</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%A8%E5%B1%8F%E5%B9%95%E4%B8%8A%E7%82%B9%E5%87%BB%E4%B8%80%E4%B8%8B%E9%BC%A0%E6%A0%87%EF%BC%8C%E5%88%99%E5%9C%A8%E5%AF%B9%E5%BA%94%E7%9A%84%E4%B8%96%E7%95%8C%E5%9D%90%E6%A0%87%E4%BD%8D%E7%BD%AE%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AACube%E5%87%BA%E6%9D%A5"><span class="toc-text">在屏幕上点击一下鼠标，则在对应的世界坐标位置创建一个Cube出来</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#24-4-%E7%BB%83%E4%B9%A0%E9%A2%98%E4%BB%A3%E7%A0%81"><span class="toc-text">24.4 练习题代码</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#27-%E6%A0%B8%E5%BF%83%E7%B3%BB%E7%BB%9F-%E7%89%A9%E7%90%86%E7%B3%BB%E7%BB%9F-%E5%88%9A%E4%BD%93"><span class="toc-text">27.核心系统-物理系统-刚体</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#27-1-%E7%9F%A5%E8%AF%86%E7%82%B9"><span class="toc-text">27.1 知识点</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A2%B0%E6%92%9E%E4%BA%A7%E7%94%9F%E7%9A%84%E5%BF%85%E8%A6%81%E6%9D%A1%E4%BB%B6"><span class="toc-text">碰撞产生的必要条件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#RigidBody%E7%BB%84%E4%BB%B6%E4%BF%A1%E6%81%AF"><span class="toc-text">RigidBody组件信息</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Mass-%E8%B4%A8%E9%87%8F"><span class="toc-text">Mass 质量</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Drag-%E7%A9%BA%E6%B0%94%E9%98%BB%E5%8A%9B"><span class="toc-text">Drag 空气阻力</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Angular-Drag-%E8%A7%92%E9%98%BB%E5%8A%9B%EF%BC%88%E6%89%AD%E7%9F%A9%E9%98%BB%E5%8A%9B%EF%BC%89"><span class="toc-text">Angular Drag 角阻力（扭矩阻力）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Use-Gravity-%E9%87%8D%E5%8A%9B%E5%BC%80%E5%85%B3"><span class="toc-text">Use Gravity 重力开关</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Is-Kinematic"><span class="toc-text">Is Kinematic</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Interpolate-%E6%8F%92%E5%80%BC%E8%BF%90%E7%AE%97"><span class="toc-text">Interpolate 插值运算</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Collision-Detection-%E7%A2%B0%E6%92%9E%E6%A3%80%E6%B5%8B%E6%A8%A1%E5%BC%8F"><span class="toc-text">Collision Detection 碰撞检测模式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Constraints-%E5%88%9A%E4%BD%93%E7%BA%A6%E6%9D%9F"><span class="toc-text">Constraints 刚体约束</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Info-%E5%BD%93%E5%89%8D%E5%88%9A%E4%BD%93%E7%9A%84%E4%BF%A1%E6%81%AF"><span class="toc-text">Info 当前刚体的信息</span></a></li></ol></li></ol></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -2325,221 +2429,91 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="24-Unity重要组件和API-Camera成员"><a href="#24-Unity重要组件和API-Camera成员" class="headerlink" title="24.Unity重要组件和API-Camera成员"></a>24.Unity重要组件和API-Camera成员</h1><hr>
-<h2 id="24-1-知识点"><a href="#24-1-知识点" class="headerlink" title="24.1 知识点"></a>24.1 知识点</h2><h3 id="获取摄像机"><a href="#获取摄像机" class="headerlink" title="获取摄像机"></a>获取摄像机</h3><p>可以用之前的知识来获取摄像机。</p>
-<h3 id="重要静态成员"><a href="#重要静态成员" class="headerlink" title="重要静态成员"></a>重要静态成员</h3><h5 id="main静态变量-获取主摄像机"><a href="#main静态变量-获取主摄像机" class="headerlink" title="main静态变量 - 获取主摄像机"></a>main静态变量 - 获取主摄像机</h5><pre><code class="csharp">// 第一个启用的摄像机标记为“MainCamera”。（只读）
-// 如果想通过这种方式快速获取摄像机，那么场景上必须有一个 tag为MainCamera的摄像机，否则为空报错。
-// 如果场景上有多个 tag为MainCamera的摄像机，那么这样获取到的摄像机对象无法确定是哪一个。
-print(Camera.main);
-print(Camera.main.name);
-</code></pre>
-<h5 id="allCamerasCount静态变量-获取摄像机的数量"><a href="#allCamerasCount静态变量-获取摄像机的数量" class="headerlink" title="allCamerasCount静态变量 - 获取摄像机的数量"></a>allCamerasCount静态变量 - 获取摄像机的数量</h5><pre><code class="csharp">// 当前场景中的摄像机数。
-print(Camera.allCamerasCount);
-</code></pre>
-<h5 id="allCameras静态变量-得到所有启用的摄像机"><a href="#allCameras静态变量-得到所有启用的摄像机" class="headerlink" title="allCameras静态变量 - 得到所有启用的摄像机"></a>allCameras静态变量 - 得到所有启用的摄像机</h5><pre><code class="csharp">// 返回场景中所有已启用的摄像机。
-Camera[] allCameras = Camera.allCameras;
-print(allCameras.Length);
-</code></pre>
-<h5 id="渲染相关的委托"><a href="#渲染相关的委托" class="headerlink" title="渲染相关的委托"></a>渲染相关的委托</h5><h6 id="onPreCull静态变量-摄像机剔除前处理的委托函数"><a href="#onPreCull静态变量-摄像机剔除前处理的委托函数" class="headerlink" title="onPreCull静态变量 - 摄像机剔除前处理的委托函数"></a>onPreCull静态变量 - 摄像机剔除前处理的委托函数</h6><pre><code class="csharp">// onPreCull静态变量 - 摄像机剔除前处理的委托函数
-// 任意摄像机开始剔除前触发的事件。
-// 摄像机有个遮罩剔除的选项可以不渲染被挡住的对象，提高性能。这个事件就是在剔除前做的委托。
-Camera.onPreCull += (c) =&gt;
-&#123;
-    // 在这里编写处理逻辑
-&#125;;
-</code></pre>
-<h6 id="onPreRender静态变量-摄像机渲染前处理的委托"><a href="#onPreRender静态变量-摄像机渲染前处理的委托" class="headerlink" title="onPreRender静态变量 - 摄像机渲染前处理的委托"></a>onPreRender静态变量 - 摄像机渲染前处理的委托</h6><pre><code class="csharp">// onPreRender静态变量 - 摄像机渲染前处理的委托
-// 任意摄像机开始渲染前触发的事件。
-Camera.onPreRender += (c) =&gt;
-&#123;
-    // 在这里编写处理逻辑
-&#125;;
-</code></pre>
-<h6 id="onPostRender静态变量-摄像机渲染后处理的委托"><a href="#onPostRender静态变量-摄像机渲染后处理的委托" class="headerlink" title="onPostRender静态变量 - 摄像机渲染后处理的委托"></a>onPostRender静态变量 - 摄像机渲染后处理的委托</h6><pre><code class="csharp">// onPostRender静态变量 - 摄像机渲染后处理的委托
-// 任意摄像机完成渲染后触发的事件。
-Camera.onPostRender += (c) =&gt;
-&#123;
-    // 在这里编写处理逻辑
-&#125;;
-</code></pre>
-<h3 id="重要成员"><a href="#重要成员" class="headerlink" title="重要成员"></a>重要成员</h3><h4 id="界面上的参数都可以在Camera类中获取到。比如下面这句代码就是得到主摄像机对象上的深度进行设置。就不一一列举了，用到了可以查官方API。"><a href="#界面上的参数都可以在Camera类中获取到。比如下面这句代码就是得到主摄像机对象上的深度进行设置。就不一一列举了，用到了可以查官方API。" class="headerlink" title="界面上的参数都可以在Camera类中获取到。比如下面这句代码就是得到主摄像机对象上的深度进行设置。就不一一列举了，用到了可以查官方API。"></a>界面上的参数都可以在Camera类中获取到。比如下面这句代码就是得到主摄像机对象上的深度进行设置。就不一一列举了，用到了可以查官方API。</h4><h4 id="depth变量-设置摄像机的深度"><a href="#depth变量-设置摄像机的深度" class="headerlink" title="depth变量 - 设置摄像机的深度"></a>depth变量 - 设置摄像机的深度</h4><pre><code class="csharp">// 摄像机在摄像机渲染顺序中的深度。
-Camera.main.depth = 10;
-</code></pre>
-<h4 id="WorldToScreenPoint方法-世界坐标转屏幕坐标"><a href="#WorldToScreenPoint方法-世界坐标转屏幕坐标" class="headerlink" title="WorldToScreenPoint方法 - 世界坐标转屏幕坐标"></a>WorldToScreenPoint方法 - 世界坐标转屏幕坐标</h4><pre><code class="csharp">// 将position从世界空间变换为屏幕空间。
-// 转换过后x和y对应的就是屏幕坐标，z对应的是这个3D物体里我们的摄像机有多远。
-// 我们会用这个来做的功能最多的就是头顶血条相关的功能。
-Vector3 v = Camera.main.WorldToScreenPoint(this.transform.position);
-print(v);
-</code></pre>
-<h4 id="ScreenToWorldPoint方法-屏幕坐标转世界坐标"><a href="#ScreenToWorldPoint方法-屏幕坐标转世界坐标" class="headerlink" title="ScreenToWorldPoint方法 - 屏幕坐标转世界坐标"></a>ScreenToWorldPoint方法 - 屏幕坐标转世界坐标</h4><pre><code class="csharp">// 将点从屏幕空间变换为世界空间。其中，世界空间定义为位于游戏层级视图最顶层的坐标系统。
-// 只所以改变Z轴是因为如果不改Z默认为0。
-// 转换过去的世界坐标系的点永远都是一个点，可以理解为视口相交的焦点。
-// 如果改变了Z，那么转换过去的世界坐标的点就是相对于摄像机前方多少的单位的横截面上的世界坐标点。
-// 在Update内：
-Vector3 v = Input.mousePosition;
-v.z = 5;
-sphere.position = Camera.main.ScreenToWorldPoint(v);
-// 这样这个球体一直会在离摄像机5米的横截面上跟着鼠标移动。
-print(Camera.main.ScreenToWorldPoint(v));
-</code></pre>
-<hr>
-<h2 id="24-2-知识点代码"><a href="#24-2-知识点代码" class="headerlink" title="24.2 知识点代码"></a>24.2 知识点代码</h2><pre><code class="csharp">using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class Lesson24_Camera代码相关 : MonoBehaviour
-&#123;
-    public Transform sphere;
-    // Start is called before the first frame update
-    void Start()
-    &#123;
-        #region 知识点一 重要静态成员
-
-        //获取摄像机
-        //可以用之前的知识 来获取摄像机
-
-        //main静态变量 获取主摄像机
-        //第一个启用的摄像机标记为“MainCamera”。（只读）
-        //如果想通过这种方式 快速获取摄像机
-        //那么场景上必须有一个 tag为MainCamera的摄像机 否则为空报错
-        //如果场景上有多个 tag为MainCamera的摄像机 那么这样获取到的摄像机对象无法确定是哪一个
-        print(Camera.main);
-        print(Camera.main.name);
-
-        //allCamerasCount静态变量 获取摄像机的数量
-        //当前场景中的摄像机数。
-        print(Camera.allCamerasCount);
-
-        //allCameras静态变量 得到所有启用的摄像机
-        //返回场景中所有已启用的摄像机。
-        Camera[] allCameras = Camera.allCameras;
-        print(allCameras.Length);
-
-        //渲染相关的委托
-
-        //onPreCull静态变量 摄像机剔除前处理的委托函数
-        //任意摄像机开始剔除前触发的事件。
-        //摄像机有个遮罩剔除的选项 可以不渲染被挡住的对象提高性能 这个事件就是在剔除前做的委托
-        Camera.onPreCull += (c) =&gt;
-        &#123;
-
-        &#125;;
-
-        //onPreRender静态变量 摄像机渲染前处理的委托
-        //任意摄像机开始渲染前触发的事件。
-        Camera.onPreRender += (c) =&gt;
-        &#123;
-
-        &#125;;
-
-        //onPostRender静态变量 摄像机渲染后处理的委托
-        //任意摄像机完成渲染后触发的事件。
-        Camera.onPostRender += (c) =&gt;
-        &#123;
-
-        &#125;;
-
-        #endregion
-
-        #region 知识点二 重要成员
-
-        //界面上的参数 都可以在Camera类中获取到
-        //比如 下面这句代码 就是得到主摄像机对象 上的深度 进行设置
-        //就不一一列举了 用到了可以查官方API
-
-        //depth变量 设置摄像机的深度
-        //摄像机在摄像机渲染顺序中的深度。
-        Camera.main.depth = 10;
-
-        //WorldToScreenPoint方法 世界坐标转屏幕坐标
-        //将 position 从世界空间变换为屏幕空间。
-        //转换过后 x和y对应的就是屏幕坐标 z对应的 是 这个3D物体 里我们的摄像机有多远
-        //我们会用这个来做的功能 最多的 就是头顶血条相关的功能
-        Vector3 v = Camera.main.WorldToScreenPoint(this.transform.position);
-        print(v);
-
-        #endregion
-    &#125;
-
-    // Update is called once per frame
-    void Update()
-    &#123;
-        #region 知识点二 重要成员
-
-        //ScreenToWorldPoint方法 屏幕坐标转世界坐标
-        //将点从屏幕空间变换为世界空间。其中，世界空间定义为位于游戏层级视图最顶层的坐标系统。
-        //只所以改变Z轴 是因为 如果不改 Z默认为0
-        //转换过去的世界坐标系的点 永远都是一个点 可以理解为 视口 相交的焦点
-        //如果改变了Z 那么转换过去的 世界坐标的点 就是相对于 摄像机前方多少的单位的横截面上的世界坐标点
-        //Update内
-        Vector3 v = Input.mousePosition;
-        v.z = 5;
-        sphere.position = Camera.main.ScreenToWorldPoint(v);
-        //这样这个球体一直会在离摄像机5米的横截面上跟着鼠标移动
-        print(Camera.main.ScreenToWorldPoint(v));
-
-        #endregion
-    &#125;
-&#125;
-</code></pre>
-<hr>
-<h2 id="24-3-练习题"><a href="#24-3-练习题" class="headerlink" title="24.3 练习题"></a>24.3 练习题</h2><h3 id="游戏画面中央有一个立方体，请将该立方体的世界坐标系位置，转换为屏幕坐标，并打印出来"><a href="#游戏画面中央有一个立方体，请将该立方体的世界坐标系位置，转换为屏幕坐标，并打印出来" class="headerlink" title="游戏画面中央有一个立方体，请将该立方体的世界坐标系位置，转换为屏幕坐标，并打印出来"></a>游戏画面中央有一个立方体，请将该立方体的世界坐标系位置，转换为屏幕坐标，并打印出来</h3><pre><code class="csharp">// 这个脚本挂载到目标立方体上
-print(Camera.main.WorldToScreenPoint(this.transform.position));
-</code></pre>
-<h3 id="在屏幕上点击一下鼠标，则在对应的世界坐标位置创建一个Cube出来"><a href="#在屏幕上点击一下鼠标，则在对应的世界坐标位置创建一个Cube出来" class="headerlink" title="在屏幕上点击一下鼠标，则在对应的世界坐标位置创建一个Cube出来"></a>在屏幕上点击一下鼠标，则在对应的世界坐标位置创建一个Cube出来</h3><pre><code class="csharp">// Update内
-if (Input.GetMouseButtonDown(0))
-&#123;
-    GameObject obj = GameObject.CreatePrimitive(PrimitiveType.Cube);
-    Vector3 v = Input.mousePosition;
-    // 一定要设置Z值
-    v.z = 20;
-    obj.transform.position = Camera.main.ScreenToWorldPoint(v);
-&#125;
-</code></pre>
-<hr>
-<h2 id="24-4-练习题代码"><a href="#24-4-练习题代码" class="headerlink" title="24.4 练习题代码"></a>24.4 练习题代码</h2><pre><code class="csharp">using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class Lesson24_练习题 : MonoBehaviour
-&#123;
-    // Start is called before the first frame update
-    void Start()
-    &#123;
-        #region 练习题一
-
-        //1.游戏画面中央有一个立方体，请将该立方体的世界坐标系位置，转换为屏幕坐标，并打印出来
-
-        //这个脚本挂载到目标立方体上
-        print(Camera.main.WorldToScreenPoint(this.transform.position));
-
-        #endregion
-
-
-    &#125;
-
-    // Update is called once per frame
-    void Update()
-    &#123;
-        #region 练习题二
-
-        //2.在屏幕上点击一下鼠标，则在对应的世界坐标位置 创建一个Cube出来
-
-        //Update内
-        if (Input.GetMouseButtonDown(0))
-        &#123;
-            GameObject obj = GameObject.CreatePrimitive(PrimitiveType.Cube);
-            Vector3 v = Input.mousePosition;
-            //一定要设置Z值
-            v.z = 20;
-            obj.transform.position = Camera.main.ScreenToWorldPoint(v);
-        &#125;
-
-        #endregion
-    &#125;
-&#125;
-</code></pre>
-<hr>
+        <h1 id="27-核心系统-物理系统-刚体"><a href="#27-核心系统-物理系统-刚体" class="headerlink" title="27.核心系统-物理系统-刚体"></a>27.核心系统-物理系统-刚体</h1><hr>
+<h2 id="27-1-知识点"><a href="#27-1-知识点" class="headerlink" title="27.1 知识点"></a>27.1 知识点</h2><h3 id="碰撞产生的必要条件"><a href="#碰撞产生的必要条件" class="headerlink" title="碰撞产生的必要条件"></a>碰撞产生的必要条件</h3><ul>
+<li>两个物体都有碰撞器组件，至少一个物体有刚体组件。</li>
+<li>碰撞器可以理解为代表这个物体的体积的组件。刚体可以理解为让物体可以产生力的相互作用的组件</li>
+</ul>
+<h3 id="RigidBody组件信息"><a href="#RigidBody组件信息" class="headerlink" title="RigidBody组件信息"></a>RigidBody组件信息</h3><p><img src="/../../../images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/27.%E6%A0%B8%E5%BF%83%E7%B3%BB%E7%BB%9F-%E7%89%A9%E7%90%86%E7%B3%BB%E7%BB%9F-%E5%88%9A%E4%BD%93/1.png"><br><img src="/../../../images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/27.%E6%A0%B8%E5%BF%83%E7%B3%BB%E7%BB%9F-%E7%89%A9%E7%90%86%E7%B3%BB%E7%BB%9F-%E5%88%9A%E4%BD%93/2.png"></p>
+<h4 id="Mass-质量"><a href="#Mass-质量" class="headerlink" title="Mass 质量"></a>Mass 质量</h4><ul>
+<li>默认为千克</li>
+<li>质量越大惯性越大</li>
+</ul>
+<h4 id="Drag-空气阻力"><a href="#Drag-空气阻力" class="headerlink" title="Drag 空气阻力"></a>Drag 空气阻力</h4><ul>
+<li>根据力移动对象时影响对象的空气阻力大小，0 表示没有空气阻力</li>
+</ul>
+<h4 id="Angular-Drag-角阻力（扭矩阻力）"><a href="#Angular-Drag-角阻力（扭矩阻力）" class="headerlink" title="Angular Drag 角阻力（扭矩阻力）"></a>Angular Drag 角阻力（扭矩阻力）</h4><ul>
+<li>通俗理解就是阻碍对象旋转的阻力，角阻力越大越不容易旋转</li>
+<li>根据扭矩旋转对象时影响对象的空气阻力大小。0 表示没有空气阻力。</li>
+</ul>
+<h4 id="Use-Gravity-重力开关"><a href="#Use-Gravity-重力开关" class="headerlink" title="Use Gravity 重力开关"></a>Use Gravity 重力开关</h4><ul>
+<li>是否受重力影响</li>
+</ul>
+<h4 id="Is-Kinematic"><a href="#Is-Kinematic" class="headerlink" title="Is Kinematic"></a>Is Kinematic</h4><ul>
+<li>控制物理是否影响刚体。</li>
+<li>可以理解为开启后不受力的影响，只能通过Transform移动</li>
+<li>如果启用此选项，则对象将不会被物理引擎驱动，只能通过 (Transform) 对其进行操作。对于移动平台，或者如果要动画化附加了 HingeJoint 的刚体，此属性将非常有用。</li>
+</ul>
+<h4 id="Interpolate-插值运算"><a href="#Interpolate-插值运算" class="headerlink" title="Interpolate 插值运算"></a>Interpolate 插值运算</h4><ul>
+<li>让刚体物体移动更平滑</li>
+<li>可以更改FixTime，改成一秒，这样对象会很突兀的一秒移动一次，这时开启插值运算就可以让刚体对象平滑移动</li>
+</ul>
+<ol>
+<li>None 无插值运算模式<ul>
+<li>不应用插值运算</li>
+</ul>
+</li>
+<li>Interpolate 插值模式<ul>
+<li>插值将始终滞后一点，但比外推更流畅。</li>
+<li>根据前一帧的变换来平滑变换。</li>
+</ul>
+</li>
+<li>Extrapolate 外推模式<ul>
+<li>外推将根据当前速度预测刚体的位置。</li>
+<li>根据下一帧的估计变换来平滑变换。</li>
+</ul>
+</li>
+</ol>
+<h4 id="Collision-Detection-碰撞检测模式"><a href="#Collision-Detection-碰撞检测模式" class="headerlink" title="Collision Detection 碰撞检测模式"></a>Collision Detection 碰撞检测模式</h4><ul>
+<li>用于防止快速移动的对象穿过其它对象而不检测碰撞</li>
+</ul>
+<p><img src="/../../../images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/27.%E6%A0%B8%E5%BF%83%E7%B3%BB%E7%BB%9F-%E7%89%A9%E7%90%86%E7%B3%BB%E7%BB%9F-%E5%88%9A%E4%BD%93/3.png"></p>
+<ol>
+<li>Discrete 离散检测<ul>
+<li>对场景中的所有其他碰撞体使用离散碰撞检测。其他碰撞体在测试碰撞时会使用离散碰撞检测。用于正常碰撞（这是默认值）</li>
+</ul>
+</li>
+<li>Continuous 连续检测<ul>
+<li>对动态碰撞体（具有刚体）使用离散碰撞检测，并对静态碰撞体（没有刚体）使用连续碰撞检测。</li>
+<li>设置为连续动态 (Continuous Dynamic) 的刚体将在测试与该刚体的碰撞时使用连续碰撞检测。（此属性对物理性能有很大影响，如果没有快速对象的碰撞问题，请将其保留为 Discrete 设置）</li>
+<li>其他刚体将使用离散碰撞检测。</li>
+</ul>
+</li>
+<li>Continuous Dynamic 连续动态检测<ul>
+<li>性能消耗高</li>
+<li>对设置为连续 (Continuous)和连续动态 (Continuous Dynamic)碰撞的游戏对象使用连续碰撞检测。还将对静态碰撞体（没有刚体）使用连续碰撞检测。</li>
+<li>对于所有其他碰撞体，使用离散碰撞检测。用于快速移动的对象。</li>
+</ul>
+</li>
+<li>Continuous Speculative 连续推测检测<ul>
+<li>对刚体和碰撞体使用推测性连续碰撞检测。该方法通常比连续碰撞检测的成本更低。</li>
+</ul>
+</li>
+</ol>
+<h4 id="Constraints-刚体约束"><a href="#Constraints-刚体约束" class="headerlink" title="Constraints 刚体约束"></a>Constraints 刚体约束</h4><ul>
+<li>对刚体运动的限制</li>
+</ul>
+<ol>
+<li>Freeze Position 冻结位置<ul>
+<li>有选择地停止刚体沿世界 X、Y 和 Z 轴的移动。</li>
+</ul>
+</li>
+<li>Freeze Rotation 冻结旋转<ul>
+<li>有选择地停止刚体围绕局部 X、Y 和 Z 轴旋转。</li>
+</ul>
+</li>
+</ol>
+<h4 id="Info-当前刚体的信息"><a href="#Info-当前刚体的信息" class="headerlink" title="Info 当前刚体的信息"></a>Info 当前刚体的信息</h4><hr>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 785293209@qq.com </span>
