@@ -6,14 +6,20 @@
   <meta name="keywords" content=" CSharp , 实践项目 , CSharp核心 ">
   <meta name="description" content="12.改变蛇类移动方向 | 人间自有韬哥在的游戏开发博客">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="2.必备知识点-鼠标隐藏锁定相关 2.1 知识点隐藏鼠标Cursor类中的visible静态变量 - 设置鼠标显隐确定硬件指针是否可见。设置为false后移动到Game窗口就看不到鼠标了。 Cursor.visible &#x3D; true;  锁定鼠标Cursor类中的lockState静态变量 - 设置鼠标锁定状态确定硬件指针是否锁定到视图的中心、受限于窗口或者根本不受限制。  None: 不锁定鼠标">
 <meta property="og:type" content="article">
-<meta property="og:title" content="人间自有韬哥在的游戏开发博客">
-<meta property="og:url" content="https://linwentao785293209.github.io/2024/02/27/Unity/02.Unity%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/1.%E5%BF%85%E5%A4%87%E7%9F%A5%E8%AF%86%E7%82%B9-%E5%9C%BA%E6%99%AF%E5%88%87%E6%8D%A2%E5%92%8C%E6%B8%B8%E6%88%8F%E9%80%80%E5%87%BA/index.html">
+<meta property="og:title" content="2.Cursor鼠标">
+<meta property="og:url" content="https://linwentao785293209.github.io/2024/02/27/Unity/02.Unity%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/2.%E5%BF%85%E5%A4%87%E7%9F%A5%E8%AF%86%E7%82%B9-%E9%BC%A0%E6%A0%87%E9%9A%90%E8%97%8F%E9%94%81%E5%AE%9A%E7%9B%B8%E5%85%B3/index.html">
 <meta property="og:site_name" content="人间自有韬哥在的游戏开发博客">
+<meta property="og:description" content="2.必备知识点-鼠标隐藏锁定相关 2.1 知识点隐藏鼠标Cursor类中的visible静态变量 - 设置鼠标显隐确定硬件指针是否可见。设置为false后移动到Game窗口就看不到鼠标了。 Cursor.visible &#x3D; true;  锁定鼠标Cursor类中的lockState静态变量 - 设置鼠标锁定状态确定硬件指针是否锁定到视图的中心、受限于窗口或者根本不受限制。  None: 不锁定鼠标">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-02-27T06:02:07.381Z">
-<meta property="article:modified_time" content="2024-02-27T06:02:07.381Z">
+<meta property="article:published_time" content="2024-02-27T06:35:54.000Z">
+<meta property="article:modified_time" content="2024-02-27T06:40:13.544Z">
 <meta property="article:author" content="人间自有韬哥在">
+<meta property="article:tag" content="实践项目">
+<meta property="article:tag" content="必备知识点">
+<meta property="article:tag" content="Unity">
+<meta property="article:tag" content="Unity入门">
 <meta name="twitter:card" content="summary">
 
 
@@ -141,7 +147,7 @@
     <li>
         <div class="all active" data-rel="全部文章">全部文章
             
-                <small>(239)</small>
+                <small>(240)</small>
             
         </div>
     </li>
@@ -292,7 +298,7 @@
         <div data-rel="Unity">
             <i class="fold iconfont icon-right"></i>
             Unity
-            <small>(36)</small>
+            <small>(38)</small>
         </div>
         
             <ul class="sub hide">
@@ -308,10 +314,25 @@
     </li>
 
                 
+                    
+    <li>
+        <div data-rel="Unity&lt;---&gt;Unity入门实践项目">
+            
+            Unity入门实践项目
+            <small>(2)</small>
+        </div>
+        
+    </li>
+
+                
             </ul>
         
     </li>
 
+            
+        
+    
+        
             
         
     
@@ -432,8 +453,8 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="239">
-<input type="hidden" id="yelog_site_word_count" value="424.9k">
+<input type="hidden" id="yelog_site_posts_number" value="240">
+<input type="hidden" id="yelog_site_word_count" value="426.1k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -686,12 +707,21 @@
     <nav id="title-list-nav">
         
         
-        <a  class="全部文章 "
-           href="/2024/02/27/Unity/02.Unity%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/1.%E5%BF%85%E5%A4%87%E7%9F%A5%E8%AF%86%E7%82%B9-%E5%9C%BA%E6%99%AF%E5%88%87%E6%8D%A2%E5%92%8C%E6%B8%B8%E6%88%8F%E9%80%80%E5%87%BA/"
-           data-tag=""
+        <a  class="全部文章 Unity Unity入门实践项目 "
+           href="/2024/02/27/Unity/02.Unity%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/2.%E5%BF%85%E5%A4%87%E7%9F%A5%E8%AF%86%E7%82%B9-%E9%BC%A0%E6%A0%87%E9%9A%90%E8%97%8F%E9%94%81%E5%AE%9A%E7%9B%B8%E5%85%B3/"
+           data-tag="实践项目,必备知识点,Unity,Unity入门"
            data-author="" >
-            <span class="post-title" title=""></span>
-            <span class="post-date" title="2024-02-27 14:02:07">2024/02/27</span>
+            <span class="post-title" title="2.Cursor鼠标">2.Cursor鼠标</span>
+            <span class="post-date" title="2024-02-27 14:35:54">2024/02/27</span>
+        </a>
+        
+        
+        <a  class="全部文章 Unity Unity入门实践项目 "
+           href="/2024/02/27/Unity/02.Unity%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/1.%E5%BF%85%E5%A4%87%E7%9F%A5%E8%AF%86%E7%82%B9-%E5%9C%BA%E6%99%AF%E5%88%87%E6%8D%A2%E5%92%8C%E6%B8%B8%E6%88%8F%E9%80%80%E5%87%BA/"
+           data-tag="实践项目,必备知识点,Unity,Unity入门"
+           data-author="" >
+            <span class="post-title" title="1.场景切换和游戏退出">1.场景切换和游戏退出</span>
+            <span class="post-date" title="2024-02-27 14:22:36">2024/02/27</span>
         </a>
         
         
@@ -3154,18 +3184,6 @@ class GameScene : ISceneUpdate
 </p>
 
 
-<div class="article_copyright">
-    <p><span class="copy-title">文章标题:</span>12.改变蛇类移动方向</p>
-    <p><span class="copy-title">字数:</span><span class="post-count">1.1k</span></p>
-    <p><span class="copy-title">本文作者:</span><a  title="人间自有韬哥在">人间自有韬哥在</a></p>
-    <p><span class="copy-title">发布时间:</span>2024-02-18, 20:33:21</p>
-    <p><span class="copy-title">最后更新:</span>2024-02-18, 21:46:37</p>
-    <span class="copy-title">原始链接:</span><a class="post-url" href="/2024/02/18/CSharp/06.CSharp%E6%A0%B8%E5%BF%83%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/12.%E6%B8%B8%E6%88%8F%E5%9C%BA%E6%99%AF-%E6%94%B9%E5%8F%98%E8%9B%87%E7%B1%BB%E7%A7%BB%E5%8A%A8%E6%96%B9%E5%90%91/" title="12.改变蛇类移动方向">https://linwentao785293209.github.io/2024/02/18/CSharp/06.CSharp%E6%A0%B8%E5%BF%83%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/12.%E6%B8%B8%E6%88%8F%E5%9C%BA%E6%99%AF-%E6%94%B9%E5%8F%98%E8%9B%87%E7%B1%BB%E7%A7%BB%E5%8A%A8%E6%96%B9%E5%90%91/</a>
-    <p>
-        <span class="copy-title">版权声明:</span><i class="fa fa-creative-commons"></i> <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">&#34;署名-非商用-相同方式共享 4.0&#34;</a> 转载请保留原文链接及作者。
-    </p>
-</div>
-
 
 
     <div id="comments"></div>
@@ -3200,11 +3218,7 @@ class GameScene : ISceneUpdate
 
     </div>
     <div class="copyright">
-        <p class="footer-entry"><span class="miit">
-                <img src="/img/gov.png" title="中华人民共和国工业和信息化部">
-                <a target="_blank" rel="noopener" href="http://beian.miit.gov.cn/">京ICP证030173号</a>
-        </span>
-    
+        <p class="footer-entry">
     ©2016-2024 Tao
 </p>
 <p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
