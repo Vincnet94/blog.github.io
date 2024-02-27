@@ -4,6 +4,192 @@
   
     
     <entry>
+      <title>32.总结</title>
+      <link href="/2024/02/27/Unity/02.Unity%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/32.%E6%80%BB%E7%BB%93/"/>
+      <url>/2024/02/27/Unity/02.Unity%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/32.%E6%80%BB%E7%BB%93/</url>
+      
+        <content type="html"><![CDATA[<h1 id="32-总结"><a href="#32-总结" class="headerlink" title="32.总结"></a>32.总结</h1><hr><p><img src="/../../../images/Unity/02.Unity%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/32.%E6%80%BB%E7%BB%93/1.png"></p><h2 id="32-1-知识点"><a href="#32-1-知识点" class="headerlink" title="32.1 知识点"></a>32.1 知识点</h2><h3 id="学习的主要内容"><a href="#学习的主要内容" class="headerlink" title="学习的主要内容"></a>学习的主要内容</h3><p><img src="/../../../images/Unity/02.Unity%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/32.%E6%80%BB%E7%BB%93/2.png"></p><h3 id="总结目的"><a href="#总结目的" class="headerlink" title="总结目的"></a>总结目的</h3><p><img src="/../../../images/Unity/02.Unity%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/32.%E6%80%BB%E7%BB%93/3.png"></p><h3 id="Unity做游戏的套路"><a href="#Unity做游戏的套路" class="headerlink" title="Unity做游戏的套路"></a>Unity做游戏的套路</h3><p><img src="/../../../images/Unity/02.Unity%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/32.%E6%80%BB%E7%BB%93/4.png"><br><img src="/../../../images/Unity/02.Unity%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/32.%E6%80%BB%E7%BB%93/5.png"></p><h3 id="如何学好Unity"><a href="#如何学好Unity" class="headerlink" title="如何学好Unity"></a>如何学好Unity</h3><p><img src="/../../../images/Unity/02.Unity%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/32.%E6%80%BB%E7%BB%93/6.png"><br><img src="/../../../images/Unity/02.Unity%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/32.%E6%80%BB%E7%BB%93/7.png"><br><img src="/../../../images/Unity/02.Unity%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/32.%E6%80%BB%E7%BB%93/8.png"></p><h3 id="达到目的"><a href="#达到目的" class="headerlink" title="达到目的"></a>达到目的</h3><p><img src="/../../../images/Unity/02.Unity%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/32.%E6%80%BB%E7%BB%93/9.png"></p><h3 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h3><h2 id=""><a href="#" class="headerlink" title=""></a><img src="/../../../images/Unity/02.Unity%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/32.%E6%80%BB%E7%BB%93/10.png"></h2>]]></content>
+      
+      
+      <categories>
+          
+          <category> Unity </category>
+          
+          <category> Unity入门实践项目 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 实践项目 </tag>
+            
+            <tag> Unity </tag>
+            
+            <tag> Unity入门 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>31.BuildSetting生成设置、PlayerSetting玩家设置和项目打包</title>
+      <link href="/2024/02/27/Unity/02.Unity%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/31.%E9%A1%B9%E7%9B%AE%E6%89%93%E5%8C%85/"/>
+      <url>/2024/02/27/Unity/02.Unity%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/31.%E9%A1%B9%E7%9B%AE%E6%89%93%E5%8C%85/</url>
+      
+        <content type="html"><![CDATA[<h1 id="31-项目打包"><a href="#31-项目打包" class="headerlink" title="31.项目打包"></a>31.项目打包</h1><hr><h2 id="31-1-知识点"><a href="#31-1-知识点" class="headerlink" title="31.1 知识点"></a>31.1 知识点</h2><h3 id="打开Build-Setting生成设置"><a href="#打开Build-Setting生成设置" class="headerlink" title="打开Build Setting生成设置"></a>打开Build Setting生成设置</h3><p><img src="/../../../images/Unity/02.Unity%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/31.%E9%A1%B9%E7%9B%AE%E6%89%93%E5%8C%85/1.png"><br><img src="/../../../images/Unity/02.Unity%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/31.%E9%A1%B9%E7%9B%AE%E6%89%93%E5%8C%85/2.png"></p><h3 id="Build-Settings生成设置里的重要参数"><a href="#Build-Settings生成设置里的重要参数" class="headerlink" title="Build Settings生成设置里的重要参数"></a>Build Settings生成设置里的重要参数</h3><p><img src="/../../../images/Unity/02.Unity%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/31.%E9%A1%B9%E7%9B%AE%E6%89%93%E5%8C%85/3.png"><br><img src="/../../../images/Unity/02.Unity%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/31.%E9%A1%B9%E7%9B%AE%E6%89%93%E5%8C%85/4.png"></p><h4 id="Target-Platform-目标平台"><a href="#Target-Platform-目标平台" class="headerlink" title="Target Platform 目标平台"></a>Target Platform 目标平台</h4><ul><li>Windows</li><li>macOS</li><li>Linux</li></ul><h4 id="Architecture-架构"><a href="#Architecture-架构" class="headerlink" title="Architecture 架构"></a>Architecture 架构</h4><ul><li>结构模式 根据电脑CPU不同进行不同选择</li><li>x86 32位CPU</li><li>x86_64 64位CPU</li></ul><h4 id="Server-Build-服务器版本"><a href="#Server-Build-服务器版本" class="headerlink" title="Server Build 服务器版本"></a>Server Build 服务器版本</h4><ul><li>服务器的相关构建</li><li>开启后可为应用程序编写特定于服务器的代码方便调试</li></ul><h4 id="Copy-PDB-files-复制PDB文件"><a href="#Copy-PDB-files-复制PDB文件" class="headerlink" title="Copy PDB files 复制PDB文件"></a>Copy PDB files 复制PDB文件</h4><ul><li>开启后可以在打包出的数据中，包含程序数据库文件，之后可以用于调试应用程序</li></ul><h4 id="Create-Visual-Studio-Solution-创建Visual-Studio解决方案"><a href="#Create-Visual-Studio-Solution-创建Visual-Studio解决方案" class="headerlink" title="Create Visual Studio Solution 创建Visual Studio解决方案"></a>Create Visual Studio Solution 创建Visual Studio解决方案</h4><ul><li>开启后可以生成VS解决方案文件</li><li>可以在VS中进行正式的打包</li><li>可以设置更多额外信息</li></ul><h4 id="Development-Build-开发构建"><a href="#Development-Build-开发构建" class="headerlink" title="Development Build 开发构建"></a>Development Build 开发构建</h4><ul><li>启用后，下面的一些选项才能被启用</li><li>启用后，会在打包出的版本中开启性能分析器，之后可以用于调试</li></ul><h4 id="Autoconnect-Profiler-自动连接探查器"><a href="#Autoconnect-Profiler-自动连接探查器" class="headerlink" title="Autoconnect Profiler 自动连接探查器"></a>Autoconnect Profiler 自动连接探查器</h4><ul><li>启用Development Build后才有用</li><li>开启后Unity性能分析器可以自动连接到你的打包项目</li></ul><h4 id="Deep-Profiling-深度分析"><a href="#Deep-Profiling-深度分析" class="headerlink" title="Deep Profiling 深度分析"></a>Deep Profiling 深度分析</h4><ul><li>启用Development Build后才有用</li><li>开启后，性能分析器可以分析到每个函数的调用来获取更详细数据</li></ul><h4 id="Script-Debugging-脚本调试"><a href="#Script-Debugging-脚本调试" class="headerlink" title="Script Debugging 脚本调试"></a>Script Debugging 脚本调试</h4><ul><li>启用Development Build后才有用</li><li>开启后，Unity会将调试符号添加到脚本代码中</li></ul><h4 id="Scripts-Only-Build-仅脚本生成"><a href="#Scripts-Only-Build-仅脚本生成" class="headerlink" title="Scripts Only Build 仅脚本生成"></a>Scripts Only Build 仅脚本生成</h4><ul><li>启用Development Build后才有用</li><li>启用后 可以提高打包时间，只会更新更改的脚本</li></ul><h4 id="Compression-Method-压缩方法"><a href="#Compression-Method-压缩方法" class="headerlink" title="Compression Method 压缩方法"></a>Compression Method 压缩方法</h4><ul><li>压缩包体数据</li><li>Default 不压缩</li><li>LZ4 快速压缩格式</li><li>LZ4HC LZ4的高度压缩变体 构建速度会变慢，但是压缩效果好</li></ul><h3 id="打开Player-Setting玩家设置"><a href="#打开Player-Setting玩家设置" class="headerlink" title="打开Player Setting玩家设置"></a>打开Player Setting玩家设置</h3><p><img src="/../../../images/Unity/02.Unity%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/31.%E9%A1%B9%E7%9B%AE%E6%89%93%E5%8C%85/5.png"><br><img src="/../../../images/Unity/02.Unity%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/31.%E9%A1%B9%E7%9B%AE%E6%89%93%E5%8C%85/6.png"></p><h3 id="Player-Setting玩家设置里的重要参数"><a href="#Player-Setting玩家设置里的重要参数" class="headerlink" title="Player Setting玩家设置里的重要参数"></a>Player Setting玩家设置里的重要参数</h3><p><img src="/../../../images/Unity/02.Unity%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/31.%E9%A1%B9%E7%9B%AE%E6%89%93%E5%8C%85/7.png"><br><img src="/../../../images/Unity/02.Unity%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/31.%E9%A1%B9%E7%9B%AE%E6%89%93%E5%8C%85/8.png"></p><h4 id="Company-Name-公司名称"><a href="#Company-Name-公司名称" class="headerlink" title="Company Name 公司名称"></a>Company Name 公司名称</h4><h4 id="Product-Name-产品名称（游戏名）"><a href="#Product-Name-产品名称（游戏名）" class="headerlink" title="Product Name 产品名称（游戏名）"></a>Product Name 产品名称（游戏名）</h4><h4 id="Version-版本（版本号）"><a href="#Version-版本（版本号）" class="headerlink" title="Version 版本（版本号）"></a>Version 版本（版本号）</h4><h4 id="Default-Icon-默认图标"><a href="#Default-Icon-默认图标" class="headerlink" title="Default Icon 默认图标"></a>Default Icon 默认图标</h4><h4 id="DefaultCursor-默认鼠标光标图"><a href="#DefaultCursor-默认鼠标光标图" class="headerlink" title="DefaultCursor 默认鼠标光标图"></a>DefaultCursor 默认鼠标光标图</h4><h4 id="CursorHotspot-光标热点-鼠标图偏移位置"><a href="#CursorHotspot-光标热点-鼠标图偏移位置" class="headerlink" title="CursorHotspot 光标热点(鼠标图偏移位置)"></a>CursorHotspot 光标热点(鼠标图偏移位置)</h4><h4 id="Icon-图标"><a href="#Icon-图标" class="headerlink" title="Icon 图标"></a>Icon 图标</h4><ul><li>自定义各尺寸的游戏图标，可以让游戏图标在不同大小的时候显示不一样</li></ul><h4 id="Resolution-and-Presentation-分辨率和显示"><a href="#Resolution-and-Presentation-分辨率和显示" class="headerlink" title="Resolution and Presentation 分辨率和显示"></a>Resolution and Presentation 分辨率和显示</h4><p><img src="/../../../images/Unity/02.Unity%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/31.%E9%A1%B9%E7%9B%AE%E6%89%93%E5%8C%85/11.png"><br><img src="/../../../images/Unity/02.Unity%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/31.%E9%A1%B9%E7%9B%AE%E6%89%93%E5%8C%85/12.png"></p><ul><li>设置窗口、分辨率相关</li></ul><h4 id="Resolution-分辨率"><a href="#Resolution-分辨率" class="headerlink" title="Resolution 分辨率"></a>Resolution 分辨率</h4><h5 id="Fullscreen-Mode-全屏模式"><a href="#Fullscreen-Mode-全屏模式" class="headerlink" title="Fullscreen Mode 全屏模式"></a>Fullscreen Mode 全屏模式</h5><ul><li>FullscreenWindow 全屏窗口模式<ul><li>保持显示器分辨率全屏</li><li>如果分辨率不足会有黑边</li></ul></li><li>Exclusive Fullscreen 独占全屏模式<ul><li>会改变显示器分辨率来适配自己的项目</li><li>也是全屏模式</li></ul></li><li>Maximized Window 最大化窗口模式</li><li>Windowed 窗口化模式</li></ul><h5 id="Default-Is-Native-Resolution-默认为原生分辨率"><a href="#Default-Is-Native-Resolution-默认为原生分辨率" class="headerlink" title="Default Is Native Resolution 默认为原生分辨率"></a>Default Is Native Resolution 默认为原生分辨率</h5><ul><li>勾选时，使用显示器分辨率</li><li>取消勾选时，使用设置的分辨率（窗口模式才有用）</li></ul><h5 id="Default-Screen-Width-Height-默认屏幕宽度-高度"><a href="#Default-Screen-Width-Height-默认屏幕宽度-高度" class="headerlink" title="Default Screen Width&#x2F;Height 默认屏幕宽度&#x2F;高度"></a>Default Screen Width&#x2F;Height 默认屏幕宽度&#x2F;高度</h5><ul><li>游戏画面默认高度，窗口模式才有用</li></ul><h5 id="Mac-Retina-Support-是否在Mac系统上启用高DPI支持"><a href="#Mac-Retina-Support-是否在Mac系统上启用高DPI支持" class="headerlink" title="Mac Retina Support 是否在Mac系统上启用高DPI支持"></a>Mac Retina Support 是否在Mac系统上启用高DPI支持</h5><h5 id="Run-In-background-后台运行"><a href="#Run-In-background-后台运行" class="headerlink" title="Run In background 后台运行"></a>Run In background 后台运行</h5><ul><li>开启后，程序失去焦点时可以继续运行而不是暂停</li></ul><h3 id="设置好参数后，直接点击Build生成选择文件夹即可"><a href="#设置好参数后，直接点击Build生成选择文件夹即可" class="headerlink" title="设置好参数后，直接点击Build生成选择文件夹即可"></a>设置好参数后，直接点击Build生成选择文件夹即可</h3><p><img src="/../../../images/Unity/02.Unity%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/31.%E9%A1%B9%E7%9B%AE%E6%89%93%E5%8C%85/9.png"><br><img src="/../../../images/Unity/02.Unity%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/31.%E9%A1%B9%E7%9B%AE%E6%89%93%E5%8C%85/10.png"></p><hr>]]></content>
+      
+      
+      <categories>
+          
+          <category> Unity </category>
+          
+          <category> Unity入门实践项目 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 实践项目 </tag>
+            
+            <tag> Unity </tag>
+            
+            <tag> Unity入门 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>30.失败界面</title>
+      <link href="/2024/02/27/Unity/02.Unity%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/30.%E5%A4%B1%E8%B4%A5%E7%95%8C%E9%9D%A2/"/>
+      <url>/2024/02/27/Unity/02.Unity%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/30.%E5%A4%B1%E8%B4%A5%E7%95%8C%E9%9D%A2/</url>
+      
+        <content type="html"><![CDATA[<h1 id="30-失败界面"><a href="#30-失败界面" class="headerlink" title="30.失败界面"></a>30.失败界面</h1><hr><h2 id="30-1-知识点"><a href="#30-1-知识点" class="headerlink" title="30.1 知识点"></a>30.1 知识点</h2><h3 id="失败界面需求"><a href="#失败界面需求" class="headerlink" title="失败界面需求"></a>失败界面需求</h3><p><img src="/../../../images/Unity/02.Unity%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/30.%E5%A4%B1%E8%B4%A5%E7%95%8C%E9%9D%A2/1.png"><br><img src="/../../../images/Unity/02.Unity%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/30.%E5%A4%B1%E8%B4%A5%E7%95%8C%E9%9D%A2/2.png"><br>明确失败界面需要包含的内容和功能，例如返回开始场景按钮和重新开始游戏按钮。</p><h3 id="拼接失败面板"><a href="#拼接失败面板" class="headerlink" title="拼接失败面板"></a>拼接失败面板</h3><p><img src="/../../../images/Unity/02.Unity%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/30.%E5%A4%B1%E8%B4%A5%E7%95%8C%E9%9D%A2/3.png"><br>在游戏界面中创建一个失败面板，包括返回开始场景按钮和重新开始游戏按钮等元素。</p><h3 id="创建失败面板脚本"><a href="#创建失败面板脚本" class="headerlink" title="创建失败面板脚本"></a>创建失败面板脚本</h3><pre><code class="csharp">// 失败面板public class LosePanel : BasePanel&lt;LosePanel&gt;&#123;    public CustomGUIButton btnBack;    public CustomGUIButton btnGoOn;        // Start is called before the first frame update    void Start()    &#123;        btnBack.clickEvent += () =&gt;        &#123;            // 取消暂停            Time.timeScale = 1;            // 切换场景到开始场景            SceneManager.LoadScene(&quot;BeginScene&quot;);        &#125;;                btnGoOn.clickEvent += () =&gt;        &#123;            // 取消暂停            Time.timeScale = 1;            // 再次切换到游戏场景            SceneManager.LoadScene(&quot;GameScene&quot;);        &#125;;                // 一开始隐藏自己        HideMe();    &#125;&#125;</code></pre><p>这个脚本用于控制失败界面的逻辑，当返回开始场景按钮或重新开始游戏按钮被点击时，取消游戏暂停并根据点击按钮的不同切换到对应的场景。</p><h3 id="玩家脚本中，玩家死亡时打开失败面板"><a href="#玩家脚本中，玩家死亡时打开失败面板" class="headerlink" title="玩家脚本中，玩家死亡时打开失败面板"></a>玩家脚本中，玩家死亡时打开失败面板</h3><pre><code class="csharp">public override void Dead()&#123;    // 处理失败逻辑，显示失败面板    Time.timeScale = 0;    LosePanel.Instance.ShowMe();&#125;</code></pre><p>在玩家死亡时触发该函数，游戏暂停并显示失败面板。</p><h3 id="优化开始场景鼠标锁定"><a href="#优化开始场景鼠标锁定" class="headerlink" title="优化开始场景鼠标锁定"></a>优化开始场景鼠标锁定</h3><pre><code class="csharp">// 让鼠标锁定在游戏窗口内Cursor.lockState = CursorLockMode.Confined;</code></pre><p>这段代码应该在开始场景加载时执行，确保鼠标锁定在游戏窗口内，以便玩家更好地控制坦克的头部转向。</p><hr><h2 id="30-2-知识点代码"><a href="#30-2-知识点代码" class="headerlink" title="30.2 知识点代码"></a>30.2 知识点代码</h2><pre><code class="csharp">using System.Collections;using System.Collections.Generic;using UnityEngine;using UnityEngine.SceneManagement;//失败面板public class LosePanel : BasePanel&lt;LosePanel&gt;&#123;    public CustomGUIButton btnBack;    public CustomGUIButton btnGoOn;    // Start is called before the first frame update    void Start()    &#123;        btnBack.clickEvent += () =&gt;        &#123;            //取消暂停            Time.timeScale = 1;            //切换场景            SceneManager.LoadScene(&quot;BeginScene&quot;);        &#125;;        btnGoOn.clickEvent += () =&gt;        &#123;            //取消暂停            Time.timeScale = 1;            //再次切换到 游戏场景 就可以 达到所有内容重新加载 重头开始的 目的            SceneManager.LoadScene(&quot;GameScene&quot;);        &#125;;        //一开始 隐藏自己        HideMe();    &#125;&#125;</code></pre><hr>]]></content>
+      
+      
+      <categories>
+          
+          <category> Unity </category>
+          
+          <category> Unity入门实践项目 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 实践项目 </tag>
+            
+            <tag> Unity </tag>
+            
+            <tag> Unity入门 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>29.胜利界面</title>
+      <link href="/2024/02/27/Unity/02.Unity%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/29.%E8%83%9C%E5%88%A9%E7%95%8C%E9%9D%A2/"/>
+      <url>/2024/02/27/Unity/02.Unity%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/29.%E8%83%9C%E5%88%A9%E7%95%8C%E9%9D%A2/</url>
+      
+        <content type="html"><![CDATA[<h1 id="29-胜利界面"><a href="#29-胜利界面" class="headerlink" title="29.胜利界面"></a>29.胜利界面</h1><hr><h2 id="29-1-知识点"><a href="#29-1-知识点" class="headerlink" title="29.1 知识点"></a>29.1 知识点</h2><h3 id="胜利界面需求"><a href="#胜利界面需求" class="headerlink" title="胜利界面需求"></a>胜利界面需求</h3><p><img src="/../../../images/Unity/02.Unity%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/29.%E8%83%9C%E5%88%A9%E7%95%8C%E9%9D%A2/1.png"><br><img src="/../../../images/Unity/02.Unity%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/29.%E8%83%9C%E5%88%A9%E7%95%8C%E9%9D%A2/2.png"></p><p>明确胜利界面需要包含的内容，例如玩家的输入框、确认按钮等。</p><h3 id="拼接胜利面板"><a href="#拼接胜利面板" class="headerlink" title="拼接胜利面板"></a>拼接胜利面板</h3><p><img src="/../../../images/Unity/02.Unity%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/29.%E8%83%9C%E5%88%A9%E7%95%8C%E9%9D%A2/3.png"><br>在游戏界面中创建一个胜利面板，包括玩家的输入框和确认按钮等元素。</p><h3 id="创建胜利面板脚本"><a href="#创建胜利面板脚本" class="headerlink" title="创建胜利面板脚本"></a>创建胜利面板脚本</h3><pre><code class="csharp">// 胜利控件public class WinPanel : BasePanel&lt;WinPanel&gt;&#123;    // 关联控件    public CustomGUIInput inputInfo;    public CustomGUIButton btnSure;        // Start is called before the first frame update    void Start()    &#123;        btnSure.clickEvent += () =&gt;        &#123;            // 取消游戏暂停            Time.timeScale = 1;                        // 将数据记录到排行榜中，并且回到主场景            GameDataMgr.Instance.AddRankInfo(inputInfo.content.text,                                              GamePanel.Instance.nowScore,                                              GamePanel.Instance.nowTime);                        // 返回开始界面            SceneManager.LoadScene(&quot;BeginScene&quot;);        &#125;;                // 隐藏自己        HideMe();    &#125;&#125;</code></pre><p>这个脚本用于控制胜利界面的逻辑，当确认按钮被点击时，取消游戏暂停，将玩家的输入数据记录到排行榜中，并返回到开始界面。</p><h3 id="触碰到通关点通关时，打开胜利面板"><a href="#触碰到通关点通关时，打开胜利面板" class="headerlink" title="触碰到通关点通关时，打开胜利面板"></a>触碰到通关点通关时，打开胜利面板</h3><p>在通关点脚本触发事件，打开胜利界面，并将游戏时间流速设置为0。</p><pre><code class="csharp">if(other.CompareTag(&quot;Player&quot;))&#123;    Time.timeScale = 0;    // 通关逻辑    // 打开胜利界面    WinPanel.Instance.ShowMe();&#125;</code></pre><p>这样，当玩家通过通关点时，游戏将暂停，并打开胜利界面供玩家操作。</p><hr><h2 id="29-2-知识点代码"><a href="#29-2-知识点代码" class="headerlink" title="29.2 知识点代码"></a>29.2 知识点代码</h2><pre><code class="csharp">using System.Collections;using System.Collections.Generic;using UnityEngine;using UnityEngine.SceneManagement;//胜利控件public class WinPanel : BasePanel&lt;WinPanel&gt;&#123;    //关联 控件    public CustomGUIInput inputInfo;    public CustomGUIButton btnSure;    // Start is called before the first frame update    void Start()    &#123;        btnSure.clickEvent += () =&gt;        &#123;            //取消游戏暂停            Time.timeScale = 1;            //把数据记录到排行榜中 并且 回到主场景中            GameDataMgr.Instance.AddRankInfo(inputInfo.content.text,                GamePanel.Instance.nowScore,                GamePanel.Instance.nowTime);            //接着 就返回我们的 开始界面即可            SceneManager.LoadScene(&quot;BeginScene&quot;);        &#125;;        //隐藏自己        HideMe();    &#125;&#125;</code></pre><hr>]]></content>
+      
+      
+      <categories>
+          
+          <category> Unity </category>
+          
+          <category> Unity入门实践项目 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 实践项目 </tag>
+            
+            <tag> Unity </tag>
+            
+            <tag> Unity入门 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>28.通关点</title>
+      <link href="/2024/02/27/Unity/02.Unity%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/28.%E9%80%9A%E5%85%B3%E7%82%B9/"/>
+      <url>/2024/02/27/Unity/02.Unity%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/28.%E9%80%9A%E5%85%B3%E7%82%B9/</url>
+      
+        <content type="html"><![CDATA[<h1 id="28-通关点"><a href="#28-通关点" class="headerlink" title="28.通关点"></a>28.通关点</h1><hr><h2 id="28-1-知识点"><a href="#28-1-知识点" class="headerlink" title="28.1 知识点"></a>28.1 知识点</h2><h3 id="重新摆放场景元素"><a href="#重新摆放场景元素" class="headerlink" title="重新摆放场景元素"></a>重新摆放场景元素</h3><p><img src="/../../../images/Unity/02.Unity%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/28.%E9%80%9A%E5%85%B3%E7%82%B9/1.png"></p><p>重新摆放场景中的玩家、敌人和方块，以创建类似关卡的模样。可以多设置几个敌人，增加关卡的难度和挑战性。</p><h3 id="添加通关点"><a href="#添加通关点" class="headerlink" title="添加通关点"></a>添加通关点</h3><p><img src="/../../../images/Unity/02.Unity%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/28.%E9%80%9A%E5%85%B3%E7%82%B9/2.png"></p><p>在场景中摆放一个通关点，并最好附带特效以增加视觉效果。通关点需要添加碰撞体以便检测玩家触发碰撞事件以实现通关。</p><h3 id="创建通关点脚本"><a href="#创建通关点脚本" class="headerlink" title="创建通关点脚本"></a>创建通关点脚本</h3><pre><code class="csharp">// 通关点public class EndPoint : MonoBehaviour&#123;    private void OnTriggerEnter(Collider other)    &#123;        if( other.CompareTag(&quot;Player&quot;) )        &#123;            Time.timeScale = 0;            // 通关逻辑            // 打开胜利界面            WinPanel.Instance.ShowMe();        &#125;    &#125;&#125;</code></pre><p>这个脚本将检测玩家是否触发了通关点的碰撞事件，如果是，则将游戏时间暂停，然后执行通关逻辑，例如打开胜利界面。</p><hr><h2 id="28-2-知识点代码"><a href="#28-2-知识点代码" class="headerlink" title="28.2 知识点代码"></a>28.2 知识点代码</h2><pre><code class="csharp">using System.Collections;using System.Collections.Generic;using UnityEngine;using UnityEngine.SceneManagement;//通关点public class EndPoint : MonoBehaviour&#123;    private void OnTriggerEnter(Collider other)    &#123;        if( other.CompareTag(&quot;Player&quot;) )        &#123;            Time.timeScale = 0;            //通关逻辑            //打开胜利界面            WinPanel.Instance.ShowMe();        &#125;    &#125;&#125;</code></pre><hr>]]></content>
+      
+      
+      <categories>
+          
+          <category> Unity </category>
+          
+          <category> Unity入门实践项目 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 实践项目 </tag>
+            
+            <tag> Unity </tag>
+            
+            <tag> Unity入门 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>27.敌人血条</title>
+      <link href="/2024/02/27/Unity/02.Unity%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/27.%E6%95%8C%E4%BA%BA-%E6%95%8C%E4%BA%BA%E8%A1%80%E6%9D%A1/"/>
+      <url>/2024/02/27/Unity/02.Unity%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/27.%E6%95%8C%E4%BA%BA-%E6%95%8C%E4%BA%BA%E8%A1%80%E6%9D%A1/</url>
+      
+        <content type="html"><![CDATA[<h1 id="27-敌人-敌人血条"><a href="#27-敌人-敌人血条" class="headerlink" title="27.敌人-敌人血条"></a>27.敌人-敌人血条</h1><hr><h2 id="27-1-知识点"><a href="#27-1-知识点" class="headerlink" title="27.1 知识点"></a>27.1 知识点</h2><h3 id="明确血条需求"><a href="#明确血条需求" class="headerlink" title="明确血条需求"></a>明确血条需求</h3><p><img src="/../../../images/Unity/02.Unity%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/27.%E6%95%8C%E4%BA%BA-%E6%95%8C%E4%BA%BA%E8%A1%80%E6%9D%A1/1.png"><br><img src="/../../../images/Unity/02.Unity%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/27.%E6%95%8C%E4%BA%BA-%E6%95%8C%E4%BA%BA%E8%A1%80%E6%9D%A1/2.png"><br>血条的需求包括：</p><ol><li>将世界坐标转换为屏幕坐标。</li><li>将屏幕坐标转换为GUI坐标。</li><li>绘制血条底和血条。</li><li>添加受伤时间逻辑，在受伤时显示血条一定时间后隐藏。</li></ol><h3 id="在移动的敌人脚本中添加GUI绘制方法-绘制血条底和血条。添加受伤时间逻辑，当受伤的时候显示血条显示过一定逻辑后隐藏不绘制"><a href="#在移动的敌人脚本中添加GUI绘制方法-绘制血条底和血条。添加受伤时间逻辑，当受伤的时候显示血条显示过一定逻辑后隐藏不绘制" class="headerlink" title="在移动的敌人脚本中添加GUI绘制方法,绘制血条底和血条。添加受伤时间逻辑，当受伤的时候显示血条显示过一定逻辑后隐藏不绘制"></a>在移动的敌人脚本中添加GUI绘制方法,绘制血条底和血条。添加受伤时间逻辑，当受伤的时候显示血条显示过一定逻辑后隐藏不绘制</h3><pre><code class="csharp">using UnityEngine;// 移动的敌人public class MonsterObj : TankBaseObj&#123;    // 两张血条的图    public Texture maxHpBK;    public Texture hpBK;    // 显示血条计时用时间    private float showTime = 0;    // 血条位置和大小    private Rect maxHpRect;    private Rect hpRect;    // 在这里进行血条UI的绘制    private void OnGUI()    &#123;        if(showTime &gt; 0)        &#123;            //不停计时            showTime -= Time.deltaTime;            //画图 画血条            //1.把怪物当前位置 转换成 屏幕位置            //摄像机里面提供了API 可以将 世界坐标 转为 屏幕坐标            Vector3 screenPos = Camera.main.WorldToScreenPoint(this.transform.position);            //2.屏幕位置 转换成 GUI位置            //知识点：如何得到当前屏幕的分辨率高            screenPos.y = Screen.height - screenPos.y;            //然后再绘制            //知识点：GUI中的 图片绘制            //底图            maxHpRect.x = screenPos.x - 50;            maxHpRect.y = screenPos.y - 50;            maxHpRect.width = 100;            maxHpRect.height = 15;            //画底图            GUI.DrawTexture(maxHpRect, maxHpBK);            hpRect.x = screenPos.x - 50;            hpRect.y = screenPos.y - 50;            //根据血量和最大血量的百分比 决定画多宽            hpRect.width = (float)hp / maxHp * 100f;            hpRect.height = 15;            //画血条            GUI.DrawTexture(hpRect, hpBK);        &#125;    &#125;    // 受伤时显示血条    public override void Wound(TankBaseObj other)    &#123;        base.Wound(other);        // 设置显示血条的时间        showTime = 3;    &#125;&#125;</code></pre><hr>]]></content>
+      
+      
+      <categories>
+          
+          <category> Unity </category>
+          
+          <category> Unity入门实践项目 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 实践项目 </tag>
+            
+            <tag> Unity </tag>
+            
+            <tag> Unity入门 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>26.移动的敌人</title>
       <link href="/2024/02/27/Unity/02.Unity%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/26.%E6%95%8C%E4%BA%BA-%E7%A7%BB%E5%8A%A8%E7%9A%84%E6%95%8C%E4%BA%BA/"/>
       <url>/2024/02/27/Unity/02.Unity%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/26.%E6%95%8C%E4%BA%BA-%E7%A7%BB%E5%8A%A8%E7%9A%84%E6%95%8C%E4%BA%BA/</url>
@@ -743,11 +929,11 @@
             
             <tag> 随机数 </tag>
             
-            <tag> 委托和事件 </tag>
-            
             <tag> Unity </tag>
             
             <tag> Unity入门 </tag>
+            
+            <tag> 委托和事件 </tag>
             
         </tags>
       
@@ -4176,9 +4362,9 @@
             
             <tag> 语法知识 </tag>
             
-            <tag> CSharp进阶 </tag>
-            
             <tag> 反射和特性 </tag>
+            
+            <tag> CSharp进阶 </tag>
             
         </tags>
       
@@ -4209,9 +4395,9 @@
             
             <tag> 语法知识 </tag>
             
-            <tag> CSharp进阶 </tag>
-            
             <tag> 反射和特性 </tag>
+            
+            <tag> CSharp进阶 </tag>
             
         </tags>
       
