@@ -6,24 +6,23 @@
   <meta name="keywords" content=" 实践项目 , Unity , Unity入门 ">
   <meta name="description" content="16.复制设置界面和背景音乐到游戏场景 | 人间自有韬哥在的游戏开发博客">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="21.玩家-武器对象和子弹对象 21.1 知识点查看武器对象和子弹对象类图 创建武器对象脚本，声明必要的对象和开火逻辑&#x2F;&#x2F; 武器对象 public class WeaponObj : MonoBehaviour &#123;     &#x2F;&#x2F; 用于实例化的子弹对象     public GameObject bullet;      &#x2F;&#x2F; 外部决定到底有几个发射位置     public Transf">
+<meta name="description" content="26.敌人-移动的敌人 26.1 知识点明确移动的敌人需求 移动的敌人需要实现以下功能：  在多个点之间来回巡逻。 敌方坦克始终盯着玩家坦克移动。 当玩家坦克距离移动的敌人坦克较近时，按一定攻速开火。 敌人坦克死亡时需要加分。  拖拽移动的敌人资源做成预制体将移动的敌人资源拖拽到场景中，并调整其属性以符合游戏需求。然后将其制作成预制体，以备后续使用。 创建移动的敌人脚本，要让敌方坦克在多个点之间来">
 <meta property="og:type" content="article">
-<meta property="og:title" content="21.武器和子弹">
-<meta property="og:url" content="https://linwentao785293209.github.io/2024/02/27/Unity/02.Unity%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/21.%E7%8E%A9%E5%AE%B6-%E6%AD%A6%E5%99%A8%E5%AF%B9%E8%B1%A1%E5%92%8C%E5%AD%90%E5%BC%B9%E5%AF%B9%E8%B1%A1/index.html">
+<meta property="og:title" content="26.移动的敌人">
+<meta property="og:url" content="https://linwentao785293209.github.io/2024/02/27/Unity/02.Unity%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/26.%E6%95%8C%E4%BA%BA-%E7%A7%BB%E5%8A%A8%E7%9A%84%E6%95%8C%E4%BA%BA/index.html">
 <meta property="og:site_name" content="人间自有韬哥在的游戏开发博客">
-<meta property="og:description" content="21.玩家-武器对象和子弹对象 21.1 知识点查看武器对象和子弹对象类图 创建武器对象脚本，声明必要的对象和开火逻辑&#x2F;&#x2F; 武器对象 public class WeaponObj : MonoBehaviour &#123;     &#x2F;&#x2F; 用于实例化的子弹对象     public GameObject bullet;      &#x2F;&#x2F; 外部决定到底有几个发射位置     public Transf">
+<meta property="og:description" content="26.敌人-移动的敌人 26.1 知识点明确移动的敌人需求 移动的敌人需要实现以下功能：  在多个点之间来回巡逻。 敌方坦克始终盯着玩家坦克移动。 当玩家坦克距离移动的敌人坦克较近时，按一定攻速开火。 敌人坦克死亡时需要加分。  拖拽移动的敌人资源做成预制体将移动的敌人资源拖拽到场景中，并调整其属性以符合游戏需求。然后将其制作成预制体，以备后续使用。 创建移动的敌人脚本，要让敌方坦克在多个点之间来">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/02.Unity%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/21.%E7%8E%A9%E5%AE%B6-%E6%AD%A6%E5%99%A8%E5%AF%B9%E8%B1%A1%E5%92%8C%E5%AD%90%E5%BC%B9%E5%AF%B9%E8%B1%A1/1.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/02.Unity%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/21.%E7%8E%A9%E5%AE%B6-%E6%AD%A6%E5%99%A8%E5%AF%B9%E8%B1%A1%E5%92%8C%E5%AD%90%E5%BC%B9%E5%AF%B9%E8%B1%A1/2.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/02.Unity%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/21.%E7%8E%A9%E5%AE%B6-%E6%AD%A6%E5%99%A8%E5%AF%B9%E8%B1%A1%E5%92%8C%E5%AD%90%E5%BC%B9%E5%AF%B9%E8%B1%A1/3.png">
-<meta property="article:published_time" content="2024-02-27T09:52:28.000Z">
-<meta property="article:modified_time" content="2024-02-27T10:04:52.230Z">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/02.Unity%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/26.%E6%95%8C%E4%BA%BA-%E7%A7%BB%E5%8A%A8%E7%9A%84%E6%95%8C%E4%BA%BA/1.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/02.Unity%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/26.%E6%95%8C%E4%BA%BA-%E7%A7%BB%E5%8A%A8%E7%9A%84%E6%95%8C%E4%BA%BA/2.png">
+<meta property="article:published_time" content="2024-02-27T10:39:05.000Z">
+<meta property="article:modified_time" content="2024-02-27T10:48:50.940Z">
 <meta property="article:author" content="人间自有韬哥在">
 <meta property="article:tag" content="实践项目">
 <meta property="article:tag" content="Unity">
 <meta property="article:tag" content="Unity入门">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://linwentao785293209.github.io/images/Unity/02.Unity%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/21.%E7%8E%A9%E5%AE%B6-%E6%AD%A6%E5%99%A8%E5%AF%B9%E8%B1%A1%E5%92%8C%E5%AD%90%E5%BC%B9%E5%AF%B9%E8%B1%A1/1.png">
+<meta name="twitter:image" content="https://linwentao785293209.github.io/images/Unity/02.Unity%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/26.%E6%95%8C%E4%BA%BA-%E7%A7%BB%E5%8A%A8%E7%9A%84%E6%95%8C%E4%BA%BA/1.png">
 
 
 <link rel="icon" href="/img/avatar.jpg">
@@ -150,7 +149,7 @@
     <li>
         <div class="all active" data-rel="全部文章">全部文章
             
-                <small>(259)</small>
+                <small>(264)</small>
             
         </div>
     </li>
@@ -301,7 +300,7 @@
         <div data-rel="Unity">
             <i class="fold iconfont icon-right"></i>
             Unity
-            <small>(57)</small>
+            <small>(62)</small>
         </div>
         
             <ul class="sub hide">
@@ -322,7 +321,7 @@
         <div data-rel="Unity&lt;---&gt;Unity入门实践项目">
             
             Unity入门实践项目
-            <small>(21)</small>
+            <small>(26)</small>
         </div>
         
     </li>
@@ -456,8 +455,8 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="259">
-<input type="hidden" id="yelog_site_word_count" value="438.1k">
+<input type="hidden" id="yelog_site_posts_number" value="264">
+<input type="hidden" id="yelog_site_word_count" value="442.3k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -708,6 +707,51 @@
 
     
     <nav id="title-list-nav">
+        
+        
+        <a  class="全部文章 Unity Unity入门实践项目 "
+           href="/2024/02/27/Unity/02.Unity%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/26.%E6%95%8C%E4%BA%BA-%E7%A7%BB%E5%8A%A8%E7%9A%84%E6%95%8C%E4%BA%BA/"
+           data-tag="实践项目,Unity,Unity入门"
+           data-author="" >
+            <span class="post-title" title="26.移动的敌人">26.移动的敌人</span>
+            <span class="post-date" title="2024-02-27 18:39:05">2024/02/27</span>
+        </a>
+        
+        
+        <a  class="全部文章 Unity Unity入门实践项目 "
+           href="/2024/02/27/Unity/02.Unity%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/25.%E6%95%8C%E4%BA%BA-%E5%9B%BA%E5%AE%9A%E4%B8%8D%E5%8A%A8%E7%9A%84%E6%95%8C%E4%BA%BA/"
+           data-tag="实践项目,Unity,Unity入门"
+           data-author="" >
+            <span class="post-title" title="25.不动的敌人">25.不动的敌人</span>
+            <span class="post-date" title="2024-02-27 18:37:34">2024/02/27</span>
+        </a>
+        
+        
+        <a  class="全部文章 Unity Unity入门实践项目 "
+           href="/2024/02/27/Unity/02.Unity%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/24.%E7%8E%A9%E5%AE%B6-%E5%8F%AF%E5%87%BB%E6%AF%81%E7%9A%84%E7%AE%B1%E5%AD%90/"
+           data-tag="实践项目,Unity,Unity入门"
+           data-author="" >
+            <span class="post-title" title="24.箱子">24.箱子</span>
+            <span class="post-date" title="2024-02-27 18:32:05">2024/02/27</span>
+        </a>
+        
+        
+        <a  class="全部文章 Unity Unity入门实践项目 "
+           href="/2024/02/27/Unity/02.Unity%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/23.%E7%8E%A9%E5%AE%B6-%E5%B1%9E%E6%80%A7%E5%A5%96%E5%8A%B1%E5%AF%B9%E8%B1%A1/"
+           data-tag="实践项目,Unity,Unity入门"
+           data-author="" >
+            <span class="post-title" title="23.属性奖励">23.属性奖励</span>
+            <span class="post-date" title="2024-02-27 18:25:49">2024/02/27</span>
+        </a>
+        
+        
+        <a  class="全部文章 Unity Unity入门实践项目 "
+           href="/2024/02/27/Unity/02.Unity%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/22.%E7%8E%A9%E5%AE%B6-%E6%AD%A6%E5%99%A8%E5%A5%96%E5%8A%B1%E5%AF%B9%E8%B1%A1%E5%92%8C%E8%8E%B7%E5%8F%96%E7%89%B9%E6%95%88/"
+           data-tag="实践项目,Unity,Unity入门"
+           data-author="" >
+            <span class="post-title" title="22.武器奖励">22.武器奖励</span>
+            <span class="post-date" title="2024-02-27 18:12:43">2024/02/27</span>
+        </a>
         
         
         <a  class="全部文章 Unity Unity入门实践项目 "
@@ -1009,7 +1053,7 @@
         
         <a  class="全部文章 UI系统 GUI实践项目 "
            href="/2024/02/27/UI%E7%B3%BB%E7%BB%9F/02.GUI%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/1.%E5%BF%85%E5%A4%87%E7%9F%A5%E8%AF%86%E7%82%B9-%E7%BC%96%E8%BE%91%E6%A8%A1%E5%BC%8F%E4%B8%8B%E8%AE%A9%E6%8C%87%E5%AE%9A%E4%BB%A3%E7%A0%81%E8%BF%90%E8%A1%8C/"
-           data-tag="实践项目,必备知识点,反射和特性,UI系统,GUI"
+           data-tag="实践项目,必备知识点,UI系统,GUI,反射和特性"
            data-author="" >
             <span class="post-title" title="1.编辑模式下让指定代码运行">1.编辑模式下让指定代码运行</span>
             <span class="post-date" title="2024-02-27 11:18:43">2024/02/27</span>
@@ -1504,7 +1548,7 @@
         
         <a  class="全部文章 Unity Unity入门基础知识 "
            href="/2024/02/24/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/11.Unity%E8%84%9A%E6%9C%AC%E5%9F%BA%E7%A1%80-Inspector%E7%AA%97%E5%8F%A3%E5%8F%AF%E7%BC%96%E8%BE%91%E7%9A%84%E5%8F%98%E9%87%8F/"
-           data-tag="反射和特性,基础知识,Unity,Unity入门,Unity脚本基础"
+           data-tag="基础知识,反射和特性,Unity,Unity入门,Unity脚本基础"
            data-author="" >
             <span class="post-title" title="11.Inspector窗口可编辑的变量">11.Inspector窗口可编辑的变量</span>
             <span class="post-date" title="2024-02-24 12:38:36">2024/02/24</span>
@@ -1540,7 +1584,7 @@
         
         <a  class="全部文章 Unity Unity入门基础知识 "
            href="/2024/02/24/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/7.Unity%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86-%E5%8F%8D%E5%B0%84%E6%9C%BA%E5%88%B6%E5%92%8C%E6%B8%B8%E6%88%8F%E5%9C%BA%E6%99%AF/"
-           data-tag="反射和特性,基础知识,Unity,Unity入门,Unity工作原理"
+           data-tag="基础知识,反射和特性,Unity,Unity入门,Unity工作原理"
            data-author="" >
             <span class="post-title" title="7.反射机制和游戏场景">7.反射机制和游戏场景</span>
             <span class="post-date" title="2024-02-24 10:09:09">2024/02/24</span>
