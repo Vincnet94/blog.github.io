@@ -4,6 +4,254 @@
   
     
     <entry>
+      <title>21.武器和子弹</title>
+      <link href="/2024/02/27/Unity/02.Unity%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/21.%E7%8E%A9%E5%AE%B6-%E6%AD%A6%E5%99%A8%E5%AF%B9%E8%B1%A1%E5%92%8C%E5%AD%90%E5%BC%B9%E5%AF%B9%E8%B1%A1/"/>
+      <url>/2024/02/27/Unity/02.Unity%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/21.%E7%8E%A9%E5%AE%B6-%E6%AD%A6%E5%99%A8%E5%AF%B9%E8%B1%A1%E5%92%8C%E5%AD%90%E5%BC%B9%E5%AF%B9%E8%B1%A1/</url>
+      
+        <content type="html"><![CDATA[<h1 id="21-玩家-武器对象和子弹对象"><a href="#21-玩家-武器对象和子弹对象" class="headerlink" title="21.玩家-武器对象和子弹对象"></a>21.玩家-武器对象和子弹对象</h1><hr><h2 id="21-1-知识点"><a href="#21-1-知识点" class="headerlink" title="21.1 知识点"></a>21.1 知识点</h2><h3 id="查看武器对象和子弹对象类图"><a href="#查看武器对象和子弹对象类图" class="headerlink" title="查看武器对象和子弹对象类图"></a>查看武器对象和子弹对象类图</h3><p><img src="/../../../images/Unity/02.Unity%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/21.%E7%8E%A9%E5%AE%B6-%E6%AD%A6%E5%99%A8%E5%AF%B9%E8%B1%A1%E5%92%8C%E5%AD%90%E5%BC%B9%E5%AF%B9%E8%B1%A1/1.png"></p><h3 id="创建武器对象脚本，声明必要的对象和开火逻辑"><a href="#创建武器对象脚本，声明必要的对象和开火逻辑" class="headerlink" title="创建武器对象脚本，声明必要的对象和开火逻辑"></a>创建武器对象脚本，声明必要的对象和开火逻辑</h3><pre><code class="csharp">// 武器对象public class WeaponObj : MonoBehaviour&#123;    // 用于实例化的子弹对象    public GameObject bullet;    // 外部决定到底有几个发射位置    public Transform[] shootPos;    // 武器的拥有者    public TankBaseObj fatherObj;    // 设置拥有者    public void SetFather(TankBaseObj obj)    &#123;        fatherObj = obj;    &#125;    // 开火逻辑    public void Fire()    &#123;        // 根据位置创建对应个子弹        for (int i = 0; i &lt; shootPos.Length; i++)        &#123;            // 创建子弹预设体            GameObject obj = Instantiate(bullet, shootPos[i].position, shootPos[i].rotation);            // 控制子弹做什么            BulletObj bulletObj = obj.GetComponent&lt;BulletObj&gt;();            bulletObj.SetFather(fatherObj);        &#125;    &#125;&#125;</code></pre><h3 id="在玩家坦克类脚本中，添加武器和调用武器的开火方法"><a href="#在玩家坦克类脚本中，添加武器和调用武器的开火方法" class="headerlink" title="在玩家坦克类脚本中，添加武器和调用武器的开火方法"></a>在玩家坦克类脚本中，添加武器和调用武器的开火方法</h3><pre><code class="csharp">// 当前装备的武器public WeaponObj nowWeapon;// 重写父类中的行为，玩家可能会存在特殊处理public override void Fire()&#123;    if (nowWeapon != null)        nowWeapon.Fire();&#125;</code></pre><h3 id="创建子弹对象脚本和相关变量，让子弹实时移动，把子弹对象脚本添加到子弹预制体上"><a href="#创建子弹对象脚本和相关变量，让子弹实时移动，把子弹对象脚本添加到子弹预制体上" class="headerlink" title="创建子弹对象脚本和相关变量，让子弹实时移动，把子弹对象脚本添加到子弹预制体上"></a>创建子弹对象脚本和相关变量，让子弹实时移动，把子弹对象脚本添加到子弹预制体上</h3><pre><code class="csharp">// 子弹对象public class BulletObj : MonoBehaviour&#123;    // 移动速度    public float moveSpeed = 50;    // 谁发射的我    public TankBaseObj fatherObj;    // 特效对象    public GameObject effObj;    void Update()    &#123;        // 相对于自己的面朝向移动        this.transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime);    &#125;&#125;</code></pre><h3 id="给子弹预制体添加刚体和碰撞体，碰撞体做成触发器"><a href="#给子弹预制体添加刚体和碰撞体，碰撞体做成触发器" class="headerlink" title="给子弹预制体添加刚体和碰撞体，碰撞体做成触发器"></a>给子弹预制体添加刚体和碰撞体，碰撞体做成触发器</h3><p><img src="/../../../images/Unity/02.Unity%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/21.%E7%8E%A9%E5%AE%B6-%E6%AD%A6%E5%99%A8%E5%AF%B9%E8%B1%A1%E5%92%8C%E5%AD%90%E5%BC%B9%E5%AF%B9%E8%B1%A1/2.png"></p><h3 id="给子弹添加碰撞触发检测函数，在触发某些条件的时候销毁子弹生成特效，根据设置看时候播放音效，并且也添加一个设置是谁发射子弹对象方法，在武器中调用，通过武器做中间人间接知道发射子弹的对象是谁"><a href="#给子弹添加碰撞触发检测函数，在触发某些条件的时候销毁子弹生成特效，根据设置看时候播放音效，并且也添加一个设置是谁发射子弹对象方法，在武器中调用，通过武器做中间人间接知道发射子弹的对象是谁" class="headerlink" title="给子弹添加碰撞触发检测函数，在触发某些条件的时候销毁子弹生成特效，根据设置看时候播放音效，并且也添加一个设置是谁发射子弹对象方法，在武器中调用，通过武器做中间人间接知道发射子弹的对象是谁"></a>给子弹添加碰撞触发检测函数，在触发某些条件的时候销毁子弹生成特效，根据设置看时候播放音效，并且也添加一个设置是谁发射子弹对象方法，在武器中调用，通过武器做中间人间接知道发射子弹的对象是谁</h3><pre><code class="csharp">private void OnTriggerEnter(Collider other)&#123;    // 判断碰撞到的对象是否需要处理    if (other.CompareTag(&quot;Cube&quot;) ||         (other.CompareTag(&quot;Player&quot;) &amp;&amp; fatherObj.CompareTag(&quot;Monster&quot;)) ||         (other.CompareTag(&quot;Monster&quot;) &amp;&amp; fatherObj.CompareTag(&quot;Player&quot;)))    &#123;        // 判断是否受伤        TankBaseObj obj = other.GetComponent&lt;TankBaseObj&gt;();        if (obj != null)            obj.Wound(fatherObj);        // 创建爆炸特效        if (effObj != null)        &#123;            GameObject eff = Instantiate(effObj, transform.position, transform.rotation);            AudioSource audioS = eff.GetComponent&lt;AudioSource&gt;();            audioS.volume = GameDataMgr.Instance.musicData.soundValue;            audioS.mute = !GameDataMgr.Instance.musicData.isOpenSound;        &#125;        Destroy(gameObject);    &#125;&#125;// 设置拥有者public void SetFather(TankBaseObj obj)&#123;    fatherObj = obj;&#125;</code></pre><h3 id="在武器类中，添加开火时设置子弹拥有者的逻辑"><a href="#在武器类中，添加开火时设置子弹拥有者的逻辑" class="headerlink" title="在武器类中，添加开火时设置子弹拥有者的逻辑"></a>在武器类中，添加开火时设置子弹拥有者的逻辑</h3><pre><code class="csharp">//开火逻辑public void Fire()&#123;    //根据位置 创建对应个子弹 即可    for (int i = 0; i &lt; shootPos.Length; i++)    &#123;        //创建子弹预设体        GameObject obj = Instantiate(bullet, shootPos[i].position, shootPos[i].rotation);        //控制子弹做什么        BulletObj bulletObj = obj.GetComponent&lt;BulletObj&gt;();        bulletObj.SetFather(fatherObj);    &#125;&#125;</code></pre><h3 id="在玩家坦克脚本，给玩家添加切换武器逻辑"><a href="#在玩家坦克脚本，给玩家添加切换武器逻辑" class="headerlink" title="在玩家坦克脚本，给玩家添加切换武器逻辑"></a>在玩家坦克脚本，给玩家添加切换武器逻辑</h3><pre><code class="csharp">/// &lt;summary&gt;/// 切换武器/// &lt;/summary&gt;/// &lt;param name=&quot;obj&quot;&gt;&lt;/param&gt;public void ChangeWeapon(GameObject weapon)&#123;    //删除当前拥有的武器    if(nowWeapon != null)    &#123;        Destroy(nowWeapon.gameObject);        nowWeapon = null;    &#125;    //切换武器    //创建出武器 设置它的父对象 第三个参数传false保证缩放没什么问题    GameObject weaponObj = Instantiate(weapon, weaponPos, false);    //获得武器脚本    nowWeapon = weaponObj.GetComponent&lt;WeaponObj&gt;();    //设置武器拥有者    nowWeapon.SetFather(this);&#125;</code></pre><h3 id="注意玩家坦克的刚体要勾选锁定旋转和锁定y轴位置，不然会和立方体碰撞产生扭矩力的作用"><a href="#注意玩家坦克的刚体要勾选锁定旋转和锁定y轴位置，不然会和立方体碰撞产生扭矩力的作用" class="headerlink" title="注意玩家坦克的刚体要勾选锁定旋转和锁定y轴位置，不然会和立方体碰撞产生扭矩力的作用"></a>注意玩家坦克的刚体要勾选锁定旋转和锁定y轴位置，不然会和立方体碰撞产生扭矩力的作用</h3><p><img src="/../../../images/Unity/02.Unity%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/21.%E7%8E%A9%E5%AE%B6-%E6%AD%A6%E5%99%A8%E5%AF%B9%E8%B1%A1%E5%92%8C%E5%AD%90%E5%BC%B9%E5%AF%B9%E8%B1%A1/3.png"></p><hr><h2 id="21-2-知识点代码"><a href="#21-2-知识点代码" class="headerlink" title="21.2 知识点代码"></a>21.2 知识点代码</h2><h3 id="WeaponObj"><a href="#WeaponObj" class="headerlink" title="WeaponObj"></a>WeaponObj</h3><pre><code class="csharp">using System.Collections;using System.Collections.Generic;using UnityEngine;//武器对象public class WeaponObj : MonoBehaviour&#123;    //用于实例化的子弹对象    public GameObject bullet;    //外部决定到底有几个发射位置    public Transform[] shootPos;    //武器的拥有者    public TankBaseObj fatherObj;        //设置拥有者    public void SetFather(TankBaseObj obj)    &#123;        fatherObj = obj;    &#125;    //开火逻辑    public void Fire()    &#123;        //根据位置 创建对应个子弹 即可        for (int i = 0; i &lt; shootPos.Length; i++)        &#123;            //创建子弹预设体            GameObject obj = Instantiate(bullet, shootPos[i].position, shootPos[i].rotation);            //控制子弹做什么            BulletObj bulletObj = obj.GetComponent&lt;BulletObj&gt;();            bulletObj.SetFather(fatherObj);        &#125;    &#125;&#125;</code></pre><h3 id="BulletObj"><a href="#BulletObj" class="headerlink" title="BulletObj"></a>BulletObj</h3><pre><code class="csharp">using System.Collections;using System.Collections.Generic;using UnityEngine;//子弹对象public class BulletObj : MonoBehaviour&#123;    //移动速度    public float moveSpeed = 50;    //谁发射的我    public TankBaseObj fatherObj;    //特效对象    public GameObject effObj;    void Update()    &#123;        //相对于自己的面朝向移动 第二个参数不填默认是自己的坐标系        this.transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime);    &#125;    //和别人碰撞触发时    private void OnTriggerEnter(Collider other)    &#123;        //子弹 设计到立方体 会爆炸         //同样 子弹设计到 不同阵营的对象也应该爆炸        if( other.CompareTag(&quot;Cube&quot;) ||            other.CompareTag(&quot;Player&quot;) &amp;&amp; fatherObj.CompareTag(&quot;Monster&quot;) ||            other.CompareTag(&quot;Monster&quot;) &amp;&amp; fatherObj.CompareTag(&quot;Player&quot;))        &#123;            //判断是否受伤            //得到碰撞到的对象身上 是否有坦克相关脚本 我们用里氏替换原则            //通过父类去获取            TankBaseObj obj = other.GetComponent&lt;TankBaseObj&gt;();            //判断 对象上 是否挂载了 坦克相关脚本             if (obj != null)                obj.Wound(fatherObj);            //当子弹销毁时 可以创建一个 爆炸特效            if(effObj != null)            &#123;                //创建爆炸特效                GameObject eff = Instantiate(effObj, this.transform.position, this.transform.rotation);                //改音效的音量和开启状态                AudioSource audioS = eff.GetComponent&lt;AudioSource&gt;();                //设置大小                audioS.volume = GameDataMgr.Instance.musicData.soundValue;                //设置是否开启                audioS.mute = !GameDataMgr.Instance.musicData.isOpenSound;            &#125;            Destroy(this.gameObject);        &#125;    &#125;    //设置拥有者    public void SetFather(TankBaseObj obj)    &#123;        fatherObj = obj;    &#125;&#125;</code></pre><hr>]]></content>
+      
+      
+      <categories>
+          
+          <category> Unity </category>
+          
+          <category> Unity入门实践项目 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 实践项目 </tag>
+            
+            <tag> Unity </tag>
+            
+            <tag> Unity入门 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>20.小地图制作</title>
+      <link href="/2024/02/27/Unity/02.Unity%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/20.%E7%8E%A9%E5%AE%B6-%E5%B0%8F%E5%9C%B0%E5%9B%BE%E5%88%B6%E4%BD%9C/"/>
+      <url>/2024/02/27/Unity/02.Unity%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/20.%E7%8E%A9%E5%AE%B6-%E5%B0%8F%E5%9C%B0%E5%9B%BE%E5%88%B6%E4%BD%9C/</url>
+      
+        <content type="html"><![CDATA[<h1 id="20-玩家-小地图制作"><a href="#20-玩家-小地图制作" class="headerlink" title="20.玩家-小地图制作"></a>20.玩家-小地图制作</h1><hr><h2 id="20-1-知识点"><a href="#20-1-知识点" class="headerlink" title="20.1 知识点"></a>20.1 知识点</h2><h3 id="创建一个新的摄像机，移除上面的音频收听组件"><a href="#创建一个新的摄像机，移除上面的音频收听组件" class="headerlink" title="创建一个新的摄像机，移除上面的音频收听组件"></a>创建一个新的摄像机，移除上面的音频收听组件</h3><p><img src="/../../../images/Unity/02.Unity%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/20.%E7%8E%A9%E5%AE%B6-%E5%B0%8F%E5%9C%B0%E5%9B%BE%E5%88%B6%E4%BD%9C/1.png"></p><h3 id="创建一个RenderTexture渲染器纹理"><a href="#创建一个RenderTexture渲染器纹理" class="headerlink" title="创建一个RenderTexture渲染器纹理"></a>创建一个RenderTexture渲染器纹理</h3><p><img src="/../../../images/Unity/02.Unity%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/20.%E7%8E%A9%E5%AE%B6-%E5%B0%8F%E5%9C%B0%E5%9B%BE%E5%88%B6%E4%BD%9C/2.png"><br><img src="/../../../images/Unity/02.Unity%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/20.%E7%8E%A9%E5%AE%B6-%E5%B0%8F%E5%9C%B0%E5%9B%BE%E5%88%B6%E4%BD%9C/3.png"></p><h3 id="托给摄像机上的TargetTexture目标纹理选项上，这样摄像机看到的内容就会出现在创建的RenderTexture渲染器纹理上"><a href="#托给摄像机上的TargetTexture目标纹理选项上，这样摄像机看到的内容就会出现在创建的RenderTexture渲染器纹理上" class="headerlink" title="托给摄像机上的TargetTexture目标纹理选项上，这样摄像机看到的内容就会出现在创建的RenderTexture渲染器纹理上"></a>托给摄像机上的TargetTexture目标纹理选项上，这样摄像机看到的内容就会出现在创建的RenderTexture渲染器纹理上</h3><p><img src="/../../../images/Unity/02.Unity%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/20.%E7%8E%A9%E5%AE%B6-%E5%B0%8F%E5%9C%B0%E5%9B%BE%E5%88%B6%E4%BD%9C/4.png"><br><img src="/../../../images/Unity/02.Unity%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/20.%E7%8E%A9%E5%AE%B6-%E5%B0%8F%E5%9C%B0%E5%9B%BE%E5%88%B6%E4%BD%9C/5.png"></p><h3 id="再把这张图拖到游戏面板的小地图图片控件上，修改摄像机位置到俯视，就能看到小地图视角的摄像机的信息了"><a href="#再把这张图拖到游戏面板的小地图图片控件上，修改摄像机位置到俯视，就能看到小地图视角的摄像机的信息了" class="headerlink" title="再把这张图拖到游戏面板的小地图图片控件上，修改摄像机位置到俯视，就能看到小地图视角的摄像机的信息了"></a>再把这张图拖到游戏面板的小地图图片控件上，修改摄像机位置到俯视，就能看到小地图视角的摄像机的信息了</h3><p><img src="/../../../images/Unity/02.Unity%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/20.%E7%8E%A9%E5%AE%B6-%E5%B0%8F%E5%9C%B0%E5%9B%BE%E5%88%B6%E4%BD%9C/6.png"><br><img src="/../../../images/Unity/02.Unity%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/20.%E7%8E%A9%E5%AE%B6-%E5%B0%8F%E5%9C%B0%E5%9B%BE%E5%88%B6%E4%BD%9C/7.png"></p><h3 id="想让小地图摄像机跟着玩家坦克移动，创建小地图摄像机移动脚本，挂载到小地图摄像机上，拖拽玩家坦克对象当做小地图的目标。不直接拖进玩家坦克游戏对象上是因为只有小地图摄像机会跟着旋转"><a href="#想让小地图摄像机跟着玩家坦克移动，创建小地图摄像机移动脚本，挂载到小地图摄像机上，拖拽玩家坦克对象当做小地图的目标。不直接拖进玩家坦克游戏对象上是因为只有小地图摄像机会跟着旋转" class="headerlink" title="想让小地图摄像机跟着玩家坦克移动，创建小地图摄像机移动脚本，挂载到小地图摄像机上，拖拽玩家坦克对象当做小地图的目标。不直接拖进玩家坦克游戏对象上是因为只有小地图摄像机会跟着旋转"></a>想让小地图摄像机跟着玩家坦克移动，创建小地图摄像机移动脚本，挂载到小地图摄像机上，拖拽玩家坦克对象当做小地图的目标。不直接拖进玩家坦克游戏对象上是因为只有小地图摄像机会跟着旋转</h3><pre><code class="csharp">using UnityEngine;public class CameraMove : MonoBehaviour&#123;    // 摄像机看向的目标    public Transform targetPlayer;    // 摄像机高度    public float H = 10;    // 摄像机将要被设置的位置    private Vector3 pos;    // 摄像机一般在LateUpdate处理    void LateUpdate()    &#123;        if (targetPlayer == null)            return;        // x和z和玩家一样        pos.x = targetPlayer.position.x;        pos.z = targetPlayer.position.z;        // 通过外部调整摄像机高度        pos.y = H;        this.transform.position = pos;    &#125;&#125;</code></pre><hr><h2 id="20-2-知识点代码"><a href="#20-2-知识点代码" class="headerlink" title="20.2 知识点代码"></a>20.2 知识点代码</h2><pre><code class="csharp">using System.Collections;using System.Collections.Generic;using UnityEngine;//小地图摄像机移动脚本public class CameraMove : MonoBehaviour&#123;    //摄像机 看向的目标    public Transform targetPlayer;    //摄像机高度    public float H = 10;    //摄像机将要被设置的位置    private Vector3 pos;    //摄像机一般在LateUpdate处理    void LateUpdate()    &#123;        if (targetPlayer == null)            return;        //x和z和玩家一样        pos.x = targetPlayer.position.x;        pos.z = targetPlayer.position.z;        //通过外部调整摄像机 高度        pos.y = H;        this.transform.position = pos;    &#125;&#125;</code></pre><hr>]]></content>
+      
+      
+      <categories>
+          
+          <category> Unity </category>
+          
+          <category> Unity入门实践项目 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 实践项目 </tag>
+            
+            <tag> Unity </tag>
+            
+            <tag> Unity入门 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>19.玩家坦克</title>
+      <link href="/2024/02/27/Unity/02.Unity%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/19.%E7%8E%A9%E5%AE%B6-%E5%9F%BA%E7%A1%80%E7%A7%BB%E5%8A%A8%E6%97%8B%E8%BD%AC%E6%91%84%E5%83%8F%E6%9C%BA%E8%B7%9F%E9%9A%8F%E7%AD%89/"/>
+      <url>/2024/02/27/Unity/02.Unity%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/19.%E7%8E%A9%E5%AE%B6-%E5%9F%BA%E7%A1%80%E7%A7%BB%E5%8A%A8%E6%97%8B%E8%BD%AC%E6%91%84%E5%83%8F%E6%9C%BA%E8%B7%9F%E9%9A%8F%E7%AD%89/</url>
+      
+        <content type="html"><![CDATA[<h1 id="19-玩家-基础移动旋转摄像机跟随等"><a href="#19-玩家-基础移动旋转摄像机跟随等" class="headerlink" title="19.玩家-基础移动旋转摄像机跟随等"></a>19.玩家-基础移动旋转摄像机跟随等</h1><hr><h2 id="19-1-知识点"><a href="#19-1-知识点" class="headerlink" title="19.1 知识点"></a>19.1 知识点</h2><h3 id="拖一个玩家坦克预制体进游戏场景，查看玩家坦克预制体构成"><a href="#拖一个玩家坦克预制体进游戏场景，查看玩家坦克预制体构成" class="headerlink" title="拖一个玩家坦克预制体进游戏场景，查看玩家坦克预制体构成"></a>拖一个玩家坦克预制体进游戏场景，查看玩家坦克预制体构成</h3><p><img src="/../../../images/Unity/02.Unity%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/19.%E7%8E%A9%E5%AE%B6-%E5%9F%BA%E7%A1%80%E7%A7%BB%E5%8A%A8%E6%97%8B%E8%BD%AC%E6%91%84%E5%83%8F%E6%9C%BA%E8%B7%9F%E9%9A%8F%E7%AD%89/1.png"></p><ul><li>玩家坦克预制体构成如下：<ul><li>主体模型：包含坦克的外观和碰撞体</li><li>炮塔：可以旋转的部分，用于控制炮管方向</li><li>炮管：用于发射子弹的部分</li></ul></li></ul><h3 id="明确玩家坦克要做的事"><a href="#明确玩家坦克要做的事" class="headerlink" title="明确玩家坦克要做的事"></a>明确玩家坦克要做的事</h3><p><img src="/../../../images/Unity/02.Unity%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/19.%E7%8E%A9%E5%AE%B6-%E5%9F%BA%E7%A1%80%E7%A7%BB%E5%8A%A8%E6%97%8B%E8%BD%AC%E6%91%84%E5%83%8F%E6%9C%BA%E8%B7%9F%E9%9A%8F%E7%AD%89/2.png"></p><ol><li>控制前进后退、旋转</li><li>控制炮台旋转</li><li>开火</li><li>受伤时更新血条</li></ol><h3 id="创建玩家坦克脚本，继承坦克基类，在Update实现基本的移动旋转开火相关，关联预制体上的物体到变量上"><a href="#创建玩家坦克脚本，继承坦克基类，在Update实现基本的移动旋转开火相关，关联预制体上的物体到变量上" class="headerlink" title="创建玩家坦克脚本，继承坦克基类，在Update实现基本的移动旋转开火相关，关联预制体上的物体到变量上"></a>创建玩家坦克脚本，继承坦克基类，在Update实现基本的移动旋转开火相关，关联预制体上的物体到变量上</h3><pre><code class="csharp">//玩家坦克public class PlayerObj : TankBaseObj&#123;    // Update is called once per frame    void Update()    &#123;        //1. ws键 控制 前进后退        this.transform.Translate(Input.GetAxis(&quot;Vertical&quot;) * Vector3.forward * moveSpeed * Time.deltaTime);        //2. ad键 控制 旋转        this.transform.Rotate(Input.GetAxis(&quot;Horizontal&quot;) * Vector3.up * roundSpeed * Time.deltaTime);        //3. 鼠标左右移动 控制 炮台旋转        tankHead.transform.Rotate(Input.GetAxis(&quot;Mouse X&quot;) * Vector3.up * headRoundSpeed * Time.deltaTime);        //4. 开火        if (Input.GetMouseButtonDown(0))        &#123;            Fire();        &#125;    &#125;&#125;</code></pre><h3 id="重写坦克基类的受伤函数，受伤时更新血条"><a href="#重写坦克基类的受伤函数，受伤时更新血条" class="headerlink" title="重写坦克基类的受伤函数，受伤时更新血条"></a>重写坦克基类的受伤函数，受伤时更新血条</h3><pre><code class="csharp">public override void Wound(TankBaseObj other)&#123;    base.Wound(other);    //更新主面板血条    GamePanel.Instance.UpdateHP(this.maxHp, this.hp);&#125;</code></pre><h3 id="把主摄像机拖拽到玩家坦克的炮台上"><a href="#把主摄像机拖拽到玩家坦克的炮台上" class="headerlink" title="把主摄像机拖拽到玩家坦克的炮台上"></a>把主摄像机拖拽到玩家坦克的炮台上</h3><p><img src="/../../../images/Unity/02.Unity%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/19.%E7%8E%A9%E5%AE%B6-%E5%9F%BA%E7%A1%80%E7%A7%BB%E5%8A%A8%E6%97%8B%E8%BD%AC%E6%91%84%E5%83%8F%E6%9C%BA%E8%B7%9F%E9%9A%8F%E7%AD%89/3.png"></p><p>这样炮台旋转时摄像机也会跟着动，确保玩家在炮塔转动时能够看到准确的目标方向。</p><hr><h2 id="19-2-知识点代码"><a href="#19-2-知识点代码" class="headerlink" title="19.2 知识点代码"></a>19.2 知识点代码</h2><pre><code class="csharp">using System.Collections;using System.Collections.Generic;using UnityEngine;//玩家坦克public class PlayerObj : TankBaseObj&#123;    //当前装备的武器    public WeaponObj nowWeapon;    //武器父对象位置    public Transform weaponPos;    // Update is called once per frame    void Update()    &#123;        //1.ws键 控制 前进后退        //知识点         //1.Transform位移        //2.Input 轴向输入检测        this.transform.Translate( Input.GetAxis(&quot;Vertical&quot;) * Vector3.forward * moveSpeed * Time.deltaTime);        //2.ad键 控制 旋转        //知识点        //1.Transform旋转        //2.Input 轴向输入检测        this.transform.Rotate( Input.GetAxis(&quot;Horizontal&quot;) * Vector3.up * roundSpeed * Time.deltaTime);        //3.鼠标左右移动 控制 炮台旋转        //1.Transform旋转        //2.Input 鼠标轴向输入检测        tankHead.transform.Rotate( Input.GetAxis(&quot;Mouse X&quot;) * Vector3.up * headRoundSpeed * Time.deltaTime);        //4.开火        //Input        if( Input.GetMouseButtonDown(0) )        &#123;            Fire();        &#125;    &#125;    //重写 父类中的 行为 玩家 可能会存在特殊处理    public override void Fire()    &#123;        if (nowWeapon != null)            nowWeapon.Fire();    &#125;    public override void Dead()    &#123;        //这里 不执行 父类的死亡 因为 玩家坦克 摄像机 是它的子对象 如果执行父类死亡        //会把玩家坦克从场景上移除 那么久间接的移除了摄像机        //base.Dead();        //应该处理 失败逻辑 显示失败面板 即可        Time.timeScale = 0;        LosePanel.Instance.ShowMe();    &#125;    public override void Wound(TankBaseObj other)    &#123;        base.Wound(other);        //更新主面板 血条        GamePanel.Instance.UpdateHP(this.maxHp, this.hp);    &#125;    /// &lt;summary&gt;    /// 切换武器    /// &lt;/summary&gt;    /// &lt;param name=&quot;obj&quot;&gt;&lt;/param&gt;    public void ChangeWeapon(GameObject weapon)    &#123;        //删除当前拥有的武器        if(nowWeapon != null)        &#123;            Destroy(nowWeapon.gameObject);            nowWeapon = null;        &#125;        //切换武器        //创建出武器 设置它的父对象 第三个参数传false保证缩放没什么问题        GameObject weaponObj = Instantiate(weapon, weaponPos, false);        //获得武器脚本        nowWeapon = weaponObj.GetComponent&lt;WeaponObj&gt;();        //设置武器拥有者        nowWeapon.SetFather(this);    &#125;&#125;</code></pre><hr>]]></content>
+      
+      
+      <categories>
+          
+          <category> Unity </category>
+          
+          <category> Unity入门实践项目 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 实践项目 </tag>
+            
+            <tag> Unity </tag>
+            
+            <tag> Unity入门 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>18.坦克基类</title>
+      <link href="/2024/02/27/Unity/02.Unity%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/18.%E6%B8%B8%E6%88%8F%E5%9C%BA%E6%99%AF-%E5%9D%A6%E5%85%8B%E5%9F%BA%E7%B1%BB/"/>
+      <url>/2024/02/27/Unity/02.Unity%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/18.%E6%B8%B8%E6%88%8F%E5%9C%BA%E6%99%AF-%E5%9D%A6%E5%85%8B%E5%9F%BA%E7%B1%BB/</url>
+      
+        <content type="html"><![CDATA[<h1 id="18-游戏场景-坦克基类"><a href="#18-游戏场景-坦克基类" class="headerlink" title="18.游戏场景-坦克基类"></a>18.游戏场景-坦克基类</h1><hr><h2 id="18-1-知识点"><a href="#18-1-知识点" class="headerlink" title="18.1 知识点"></a>18.1 知识点</h2><h3 id="明确坦克基类要实现的东西"><a href="#明确坦克基类要实现的东西" class="headerlink" title="明确坦克基类要实现的东西"></a>明确坦克基类要实现的东西</h3><p><img src="/../../../images/Unity/02.Unity%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/18.%E6%B8%B8%E6%88%8F%E5%9C%BA%E6%99%AF-%E5%9D%A6%E5%85%8B%E5%9F%BA%E7%B1%BB/1.png"></p><ol><li>攻击力、防御力、最大当前血量等属性</li><li>坦克炮台的位置信息</li><li>移动速度、旋转速度等参数</li><li>死亡特效相关信息</li></ol><h3 id="创建坦克基类脚本，继承坦克基类的最终坦克脚本是要挂载到对应坦克预制体上的，所以让坦克基类继承Monobehaviour，声明坦克基类抽象出来的共有成员变量，创建坦克基类抽象出来的共有方法，有些方法可以完全抽象，有些方法可以部分实现"><a href="#创建坦克基类脚本，继承坦克基类的最终坦克脚本是要挂载到对应坦克预制体上的，所以让坦克基类继承Monobehaviour，声明坦克基类抽象出来的共有成员变量，创建坦克基类抽象出来的共有方法，有些方法可以完全抽象，有些方法可以部分实现" class="headerlink" title="创建坦克基类脚本，继承坦克基类的最终坦克脚本是要挂载到对应坦克预制体上的，所以让坦克基类继承Monobehaviour，声明坦克基类抽象出来的共有成员变量，创建坦克基类抽象出来的共有方法，有些方法可以完全抽象，有些方法可以部分实现"></a>创建坦克基类脚本，继承坦克基类的最终坦克脚本是要挂载到对应坦克预制体上的，所以让坦克基类继承Monobehaviour，声明坦克基类抽象出来的共有成员变量，创建坦克基类抽象出来的共有方法，有些方法可以完全抽象，有些方法可以部分实现</h3><pre><code class="csharp">//坦克基类 抽象类public abstract class TankBaseObj : MonoBehaviour&#123;    //攻击力 防御力 最大当前血量相关    public int atk;    public int def;    public int maxHp;    public int hp;    //所有坦克都有炮台相关    public Transform tankHead;    //移动旋转速度相关    public float moveSpeed = 10;    public float roundSpeed = 100;    public float headRoundSpeed = 100;    //死亡特效 关联对应预设体 死亡的时候 动态创建出来 设置位置即可    public GameObject deadEff;    //开火抽象方法 子类重写开火行为即可    public abstract void Fire();    /// &lt;summary&gt;    /// 我被别人攻击 造成我自己受伤    /// &lt;/summary&gt;    public virtual void Wound(TankBaseObj other)    &#123;        int dmg = other.atk - this.def;        if (dmg &lt;= 0)            return;        //如果伤害大于0 就应该减血        this.hp -= dmg;        //判断 如果血量 &lt;= 0了 就应该死亡        if (this.hp &lt;= 0)        &#123;            this.hp = 0;            this.Dead();        &#125;    &#125;    /// &lt;summary&gt;    /// 死亡行为 当自己血量小于等于0时 就应该死亡    /// &lt;/summary&gt;    public virtual void Dead()    &#123;        //对象死亡 无非就是在场景上移除该对象        Destroy(this.gameObject);        //死亡的时候 可能所有坦克对象都应该播放一个死亡特效        if (deadEff != null)        &#123;            //实例化特效对象时 顺便设置位置和角度            GameObject effObj = Instantiate(deadEff, this.transform.position, this.transform.rotation);            //设置音效相关信息            AudioSource audioSource = effObj.GetComponent&lt;AudioSource&gt;();            //根据音效数据设置音效大小和是否播放            audioSource.volume = GameDataMgr.Instance.musicData.soundValue;            audioSource.mute = !GameDataMgr.Instance.musicData.isOpenSound;            //播放音效            audioSource.Play();        &#125;    &#125;&#125;</code></pre><hr><h2 id="18-2-知识点代码"><a href="#18-2-知识点代码" class="headerlink" title="18.2 知识点代码"></a>18.2 知识点代码</h2><pre><code class="csharp">using System.Collections;using System.Collections.Generic;using UnityEngine;//坦克基类 抽象类public abstract class TankBaseObj : MonoBehaviour&#123;    //攻击力 防御力 最大当前血量相关    public int atk;    public int def;    public int maxHp;    public int hp;    //所有坦克 都有炮台相关    public Transform tankHead;    //移动旋转速度相关    public float moveSpeed = 10;    public float roundSpeed = 100;    public float headRoundSpeed = 100;    //死亡特效 关联对应预设体 死亡的时候 动态创建出来 设置位置即可    public GameObject deadEff;    /// &lt;summary&gt;    /// 开火抽象方法 子类重写开火行为即可    /// &lt;/summary&gt;    public abstract void Fire();        /// &lt;summary&gt;    /// 我被别人攻击 造成我自己受伤 可以直接写了    /// &lt;/summary&gt;    /// &lt;param name=&quot;other&quot;&gt;&lt;/param&gt;    public virtual void Wound(TankBaseObj other)    &#123;        int dmg = other.atk - this.def;        if (dmg &lt;= 0)            return;        //如果上海大于0 就应该减血        this.hp -= dmg;        //判断 如果血量 &lt;=0了 就应该死亡        if(this.hp &lt;= 0)        &#123;            this.hp = 0;            this.Dead();        &#125;    &#125;    /// &lt;summary&gt;    /// 死亡行为 当自己血量小于等于0时 就应该死亡    /// &lt;/summary&gt;    public virtual void Dead()    &#123;        //对象死亡 无非就是在场景上移除该对象        Destroy(this.gameObject);        //死亡的时候 可能所有坦克 对象 都应该播放一个对象的特效        if(deadEff != null)        &#123;            //就是实例化对象时  顺便 把位置和角度 都一起设置了            GameObject effObj = Instantiate(deadEff, this.transform.position, this.transform.rotation);            //由于该特效对象身上 直接关联了音效 所以我们可以在此处 把音效播放相关也控制了            AudioSource audioSource = effObj.GetComponent&lt;AudioSource&gt;();            //根据音乐数据 设置 音效 大小 和是否 播放            //设置音效大小            audioSource.volume = GameDataMgr.Instance.musicData.soundValue;            //音效是否播放            audioSource.mute = !GameDataMgr.Instance.musicData.isOpenSound;            //避免没有勾选 Play on Awake 执行一次音效            audioSource.Play();        &#125;    &#125;&#125;</code></pre><hr>]]></content>
+      
+      
+      <categories>
+          
+          <category> Unity </category>
+          
+          <category> Unity入门实践项目 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 实践项目 </tag>
+            
+            <tag> Unity </tag>
+            
+            <tag> Unity入门 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>17.游戏退出界面</title>
+      <link href="/2024/02/27/Unity/02.Unity%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/17.%E6%B8%B8%E6%88%8F%E5%9C%BA%E6%99%AF-%E6%B8%B8%E6%88%8F%E9%80%80%E5%87%BA%E7%95%8C%E9%9D%A2/"/>
+      <url>/2024/02/27/Unity/02.Unity%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/17.%E6%B8%B8%E6%88%8F%E5%9C%BA%E6%99%AF-%E6%B8%B8%E6%88%8F%E9%80%80%E5%87%BA%E7%95%8C%E9%9D%A2/</url>
+      
+        <content type="html"><![CDATA[<h1 id="17-游戏场景-游戏退出界面"><a href="#17-游戏场景-游戏退出界面" class="headerlink" title="17.游戏场景-游戏退出界面"></a>17.游戏场景-游戏退出界面</h1><hr><h2 id="17-1-知识点"><a href="#17-1-知识点" class="headerlink" title="17.1 知识点"></a>17.1 知识点</h2><h3 id="游戏退出界面要做的事"><a href="#游戏退出界面要做的事" class="headerlink" title="游戏退出界面要做的事"></a>游戏退出界面要做的事</h3><p><img src="/../../../images/Unity/02.Unity%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/17.%E6%B8%B8%E6%88%8F%E5%9C%BA%E6%99%AF-%E6%B8%B8%E6%88%8F%E9%80%80%E5%87%BA%E7%95%8C%E9%9D%A2/1.png"></p><p>游戏退出界面应该提供以下功能：</p><ol><li>提供一个按钮用于退出游戏，点击该按钮后返回到主界面。</li><li>提供一个按钮用于继续游戏，点击该按钮后关闭游戏退出界面，继续游戏。</li><li>提供一个按钮用于关闭游戏退出界面，点击该按钮后关闭游戏退出界面。</li></ol><h3 id="创建游戏退出界面空物体，拼接游戏退出界面"><a href="#创建游戏退出界面空物体，拼接游戏退出界面" class="headerlink" title="创建游戏退出界面空物体，拼接游戏退出界面"></a>创建游戏退出界面空物体，拼接游戏退出界面</h3><p><img src="/../../../images/Unity/02.Unity%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/17.%E6%B8%B8%E6%88%8F%E5%9C%BA%E6%99%AF-%E6%B8%B8%E6%88%8F%E9%80%80%E5%87%BA%E7%95%8C%E9%9D%A2/2.png"><br><img src="/../../../images/Unity/02.Unity%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/17.%E6%B8%B8%E6%88%8F%E5%9C%BA%E6%99%AF-%E6%B8%B8%E6%88%8F%E9%80%80%E5%87%BA%E7%95%8C%E9%9D%A2/3.png"></p><h3 id="创建游戏退出界面脚本，挂载到游戏退出界面空物体上"><a href="#创建游戏退出界面脚本，挂载到游戏退出界面空物体上" class="headerlink" title="创建游戏退出界面脚本，挂载到游戏退出界面空物体上"></a>创建游戏退出界面脚本，挂载到游戏退出界面空物体上</h3><pre><code class="csharp">//游戏退出面板public class QuitPanel : BasePanel&lt;QuitPanel&gt;&#123;    //关联组件    public CustomGUIButton btnQuit;    public CustomGUIButton btnGoOn;    public CustomGUIButton btnClose;    // Start is called before the first frame update    void Start()    &#123;        //添加的监听        btnQuit.clickEvent += () =&gt;        &#123;            //回到主界面            SceneManager.LoadScene(&quot;BeginScene&quot;);        &#125;;        //继续游戏 和 叉叉 都是 关闭当前面板        btnGoOn.clickEvent += () =&gt;        &#123;            HideMe();        &#125;;        btnClose.clickEvent += () =&gt;        &#123;            HideMe();        &#125;;        //一来就隐藏自己        HideMe();    &#125;&#125;</code></pre><h3 id="游戏主面板中，点击设置面板或退出面板时暂停游戏"><a href="#游戏主面板中，点击设置面板或退出面板时暂停游戏" class="headerlink" title="游戏主面板中，点击设置面板或退出面板时暂停游戏"></a>游戏主面板中，点击设置面板或退出面板时暂停游戏</h3><pre><code class="csharp">//监听界面上的一些控件操作事件btnSetting.clickEvent += () =&gt;&#123;    //目前没有设置面板 暂时空着    //打开设置面板    SettingPanel.Instance.ShowMe();    //改变时间 缩放值 为0就是时间停止    Time.timeScale = 0;&#125;;btnQuit.clickEvent += () =&gt;&#123;    //返回我们的游戏界面    //弹出一个确定退出的按钮     QuitPanel.Instance.ShowMe();    //改变时间 缩放值 为0就是时间停止    Time.timeScale = 0;&#125;;</code></pre><h3 id="游戏退出界面重写隐藏自己方法，让时间流速恢复正常"><a href="#游戏退出界面重写隐藏自己方法，让时间流速恢复正常" class="headerlink" title="游戏退出界面重写隐藏自己方法，让时间流速恢复正常"></a>游戏退出界面重写隐藏自己方法，让时间流速恢复正常</h3><pre><code class="csharp">public override void HideMe()&#123;    base.HideMe();    Time.timeScale = 1;&#125;</code></pre><hr><h2 id="17-2-知识点代码"><a href="#17-2-知识点代码" class="headerlink" title="17.2 知识点代码"></a>17.2 知识点代码</h2><pre><code class="csharp">using System.Collections;using System.Collections.Generic;using UnityEngine;using UnityEngine.SceneManagement;//游戏退出面板public class QuitPanel : BasePanel&lt;QuitPanel&gt;&#123;    //关联组件    public CustomGUIButton btnQuit;    public CustomGUIButton btnGoOn;    public CustomGUIButton btnClose;    // Start is called before the first frame update    void Start()    &#123;        //添加的监听        btnQuit.clickEvent += () =&gt;        &#123;            //回到主界面            SceneManager.LoadScene(&quot;BeginScene&quot;);        &#125;;        //继续游戏 和 叉叉 都是 关闭当前面板        btnGoOn.clickEvent += () =&gt;        &#123;            HideMe();        &#125;;        btnClose.clickEvent += () =&gt;        &#123;            HideMe();        &#125;;        //一来就隐藏自己        HideMe();    &#125;    public override void HideMe()    &#123;        base.HideMe();        Time.timeScale = 1;    &#125;&#125;</code></pre><hr>]]></content>
+      
+      
+      <categories>
+          
+          <category> Unity </category>
+          
+          <category> Unity入门实践项目 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 实践项目 </tag>
+            
+            <tag> Unity </tag>
+            
+            <tag> Unity入门 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>16.复制设置界面和背景音乐到游戏场景</title>
+      <link href="/2024/02/27/Unity/02.Unity%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/16.%E6%B8%B8%E6%88%8F%E5%9C%BA%E6%99%AF-%E6%B8%B8%E6%88%8F%E8%AE%BE%E7%BD%AE%E7%95%8C%E9%9D%A2/"/>
+      <url>/2024/02/27/Unity/02.Unity%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/16.%E6%B8%B8%E6%88%8F%E5%9C%BA%E6%99%AF-%E6%B8%B8%E6%88%8F%E8%AE%BE%E7%BD%AE%E7%95%8C%E9%9D%A2/</url>
+      
+        <content type="html"><![CDATA[<h1 id="16-游戏场景-游戏设置界面"><a href="#16-游戏场景-游戏设置界面" class="headerlink" title="16.游戏场景-游戏设置界面"></a>16.游戏场景-游戏设置界面</h1><hr><h2 id="16-1-知识点"><a href="#16-1-知识点" class="headerlink" title="16.1 知识点"></a>16.1 知识点</h2><h3 id="复制开始场景的设置面板到游戏场景的Root下"><a href="#复制开始场景的设置面板到游戏场景的Root下" class="headerlink" title="复制开始场景的设置面板到游戏场景的Root下"></a>复制开始场景的设置面板到游戏场景的Root下</h3><p><img src="/../../../images/Unity/02.Unity%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/16.%E6%B8%B8%E6%88%8F%E5%9C%BA%E6%99%AF-%E6%B8%B8%E6%88%8F%E8%AE%BE%E7%BD%AE%E7%95%8C%E9%9D%A2/1.png"><br><img src="/../../../images/Unity/02.Unity%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/16.%E6%B8%B8%E6%88%8F%E5%9C%BA%E6%99%AF-%E6%B8%B8%E6%88%8F%E8%AE%BE%E7%BD%AE%E7%95%8C%E9%9D%A2/2.png"></p><h3 id="两个场景的设置面板单例不会互相影响"><a href="#两个场景的设置面板单例不会互相影响" class="headerlink" title="两个场景的设置面板单例不会互相影响"></a>两个场景的设置面板单例不会互相影响</h3><p><img src="/../../../images/Unity/02.Unity%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/16.%E6%B8%B8%E6%88%8F%E5%9C%BA%E6%99%AF-%E6%B8%B8%E6%88%8F%E8%AE%BE%E7%BD%AE%E7%95%8C%E9%9D%A2/3.png"><br>切换场景会重新执行设置面板脚本的Awake，会重新赋值Instance</p><h3 id="将开始场景的背景音乐复制到游戏场景，并修改备份音乐"><a href="#将开始场景的背景音乐复制到游戏场景，并修改备份音乐" class="headerlink" title="将开始场景的背景音乐复制到游戏场景，并修改备份音乐"></a>将开始场景的背景音乐复制到游戏场景，并修改备份音乐</h3><p><img src="/../../../images/Unity/02.Unity%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/16.%E6%B8%B8%E6%88%8F%E5%9C%BA%E6%99%AF-%E6%B8%B8%E6%88%8F%E8%AE%BE%E7%BD%AE%E7%95%8C%E9%9D%A2/4.png"></p><h3 id="处理设置界面关闭按钮监听，根据场景判断不同逻辑"><a href="#处理设置界面关闭按钮监听，根据场景判断不同逻辑" class="headerlink" title="处理设置界面关闭按钮监听，根据场景判断不同逻辑"></a>处理设置界面关闭按钮监听，根据场景判断不同逻辑</h3><p>在设置面板的关闭按钮的点击事件监听中，根据当前所在的场景进行不同的逻辑处理：</p><pre><code class="csharp">//关闭按钮btnClose.clickEvent += () =&gt;&#123;    //隐藏自己    HideMe();        //判断当前所在场景，是开始场景则显示开始面板    if (SceneManager.GetActiveScene().name == &quot;BeginScene&quot;)    &#123;        //让开始面板重新显示出来        BeginPanel.Instance.ShowMe();    &#125;&#125;;</code></pre><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ul><li>通过复用开始场景的设置界面，可以节省开发成本并保持一致性。</li><li>确保处理场景切换时可能出现的报错，例如在游戏场景中添加了背景音乐对象以及适当的逻辑判断。</li><li>在关闭设置界面时，根据当前场景进行不同的逻辑处理，以确保游戏功能正常运行。</li></ul><hr>]]></content>
+      
+      
+      <categories>
+          
+          <category> Unity </category>
+          
+          <category> Unity入门实践项目 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 实践项目 </tag>
+            
+            <tag> Unity </tag>
+            
+            <tag> Unity入门 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>15.游戏界面</title>
+      <link href="/2024/02/27/Unity/02.Unity%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/15.%E6%B8%B8%E6%88%8F%E5%9C%BA%E6%99%AF-%E6%B8%B8%E6%88%8F%E4%B8%BB%E7%95%8C%E9%9D%A2/"/>
+      <url>/2024/02/27/Unity/02.Unity%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/15.%E6%B8%B8%E6%88%8F%E5%9C%BA%E6%99%AF-%E6%B8%B8%E6%88%8F%E4%B8%BB%E7%95%8C%E9%9D%A2/</url>
+      
+        <content type="html"><![CDATA[<h1 id="15-游戏场景-游戏主界面"><a href="#15-游戏场景-游戏主界面" class="headerlink" title="15.游戏场景-游戏主界面"></a>15.游戏场景-游戏主界面</h1><hr><h2 id="15-1-知识点"><a href="#15-1-知识点" class="headerlink" title="15.1 知识点"></a>15.1 知识点</h2><h3 id="明确游戏主界面的职责"><a href="#明确游戏主界面的职责" class="headerlink" title="明确游戏主界面的职责"></a>明确游戏主界面的职责</h3><p><img src="/../../../images/Unity/02.Unity%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/15.%E6%B8%B8%E6%88%8F%E5%9C%BA%E6%99%AF-%E6%B8%B8%E6%88%8F%E4%B8%BB%E7%95%8C%E9%9D%A2/1.png"></p><p>游戏主界面负责展示游戏核心信息，如分数、时间等，同时提供一些操作按钮，例如设置按钮和退出按钮。其职责包括但不限于：</p><ul><li>显示当前分数和游戏时间</li><li>提供设置按钮，用于打开设置面板</li><li>提供退出按钮，用于弹出退出确认界面</li><li>提供方法供外部调用，如加分、更新血条等</li></ul><h3 id="创建控件根部和游戏主界面空物体，拼接游戏界面"><a href="#创建控件根部和游戏主界面空物体，拼接游戏界面" class="headerlink" title="创建控件根部和游戏主界面空物体，拼接游戏界面"></a>创建控件根部和游戏主界面空物体，拼接游戏界面</h3><p><img src="/../../../images/Unity/02.Unity%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/15.%E6%B8%B8%E6%88%8F%E5%9C%BA%E6%99%AF-%E6%B8%B8%E6%88%8F%E4%B8%BB%E7%95%8C%E9%9D%A2/2.png"><br><img src="/../../../images/Unity/02.Unity%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/15.%E6%B8%B8%E6%88%8F%E5%9C%BA%E6%99%AF-%E6%B8%B8%E6%88%8F%E4%B8%BB%E7%95%8C%E9%9D%A2/3.png"></p><h3 id="创建游戏主面板脚本"><a href="#创建游戏主面板脚本" class="headerlink" title="创建游戏主面板脚本"></a>创建游戏主面板脚本</h3><pre><code class="csharp">//游戏主面板public class GamePanel : BasePanel&lt;GamePanel&gt;&#123;    //获取控件 关联场景上的 控件对象 之后好控制        //分数    public CustomGUILabel labScore;    //时间    public CustomGUILabel labTime;    //退出按钮    public CustomGUIButton btnQuit;    //设置按钮    public CustomGUIButton btnSetting;    //血量图    public CustomGUITexture texHP;        //血条控件的宽    public float hpW = 350;        //在外部要调用，但是不想在Inspector窗口显示        //用于记录该玩家的当前分数    [HideInInspector]    public int nowScore = 0;        //用于记录该玩家的完成时间    [HideInInspector]    public float nowTime = 0;    private int time;        // Start is called before the first frame update    void Start()    &#123;        //监听界面上的一些控件操作事件        btnSetting.clickEvent += () =&gt;        &#123;            //目前没有设置面板 暂时空着            //打开设置面板            SettingPanel.Instance.ShowMe();                //改变时间 缩放值 为0就是时间停止            Time.timeScale = 0;        &#125;;                btnQuit.clickEvent += () =&gt;        &#123;            //返回我们的游戏界面            //弹出一个确定退出的按钮             QuitPanel.Instance.ShowMe();                //改变时间 缩放值 为0就是时间停止            Time.timeScale = 0;        &#125;;    &#125;&#125;</code></pre><h3 id="提供一些方法给外部调用"><a href="#提供一些方法给外部调用" class="headerlink" title="提供一些方法给外部调用"></a>提供一些方法给外部调用</h3><pre><code class="csharp">/// &lt;summary&gt;/// 提供给外部的加分方法/// &lt;/summary&gt;/// &lt;param name=&quot;score&quot;&gt;&lt;/param&gt;public void AddScore(int score)&#123;    nowScore += score;    //更新界面显示    labScore.content.text = nowScore.ToString();&#125;/// &lt;summary&gt;/// 更新血条的方法/// &lt;/summary&gt;/// &lt;param name=&quot;maxHP&quot;&gt;&lt;/param&gt;/// &lt;param name=&quot;HP&quot;&gt;&lt;/param&gt;public void UpdateHP(int maxHP, int HP)&#123;    texHP.guiPos.width = (float)HP / maxHP * hpW;&#125;</code></pre><h3 id="在Update方法内完成时间的更新记录显示"><a href="#在Update方法内完成时间的更新记录显示" class="headerlink" title="在Update方法内完成时间的更新记录显示"></a>在Update方法内完成时间的更新记录显示</h3><pre><code class="csharp">// Update is called once per framevoid Update()&#123;    //完成时间的更新记录显示        //通过帧间隔时间 进行累加 会比较准确    nowTime += Time.deltaTime;        //把秒 转换成我们的 时 分 秒    time = (int)nowTime;    labTime.content.text = &quot;&quot;;    //得到 几个小时    // 8432s  60*60 = 3600    //8432 / 3600 ≈ 2时    if (time / 3600 &gt; 0)    &#123;        labTime.content.text += time / 3600 + &quot;时&quot;;    &#125;    //8432-7200 余 1232s    // 1232s / 60 ≈ 20分      if (time % 3600 / 60 &gt; 0 || labTime.content.text != &quot;&quot;)    &#123;        labTime.content.text += time % 3600 / 60 + &quot;分&quot;;    &#125;    //1232s-1200 余 32秒    labTime.content.text += time % 60 + &quot;秒&quot;;&#125;</code></pre><hr><h2 id="15-2-知识点代码"><a href="#15-2-知识点代码" class="headerlink" title="15.2 知识点代码"></a>15.2 知识点代码</h2><pre><code class="csharp">using System.Collections;using System.Collections.Generic;using UnityEngine;//游戏主面板public class GamePanel : BasePanel&lt;GamePanel&gt;&#123;    //获取控件 关联场景上的 控件对象 之后好控制    //分数    public CustomGUILabel labScore;    //时间    public CustomGUILabel labTime;    //退出按钮    public CustomGUIButton btnQuit;    //设置按钮    public CustomGUIButton btnSetting;    //血量图    public CustomGUITexture texHP;    //血条控件的宽    public float hpW = 350;    //在外部要调用，但是不想在Inspector窗口显示    //用于记录该玩家的当前分数    [HideInInspector]    public int nowScore = 0;    //用于记录该玩家的完成时间    [HideInInspector]    public float nowTime = 0;    private int time;    // Start is called before the first frame update    void Start()    &#123;        //监听界面上的一些控件操作事件        btnSetting.clickEvent += () =&gt;        &#123;            //目前没有设置面板 暂时空着            //打开设置面板            SettingPanel.Instance.ShowMe();            //改变时间 缩放值 为0就是时间停止            Time.timeScale = 0;        &#125;;        btnQuit.clickEvent += () =&gt;        &#123;            //返回我们的游戏界面            //弹出一个确定退出的按钮             QuitPanel.Instance.ShowMe();            //改变时间 缩放值 为0就是时间停止            Time.timeScale = 0;        &#125;;    &#125;    // Update is called once per frame    void Update()    &#123;        //完成时间的更新记录显示        //通过帧间隔时间 进行累加 会比较准确        nowTime += Time.deltaTime;        //把秒 转换成我们的 时 分 秒        time = (int)nowTime;        labTime.content.text = &quot;&quot;;        //得到 几个小时        // 8432s  60*60 = 3600        //8432 / 3600 ≈ 2时        if (time / 3600 &gt; 0)        &#123;            labTime.content.text += time / 3600 + &quot;时&quot;;        &#125;        //8432-7200 余 1232s        // 1232s / 60 ≈ 20分          if (time % 3600 / 60 &gt; 0 || labTime.content.text != &quot;&quot;)        &#123;            labTime.content.text += time % 3600 / 60 + &quot;分&quot;;        &#125;        //1232s-1200 余 32秒        labTime.content.text += time % 60 + &quot;秒&quot;;    &#125;    /// &lt;summary&gt;    /// 提供给外部的加分方法    /// &lt;/summary&gt;    /// &lt;param name=&quot;score&quot;&gt;&lt;/param&gt;    public void AddScore(int score)    &#123;        nowScore += score;        //更新界面显示        labScore.content.text = nowScore.ToString();    &#125;    /// &lt;summary&gt;    /// 更新血条的方法    /// &lt;/summary&gt;    /// &lt;param name=&quot;maxHP&quot;&gt;&lt;/param&gt;    /// &lt;param name=&quot;HP&quot;&gt;&lt;/param&gt;    public void UpdateHP(int maxHP, int HP)    &#123;        texHP.guiPos.width = (float)HP / maxHP * hpW;    &#125;&#125;</code></pre><hr>]]></content>
+      
+      
+      <categories>
+          
+          <category> Unity </category>
+          
+          <category> Unity入门实践项目 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 实践项目 </tag>
+            
+            <tag> Unity </tag>
+            
+            <tag> Unity入门 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>14.基础场景搭建</title>
+      <link href="/2024/02/27/Unity/02.Unity%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/14.%E6%B8%B8%E6%88%8F%E5%9C%BA%E6%99%AF-%E5%9F%BA%E7%A1%80%E5%9C%BA%E6%99%AF%E6%90%AD%E5%BB%BA/"/>
+      <url>/2024/02/27/Unity/02.Unity%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/14.%E6%B8%B8%E6%88%8F%E5%9C%BA%E6%99%AF-%E5%9F%BA%E7%A1%80%E5%9C%BA%E6%99%AF%E6%90%AD%E5%BB%BA/</url>
+      
+        <content type="html"><![CDATA[<h1 id="14-游戏场景-基础场景搭建"><a href="#14-游戏场景-基础场景搭建" class="headerlink" title="14.游戏场景-基础场景搭建"></a>14.游戏场景-基础场景搭建</h1><hr><h2 id="14-1-知识点"><a href="#14-1-知识点" class="headerlink" title="14.1 知识点"></a>14.1 知识点</h2><h3 id="把地板预设体和围墙拖入到游戏场景，拼成四面围墙"><a href="#把地板预设体和围墙拖入到游戏场景，拼成四面围墙" class="headerlink" title="把地板预设体和围墙拖入到游戏场景，拼成四面围墙"></a>把地板预设体和围墙拖入到游戏场景，拼成四面围墙</h3><p><img src="/../../../images/Unity/02.Unity%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/14.%E6%B8%B8%E6%88%8F%E5%9C%BA%E6%99%AF-%E5%9F%BA%E7%A1%80%E5%9C%BA%E6%99%AF%E6%90%AD%E5%BB%BA/1.png"></p><hr>]]></content>
+      
+      
+      <categories>
+          
+          <category> Unity </category>
+          
+          <category> Unity入门实践项目 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 实践项目 </tag>
+            
+            <tag> Unity </tag>
+            
+            <tag> Unity入门 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>13.背景音乐</title>
       <link href="/2024/02/27/Unity/02.Unity%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/13.%E5%BC%80%E5%A7%8B%E5%9C%BA%E6%99%AF-%E8%83%8C%E6%99%AF%E9%9F%B3%E4%B9%90/"/>
       <url>/2024/02/27/Unity/02.Unity%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/13.%E5%BC%80%E5%A7%8B%E5%9C%BA%E6%99%AF-%E8%83%8C%E6%99%AF%E9%9F%B3%E4%B9%90/</url>
@@ -97,7 +345,7 @@
     
     
     <entry>
-      <title>10.音效数据逻辑</title>
+      <title>10.游戏数据管理器和音效数据逻辑</title>
       <link href="/2024/02/27/Unity/02.Unity%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/10.%E5%BC%80%E5%A7%8B%E5%9C%BA%E6%99%AF-%E9%9F%B3%E6%95%88%E6%95%B0%E6%8D%AE%E9%80%BB%E8%BE%91/"/>
       <url>/2024/02/27/Unity/02.Unity%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/10.%E5%BC%80%E5%A7%8B%E5%9C%BA%E6%99%AF-%E9%9F%B3%E6%95%88%E6%95%B0%E6%8D%AE%E9%80%BB%E8%BE%91/</url>
       
