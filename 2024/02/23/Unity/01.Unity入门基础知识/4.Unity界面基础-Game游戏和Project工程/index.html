@@ -6,23 +6,22 @@
   <meta name="keywords" content=" 基础知识 , Unity , Unity入门 , Unity界面基础 ">
   <meta name="description" content="4.Game游戏和Project工程 | 人间自有韬哥在的游戏开发博客">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="3.必备知识点-随机数和Unity自带委托相关 3.1 知识点随机数C#中的随机数System中的Random类。实例化Random对象。 System.Random类中的Next成员方法 - 返回随机整数&#x2F;&#x2F; 左包含，右不包含 System.Random random &#x3D; new System.Random(); random.Next(0, 100);  Unity中的随机数UnityEngi">
+<meta name="description" content="13.开始场景-背景音乐 13.1 知识点创建一个背景音乐空物体，添加音乐源组件 在Unity中，按照以下步骤创建一个背景音乐空物体并添加音乐源组件：  在场景中创建一个空物体。 选中这个空物体，在Inspector面板中点击“Add Component”按钮，然后搜索并添加“Audio Source”组件。  创建背景音乐脚本，实现单例，挂载到背景音乐空物体上。初始化的时候获取背景音乐空物体上的">
 <meta property="og:type" content="article">
-<meta property="og:title" content="3.随机数和Unity自带委托">
-<meta property="og:url" content="https://linwentao785293209.github.io/2024/02/27/Unity/02.Unity%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/3.%E5%BF%85%E5%A4%87%E7%9F%A5%E8%AF%86%E7%82%B9-%E9%9A%8F%E6%9C%BA%E6%95%B0%E5%92%8CUnity%E8%87%AA%E5%B8%A6%E5%A7%94%E6%89%98%E7%9B%B8%E5%85%B3/index.html">
+<meta property="og:title" content="13.背景音乐">
+<meta property="og:url" content="https://linwentao785293209.github.io/2024/02/27/Unity/02.Unity%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/13.%E5%BC%80%E5%A7%8B%E5%9C%BA%E6%99%AF-%E8%83%8C%E6%99%AF%E9%9F%B3%E4%B9%90/index.html">
 <meta property="og:site_name" content="人间自有韬哥在的游戏开发博客">
-<meta property="og:description" content="3.必备知识点-随机数和Unity自带委托相关 3.1 知识点随机数C#中的随机数System中的Random类。实例化Random对象。 System.Random类中的Next成员方法 - 返回随机整数&#x2F;&#x2F; 左包含，右不包含 System.Random random &#x3D; new System.Random(); random.Next(0, 100);  Unity中的随机数UnityEngi">
+<meta property="og:description" content="13.开始场景-背景音乐 13.1 知识点创建一个背景音乐空物体，添加音乐源组件 在Unity中，按照以下步骤创建一个背景音乐空物体并添加音乐源组件：  在场景中创建一个空物体。 选中这个空物体，在Inspector面板中点击“Add Component”按钮，然后搜索并添加“Audio Source”组件。  创建背景音乐脚本，实现单例，挂载到背景音乐空物体上。初始化的时候获取背景音乐空物体上的">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-02-27T06:49:56.000Z">
-<meta property="article:modified_time" content="2024-02-27T06:57:51.342Z">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/02.Unity%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/13.%E5%BC%80%E5%A7%8B%E5%9C%BA%E6%99%AF-%E8%83%8C%E6%99%AF%E9%9F%B3%E4%B9%90/1.png">
+<meta property="article:published_time" content="2024-02-27T08:22:13.000Z">
+<meta property="article:modified_time" content="2024-02-27T08:27:58.702Z">
 <meta property="article:author" content="人间自有韬哥在">
 <meta property="article:tag" content="实践项目">
-<meta property="article:tag" content="必备知识点">
-<meta property="article:tag" content="随机数">
-<meta property="article:tag" content="委托和事件">
 <meta property="article:tag" content="Unity">
 <meta property="article:tag" content="Unity入门">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://linwentao785293209.github.io/images/Unity/02.Unity%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/13.%E5%BC%80%E5%A7%8B%E5%9C%BA%E6%99%AF-%E8%83%8C%E6%99%AF%E9%9F%B3%E4%B9%90/1.png">
 
 
 <link rel="icon" href="/img/avatar.jpg">
@@ -149,7 +148,7 @@
     <li>
         <div class="all active" data-rel="全部文章">全部文章
             
-                <small>(241)</small>
+                <small>(251)</small>
             
         </div>
     </li>
@@ -300,7 +299,7 @@
         <div data-rel="Unity">
             <i class="fold iconfont icon-right"></i>
             Unity
-            <small>(39)</small>
+            <small>(49)</small>
         </div>
         
             <ul class="sub hide">
@@ -321,7 +320,7 @@
         <div data-rel="Unity&lt;---&gt;Unity入门实践项目">
             
             Unity入门实践项目
-            <small>(3)</small>
+            <small>(13)</small>
         </div>
         
     </li>
@@ -455,8 +454,8 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="241">
-<input type="hidden" id="yelog_site_word_count" value="426.7k">
+<input type="hidden" id="yelog_site_posts_number" value="251">
+<input type="hidden" id="yelog_site_word_count" value="432.5k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -710,6 +709,96 @@
         
         
         <a  class="全部文章 Unity Unity入门实践项目 "
+           href="/2024/02/27/Unity/02.Unity%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/13.%E5%BC%80%E5%A7%8B%E5%9C%BA%E6%99%AF-%E8%83%8C%E6%99%AF%E9%9F%B3%E4%B9%90/"
+           data-tag="实践项目,Unity,Unity入门"
+           data-author="" >
+            <span class="post-title" title="13.背景音乐">13.背景音乐</span>
+            <span class="post-date" title="2024-02-27 16:22:13">2024/02/27</span>
+        </a>
+        
+        
+        <a  class="全部文章 Unity Unity入门实践项目 "
+           href="/2024/02/27/Unity/02.Unity%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/12.%E5%BC%80%E5%A7%8B%E5%9C%BA%E6%99%AF-%E6%8E%92%E8%A1%8C%E6%A6%9C%E6%95%B0%E6%8D%AE%E9%80%BB%E8%BE%91/"
+           data-tag="实践项目,Unity,Unity入门"
+           data-author="" >
+            <span class="post-title" title="12.排行榜数据逻辑">12.排行榜数据逻辑</span>
+            <span class="post-date" title="2024-02-27 16:16:31">2024/02/27</span>
+        </a>
+        
+        
+        <a  class="全部文章 Unity Unity入门实践项目 "
+           href="/2024/02/27/Unity/02.Unity%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/11.%E5%BC%80%E5%A7%8B%E5%9C%BA%E6%99%AF-%E6%8E%92%E8%A1%8C%E6%A6%9C%E7%95%8C%E9%9D%A2/"
+           data-tag="实践项目,Unity,Unity入门"
+           data-author="" >
+            <span class="post-title" title="11.排行榜界面">11.排行榜界面</span>
+            <span class="post-date" title="2024-02-27 16:03:46">2024/02/27</span>
+        </a>
+        
+        
+        <a  class="全部文章 Unity Unity入门实践项目 "
+           href="/2024/02/27/Unity/02.Unity%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/10.%E5%BC%80%E5%A7%8B%E5%9C%BA%E6%99%AF-%E9%9F%B3%E6%95%88%E6%95%B0%E6%8D%AE%E9%80%BB%E8%BE%91/"
+           data-tag="实践项目,Unity,Unity入门"
+           data-author="" >
+            <span class="post-title" title="10.音效数据逻辑">10.音效数据逻辑</span>
+            <span class="post-date" title="2024-02-27 15:44:34">2024/02/27</span>
+        </a>
+        
+        
+        <a  class="全部文章 Unity Unity入门实践项目 "
+           href="/2024/02/27/Unity/02.Unity%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/9.%E5%BC%80%E5%A7%8B%E5%9C%BA%E6%99%AF-%E8%AE%BE%E7%BD%AE%E7%95%8C%E9%9D%A2/"
+           data-tag="实践项目,Unity,Unity入门"
+           data-author="" >
+            <span class="post-title" title="9.设置界面">9.设置界面</span>
+            <span class="post-date" title="2024-02-27 15:39:02">2024/02/27</span>
+        </a>
+        
+        
+        <a  class="全部文章 Unity Unity入门实践项目 "
+           href="/2024/02/27/Unity/02.Unity%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/8.%E5%BC%80%E5%A7%8B%E5%9C%BA%E6%99%AF-%E5%BC%80%E5%A7%8B%E7%95%8C%E9%9D%A2/"
+           data-tag="实践项目,Unity,Unity入门"
+           data-author="" >
+            <span class="post-title" title="8.开始界面">8.开始界面</span>
+            <span class="post-date" title="2024-02-27 15:29:53">2024/02/27</span>
+        </a>
+        
+        
+        <a  class="全部文章 Unity Unity入门实践项目 "
+           href="/2024/02/27/Unity/02.Unity%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/7.%E5%BC%80%E5%A7%8B%E5%9C%BA%E6%99%AF-%E5%9C%BA%E6%99%AF%E8%A3%85%E9%A5%B0/"
+           data-tag="实践项目,Unity,Unity入门"
+           data-author="" >
+            <span class="post-title" title="7.场景装饰">7.场景装饰</span>
+            <span class="post-date" title="2024-02-27 15:28:15">2024/02/27</span>
+        </a>
+        
+        
+        <a  class="全部文章 Unity Unity入门实践项目 "
+           href="/2024/02/27/Unity/02.Unity%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/6.%E4%BB%A3%E7%A0%81%E5%92%8C%E8%B5%84%E6%BA%90%E5%AF%BC%E5%85%A5/"
+           data-tag="实践项目,Unity,Unity入门"
+           data-author="" >
+            <span class="post-title" title="6.代码和资源导入">6.代码和资源导入</span>
+            <span class="post-date" title="2024-02-27 15:21:09">2024/02/27</span>
+        </a>
+        
+        
+        <a  class="全部文章 Unity Unity入门实践项目 "
+           href="/2024/02/27/Unity/02.Unity%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/5.%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90/"
+           data-tag="实践项目,Unity,Unity入门"
+           data-author="" >
+            <span class="post-title" title="5.需求分析">5.需求分析</span>
+            <span class="post-date" title="2024-02-27 15:19:18">2024/02/27</span>
+        </a>
+        
+        
+        <a  class="全部文章 Unity Unity入门实践项目 "
+           href="/2024/02/27/Unity/02.Unity%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/4.%E5%BF%85%E5%A4%87%E7%9F%A5%E8%AF%86%E7%82%B9-%E6%A8%A1%E5%9E%8B%E8%B5%84%E6%BA%90%E7%9A%84%E5%AF%BC%E5%85%A5/"
+           data-tag="实践项目,必备知识点,Unity,Unity入门"
+           data-author="" >
+            <span class="post-title" title="4.模型资源的导入">4.模型资源的导入</span>
+            <span class="post-date" title="2024-02-27 15:11:07">2024/02/27</span>
+        </a>
+        
+        
+        <a  class="全部文章 Unity Unity入门实践项目 "
            href="/2024/02/27/Unity/02.Unity%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/3.%E5%BF%85%E5%A4%87%E7%9F%A5%E8%AF%86%E7%82%B9-%E9%9A%8F%E6%9C%BA%E6%95%B0%E5%92%8CUnity%E8%87%AA%E5%B8%A6%E5%A7%94%E6%89%98%E7%9B%B8%E5%85%B3/"
            data-tag="实践项目,必备知识点,随机数,委托和事件,Unity,Unity入门"
            data-author="" >
@@ -846,7 +935,7 @@
         
         <a  class="全部文章 UI系统 GUI实践项目 "
            href="/2024/02/27/UI%E7%B3%BB%E7%BB%9F/02.GUI%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/1.%E5%BF%85%E5%A4%87%E7%9F%A5%E8%AF%86%E7%82%B9-%E7%BC%96%E8%BE%91%E6%A8%A1%E5%BC%8F%E4%B8%8B%E8%AE%A9%E6%8C%87%E5%AE%9A%E4%BB%A3%E7%A0%81%E8%BF%90%E8%A1%8C/"
-           data-tag="实践项目,必备知识点,UI系统,GUI,反射和特性"
+           data-tag="实践项目,必备知识点,反射和特性,UI系统,GUI"
            data-author="" >
             <span class="post-title" title="1.编辑模式下让指定代码运行">1.编辑模式下让指定代码运行</span>
             <span class="post-date" title="2024-02-27 11:18:43">2024/02/27</span>
@@ -981,7 +1070,7 @@
         
         <a  class="全部文章 数据持久化 PlayerPrefs实践项目 "
            href="/2024/02/26/%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96/02.PlayerPrefs%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/11.%E5%8F%8D%E5%B0%84%E8%AF%BB%E5%8F%96%E8%87%AA%E5%AE%9A%E4%B9%89%E7%B1%BB%E6%88%90%E5%91%98%E6%95%B0%E6%8D%AE/"
-           data-tag="实践项目,数据持久化,PlayerPrefs,反射和特性"
+           data-tag="实践项目,反射和特性,数据持久化,PlayerPrefs"
            data-author="" >
             <span class="post-title" title="11.反射读取自定义类成员数据">11.反射读取自定义类成员数据</span>
             <span class="post-date" title="2024-02-26 16:47:56">2024/02/26</span>
@@ -990,7 +1079,7 @@
         
         <a  class="全部文章 数据持久化 PlayerPrefs实践项目 "
            href="/2024/02/26/%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96/02.PlayerPrefs%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/10.%E5%8F%8D%E5%B0%84%E8%AF%BB%E5%8F%96Dictionary%E6%88%90%E5%91%98%E6%95%B0%E6%8D%AE/"
-           data-tag="实践项目,数据持久化,PlayerPrefs,反射和特性"
+           data-tag="实践项目,反射和特性,数据持久化,PlayerPrefs"
            data-author="" >
             <span class="post-title" title="10.反射读取Dictionary成员数据">10.反射读取Dictionary成员数据</span>
             <span class="post-date" title="2024-02-26 16:41:32">2024/02/26</span>
@@ -999,7 +1088,7 @@
         
         <a  class="全部文章 数据持久化 PlayerPrefs实践项目 "
            href="/2024/02/26/%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96/02.PlayerPrefs%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/9.%E5%8F%8D%E5%B0%84%E8%AF%BB%E5%8F%96List%E6%88%90%E5%91%98%E6%95%B0%E6%8D%AE/"
-           data-tag="实践项目,数据持久化,PlayerPrefs,反射和特性"
+           data-tag="实践项目,反射和特性,数据持久化,PlayerPrefs"
            data-author="" >
             <span class="post-title" title="9.反射读取List成员数据">9.反射读取List成员数据</span>
             <span class="post-date" title="2024-02-26 16:35:36">2024/02/26</span>
@@ -1008,7 +1097,7 @@
         
         <a  class="全部文章 数据持久化 PlayerPrefs实践项目 "
            href="/2024/02/26/%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96/02.PlayerPrefs%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/8.%E5%8F%8D%E5%B0%84%E8%AF%BB%E5%8F%96%E5%B8%B8%E7%94%A8%E6%88%90%E5%91%98%E6%95%B0%E6%8D%AE/"
-           data-tag="实践项目,数据持久化,PlayerPrefs,反射和特性"
+           data-tag="实践项目,反射和特性,数据持久化,PlayerPrefs"
            data-author="" >
             <span class="post-title" title="8.反射读取常用成员数据">8.反射读取常用成员数据</span>
             <span class="post-date" title="2024-02-26 16:32:06">2024/02/26</span>
@@ -1017,7 +1106,7 @@
         
         <a  class="全部文章 数据持久化 PlayerPrefs实践项目 "
            href="/2024/02/26/%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96/02.PlayerPrefs%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/7.%E5%8F%8D%E5%B0%84%E5%AD%98%E5%82%A8%E8%87%AA%E5%AE%9A%E4%B9%89%E7%B1%BB%E6%88%90%E5%91%98%E6%95%B0%E6%8D%AE/"
-           data-tag="实践项目,数据持久化,PlayerPrefs,反射和特性"
+           data-tag="实践项目,反射和特性,数据持久化,PlayerPrefs"
            data-author="" >
             <span class="post-title" title="7.反射存储自定义类成员数据">7.反射存储自定义类成员数据</span>
             <span class="post-date" title="2024-02-26 16:20:21">2024/02/26</span>
@@ -1026,7 +1115,7 @@
         
         <a  class="全部文章 数据持久化 PlayerPrefs实践项目 "
            href="/2024/02/26/%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96/02.PlayerPrefs%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/6.%E5%8F%8D%E5%B0%84%E5%AD%98%E5%82%A8Dictionary%E6%88%90%E5%91%98%E6%95%B0%E6%8D%AE/"
-           data-tag="实践项目,数据持久化,PlayerPrefs,反射和特性"
+           data-tag="实践项目,反射和特性,数据持久化,PlayerPrefs"
            data-author="" >
             <span class="post-title" title="6.反射存储Dictionary成员数据">6.反射存储Dictionary成员数据</span>
             <span class="post-date" title="2024-02-26 15:55:28">2024/02/26</span>
@@ -1035,7 +1124,7 @@
         
         <a  class="全部文章 数据持久化 PlayerPrefs实践项目 "
            href="/2024/02/26/%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96/02.PlayerPrefs%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/5.%E5%8F%8D%E5%B0%84%E5%AD%98%E5%82%A8List%E6%88%90%E5%91%98%E6%95%B0%E6%8D%AE/"
-           data-tag="实践项目,数据持久化,PlayerPrefs,反射和特性"
+           data-tag="实践项目,反射和特性,数据持久化,PlayerPrefs"
            data-author="" >
             <span class="post-title" title="5.反射存储List成员数据">5.反射存储List成员数据</span>
             <span class="post-date" title="2024-02-26 15:49:42">2024/02/26</span>
@@ -1044,7 +1133,7 @@
         
         <a  class="全部文章 数据持久化 PlayerPrefs实践项目 "
            href="/2024/02/26/%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96/02.PlayerPrefs%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/4.%E5%8F%8D%E5%B0%84%E5%AD%98%E5%82%A8%E5%B8%B8%E7%94%A8%E6%88%90%E5%91%98%E6%95%B0%E6%8D%AE/"
-           data-tag="实践项目,数据持久化,PlayerPrefs,反射和特性"
+           data-tag="实践项目,反射和特性,数据持久化,PlayerPrefs"
            data-author="" >
             <span class="post-title" title="4.反射存储常用成员数据">4.反射存储常用成员数据</span>
             <span class="post-date" title="2024-02-26 15:41:24">2024/02/26</span>
@@ -1071,7 +1160,7 @@
         
         <a  class="全部文章 数据持久化 PlayerPrefs实践项目 "
            href="/2024/02/25/%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96/02.PlayerPrefs%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/1.%E5%BF%85%E5%A4%87%E7%9F%A5%E8%AF%86%E7%82%B9-%E5%8F%8D%E5%B0%84%E7%9F%A5%E8%AF%86%E5%B0%8F%E8%A1%A5%E5%85%85/"
-           data-tag="实践项目,必备知识点,数据持久化,PlayerPrefs,反射和特性"
+           data-tag="实践项目,必备知识点,反射和特性,数据持久化,PlayerPrefs"
            data-author="" >
             <span class="post-title" title="1.反射知识小补充">1.反射知识小补充</span>
             <span class="post-date" title="2024-02-25 23:59:13">2024/02/25</span>
@@ -1341,7 +1430,7 @@
         
         <a  class="全部文章 Unity Unity入门基础知识 "
            href="/2024/02/24/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/11.Unity%E8%84%9A%E6%9C%AC%E5%9F%BA%E7%A1%80-Inspector%E7%AA%97%E5%8F%A3%E5%8F%AF%E7%BC%96%E8%BE%91%E7%9A%84%E5%8F%98%E9%87%8F/"
-           data-tag="基础知识,反射和特性,Unity,Unity入门,Unity脚本基础"
+           data-tag="反射和特性,基础知识,Unity,Unity入门,Unity脚本基础"
            data-author="" >
             <span class="post-title" title="11.Inspector窗口可编辑的变量">11.Inspector窗口可编辑的变量</span>
             <span class="post-date" title="2024-02-24 12:38:36">2024/02/24</span>
@@ -1377,7 +1466,7 @@
         
         <a  class="全部文章 Unity Unity入门基础知识 "
            href="/2024/02/24/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/7.Unity%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86-%E5%8F%8D%E5%B0%84%E6%9C%BA%E5%88%B6%E5%92%8C%E6%B8%B8%E6%88%8F%E5%9C%BA%E6%99%AF/"
-           data-tag="基础知识,反射和特性,Unity,Unity入门,Unity工作原理"
+           data-tag="反射和特性,基础知识,Unity,Unity入门,Unity工作原理"
            data-author="" >
             <span class="post-title" title="7.反射机制和游戏场景">7.反射机制和游戏场景</span>
             <span class="post-date" title="2024-02-24 10:09:09">2024/02/24</span>
@@ -1656,7 +1745,7 @@
         
         <a  class="全部文章 CSharp CSharp进阶语法知识 "
            href="/2024/02/21/CSharp/07.Csharp%E8%BF%9B%E9%98%B6%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/22.%E5%8F%8D%E5%B0%84%E5%92%8C%E7%89%B9%E6%80%A7-%E7%89%B9%E6%80%A7/"
-           data-tag="CSharp,语法知识,反射和特性,CSharp进阶"
+           data-tag="CSharp,语法知识,CSharp进阶,反射和特性"
            data-author="" >
             <span class="post-title" title="22.特性">22.特性</span>
             <span class="post-date" title="2024-02-21 13:02:24">2024/02/21</span>
@@ -1665,7 +1754,7 @@
         
         <a  class="全部文章 CSharp CSharp进阶语法知识 "
            href="/2024/02/21/CSharp/07.Csharp%E8%BF%9B%E9%98%B6%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/21.%E5%8F%8D%E5%B0%84%E5%92%8C%E7%89%B9%E6%80%A7-%E5%8F%8D%E5%B0%84/"
-           data-tag="CSharp,语法知识,反射和特性,CSharp进阶"
+           data-tag="CSharp,语法知识,CSharp进阶,反射和特性"
            data-author="" >
             <span class="post-title" title="21.反射">21.反射</span>
             <span class="post-date" title="2024-02-21 09:49:59">2024/02/21</span>
@@ -2555,19 +2644,19 @@
         
         
         <a  class="全部文章 CSharp CSharp入门实践项目 "
-           href="/2024/01/08/CSharp/02.CSharp%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/12.%E6%B8%B8%E6%88%8F%E5%9C%BA%E6%99%AF-%E5%85%AC%E4%B8%BB%E7%9B%B8%E5%85%B3/"
+           href="/2024/01/08/CSharp/02.CSharp%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/11.%E6%B8%B8%E6%88%8F%E5%9C%BA%E6%99%AF-%E7%8E%A9%E5%AE%B6%E6%88%98%E6%96%97%E7%9B%B8%E5%85%B3/"
            data-tag="CSharp,CSharp入门,实践项目"
            data-author="" >
-            <span class="post-title" title="12.公主相关">12.公主相关</span>
+            <span class="post-title" title="11.玩家战斗相关">11.玩家战斗相关</span>
             <span class="post-date" title="2024-01-08 21:53:48">2024/01/08</span>
         </a>
         
         
         <a  class="全部文章 CSharp CSharp入门实践项目 "
-           href="/2024/01/08/CSharp/02.CSharp%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/11.%E6%B8%B8%E6%88%8F%E5%9C%BA%E6%99%AF-%E7%8E%A9%E5%AE%B6%E6%88%98%E6%96%97%E7%9B%B8%E5%85%B3/"
+           href="/2024/01/08/CSharp/02.CSharp%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/12.%E6%B8%B8%E6%88%8F%E5%9C%BA%E6%99%AF-%E5%85%AC%E4%B8%BB%E7%9B%B8%E5%85%B3/"
            data-tag="CSharp,CSharp入门,实践项目"
            data-author="" >
-            <span class="post-title" title="11.玩家战斗相关">11.玩家战斗相关</span>
+            <span class="post-title" title="12.公主相关">12.公主相关</span>
             <span class="post-date" title="2024-01-08 21:53:48">2024/01/08</span>
         </a>
         
