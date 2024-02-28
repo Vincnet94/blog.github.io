@@ -4,6 +4,138 @@
   
     
     <entry>
+      <title>9.Vector3向量插值运算</title>
+      <link href="/2024/02/28/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/9.3D%E6%95%B0%E5%AD%A6-Vector3%E5%90%91%E9%87%8F-%E5%90%91%E9%87%8F%E6%8F%92%E5%80%BC%E8%BF%90%E7%AE%97/"/>
+      <url>/2024/02/28/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/9.3D%E6%95%B0%E5%AD%A6-Vector3%E5%90%91%E9%87%8F-%E5%90%91%E9%87%8F%E6%8F%92%E5%80%BC%E8%BF%90%E7%AE%97/</url>
+      
+        <content type="html"><![CDATA[<h1 id="9-3D数学-Vector3向量-向量插值运算"><a href="#9-3D数学-Vector3向量-向量插值运算" class="headerlink" title="9.3D数学-Vector3向量-向量插值运算"></a>9.3D数学-Vector3向量-向量插值运算</h1><hr><h2 id="9-1-知识点"><a href="#9-1-知识点" class="headerlink" title="9.1 知识点"></a>9.1 知识点</h2><p><img src="/../../../images/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/9.3D%E6%95%B0%E5%AD%A6-Vector3%E5%90%91%E9%87%8F-%E5%90%91%E9%87%8F%E6%8F%92%E5%80%BC%E8%BF%90%E7%AE%97/1.png"></p><h3 id="主要学习内容"><a href="#主要学习内容" class="headerlink" title="主要学习内容"></a>主要学习内容</h3><p><img src="/../../../images/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/9.3D%E6%95%B0%E5%AD%A6-Vector3%E5%90%91%E9%87%8F-%E5%90%91%E9%87%8F%E6%8F%92%E5%80%BC%E8%BF%90%E7%AE%97/2.png"></p><h3 id="线性插值"><a href="#线性插值" class="headerlink" title="线性插值"></a>线性插值</h3><p><img src="/../../../images/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/9.3D%E6%95%B0%E5%AD%A6-Vector3%E5%90%91%E9%87%8F-%E5%90%91%E9%87%8F%E6%8F%92%E5%80%BC%E8%BF%90%E7%AE%97/3.png"><br><img src="/../../../images/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/9.3D%E6%95%B0%E5%AD%A6-Vector3%E5%90%91%E9%87%8F-%E5%90%91%E9%87%8F%E6%8F%92%E5%80%BC%E8%BF%90%E7%AE%97/4.png"></p><h4 id="Lerp静态方法-在两点进行线性插值"><a href="#Lerp静态方法-在两点进行线性插值" class="headerlink" title="Lerp静态方法 - 在两点进行线性插值"></a>Lerp静态方法 - 在两点进行线性插值</h4><p>Vector3.Lerp静态方法用于在两个点之间进行线性插值。</p><ul><li>参数：起始点start、结束点end和插值系数t。</li><li>返回值：在起始点和结束点之间根据插值系数进行插值后的点。</li></ul><ol><li>先快后慢 每帧改变start位置 位置无限接近 但不会得到end位置</li></ol><pre><code class="csharp">// 可以理解为t不变 每次往方向向量加的值(end - start)一直会变小A.position = Vector3.Lerp(A.position, target.position, Time.deltaTime);</code></pre><ol start="2"><li>匀速 每帧改变时间  当t&gt;&#x3D;1时 得到结果</li></ol><pre><code class="csharp">// 可以理解为t每一帧累加相同值 start和(end - start)不变 所以是匀速运动// 这种匀速移动 当time&gt;=1时  我改变了 目标位置后  它会直接瞬移到我们的目标位置 因为t&gt;=1时直接的得到结果// 所以要做特殊处理 每次改变目标位置时 清空时间if (nowTarget != target.position)&#123;    nowTarget = target.position;    time = 0;    startPos = B.position;&#125;time += Time.deltaTime;B.position = Vector3.Lerp(startPos, nowTarget, time);</code></pre><h3 id="球形插值"><a href="#球形插值" class="headerlink" title="球形插值"></a>球形插值</h3><p><img src="/../../../images/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/9.3D%E6%95%B0%E5%AD%A6-Vector3%E5%90%91%E9%87%8F-%E5%90%91%E9%87%8F%E6%8F%92%E5%80%BC%E8%BF%90%E7%AE%97/5.png"><br><img src="/../../../images/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/9.3D%E6%95%B0%E5%AD%A6-Vector3%E5%90%91%E9%87%8F-%E5%90%91%E9%87%8F%E6%8F%92%E5%80%BC%E8%BF%90%E7%AE%97/6.png"></p><h4 id="Slerp静态方法-在两点进行球形插值"><a href="#Slerp静态方法-在两点进行球形插值" class="headerlink" title="Slerp静态方法 - 在两点进行球形插值"></a>Slerp静态方法 - 在两点进行球形插值</h4><p>Vector3.Slerp静态方法用于在两个向量之间进行球形插值。</p><ul><li>参数：起始向量from、目标向量to和插值系数t。</li><li>返回值：在起始向量和目标向量之间根据插值系数进行球形插值后的向量。</li></ul><pre><code class="csharp">time2 += Time.deltaTime;C.position = Vector3.Slerp(Vector3.right * 10, Vector3.forward * 10, time2 * 0.1f);// 位置会从(10,0,0)按球形轨迹慢慢的变到(0,10,0)</code></pre><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p><img src="/../../../images/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/9.3D%E6%95%B0%E5%AD%A6-Vector3%E5%90%91%E9%87%8F-%E5%90%91%E9%87%8F%E6%8F%92%E5%80%BC%E8%BF%90%E7%AE%97/7.png"></p><hr><h2 id="9-2-知识点代码"><a href="#9-2-知识点代码" class="headerlink" title="9.2 知识点代码"></a>9.2 知识点代码</h2><pre><code class="csharp">using System.Collections;using System.Collections.Generic;using UnityEngine;public class Lesson09_3D数学_Vector3向量_向量插值运算 : MonoBehaviour&#123;    public Transform target;    public Transform A;    public Transform B;    public Transform C;    private Vector3 startPos;    private float time;    private float time2;    private Vector3 nowTarget;    // Start is called before the first frame update    void Start()    &#123;        startPos = B.position;    &#125;    // Update is called once per frame    void Update()    &#123;        #region 知识点一 线性插值        //Lerp静态方法 在两点进行线性插值        //在两个点之间进行线性插值。        //公式和Mathf中的线性插值一样        //result = start + (end - start) * newThread        //但是Vector3中的是三维坐标，Mathf是一维变量        //先快后慢 每帧改变start位置 位置无限接近 但不会得到end位置        //可以理解为t不变 每次往方向向量加的值(end - start)一直会变小        A.position = Vector3.Lerp(A.position, target.position, Time.deltaTime);        //匀速 每帧改变时间  当t&gt;=1时 得到结果        //可以理解为t每一帧累加相同值 start和(end - start)不变 所以是匀速运动        //这种匀速移动 当time&gt;=1时  我改变了 目标位置后  它会直接瞬移到我们的目标位置 因为t&gt;=1时直接的得到结果        //所以要做特殊处理 每次改变目标位置时 清空时间        if (nowTarget != target.position)        &#123;            nowTarget = target.position;            time = 0;            startPos = B.position;        &#125;        time += Time.deltaTime;        B.position = Vector3.Lerp(startPos, nowTarget, time);        #endregion        #region 知识点二 球形插值        //Slerp静态方法 在两点进行球形插值        //在两个向量之间进行球形插值。        time2 += Time.deltaTime;        C.position = Vector3.Slerp(Vector3.right * 10, Vector3.forward * 10 , time2 * 0.1f);        //位置会从(10,0,0)按球形轨迹慢慢的变到(0,10,0)        #endregion    &#125;&#125;</code></pre><hr><h2 id="9-3-练习题"><a href="#9-3-练习题" class="headerlink" title="9.3 练习题"></a>9.3 练习题</h2><h3 id="用线性插值相关知识，实现摄像机跟随-摄像机不设置为对象子物体-，摄像机一直在物体的后方4米，向上偏7米的位置"><a href="#用线性插值相关知识，实现摄像机跟随-摄像机不设置为对象子物体-，摄像机一直在物体的后方4米，向上偏7米的位置" class="headerlink" title="用线性插值相关知识，实现摄像机跟随(摄像机不设置为对象子物体)，摄像机一直在物体的后方4米，向上偏7米的位置"></a>用线性插值相关知识，实现摄像机跟随(摄像机不设置为对象子物体)，摄像机一直在物体的后方4米，向上偏7米的位置</h3><h4 id="这是Lesson06向量加减乘除练习题的做法，现在是想慢慢按照插值规则动"><a href="#这是Lesson06向量加减乘除练习题的做法，现在是想慢慢按照插值规则动" class="headerlink" title="这是Lesson06向量加减乘除练习题的做法，现在是想慢慢按照插值规则动"></a>这是Lesson06向量加减乘除练习题的做法，现在是想慢慢按照插值规则动</h4><pre><code class="csharp">// 摄像机的位置 等于目标的位置 进行向量偏移// 先朝目标对象的面朝向的反方向平移4米 再朝目标的头顶位置 平移7米// 设置摄像机位置this.transform.position = target.position + -target.forward * zOffect + target.up * yOffect;</code></pre><h4 id="先快后慢的移动"><a href="#先快后慢的移动" class="headerlink" title="先快后慢的移动"></a>先快后慢的移动</h4><pre><code class="csharp">// 如果当前摄像机的目标位置不是目标对象的后方4米，向上偏7米 就设置目标位置if (cameraTargetPos != target.position + -target.forward * zOffect + target.up * yOffect)&#123;    cameraTargetPos = target.position + -target.forward * zOffect + target.up * yOffect;&#125;// 摄像机的位置 等于目标的位置 进行向量偏移// 先朝目标对象的面朝向的反方向平移4米 再朝目标的头顶位置 平移7米this.transform.position = Vector3.Lerp(this.transform.position, cameraTargetPos, Time.deltaTime * moveSpeed);</code></pre><h4 id="匀速移动"><a href="#匀速移动" class="headerlink" title="匀速移动"></a>匀速移动</h4><pre><code class="csharp">// 如果当前摄像机的目标位置不是目标对象的后方4米，向上偏7米 就设置目标位置 记录摄像机当前开始位置 重置时间if (cameraTargetPos != target.position + -target.forward * zOffect + target.up * yOffect)&#123;    cameraTargetPos = target.position + -target.forward * zOffect + target.up * yOffect;    startPos = this.transform.position;    time = 0;&#125;time += Time.deltaTime;this.transform.position = Vector3.Lerp(startPos, cameraTargetPos, time * moveSpeed);</code></pre><h3 id="通过球形插值模拟太阳的升降变化"><a href="#通过球形插值模拟太阳的升降变化" class="headerlink" title="通过球形插值模拟太阳的升降变化"></a>通过球形插值模拟太阳的升降变化</h3><p><img src="/../../../images/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/9.3D%E6%95%B0%E5%AD%A6-Vector3%E5%90%91%E9%87%8F-%E5%90%91%E9%87%8F%E6%8F%92%E5%80%BC%E8%BF%90%E7%AE%97/8.png"></p><pre><code class="csharp">private void Update()&#123;    time2 += Time.deltaTime;    // sun.position = Vector3.Slerp(Vector3.right * 10, Vector3.left * 10, time2 * 0.1f);//假如直接写最终值会不知道从哪里转 可能会平这转    sun.position = Vector3.Slerp(Vector3.right * 10, Vector3.left * 10 + Vector3.up * 0.1f, time2 * 0.1f);//要给最终值加一点向上的向量 才会往上转&#125;</code></pre><hr><h2 id="9-4-练习题代码"><a href="#9-4-练习题代码" class="headerlink" title="9.4 练习题代码"></a>9.4 练习题代码</h2><pre><code class="csharp">using System.Collections;using System.Collections.Generic;using UnityEngine;//这个脚本将要挂载到摄像机上 实现摄像机跟随public class Lesson09_练习题 : MonoBehaviour&#123;    #region 练习题一    //用线性插值相关知识，实现摄像机跟随(摄像机不设置为对象子物体)，摄像机一直在物体的后方4米，向上偏7米的位置    public float zOffect = 4;    public float yOffect = 7;    public Transform target;    private Vector3 cameraTargetPos;    public float moveSpeed;    private Vector3 startPos;    private float time;    void LateUpdate()    &#123;        //这是Lesson06向量加减乘除练习题的做法 是直接赋值结果 现在是想慢慢按照插值规则动        ////摄像机的位置 等于目标的位置 进行向量偏移        ////先朝目标对象的 面朝向的反方向平移4米 再朝目标的头顶位置 平移7米        ////设置摄像机位置        //this.transform.position = target.position + -target.forward * zOffect + target.up * yOffect;        //先快后慢的移动        ////如果当前摄像机的目标位置不是目标对象的后方4米，向上偏7米 就设置目标位置        //if (cameraTargetPos != target.position + -target.forward * zOffect + target.up * yOffect)        //&#123;        //    cameraTargetPos = target.position + -target.forward * zOffect + target.up * yOffect;        //&#125;        ////摄像机的位置 等于目标的位置 进行向量偏移        ////先朝目标对象的 面朝向的反方向平移4米 再朝目标的头顶位置 平移7米        //this.transform.position = Vector3.Lerp(this.transform.position, cameraTargetPos, Time.deltaTime * moveSpeed);        //匀速移动        //如果当前摄像机的目标位置不是目标对象的后方4米，向上偏7米 就设置目标位置 记录摄像机当前开始位置 重置时间        if (cameraTargetPos != target.position + -target.forward * zOffect + target.up * yOffect)        &#123;            cameraTargetPos = target.position + -target.forward * zOffect + target.up * yOffect;            startPos = this.transform.position;            time = 0;        &#125;        time += Time.deltaTime;        this.transform.position = Vector3.Lerp(startPos, cameraTargetPos, time * moveSpeed);        this.transform.LookAt(target);    &#125;    #endregion    #region 练习题二    //通过球形插值模拟太阳的升降变化    public Transform sun;    private float time2;    private void Update()    &#123;        time2 += Time.deltaTime;        //sun.position = Vector3.Slerp(Vector3.right * 10, Vector3.left * 10, time2 * 0.1f);//假如直接写最终值会不知道从哪里转 可能会平这转        sun.position = Vector3.Slerp(Vector3.right * 10, Vector3.left * 10 + Vector3.up * 0.1f, time2 * 0.1f);//要给最终值加一点向上的向量 才会往上转    &#125;    #endregion&#125;</code></pre><hr>]]></content>
+      
+      
+      <categories>
+          
+          <category> Unity </category>
+          
+          <category> Unity基础基础知识 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Unity </tag>
+            
+            <tag> 基础知识 </tag>
+            
+            <tag> Unity基础 </tag>
+            
+            <tag> 3D数学 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>8.Vector3向量叉乘</title>
+      <link href="/2024/02/28/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/8.3D%E6%95%B0%E5%AD%A6-Vector3%E5%90%91%E9%87%8F-%E5%90%91%E9%87%8F%E5%8F%89%E4%B9%98/"/>
+      <url>/2024/02/28/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/8.3D%E6%95%B0%E5%AD%A6-Vector3%E5%90%91%E9%87%8F-%E5%90%91%E9%87%8F%E5%8F%89%E4%B9%98/</url>
+      
+        <content type="html"><![CDATA[<h1 id="8-3D数学-Vector3向量-向量叉乘"><a href="#8-3D数学-Vector3向量-向量叉乘" class="headerlink" title="8.3D数学-Vector3向量-向量叉乘"></a>8.3D数学-Vector3向量-向量叉乘</h1><hr><h2 id="8-1-知识点"><a href="#8-1-知识点" class="headerlink" title="8.1 知识点"></a>8.1 知识点</h2><p><img src="/../../../images/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/8.3D%E6%95%B0%E5%AD%A6-Vector3%E5%90%91%E9%87%8F-%E5%90%91%E9%87%8F%E5%8F%89%E4%B9%98/1.png"></p><h3 id="主要学习内容"><a href="#主要学习内容" class="headerlink" title="主要学习内容"></a>主要学习内容</h3><p><img src="/../../../images/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/8.3D%E6%95%B0%E5%AD%A6-Vector3%E5%90%91%E9%87%8F-%E5%90%91%E9%87%8F%E5%8F%89%E4%B9%98/2.png"></p><h3 id="计算公式"><a href="#计算公式" class="headerlink" title="计算公式"></a>计算公式</h3><p><img src="/../../../images/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/8.3D%E6%95%B0%E5%AD%A6-Vector3%E5%90%91%E9%87%8F-%E5%90%91%E9%87%8F%E5%8F%89%E4%B9%98/3.png"></p><h3 id="Cross静态方法-计算两个向量的叉乘"><a href="#Cross静态方法-计算两个向量的叉乘" class="headerlink" title="Cross静态方法 - 计算两个向量的叉乘"></a>Cross静态方法 - 计算两个向量的叉乘</h3><p>Vector3.Cross静态方法用于计算两个向量的叉乘，并返回叉积的结果向量。</p><ul><li>参数：两个向量a和b。</li><li>返回值：叉积的结果向量，垂直于a和b所在的平面。</li></ul><pre><code class="csharp">Vector3 result = Vector3.Cross(A.position, B.position);print(result);</code></pre><h4 id="几何意义"><a href="#几何意义" class="headerlink" title="几何意义"></a>几何意义</h4><p><img src="/../../../images/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/8.3D%E6%95%B0%E5%AD%A6-Vector3%E5%90%91%E9%87%8F-%E5%90%91%E9%87%8F%E5%8F%89%E4%B9%98/4.png"><br><img src="/../../../images/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/8.3D%E6%95%B0%E5%AD%A6-Vector3%E5%90%91%E9%87%8F-%E5%90%91%E9%87%8F%E5%8F%89%E4%B9%98/5.png"></p><p>数学中的叉乘方向使用右手法则。<br>Unity当中使用左手法则，因为Unity使用的是左手坐标系</p><pre><code class="csharp">// 假设向量 A和B 都在 XZ平面上// 向量A 叉乘 向量 B 会得到垂直于向量A和向量B所在的平面的向量，又称法向量// y大于0 证明 B在A右侧// y小于0 证明 B在A左侧Vector3 C1 = Vector3.Cross(A.position, B.position);if (C1.y &gt; 0)&#123;    print(&quot;B在A的右侧&quot;);&#125;else&#123;    print(&quot;B在A的左侧&quot;);&#125;Vector3 C2 = Vector3.Cross(B.position, A.position);if (C2.y &gt; 0)&#123;    print(&quot;A在B的右侧&quot;);&#125;else&#123;    print(&quot;A在B的左侧&quot;);&#125;</code></pre><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p><img src="/../../../images/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/8.3D%E6%95%B0%E5%AD%A6-Vector3%E5%90%91%E9%87%8F-%E5%90%91%E9%87%8F%E5%8F%89%E4%B9%98/6.png"></p><hr><h2 id="8-2-知识点代码"><a href="#8-2-知识点代码" class="headerlink" title="8.2 知识点代码"></a>8.2 知识点代码</h2><pre><code class="csharp">using System.Collections;using System.Collections.Generic;using UnityEngine;public class Lesson08_3D数学_Vector3向量_向量叉乘 : MonoBehaviour&#123;    public Transform A;    public Transform B;    // Start is called before the first frame update    void Start()    &#123;        #region 知识点一 叉乘计算        //Cross静态方法 计算两个向量的叉乘        //两个向量的叉积。        print(Vector3.Cross(A.position, B.position));        #endregion    &#125;    // Update is called once per frame    void Update()    &#123;        #region 知识点二 叉乘几何意义        //假设向量 A和B 都在 XZ平面上        //向量A 叉乘 向量 B 会得到垂直于向量A和向量B所在的平面的向量 又叫法向量        //y大于0 证明 B在A右侧        //y小于0 证明 B在A左侧        Vector3 C1 = Vector3.Cross(A.position, B.position);        if (C1.y &gt; 0)        &#123;            print(&quot;B在A的右侧&quot;);        &#125;        else        &#123;            print(&quot;B在A的左侧&quot;);        &#125;        Vector3 C2 = Vector3.Cross(B.position, A.position);        if (C2.y &gt; 0)        &#123;            print(&quot;A在B的右侧&quot;);        &#125;        else        &#123;            print(&quot;A在B的左侧&quot;);        &#125;        #endregion    &#125;&#125;</code></pre><hr><h2 id="8-3-练习题"><a href="#8-3-练习题" class="headerlink" title="8.3 练习题"></a>8.3 练习题</h2><p><img src="/../../../images/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/8.3D%E6%95%B0%E5%AD%A6-Vector3%E5%90%91%E9%87%8F-%E5%90%91%E9%87%8F%E5%8F%89%E4%B9%98/7.png"></p><h3 id="判断一个物体B位置再另一个物体A的位置的左上，左下-，右上，右下哪个方位"><a href="#判断一个物体B位置再另一个物体A的位置的左上，左下-，右上，右下哪个方位" class="headerlink" title="判断一个物体B位置再另一个物体A的位置的左上，左下 ，右上，右下哪个方位"></a>判断一个物体B位置再另一个物体A的位置的左上，左下 ，右上，右下哪个方位</h3><h4 id="计算-A位置向量和AB方向差向量的点乘和叉乘结果"><a href="#计算-A位置向量和AB方向差向量的点乘和叉乘结果" class="headerlink" title="计算 A位置向量和AB方向差向量的点乘和叉乘结果"></a>计算 A位置向量和AB方向差向量的点乘和叉乘结果</h4><pre><code class="csharp">dotResult = Vector3.Dot(A.forward, B.position - A.position);crossResult = Vector3.Cross(A.forward, B.position - A.position);</code></pre><h4 id="根据点乘和叉乘的值判断方位"><a href="#根据点乘和叉乘的值判断方位" class="headerlink" title="根据点乘和叉乘的值判断方位"></a>根据点乘和叉乘的值判断方位</h4><pre><code class="csharp">if (dotResult &gt;= 0)&#123;    // 右侧    if (crossResult.y &gt;= 0)    &#123;        print(&quot;右前&quot;);    &#125;    // 左侧    else    &#123;        print(&quot;左前&quot;);    &#125;&#125;else&#123;    // 右侧    if (crossResult.y &gt;= 0)    &#123;        print(&quot;右后&quot;);    &#125;    // 左侧    else    &#123;        print(&quot;左后&quot;);    &#125;&#125;</code></pre><h3 id="当一个物体B在物体A左前方20度角或右前方30度范围内，并且离A只有5米距离时，在控制台打印“发现入侵者”"><a href="#当一个物体B在物体A左前方20度角或右前方30度范围内，并且离A只有5米距离时，在控制台打印“发现入侵者”" class="headerlink" title="当一个物体B在物体A左前方20度角或右前方30度范围内，并且离A只有5米距离时，在控制台打印“发现入侵者”"></a>当一个物体B在物体A左前方20度角或右前方30度范围内，并且离A只有5米距离时，在控制台打印“发现入侵者”</h3><h4 id="计算叉乘用于判断左边还是右边"><a href="#计算叉乘用于判断左边还是右边" class="headerlink" title="计算叉乘用于判断左边还是右边"></a>计算叉乘用于判断左边还是右边</h4><pre><code class="csharp">crossResult = Vector3.Cross(A.forward, B.position - A.position);</code></pre><h4 id="判断距离后再判断左右和角度"><a href="#判断距离后再判断左右和角度" class="headerlink" title="判断距离后再判断左右和角度"></a>判断距离后再判断左右和角度</h4><pre><code class="csharp">// 判断距离if (Vector3.Distance(A.position, B.position) &lt;= 5)&#123;    // 判断角度和左右逻辑    if (crossResult.y &gt;= 0 &amp;&amp; Vector3.Angle(A.forward, B.position - A.position) &lt;= 30 ||        crossResult.y &lt; 0 &amp;&amp; Vector3.Angle(A.forward, B.position - A.position) &lt;= 20)    &#123;        print(&quot;发现入侵者&quot;);    &#125;&#125;</code></pre><hr><h2 id="8-4-练习题代码"><a href="#8-4-练习题代码" class="headerlink" title="8.4 练习题代码"></a>8.4 练习题代码</h2><pre><code class="csharp">using System.Collections;using System.Collections.Generic;using UnityEngine;public class Lesson08_练习题 : MonoBehaviour&#123;    //拖拽得到AB位置变量    public Transform A;    public Transform B;    //点乘接过和叉乘结果变量    private float dotResult;    private Vector3 crossResult;    void Update()    &#123;        #region 练习题一        //判断一个物体B位置再另一个物体A的位置的左上，左下 ，右上，右下哪个方位        //计算 A位置向量和AB方向差向量 点乘和叉乘结果        dotResult = Vector3.Dot(A.forward, B.position - A.position);        crossResult = Vector3.Cross(A.forward, B.position - A.position);        //根据点乘和叉乘的值判断前后左右        if (dotResult &gt;= 0)        &#123;            //右侧            if (crossResult.y &gt;= 0)            &#123;                print(&quot;右前&quot;);            &#125;            //左侧            else            &#123;                print(&quot;左前&quot;);            &#125;        &#125;        else        &#123;            //右侧            if (crossResult.y &gt;= 0)            &#123;                print(&quot;右后&quot;);            &#125;            //左侧            else            &#123;                print(&quot;左后&quot;);            &#125;        &#125;        #endregion        #region 练习题二        //当一个物体B在物体A左前方20度角或右前方30度范围内，并且离A只有5米距离时，在控制台打印“发现入侵者”        //计算叉乘 用于判断左边还是右边        crossResult = Vector3.Cross(A.forward, B.position - A.position);        //判断距离        if (Vector3.Distance(A.position, B.position) &lt;= 5)        &#123;            //判断角度和左右逻辑            if (crossResult.y &gt;= 0 &amp;&amp; Vector3.Angle(A.forward, B.position - A.position) &lt;= 30 ||                crossResult.y &lt; 0 &amp;&amp; Vector3.Angle(A.forward, B.position - A.position) &lt;= 20)            &#123;                print(&quot;发现入侵者&quot;);            &#125;        &#125;        #endregion    &#125;&#125;</code></pre><hr>]]></content>
+      
+      
+      <categories>
+          
+          <category> Unity </category>
+          
+          <category> Unity基础基础知识 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Unity </tag>
+            
+            <tag> 基础知识 </tag>
+            
+            <tag> Unity基础 </tag>
+            
+            <tag> 3D数学 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>7.Vector3向量点乘</title>
+      <link href="/2024/02/28/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/7.3D%E6%95%B0%E5%AD%A6-Vector3%E5%90%91%E9%87%8F-%E5%90%91%E9%87%8F%E7%82%B9%E4%B9%98/"/>
+      <url>/2024/02/28/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/7.3D%E6%95%B0%E5%AD%A6-Vector3%E5%90%91%E9%87%8F-%E5%90%91%E9%87%8F%E7%82%B9%E4%B9%98/</url>
+      
+        <content type="html"><![CDATA[<h1 id="7-3D数学-Vector3向量-向量点乘"><a href="#7-3D数学-Vector3向量-向量点乘" class="headerlink" title="7.3D数学-Vector3向量-向量点乘"></a>7.3D数学-Vector3向量-向量点乘</h1><hr><h2 id="7-1-知识点"><a href="#7-1-知识点" class="headerlink" title="7.1 知识点"></a>7.1 知识点</h2><p><img src="/../../../images/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/7.3D%E6%95%B0%E5%AD%A6-Vector3%E5%90%91%E9%87%8F-%E5%90%91%E9%87%8F%E7%82%B9%E4%B9%98/1.png"></p><h3 id="主要学习内容"><a href="#主要学习内容" class="headerlink" title="主要学习内容"></a>主要学习内容</h3><p><img src="/../../../images/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/7.3D%E6%95%B0%E5%AD%A6-Vector3%E5%90%91%E9%87%8F-%E5%90%91%E9%87%8F%E7%82%B9%E4%B9%98/2.png"></p><h3 id="计算公式"><a href="#计算公式" class="headerlink" title="计算公式"></a>计算公式</h3><p><img src="/../../../images/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/7.3D%E6%95%B0%E5%AD%A6-Vector3%E5%90%91%E9%87%8F-%E5%90%91%E9%87%8F%E7%82%B9%E4%B9%98/3.png"></p><h3 id="几何意义"><a href="#几何意义" class="headerlink" title="几何意义"></a>几何意义</h3><p><img src="/../../../images/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/7.3D%E6%95%B0%E5%AD%A6-Vector3%E5%90%91%E9%87%8F-%E5%90%91%E9%87%8F%E7%82%B9%E4%B9%98/4.png"></p><h3 id="补充知识点-调试画线"><a href="#补充知识点-调试画线" class="headerlink" title="补充知识点 调试画线"></a>补充知识点 调试画线</h3><h4 id="Debug类中的DrawLine静态方法-画线段"><a href="#Debug类中的DrawLine静态方法-画线段" class="headerlink" title="Debug类中的DrawLine静态方法 - 画线段"></a>Debug类中的DrawLine静态方法 - 画线段</h4><ul><li>画线段：在指定的起始点与结束点之间绘制一条直线。</li><li>参数：前两个参数分别是起点和终点，最后一个参数是划线颜色。</li></ul><pre><code class="csharp">Debug.DrawLine(this.transform.position, this.transform.position + this.transform.forward, Color.red);</code></pre><h4 id="Debug类中的DrawRay静态方法-画射线"><a href="#Debug类中的DrawRay静态方法-画射线" class="headerlink" title="Debug类中的DrawRay静态方法 - 画射线"></a>Debug类中的DrawRay静态方法 - 画射线</h4><ul><li>画射线：在世界坐标中绘制一条从起点到起点加方向的直线。</li><li>参数：前两个参数分别是起点和方向，最后一个参数是划线颜色。</li></ul><pre><code class="csharp">Debug.DrawRay(this.transform.position, this.transform.up, Color.blue);</code></pre><p><strong>注意：方向相同的划线可能重合，可能只显示某一划线</strong></p><h3 id="Dot静态方法-计算两个向量的点积"><a href="#Dot静态方法-计算两个向量的点积" class="headerlink" title="Dot静态方法 - 计算两个向量的点积"></a>Dot静态方法 - 计算两个向量的点积</h3><p>Vector3.Dot方法用于计算两个向量的点积。它接受两个Vector3类型的参数，表示要计算点积的两个向量。</p><p>示例代码：</p><pre><code class="csharp">Vector3 vector1 = new Vector3(1, 2, 3);Vector3 vector2 = new Vector3(4, 5, 6);float dotProduct = Vector3.Dot(vector1, vector2);Debug.Log(&quot;Dot Product: &quot; + dotProduct);//Dot Product: 32 = 1x4+2x5+3x6</code></pre><h3 id="通过点乘判断对象方位"><a href="#通过点乘判断对象方位" class="headerlink" title="通过点乘判断对象方位"></a>通过点乘判断对象方位</h3><pre><code class="csharp">// 思路：用自己的forward向量和自己和目标的位置差算出来的向量点乘判断是否大于0// 给用自己的forward向量和目标的位置差算出来的向量划线Debug.DrawRay(this.transform.position, this.transform.forward, Color.red);Debug.DrawRay(this.transform.position, target.position - this.transform.position, Color.red);// Dot静态方法 得到两个向量的点乘结果// 两个向量的点积。// Vector3 提供了计算点乘的方法// 向量 a 点乘 AB 的结果float dotResult = Vector3.Dot(this.transform.forward, target.position - this.transform.position);if (dotResult &gt;= 0)&#123;    print(&quot;它在我前方&quot;);&#125;else&#123;    print(&quot;它在我后方&quot;);&#125;</code></pre><p><img src="/../../../images/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/7.3D%E6%95%B0%E5%AD%A6-Vector3%E5%90%91%E9%87%8F-%E5%90%91%E9%87%8F%E7%82%B9%E4%B9%98/5.png"></p><h3 id="点乘角度公式推导"><a href="#点乘角度公式推导" class="headerlink" title="点乘角度公式推导"></a>点乘角度公式推导</h3><p><img src="/../../../images/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/7.3D%E6%95%B0%E5%AD%A6-Vector3%E5%90%91%E9%87%8F-%E5%90%91%E9%87%8F%E7%82%B9%E4%B9%98/6.png"></p><h3 id="通过点乘推导公式算出夹角"><a href="#通过点乘推导公式算出夹角" class="headerlink" title="通过点乘推导公式算出夹角"></a>通过点乘推导公式算出夹角</h3><p>手动通过点乘公式计算两个向量之间的夹角的步骤如下：</p><ol><li>使用单位向量计算点乘结果：</li></ol><pre><code class="csharp">float dotResult = Vector3.Dot(this.transform.forward, (target.position - this.transform.position).normalized);</code></pre><ol start="2"><li>使用反余弦三角函数得出角度，并将弧度制转换为角度制：</li></ol><pre><code class="csharp">print(&quot;手动算出的角度-&quot; + Mathf.Acos(dotResult) * Mathf.Rad2Deg);</code></pre><p>这些步骤可以用来手动计算两个向量之间的夹角，适用于需要更细致控制或理解计算过程的情况。</p><h3 id="Angle静态方法-计算两个向量之间的夹角"><a href="#Angle静态方法-计算两个向量之间的夹角" class="headerlink" title="Angle静态方法 - 计算两个向量之间的夹角"></a>Angle静态方法 - 计算两个向量之间的夹角</h3><p>Vector3.Angle静态方法用于计算两个向量之间的夹角，并以度为单位返回该角度。</p><ul><li>参数：from表示起始向量，to表示目标向量。</li><li>返回值：from向量与to向量之间的夹角（以度为单位）。</li></ul><pre><code class="csharp">Vector3 fromVector = this.transform.forward;Vector3 toVector = target.position - this.transform.position;float angle = Vector3.Angle(fromVector, toVector);print(&quot;Angle静态方法算出的角度-&quot; + angle);</code></pre><p>注意：返回的角度范围是0到180度之间，表示两个向量之间的夹角。</p><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><hr><h2 id="7-2-知识点代码"><a href="#7-2-知识点代码" class="headerlink" title="7.2 知识点代码"></a>7.2 知识点代码</h2><pre><code class="csharp">using System.Collections;using System.Collections.Generic;using UnityEngine;public class Lesson07_3D数学_Vector3向量_向量点乘 : MonoBehaviour&#123;    public Transform target;    void Update()    &#123;        #region 补充知识点 调试画线        ////DrawLine静态方法 画线段         ////在指定的起始点与结束点之间绘制一条直线。        ////前两个参数 分别是 起点 终点 最后一个参数是划线颜色        //Debug.DrawLine(this.transform.position, this.transform.position + this.transform.forward, Color.red);        ////DrawRay静态方法 画射线        ////在世界坐标中绘制一条从 start 到 start +dir 的直线。        ////前两个参数 分别是 起点 方向 最后一个参数是划线颜色        //Debug.DrawRay(this.transform.position, this.transform.up, Color.blue);        ////注意：方向相同的划线可能重合，可能只显示某一划线        #endregion        #region 知识点一 通过点乘判断对象方位        //思路：用自己的forward向量和自己和目标的位置差算出来的向量点乘判断是否大于0        //给用自己的forward向量和目标的位置差算出来的向量划线        Debug.DrawRay(this.transform.position, this.transform.forward, Color.red);        Debug.DrawRay(this.transform.position, target.position - this.transform.position, Color.red);        //Dot静态方法 得到两个向量的点乘结果        //两个向量的点积。        //Vector3 提供了计算点乘的方法        //向量 a 点乘 AB 的结果        float dotResult = Vector3.Dot(this.transform.forward, target.position - this.transform.position);        if (dotResult &gt;= 0)        &#123;            print(&quot;它在我前方&quot;);        &#125;        else        &#123;            print(&quot;它在我后方&quot;);        &#125;        #endregion        #region 知识点二 通过点乘推导公式算出夹角        //手动通过点乘公式算对象间夹角步骤        //1.用单位向量算出点乘结果        dotResult = Vector3.Dot(this.transform.forward, (target.position - this.transform.position).normalized);        //2.用反余弦三角函数得出角度 有弧度制转成角度制度        print(&quot;手动算出的角度-&quot; + Mathf.Acos(dotResult) * Mathf.Rad2Deg);                 //Angle静态方法 得到两个向量之间的夹角        //返回 from 与 to 之间的角度（以度为单位）。        //Vector3中提供了 得到两个向量之间夹角的方法         print(&quot;Angle静态方法算出的角度-&quot; + Vector3.Angle(this.transform.forward, target.position - this.transform.position));        //注意：得到范围是0-180度之间        #endregion    &#125;&#125;</code></pre><hr><h2 id="7-3-练习题"><a href="#7-3-练习题" class="headerlink" title="7.3 练习题"></a>7.3 练习题</h2><h3 id="当一个物体B在物体A前方45度角范围内，并且离A只有5米距离时，在控制台打印“发现入侵者”"><a href="#当一个物体B在物体A前方45度角范围内，并且离A只有5米距离时，在控制台打印“发现入侵者”" class="headerlink" title="当一个物体B在物体A前方45度角范围内，并且离A只有5米距离时，在控制台打印“发现入侵者”"></a>当一个物体B在物体A前方45度角范围内，并且离A只有5米距离时，在控制台打印“发现入侵者”</h3><p><img src="/../../../images/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/7.3D%E6%95%B0%E5%AD%A6-Vector3%E5%90%91%E9%87%8F-%E5%90%91%E9%87%8F%E7%82%B9%E4%B9%98/7.png"></p><h4 id="手动算角度"><a href="#手动算角度" class="headerlink" title="手动算角度"></a>手动算角度</h4><pre><code class="csharp">if (Vector3.Distance(this.transform.position, B.transform.position) &lt;= 5)&#123;    // 第一步：算出点乘结果（方向向量）    float dotResult = Vector3.Dot(this.transform.forward, (B.transform.position - this.transform.position).normalized);    // 第二步：通过反余弦函数算出夹角    if (Mathf.Acos(dotResult) * Mathf.Rad2Deg &lt;= 22.5f)    &#123;        print(&quot;手动算角度 发现入侵者&quot;);    &#125;&#125;</code></pre><h4 id="Angle直接算角度"><a href="#Angle直接算角度" class="headerlink" title="Angle直接算角度"></a>Angle直接算角度</h4><pre><code class="csharp">// Angle直接算角度if (Vector3.Distance(this.transform.position, B.transform.position) &lt;= 5 &amp;&amp;    Vector3.Angle(this.transform.forward, B.transform.position - this.transform.position) &lt;= 22.5f)&#123;    print(&quot;Angle直接算角度 发现入侵者&quot;);&#125;</code></pre><p>这两种方法都实现了在物体B位于物体A前方45度角范围内，并且距离A不超过5米时，在控制台打印“发现入侵者”的功能。判断边界是22.5原因是45分开了两边。</p><hr><h2 id="7-4-练习题代码"><a href="#7-4-练习题代码" class="headerlink" title="7.4 练习题代码"></a>7.4 练习题代码</h2><pre><code class="csharp">using System.Collections;using System.Collections.Generic;using UnityEngine;//这个脚本会挂载到物体A上public class Lesson07_练习题 : MonoBehaviour&#123;    #region 练习题一    //当一个物体B在物体A前方45度角范围内，并且离A只有5米距离时，在控制台打印“发现入侵者”    //得到B的位置信息 拖拽赋值    public Transform B;    void Update()    &#123;        //手动算角度        if (Vector3.Distance(this.transform.position, B.transform.position) &lt;= 5)        &#123;            //第一步 算出点乘结果（方向向量）            float dotResult = Vector3.Dot(this.transform.forward, (B.transform.position - this.transform.position).normalized);            //第二步 通过反余弦函数 算出 夹角            if (Mathf.Acos(dotResult) * Mathf.Rad2Deg &lt;= 22.5f)            &#123;                print(&quot;手动算角度 发现入侵者&quot;);            &#125;        &#125;        //Angle直接算角度        if (Vector3.Distance(this.transform.position, B.transform.position) &lt;= 5 &amp;&amp;            Vector3.Angle(this.transform.forward, B.transform.position - this.transform.position) &lt;= 22.5f)        &#123;            print(&quot;Angle直接算角度 发现入侵者&quot;);        &#125;    &#125;    #endregion&#125;</code></pre><hr>]]></content>
+      
+      
+      <categories>
+          
+          <category> Unity </category>
+          
+          <category> Unity基础基础知识 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Unity </tag>
+            
+            <tag> 基础知识 </tag>
+            
+            <tag> Unity基础 </tag>
+            
+            <tag> 3D数学 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>6.Vector3向量加减乘除</title>
+      <link href="/2024/02/28/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/6.3D%E6%95%B0%E5%AD%A6-Vector3%E5%90%91%E9%87%8F-%E5%90%91%E9%87%8F%E5%8A%A0%E5%87%8F%E4%B9%98%E9%99%A4/"/>
+      <url>/2024/02/28/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/6.3D%E6%95%B0%E5%AD%A6-Vector3%E5%90%91%E9%87%8F-%E5%90%91%E9%87%8F%E5%8A%A0%E5%87%8F%E4%B9%98%E9%99%A4/</url>
+      
+        <content type="html"><![CDATA[<h1 id="6-3D数学-Vector3向量-向量加减乘除"><a href="#6-3D数学-Vector3向量-向量加减乘除" class="headerlink" title="6.3D数学-Vector3向量-向量加减乘除"></a>6.3D数学-Vector3向量-向量加减乘除</h1><hr><h2 id="6-1-知识点"><a href="#6-1-知识点" class="headerlink" title="6.1 知识点"></a>6.1 知识点</h2><p><img src="/../../../images/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/6.3D%E6%95%B0%E5%AD%A6-Vector3%E5%90%91%E9%87%8F-%E5%90%91%E9%87%8F%E5%8A%A0%E5%87%8F%E4%B9%98%E9%99%A4/1.png"></p><h3 id="主要学习内容"><a href="#主要学习内容" class="headerlink" title="主要学习内容"></a>主要学习内容</h3><p><img src="/../../../images/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/6.3D%E6%95%B0%E5%AD%A6-Vector3%E5%90%91%E9%87%8F-%E5%90%91%E9%87%8F%E5%8A%A0%E5%87%8F%E4%B9%98%E9%99%A4/2.png"></p><h3 id="向量加法"><a href="#向量加法" class="headerlink" title="向量加法"></a>向量加法</h3><p><img src="/../../../images/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/6.3D%E6%95%B0%E5%AD%A6-Vector3%E5%90%91%E9%87%8F-%E5%90%91%E9%87%8F%E5%8A%A0%E5%87%8F%E4%B9%98%E9%99%A4/3.png"><br><img src="/../../../images/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/6.3D%E6%95%B0%E5%AD%A6-Vector3%E5%90%91%E9%87%8F-%E5%90%91%E9%87%8F%E5%8A%A0%E5%87%8F%E4%B9%98%E9%99%A4/4.png"><br><img src="/../../../images/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/6.3D%E6%95%B0%E5%AD%A6-Vector3%E5%90%91%E9%87%8F-%E5%90%91%E9%87%8F%E5%8A%A0%E5%87%8F%E4%B9%98%E9%99%A4/5.png"><br><img src="/../../../images/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/6.3D%E6%95%B0%E5%AD%A6-Vector3%E5%90%91%E9%87%8F-%E5%90%91%E9%87%8F%E5%8A%A0%E5%87%8F%E4%B9%98%E9%99%A4/6.png"><br><img src="/../../../images/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/6.3D%E6%95%B0%E5%AD%A6-Vector3%E5%90%91%E9%87%8F-%E5%90%91%E9%87%8F%E5%8A%A0%E5%87%8F%E4%B9%98%E9%99%A4/7.png"></p><h3 id="Unity中的向量加法"><a href="#Unity中的向量加法" class="headerlink" title="Unity中的向量加法"></a>Unity中的向量加法</h3><ul><li>可以直接给对象位置加向量 移动物体 但是一般不会这么写 直接translate就行<ul><li>示例：<code>this.transform.position += new Vector3(1, 2, 3);</code></li><li>示例：<code>this.transform.Translate(Vector3.forward * 5);</code></li></ul></li></ul><h3 id="向量减法"><a href="#向量减法" class="headerlink" title="向量减法"></a>向量减法</h3><p><img src="/../../../images/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/6.3D%E6%95%B0%E5%AD%A6-Vector3%E5%90%91%E9%87%8F-%E5%90%91%E9%87%8F%E5%8A%A0%E5%87%8F%E4%B9%98%E9%99%A4/8.png"><br><img src="/../../../images/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/6.3D%E6%95%B0%E5%AD%A6-Vector3%E5%90%91%E9%87%8F-%E5%90%91%E9%87%8F%E5%8A%A0%E5%87%8F%E4%B9%98%E9%99%A4/9.png"><br><img src="/../../../images/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/6.3D%E6%95%B0%E5%AD%A6-Vector3%E5%90%91%E9%87%8F-%E5%90%91%E9%87%8F%E5%8A%A0%E5%87%8F%E4%B9%98%E9%99%A4/10.png"><br><img src="/../../../images/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/6.3D%E6%95%B0%E5%AD%A6-Vector3%E5%90%91%E9%87%8F-%E5%90%91%E9%87%8F%E5%8A%A0%E5%87%8F%E4%B9%98%E9%99%A4/11.png"><br><img src="/../../../images/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/6.3D%E6%95%B0%E5%AD%A6-Vector3%E5%90%91%E9%87%8F-%E5%90%91%E9%87%8F%E5%8A%A0%E5%87%8F%E4%B9%98%E9%99%A4/12.png"><br><img src="/../../../images/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/6.3D%E6%95%B0%E5%AD%A6-Vector3%E5%90%91%E9%87%8F-%E5%90%91%E9%87%8F%E5%8A%A0%E5%87%8F%E4%B9%98%E9%99%A4/13.png"></p><h3 id="Unity中的向量减法"><a href="#Unity中的向量减法" class="headerlink" title="Unity中的向量减法"></a>Unity中的向量减法</h3><ul><li>可以直接给对象位置减向量 移动物体 但是一般不会这么写 直接translate就行<ul><li>示例：<code>this.transform.position -= new Vector3(1, 2, 3);</code></li><li>示例：<code>this.transform.Translate(-Vector3.forward * 5);</code></li></ul></li></ul><h3 id="向量乘除"><a href="#向量乘除" class="headerlink" title="向量乘除"></a>向量乘除</h3><p><img src="/../../../images/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/6.3D%E6%95%B0%E5%AD%A6-Vector3%E5%90%91%E9%87%8F-%E5%90%91%E9%87%8F%E5%8A%A0%E5%87%8F%E4%B9%98%E9%99%A4/14.png"><br><img src="/../../../images/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/6.3D%E6%95%B0%E5%AD%A6-Vector3%E5%90%91%E9%87%8F-%E5%90%91%E9%87%8F%E5%8A%A0%E5%87%8F%E4%B9%98%E9%99%A4/15.png"></p><h4 id="Unity中的向量乘除标量"><a href="#Unity中的向量乘除标量" class="headerlink" title="Unity中的向量乘除标量"></a>Unity中的向量乘除标量</h4><ul><li>对于对象的本地缩放可以乘除修改<ul><li>示例：<code>this.transform.localScale *= 2;</code></li><li>示例：<code>this.transform.localScale /= 2;</code></li><li>注意：<code>this.transform.lossyScale /= 2;</code> &#x2F;&#x2F; 全局缩放lossyScale只能读不能改</li></ul></li></ul><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><hr><h2 id="6-2-知识点代码"><a href="#6-2-知识点代码" class="headerlink" title="6.2 知识点代码"></a>6.2 知识点代码</h2><pre><code class="csharp">using System.Collections;using System.Collections.Generic;using UnityEngine;public class Lesson06_3D数学_Vector3向量_向量加减乘除 : MonoBehaviour&#123;    void Start()    &#123;        #region 知识点一 Unity中的向量加法        //可以直接给对象位置加向量 移动物体 但是一般不会这么写 直接translate就行        this.transform.position += new Vector3(1, 2, 3);        this.transform.Translate(Vector3.forward * 5);        #endregion        #region 知识点二 Unity中的向量减法        //可以直接给对象位置减向量 移动物体 但是一般不会这么写 直接translate就行        this.transform.position -= new Vector3(1, 2, 3);        this.transform.Translate(-Vector3.forward * 5);        #endregion        #region 知识点三 Unity中的向量乘除标量        //对于对象的本地缩放可以乘除修改        this.transform.localScale *= 2;        this.transform.localScale /= 2;        //this.transform.lossyScale /= 2;//全局缩放lossyScale只能读不能改        #endregion    &#125;&#125;</code></pre><hr><h2 id="6-3-练习题"><a href="#6-3-练习题" class="headerlink" title="6.3 练习题"></a>6.3 练习题</h2><h3 id="用向量相关知识，实现摄像机跟随"><a href="#用向量相关知识，实现摄像机跟随" class="headerlink" title="用向量相关知识，实现摄像机跟随"></a>用向量相关知识，实现摄像机跟随</h3><p><img src="/../../../images/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/6.3D%E6%95%B0%E5%AD%A6-Vector3%E5%90%91%E9%87%8F-%E5%90%91%E9%87%8F%E5%8A%A0%E5%87%8F%E4%B9%98%E9%99%A4/16.png"></p><p>在 <code>LateUpdate</code> 里设置摄像机位置并看向目标：</p><pre><code class="csharp">public float zOffect = 4;public float yOffect = 7;public Transform target;void LateUpdate()&#123;    // 摄像机的位置等于目标的位置进行向量偏移    // 先朝目标对象的面朝向的反方向平移4米再朝目标的头顶位置平移7米        // 设置摄像机位置    this.transform.position = target.position - target.forward * zOffect + target.up * yOffect;        // 看向目标    this.transform.LookAt(target);&#125;</code></pre><p>在 <code>LateUpdate</code> 中更新摄像机的位置，使其始终在目标物体的后方4米、向上偏移7米的位置，并且朝向目标物体。</p><hr><h2 id="6-4-练习题代码"><a href="#6-4-练习题代码" class="headerlink" title="6.4 练习题代码"></a>6.4 练习题代码</h2><pre><code class="csharp">using System.Collections;using System.Collections.Generic;using UnityEngine;//这个脚本将要挂载到摄像机上 实现摄像机跟随public class Lesson06_练习题 : MonoBehaviour&#123;    #region 练习题一    //用向量相关知识，实现摄像机跟随(摄像机不设置为对象子物体)，摄像机一直在物体的后方4米，向上偏7米的位置    public float zOffect = 4;    public float yOffect = 7;    public Transform target;    void LateUpdate()    &#123;        //摄像机的位置 等于目标的位置 进行向量偏移        //先朝目标对象的 面朝向的反方向平移4米 再朝目标的头顶位置 平移7米        //设置摄像机位置        this.transform.position = target.position + -target.forward * zOffect + target.up * yOffect;        //看向目标        this.transform.LookAt(target);    &#125;    #endregion&#125;</code></pre><hr>]]></content>
+      
+      
+      <categories>
+          
+          <category> Unity </category>
+          
+          <category> Unity基础基础知识 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Unity </tag>
+            
+            <tag> 基础知识 </tag>
+            
+            <tag> Unity基础 </tag>
+            
+            <tag> 3D数学 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>5.Vector3向量模长和单位向量</title>
       <link href="/2024/02/28/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/5.3D%E6%95%B0%E5%AD%A6-Vector3%E5%90%91%E9%87%8F-%E5%90%91%E9%87%8F%E6%A8%A1%E9%95%BF%E5%92%8C%E5%8D%95%E4%BD%8D%E5%90%91%E9%87%8F/"/>
       <url>/2024/02/28/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/5.3D%E6%95%B0%E5%AD%A6-Vector3%E5%90%91%E9%87%8F-%E5%90%91%E9%87%8F%E6%A8%A1%E9%95%BF%E5%92%8C%E5%8D%95%E4%BD%8D%E5%90%91%E9%87%8F/</url>
@@ -22,9 +154,9 @@
       
         <tags>
             
-            <tag> 基础知识 </tag>
-            
             <tag> Unity </tag>
+            
+            <tag> 基础知识 </tag>
             
             <tag> Unity基础 </tag>
             
@@ -41,7 +173,7 @@
       <link href="/2024/02/28/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/4.3D%E6%95%B0%E5%AD%A6-%E5%9D%90%E6%A0%87%E7%B3%BB/"/>
       <url>/2024/02/28/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/4.3D%E6%95%B0%E5%AD%A6-%E5%9D%90%E6%A0%87%E7%B3%BB/</url>
       
-        <content type="html"><![CDATA[<h1 id="4-3D数学-坐标系"><a href="#4-3D数学-坐标系" class="headerlink" title="4.3D数学-坐标系"></a>4.3D数学-坐标系</h1><hr><h2 id="4-1-知识点"><a href="#4-1-知识点" class="headerlink" title="4.1 知识点"></a>4.1 知识点</h2><p><img src="/../../../images/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/4.3D%E6%95%B0%E5%AD%A6-%E5%9D%90%E6%A0%87%E7%B3%BB/1.png"></p><h3 id="主要学习内容"><a href="#主要学习内容" class="headerlink" title="主要学习内容"></a>主要学习内容</h3><p><img src="/../../../images/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/4.3D%E6%95%B0%E5%AD%A6-%E5%9D%90%E6%A0%87%E7%B3%BB/2.png"></p><h3 id="世界坐标系"><a href="#世界坐标系" class="headerlink" title="世界坐标系"></a>世界坐标系</h3><p><img src="/../../../images/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/4.3D%E6%95%B0%E5%AD%A6-%E5%9D%90%E6%A0%87%E7%B3%BB/3.png"></p><ul><li><code>this.transform.position</code>-返回物体在世界坐标系中的位置</li><li><code>this.transform.rotation</code>-返回物体在世界坐标系中的旋转四元数</li><li><code>this.transform.eulerAngles</code>-返回物体在世界坐标系中的欧拉角</li><li><code>this.transform.lossyScale</code>-返回物体在世界坐标系中的缩放</li><li>修改它们将导致相对于世界坐标系的变化</li></ul><h3 id="物体坐标系"><a href="#物体坐标系" class="headerlink" title="物体坐标系"></a>物体坐标系</h3><p><img src="/../../../images/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/4.3D%E6%95%B0%E5%AD%A6-%E5%9D%90%E6%A0%87%E7%B3%BB/4.png"></p><ul><li><code>this.transform.localPosition</code>-返回物体在其父对象坐标系中的位置</li><li><code>this.transform.localEulerAngles</code>-返回物体在其父对象坐标系中的旋转四元数</li><li><code>this.transform.localRotation</code>-返回物体在其父对象坐标系中的欧拉角</li><li><code>this.transform.localScale</code>-返回物体在其父对象坐标系中的缩放</li><li>修改它们将导致相对于父对象物体坐标系的变化</li></ul><h3 id="屏幕坐标系"><a href="#屏幕坐标系" class="headerlink" title="屏幕坐标系"></a>屏幕坐标系</h3><p><img src="/../../../images/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/4.3D%E6%95%B0%E5%AD%A6-%E5%9D%90%E6%A0%87%E7%B3%BB/5.png"></p><ul><li><code>Input.mousePosition</code>-返回鼠标在屏幕坐标系中的位置</li><li><code>Screen.width</code>-返回屏幕坐标系的宽度</li><li><code>Screen.height</code>-返回屏幕坐标系的高度</li></ul><h3 id="视口坐标系"><a href="#视口坐标系" class="headerlink" title="视口坐标系"></a>视口坐标系</h3><p><img src="/../../../images/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/4.3D%E6%95%B0%E5%AD%A6-%E5%9D%90%E6%A0%87%E7%B3%BB/6.png"></p><ul><li>摄像机上的 Viewport Rect 视口范围</li></ul><h3 id="坐标转换相关"><a href="#坐标转换相关" class="headerlink" title="坐标转换相关"></a>坐标转换相关</h3><ul><li>世界转本地：<ul><li><code>this.transform.InverseTransformDirection</code></li><li><code>this.transform.InverseTransformPoint</code></li><li><code>this.transform.InverseTransformVector</code></li></ul></li><li>本地转世界：<ul><li><code>this.transform.TransformDirection</code></li><li><code>this.transform.TransformPoint</code></li><li><code>this.transform.TransformVector</code></li></ul></li><li>世界转屏幕：<ul><li><code>Camera.main.WorldToScreenPoint</code></li></ul></li><li>屏幕转世界：<ul><li><code>Camera.main.ScreenToWorldPoint</code></li></ul></li><li>世界转视口：<ul><li><code>Camera.main.WorldToViewportPoint</code></li></ul></li><li>视口转世界：<ul><li><code>Camera.main.ViewportToWorldPoint</code></li></ul></li><li>视口转屏幕：<ul><li><code>Camera.main.ViewportToScreenPoint</code></li></ul></li><li>屏幕转视口：<ul><li><code>Camera.main.ScreenToViewportPoint</code></li></ul></li></ul><hr><h2 id="4-2-知识点代码"><a href="#4-2-知识点代码" class="headerlink" title="4.2 知识点代码"></a>4.2 知识点代码</h2><pre><code class="csharp">using System.Collections;using System.Collections.Generic;using UnityEngine;public class Lesson04_3D数学_坐标系 : MonoBehaviour&#123;    void Start()    &#123;        #region 知识点一 世界坐标系        //目前学习的和世界坐标系相关的        //this.transform.position;//世界坐标系位置        //this.transform.rotation;//世界坐标系旋转四元数        //this.transform.eulerAngles;//世界坐标系欧拉角        //this.transform.lossyScale;//世界坐标系缩放        //修改他们 会是相对世界坐标系的变化        #endregion        #region 知识点二 物体坐标系        //相对父对象的物体坐标系的位置 本地坐标 相对坐标        //this.transform.localPosition;//物体坐标系位置        //this.transform.localEulerAngles;//物体坐标系旋转四元数        //this.transform.localRotation;//物体坐标系欧拉角        //this.transform.localScale;//物体坐标系缩放        //修改他们 会是相对父对象物体坐标系的变化        #endregion        #region 知识点三 屏幕坐标系        //Input.mousePosition//鼠标在屏幕坐标系的位置        //Screen.width;//屏幕坐标系的宽        //Screen.height;//屏幕坐标系的高        #endregion        #region 知识点四 视口坐标系        //摄像机上的 Viewport Rect 视口范围         #endregion        #region 知识点五 坐标转换相关        //世界转本地        //this.transform.InverseTransformDirection        //this.transform.InverseTransformPoint        //this.transform.InverseTransformVector        //本地转世界        //this.transform.TransformDirection        //this.transform.TransformPoint          //this.transform.TransformVector        //世界转屏幕        //Camera.main.WorldToScreenPoint        //屏幕转世界        //Camera.main.ScreenToWorldPoint        //世界转视口        //Camera.main.WorldToViewportPoint        //视口转世界        //Camera.main.ViewportToWorldPoint        //视口转屏幕        //Camera.main.ViewportToScreenPoint        //屏幕转视口        //Camera.main.ScreenToViewportPoint;        #endregion    &#125;&#125;</code></pre><hr>]]></content>
+        <content type="html"><![CDATA[<h1 id="4-3D数学-坐标系"><a href="#4-3D数学-坐标系" class="headerlink" title="4.3D数学-坐标系"></a>4.3D数学-坐标系</h1><hr><h2 id="4-1-知识点"><a href="#4-1-知识点" class="headerlink" title="4.1 知识点"></a>4.1 知识点</h2><p><img src="/../../../images/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/4.3D%E6%95%B0%E5%AD%A6-%E5%9D%90%E6%A0%87%E7%B3%BB/1.png"></p><h3 id="主要学习内容"><a href="#主要学习内容" class="headerlink" title="主要学习内容"></a>主要学习内容</h3><p><img src="/../../../images/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/4.3D%E6%95%B0%E5%AD%A6-%E5%9D%90%E6%A0%87%E7%B3%BB/2.png"></p><h3 id="世界坐标系"><a href="#世界坐标系" class="headerlink" title="世界坐标系"></a>世界坐标系</h3><p><img src="/../../../images/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/4.3D%E6%95%B0%E5%AD%A6-%E5%9D%90%E6%A0%87%E7%B3%BB/3.png"></p><ul><li><code>this.transform.position</code>-返回物体在世界坐标系中的位置</li><li><code>this.transform.rotation</code>-返回物体在世界坐标系中的旋转四元数</li><li><code>this.transform.eulerAngles</code>-返回物体在世界坐标系中的欧拉角</li><li><code>this.transform.lossyScale</code>-返回物体在世界坐标系中的缩放</li><li>修改它们将导致相对于世界坐标系的变化</li></ul><h3 id="物体坐标系"><a href="#物体坐标系" class="headerlink" title="物体坐标系"></a>物体坐标系</h3><p><img src="/../../../images/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/4.3D%E6%95%B0%E5%AD%A6-%E5%9D%90%E6%A0%87%E7%B3%BB/4.png"></p><ul><li><code>this.transform.localPosition</code>-返回物体在其父对象坐标系中的位置</li><li><code>this.transform.localEulerAngles</code>-返回物体在其父对象坐标系中的旋转四元数</li><li><code>this.transform.localRotation</code>-返回物体在其父对象坐标系中的欧拉角</li><li><code>this.transform.localScale</code>-返回物体在其父对象坐标系中的缩放</li><li>修改它们将导致相对于父对象物体坐标系的变化</li></ul><h3 id="屏幕坐标系"><a href="#屏幕坐标系" class="headerlink" title="屏幕坐标系"></a>屏幕坐标系</h3><p><img src="/../../../images/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/4.3D%E6%95%B0%E5%AD%A6-%E5%9D%90%E6%A0%87%E7%B3%BB/5.png"></p><ul><li><code>Input.mousePosition</code>-返回鼠标在屏幕坐标系中的位置</li><li><code>Screen.width</code>-返回屏幕坐标系的宽度</li><li><code>Screen.height</code>-返回屏幕坐标系的高度</li></ul><h3 id="视口坐标系"><a href="#视口坐标系" class="headerlink" title="视口坐标系"></a>视口坐标系</h3><p><img src="/../../../images/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/4.3D%E6%95%B0%E5%AD%A6-%E5%9D%90%E6%A0%87%E7%B3%BB/6.png"></p><ul><li>摄像机上的 Viewport Rect 视口范围</li></ul><h3 id="坐标转换相关"><a href="#坐标转换相关" class="headerlink" title="坐标转换相关"></a>坐标转换相关</h3><h4 id="世界转本地"><a href="#世界转本地" class="headerlink" title="世界转本地"></a>世界转本地</h4><h5 id="this-transform-InverseTransformDirection-将世界空间中的方向向量转换为本地空间中的方向向量。"><a href="#this-transform-InverseTransformDirection-将世界空间中的方向向量转换为本地空间中的方向向量。" class="headerlink" title="this.transform.InverseTransformDirection - 将世界空间中的方向向量转换为本地空间中的方向向量。"></a><code>this.transform.InverseTransformDirection</code> - 将世界空间中的方向向量转换为本地空间中的方向向量。</h5><pre><code class="csharp">Vector3 worldDirection = new Vector3(1, 0, 0);Vector3 localDirection = this.transform.InverseTransformDirection(worldDirection);</code></pre><h5 id="this-transform-InverseTransformPoint-将世界空间中的点转换为本地空间中的点。"><a href="#this-transform-InverseTransformPoint-将世界空间中的点转换为本地空间中的点。" class="headerlink" title="this.transform.InverseTransformPoint - 将世界空间中的点转换为本地空间中的点。"></a><code>this.transform.InverseTransformPoint</code> - 将世界空间中的点转换为本地空间中的点。</h5><pre><code class="csharp">Vector3 worldPoint = new Vector3(5, 2, 3);Vector3 localPoint = this.transform.InverseTransformPoint(worldPoint);</code></pre><h5 id="this-transform-InverseTransformVector-将世界空间中的向量转换为本地空间中的向量。"><a href="#this-transform-InverseTransformVector-将世界空间中的向量转换为本地空间中的向量。" class="headerlink" title="this.transform.InverseTransformVector - 将世界空间中的向量转换为本地空间中的向量。"></a><code>this.transform.InverseTransformVector</code> - 将世界空间中的向量转换为本地空间中的向量。</h5><pre><code class="csharp">Vector3 worldVector = new Vector3(2, 1, 0);Vector3 localVector = this.transform.InverseTransformVector(worldVector);</code></pre><h4 id="本地转世界"><a href="#本地转世界" class="headerlink" title="本地转世界"></a>本地转世界</h4><h5 id="this-transform-TransformDirection-将本地空间中的方向向量转换为世界空间中的方向向量。"><a href="#this-transform-TransformDirection-将本地空间中的方向向量转换为世界空间中的方向向量。" class="headerlink" title="this.transform.TransformDirection - 将本地空间中的方向向量转换为世界空间中的方向向量。"></a><code>this.transform.TransformDirection</code> - 将本地空间中的方向向量转换为世界空间中的方向向量。</h5><pre><code class="csharp">Vector3 localDirection = new Vector3(0, 1, 0);Vector3 worldDirection = this.transform.TransformDirection(localDirection);</code></pre><h5 id="this-transform-TransformPoint-将本地空间中的点转换为世界空间中的点。"><a href="#this-transform-TransformPoint-将本地空间中的点转换为世界空间中的点。" class="headerlink" title="this.transform.TransformPoint - 将本地空间中的点转换为世界空间中的点。"></a><code>this.transform.TransformPoint</code> - 将本地空间中的点转换为世界空间中的点。</h5><pre><code class="csharp">Vector3 localPoint = new Vector3(2, 3, 1);Vector3 worldPoint = this.transform.TransformPoint(localPoint);</code></pre><h5 id="this-transform-TransformVector-将本地空间中的向量转换为世界空间中的向量。"><a href="#this-transform-TransformVector-将本地空间中的向量转换为世界空间中的向量。" class="headerlink" title="this.transform.TransformVector - 将本地空间中的向量转换为世界空间中的向量。"></a><code>this.transform.TransformVector</code> - 将本地空间中的向量转换为世界空间中的向量。</h5><pre><code class="csharp">Vector3 localVector = new Vector3(1, 0, 0);Vector3 worldVector = this.transform.TransformVector(localVector);</code></pre><h4 id="世界转屏幕"><a href="#世界转屏幕" class="headerlink" title="世界转屏幕"></a>世界转屏幕</h4><h5 id="Camera-main-WorldToScreenPoint-将世界空间中的点转换为屏幕空间中的点。"><a href="#Camera-main-WorldToScreenPoint-将世界空间中的点转换为屏幕空间中的点。" class="headerlink" title="Camera.main.WorldToScreenPoint - 将世界空间中的点转换为屏幕空间中的点。"></a><code>Camera.main.WorldToScreenPoint</code> - 将世界空间中的点转换为屏幕空间中的点。</h5><pre><code class="csharp">Vector3 worldPoint = new Vector3(5, 2, 3);Vector3 screenPoint = Camera.main.WorldToScreenPoint(worldPoint);</code></pre><h4 id="屏幕转世界"><a href="#屏幕转世界" class="headerlink" title="屏幕转世界"></a>屏幕转世界</h4><h5 id="Camera-main-ScreenToWorldPoint-将屏幕空间中的点转换为世界空间中的点。"><a href="#Camera-main-ScreenToWorldPoint-将屏幕空间中的点转换为世界空间中的点。" class="headerlink" title="Camera.main.ScreenToWorldPoint - 将屏幕空间中的点转换为世界空间中的点。"></a><code>Camera.main.ScreenToWorldPoint</code> - 将屏幕空间中的点转换为世界空间中的点。</h5><pre><code class="csharp">Vector3 screenPoint = new Vector3(100, 200, 0);Vector3 worldPoint = Camera.main.ScreenToWorldPoint(screenPoint);</code></pre><h4 id="世界转视口"><a href="#世界转视口" class="headerlink" title="世界转视口"></a>世界转视口</h4><h5 id="Camera-main-WorldToViewportPoint-将世界空间中的点转换为视口空间中的点。"><a href="#Camera-main-WorldToViewportPoint-将世界空间中的点转换为视口空间中的点。" class="headerlink" title="Camera.main.WorldToViewportPoint - 将世界空间中的点转换为视口空间中的点。"></a><code>Camera.main.WorldToViewportPoint</code> - 将世界空间中的点转换为视口空间中的点。</h5><pre><code class="csharp">Vector3 worldPoint = new Vector3(5, 2, 3);Vector3 viewportPoint = Camera.main.WorldToViewportPoint(worldPoint);</code></pre><h4 id="视口转世界"><a href="#视口转世界" class="headerlink" title="视口转世界"></a>视口转世界</h4><h5 id="Camera-main-ViewportToWorldPoint-将视口空间中的点转换为世界空间中的点。"><a href="#Camera-main-ViewportToWorldPoint-将视口空间中的点转换为世界空间中的点。" class="headerlink" title="Camera.main.ViewportToWorldPoint - 将视口空间中的点转换为世界空间中的点。"></a><code>Camera.main.ViewportToWorldPoint</code> - 将视口空间中的点转换为世界空间中的点。</h5><pre><code class="csharp">Vector3 viewportPoint = new Vector3(0.5f, 0.5f, 0);Vector3 worldPoint = Camera.main.ViewportToWorldPoint(viewportPoint);</code></pre><h4 id="视口转屏幕"><a href="#视口转屏幕" class="headerlink" title="视口转屏幕"></a>视口转屏幕</h4><h5 id="Camera-main-ViewportToScreenPoint-将视口空间中的点转换为屏幕空间中的点。"><a href="#Camera-main-ViewportToScreenPoint-将视口空间中的点转换为屏幕空间中的点。" class="headerlink" title="Camera.main.ViewportToScreenPoint - 将视口空间中的点转换为屏幕空间中的点。"></a><code>Camera.main.ViewportToScreenPoint</code> - 将视口空间中的点转换为屏幕空间中的点。</h5><pre><code class="csharp">Vector3 viewportPoint = new Vector3(0.5f, 0.5f, 0);Vector3 screenPoint = Camera.main.ViewportToScreenPoint(viewportPoint);</code></pre><h4 id="屏幕转视口"><a href="#屏幕转视口" class="headerlink" title="屏幕转视口"></a>屏幕转视口</h4><h5 id="Camera-main-ScreenToViewportPoint-将屏幕空间中的点转换为视口空间中的点。"><a href="#Camera-main-ScreenToViewportPoint-将屏幕空间中的点转换为视口空间中的点。" class="headerlink" title="Camera.main.ScreenToViewportPoint - 将屏幕空间中的点转换为视口空间中的点。"></a><code>Camera.main.ScreenToViewportPoint</code> - 将屏幕空间中的点转换为视口空间中的点。</h5><pre><code class="csharp">Vector3 screenPoint = new Vector3(100, 200, 0);Vector3 viewportPoint = Camera.main.ScreenToViewportPoint(screenPoint);</code></pre><hr><h2 id="4-2-知识点代码"><a href="#4-2-知识点代码" class="headerlink" title="4.2 知识点代码"></a>4.2 知识点代码</h2><pre><code class="csharp">using System.Collections;using System.Collections.Generic;using UnityEngine;public class Lesson04_3D数学_坐标系 : MonoBehaviour&#123;    void Start()    &#123;        #region 知识点一 世界坐标系        //目前学习的和世界坐标系相关的        //this.transform.position;//世界坐标系位置        //this.transform.rotation;//世界坐标系旋转四元数        //this.transform.eulerAngles;//世界坐标系欧拉角        //this.transform.lossyScale;//世界坐标系缩放        //修改他们 会是相对世界坐标系的变化        #endregion        #region 知识点二 物体坐标系        //相对父对象的物体坐标系的位置 本地坐标 相对坐标        //this.transform.localPosition;//物体坐标系位置        //this.transform.localEulerAngles;//物体坐标系旋转四元数        //this.transform.localRotation;//物体坐标系欧拉角        //this.transform.localScale;//物体坐标系缩放        //修改他们 会是相对父对象物体坐标系的变化        #endregion        #region 知识点三 屏幕坐标系        //Input.mousePosition//鼠标在屏幕坐标系的位置        //Screen.width;//屏幕坐标系的宽        //Screen.height;//屏幕坐标系的高        #endregion        #region 知识点四 视口坐标系        //摄像机上的 Viewport Rect 视口范围         #endregion        #region 知识点五 坐标转换相关        //世界转本地        //this.transform.InverseTransformDirection        //this.transform.InverseTransformPoint        //this.transform.InverseTransformVector        //本地转世界        //this.transform.TransformDirection        //this.transform.TransformPoint          //this.transform.TransformVector        //世界转屏幕        //Camera.main.WorldToScreenPoint        //屏幕转世界        //Camera.main.ScreenToWorldPoint        //世界转视口        //Camera.main.WorldToViewportPoint        //视口转世界        //Camera.main.ViewportToWorldPoint        //视口转屏幕        //Camera.main.ViewportToScreenPoint        //屏幕转视口        //Camera.main.ScreenToViewportPoint;        #endregion    &#125;&#125;</code></pre><hr>]]></content>
       
       
       <categories>
@@ -55,9 +187,9 @@
       
         <tags>
             
-            <tag> 基础知识 </tag>
-            
             <tag> Unity </tag>
+            
+            <tag> 基础知识 </tag>
             
             <tag> Unity基础 </tag>
             
@@ -88,9 +220,9 @@
       
         <tags>
             
-            <tag> 基础知识 </tag>
-            
             <tag> Unity </tag>
+            
+            <tag> 基础知识 </tag>
             
             <tag> Unity基础 </tag>
             
@@ -121,9 +253,9 @@
       
         <tags>
             
-            <tag> 基础知识 </tag>
-            
             <tag> Unity </tag>
+            
+            <tag> 基础知识 </tag>
             
             <tag> Unity基础 </tag>
             
@@ -154,9 +286,9 @@
       
         <tags>
             
-            <tag> 基础知识 </tag>
-            
             <tag> Unity </tag>
+            
+            <tag> 基础知识 </tag>
             
             <tag> Unity基础 </tag>
             
@@ -1092,11 +1224,11 @@
             
             <tag> 随机数 </tag>
             
-            <tag> 委托和事件 </tag>
-            
             <tag> Unity </tag>
             
             <tag> Unity入门 </tag>
+            
+            <tag> 委托和事件 </tag>
             
         </tags>
       
@@ -1575,11 +1707,11 @@
             
             <tag> 必备知识点 </tag>
             
+            <tag> 反射和特性 </tag>
+            
             <tag> UI系统 </tag>
             
             <tag> GUI </tag>
-            
-            <tag> 反射和特性 </tag>
             
         </tags>
       
@@ -1606,11 +1738,11 @@
       
         <tags>
             
+            <tag> 基础知识 </tag>
+            
             <tag> UI系统 </tag>
             
             <tag> GUI </tag>
-            
-            <tag> 基础知识 </tag>
             
         </tags>
       
@@ -1637,11 +1769,11 @@
       
         <tags>
             
+            <tag> 基础知识 </tag>
+            
             <tag> UI系统 </tag>
             
             <tag> GUI </tag>
-            
-            <tag> 基础知识 </tag>
             
             <tag> 自定义整体样式 </tag>
             
@@ -1670,11 +1802,11 @@
       
         <tags>
             
+            <tag> 基础知识 </tag>
+            
             <tag> UI系统 </tag>
             
             <tag> GUI </tag>
-            
-            <tag> 基础知识 </tag>
             
             <tag> 自定义整体样式 </tag>
             
@@ -1703,11 +1835,11 @@
       
         <tags>
             
+            <tag> 基础知识 </tag>
+            
             <tag> UI系统 </tag>
             
             <tag> GUI </tag>
-            
-            <tag> 基础知识 </tag>
             
             <tag> 控件 </tag>
             
@@ -1738,11 +1870,11 @@
       
         <tags>
             
+            <tag> 基础知识 </tag>
+            
             <tag> UI系统 </tag>
             
             <tag> GUI </tag>
-            
-            <tag> 基础知识 </tag>
             
             <tag> 控件 </tag>
             
@@ -1773,11 +1905,11 @@
       
         <tags>
             
+            <tag> 基础知识 </tag>
+            
             <tag> UI系统 </tag>
             
             <tag> GUI </tag>
-            
-            <tag> 基础知识 </tag>
             
             <tag> 控件 </tag>
             
@@ -1808,11 +1940,11 @@
       
         <tags>
             
+            <tag> 基础知识 </tag>
+            
             <tag> UI系统 </tag>
             
             <tag> GUI </tag>
-            
-            <tag> 基础知识 </tag>
             
             <tag> 控件 </tag>
             
@@ -1843,11 +1975,11 @@
       
         <tags>
             
+            <tag> 基础知识 </tag>
+            
             <tag> UI系统 </tag>
             
             <tag> GUI </tag>
-            
-            <tag> 基础知识 </tag>
             
             <tag> 控件 </tag>
             
@@ -1878,11 +2010,11 @@
       
         <tags>
             
+            <tag> 基础知识 </tag>
+            
             <tag> UI系统 </tag>
             
             <tag> GUI </tag>
-            
-            <tag> 基础知识 </tag>
             
             <tag> 控件 </tag>
             
@@ -1913,11 +2045,11 @@
       
         <tags>
             
+            <tag> 基础知识 </tag>
+            
             <tag> UI系统 </tag>
             
             <tag> GUI </tag>
-            
-            <tag> 基础知识 </tag>
             
             <tag> 控件 </tag>
             
@@ -1948,11 +2080,11 @@
       
         <tags>
             
+            <tag> 基础知识 </tag>
+            
             <tag> UI系统 </tag>
             
             <tag> GUI </tag>
-            
-            <tag> 基础知识 </tag>
             
         </tags>
       
@@ -1979,11 +2111,11 @@
       
         <tags>
             
+            <tag> 基础知识 </tag>
+            
             <tag> UI系统 </tag>
             
             <tag> GUI </tag>
-            
-            <tag> 基础知识 </tag>
             
         </tags>
       
@@ -2557,11 +2689,11 @@
       
         <tags>
             
-            <tag> 基础知识 </tag>
-            
             <tag> Unity </tag>
             
             <tag> Unity入门 </tag>
+            
+            <tag> 基础知识 </tag>
             
         </tags>
       
@@ -2588,11 +2720,11 @@
       
         <tags>
             
-            <tag> 基础知识 </tag>
-            
             <tag> Unity </tag>
             
             <tag> Unity入门 </tag>
+            
+            <tag> 基础知识 </tag>
             
             <tag> 核心系统 </tag>
             
@@ -2623,11 +2755,11 @@
       
         <tags>
             
-            <tag> 基础知识 </tag>
-            
             <tag> Unity </tag>
             
             <tag> Unity入门 </tag>
+            
+            <tag> 基础知识 </tag>
             
             <tag> 核心系统 </tag>
             
@@ -2658,11 +2790,11 @@
       
         <tags>
             
-            <tag> 基础知识 </tag>
-            
             <tag> Unity </tag>
             
             <tag> Unity入门 </tag>
+            
+            <tag> 基础知识 </tag>
             
             <tag> 核心系统 </tag>
             
@@ -2693,11 +2825,11 @@
       
         <tags>
             
-            <tag> 基础知识 </tag>
-            
             <tag> Unity </tag>
             
             <tag> Unity入门 </tag>
+            
+            <tag> 基础知识 </tag>
             
             <tag> 核心系统 </tag>
             
@@ -2728,11 +2860,11 @@
       
         <tags>
             
-            <tag> 基础知识 </tag>
-            
             <tag> Unity </tag>
             
             <tag> Unity入门 </tag>
+            
+            <tag> 基础知识 </tag>
             
             <tag> 核心系统 </tag>
             
@@ -2763,11 +2895,11 @@
       
         <tags>
             
-            <tag> 基础知识 </tag>
-            
             <tag> Unity </tag>
             
             <tag> Unity入门 </tag>
+            
+            <tag> 基础知识 </tag>
             
             <tag> 核心系统 </tag>
             
@@ -2798,11 +2930,11 @@
       
         <tags>
             
-            <tag> 基础知识 </tag>
-            
             <tag> Unity </tag>
             
             <tag> Unity入门 </tag>
+            
+            <tag> 基础知识 </tag>
             
             <tag> 核心系统 </tag>
             
@@ -2833,11 +2965,11 @@
       
         <tags>
             
-            <tag> 基础知识 </tag>
-            
             <tag> Unity </tag>
             
             <tag> Unity入门 </tag>
+            
+            <tag> 基础知识 </tag>
             
             <tag> 核心系统 </tag>
             
@@ -2868,11 +3000,11 @@
       
         <tags>
             
-            <tag> 基础知识 </tag>
-            
             <tag> Unity </tag>
             
             <tag> Unity入门 </tag>
+            
+            <tag> 基础知识 </tag>
             
             <tag> 核心系统 </tag>
             
@@ -2903,11 +3035,11 @@
       
         <tags>
             
-            <tag> 基础知识 </tag>
-            
             <tag> Unity </tag>
             
             <tag> Unity入门 </tag>
+            
+            <tag> 基础知识 </tag>
             
             <tag> 核心系统 </tag>
             
@@ -2938,11 +3070,11 @@
       
         <tags>
             
-            <tag> 基础知识 </tag>
-            
             <tag> Unity </tag>
             
             <tag> Unity入门 </tag>
+            
+            <tag> 基础知识 </tag>
             
             <tag> 核心系统 </tag>
             
@@ -2973,11 +3105,11 @@
       
         <tags>
             
-            <tag> 基础知识 </tag>
-            
             <tag> Unity </tag>
             
             <tag> Unity入门 </tag>
+            
+            <tag> 基础知识 </tag>
             
             <tag> Unity重要组件和API </tag>
             
@@ -3006,11 +3138,11 @@
       
         <tags>
             
-            <tag> 基础知识 </tag>
-            
             <tag> Unity </tag>
             
             <tag> Unity入门 </tag>
+            
+            <tag> 基础知识 </tag>
             
             <tag> Unity重要组件和API </tag>
             
@@ -3039,11 +3171,11 @@
       
         <tags>
             
-            <tag> 基础知识 </tag>
-            
             <tag> Unity </tag>
             
             <tag> Unity入门 </tag>
+            
+            <tag> 基础知识 </tag>
             
             <tag> Unity重要组件和API </tag>
             
@@ -3072,11 +3204,11 @@
       
         <tags>
             
-            <tag> 基础知识 </tag>
-            
             <tag> Unity </tag>
             
             <tag> Unity入门 </tag>
+            
+            <tag> 基础知识 </tag>
             
             <tag> Unity重要组件和API </tag>
             
@@ -3105,11 +3237,11 @@
       
         <tags>
             
-            <tag> 基础知识 </tag>
-            
             <tag> Unity </tag>
             
             <tag> Unity入门 </tag>
+            
+            <tag> 基础知识 </tag>
             
             <tag> Unity重要组件和API </tag>
             
@@ -3138,11 +3270,11 @@
       
         <tags>
             
-            <tag> 基础知识 </tag>
-            
             <tag> Unity </tag>
             
             <tag> Unity入门 </tag>
+            
+            <tag> 基础知识 </tag>
             
             <tag> Unity重要组件和API </tag>
             
@@ -3171,11 +3303,11 @@
       
         <tags>
             
-            <tag> 基础知识 </tag>
-            
             <tag> Unity </tag>
             
             <tag> Unity入门 </tag>
+            
+            <tag> 基础知识 </tag>
             
             <tag> Unity重要组件和API </tag>
             
@@ -3204,11 +3336,11 @@
       
         <tags>
             
-            <tag> 基础知识 </tag>
-            
             <tag> Unity </tag>
             
             <tag> Unity入门 </tag>
+            
+            <tag> 基础知识 </tag>
             
             <tag> Unity重要组件和API </tag>
             
@@ -3237,11 +3369,11 @@
       
         <tags>
             
-            <tag> 基础知识 </tag>
-            
             <tag> Unity </tag>
             
             <tag> Unity入门 </tag>
+            
+            <tag> 基础知识 </tag>
             
             <tag> Unity重要组件和API </tag>
             
@@ -3270,11 +3402,11 @@
       
         <tags>
             
-            <tag> 基础知识 </tag>
-            
             <tag> Unity </tag>
             
             <tag> Unity入门 </tag>
+            
+            <tag> 基础知识 </tag>
             
             <tag> Unity重要组件和API </tag>
             
@@ -3303,11 +3435,11 @@
       
         <tags>
             
-            <tag> 基础知识 </tag>
-            
             <tag> Unity </tag>
             
             <tag> Unity入门 </tag>
+            
+            <tag> 基础知识 </tag>
             
             <tag> Unity重要组件和API </tag>
             
@@ -3336,11 +3468,11 @@
       
         <tags>
             
-            <tag> 基础知识 </tag>
-            
             <tag> Unity </tag>
             
             <tag> Unity入门 </tag>
+            
+            <tag> 基础知识 </tag>
             
         </tags>
       
@@ -3367,11 +3499,11 @@
       
         <tags>
             
-            <tag> 基础知识 </tag>
-            
             <tag> Unity </tag>
             
             <tag> Unity入门 </tag>
+            
+            <tag> 基础知识 </tag>
             
             <tag> Unity脚本基础 </tag>
             
@@ -3402,15 +3534,15 @@
       
         <tags>
             
-            <tag> 基础知识 </tag>
-            
-            <tag> 反射和特性 </tag>
-            
             <tag> Unity </tag>
             
             <tag> Unity入门 </tag>
             
+            <tag> 基础知识 </tag>
+            
             <tag> Unity脚本基础 </tag>
+            
+            <tag> 反射和特性 </tag>
             
         </tags>
       
@@ -3419,11 +3551,11 @@
     
     
     <entry>
-      <title>10.生命周期函数</title>
+      <title>10.生命周期函数和打印信息</title>
       <link href="/2024/02/24/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/10.Unity%E8%84%9A%E6%9C%AC%E5%9F%BA%E7%A1%80-%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E5%87%BD%E6%95%B0/"/>
       <url>/2024/02/24/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/10.Unity%E8%84%9A%E6%9C%AC%E5%9F%BA%E7%A1%80-%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E5%87%BD%E6%95%B0/</url>
       
-        <content type="html"><![CDATA[<h1 id="10-Unity脚本基础-生命周期函数"><a href="#10-Unity脚本基础-生命周期函数" class="headerlink" title="10.Unity脚本基础-生命周期函数"></a>10.Unity脚本基础-生命周期函数</h1><hr><h2 id="10-1-知识点"><a href="#10-1-知识点" class="headerlink" title="10.1 知识点"></a>10.1 知识点</h2><h3 id="了解帧的概念"><a href="#了解帧的概念" class="headerlink" title="了解帧的概念"></a>了解帧的概念</h3><p><img src="/../../../images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/10.Unity%E8%84%9A%E6%9C%AC%E5%9F%BA%E7%A1%80-%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E5%87%BD%E6%95%B0/1.png"></p><ul><li>Unity 底层已经帮助我们做好了死循环。</li><li>我们需要学习 Unity 的生命周期函数。</li><li>利用它做好的规则来执行我们的游戏逻辑就行了。</li></ul><h3 id="生命周期函数的概念"><a href="#生命周期函数的概念" class="headerlink" title="生命周期函数的概念"></a>生命周期函数的概念</h3><ul><li>所有继承 MonoBehaviour 的脚本最终都会挂载到 GameObject 游戏对象上。</li><li>生命周期函数就是该脚本对象依附的 GameObject 对象从出生到消亡整个生命周期中会通过反射自动调用的一些特殊函数。</li><li>Unity 帮助我们记录了一个 GameObject 对象依附了哪些脚本，会自动的得到这些对象，通过反射去执行一些固定名字的函数。</li></ul><h3 id="生命周期函数"><a href="#生命周期函数" class="headerlink" title="生命周期函数"></a>生命周期函数</h3><p><img src="/../../../images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/10.Unity%E8%84%9A%E6%9C%AC%E5%9F%BA%E7%A1%80-%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E5%87%BD%E6%95%B0/2.png"></p><ul><li><p><strong>Awake</strong></p><ul><li>当对象（自己这个脚本类对象）被创建时才会调用 Awake。</li><li>类似构造函数的存在，我们可以在一个类对象创建时进行一些初始化操作。</li></ul></li><li><p><strong>OnEnable</strong></p><ul><li>当一个对象被激活时，进行一些逻辑处理就可以写在 OnEnable。</li><li>运行游戏时，因为脚本挂载对象默认激活，所以会自动调用一次 OnEnable。</li></ul></li><li><p><strong>Start</strong></p><ul><li>用于初始化信息的逻辑可以写在 Start，但相对于 Awake 来说，要晚一点，因为它是在对象进行第一次帧更新之前才会执行的。</li></ul></li><li><p><strong>FixedUpdate</strong></p><ul><li>FixedUpdate 主要用于进行物理更新，是每一物理帧的执行的，但这里的帧是物理帧和游戏帧有点不同。</li></ul></li><li><p><strong>Update</strong></p><ul><li>Update 主要用于处理游戏核心逻辑更新，每一游戏帧都会执行。</li></ul></li><li><p><strong>LateUpdate</strong></p><ul><li>LateUpdate 一般用来处理摄像机位置更新相关内容，会比 Update 晚一些执行。</li></ul></li><li><p><strong>OnDisable</strong></p><ul><li>如果希望在一个对象失活时做一些处理，可以在 OnDisable 中写逻辑。</li></ul></li><li><p><strong>OnDestroy</strong></p><ul><li>当对象被销毁时调用 OnDestroy，销毁对象时会调用，而且调用 OnDestroy 前对象也算失活，也会调用一次 OnDisable。</li></ul></li></ul><h3 id="生命周期函数支持继承多态"><a href="#生命周期函数支持继承多态" class="headerlink" title="生命周期函数支持继承多态"></a>生命周期函数支持继承多态</h3><ul><li>新建一个 <code>Lesson10_生命周期函数Son</code> 脚本继承 <code>Lesson10_生命周期函数</code> 脚本，在 <code>Lesson10_生命周期函数</code> 脚本中把 <code>Awake</code> 添加 <code>protected</code> 和 <code>virtual</code> 修饰符，在 <code>Lesson10_生命周期函数Son</code> 脚本重写 <code>Awake</code>，挂载到新的一个对象上。</li></ul><pre><code class="csharp">public class Lesson10_生命周期函数Son : Lesson10_生命周期函数&#123;    protected override void Awake()    &#123;        base.Awake();        print(&quot;子类的 Awake&quot;);    &#125;&#125;</code></pre><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ul><li>这些生命周期函数，如果你不打算在其中写逻辑，那就不要在这些出生命周期函数，因为 Unity 会根据反射去查看有没有生命周期函数，假如没有就不管他了，有的话又不在里面写逻辑会造成额外的开销。</li></ul><hr><h2 id="10-2-知识点代码"><a href="#10-2-知识点代码" class="headerlink" title="10.2 知识点代码"></a>10.2 知识点代码</h2><h3 id="Lesson10-生命周期函数"><a href="#Lesson10-生命周期函数" class="headerlink" title="Lesson10_生命周期函数"></a>Lesson10_生命周期函数</h3><pre><code class="csharp">using System.Collections;using System.Collections.Generic;using UnityEngine;public class Lesson10_生命周期函数 : MonoBehaviour&#123;    #region 知识点一 了解帧的概念    //Unity 底层已经帮助我们做好了死循环    //我们需要学习Unity的生命周期函数    //利用它做好的规则来执行我们的游戏逻辑就行了    #endregion    #region 知识点二 生命周期函数的概念    //所有继承MonoBehavior的脚本 最终都会挂载到GameObject游戏对象上    //生命周期函数 就是该脚本对象依附的GameObject对象从出生到消亡整个生命周期中    //会通过反射自动调用的一些特殊函数    //Unity帮助我们记录了一个GameObject对象依附了哪些脚本    //会自动的得到这些对象，通过反射去执行一些固定名字的函数    #endregion    #region 知识点三 生命周期函数    //注意：    //生命周期函数的访问修饰符一般为private和protected    //因为不需要再外部自己调用生命周期函数 都是Unity自己帮助我们调用的    //当对象（自己这个脚本类对象）被创建时 才会调用Awake    //类似构造函数的存在 我们可以在一个类对象 该创建 进行一些初始化操作    protected virtual void Awake()    &#123;        //在Unity中打印信息的两种方式        //1. 没有继承MonoBehaviour类的时候 调用Debug类的方法打印信息 可以打印普通信息，警告信息，报错信息        //Debug.Log(&quot;Awake Debug.Log&quot;);        //Debug.LogWarning(&quot;Awake Debug.LogWarning&quot;);        //Debug.LogError(&quot;Awake Debug.LogError&quot;);        //2. 继承了MonoBehavior 调用MonoBehavior类的print方法打印信息        print(&quot;Awake print&quot;);    &#125;    //当一个对象被激活时 进行一些逻辑处理 就可以写在OnEnable    void OnEnable()    &#123;        print(&quot;OnEnable&quot;);    &#125;    //用于初始化信息的逻辑可以写在Start 但是它相对Awake来说 要晚一点    //因为它是在对象 进行第一次帧更新之前才会执行的    void Start()    &#123;        print(&quot;Start&quot;);    &#125;    //FixedUpdate主要是用于 进行物理更新     //FixedUpdate是每一帧的执行的 但是 这里的帧是物理帧 和游戏帧 有点不同    //FixedUpdate的时间间隔 是可以在 project setting中的 Time里去设置的    void FixedUpdate()    &#123;        print(&quot;FixedUpdate&quot;);    &#125;    //Update主要用于处理游戏核心逻辑更新    void Update()    &#123;        print(&quot;Update&quot;);    &#125;    //LateUpdate一般这个更新是用来处理 摄像机位置更新相关内容的    //Update和LateUpdate之间 Unity进了一些处理 处理我们动画相关的更新    void LateUpdate()    &#123;        print(&quot;LateUpdate&quot;);    &#125;    //如果我们希望在一个对象失活时做一些处理 就可以在OnDisable中写逻辑    void OnDisable()    &#123;        print(&quot;OnDisable&quot;);    &#125;    //当对象被销毁时调调用OnDestroy    void OnDestroy()    &#123;        print(&quot;OnDestroy&quot;);    &#125;    #endregion    #region 知识点四 生命周期函数 支持继承多态    #endregion&#125;</code></pre><h3 id="Lesson10-生命周期函数Son"><a href="#Lesson10-生命周期函数Son" class="headerlink" title="Lesson10_生命周期函数Son"></a>Lesson10_生命周期函数Son</h3><pre><code class="csharp">using System.Collections;using System.Collections.Generic;using UnityEngine;public class Lesson10_生命周期函数Son : Lesson10_生命周期函数&#123;    protected override void Awake()    &#123;        base.Awake();        print(&quot;子类的Awake&quot;);    &#125;&#125;</code></pre><hr><h2 id="10-3-练习题"><a href="#10-3-练习题" class="headerlink" title="10.3 练习题"></a>10.3 练习题</h2><h3 id="请在纸上默写出教的各个生命周期函数，并写出他们分别何时执行，以及执行的先后顺序是什么"><a href="#请在纸上默写出教的各个生命周期函数，并写出他们分别何时执行，以及执行的先后顺序是什么" class="headerlink" title="请在纸上默写出教的各个生命周期函数，并写出他们分别何时执行，以及执行的先后顺序是什么"></a>请在纸上默写出教的各个生命周期函数，并写出他们分别何时执行，以及执行的先后顺序是什么</h3><ul><li><strong>Awake：</strong> 当对象被创建时调用，用于初始化对象，但在所有对象的Start方法之前调用。</li><li><strong>Start：</strong> 在对象第一次更新之前被调用，用于初始化。</li><li><strong>Update：</strong> 在每一帧更新时被调用，用于对象的持续更新。</li><li><strong>FixedUpdate：</strong> 在每一帧的物理系统更新之后被调用，用于物理相关的更新。</li><li><strong>LateUpdate：</strong> 在所有对象的Update方法执行完之后调用，用于处理其他对象的更新后的操作。</li><li><strong>OnEnable：</strong> 当对象被激活时调用，用于处理对象被激活时的操作。</li><li><strong>OnDisable：</strong> 当对象被失活时调用，用于处理对象被失活时的操作。</li><li><strong>OnDestroy：</strong> 当对象被销毁时调用，用于处理对象被销毁时的操作。</li></ul><h3 id="请用你的理解说出，生命周期函数并不是基类中的成员，为什么Unity可以自动的执行这些特殊的函数？"><a href="#请用你的理解说出，生命周期函数并不是基类中的成员，为什么Unity可以自动的执行这些特殊的函数？" class="headerlink" title="请用你的理解说出，生命周期函数并不是基类中的成员，为什么Unity可以自动的执行这些特殊的函数？"></a>请用你的理解说出，生命周期函数并不是基类中的成员，为什么Unity可以自动的执行这些特殊的函数？</h3><p>Unity能够自动执行生命周期函数的原因在于其内部实现了对游戏对象和脚本的管理和调度。Unity在运行时会维护场景中的所有游戏对象及其关联的脚本对象，并且知道何时何处需要调用这些生命周期函数。通过对脚本对象的反射，Unity能够根据生命周期函数的命名约定，在特定的时机自动调用对应的函数。这样做的好处是开发者不需要手动管理对象的生命周期，只需按照Unity的命名规范编写相应的函数即可，简化了开发流程，提高了开发效率。</p><h3 id="关于继承Mono的类的构造函数"><a href="#关于继承Mono的类的构造函数" class="headerlink" title="关于继承Mono的类的构造函数"></a>关于继承Mono的类的构造函数</h3><p>虽然不建议在继承<code>MonoBehaviour</code>的类中编写构造函数，但即便如此，我们仍然可以在这些类中编写构造函数。在编辑模式下或者运行后，只要该脚本挂载在场景中，无参构造函数会被自动执行。这是因为Unity利用反射机制帮助我们实例化了该脚本对象。</p><p>为什么不建议写构造函数呢？</p><ol><li>Unity规定，继承<code>MonoBehaviour</code>的脚本不能通过<code>new</code>关键字实例化，只能通过挂载到游戏对象上来创建对象。</li><li><code>Awake</code>生命周期函数在对象创建后会自动调用，类似于构造函数的存在，因此可以在其中进行初始化操作。</li><li>编写构造函数会破坏Unity的设计规范。</li></ol><p>总结：</p><p>如果需要进行初始化操作，可以在<code>Awake</code>或<code>Start</code>生命周期函数中进行。理解这两个函数的执行时机，根据需求选择在何处进行初始化。切记，不要在继承<code>MonoBehaviour</code>的类中使用<code>new</code>关键字创建对象。</p><h3 id="不同对象的生命周期函数是在同一个线程中执行的吗？"><a href="#不同对象的生命周期函数是在同一个线程中执行的吗？" class="headerlink" title="不同对象的生命周期函数是在同一个线程中执行的吗？"></a>不同对象的生命周期函数是在同一个线程中执行的吗？</h3><p>是的，Unity中所有对象上挂载的生命周期函数都是在一个主线程中按顺序执行的。Unity会在主线程的循环中按照顺序执行场景中所有对象上挂载的脚本的对应生命周期函数。</p><hr>]]></content>
+        <content type="html"><![CDATA[<h1 id="10-Unity脚本基础-生命周期函数"><a href="#10-Unity脚本基础-生命周期函数" class="headerlink" title="10.Unity脚本基础-生命周期函数"></a>10.Unity脚本基础-生命周期函数</h1><hr><h2 id="10-1-知识点"><a href="#10-1-知识点" class="headerlink" title="10.1 知识点"></a>10.1 知识点</h2><h3 id="了解帧的概念"><a href="#了解帧的概念" class="headerlink" title="了解帧的概念"></a>了解帧的概念</h3><p><img src="/../../../images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/10.Unity%E8%84%9A%E6%9C%AC%E5%9F%BA%E7%A1%80-%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E5%87%BD%E6%95%B0/1.png"></p><ul><li>Unity 底层已经帮助我们做好了死循环。</li><li>我们需要学习 Unity 的生命周期函数。</li><li>利用它做好的规则来执行我们的游戏逻辑就行了。</li></ul><h3 id="生命周期函数的概念"><a href="#生命周期函数的概念" class="headerlink" title="生命周期函数的概念"></a>生命周期函数的概念</h3><ul><li>所有继承 MonoBehaviour 的脚本最终都会挂载到 GameObject 游戏对象上。</li><li>生命周期函数就是该脚本对象依附的 GameObject 对象从出生到消亡整个生命周期中会通过反射自动调用的一些特殊函数。</li><li>Unity 帮助我们记录了一个 GameObject 对象依附了哪些脚本，会自动的得到这些对象，通过反射去执行一些固定名字的函数。</li></ul><h3 id="生命周期函数"><a href="#生命周期函数" class="headerlink" title="生命周期函数"></a>生命周期函数</h3><p><img src="/../../../images/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/10.Unity%E8%84%9A%E6%9C%AC%E5%9F%BA%E7%A1%80-%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E5%87%BD%E6%95%B0/2.png"></p><ul><li><p><strong>Awake</strong></p><ul><li>当对象（自己这个脚本类对象）被创建时才会调用 Awake。</li><li>类似构造函数的存在，我们可以在一个类对象创建时进行一些初始化操作。</li></ul></li><li><p><strong>OnEnable</strong></p><ul><li>当一个对象被激活时，进行一些逻辑处理就可以写在 OnEnable。</li><li>运行游戏时，因为脚本挂载对象默认激活，所以会自动调用一次 OnEnable。</li></ul></li><li><p><strong>Start</strong></p><ul><li>用于初始化信息的逻辑可以写在 Start，但相对于 Awake 来说，要晚一点，因为它是在对象进行第一次帧更新之前才会执行的。</li></ul></li><li><p><strong>FixedUpdate</strong></p><ul><li>FixedUpdate 主要用于进行物理更新，是每一物理帧的执行的，但这里的帧是物理帧和游戏帧有点不同。</li></ul></li><li><p><strong>Update</strong></p><ul><li>Update 主要用于处理游戏核心逻辑更新，每一游戏帧都会执行。</li></ul></li><li><p><strong>LateUpdate</strong></p><ul><li>LateUpdate 一般用来处理摄像机位置更新相关内容，会比 Update 晚一些执行。</li></ul></li><li><p><strong>OnDisable</strong></p><ul><li>如果希望在一个对象失活时做一些处理，可以在 OnDisable 中写逻辑。</li></ul></li><li><p><strong>OnDestroy</strong></p><ul><li>当对象被销毁时调用 OnDestroy，销毁对象时会调用，而且调用 OnDestroy 前对象也算失活，也会调用一次 OnDisable。</li></ul></li></ul><h3 id="生命周期函数支持继承多态"><a href="#生命周期函数支持继承多态" class="headerlink" title="生命周期函数支持继承多态"></a>生命周期函数支持继承多态</h3><ul><li>新建一个 <code>Lesson10_生命周期函数Son</code> 脚本继承 <code>Lesson10_生命周期函数</code> 脚本，在 <code>Lesson10_生命周期函数</code> 脚本中把 <code>Awake</code> 添加 <code>protected</code> 和 <code>virtual</code> 修饰符，在 <code>Lesson10_生命周期函数Son</code> 脚本重写 <code>Awake</code>，挂载到新的一个对象上。</li></ul><pre><code class="csharp">public class Lesson10_生命周期函数Son : Lesson10_生命周期函数&#123;    protected override void Awake()    &#123;        base.Awake();        print(&quot;子类的 Awake&quot;);    &#125;&#125;</code></pre><h3 id="在Unity中打印信息"><a href="#在Unity中打印信息" class="headerlink" title="在Unity中打印信息"></a>在Unity中打印信息</h3><h4 id="Debug类中的打印信息方法"><a href="#Debug类中的打印信息方法" class="headerlink" title="Debug类中的打印信息方法"></a>Debug类中的打印信息方法</h4><h5 id="Log方法-打印普通信息"><a href="#Log方法-打印普通信息" class="headerlink" title="Log方法 - 打印普通信息"></a>Log方法 - 打印普通信息</h5><pre><code class="csharp">Debug.Log(&quot;Awake Debug.Log&quot;);</code></pre><h5 id="LogWarning方法-打印警告信息"><a href="#LogWarning方法-打印警告信息" class="headerlink" title="LogWarning方法 - 打印警告信息"></a>LogWarning方法 - 打印警告信息</h5><pre><code class="csharp">Debug.LogWarning(&quot;Awake Debug.LogWarning&quot;);</code></pre><h5 id="LogError方法-打印报错信息"><a href="#LogError方法-打印报错信息" class="headerlink" title="LogError方法 - 打印报错信息"></a>LogError方法 - 打印报错信息</h5><pre><code class="csharp">Debug.LogError(&quot;Awake Debug.LogError&quot;);</code></pre><h4 id="MonoBehaviour类中的打印信息方法"><a href="#MonoBehaviour类中的打印信息方法" class="headerlink" title="MonoBehaviour类中的打印信息方法"></a>MonoBehaviour类中的打印信息方法</h4><h5 id="print方法-打印普通信息"><a href="#print方法-打印普通信息" class="headerlink" title="print方法 - 打印普通信息"></a>print方法 - 打印普通信息</h5><p>当继承了MonoBehaviour类时，可以使用该类的print方法打印信息。</p><pre><code class="csharp">print(&quot;Awake print&quot;);</code></pre><p><strong>这些方法用于在调试过程中输出不同级别的信息，方便开发者定位和解决问题。</strong></p><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ul><li>这些生命周期函数，如果你不打算在其中写逻辑，那就不要在这些出生命周期函数，因为 Unity 会根据反射去查看有没有生命周期函数，假如没有就不管他了，有的话又不在里面写逻辑会造成额外的开销。</li></ul><hr><h2 id="10-2-知识点代码"><a href="#10-2-知识点代码" class="headerlink" title="10.2 知识点代码"></a>10.2 知识点代码</h2><h3 id="Lesson10-生命周期函数"><a href="#Lesson10-生命周期函数" class="headerlink" title="Lesson10_生命周期函数"></a>Lesson10_生命周期函数</h3><pre><code class="csharp">using System.Collections;using System.Collections.Generic;using UnityEngine;public class Lesson10_生命周期函数 : MonoBehaviour&#123;    #region 知识点一 了解帧的概念    //Unity 底层已经帮助我们做好了死循环    //我们需要学习Unity的生命周期函数    //利用它做好的规则来执行我们的游戏逻辑就行了    #endregion    #region 知识点二 生命周期函数的概念    //所有继承MonoBehavior的脚本 最终都会挂载到GameObject游戏对象上    //生命周期函数 就是该脚本对象依附的GameObject对象从出生到消亡整个生命周期中    //会通过反射自动调用的一些特殊函数    //Unity帮助我们记录了一个GameObject对象依附了哪些脚本    //会自动的得到这些对象，通过反射去执行一些固定名字的函数    #endregion    #region 知识点三 生命周期函数    //注意：    //生命周期函数的访问修饰符一般为private和protected    //因为不需要再外部自己调用生命周期函数 都是Unity自己帮助我们调用的    //当对象（自己这个脚本类对象）被创建时 才会调用Awake    //类似构造函数的存在 我们可以在一个类对象 该创建 进行一些初始化操作    protected virtual void Awake()    &#123;        //在Unity中打印信息的两种方式        //1. 没有继承MonoBehaviour类的时候 调用Debug类的方法打印信息 可以打印普通信息，警告信息，报错信息        //Debug.Log(&quot;Awake Debug.Log&quot;);        //Debug.LogWarning(&quot;Awake Debug.LogWarning&quot;);        //Debug.LogError(&quot;Awake Debug.LogError&quot;);        //2. 继承了MonoBehavior 调用MonoBehavior类的print方法打印信息        print(&quot;Awake print&quot;);    &#125;    //当一个对象被激活时 进行一些逻辑处理 就可以写在OnEnable    void OnEnable()    &#123;        print(&quot;OnEnable&quot;);    &#125;    //用于初始化信息的逻辑可以写在Start 但是它相对Awake来说 要晚一点    //因为它是在对象 进行第一次帧更新之前才会执行的    void Start()    &#123;        print(&quot;Start&quot;);    &#125;    //FixedUpdate主要是用于 进行物理更新     //FixedUpdate是每一帧的执行的 但是 这里的帧是物理帧 和游戏帧 有点不同    //FixedUpdate的时间间隔 是可以在 project setting中的 Time里去设置的    void FixedUpdate()    &#123;        print(&quot;FixedUpdate&quot;);    &#125;    //Update主要用于处理游戏核心逻辑更新    void Update()    &#123;        print(&quot;Update&quot;);    &#125;    //LateUpdate一般这个更新是用来处理 摄像机位置更新相关内容的    //Update和LateUpdate之间 Unity进了一些处理 处理我们动画相关的更新    void LateUpdate()    &#123;        print(&quot;LateUpdate&quot;);    &#125;    //如果我们希望在一个对象失活时做一些处理 就可以在OnDisable中写逻辑    void OnDisable()    &#123;        print(&quot;OnDisable&quot;);    &#125;    //当对象被销毁时调调用OnDestroy    void OnDestroy()    &#123;        print(&quot;OnDestroy&quot;);    &#125;    #endregion    #region 知识点四 生命周期函数 支持继承多态    #endregion&#125;</code></pre><h3 id="Lesson10-生命周期函数Son"><a href="#Lesson10-生命周期函数Son" class="headerlink" title="Lesson10_生命周期函数Son"></a>Lesson10_生命周期函数Son</h3><pre><code class="csharp">using System.Collections;using System.Collections.Generic;using UnityEngine;public class Lesson10_生命周期函数Son : Lesson10_生命周期函数&#123;    protected override void Awake()    &#123;        base.Awake();        print(&quot;子类的Awake&quot;);    &#125;&#125;</code></pre><hr><h2 id="10-3-练习题"><a href="#10-3-练习题" class="headerlink" title="10.3 练习题"></a>10.3 练习题</h2><h3 id="请在纸上默写出教的各个生命周期函数，并写出他们分别何时执行，以及执行的先后顺序是什么"><a href="#请在纸上默写出教的各个生命周期函数，并写出他们分别何时执行，以及执行的先后顺序是什么" class="headerlink" title="请在纸上默写出教的各个生命周期函数，并写出他们分别何时执行，以及执行的先后顺序是什么"></a>请在纸上默写出教的各个生命周期函数，并写出他们分别何时执行，以及执行的先后顺序是什么</h3><ul><li><strong>Awake：</strong> 当对象被创建时调用，用于初始化对象，但在所有对象的Start方法之前调用。</li><li><strong>Start：</strong> 在对象第一次更新之前被调用，用于初始化。</li><li><strong>Update：</strong> 在每一帧更新时被调用，用于对象的持续更新。</li><li><strong>FixedUpdate：</strong> 在每一帧的物理系统更新之后被调用，用于物理相关的更新。</li><li><strong>LateUpdate：</strong> 在所有对象的Update方法执行完之后调用，用于处理其他对象的更新后的操作。</li><li><strong>OnEnable：</strong> 当对象被激活时调用，用于处理对象被激活时的操作。</li><li><strong>OnDisable：</strong> 当对象被失活时调用，用于处理对象被失活时的操作。</li><li><strong>OnDestroy：</strong> 当对象被销毁时调用，用于处理对象被销毁时的操作。</li></ul><h3 id="请用你的理解说出，生命周期函数并不是基类中的成员，为什么Unity可以自动的执行这些特殊的函数？"><a href="#请用你的理解说出，生命周期函数并不是基类中的成员，为什么Unity可以自动的执行这些特殊的函数？" class="headerlink" title="请用你的理解说出，生命周期函数并不是基类中的成员，为什么Unity可以自动的执行这些特殊的函数？"></a>请用你的理解说出，生命周期函数并不是基类中的成员，为什么Unity可以自动的执行这些特殊的函数？</h3><p>Unity能够自动执行生命周期函数的原因在于其内部实现了对游戏对象和脚本的管理和调度。Unity在运行时会维护场景中的所有游戏对象及其关联的脚本对象，并且知道何时何处需要调用这些生命周期函数。通过对脚本对象的反射，Unity能够根据生命周期函数的命名约定，在特定的时机自动调用对应的函数。这样做的好处是开发者不需要手动管理对象的生命周期，只需按照Unity的命名规范编写相应的函数即可，简化了开发流程，提高了开发效率。</p><h3 id="关于继承Mono的类的构造函数"><a href="#关于继承Mono的类的构造函数" class="headerlink" title="关于继承Mono的类的构造函数"></a>关于继承Mono的类的构造函数</h3><p>虽然不建议在继承<code>MonoBehaviour</code>的类中编写构造函数，但即便如此，我们仍然可以在这些类中编写构造函数。在编辑模式下或者运行后，只要该脚本挂载在场景中，无参构造函数会被自动执行。这是因为Unity利用反射机制帮助我们实例化了该脚本对象。</p><p>为什么不建议写构造函数呢？</p><ol><li>Unity规定，继承<code>MonoBehaviour</code>的脚本不能通过<code>new</code>关键字实例化，只能通过挂载到游戏对象上来创建对象。</li><li><code>Awake</code>生命周期函数在对象创建后会自动调用，类似于构造函数的存在，因此可以在其中进行初始化操作。</li><li>编写构造函数会破坏Unity的设计规范。</li></ol><p>总结：</p><p>如果需要进行初始化操作，可以在<code>Awake</code>或<code>Start</code>生命周期函数中进行。理解这两个函数的执行时机，根据需求选择在何处进行初始化。切记，不要在继承<code>MonoBehaviour</code>的类中使用<code>new</code>关键字创建对象。</p><h3 id="不同对象的生命周期函数是在同一个线程中执行的吗？"><a href="#不同对象的生命周期函数是在同一个线程中执行的吗？" class="headerlink" title="不同对象的生命周期函数是在同一个线程中执行的吗？"></a>不同对象的生命周期函数是在同一个线程中执行的吗？</h3><p>是的，Unity中所有对象上挂载的生命周期函数都是在一个主线程中按顺序执行的。Unity会在主线程的循环中按照顺序执行场景中所有对象上挂载的脚本的对应生命周期函数。</p><hr>]]></content>
       
       
       <categories>
@@ -3437,11 +3569,11 @@
       
         <tags>
             
-            <tag> 基础知识 </tag>
-            
             <tag> Unity </tag>
             
             <tag> Unity入门 </tag>
+            
+            <tag> 基础知识 </tag>
             
             <tag> Unity脚本基础 </tag>
             
@@ -3470,11 +3602,11 @@
       
         <tags>
             
-            <tag> 基础知识 </tag>
-            
             <tag> Unity </tag>
             
             <tag> Unity入门 </tag>
+            
+            <tag> 基础知识 </tag>
             
             <tag> Unity脚本基础 </tag>
             
@@ -3503,11 +3635,11 @@
       
         <tags>
             
-            <tag> 基础知识 </tag>
-            
             <tag> Unity </tag>
             
             <tag> Unity入门 </tag>
+            
+            <tag> 基础知识 </tag>
             
             <tag> Unity工作原理 </tag>
             
@@ -3536,13 +3668,13 @@
       
         <tags>
             
-            <tag> 基础知识 </tag>
-            
-            <tag> 反射和特性 </tag>
-            
             <tag> Unity </tag>
             
             <tag> Unity入门 </tag>
+            
+            <tag> 基础知识 </tag>
+            
+            <tag> 反射和特性 </tag>
             
             <tag> Unity工作原理 </tag>
             
@@ -3571,11 +3703,11 @@
       
         <tags>
             
-            <tag> 基础知识 </tag>
-            
             <tag> Unity </tag>
             
             <tag> Unity入门 </tag>
+            
+            <tag> 基础知识 </tag>
             
             <tag> Unity界面基础 </tag>
             
@@ -3604,11 +3736,11 @@
       
         <tags>
             
-            <tag> 基础知识 </tag>
-            
             <tag> Unity </tag>
             
             <tag> Unity入门 </tag>
+            
+            <tag> 基础知识 </tag>
             
             <tag> Unity界面基础 </tag>
             
@@ -3637,11 +3769,11 @@
       
         <tags>
             
-            <tag> 基础知识 </tag>
-            
             <tag> Unity </tag>
             
             <tag> Unity入门 </tag>
+            
+            <tag> 基础知识 </tag>
             
             <tag> Unity界面基础 </tag>
             
@@ -3670,11 +3802,11 @@
       
         <tags>
             
-            <tag> 基础知识 </tag>
-            
             <tag> Unity </tag>
             
             <tag> Unity入门 </tag>
+            
+            <tag> 基础知识 </tag>
             
             <tag> Unity界面基础 </tag>
             
@@ -3703,11 +3835,11 @@
       
         <tags>
             
-            <tag> 基础知识 </tag>
-            
             <tag> Unity </tag>
             
             <tag> Unity入门 </tag>
+            
+            <tag> 基础知识 </tag>
             
         </tags>
       
@@ -3734,11 +3866,11 @@
       
         <tags>
             
-            <tag> 基础知识 </tag>
-            
             <tag> Unity </tag>
             
             <tag> Unity入门 </tag>
+            
+            <tag> 基础知识 </tag>
             
         </tags>
       
@@ -4525,9 +4657,9 @@
             
             <tag> 语法知识 </tag>
             
-            <tag> CSharp进阶 </tag>
-            
             <tag> 反射和特性 </tag>
+            
+            <tag> CSharp进阶 </tag>
             
         </tags>
       
@@ -4558,9 +4690,9 @@
             
             <tag> 语法知识 </tag>
             
-            <tag> CSharp进阶 </tag>
-            
             <tag> 反射和特性 </tag>
+            
+            <tag> CSharp进阶 </tag>
             
         </tags>
       
@@ -4715,9 +4847,9 @@
             
             <tag> 语法知识 </tag>
             
-            <tag> CSharp进阶 </tag>
-            
             <tag> 委托和事件 </tag>
+            
+            <tag> CSharp进阶 </tag>
             
         </tags>
       
@@ -4748,9 +4880,9 @@
             
             <tag> 语法知识 </tag>
             
-            <tag> CSharp进阶 </tag>
-            
             <tag> 委托和事件 </tag>
+            
+            <tag> CSharp进阶 </tag>
             
         </tags>
       
@@ -4781,9 +4913,9 @@
             
             <tag> 语法知识 </tag>
             
-            <tag> CSharp进阶 </tag>
-            
             <tag> 委托和事件 </tag>
+            
+            <tag> CSharp进阶 </tag>
             
         </tags>
       
@@ -4814,9 +4946,9 @@
             
             <tag> 语法知识 </tag>
             
-            <tag> CSharp进阶 </tag>
-            
             <tag> 委托和事件 </tag>
+            
+            <tag> CSharp进阶 </tag>
             
         </tags>
       
@@ -6767,9 +6899,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> 实践项目 </tag>
-            
             <tag> CSharp基础 </tag>
+            
+            <tag> 实践项目 </tag>
             
         </tags>
       
@@ -6798,9 +6930,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> 实践项目 </tag>
-            
             <tag> CSharp基础 </tag>
+            
+            <tag> 实践项目 </tag>
             
         </tags>
       
@@ -6829,9 +6961,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> 实践项目 </tag>
-            
             <tag> CSharp基础 </tag>
+            
+            <tag> 实践项目 </tag>
             
         </tags>
       
@@ -6860,9 +6992,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> 实践项目 </tag>
-            
             <tag> CSharp基础 </tag>
+            
+            <tag> 实践项目 </tag>
             
         </tags>
       
@@ -6891,9 +7023,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> 实践项目 </tag>
-            
             <tag> CSharp基础 </tag>
+            
+            <tag> 实践项目 </tag>
             
         </tags>
       
@@ -6922,9 +7054,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> 实践项目 </tag>
-            
             <tag> CSharp基础 </tag>
+            
+            <tag> 实践项目 </tag>
             
         </tags>
       
@@ -6953,9 +7085,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> 实践项目 </tag>
-            
             <tag> CSharp基础 </tag>
+            
+            <tag> 实践项目 </tag>
             
         </tags>
       
@@ -6984,9 +7116,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> 实践项目 </tag>
-            
             <tag> CSharp基础 </tag>
+            
+            <tag> 实践项目 </tag>
             
         </tags>
       
@@ -7015,9 +7147,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> 实践项目 </tag>
-            
             <tag> CSharp基础 </tag>
+            
+            <tag> 实践项目 </tag>
             
         </tags>
       
@@ -7046,9 +7178,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> 实践项目 </tag>
-            
             <tag> CSharp基础 </tag>
+            
+            <tag> 实践项目 </tag>
             
         </tags>
       
@@ -7077,9 +7209,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> 实践项目 </tag>
-            
             <tag> CSharp基础 </tag>
+            
+            <tag> 实践项目 </tag>
             
         </tags>
       
@@ -7108,9 +7240,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> 实践项目 </tag>
-            
             <tag> CSharp基础 </tag>
+            
+            <tag> 实践项目 </tag>
             
         </tags>
       
