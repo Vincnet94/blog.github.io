@@ -4,6 +4,72 @@
   
     
     <entry>
+      <title>11.Quaternion四元数是什么</title>
+      <link href="/2024/02/28/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/11.3D%E6%95%B0%E5%AD%A6-Quaternion%E5%9B%9B%E5%85%83%E6%95%B0-%E5%9B%9B%E5%85%83%E6%95%B0%E6%98%AF%E4%BB%80%E4%B9%88/"/>
+      <url>/2024/02/28/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/11.3D%E6%95%B0%E5%AD%A6-Quaternion%E5%9B%9B%E5%85%83%E6%95%B0-%E5%9B%9B%E5%85%83%E6%95%B0%E6%98%AF%E4%BB%80%E4%B9%88/</url>
+      
+        <content type="html"><![CDATA[<h1 id="11-3D数学-Quaternion四元数-四元数是什么"><a href="#11-3D数学-Quaternion四元数-四元数是什么" class="headerlink" title="11.3D数学-Quaternion四元数-四元数是什么"></a>11.3D数学-Quaternion四元数-四元数是什么</h1><hr><h2 id="11-1-知识点"><a href="#11-1-知识点" class="headerlink" title="11.1 知识点"></a>11.1 知识点</h2><p><img src="/../../../images/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/11.3D%E6%95%B0%E5%AD%A6-Quaternion%E5%9B%9B%E5%85%83%E6%95%B0-%E5%9B%9B%E5%85%83%E6%95%B0%E6%98%AF%E4%BB%80%E4%B9%88/1.png"></p><h3 id="知识回顾"><a href="#知识回顾" class="headerlink" title="知识回顾"></a>知识回顾</h3><p><img src="/../../../images/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/11.3D%E6%95%B0%E5%AD%A6-Quaternion%E5%9B%9B%E5%85%83%E6%95%B0-%E5%9B%9B%E5%85%83%E6%95%B0%E6%98%AF%E4%BB%80%E4%B9%88/2.png"></p><h3 id="主要学习内容"><a href="#主要学习内容" class="headerlink" title="主要学习内容"></a>主要学习内容</h3><p><img src="/../../../images/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/11.3D%E6%95%B0%E5%AD%A6-Quaternion%E5%9B%9B%E5%85%83%E6%95%B0-%E5%9B%9B%E5%85%83%E6%95%B0%E6%98%AF%E4%BB%80%E4%B9%88/3.png"></p><h3 id="四元数构成"><a href="#四元数构成" class="headerlink" title="四元数构成"></a>四元数构成</h3><p><img src="/../../../images/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/11.3D%E6%95%B0%E5%AD%A6-Quaternion%E5%9B%9B%E5%85%83%E6%95%B0-%E5%9B%9B%E5%85%83%E6%95%B0%E6%98%AF%E4%BB%80%E4%B9%88/4.png"><br><img src="/../../../images/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/11.3D%E6%95%B0%E5%AD%A6-Quaternion%E5%9B%9B%E5%85%83%E6%95%B0-%E5%9B%9B%E5%85%83%E6%95%B0%E6%98%AF%E4%BB%80%E4%B9%88/5.png"></p><h3 id="轴-角对"><a href="#轴-角对" class="headerlink" title="轴-角对"></a>轴-角对</h3><p><img src="/../../../images/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/11.3D%E6%95%B0%E5%AD%A6-Quaternion%E5%9B%9B%E5%85%83%E6%95%B0-%E5%9B%9B%E5%85%83%E6%95%B0%E6%98%AF%E4%BB%80%E4%B9%88/6.png"><br><img src="/../../../images/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/11.3D%E6%95%B0%E5%AD%A6-Quaternion%E5%9B%9B%E5%85%83%E6%95%B0-%E5%9B%9B%E5%85%83%E6%95%B0%E6%98%AF%E4%BB%80%E4%B9%88/7.png"></p><h3 id="Unity中的四元数-Quaternion"><a href="#Unity中的四元数-Quaternion" class="headerlink" title="Unity中的四元数 Quaternion"></a>Unity中的四元数 Quaternion</h3><p><img src="/../../../images/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/11.3D%E6%95%B0%E5%AD%A6-Quaternion%E5%9B%9B%E5%85%83%E6%95%B0-%E5%9B%9B%E5%85%83%E6%95%B0%E6%98%AF%E4%BB%80%E4%B9%88/8.png"><br><img src="/../../../images/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/11.3D%E6%95%B0%E5%AD%A6-Quaternion%E5%9B%9B%E5%85%83%E6%95%B0-%E5%9B%9B%E5%85%83%E6%95%B0%E6%98%AF%E4%BB%80%E4%B9%88/9.png"></p><p>四元数由一个向量(x,y,z)和要旋转的角度β通过数学运算构成。<br>四元数Q &#x3D; [cos(β&#x2F;2),  sin(β&#x2F;2)x, sin(β&#x2F;2)y, sin(β&#x2F;2)z]</p><h4 id="Quaternion的构造函数-初始化四元数"><a href="#Quaternion的构造函数-初始化四元数" class="headerlink" title="Quaternion的构造函数 - 初始化四元数"></a>Quaternion的构造函数 - 初始化四元数</h4><pre><code class="csharp">//用四元数的计算原理 绕着(x,y,z)向量旋转β度 要传入弧度制 角度转弧度//Quaternion q = new Quaternion(Mathf.Sin(β/2 * Mathf.Deg2Rad)*x, Mathf.Sin(β/2 * Mathf.Deg2Rad)*y, Mathf.Sin(β/2 * Mathf.Deg2Rad)*z, Mathf.Cos(β/2 * Mathf.Deg2Rad));//绕着(1,0,0)向量旋转60度 要传入弧度制 角度转弧度Quaternion q1 = new Quaternion(Mathf.Sin(30 * Mathf.Deg2Rad), 0, 0, Mathf.Cos(30 * Mathf.Deg2Rad));</code></pre><h4 id="AngleAxis静态方法-绕着某一个向量旋转多少度"><a href="#AngleAxis静态方法-绕着某一个向量旋转多少度" class="headerlink" title="AngleAxis静态方法 - 绕着某一个向量旋转多少度"></a>AngleAxis静态方法 - 绕着某一个向量旋转多少度</h4><p>AngleAxis静态方法用于创建一个围绕轴向量旋转指定角度的四元数。</p><pre><code class="csharp">//创建一个围绕 axis 旋转 offsetAngle 度的旋转。//提供的轴角对 初始化 四元数的方法 分别传入度数和向量轴Quaternion q2 = Quaternion.AngleAxis(60, Vector3.right);</code></pre><h4 id="创建一个立方体演示"><a href="#创建一个立方体演示" class="headerlink" title="创建一个立方体演示"></a>创建一个立方体演示</h4><pre><code class="csharp">GameObject obj = GameObject.CreatePrimitive(PrimitiveType.Cube);obj.transform.rotation = q2;</code></pre><p><img src="/../../../images/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/11.3D%E6%95%B0%E5%AD%A6-Quaternion%E5%9B%9B%E5%85%83%E6%95%B0-%E5%9B%9B%E5%85%83%E6%95%B0%E6%98%AF%E4%BB%80%E4%B9%88/14.png" alt="(1,0,0)是从屏幕指向屏幕外"></p><p>绕x轴转的话，逆着x轴看是顺时针</p><h3 id="四元数和欧拉角相互转化"><a href="#四元数和欧拉角相互转化" class="headerlink" title="四元数和欧拉角相互转化"></a>四元数和欧拉角相互转化</h3><p><img src="/../../../images/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/11.3D%E6%95%B0%E5%AD%A6-Quaternion%E5%9B%9B%E5%85%83%E6%95%B0-%E5%9B%9B%E5%85%83%E6%95%B0%E6%98%AF%E4%BB%80%E4%B9%88/10.png"></p><h4 id="Euler静态方法-把欧拉角转成四元数"><a href="#Euler静态方法-把欧拉角转成四元数" class="headerlink" title="Euler静态方法 - 把欧拉角转成四元数"></a>Euler静态方法 - 把欧拉角转成四元数</h4><p>Euler静态方法用于将欧拉角转换为四元数。</p><pre><code class="csharp">//返回一个旋转，它围绕 z 轴旋转 z 度、围绕 x 轴旋转 x 度、围绕 y 轴旋转 y 度（按该顺序应用）。//直接传入欧拉角xyz轴旋转的角度即可Quaternion q3 = Quaternion.Euler(60, 0, 0);GameObject obj2 = GameObject.CreatePrimitive(PrimitiveType.Cube);obj2.transform.rotation = q3;</code></pre><h4 id="eulerAngles变量-把四元数转成欧拉角"><a href="#eulerAngles变量-把四元数转成欧拉角" class="headerlink" title="eulerAngles变量 - 把四元数转成欧拉角"></a>eulerAngles变量 - 把四元数转成欧拉角</h4><p>eulerAngles变量用于获取或设置四元数的欧拉角表示。</p><pre><code class="csharp">//返回或设置旋转的欧拉角表示。Quaternion q4 = Quaternion.Euler(60, 0, 0);print(q4.eulerAngles);//(60.0, 0.0, 0.0)</code></pre><h3 id="四元数弥补的欧拉角缺点"><a href="#四元数弥补的欧拉角缺点" class="headerlink" title="四元数弥补的欧拉角缺点"></a>四元数弥补的欧拉角缺点</h3><p><img src="/../../../images/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/11.3D%E6%95%B0%E5%AD%A6-Quaternion%E5%9B%9B%E5%85%83%E6%95%B0-%E5%9B%9B%E5%85%83%E6%95%B0%E6%98%AF%E4%BB%80%E4%B9%88/11.png"></p><ul><li>注意：一个四元数a乘了另一个四元数b,a按照四元数b旋转了</li></ul><p><img src="/../../../images/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/11.3D%E6%95%B0%E5%AD%A6-Quaternion%E5%9B%9B%E5%85%83%E6%95%B0-%E5%9B%9B%E5%85%83%E6%95%B0%E6%98%AF%E4%BB%80%E4%B9%88/12.png" alt="四元数的取值始终是在-180到180之间，旋转表示唯一"></p><h4 id="把示例立方体x轴旋转90度造成万向节死锁"><a href="#把示例立方体x轴旋转90度造成万向节死锁" class="headerlink" title="把示例立方体x轴旋转90度造成万向节死锁"></a>把示例立方体x轴旋转90度造成万向节死锁</h4><p><img src="/../../../images/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/11.3D%E6%95%B0%E5%AD%A6-Quaternion%E5%9B%9B%E5%85%83%E6%95%B0-%E5%9B%9B%E5%85%83%E6%95%B0%E6%98%AF%E4%BB%80%E4%B9%88/15.png"></p><h4 id="四元数旋转不会造成万向节死锁"><a href="#四元数旋转不会造成万向节死锁" class="headerlink" title="四元数旋转不会造成万向节死锁"></a>四元数旋转不会造成万向节死锁</h4><pre><code class="csharp">//*=四元数就代表绕着四元数的轴旋转度数了//每一帧绕着y轴旋转1度exampleCube.transform.rotation *= Quaternion.AngleAxis(1, Vector3.up);//四元数绕y轴转//就算把示例立方体x轴旋转90度造成万向节死锁 也可以绕着自身的y轴顺时针转//注意： 这里虽然传入Vector3.up，但是还是以本地坐标系计算</code></pre><h4 id="欧拉角造成万向节死锁"><a href="#欧拉角造成万向节死锁" class="headerlink" title="欧拉角造成万向节死锁"></a>欧拉角造成万向节死锁</h4><pre><code class="csharp">//欧拉角添加y轴或z轴旋转都只能绕z轴旋转 会造成万向节死锁Vector3 eulerAngles;eulerAngles = exampleCube.transform.rotation.eulerAngles;//eulerAngles += Vector3.up;//想欧拉角绕y轴转 但还是绕着z轴转eulerAngles += Vector3.forward;//欧拉角绕z轴转//转的欧拉角返回成四元数赋值给示例立方体exampleCube.transform.rotation = Quaternion.Euler(eulerAngles);</code></pre><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p><img src="/../../../images/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/11.3D%E6%95%B0%E5%AD%A6-Quaternion%E5%9B%9B%E5%85%83%E6%95%B0-%E5%9B%9B%E5%85%83%E6%95%B0%E6%98%AF%E4%BB%80%E4%B9%88/13.png"></p><hr><h2 id="11-2-知识点代码"><a href="#11-2-知识点代码" class="headerlink" title="11.2 知识点代码"></a>11.2 知识点代码</h2><pre><code class="csharp">using System.Collections;using System.Collections.Generic;using UnityEngine;public class Lesson11_3D数学_Quaternion四元数_四元数是什么 : MonoBehaviour&#123;    public GameObject exampleCube;    // Start is called before the first frame update    void Start()    &#123;        #region 知识点一 Unity中的四元数 Quaternion        //四元数由一个向量(x,y,z)和要旋转的角度β通过数学运算构成 如下        //四元数Q = [cos(β/2),  sin(β/2)x, sin(β/2)y, sin(β/2)z]        //Quaternion的构造函数初始化四元数        //用四元数的计算原理 绕着(x,y,z)向量旋转β度 要传入弧度制 角度转弧度        //Quaternion q = new Quaternion(Mathf.Sin(β/2 * Mathf.Deg2Rad)*x, Mathf.Sin(β/2 * Mathf.Deg2Rad)*y, Mathf.Sin(β/2 * Mathf.Deg2Rad)*z, Mathf.Cos(β/2 * Mathf.Deg2Rad));        //绕着(1,0,0)向量旋转60度 要传入弧度制 角度转弧度        Quaternion q1 = new Quaternion(Mathf.Sin(30 * Mathf.Deg2Rad), 0, 0, Mathf.Cos(30 * Mathf.Deg2Rad));        //AngleAxis静态方法 绕着某一个向量旋转多少度 返回一个四元数        //创建一个围绕 axis 旋转 offsetAngle 度的旋转。        //提供的轴角对 初始化 四元数的方法 分别传入度数和向量轴        Quaternion q2 = Quaternion.AngleAxis(60, Vector3.right);        //创建一个立方体演示        GameObject obj = GameObject.CreatePrimitive(PrimitiveType.Cube);        obj.transform.rotation = q2;        #endregion        #region 知识点二 四元数和欧拉角转换        //Euler静态方法 把欧拉角转成四元数        //返回一个旋转，它围绕 z 轴旋转 z 度、围绕 x 轴旋转 x 度、围绕 y 轴旋转 y 度（按该顺序应用）。        //直接传入欧拉角xyz轴旋转的角度即可        Quaternion q3 = Quaternion.Euler(60, 0, 0);        GameObject obj2 = GameObject.CreatePrimitive(PrimitiveType.Cube);        obj2.transform.rotation = q3;        //eulerAngles变量 把四元数转成欧拉角        //返回或设置旋转的欧拉角表示。        Quaternion q4 = Quaternion.Euler(60, 0, 0);        print(q4.eulerAngles);//(60.0, 0.0, 0.0)        #endregion    &#125;    // Update is called once per frame    void Update()    &#123;        #region 知识点三 四元数弥补的欧拉角缺点        //1.同一旋转的表示不唯一  四元数旋转后 转换后的欧拉角 始终是 -180~180度        //2.万向节死锁 通过四元数旋转对象可以避免万向节死锁        //把示例立方体x轴旋转90度造成万向节死锁        //四元数旋转不会造成万向节死锁        //*=四元数就代表绕着四元数的轴旋转度数了        //每一帧绕着y轴旋转1度        exampleCube.transform.rotation *= Quaternion.AngleAxis(1, Vector3.up);//四元数绕y轴转        //就算把示例立方体x轴旋转90度造成万向节死锁 也可以绕着自身的y轴转        //注意： 这里虽然传入Vector3.up，但是还是以本地坐标系计算        //欧拉角添加y轴或z轴旋转都只能绕z轴旋转 会造成万向节死锁        Vector3 eulerAngles;        eulerAngles = exampleCube.transform.rotation.eulerAngles;        //eulerAngles += Vector3.up;//想欧拉角绕y轴转 但还是绕着z轴转        eulerAngles += Vector3.forward;//欧拉角绕z轴转        //转的欧拉角返回成四元数赋值给示例立方体        exampleCube.transform.rotation = Quaternion.Euler(eulerAngles);        #endregion    &#125;&#125;</code></pre><hr>]]></content>
+      
+      
+      <categories>
+          
+          <category> Unity </category>
+          
+          <category> Unity基础基础知识 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 基础知识 </tag>
+            
+            <tag> Unity </tag>
+            
+            <tag> Unity基础 </tag>
+            
+            <tag> 3D数学 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>10.Quaternion四元数的使用原因</title>
+      <link href="/2024/02/28/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/10.3D%E6%95%B0%E5%AD%A6-Quaternion%E5%9B%9B%E5%85%83%E6%95%B0-%E4%B8%BA%E4%BD%95%E4%BD%BF%E7%94%A8%E5%9B%9B%E5%85%83%E6%95%B0/"/>
+      <url>/2024/02/28/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/10.3D%E6%95%B0%E5%AD%A6-Quaternion%E5%9B%9B%E5%85%83%E6%95%B0-%E4%B8%BA%E4%BD%95%E4%BD%BF%E7%94%A8%E5%9B%9B%E5%85%83%E6%95%B0/</url>
+      
+        <content type="html"><![CDATA[<h1 id="10-3D数学-Quaternion四元数-为何使用四元数"><a href="#10-3D数学-Quaternion四元数-为何使用四元数" class="headerlink" title="10.3D数学-Quaternion四元数-为何使用四元数"></a>10.3D数学-Quaternion四元数-为何使用四元数</h1><hr><h2 id="10-1-知识点"><a href="#10-1-知识点" class="headerlink" title="10.1 知识点"></a>10.1 知识点</h2><p><img src="/../../../images/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/10.3D%E6%95%B0%E5%AD%A6-Quaternion%E5%9B%9B%E5%85%83%E6%95%B0-%E4%B8%BA%E4%BD%95%E4%BD%BF%E7%94%A8%E5%9B%9B%E5%85%83%E6%95%B0/1.png"></p><h3 id="主要学习内容"><a href="#主要学习内容" class="headerlink" title="主要学习内容"></a>主要学习内容</h3><p><img src="/../../../images/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/10.3D%E6%95%B0%E5%AD%A6-Quaternion%E5%9B%9B%E5%85%83%E6%95%B0-%E4%B8%BA%E4%BD%95%E4%BD%BF%E7%94%A8%E5%9B%9B%E5%85%83%E6%95%B0/2.png"></p><h3 id="欧拉角"><a href="#欧拉角" class="headerlink" title="欧拉角"></a>欧拉角</h3><p><img src="/../../../images/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/10.3D%E6%95%B0%E5%AD%A6-Quaternion%E5%9B%9B%E5%85%83%E6%95%B0-%E4%B8%BA%E4%BD%95%E4%BD%BF%E7%94%A8%E5%9B%9B%E5%85%83%E6%95%B0/3.png"><br><img src="/../../../images/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/10.3D%E6%95%B0%E5%AD%A6-Quaternion%E5%9B%9B%E5%85%83%E6%95%B0-%E4%B8%BA%E4%BD%95%E4%BD%BF%E7%94%A8%E5%9B%9B%E5%85%83%E6%95%B0/4.png"><br><img src="/../../../images/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/10.3D%E6%95%B0%E5%AD%A6-Quaternion%E5%9B%9B%E5%85%83%E6%95%B0-%E4%B8%BA%E4%BD%95%E4%BD%BF%E7%94%A8%E5%9B%9B%E5%85%83%E6%95%B0/5.png"><br><img src="/../../../images/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/10.3D%E6%95%B0%E5%AD%A6-Quaternion%E5%9B%9B%E5%85%83%E6%95%B0-%E4%B8%BA%E4%BD%95%E4%BD%BF%E7%94%A8%E5%9B%9B%E5%85%83%E6%95%B0/6.png"></p><h3 id="万向节死锁"><a href="#万向节死锁" class="headerlink" title="万向节死锁"></a>万向节死锁</h3><p><img src="/../../../images/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/10.3D%E6%95%B0%E5%AD%A6-Quaternion%E5%9B%9B%E5%85%83%E6%95%B0-%E4%B8%BA%E4%BD%95%E4%BD%BF%E7%94%A8%E5%9B%9B%E5%85%83%E6%95%B0/7.png"><br><img src="/../../../images/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/10.3D%E6%95%B0%E5%AD%A6-Quaternion%E5%9B%9B%E5%85%83%E6%95%B0-%E4%B8%BA%E4%BD%95%E4%BD%BF%E7%94%A8%E5%9B%9B%E5%85%83%E6%95%B0/11.png"><br><img src="/../../../images/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/10.3D%E6%95%B0%E5%AD%A6-Quaternion%E5%9B%9B%E5%85%83%E6%95%B0-%E4%B8%BA%E4%BD%95%E4%BD%BF%E7%94%A8%E5%9B%9B%E5%85%83%E6%95%B0/8.png"></p><h4 id="在Unity中观察万向节死锁"><a href="#在Unity中观察万向节死锁" class="headerlink" title="在Unity中观察万向节死锁"></a>在Unity中观察万向节死锁</h4><p>在Unity中创建一个cube，在旋转其x轴到90度后，选择y轴或z轴进行旋转，会发现效果相同。这种现象称为万向节死锁。<br><img src="/../../../images/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/10.3D%E6%95%B0%E5%AD%A6-Quaternion%E5%9B%9B%E5%85%83%E6%95%B0-%E4%B8%BA%E4%BD%95%E4%BD%BF%E7%94%A8%E5%9B%9B%E5%85%83%E6%95%B0/10.png"></p><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><h2 id=""><a href="#" class="headerlink" title=""></a><img src="/../../../images/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/10.3D%E6%95%B0%E5%AD%A6-Quaternion%E5%9B%9B%E5%85%83%E6%95%B0-%E4%B8%BA%E4%BD%95%E4%BD%BF%E7%94%A8%E5%9B%9B%E5%85%83%E6%95%B0/9.png"></h2>]]></content>
+      
+      
+      <categories>
+          
+          <category> Unity </category>
+          
+          <category> Unity基础基础知识 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 基础知识 </tag>
+            
+            <tag> Unity </tag>
+            
+            <tag> Unity基础 </tag>
+            
+            <tag> 3D数学 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>9.Vector3向量插值运算</title>
       <link href="/2024/02/28/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/9.3D%E6%95%B0%E5%AD%A6-Vector3%E5%90%91%E9%87%8F-%E5%90%91%E9%87%8F%E6%8F%92%E5%80%BC%E8%BF%90%E7%AE%97/"/>
       <url>/2024/02/28/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/9.3D%E6%95%B0%E5%AD%A6-Vector3%E5%90%91%E9%87%8F-%E5%90%91%E9%87%8F%E6%8F%92%E5%80%BC%E8%BF%90%E7%AE%97/</url>
@@ -22,9 +88,9 @@
       
         <tags>
             
-            <tag> Unity </tag>
-            
             <tag> 基础知识 </tag>
+            
+            <tag> Unity </tag>
             
             <tag> Unity基础 </tag>
             
@@ -55,9 +121,9 @@
       
         <tags>
             
-            <tag> Unity </tag>
-            
             <tag> 基础知识 </tag>
+            
+            <tag> Unity </tag>
             
             <tag> Unity基础 </tag>
             
@@ -88,9 +154,9 @@
       
         <tags>
             
-            <tag> Unity </tag>
-            
             <tag> 基础知识 </tag>
+            
+            <tag> Unity </tag>
             
             <tag> Unity基础 </tag>
             
@@ -121,9 +187,9 @@
       
         <tags>
             
-            <tag> Unity </tag>
-            
             <tag> 基础知识 </tag>
+            
+            <tag> Unity </tag>
             
             <tag> Unity基础 </tag>
             
@@ -154,9 +220,9 @@
       
         <tags>
             
-            <tag> Unity </tag>
-            
             <tag> 基础知识 </tag>
+            
+            <tag> Unity </tag>
             
             <tag> Unity基础 </tag>
             
@@ -187,9 +253,9 @@
       
         <tags>
             
-            <tag> Unity </tag>
-            
             <tag> 基础知识 </tag>
+            
+            <tag> Unity </tag>
             
             <tag> Unity基础 </tag>
             
@@ -220,9 +286,9 @@
       
         <tags>
             
-            <tag> Unity </tag>
-            
             <tag> 基础知识 </tag>
+            
+            <tag> Unity </tag>
             
             <tag> Unity基础 </tag>
             
@@ -253,9 +319,9 @@
       
         <tags>
             
-            <tag> Unity </tag>
-            
             <tag> 基础知识 </tag>
+            
+            <tag> Unity </tag>
             
             <tag> Unity基础 </tag>
             
@@ -286,9 +352,9 @@
       
         <tags>
             
-            <tag> Unity </tag>
-            
             <tag> 基础知识 </tag>
+            
+            <tag> Unity </tag>
             
             <tag> Unity基础 </tag>
             
@@ -1224,11 +1290,11 @@
             
             <tag> 随机数 </tag>
             
+            <tag> 委托和事件 </tag>
+            
             <tag> Unity </tag>
             
             <tag> Unity入门 </tag>
-            
-            <tag> 委托和事件 </tag>
             
         </tags>
       
@@ -1738,11 +1804,11 @@
       
         <tags>
             
-            <tag> 基础知识 </tag>
-            
             <tag> UI系统 </tag>
             
             <tag> GUI </tag>
+            
+            <tag> 基础知识 </tag>
             
         </tags>
       
@@ -1769,11 +1835,11 @@
       
         <tags>
             
-            <tag> 基础知识 </tag>
-            
             <tag> UI系统 </tag>
             
             <tag> GUI </tag>
+            
+            <tag> 基础知识 </tag>
             
             <tag> 自定义整体样式 </tag>
             
@@ -1802,11 +1868,11 @@
       
         <tags>
             
-            <tag> 基础知识 </tag>
-            
             <tag> UI系统 </tag>
             
             <tag> GUI </tag>
+            
+            <tag> 基础知识 </tag>
             
             <tag> 自定义整体样式 </tag>
             
@@ -1835,11 +1901,11 @@
       
         <tags>
             
-            <tag> 基础知识 </tag>
-            
             <tag> UI系统 </tag>
             
             <tag> GUI </tag>
+            
+            <tag> 基础知识 </tag>
             
             <tag> 控件 </tag>
             
@@ -1870,11 +1936,11 @@
       
         <tags>
             
-            <tag> 基础知识 </tag>
-            
             <tag> UI系统 </tag>
             
             <tag> GUI </tag>
+            
+            <tag> 基础知识 </tag>
             
             <tag> 控件 </tag>
             
@@ -1905,11 +1971,11 @@
       
         <tags>
             
-            <tag> 基础知识 </tag>
-            
             <tag> UI系统 </tag>
             
             <tag> GUI </tag>
+            
+            <tag> 基础知识 </tag>
             
             <tag> 控件 </tag>
             
@@ -1940,11 +2006,11 @@
       
         <tags>
             
-            <tag> 基础知识 </tag>
-            
             <tag> UI系统 </tag>
             
             <tag> GUI </tag>
+            
+            <tag> 基础知识 </tag>
             
             <tag> 控件 </tag>
             
@@ -1975,11 +2041,11 @@
       
         <tags>
             
-            <tag> 基础知识 </tag>
-            
             <tag> UI系统 </tag>
             
             <tag> GUI </tag>
+            
+            <tag> 基础知识 </tag>
             
             <tag> 控件 </tag>
             
@@ -2010,11 +2076,11 @@
       
         <tags>
             
-            <tag> 基础知识 </tag>
-            
             <tag> UI系统 </tag>
             
             <tag> GUI </tag>
+            
+            <tag> 基础知识 </tag>
             
             <tag> 控件 </tag>
             
@@ -2045,11 +2111,11 @@
       
         <tags>
             
-            <tag> 基础知识 </tag>
-            
             <tag> UI系统 </tag>
             
             <tag> GUI </tag>
+            
+            <tag> 基础知识 </tag>
             
             <tag> 控件 </tag>
             
@@ -2080,11 +2146,11 @@
       
         <tags>
             
-            <tag> 基础知识 </tag>
-            
             <tag> UI系统 </tag>
             
             <tag> GUI </tag>
+            
+            <tag> 基础知识 </tag>
             
         </tags>
       
@@ -2111,11 +2177,11 @@
       
         <tags>
             
-            <tag> 基础知识 </tag>
-            
             <tag> UI系统 </tag>
             
             <tag> GUI </tag>
+            
+            <tag> 基础知识 </tag>
             
         </tags>
       
@@ -2689,11 +2755,11 @@
       
         <tags>
             
+            <tag> 基础知识 </tag>
+            
             <tag> Unity </tag>
             
             <tag> Unity入门 </tag>
-            
-            <tag> 基础知识 </tag>
             
         </tags>
       
@@ -2720,11 +2786,11 @@
       
         <tags>
             
+            <tag> 基础知识 </tag>
+            
             <tag> Unity </tag>
             
             <tag> Unity入门 </tag>
-            
-            <tag> 基础知识 </tag>
             
             <tag> 核心系统 </tag>
             
@@ -2755,11 +2821,11 @@
       
         <tags>
             
+            <tag> 基础知识 </tag>
+            
             <tag> Unity </tag>
             
             <tag> Unity入门 </tag>
-            
-            <tag> 基础知识 </tag>
             
             <tag> 核心系统 </tag>
             
@@ -2790,11 +2856,11 @@
       
         <tags>
             
+            <tag> 基础知识 </tag>
+            
             <tag> Unity </tag>
             
             <tag> Unity入门 </tag>
-            
-            <tag> 基础知识 </tag>
             
             <tag> 核心系统 </tag>
             
@@ -2825,11 +2891,11 @@
       
         <tags>
             
+            <tag> 基础知识 </tag>
+            
             <tag> Unity </tag>
             
             <tag> Unity入门 </tag>
-            
-            <tag> 基础知识 </tag>
             
             <tag> 核心系统 </tag>
             
@@ -2860,11 +2926,11 @@
       
         <tags>
             
+            <tag> 基础知识 </tag>
+            
             <tag> Unity </tag>
             
             <tag> Unity入门 </tag>
-            
-            <tag> 基础知识 </tag>
             
             <tag> 核心系统 </tag>
             
@@ -2895,11 +2961,11 @@
       
         <tags>
             
+            <tag> 基础知识 </tag>
+            
             <tag> Unity </tag>
             
             <tag> Unity入门 </tag>
-            
-            <tag> 基础知识 </tag>
             
             <tag> 核心系统 </tag>
             
@@ -2930,11 +2996,11 @@
       
         <tags>
             
+            <tag> 基础知识 </tag>
+            
             <tag> Unity </tag>
             
             <tag> Unity入门 </tag>
-            
-            <tag> 基础知识 </tag>
             
             <tag> 核心系统 </tag>
             
@@ -2965,11 +3031,11 @@
       
         <tags>
             
+            <tag> 基础知识 </tag>
+            
             <tag> Unity </tag>
             
             <tag> Unity入门 </tag>
-            
-            <tag> 基础知识 </tag>
             
             <tag> 核心系统 </tag>
             
@@ -3000,11 +3066,11 @@
       
         <tags>
             
+            <tag> 基础知识 </tag>
+            
             <tag> Unity </tag>
             
             <tag> Unity入门 </tag>
-            
-            <tag> 基础知识 </tag>
             
             <tag> 核心系统 </tag>
             
@@ -3035,11 +3101,11 @@
       
         <tags>
             
+            <tag> 基础知识 </tag>
+            
             <tag> Unity </tag>
             
             <tag> Unity入门 </tag>
-            
-            <tag> 基础知识 </tag>
             
             <tag> 核心系统 </tag>
             
@@ -3070,11 +3136,11 @@
       
         <tags>
             
+            <tag> 基础知识 </tag>
+            
             <tag> Unity </tag>
             
             <tag> Unity入门 </tag>
-            
-            <tag> 基础知识 </tag>
             
             <tag> 核心系统 </tag>
             
@@ -3105,11 +3171,11 @@
       
         <tags>
             
+            <tag> 基础知识 </tag>
+            
             <tag> Unity </tag>
             
             <tag> Unity入门 </tag>
-            
-            <tag> 基础知识 </tag>
             
             <tag> Unity重要组件和API </tag>
             
@@ -3138,11 +3204,11 @@
       
         <tags>
             
+            <tag> 基础知识 </tag>
+            
             <tag> Unity </tag>
             
             <tag> Unity入门 </tag>
-            
-            <tag> 基础知识 </tag>
             
             <tag> Unity重要组件和API </tag>
             
@@ -3171,11 +3237,11 @@
       
         <tags>
             
+            <tag> 基础知识 </tag>
+            
             <tag> Unity </tag>
             
             <tag> Unity入门 </tag>
-            
-            <tag> 基础知识 </tag>
             
             <tag> Unity重要组件和API </tag>
             
@@ -3204,11 +3270,11 @@
       
         <tags>
             
+            <tag> 基础知识 </tag>
+            
             <tag> Unity </tag>
             
             <tag> Unity入门 </tag>
-            
-            <tag> 基础知识 </tag>
             
             <tag> Unity重要组件和API </tag>
             
@@ -3237,11 +3303,11 @@
       
         <tags>
             
+            <tag> 基础知识 </tag>
+            
             <tag> Unity </tag>
             
             <tag> Unity入门 </tag>
-            
-            <tag> 基础知识 </tag>
             
             <tag> Unity重要组件和API </tag>
             
@@ -3270,11 +3336,11 @@
       
         <tags>
             
+            <tag> 基础知识 </tag>
+            
             <tag> Unity </tag>
             
             <tag> Unity入门 </tag>
-            
-            <tag> 基础知识 </tag>
             
             <tag> Unity重要组件和API </tag>
             
@@ -3303,11 +3369,11 @@
       
         <tags>
             
+            <tag> 基础知识 </tag>
+            
             <tag> Unity </tag>
             
             <tag> Unity入门 </tag>
-            
-            <tag> 基础知识 </tag>
             
             <tag> Unity重要组件和API </tag>
             
@@ -3336,11 +3402,11 @@
       
         <tags>
             
+            <tag> 基础知识 </tag>
+            
             <tag> Unity </tag>
             
             <tag> Unity入门 </tag>
-            
-            <tag> 基础知识 </tag>
             
             <tag> Unity重要组件和API </tag>
             
@@ -3369,11 +3435,11 @@
       
         <tags>
             
+            <tag> 基础知识 </tag>
+            
             <tag> Unity </tag>
             
             <tag> Unity入门 </tag>
-            
-            <tag> 基础知识 </tag>
             
             <tag> Unity重要组件和API </tag>
             
@@ -3402,11 +3468,11 @@
       
         <tags>
             
+            <tag> 基础知识 </tag>
+            
             <tag> Unity </tag>
             
             <tag> Unity入门 </tag>
-            
-            <tag> 基础知识 </tag>
             
             <tag> Unity重要组件和API </tag>
             
@@ -3435,11 +3501,11 @@
       
         <tags>
             
+            <tag> 基础知识 </tag>
+            
             <tag> Unity </tag>
             
             <tag> Unity入门 </tag>
-            
-            <tag> 基础知识 </tag>
             
             <tag> Unity重要组件和API </tag>
             
@@ -3468,11 +3534,11 @@
       
         <tags>
             
+            <tag> 基础知识 </tag>
+            
             <tag> Unity </tag>
             
             <tag> Unity入门 </tag>
-            
-            <tag> 基础知识 </tag>
             
         </tags>
       
@@ -3499,11 +3565,11 @@
       
         <tags>
             
+            <tag> 基础知识 </tag>
+            
             <tag> Unity </tag>
             
             <tag> Unity入门 </tag>
-            
-            <tag> 基础知识 </tag>
             
             <tag> Unity脚本基础 </tag>
             
@@ -3534,15 +3600,15 @@
       
         <tags>
             
+            <tag> 反射和特性 </tag>
+            
+            <tag> 基础知识 </tag>
+            
             <tag> Unity </tag>
             
             <tag> Unity入门 </tag>
             
-            <tag> 基础知识 </tag>
-            
             <tag> Unity脚本基础 </tag>
-            
-            <tag> 反射和特性 </tag>
             
         </tags>
       
@@ -3569,11 +3635,11 @@
       
         <tags>
             
+            <tag> 基础知识 </tag>
+            
             <tag> Unity </tag>
             
             <tag> Unity入门 </tag>
-            
-            <tag> 基础知识 </tag>
             
             <tag> Unity脚本基础 </tag>
             
@@ -3602,11 +3668,11 @@
       
         <tags>
             
+            <tag> 基础知识 </tag>
+            
             <tag> Unity </tag>
             
             <tag> Unity入门 </tag>
-            
-            <tag> 基础知识 </tag>
             
             <tag> Unity脚本基础 </tag>
             
@@ -3635,11 +3701,11 @@
       
         <tags>
             
+            <tag> 基础知识 </tag>
+            
             <tag> Unity </tag>
             
             <tag> Unity入门 </tag>
-            
-            <tag> 基础知识 </tag>
             
             <tag> Unity工作原理 </tag>
             
@@ -3668,13 +3734,13 @@
       
         <tags>
             
-            <tag> Unity </tag>
-            
-            <tag> Unity入门 </tag>
+            <tag> 反射和特性 </tag>
             
             <tag> 基础知识 </tag>
             
-            <tag> 反射和特性 </tag>
+            <tag> Unity </tag>
+            
+            <tag> Unity入门 </tag>
             
             <tag> Unity工作原理 </tag>
             
@@ -3703,11 +3769,11 @@
       
         <tags>
             
+            <tag> 基础知识 </tag>
+            
             <tag> Unity </tag>
             
             <tag> Unity入门 </tag>
-            
-            <tag> 基础知识 </tag>
             
             <tag> Unity界面基础 </tag>
             
@@ -3736,11 +3802,11 @@
       
         <tags>
             
+            <tag> 基础知识 </tag>
+            
             <tag> Unity </tag>
             
             <tag> Unity入门 </tag>
-            
-            <tag> 基础知识 </tag>
             
             <tag> Unity界面基础 </tag>
             
@@ -3769,11 +3835,11 @@
       
         <tags>
             
+            <tag> 基础知识 </tag>
+            
             <tag> Unity </tag>
             
             <tag> Unity入门 </tag>
-            
-            <tag> 基础知识 </tag>
             
             <tag> Unity界面基础 </tag>
             
@@ -3802,11 +3868,11 @@
       
         <tags>
             
+            <tag> 基础知识 </tag>
+            
             <tag> Unity </tag>
             
             <tag> Unity入门 </tag>
-            
-            <tag> 基础知识 </tag>
             
             <tag> Unity界面基础 </tag>
             
@@ -3835,11 +3901,11 @@
       
         <tags>
             
+            <tag> 基础知识 </tag>
+            
             <tag> Unity </tag>
             
             <tag> Unity入门 </tag>
-            
-            <tag> 基础知识 </tag>
             
         </tags>
       
@@ -3866,11 +3932,11 @@
       
         <tags>
             
+            <tag> 基础知识 </tag>
+            
             <tag> Unity </tag>
             
             <tag> Unity入门 </tag>
-            
-            <tag> 基础知识 </tag>
             
         </tags>
       
@@ -4657,9 +4723,9 @@
             
             <tag> 语法知识 </tag>
             
-            <tag> 反射和特性 </tag>
-            
             <tag> CSharp进阶 </tag>
+            
+            <tag> 反射和特性 </tag>
             
         </tags>
       
@@ -4690,9 +4756,9 @@
             
             <tag> 语法知识 </tag>
             
-            <tag> 反射和特性 </tag>
-            
             <tag> CSharp进阶 </tag>
+            
+            <tag> 反射和特性 </tag>
             
         </tags>
       
@@ -4847,9 +4913,9 @@
             
             <tag> 语法知识 </tag>
             
-            <tag> 委托和事件 </tag>
-            
             <tag> CSharp进阶 </tag>
+            
+            <tag> 委托和事件 </tag>
             
         </tags>
       
@@ -4880,9 +4946,9 @@
             
             <tag> 语法知识 </tag>
             
-            <tag> 委托和事件 </tag>
-            
             <tag> CSharp进阶 </tag>
+            
+            <tag> 委托和事件 </tag>
             
         </tags>
       
@@ -4913,9 +4979,9 @@
             
             <tag> 语法知识 </tag>
             
-            <tag> 委托和事件 </tag>
-            
             <tag> CSharp进阶 </tag>
+            
+            <tag> 委托和事件 </tag>
             
         </tags>
       
@@ -4946,9 +5012,9 @@
             
             <tag> 语法知识 </tag>
             
-            <tag> 委托和事件 </tag>
-            
             <tag> CSharp进阶 </tag>
+            
+            <tag> 委托和事件 </tag>
             
         </tags>
       
@@ -6899,9 +6965,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> CSharp基础 </tag>
-            
             <tag> 实践项目 </tag>
+            
+            <tag> CSharp基础 </tag>
             
         </tags>
       
@@ -6930,9 +6996,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> CSharp基础 </tag>
-            
             <tag> 实践项目 </tag>
+            
+            <tag> CSharp基础 </tag>
             
         </tags>
       
@@ -6961,9 +7027,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> CSharp基础 </tag>
-            
             <tag> 实践项目 </tag>
+            
+            <tag> CSharp基础 </tag>
             
         </tags>
       
@@ -6992,9 +7058,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> CSharp基础 </tag>
-            
             <tag> 实践项目 </tag>
+            
+            <tag> CSharp基础 </tag>
             
         </tags>
       
@@ -7023,9 +7089,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> CSharp基础 </tag>
-            
             <tag> 实践项目 </tag>
+            
+            <tag> CSharp基础 </tag>
             
         </tags>
       
@@ -7054,9 +7120,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> CSharp基础 </tag>
-            
             <tag> 实践项目 </tag>
+            
+            <tag> CSharp基础 </tag>
             
         </tags>
       
@@ -7085,9 +7151,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> CSharp基础 </tag>
-            
             <tag> 实践项目 </tag>
+            
+            <tag> CSharp基础 </tag>
             
         </tags>
       
@@ -7116,9 +7182,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> CSharp基础 </tag>
-            
             <tag> 实践项目 </tag>
+            
+            <tag> CSharp基础 </tag>
             
         </tags>
       
@@ -7147,9 +7213,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> CSharp基础 </tag>
-            
             <tag> 实践项目 </tag>
+            
+            <tag> CSharp基础 </tag>
             
         </tags>
       
@@ -7178,9 +7244,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> CSharp基础 </tag>
-            
             <tag> 实践项目 </tag>
+            
+            <tag> CSharp基础 </tag>
             
         </tags>
       
@@ -7209,9 +7275,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> CSharp基础 </tag>
-            
             <tag> 实践项目 </tag>
+            
+            <tag> CSharp基础 </tag>
             
         </tags>
       
@@ -7240,9 +7306,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> CSharp基础 </tag>
-            
             <tag> 实践项目 </tag>
+            
+            <tag> CSharp基础 </tag>
             
         </tags>
       
