@@ -4,6 +4,173 @@
   
     
     <entry>
+      <title>20.Resources卸载资源</title>
+      <link href="/2024/03/01/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/20.Resources%E8%B5%84%E6%BA%90%E5%8A%A8%E6%80%81%E5%8A%A0%E8%BD%BD-Resources%E5%8D%B8%E8%BD%BD%E8%B5%84%E6%BA%90/"/>
+      <url>/2024/03/01/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/20.Resources%E8%B5%84%E6%BA%90%E5%8A%A8%E6%80%81%E5%8A%A0%E8%BD%BD-Resources%E5%8D%B8%E8%BD%BD%E8%B5%84%E6%BA%90/</url>
+      
+        <content type="html"><![CDATA[<h1 id="20-Resources资源动态加载-Resources卸载资源"><a href="#20-Resources资源动态加载-Resources卸载资源" class="headerlink" title="20.Resources资源动态加载-Resources卸载资源"></a>20.Resources资源动态加载-Resources卸载资源</h1><hr><h2 id="20-1-知识点"><a href="#20-1-知识点" class="headerlink" title="20.1 知识点"></a>20.1 知识点</h2><h3 id="Resources重复加载资源会浪费内存吗？"><a href="#Resources重复加载资源会浪费内存吗？" class="headerlink" title="Resources重复加载资源会浪费内存吗？"></a>Resources重复加载资源会浪费内存吗？</h3><h4 id="其实Resources加载一次资源过后"><a href="#其实Resources加载一次资源过后" class="headerlink" title="其实Resources加载一次资源过后"></a>其实Resources加载一次资源过后</h4><ul><li>该资源就一直存放在内存中作为缓存</li><li>第二次加载时发现缓存中存在该资源</li><li>会直接取出来进行使用</li><li>所以，多次重复加载不会浪费内存</li><li>但是会浪费性能（每次加载都会去查找取出，始终伴随一些性能消耗）</li></ul><h3 id="手动释放掉缓存中的资源"><a href="#手动释放掉缓存中的资源" class="headerlink" title="手动释放掉缓存中的资源"></a>手动释放掉缓存中的资源</h3><h4 id="Resources中的UnloadAsset方法-卸载指定资源"><a href="#Resources中的UnloadAsset方法-卸载指定资源" class="headerlink" title="Resources中的UnloadAsset方法 - 卸载指定资源"></a>Resources中的UnloadAsset方法 - 卸载指定资源</h4><pre><code class="csharp">//从内存中卸载 / assetToUnload ///注意：//该方法 不能释放 GameObject对象 因为它会用于实例化对象//它只能用于一些 不需要实例化的内容 比如 图片 和 音效 文本等等//一般情况下 我们很少单独使用它//GameObject obj = Resources.CoroutineAsynLoad&lt;GameObject&gt;(&quot;Cube&quot;)//即使是没有实例化的 GameObject对象也不能进行卸载//Resources.UnloadAsset(obj);//报错 不能卸载GameObject</code></pre><h4 id="Resources中的UnloadUnusedAssets方法-卸载未使用的资源"><a href="#Resources中的UnloadUnusedAssets方法-卸载未使用的资源" class="headerlink" title="Resources中的UnloadUnusedAssets方法 - 卸载未使用的资源"></a>Resources中的UnloadUnusedAssets方法 - 卸载未使用的资源</h4><pre><code class="csharp">//卸载未使用的资源。//注意：一般在过场景时和GC一起使用Resources.UnloadUnusedAssets();GC.Collect();</code></pre><h4 id="打开调试窗口，按下按键，可以查看加载图片和卸载图片内存的变化，重复按下加载，内存还是不会变化"><a href="#打开调试窗口，按下按键，可以查看加载图片和卸载图片内存的变化，重复按下加载，内存还是不会变化" class="headerlink" title="打开调试窗口，按下按键，可以查看加载图片和卸载图片内存的变化，重复按下加载，内存还是不会变化"></a>打开调试窗口，按下按键，可以查看加载图片和卸载图片内存的变化，重复按下加载，内存还是不会变化</h4><p><img src="/../../../images/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/20.Resources%E8%B5%84%E6%BA%90%E5%8A%A8%E6%80%81%E5%8A%A0%E8%BD%BD-Resources%E5%8D%B8%E8%BD%BD%E8%B5%84%E6%BA%90/1.png"><br><img src="/../../../images/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/20.Resources%E8%B5%84%E6%BA%90%E5%8A%A8%E6%80%81%E5%8A%A0%E8%BD%BD-Resources%E5%8D%B8%E8%BD%BD%E8%B5%84%E6%BA%90/2.png"><br><img src="/../../../images/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/20.Resources%E8%B5%84%E6%BA%90%E5%8A%A8%E6%80%81%E5%8A%A0%E8%BD%BD-Resources%E5%8D%B8%E8%BD%BD%E8%B5%84%E6%BA%90/3.png"><br><img src="/../../../images/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/20.Resources%E8%B5%84%E6%BA%90%E5%8A%A8%E6%80%81%E5%8A%A0%E8%BD%BD-Resources%E5%8D%B8%E8%BD%BD%E8%B5%84%E6%BA%90/4.png"></p><pre><code class="csharp">void Update()&#123;    //加载卸载不是GameObject可以正常使用    //按键加载卸载指定资源，查看变化    if (Input.GetKeyDown(KeyCode.Alpha1))    &#123;        print(&quot;加载资源&quot;);        tex = Resources.Load&lt;Texture&gt;(&quot;Tex/TestJPG&quot;);    &#125;    if (Input.GetKeyDown(KeyCode.Alpha2))    &#123;        print(&quot;卸载资源&quot;);        Resources.UnloadAsset(tex);        tex = null;    &#125;&#125;</code></pre><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ul><li><strong>Resources.UnloadAsset</strong> 卸载指定资源，但是不能卸载GameObject对象</li><li><strong>Resources.UnloadUnusedAssets</strong> 卸载未使用资源，一般过场景时配合GC使用</li></ul><hr><h2 id="20-2-知识点代码"><a href="#20-2-知识点代码" class="headerlink" title="20.2 知识点代码"></a>20.2 知识点代码</h2><pre><code class="csharp">using System;using System.Collections;using System.Collections.Generic;using UnityEngine;public class Lesson20_Resources资源动态加载_Resources卸载资源 : MonoBehaviour&#123;    private Texture tex;    // Start is called before the first frame update    void Start()    &#123;        #region 知识点一 Resources重复加载资源会浪费内存吗？        //其实Resources加载一次资源过后        //该资源就一直存放在内存中作为缓存        //第二次加载时发现缓存中存在该资源        //会直接取出来进行使用        //所以 多次重复加载不会浪费内存        //但是 会浪费性能（每次加载都会去查找取出，始终伴随一些性能消耗）        #endregion        #region 知识点二 如何手动释放掉缓存中的资源        //Resources中的UnloadAsset方法 卸载指定资源        //从内存中卸载 / assetToUnload /。        //注意：        //该方法 不能释放 GameObject对象 因为它会用于实例化对象        //它只能用于一些 不需要实例化的内容 比如 图片 和 音效 文本等等        //一般情况下 我们很少单独使用它        //GameObject obj = Resources.CoroutineAsynLoad&lt;GameObject&gt;(&quot;Cube&quot;);        //即使是没有实例化的 GameObject对象也不能进行卸载        //Resources.UnloadAsset(obj);//报错 不能卸载GameObject        //Resources中的UnloadUnusedAssets方法 卸载未使用的资源        //卸载未使用的资源。        //注意：一般在过场景时和GC一起使用        Resources.UnloadUnusedAssets();        GC.Collect();        #endregion        #region 总结        //Resources.UnloadAsset 卸载指定资源 但是不能卸载GameObject对象        //Resources.UnloadUnusedAssets 卸载未使用资源 一般过场景时配合GC使用        #endregion    &#125;    // Update is called once per frame    void Update()    &#123;        //加载卸载不是GameObject可以正常使用        //按键加载卸载指定资源，查看变化        if (Input.GetKeyDown(KeyCode.Alpha1))        &#123;            print(&quot;加载资源&quot;);            tex = Resources.Load&lt;Texture&gt;(&quot;Tex/TestJPG&quot;);        &#125;        if (Input.GetKeyDown(KeyCode.Alpha2))        &#123;            print(&quot;卸载资源&quot;);            Resources.UnloadAsset(tex);            tex = null;        &#125;    &#125;&#125;</code></pre><hr>]]></content>
+      
+      
+      <categories>
+          
+          <category> Unity </category>
+          
+          <category> Unity基础基础知识 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 基础知识 </tag>
+            
+            <tag> Unity </tag>
+            
+            <tag> Unity基础 </tag>
+            
+            <tag> Resources资源动态加载 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>19.Resources异步加载</title>
+      <link href="/2024/03/01/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/19.Resources%E8%B5%84%E6%BA%90%E5%8A%A8%E6%80%81%E5%8A%A0%E8%BD%BD-Resources%E5%BC%82%E6%AD%A5%E5%8A%A0%E8%BD%BD/"/>
+      <url>/2024/03/01/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/19.Resources%E8%B5%84%E6%BA%90%E5%8A%A8%E6%80%81%E5%8A%A0%E8%BD%BD-Resources%E5%BC%82%E6%AD%A5%E5%8A%A0%E8%BD%BD/</url>
+      
+        <content type="html"><![CDATA[<h1 id="19-Resources资源动态加载-Resources异步加载"><a href="#19-Resources资源动态加载-Resources异步加载" class="headerlink" title="19.Resources资源动态加载-Resources异步加载"></a>19.Resources资源动态加载-Resources异步加载</h1><hr><h2 id="19-1-知识点"><a href="#19-1-知识点" class="headerlink" title="19.1 知识点"></a>19.1 知识点</h2><h3 id="Resources异步加载是什么？"><a href="#Resources异步加载是什么？" class="headerlink" title="Resources异步加载是什么？"></a>Resources异步加载是什么？</h3><ul><li>在上节课学习的同步加载中，如果我们加载过大的资源可能会造成程序卡顿。</li><li>卡顿的原因是从硬盘上把数据读取到内存中是需要进行计算的，越大的资源耗时越长，就会造成掉帧卡顿。</li><li>Resources异步加载就是内部新开一个线程进行资源加载，不会造成主线程卡顿。</li><li>其基本工作流程是主线程通知新线程要加载哪些资源，新线程加载完了放到公共内存区域，主线程检测到加载完毕取出来使用。</li><li>异步加载的缺点是：同步加载加载完直接拿来用，异步加载要等待加载完毕才能用</li><li>异步加载的优点是：能解决卡顿问题。</li></ul><h3 id="Resources异步加载方法"><a href="#Resources异步加载方法" class="headerlink" title="Resources异步加载方法"></a>Resources异步加载方法</h3><h4 id="Resources-LoadAsync静态方法-异步加载"><a href="#Resources-LoadAsync静态方法-异步加载" class="headerlink" title="Resources.LoadAsync&lt;T&gt;静态方法 - 异步加载"></a>Resources.LoadAsync&lt;T&gt;静态方法 - 异步加载</h4><ul><li>注意：异步加载 不能马上得到加载的资源 至少要等一帧</li></ul><pre><code class="csharp">//Resources中的LoadAsync方法 通过异步加载中的完成事件监听 使用加载的资源//异步加载存储在 Resources 文件夹中的 path 处的资源。//这句代码 你可以理解 Unity 在内部 就会去开一个线程进行资源下载//异步加载会有一个ResourceRequest类的返回值 用个变量接一下//ResourceRequest类是来自 Resources 包的异步加载请求。里面包含异步加载是否完成，进度这些变量，辅助做逻辑ResourceRequest resourceRequest = Resources.LoadAsync&lt;Texture&gt;(&quot;Tex/TestJPG&quot;);</code></pre><h3 id="异步加载结束后做逻辑"><a href="#异步加载结束后做逻辑" class="headerlink" title="异步加载结束后做逻辑"></a>异步加载结束后做逻辑</h3><h4 id="方法一：添加异步加载完成回调函数"><a href="#方法一：添加异步加载完成回调函数" class="headerlink" title="方法一：添加异步加载完成回调函数"></a>方法一：添加异步加载完成回调函数</h4><h5 id="ResourceRequest-completed-异步加载完成回调"><a href="#ResourceRequest-completed-异步加载完成回调" class="headerlink" title="ResourceRequest.completed - 异步加载完成回调"></a>ResourceRequest.completed - 异步加载完成回调</h5><pre><code class="csharp">void Start()&#123;    ResourceRequest resourceRequest = Resources.LoadAsync&lt;Texture&gt;(&quot;Tex/TestJPG&quot;);    //怎么在异步加载结束后做逻辑了？主要有两种方法    //使用ResourceRequest这个类异步加载完成的回调    //ResourceRequest这个类存在完成异步加载的事件回调    //当异步加载结束时 马上进行一个资源下载结束的一个事件函数监听回调    //注意：completed这个事件有一个AsyncOperation类型的参数    //AsyncOperation类型是ResourceRequest类型的父类 一般是要把AsyncOperation类型as成ResourceRequest类型再获取ResourceRequest相关    resourceRequest.completed += AsynLoadOver;    //打印帧数    print(&quot;直接异步加载&quot;+Time.frameCount);    //这个 刚刚执行了异步加载的 执行代码 资源还没有加载完毕 不能直接使用资源     //一定要等加载结束过后 才能使用    //resourceRequest.asset //错误用法    #endregion&#125;</code></pre><h5 id="ResourceRequest-asset-异步加载得到的资源"><a href="#ResourceRequest-asset-异步加载得到的资源" class="headerlink" title="ResourceRequest.asset - 异步加载得到的资源"></a>ResourceRequest.asset - 异步加载得到的资源</h5><pre><code class="csharp">//异步加载结束事件监听回调private void AsynLoadOver(AsyncOperation asyncOperationq)&#123;    print(&quot;异步加载结束&quot;);    //asset 是AsyncOperation类中的资源对象 加载完毕过后 就能够得到它    tex = (asyncOperationq as ResourceRequest).asset as Texture;    //得到后可以在OnGUI中画出这个图片    //打印帧数    print(&quot;直接异步加载&quot; + Time.frameCount);&#125;</code></pre><h4 id="方法二：使用协程函数异步加载"><a href="#方法二：使用协程函数异步加载" class="headerlink" title="方法二：使用协程函数异步加载"></a>方法二：使用协程函数异步加载</h4><h5 id="开启异步加载协程函数"><a href="#开启异步加载协程函数" class="headerlink" title="开启异步加载协程函数"></a>开启异步加载协程函数</h5><pre><code class="csharp">//通过协程 异步加载的资源并写加载完之后的逻辑StartCoroutine(CoroutineAsynLoad());</code></pre><h5 id="异步加载协程内使用ResourceRequest对象做逻辑"><a href="#异步加载协程内使用ResourceRequest对象做逻辑" class="headerlink" title="异步加载协程内使用ResourceRequest对象做逻辑"></a>异步加载协程内使用ResourceRequest对象做逻辑</h5><h6 id="yield-return-resourceRequest-资源加载完毕再执行后面的代码"><a href="#yield-return-resourceRequest-资源加载完毕再执行后面的代码" class="headerlink" title="yield return resourceRequest 资源加载完毕再执行后面的代码"></a>yield return resourceRequest 资源加载完毕再执行后面的代码</h6><h6 id="ResourceRequest-isDone-判断资源是否加载结束"><a href="#ResourceRequest-isDone-判断资源是否加载结束" class="headerlink" title="ResourceRequest.isDone - 判断资源是否加载结束"></a>ResourceRequest.isDone - 判断资源是否加载结束</h6><h6 id="ResourceRequest-progress-当前加载进度"><a href="#ResourceRequest-progress-当前加载进度" class="headerlink" title="ResourceRequest.progress - 当前加载进度"></a>ResourceRequest.progress - 当前加载进度</h6><h6 id="异步加载协程函数代码"><a href="#异步加载协程函数代码" class="headerlink" title="异步加载协程函数代码"></a>异步加载协程函数代码</h6><pre><code class="csharp">//协程函数异步加载IEnumerator CoroutineAsynLoad()&#123;    //开启协程就异步加载    ResourceRequest resourceRequest = Resources.LoadAsync&lt;Texture&gt;(&quot;Tex/TestJPG&quot;);    print(&quot;协程函数异步加载&quot; + Time.frameCount);    //方法一：直接 yield returnResourceRequest类对象 加载完再写逻辑    //当yield return的是ResourceRequest这个类的时候     //Unity的协程管理器就自己知道这个类的返回值 意味着你在异步加载资源     yield return resourceRequest;    //Unity 会自己判断 该资源是否加载完毕了 加载完毕过后 才会继续执行后面的代码    print(&quot;协程函数异步加载结束&quot; + Time.frameCount);    //方法二：通过ResourceRequest中的变量判断当前加载情况 加载完再写逻辑    //ResourceRequest中isDone变量 判断资源是否加载结束    while (!resourceRequest.isDone)    &#123;        //ResourceRequest中priority变量 当前的加载进度         //该进度 不会特别准确 过渡也不是特别明显        print(resourceRequest.progress);//打印当前加载进度        //每结束就下一帧再判断一次        yield return null;    &#125;    //直到结束了赋值给图片    tex = resourceRequest.asset as Texture;&#125;</code></pre><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ol><li><p>完成事件监听异步加载：</p><ul><li>好处：写法简单。</li><li>坏处：只能在资源加载结束后进行处理，是一种”线性加载”。</li><li>假如一个模型要加载三个资源，那么在这三个资源的完成异步加载回调里都要判断其他两个资源是否加载完。</li></ul></li><li><p>协程异步加载：</p><ul><li>好处：可以在协程中处理复杂逻辑，比如同时加载多个资源，比如进度条更新。</li><li>坏处：写法稍麻烦，是一种”并行加载”。</li><li>假如一个模型要加载三个资源，可以直接在协程开启三个异步加载，用isDone并起来判断是否都加载完就行。</li></ul></li></ol><p>注意：</p><ul><li>理解为什么异步加载不能马上加载结束，为什么至少要等1帧。</li><li>理解协程异步加载的原理。</li></ul><hr><h2 id="19-2-知识点代码"><a href="#19-2-知识点代码" class="headerlink" title="19.2 知识点代码"></a>19.2 知识点代码</h2><pre><code class="csharp">using System.Collections;using System.Collections.Generic;using UnityEngine;public class Lesson19_Resources资源动态加载_Resources异步加载 : MonoBehaviour&#123;    private Texture tex;    void Start()    &#123;        #region 知识点一 Resources异步加载是什么？        //上节课学习的同步加载中        //如果我们加载过大的资源可能会造成程序卡顿        //卡顿的原因就是 从硬盘上把数据读取到内存中 是需要进行计算的        //越大的资源耗时越长，就会造成掉帧卡顿        //Resources异步加载 就是内部新开一个线程进行资源加载 不会造成主线程卡顿        //基本工作流程是主线程通知新线程要加载哪些资源，新线程加载完了放到公共内存区域，主线程检测到加载完毕取出来使用        //缺点是同步加载加载完直接拿来用，一步加载要等待加载完毕才能用，优点是能解决卡顿问题        #endregion        #region 知识点二 Resources异步加载方法        //注意：异步加载 不能马上得到加载的资源 至少要等一帧        //Resources中的LoadAsync方法 通过异步加载中的完成事件监听 使用加载的资源        //异步加载存储在 Resources 文件夹中的 path 处的资源。        //这句代码 你可以理解 Unity 在内部 就会去开一个线程进行资源下载        //异步加载会有一个ResourceRequest类的返回值 用个变量接一下        //ResourceRequest类是来自 Resources 包的异步加载请求。里面包含异步加载是否完成，进度这些变量，辅助做逻辑        ResourceRequest resourceRequest = Resources.LoadAsync&lt;Texture&gt;(&quot;Tex/TestJPG&quot;);        //怎么在异步加载结束后做逻辑了？主要有两种方法        //使用ResourceRequest这个类异步加载完成的回调        //ResourceRequest这个类存在完成异步加载的事件回调        //当异步加载结束时 马上进行一个资源下载结束的一个事件函数监听回调        //注意：completed这个事件有一个AsyncOperation类型的参数        //AsyncOperation类型是ResourceRequest类型的父类 一般是要把AsyncOperation类型as成ResourceRequest类型再获取ResourceRequest相关        resourceRequest.completed += AsynLoadOver;        //打印帧数        print(&quot;直接异步加载&quot;+Time.frameCount);        //这个 刚刚执行了异步加载的 执行代码 资源还没有加载完毕 不能直接使用资源         //一定要等加载结束过后 才能使用        //resourceRequest.asset //错误用法        //通过协程 异步加载的资源并写加载完之后的逻辑        StartCoroutine(CoroutineAsynLoad());        #endregion        #region 总结        //1.完成事件监听异步加载        //好处：写法简单        //坏处：只能在资源加载结束后 进行处理        //“线性加载”        //假如一个模型要加载三个资源，那么在这三个资源的完成异步加载回调里都要判断其他两个资源是否加载完        //2.协程异步加载        //好处：可以在协程中处理复杂逻辑，比如同时加载多个资源，比如进度条更新        //坏处：写法稍麻烦        //“并行加载”        //假如一个模型要加载三个资源 可以直接在协程开启三个异步加载 用isDone并起来判断是否都加载完就行        //注意：        //理解为什么异步加载不能马上加载结束，为什么至少要等1帧        //理解协程异步加载的原理        #endregion    &#125;    //协程函数异步加载    IEnumerator CoroutineAsynLoad()    &#123;        //开启协程就异步加载        ResourceRequest resourceRequest = Resources.LoadAsync&lt;Texture&gt;(&quot;Tex/TestJPG&quot;);        print(&quot;协程函数异步加载&quot; + Time.frameCount);        //方法一：直接 yield returnResourceRequest类对象 加载完再写逻辑        //当yield return的是ResourceRequest这个类的时候         //Unity的协程管理器就自己知道这个类的返回值 意味着你在异步加载资源         yield return resourceRequest;        //Unity 会自己判断 该资源是否加载完毕了 加载完毕过后 才会继续执行后面的代码        print(&quot;协程函数异步加载结束&quot; + Time.frameCount);        //方法二：通过ResourceRequest中的变量判断当前加载情况 加载完再写逻辑        //ResourceRequest中isDone变量 判断资源是否加载结束        while (!resourceRequest.isDone)        &#123;            //ResourceRequest中priority变量 当前的加载进度             //该进度 不会特别准确 过渡也不是特别明显            print(resourceRequest.progress);//打印当前加载进度            //每结束就下一帧再判断一次            yield return null;        &#125;        //直到结束了赋值给图片        tex = resourceRequest.asset as Texture;    &#125;    //异步加载结束事件监听回调    private void AsynLoadOver(AsyncOperation asyncOperationq)    &#123;        print(&quot;异步加载结束&quot;);        //asset 是AsyncOperation类中的资源对象 加载完毕过后 就能够得到它        tex = (asyncOperationq as ResourceRequest).asset as Texture;        //得到后可以在OnGUI中画出这个图片        //打印帧数        print(&quot;直接异步加载&quot; + Time.frameCount);    &#125;    private void OnGUI()    &#123;        //不为空就画图片        if (tex != null)            GUI.DrawTexture(new Rect(0, 0, 100, 100), tex);    &#125;&#125;</code></pre><hr><h2 id="19-3-练习题"><a href="#19-3-练习题" class="headerlink" title="19.3 练习题"></a>19.3 练习题</h2><h3 id="请写一个简单的资源管理器，提供统一的方法给外部用于资源异步加载，外部可以传入委托用于当资源加载结束时使用资源"><a href="#请写一个简单的资源管理器，提供统一的方法给外部用于资源异步加载，外部可以传入委托用于当资源加载结束时使用资源" class="headerlink" title="请写一个简单的资源管理器，提供统一的方法给外部用于资源异步加载，外部可以传入委托用于当资源加载结束时使用资源"></a>请写一个简单的资源管理器，提供统一的方法给外部用于资源异步加载，外部可以传入委托用于当资源加载结束时使用资源</h3><h4 id="创建资源管理器，实现单例"><a href="#创建资源管理器，实现单例" class="headerlink" title="创建资源管理器，实现单例"></a>创建资源管理器，实现单例</h4><pre><code class="csharp">public class ResourcesMgr&#123;    private static ResourcesMgr instance = new ResourcesMgr();    public static ResourcesMgr Instance =&gt; instance;    private ResourcesMgr()    &#123;    &#125;&#125;</code></pre><h4 id="创建异步加载资源的泛型封装方法并实现，添加泛型约束，并假如一个字典来进行优化，假如重复加载的对象就重新加载了，直接回调"><a href="#创建异步加载资源的泛型封装方法并实现，添加泛型约束，并假如一个字典来进行优化，假如重复加载的对象就重新加载了，直接回调" class="headerlink" title="创建异步加载资源的泛型封装方法并实现，添加泛型约束，并假如一个字典来进行优化，假如重复加载的对象就重新加载了，直接回调"></a>创建异步加载资源的泛型封装方法并实现，添加泛型约束，并假如一个字典来进行优化，假如重复加载的对象就重新加载了，直接回调</h4><pre><code class="csharp">// 记录已经加载的资源private Dictionary&lt;string, Object&gt; loadedAssets = new Dictionary&lt;string, Object&gt;();/// &lt;summary&gt;/// 异步加载指定名称的资源，并在加载完成后使用回调方法处理资源。/// &lt;/summary&gt;/// &lt;typeparam name=&quot;T&quot;&gt;要加载的资源类型（必须是Object的子类）。&lt;/typeparam&gt;/// &lt;param name=&quot;assetPath&quot;&gt;资源的名称或路径。&lt;/param&gt;/// &lt;param name=&quot;callBack&quot;&gt;资源加载完成后的回调函数，其中参数为加载得到的资源对象。&lt;/param&gt;public void LoadAssetAsync&lt;T&gt;(string assetPath, UnityAction&lt;T&gt; callBack) where T : Object&#123;    // 如果存在这个key，直接拿来用    if (loadedAssets.ContainsKey(assetPath))    &#123;        Debug.Log(&quot;资源已经被加载过了，直接使用已经加载的资源进行回调&quot;);        // 资源已经被加载过了，直接使用已经加载的资源进行回调        // 如果资源已经被加载过了，则直接从已加载资源字典中取得        Object obj = loadedAssets[assetPath];        if (obj != null)        &#123;            callBack(obj as T);            return;        &#125;        return;    &#125;    // 异步加载资源    ResourceRequest resourceRequest = Resources.LoadAsync&lt;T&gt;(assetPath);    // 异步加载完成回调    resourceRequest.completed += (asyncOperation) =&gt;    &#123;        // 直接得到传入的对象，通过它得到资源内容，然后转换成对应类型传出去，外面不需要转换，直接使用        // 获取加载完成得到的资源，asyncOperation类as成ResourceRequest在使用相关asset        Object asset = (asyncOperation as ResourceRequest).asset;        // 将资源添加到已加载资源字典中，便于后续复用        if (!loadedAssets.ContainsKey(assetPath))        &#123;            // 将加载得到的资源添加到已加载资源字典中            loadedAssets.Add(assetPath, asset);        &#125;        // 执行回调函数，并将加载得到的资源对象作为参数传入        callBack(asset as T);    &#125;;&#125;</code></pre><h4 id="调用封装的方法加载图片，并写一个延迟函数延迟重复加载，它就不会重新Load了"><a href="#调用封装的方法加载图片，并写一个延迟函数延迟重复加载，它就不会重新Load了" class="headerlink" title="调用封装的方法加载图片，并写一个延迟函数延迟重复加载，它就不会重新Load了"></a>调用封装的方法加载图片，并写一个延迟函数延迟重复加载，它就不会重新Load了</h4><pre><code class="csharp">private Texture tex;void Start()&#123;    // 调用自己封装的异步加载方法    ResourcesMgr.Instance.LoadAssetAsync&lt;Texture&gt;(&quot;Tex/TestJPG&quot;, (obj) =&gt;    &#123;        tex = obj;    &#125;);    // 延迟加载已经Load过的图片    Invoke(&quot;DelayLoadTestJPG&quot;, 3);    // 不封装的情况    ResourceRequest resourceRequest = Resources.LoadAsync&lt;Texture&gt;(&quot;Tex/TestJPG&quot;);    resourceRequest.completed += (asyncOperation) =&gt;    &#123;        // AsyncOperation as成 ResourceRequest在使用        tex = (asyncOperation as ResourceRequest).asset as Texture;    &#125;;&#125;private void OnGUI()&#123;    if (tex != null)        GUI.DrawTexture(new Rect(0, 0, 100, 100), tex);&#125;void DelayLoadTestJPG()&#123;    // 重复调用自己封装的异步加载方法，会判断是否加载过，加载过就不异步加载了    ResourcesMgr.Instance.LoadAssetAsync&lt;Texture&gt;(&quot;Tex/TestJPG&quot;, (obj) =&gt;    &#123;        tex = obj;    &#125;);&#125;</code></pre><hr><h2 id="19-4-练习题代码"><a href="#19-4-练习题代码" class="headerlink" title="19.4 练习题代码"></a>19.4 练习题代码</h2><h3 id="Lesson19-练习题"><a href="#Lesson19-练习题" class="headerlink" title="Lesson19_练习题"></a>Lesson19_练习题</h3><pre><code class="csharp">using System.Collections;using System.Collections.Generic;using UnityEngine;public class Lesson19_练习题 : MonoBehaviour&#123;    #region 练习题一    //请写一个简单的资源管理器，提供统一的方法给外部用于资源异步加载，外部可以传入委托用于当资源加载结束时使用资源    private Texture tex;    void Start()    &#123;        //调用自己封装的异步加载方法        ResourcesMgr.Instance.LoadAssetAsync&lt;Texture&gt;(&quot;Tex/TestJPG&quot;, (obj) =&gt;        &#123;            tex = obj;        &#125;);        //延迟加载已经Load过的图片        Invoke(&quot;DelayLoadTestJPG&quot;, 3);        //不封装的情况        ResourceRequest resourceRequest = Resources.LoadAsync&lt;Texture&gt;(&quot;Tex/TestJPG&quot;);        resourceRequest.completed += (asyncOperation) =&gt;        &#123;            //AsyncOperation as成 ResourceRequest在使用            tex = (asyncOperation as ResourceRequest).asset as Texture;        &#125;;    &#125;    private void OnGUI()    &#123;        if (tex != null)            GUI.DrawTexture(new Rect(0, 0, 100, 100), tex);    &#125;    void DelayLoadTestJPG()    &#123;        //重复调用自己封装的异步加载方法 会判断是否加载过，加载过就不异步加载了        ResourcesMgr.Instance.LoadAssetAsync&lt;Texture&gt;(&quot;Tex/TestJPG&quot;, (obj) =&gt;        &#123;            tex = obj;        &#125;);    &#125;    #endregion&#125;</code></pre><h3 id="ResourcesMgr"><a href="#ResourcesMgr" class="headerlink" title="ResourcesMgr"></a>ResourcesMgr</h3><pre><code class="csharp">using System.Collections;using System.Collections.Generic;using UnityEngine;using UnityEngine.Events;public class ResourcesMgr&#123;    // 单例类实现    private static ResourcesMgr instance = new ResourcesMgr();    public static ResourcesMgr Instance =&gt; instance;    // 将构造函数设为private，防止外部直接实例化对象    private ResourcesMgr()    &#123;    &#125;    // 记录已经加载的资源    private Dictionary&lt;string, Object&gt; loadedAssets = new Dictionary&lt;string, Object&gt;();    /// &lt;summary&gt;    /// 异步加载指定名称的资源，并在加载完成后使用回调方法处理资源。    /// &lt;/summary&gt;    /// &lt;typeparam assetPath=&quot;T&quot;&gt;要加载的资源类型（必须是Object的子类）。&lt;/typeparam&gt;    /// &lt;param assetPath=&quot;assetPath&quot;&gt;资源的名称或路径。&lt;/param&gt;    /// &lt;param assetPath=&quot;callBack&quot;&gt;资源加载完成后的回调函数，其中参数为加载得到的资源对象。&lt;/param&gt;    public void LoadAssetAsync&lt;T&gt;(string assetPath, UnityAction&lt;T&gt; callBack) where T : Object    &#123;        //如果存在这个key 直接拿来用        if (loadedAssets.ContainsKey(assetPath))        &#123;            Debug.Log(&quot;资源已经被加载过了，直接使用已经加载的资源进行回调&quot;);            // 资源已经被加载过了，直接使用已经加载的资源进行回调            // 如果资源已经被加载过了，则直接从已加载资源字典中取得            Object obj = loadedAssets[assetPath];            if (obj != null)            &#123;                callBack(obj as T);                return;            &#125;            return;        &#125;        // 异步加载资源        ResourceRequest resourceRequest = Resources.LoadAsync&lt;T&gt;(assetPath);        // 异步加载完成回调        resourceRequest.completed += (asyncOperation) =&gt;        &#123;            // 直接得到 传入的 对象 通过它得到资源内容 然后转换成对应类型 传出去 外面不需要转换 直接使用            // 获取加载完成得到的资源 asyncOperation类as成ResourceRequest在使用相关asset            Object asset = (asyncOperation as ResourceRequest).asset;            // 将资源添加到已加载资源字典中，便于后续复用            if (!loadedAssets.ContainsKey(assetPath))            &#123;                // 将加载得到的资源添加到已加载资源字典中                loadedAssets.Add(assetPath, asset);            &#125;            // 执行回调函数，并将加载得到的资源对象作为参数传入            callBack(asset as T);        &#125;;    &#125;&#125;</code></pre><hr>]]></content>
+      
+      
+      <categories>
+          
+          <category> Unity </category>
+          
+          <category> Unity基础基础知识 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 基础知识 </tag>
+            
+            <tag> Unity </tag>
+            
+            <tag> Unity基础 </tag>
+            
+            <tag> Resources资源动态加载 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>18.Resources同步加载</title>
+      <link href="/2024/03/01/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/18.Resources%E8%B5%84%E6%BA%90%E5%8A%A8%E6%80%81%E5%8A%A0%E8%BD%BD-Resources%E5%90%8C%E6%AD%A5%E5%8A%A0%E8%BD%BD/"/>
+      <url>/2024/03/01/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/18.Resources%E8%B5%84%E6%BA%90%E5%8A%A8%E6%80%81%E5%8A%A0%E8%BD%BD-Resources%E5%90%8C%E6%AD%A5%E5%8A%A0%E8%BD%BD/</url>
+      
+        <content type="html"><![CDATA[<h1 id="18-Resources资源动态加载-Resources同步加载"><a href="#18-Resources资源动态加载-Resources同步加载" class="headerlink" title="18.Resources资源动态加载-Resources同步加载"></a>18.Resources资源动态加载-Resources同步加载</h1><hr><h2 id="18-1-知识点"><a href="#18-1-知识点" class="headerlink" title="18.1 知识点"></a>18.1 知识点</h2><h3 id="Resources资源动态加载的作用"><a href="#Resources资源动态加载的作用" class="headerlink" title="Resources资源动态加载的作用"></a>Resources资源动态加载的作用</h3><ul><li>通过代码动态加载Resources文件夹下指定路径资源</li><li>避免繁琐的拖曳操作</li></ul><h3 id="常用资源类型"><a href="#常用资源类型" class="headerlink" title="常用资源类型"></a>常用资源类型</h3><ul><li>预设体对象——GameObject</li><li>音效文件——AudioClip</li><li>文本文件——TextAsset</li><li>图片文件——Texture</li><li>其它类型——需要什么用什么类型</li></ul><p>注意：</p><ul><li>预设体对象加载需要实例化。</li><li>其它资源加载一般直接用。</li></ul><h3 id="Resources-Load静态方法-资源同步加载普通方法"><a href="#Resources-Load静态方法-资源同步加载普通方法" class="headerlink" title="Resources.Load静态方法 - 资源同步加载普通方法"></a>Resources.Load静态方法 - 资源同步加载普通方法</h3><ul><li>在一个工程当中 Resources文件夹 可以有多个，通过API加载时，它会自己去这些同名的Resources文件夹中去找资源。</li><li>打包时Resources文件夹里的内容都会打包在一起。</li></ul><h4 id="预设体对象"><a href="#预设体对象" class="headerlink" title="预设体对象"></a>预设体对象</h4><pre><code class="csharp">//想要创建在场景上 记住实例化//第一步：要去加载预设体的资源文件(本质上 就是加载 配置数据 在内存中) 但是并没有创建在场景中Object obj = Resources.Load(&quot;Cube&quot;);//第二步：如果想要在场景上 创建预设体 一定是加载配置文件过后 然后实例化Instantiate(obj);//第一步：要去加载预设体的资源文件(本质上 就是加载 配置数据 在内存中) 但是并没有创建在场景中Object obj2 = Resources.Load(&quot;Sphere&quot;);//第二步：如果想要在场景上 创建预设体 一定是加载配置文件过后 然后实例化Instantiate(obj2);//注意：Resources文件夹就算不是直接是Assets文件夹的子文件夹，是孙子文件夹或者更深一层，里面的资源也能被加载出来</code></pre><h4 id="音效资源"><a href="#音效资源" class="headerlink" title="音效资源"></a>音效资源</h4><pre><code class="csharp">//第一步：就是加载数据//注意：子文件夹一层一层用/隔开Object obj3 = Resources.Load(&quot;Music/BKMusic&quot;);//第二步：使用数据 我们不需要实例化 音效切片 我们只需要把数据 赋值到正确的脚本上即可//需要把加载出来的数据as成音频传到音频源audioSource.clip = obj3 as AudioClip;audioSource.Play();</code></pre><h4 id="文本资源"><a href="#文本资源" class="headerlink" title="文本资源"></a>文本资源</h4><pre><code class="csharp">//文本资源支持的格式//.txt//.xml//.bytes//.json//.html//.csv//.....//需要把加载出来的文本资源as成文本资源 装起来就能打印了TextAsset ta = Resources.Load(&quot;Txt/Test&quot;) as TextAsset;//文本内容print(ta.text);//字节数据组print(ta.bytes);</code></pre><h4 id="图片"><a href="#图片" class="headerlink" title="图片"></a>图片</h4><pre><code class="csharp">// 把图片as成Texture，可以在GUI里绘制图片测试Texture tex = Resources.Load(&quot;Tex/TestJPG&quot;) as Texture;private void OnGUI()&#123;    GUI.DrawTexture(new Rect(0, 0, 100, 100), tex);&#125;</code></pre><h4 id="其它类型"><a href="#其它类型" class="headerlink" title="其它类型"></a>其它类型</h4><ul><li>需要什么类型，就用什么类型就行。</li></ul><h4 id="问题：资源同名怎么办"><a href="#问题：资源同名怎么办" class="headerlink" title="问题：资源同名怎么办"></a>问题：资源同名怎么办</h4><pre><code class="csharp">//Resources.Load加载同名资源时 无法准确加载出你想要的内容//可以使用Load方法的重载，第二个参数传入加载的指定类型的资源//加载指定类型的资源tex = Resources.Load(&quot;Tex/TestJPG&quot;, typeof(Texture)) as Texture;ta = Resources.Load(&quot;Tex/TestJPG&quot;, typeof(TextAsset)) as TextAsset;print(ta.text);</code></pre><h3 id="Resources-LoadAll静态方法-资源同步加载文件夹中指定名字的所有类型的资源方法"><a href="#Resources-LoadAll静态方法-资源同步加载文件夹中指定名字的所有类型的资源方法" class="headerlink" title="Resources.LoadAll静态方法 - 资源同步加载文件夹中指定名字的所有类型的资源方法"></a>Resources.LoadAll静态方法 - 资源同步加载文件夹中指定名字的所有类型的资源方法</h3><pre><code class="csharp">//Resources中的LoadAll静态方法 加载文件夹中指定名字的所有类型的资源//加载位于 Resources 文件夹中的 path 处的文件夹中的所有资源，或加载位于该处的文件。//加载指定名字的所有资源Object[] objs = Resources.LoadAll(&quot;Tex/TestJPG&quot;);foreach (Object item in objs)&#123;    if (item is Texture)    &#123;        print(&quot;这是图片&quot;);    &#125;    else if (item is TextAsset)    &#123;        print(&quot;这是文本&quot;);    &#125;&#125;</code></pre><h3 id="Resources-Load静态方法-资源同步加载泛型方法"><a href="#Resources-Load静态方法-资源同步加载泛型方法" class="headerlink" title="Resources.Load&lt;T&gt;静态方法 - 资源同步加载泛型方法"></a>Resources.Load&lt;T&gt;静态方法 - 资源同步加载泛型方法</h3><pre><code class="csharp">//Resources中的Load静态方法 可以用泛型方法加载资源 就不用as了//加载存储在 Resources 文件夹中的 path 处的资源。TextAsset ta2 = Resources.Load&lt;TextAsset&gt;(&quot;Tex/TestJPG&quot;);print(ta2.text);tex = Resources.Load&lt;Texture&gt;(&quot;Tex/TestJPG&quot;);</code></pre><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ul><li>Resources动态加载资源的方法。</li><li>让拓展性更强。</li><li>相对拖曳来说，它更加一劳永逸，更加方便。</li></ul><p>重要知识点：</p><ul><li>记住API。</li><li>记住一些特定的格式。</li><li>预设体加载出来一定要实例化。</li></ul><hr><h2 id="18-2-知识点代码"><a href="#18-2-知识点代码" class="headerlink" title="18.2 知识点代码"></a>18.2 知识点代码</h2><pre><code class="csharp">using System.Collections;using System.Collections.Generic;using UnityEngine;public class Lesson18_Resources资源动态加载_Resources同步加载 : MonoBehaviour&#123;    public AudioSource audioSource;    private Texture tex;    void Start()    &#123;        #region 知识点一 Resources资源动态加载的作用        //1.通过代码动态加载Resources文件夹下指定路径资源        //2.避免繁琐的拖曳操作        #endregion        #region 知识点二 常用资源类型        //1.预设体对象——GameObject        //2.音效文件——AudioClip        //3.文本文件——TextAsset        //4.图片文件——Texture        //5.其它类型——需要什么用什么类型        //注意：        //预设体对象加载需要实例化        //其它资源加载一般直接用        #endregion        #region 知识点三 资源同步加载 普通方法        //在一个工程当中 Resources文件夹 可以有多个 通过API加载时 它会自己去这些同名的Resources文件夹中去找资源        //打包时 Resources文件夹 里的内容 都会打包在一起        //Resources中的Load静态方法 加载资源        //加载存储在 Resources 文件夹中的 path 处的资源。        //1.预设体对象        //想要创建在场景上 记住实例化        //第一步：要去加载预设体的资源文件(本质上 就是加载 配置数据 在内存中) 但是并没有创建在场景中        Object obj = Resources.Load(&quot;Cube&quot;);        //第二步：如果想要在场景上 创建预设体 一定是加载配置文件过后 然后实例化        Instantiate(obj);        //第一步：要去加载预设体的资源文件(本质上 就是加载 配置数据 在内存中) 但是并没有创建在场景中        Object obj2 = Resources.Load(&quot;Sphere&quot;);        //第二步：如果想要在场景上 创建预设体 一定是加载配置文件过后 然后实例化        Instantiate(obj2);        //注意：Resources文件夹就算不是直接是Assets文件夹的子文件夹，是孙子文件夹或者更深一层，里面的资源也能被加载出来        //2.音效资源        //第一步：就是加载数据        //注意：子文件夹一层一层用/隔开        Object obj3 = Resources.Load(&quot;Music/BKMusic&quot;);        //第二步：使用数据 我们不需要实例化 音效切片 我们只需要把数据 赋值到正确的脚本上即可        //需要把加载出来的数据as成音频传到音频源        audioSource.clip = obj3 as AudioClip;        audioSource.Play();        //3.文本资源        //文本资源支持的格式        //.txt        //.xml        //.bytes        //.json        //.html        //.csv        //.....        //需要把加载出来的文本资源as成文本资源 装起来就能打印了        TextAsset ta = Resources.Load(&quot;Txt/Test&quot;) as TextAsset;        //文本内容        print(ta.text);        //字节数据组        print(ta.bytes);        //4.图片        //把图片as成Texture 可以在GUI里绘制图片测试        tex = Resources.Load(&quot;Tex/TestJPG&quot;) as Texture;        //5.其它类型 需要什么类型 就用什么类型就行        //6.问题：资源同名怎么办        //Resources.Load加载同名资源时 无法准确加载出你想要的内容        //可以使用Load方法的重载，第二个参数传入加载的指定类型的资源        //6-1加载指定类型的资源        tex = Resources.Load(&quot;Tex/TestJPG&quot;, typeof(Texture)) as Texture;        ta = Resources.Load(&quot;Tex/TestJPG&quot;, typeof(TextAsset)) as TextAsset;        print(ta.text);        //Resources中的LoadAll静态方法 加载文件夹中指定名字的所有类型的资源        //加载位于 Resources 文件夹中的 path 处的文件夹中的所有资源，或加载位于该处的文件。        //6-2加载指定名字的所有资源        Object[] objs = Resources.LoadAll(&quot;Tex/TestJPG&quot;);        foreach (Object item in objs)        &#123;            if (item is Texture)            &#123;                print(&quot;这是图片&quot;);            &#125;            else if (item is TextAsset)            &#123;                print(&quot;这是文本&quot;);            &#125;        &#125;        #endregion        #region 知识点四 资源同步加载 泛型方法        //Resources中的Load静态方法 可以用泛型方法加载资源 就不用as了        //加载存储在 Resources 文件夹中的 path 处的资源。        TextAsset ta2 = Resources.Load&lt;TextAsset&gt;(&quot;Tex/TestJPG&quot;);        print(ta2.text);        tex = Resources.Load&lt;Texture&gt;(&quot;Tex/TestJPG&quot;);        #endregion        #region 总结        //Resources动态加载资源的方法        //让拓展性更强        //相对拖曳来说 它更加一劳永逸 更加方便        //重要知识点：        //记住API        //记住一些特定的格式        //预设体加载出来一定要实例化        #endregion    &#125;    private void OnGUI()    &#123;        GUI.DrawTexture(new Rect(0, 0, 100, 100), tex);    &#125;&#125;</code></pre><hr><h2 id="18-3-练习题"><a href="#18-3-练习题" class="headerlink" title="18.3 练习题"></a>18.3 练习题</h2><h3 id="请把之前四元数练习题中，发射散弹等相关逻辑改为动态加载资源并创建"><a href="#请把之前四元数练习题中，发射散弹等相关逻辑改为动态加载资源并创建" class="headerlink" title="请把之前四元数练习题中，发射散弹等相关逻辑改为动态加载资源并创建"></a>请把之前四元数练习题中，发射散弹等相关逻辑改为动态加载资源并创建</h3><h4 id="把子弹丢到Resources文件夹后，有两种改法"><a href="#把子弹丢到Resources文件夹后，有两种改法" class="headerlink" title="把子弹丢到Resources文件夹后，有两种改法"></a>把子弹丢到Resources文件夹后，有两种改法</h4><h4 id="第一种是不在Inspector窗口拖拽Prefab，直接在Start-里Load，实例化的时候直接使用即可"><a href="#第一种是不在Inspector窗口拖拽Prefab，直接在Start-里Load，实例化的时候直接使用即可" class="headerlink" title="第一种是不在Inspector窗口拖拽Prefab，直接在Start()里Load，实例化的时候直接使用即可"></a>第一种是不在Inspector窗口拖拽Prefab，直接在Start()里Load，实例化的时候直接使用即可</h4><pre><code class="csharp">// 直接在Start()里Loadprivate GameObject bullet;void Start()&#123;    bullet = Resources.Load&lt;GameObject&gt;(&quot;Bullet&quot;);&#125;</code></pre><h4 id="第二种是在实例化的时候每次都Resources-Load-“Bullet”"><a href="#第二种是在实例化的时候每次都Resources-Load-“Bullet”" class="headerlink" title="第二种是在实例化的时候每次都Resources.Load(“Bullet”)"></a>第二种是在实例化的时候每次都Resources.Load<GameObject>(“Bullet”)</h4><p>注意：这样不会造成内存上的浪费，因为Unity加载好的资源放在缓存区，判断Load过了就不重新Load了，但是会造成性能开销</p><pre><code class="csharp">private void Fire()&#123;    switch (nowType)    &#123;        // 每次实例化的时候都Load，当其实Load了一次不会再Load        case E_FireType.One:            Instantiate(Resources.Load&lt;GameObject&gt;(&quot;Bullet&quot;), this.transform.position, this.transform.rotation);            break;        case E_FireType.Two:            Instantiate(Resources.Load&lt;GameObject&gt;(&quot;Bullet&quot;), this.transform.position - this.transform.right * 0.5f, this.transform.rotation);            Instantiate(Resources.Load&lt;GameObject&gt;(&quot;Bullet&quot;), this.transform.position + this.transform.right * 0.5f, this.transform.rotation);            break;        case E_FireType.Three:            Instantiate(Resources.Load&lt;GameObject&gt;(&quot;Bullet&quot;), this.transform.position, this.transform.rotation);            Instantiate(Resources.Load&lt;GameObject&gt;(&quot;Bullet&quot;), this.transform.position, this.transform.rotation * Quaternion.AngleAxis(-20, Vector3.up));            Instantiate(Resources.Load&lt;GameObject&gt;(&quot;Bullet&quot;), this.transform.position, this.transform.rotation * Quaternion.AngleAxis(20, Vector3.up));            break;        case E_FireType.Round:            float angle = 360 / roundNum;            for (int i = 0; i &lt; roundNum; i++)                Instantiate(Resources.Load&lt;GameObject&gt;(&quot;Bullet&quot;), this.transform.position, this.transform.rotation * Quaternion.AngleAxis(i * angle, Vector3.up));            break;    &#125;&#125;</code></pre><hr><h2 id="18-4-练习题代码"><a href="#18-4-练习题代码" class="headerlink" title="18.4 练习题代码"></a>18.4 练习题代码</h2><pre><code class="csharp">using System.Collections;using System.Collections.Generic;using UnityEngine;public class Lesson18_练习题 : MonoBehaviour&#123;    #region 练习题一    //请把之前四元数练习题中，发射散弹等相关逻辑改为动态加载资源并创建    //把子弹丢到Resources文件夹后 有两种改法    //第一种是不在Inspector窗口拖拽Prefab，直接在Start()里Load，实例化的时候直接使用即可    //第二种是在实例化的时候每次都Resources.CoroutineAsynLoad&lt;GameObject&gt;(&quot;Bullet&quot;)    //注意：这样不会造成内存上的浪费，因为Unity加载好的资源放在缓存区，判断Load过了就不重新Load了，但是会造成性能开销    private E_FireType nowType = E_FireType.One;    public int roundNum = 4;    //直接在Start()里Load    private GameObject bullet;    void Start()    &#123;        bullet = Resources.Load&lt;GameObject&gt;(&quot;Bullet&quot;);    &#125;    // Update is called once per frame    void Update()    &#123;        if (Input.GetKeyDown(KeyCode.Alpha1))        &#123;            nowType = E_FireType.One;        &#125;        else if (Input.GetKeyDown(KeyCode.Alpha2))        &#123;            nowType = E_FireType.Two;        &#125;        else if (Input.GetKeyDown(KeyCode.Alpha3))        &#123;            nowType = E_FireType.Three;        &#125;        else if (Input.GetKeyDown(KeyCode.Alpha4))        &#123;            nowType = E_FireType.Round;        &#125;        if (Input.GetKeyDown(KeyCode.Space))        &#123;            Fire();        &#125;    &#125;    private void Fire()    &#123;        switch (nowType)        &#123;            //每次实例化的时候都Load，当其实Load了一次不会再Load            case E_FireType.One:                Instantiate(Resources.Load&lt;GameObject&gt;(&quot;Bullet&quot;), this.transform.position, this.transform.rotation);                break;            case E_FireType.Two:                Instantiate(Resources.Load&lt;GameObject&gt;(&quot;Bullet&quot;), this.transform.position - this.transform.right * 0.5f, this.transform.rotation);                Instantiate(Resources.Load&lt;GameObject&gt;(&quot;Bullet&quot;), this.transform.position + this.transform.right * 0.5f, this.transform.rotation);                break;            case E_FireType.Three:                Instantiate(Resources.Load&lt;GameObject&gt;(&quot;Bullet&quot;), this.transform.position, this.transform.rotation);                Instantiate(Resources.Load&lt;GameObject&gt;(&quot;Bullet&quot;), this.transform.position, this.transform.rotation * Quaternion.AngleAxis(-20, Vector3.up));                Instantiate(Resources.Load&lt;GameObject&gt;(&quot;Bullet&quot;), this.transform.position, this.transform.rotation * Quaternion.AngleAxis(20, Vector3.up));                break;            case E_FireType.Round:                float angle = 360 / roundNum;                for (int i = 0; i &lt; roundNum; i++)                    Instantiate(Resources.Load&lt;GameObject&gt;(&quot;Bullet&quot;), this.transform.position, this.transform.rotation * Quaternion.AngleAxis(i * angle, Vector3.up));                break;        &#125;    &#125;    #endregion&#125;</code></pre><hr>]]></content>
+      
+      
+      <categories>
+          
+          <category> Unity </category>
+          
+          <category> Unity基础基础知识 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 基础知识 </tag>
+            
+            <tag> Unity </tag>
+            
+            <tag> Unity基础 </tag>
+            
+            <tag> Resources资源动态加载 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>17.Unity中特殊文件夹</title>
+      <link href="/2024/03/01/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/17.Resources%E8%B5%84%E6%BA%90%E5%8A%A8%E6%80%81%E5%8A%A0%E8%BD%BD-Unity%E4%B8%AD%E7%89%B9%E6%AE%8A%E6%96%87%E4%BB%B6%E5%A4%B9/"/>
+      <url>/2024/03/01/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/17.Resources%E8%B5%84%E6%BA%90%E5%8A%A8%E6%80%81%E5%8A%A0%E8%BD%BD-Unity%E4%B8%AD%E7%89%B9%E6%AE%8A%E6%96%87%E4%BB%B6%E5%A4%B9/</url>
+      
+        <content type="html"><![CDATA[<h1 id="17-Resources资源动态加载-Unity中特殊文件夹"><a href="#17-Resources资源动态加载-Unity中特殊文件夹" class="headerlink" title="17.Resources资源动态加载-Unity中特殊文件夹"></a>17.Resources资源动态加载-Unity中特殊文件夹</h1><hr><h2 id="17-1-知识点"><a href="#17-1-知识点" class="headerlink" title="17.1 知识点"></a>17.1 知识点</h2><h3 id="Application-dataPath-工程路径获取"><a href="#Application-dataPath-工程路径获取" class="headerlink" title="Application.dataPath 工程路径获取"></a>Application.dataPath 工程路径获取</h3><ul><li>Application类中的dataPath静态变量 获取工程路径<ul><li>包含目标设备上的游戏数据文件夹路径（只读）。</li><li>注意 该方式 获取到的路径 一般情况下 只在 编辑模式下使用</li><li>我们不会在实际发布游戏后 还使用该路径</li><li><code>print(Application.dataPath);//E:\GameDevelopment\GameDevelopmentLearning\Unity\Unity基础\Unity基础教程\Assets</code></li></ul></li></ul><h3 id="Resources-资源文件夹"><a href="#Resources-资源文件夹" class="headerlink" title="Resources 资源文件夹"></a>Resources 资源文件夹</h3><ul><li>需要我们自己手动在Asset文件下创建Resources文件夹 名字一定不要错</li><li>路径获取：一般不获取<ul><li>只能使用Resources相关API进行加载</li><li>如果硬要获取 可以用工程路径拼接</li><li><code>print(Application.dataPath + &quot;/Resources&quot;);//E:\GameDevelopment\GameDevelopmentLearning\Unity\Unity基础\Unity基础教程\Assets\Resources</code></li></ul></li><li>创建：Resources文件夹需要我们自己创建<ul><li>作用：资源文件夹</li><li>需要通过Resources相关API动态加载的资源需要放在其中</li><li>该文件夹下所有文件都会被打包出去</li><li>打包时Unity会对其压缩加密 所以一般不会用Application.dataPath + “&#x2F;Resources” 得到路径</li><li>该文件夹打包后只读 只能通过Resources相关API加载</li></ul></li><li>注意：不要把所有游戏资源都丢进去 一般放在美术资源文件夹就行了 需要动态加载或者打包的再丢进去</li></ul><h3 id="Application-StreamingAssets-流动资源文件夹"><a href="#Application-StreamingAssets-流动资源文件夹" class="headerlink" title="Application.StreamingAssets 流动资源文件夹"></a>Application.StreamingAssets 流动资源文件夹</h3><ul><li>需要我们自己手动在Asset文件下创建StreamingAssets文件夹 名字一定不要错</li><li>Application类中的streamingAssetsPath静态变量 获取流动资源文件夹路径<ul><li>StreamingAssets 文件夹的路径（只读）。</li><li>路径获取：<code>print(Application.streamingAssetsPath);</code></li></ul></li><li>创建：StreamingAssets文件夹需要我们自己创建<ul><li>作用：流文件夹</li><li>打包出去不会被压缩加密，可以任由我们摆布</li><li>移动平台只读，PC平台可读可写</li><li>可以放入一些需要自定义动态加载的初始资源</li></ul></li></ul><h3 id="Application-persistentDataPath-持久数据文件夹"><a href="#Application-persistentDataPath-持久数据文件夹" class="headerlink" title="Application.persistentDataPath 持久数据文件夹"></a>Application.persistentDataPath 持久数据文件夹</h3><ul><li>Application类中的persistentDataPath静态变量 获取持久数据文件夹路径<ul><li>包含持久数据目录的路径（只读）。</li><li>路径获取：<code>print(Application.persistentDataPath);//C:/Users/78529/AppData/LocalLow/DefaultCompany/UnityTeach2</code></li></ul></li><li>注意：不需要我们自己将创建<ul><li>作用：固定数据文件夹<ul><li>所有平台都可读可写</li><li>一般用于放置动态下载或者动态创建的文件，游戏中创建或者获取的文件都放在其中</li><li>比如游戏进行时要存数据文件，或者要热更新，就可以存到这个文件夹下</li><li>Resources和StreamingAssets都是只读的</li></ul></li></ul></li></ul><h3 id="Plugins-插件文件夹"><a href="#Plugins-插件文件夹" class="headerlink" title="Plugins 插件文件夹"></a>Plugins 插件文件夹</h3><ul><li>需要我们自己手动在Asset文件下创建Plugins文件夹 名字一定不要错</li><li>注意：需要我们自己创建</li><li>作用：插件文件夹<ul><li>不同平台的插件相关文件放在其中</li><li>比如IOS和Android平台 可能需要对应平台提供的代码包才能在Unity使用</li><li>以后搞SDK相关的时候可能才用得到</li></ul></li></ul><h3 id="Editor-编辑器文件夹"><a href="#Editor-编辑器文件夹" class="headerlink" title="Editor 编辑器文件夹"></a>Editor 编辑器文件夹</h3><ul><li>需要我们自己手动在Asset文件下创建Editor文件夹 名字一定不要错</li><li>路径获取：一般不获取<ul><li>如果硬要获取 可以用工程路径拼接</li><li><code>print(Application.dataPath + &quot;/Editor&quot;);</code></li></ul></li><li>注意：需要我们自己将创建<ul><li>作用：编辑器文件夹<ul><li>开发Unity编辑器时，编辑器相关脚本放在该文件夹中</li><li>该文件夹中内容不会被打包出去</li></ul></li></ul></li></ul><h3 id="Standard-Assets-默认资源文件夹"><a href="#Standard-Assets-默认资源文件夹" class="headerlink" title="Standard Assets 默认资源文件夹"></a>Standard Assets 默认资源文件夹</h3><ul><li>需要我们自己手动在Asset文件下创建Standard Assets文件夹 名字一定不要错</li><li>注意：需要我们自己将创建</li><li>作用：默认资源文件夹<ul><li>一般Unity自带资源都放在这个文件夹下</li><li>代码和资源优先被编译</li></ul></li></ul><hr><h2 id="17-2-知识点代码"><a href="#17-2-知识点代码" class="headerlink" title="17.2 知识点代码"></a>17.2 知识点代码</h2><pre><code class="csharp">using System.Collections;using System.Collections.Generic;using UnityEngine;public class Lesson17_Resources资源动态加载_Unity中特殊文件夹 : MonoBehaviour&#123;    void Start()    &#123;        #region 知识点一 工程路径获取        //Application类中的dataPath静态变量 获取工程路径        //包含目标设备上的游戏数据文件夹路径（只读）。        //注意 该方式 获取到的路径 一般情况下 只在 编辑模式下使用        //我们不会在实际发布游戏后 还使用该路径        //游戏发布过后 该路径就不存在了         print(Application.dataPath);//E:\GameDevelopment\GameDevelopmentLearning\Unity\Unity基础\Unity基础教程\Assets        #endregion        #region 知识点二 Resources 资源文件夹        //需要我们自己手动在Asset文件下创建Resources文件夹 名字一定不要错        //路径获取：一般不获取        //只能使用Resources相关API进行加载        //如果硬要获取 可以用工程路径拼接        print(Application.dataPath + &quot;/Resources&quot;);//E:\GameDevelopment\GameDevelopmentLearning\Unity\Unity基础\Unity基础教程\Assets\Resources        //这样获取意义不大        //创建：Resources文件夹需要我们自己创建        //作用：资源文件夹        //1-1.需要通过Resources相关API动态加载的资源需要放在其中        //1-2.该文件夹下所有文件都会被打包出去        //1-3.打包时Unity会对其压缩加密 所以一般不会用Application.dataPath + &quot;/Resources&quot; 得到路径        //1-4.该文件夹打包后只读 只能通过Resources相关API加载        //注意：不要把所有游戏资源都丢进去 一般放在美术资源文件夹就行了 需要动态加载或者打包的再丢进去        #endregion        #region 知识点三 StreamingAssets 流动资源文件夹        //需要我们自己手动在Asset文件下创建StreamingAssets文件夹 名字一定不要错        //Application类中的streamingAssetsPath静态变量 获取流动资源文件夹路径        //StreamingAssets 文件夹的路径（只读）。        //路径获取：        print(Application.streamingAssetsPath);        //注意：千万不要这样写！！这样写在PC平台没有问题 打包出去之后dataPath会失效 会有问题！！        //print(Application.dataPath + &quot;/StreamingAssets&quot;);        //创建：StreamingAssets文件夹需要我们自己创建        //作用：流文件夹        //2-1.打包出去不会被压缩加密，可以任由我们摆布        //2-2.移动平台只读，PC平台可读可写        //2-3.可以放入一些需要自定义动态加载的初始资源        #endregion        #region 知识点四 persistentDataPath 持久数据文件夹        //Application类中的persistentDataPath静态变量 获取持久数据文件夹路径        //包含持久数据目录的路径（只读）。        //路径获取：        print(Application.persistentDataPath);//C:/Users/78529/AppData/LocalLow/DefaultCompany/UnityTeach2        //注意：不需要我们自己将创建        //作用：        //固定数据文件夹        //3-1.所有平台都可读可写        //3-2.一般用于放置动态下载或者动态创建的文件，游戏中创建或者获取的文件都放在其中        //比如游戏进行时要存数据文件，或者要热更新，就可以存到这个文件夹下        //Resources和StreamingAssets都是只读的        #endregion        #region 知识点五 Plugins 插件文件夹        //需要我们自己手动在Asset文件下创建Plugins文件夹 名字一定不要错        //路径获取：一般不获取        //注意：需要我们自己创建        //作用：插件文件夹        //不同平台的插件相关文件放在其中        //比如IOS和Android平台 可能需要对应平台提供的代码包才能在Unity使用        //以后搞SDK相关的时候可能才用得到        #endregion        #region 知识点六 Editor 编辑器文件夹        //需要我们自己手动在Asset文件下创建Editor文件夹 名字一定不要错        //路径获取：一般不获取        //如果硬要获取 可以用工程路径拼接        print(Application.dataPath + &quot;/Editor&quot;);        //注意：需要我们自己将创建        //作用：编辑器文件夹        //5-1.开发Unity编辑器时，编辑器相关脚本放在该文件夹中        //5-2.该文件夹中内容不会被打包出去        #endregion        #region 知识点七 Standard Assets 默认资源文件夹         //需要我们自己手动在Asset文件下创建Standard Assets文件夹 名字一定不要错        //路劲过去：一般不获取        //注意：需要我们自己将创建        //作用：默认资源文件夹        //一般Unity自带资源都放在这个文件夹下        //代码和资源优先被编译        #endregion    &#125;&#125;</code></pre><hr><h2 id="17-3-练习题"><a href="#17-3-练习题" class="headerlink" title="17.3 练习题"></a>17.3 练习题</h2><h3 id="在你的工程中创建这些特殊文件夹"><a href="#在你的工程中创建这些特殊文件夹" class="headerlink" title="在你的工程中创建这些特殊文件夹"></a>在你的工程中创建这些特殊文件夹</h3><p><img src="/../../../images/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/17.Resources%E8%B5%84%E6%BA%90%E5%8A%A8%E6%80%81%E5%8A%A0%E8%BD%BD-Unity%E4%B8%AD%E7%89%B9%E6%AE%8A%E6%96%87%E4%BB%B6%E5%A4%B9/1.png"></p><hr>]]></content>
+      
+      
+      <categories>
+          
+          <category> Unity </category>
+          
+          <category> Unity基础基础知识 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 基础知识 </tag>
+            
+            <tag> Unity </tag>
+            
+            <tag> Unity基础 </tag>
+            
+            <tag> Resources资源动态加载 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>16.协同程序原理</title>
+      <link href="/2024/02/29/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/16.MonoBehavior%E4%B8%AD%E7%9A%84%E9%87%8D%E8%A6%81%E5%86%85%E5%AE%B9-%E5%8D%8F%E5%90%8C%E7%A8%8B%E5%BA%8F%E5%8E%9F%E7%90%86/"/>
+      <url>/2024/02/29/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/16.MonoBehavior%E4%B8%AD%E7%9A%84%E9%87%8D%E8%A6%81%E5%86%85%E5%AE%B9-%E5%8D%8F%E5%90%8C%E7%A8%8B%E5%BA%8F%E5%8E%9F%E7%90%86/</url>
+      
+        <content type="html"><![CDATA[<h1 id="16-MonoBehavior中的重要内容-协同程序原理"><a href="#16-MonoBehavior中的重要内容-协同程序原理" class="headerlink" title="16.MonoBehavior中的重要内容-协同程序原理"></a>16.MonoBehavior中的重要内容-协同程序原理</h1><hr><h2 id="16-1-知识点"><a href="#16-1-知识点" class="headerlink" title="16.1 知识点"></a>16.1 知识点</h2><h3 id="协程的本质"><a href="#协程的本质" class="headerlink" title="协程的本质"></a>协程的本质</h3><ul><li>协程可以分成两部分<ul><li><p>协程函数本体</p></li><li><p>协程调度器</p></li><li><p>协程本体就是一个能够中间暂停返回的函数</p></li><li><p>协程调度器是Unity内部实现的，会在对应的时机帮助我们继续执行协程函数</p></li><li><p>Unity只实现了协程调度部分</p></li><li><p>协程的本体本质上就是一个 C#的迭代器方法</p></li><li><p>通俗理解</p><ul><li>协程函数本体就是我们自己写的协程函数 这个要我们自己写逻辑</li><li>我们写的协程函数实际上是个迭代器方法</li><li>我们把我们写的协程函数丢到 MonoBehaviour中开启协程的方法 StartCoroutine 中</li><li>可以理解为 就是把一个迭代器方法的返回值 返回给Unity内部的一个协程管理器里面存储起来</li><li>通过协程管理器对应着我们写协程函数的逻辑和啥时候yield return 能在对应时机帮我们继续调用协程函数</li></ul></li></ul></li></ul><h3 id="协程本体是迭代器方法的体现"><a href="#协程本体是迭代器方法的体现" class="headerlink" title="协程本体是迭代器方法的体现"></a>协程本体是迭代器方法的体现</h3><h4 id="测试类"><a href="#测试类" class="headerlink" title="测试类"></a>测试类</h4><pre><code class="csharp">public class TestClass&#123;    public int testNum;    public TestClass(int testNum)    &#123;        this.testNum = testNum;    &#125;&#125;</code></pre><h4 id="声明迭代器函数"><a href="#声明迭代器函数" class="headerlink" title="声明迭代器函数"></a>声明迭代器函数</h4><pre><code class="csharp">    //测试的迭代器（协程）函数    IEnumerator Test()    &#123;        print(&quot;第一次执行&quot;);        yield return 1;        print(&quot;第二次执行&quot;);        yield return 999;        print(&quot;第三次执行&quot;);        yield return &quot;666&quot;;        print(&quot;第四次执行&quot;);        yield return new TestClass(250);    &#125;</code></pre><h4 id="协程函数本体"><a href="#协程函数本体" class="headerlink" title="协程函数本体"></a>协程函数本体</h4><pre><code class="csharp">//如果我们不通过 开启协程方法执行协程 直接调用协程的话 没有作用Test();//没有作用//Unity的协程调度器是不会帮助我们管理协程函数的 我们可以用一个迭代器变量把我们的协程函数装起来IEnumerator ieTest = Test();////但是我们可以自己执行手动迭代器函数内容//ieTest.MoveNext();//第一次执行////会执行函数中内容遇到 yield return为止的逻辑//print(ieTest.Current);//1////得到 yield return 返回的内容 这个Current是Object类型//ieTest.MoveNext();//第二次执行//print(ieTest.Current);//999//ieTest.MoveNext();//第三次执行//print(ieTest.Current);//666//ieTest.MoveNext();//第四次执行//TestClass tc = ieTest.Current as TestClass;//可以把Current对象as成对应的类//print(tc.testNum);//250////MonoBehaviour中开启协程的方法StartCoroutine////其实就是得到我们的迭代器对象 再根据Unity自己的规则一步一步的执行协程函数////像上面这样一步一步写其实不太好 写把上面的注释了 用while逐个执行//MoveNext 代表执行下一个yield return之前的逻辑 并且有返回值 返回值代表着字符迭代器是否到了结尾（这个迭代器函数 是否执行完毕）while (ieTest.MoveNext())&#123;    print(ieTest.Current);&#125;</code></pre><h4 id="协程调度器"><a href="#协程调度器" class="headerlink" title="协程调度器"></a>协程调度器</h4><ul><li><p>继承MonoBehavior后 开启协程</p><ul><li>相当于是把一个协程函数（迭代器）放入Unity的协程调度器中帮助我们管理进行执行</li><li>具体的yield return 后面的规则 也是Unity定义的一些规则</li></ul></li><li><p>协程本体是迭代器方法的体现总结</p><ul><li>你可以简化理解迭代器函数</li><li>C#看到迭代器函数和yield return语法糖</li><li>就会把原本是一个的函数变成”几部分”</li><li>我们可以通过迭代器 从上到下遍历这 “几部分” 进行执行</li><li>就达到了将一个函数中的逻辑分时执行的目的</li></ul></li><li><p>而协程调度器就是 利用迭代器函数返回的内容来进行之后的处理</p><ul><li>比如Unity中的协程调度器</li><li>根据yield return返回的内容 决定了下一次在何时继续执行迭代器函数中的”下一部分”</li></ul></li><li><p>理论上来说 我们可以利用迭代器函数的特点 自己实现协程调度器来取代Unity自带的调度器</p></li></ul><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ul><li>协程的本质 就是利用 <ul><li>C#的迭代器函数”分步执行”的特点</li><li>加上 Unity自己定义的一些协程调度逻辑</li><li>实现的一套分时执行函数的规则</li></ul></li></ul><hr><h2 id="16-2-知识点代码"><a href="#16-2-知识点代码" class="headerlink" title="16.2 知识点代码"></a>16.2 知识点代码</h2><pre><code class="csharp">using System.Collections;using System.Collections.Generic;using UnityEngine;//测试类public class TestClass&#123;    public int testNum;    public TestClass(int testNum)    &#123;        this.testNum = testNum;    &#125;&#125;public class Lesson16_MonoBehavior中的重要内容_协同程序原理 : MonoBehaviour&#123;    //测试的迭代器（协程）函数    IEnumerator Test()    &#123;        print(&quot;第一次执行&quot;);        yield return 1;        print(&quot;第二次执行&quot;);        yield return 999;        print(&quot;第三次执行&quot;);        yield return &quot;666&quot;;        print(&quot;第四次执行&quot;);        yield return new TestClass(250);    &#125;    void Start()    &#123;        #region 知识点一 协程的本质        //协程可以分成两部分        //1.协程函数本体        //2.协程调度器        //协程本体就是一个能够中间暂停返回的函数        //协程调度器是Unity内部实现的，会在对应的时机帮助我们继续执行协程函数        //Unity只实现了协程调度部分        //协程的本体本质上就是一个 C#的迭代器方法        //通俗理解        //协程函数本体就是我们自己写的协程函数 这个要我们自己写逻辑        //我们写的协程函数实际上是个迭代器方法        //我们把我们写的协程函数丢到 MonoBehaviour中开启协程的方法 StartCoroutine 中        //可以理解为 就是把一个迭代器方法的返回值 返回给Unity内部的一个协程管理器里面存储起来        //通过协程管理器对应着我们写协程函数的逻辑和啥时候yield return 能在对应时机帮我们继续调用协程函数        #endregion        #region 知识点二 协程本体是迭代器方法的体现        //1.协程函数本体        //如果我们不通过 开启协程方法执行协程 直接调用协程的话 没有作用        Test();//没有作用        //Unity的协程调度器是不会帮助我们管理协程函数的 我们可以用一个迭代器变量把我们的协程函数装起来        IEnumerator ieTest = Test();        ////但是我们可以自己执行手动迭代器函数内容        //ieTest.MoveNext();//第一次执行        ////会执行函数中内容遇到 yield return为止的逻辑        //print(ieTest.Current);//1        ////得到 yield return 返回的内容 这个Current是Object类型        //ieTest.MoveNext();//第二次执行        //print(ieTest.Current);//999        //ieTest.MoveNext();//第三次执行        //print(ieTest.Current);//666        //ieTest.MoveNext();//第四次执行        //TestClass tc = ieTest.Current as TestClass;//可以把Current对象as成对应的类        //print(tc.testNum);//250        ////MonoBehaviour中开启协程的方法StartCoroutine        ////其实就是得到我们的迭代器对象 再根据Unity自己的规则一步一步的执行协程函数        ////像上面这样一步一步写其实不太好 写把上面的注释了 用while逐个执行        //MoveNext 代表执行下一个yield return之前的逻辑 并且有返回值 返回值代表着字符迭代器是否到了结尾（这个迭代器函数 是否执行完毕）        while (ieTest.MoveNext())        &#123;            print(ieTest.Current);        &#125;        //2.协程调度器        //继承MonoBehavior后 开启协程        //相当于是把一个协程函数（迭代器）放入Unity的协程调度器中帮助我们管理进行执行        //具体的yield return 后面的规则 也是Unity定义的一些规则        //协程本体是迭代器方法的体现总结        //你可以简化理解迭代器函数        //C#看到迭代器函数和yield return 语法糖        //就会把原本是一个的 函数 变成&quot;几部分&quot;        //我们可以通过迭代器 从上到下遍历这 &quot;几部分&quot;进行执行        //就达到了将一个函数中的逻辑分时执行的目的        //而协程调度器就是 利用迭代器函数返回的内容来进行之后的处理        //比如Unity中的协程调度器        //根据yield return 返回的内容 决定了下一次在何时继续执行迭代器函数中的&quot;下一部分&quot;        //理论上来说 我们可以利用迭代器函数的特点 自己实现协程调度器来取代Unity自带的调度器        #endregion        #region 总结        //协程的本质 就是利用         //C#的迭代器函数&quot;分步执行&quot;的特点        //加上 Unity自己定义的一些协程调度逻辑        //实现的一套分时执行函数的规则        #endregion    &#125;&#125;</code></pre><hr><h2 id="16-3-练习题"><a href="#16-3-练习题" class="headerlink" title="16.3 练习题"></a>16.3 练习题</h2><h3 id="请不使用Unity自带的协程协调器开启协程，通过迭代器函数实现每隔一秒执行函数中的一部分逻辑"><a href="#请不使用Unity自带的协程协调器开启协程，通过迭代器函数实现每隔一秒执行函数中的一部分逻辑" class="headerlink" title="请不使用Unity自带的协程协调器开启协程，通过迭代器函数实现每隔一秒执行函数中的一部分逻辑"></a>请不使用Unity自带的协程协调器开启协程，通过迭代器函数实现每隔一秒执行函数中的一部分逻辑</h3><h4 id="声明一个协程函数"><a href="#声明一个协程函数" class="headerlink" title="声明一个协程函数"></a>声明一个协程函数</h4><pre><code class="csharp">IEnumerator MyTestCoroutine()&#123;    print(&quot;1&quot;);    // 如果是用Unity自带的协程协调器开启协程 那么数字代表等待1帧继续执行之后的内容    // 如果是自己的协程协调器可以自己自定义规则    yield return 1;    print(&quot;2&quot;);    yield return 2;    print(&quot;3&quot;);    yield return 3;    print(&quot;4&quot;);&#125;</code></pre><h4 id="声明用于记录当前协程函数和返回时间的类"><a href="#声明用于记录当前协程函数和返回时间的类" class="headerlink" title="声明用于记录当前协程函数和返回时间的类"></a>声明用于记录当前协程函数和返回时间的类</h4><pre><code class="csharp">//用于记录当前协程函数和返回时间的类public class NowIEnumeratorAndYieldReturnTime&#123;    //记录 下次还要执行的 迭代器接口    public IEnumerator ie;    //记录 下次执行的时间点    public float time;&#125;</code></pre><h4 id="声明自己写的协程管理器，搞成单例，创建开启协程方法，声明用于记录当前协程函数和返回时间的类，在声明这个类的容器，最后实现Update里判断时间的逻辑。"><a href="#声明自己写的协程管理器，搞成单例，创建开启协程方法，声明用于记录当前协程函数和返回时间的类，在声明这个类的容器，最后实现Update里判断时间的逻辑。" class="headerlink" title="声明自己写的协程管理器，搞成单例，创建开启协程方法，声明用于记录当前协程函数和返回时间的类，在声明这个类的容器，最后实现Update里判断时间的逻辑。"></a>声明自己写的协程管理器，搞成单例，创建开启协程方法，声明用于记录当前协程函数和返回时间的类，在声明这个类的容器，最后实现Update里判断时间的逻辑。</h4><pre><code class="csharp">//我的协程管理器public class MyCoroutineMgr : MonoBehaviour&#123;    private static MyCoroutineMgr instance;    public static MyCoroutineMgr Instance =&gt; instance;    //申明存储 迭代器函数对象的 容器 用于 一会继续执行    private List&lt;NowIEnumeratorAndYieldReturnTime&gt; list = new List&lt;NowIEnumeratorAndYieldReturnTime&gt;();    // Start is called before the first frame update    void Awake()    &#123;        instance = this;    &#125;    //我的开启协程的方法    public void MyStartCoroutine(IEnumerator ie)    &#123;        //来进行 分步走 分时间执行的逻辑        //传入一个 迭代器函数返回的接口 那么应该一来就执行它        //一来就先执行第一步 执行完了 如果返回的true 证明 后面还有步骤        if(ie.MoveNext())        &#123;            //判断 如果yield return返回的是 数字 是一个int类型 那就证明 是需要等待n秒继续执行            if(ie.Current is int)            &#123;                //进来这里说明yield return返回已经是int类型了 按我们自己的规则要过一会执行协程                //按思路 应该把 这个迭代器函数 和它下一次执行的时间点 记录下来                //然后不停检测 时间 是否到达了 下一次执行的 时间点 然后就继续执行它                //这样我们不妨声明一个类                //这个类的数据结构是有一个IEnumerator变量用于存储协程函数和float变量用于存储协程要执行的时间                //创建协程存储类                NowIEnumeratorAndYieldReturnTime nowIEAndTime = new NowIEnumeratorAndYieldReturnTime();                //记录迭代器接口                nowIEAndTime.ie = ie;                //记录迭代器要执行的时间                nowIEAndTime.time = Time.time + (int)ie.Current;                //把记录的信息 记录到数据容器当中 因为可能有多个协程函数 开启 所以 用一个 list来存储                list.Add(nowIEAndTime);            &#125;        &#125;    &#125;    void Update()    &#123;        //为了避免在循环的时候 从列表里面移除内容 我们可以倒着遍历        for (int i = list.Count - 1; i &gt;= 0; i--)        &#123;            //判断 当前该迭代器函数 是否到了下一次要执行的时间            //如果到了 就需要执行下一步了            if( list[i].time &lt;= Time.time  )            &#123;                //判断还能不能往后继续执行                //注意：只要调用了MoveNext其实就执行了yield return之前的逻辑 只不过假如没有yield return就返回false                if (list[i].ie.MoveNext())                &#123;                    //如果是true 那还需要对该迭代器函数 进行处理                    //如果是 int类型 证明是按秒等待                    if(list[i].ie.Current is int)                    &#123;                        list[i].time = Time.time + (int)list[i].ie.Current;                    &#125;                    //如果不是int类型 是别的类型 可以自己加if else 判断是啥类型 可能要声明新的容器存进去 这里就不写了                    else                    &#123;                        //该list 只是存储 处理时间相关 等待逻辑的 迭代器函数的                         //如果是别的类型 就不应该 存在这个list中 应该根据类型把它放入别的容器中                        list.RemoveAt(i);                    &#125;                &#125;                else                &#123;                    //后面已经没有可以等待和执行的了 证明已经执行完毕了逻辑                    list.RemoveAt(i);                &#125;            &#125;        &#125;    &#125;&#125;</code></pre><hr><h2 id="16-4-练习题代码"><a href="#16-4-练习题代码" class="headerlink" title="16.4 练习题代码"></a>16.4 练习题代码</h2><h3 id="Lesson16-练习题"><a href="#Lesson16-练习题" class="headerlink" title="Lesson16_练习题"></a>Lesson16_练习题</h3><pre><code class="csharp">using System.Collections;using System.Collections.Generic;using UnityEngine;public class Lesson16_练习题 : MonoBehaviour&#123;    #region 练习题一    //请不使用Unity自带的协程协调器开启协程，通过迭代器函数实现每隔一秒执行函数中的一部分逻辑    void Start()    &#123;        //Unity自带的协程协调器 开启协程函数（迭代器函数）        //StartCoroutine(MyTestCoroutine());        //我们自己写协程协调器 开启协程函数（迭代器函数）        MyCoroutineMgr.Instance.MyStartCoroutine(MyTestCoroutine());    &#125;    IEnumerator MyTestCoroutine()    &#123;        print(&quot;1&quot;);        //如果是用Unity自带的协程协调器开启协程 那么数字代表等待1帧继续执行之后的内容        //如果是自己的协程协调器可以自己自定义规则        yield return 1;        print(&quot;2&quot;);        yield return 2;        print(&quot;3&quot;);        yield return 3;        print(&quot;4&quot;);    &#125;    #endregion&#125;</code></pre><h3 id="MyCoroutineMgr"><a href="#MyCoroutineMgr" class="headerlink" title="MyCoroutineMgr"></a>MyCoroutineMgr</h3><pre><code class="csharp">using System.Collections;using System.Collections.Generic;using UnityEngine;//用于记录当前协程函数和返回时间的类public class NowIEnumeratorAndYieldReturnTime&#123;    //记录 下次还要执行的 迭代器接口    public IEnumerator ie;    //记录 下次执行的时间点    public float time;&#125;//我的协程管理器public class MyCoroutineMgr : MonoBehaviour&#123;    private static MyCoroutineMgr instance;    public static MyCoroutineMgr Instance =&gt; instance;    //申明存储 迭代器函数对象的 容器 用于 一会继续执行    private List&lt;NowIEnumeratorAndYieldReturnTime&gt; list = new List&lt;NowIEnumeratorAndYieldReturnTime&gt;();    // Start is called before the first frame update    void Awake()    &#123;        instance = this;    &#125;    //我的开启协程的方法    public void MyStartCoroutine(IEnumerator ie)    &#123;        //来进行 分步走 分时间执行的逻辑        //传入一个 迭代器函数返回的接口 那么应该一来就执行它        //一来就先执行第一步 执行完了 如果返回的true 证明 后面还有步骤        if(ie.MoveNext())        &#123;            //判断 如果yield return返回的是 数字 是一个int类型 那就证明 是需要等待n秒继续执行            if(ie.Current is int)            &#123;                //进来这里说明yield return返回已经是int类型了 按我们自己的规则要过一会执行协程                //按思路 应该把 这个迭代器函数 和它下一次执行的时间点 记录下来                //然后不停检测 时间 是否到达了 下一次执行的 时间点 然后就继续执行它                //这样我们不妨声明一个类                //这个类的数据结构是有一个IEnumerator变量用于存储协程函数和float变量用于存储协程要执行的时间                //创建协程存储类                NowIEnumeratorAndYieldReturnTime nowIEAndTime = new NowIEnumeratorAndYieldReturnTime();                //记录迭代器接口                nowIEAndTime.ie = ie;                //记录迭代器要执行的时间                nowIEAndTime.time = Time.time + (int)ie.Current;                //把记录的信息 记录到数据容器当中 因为可能有多个协程函数 开启 所以 用一个 list来存储                list.Add(nowIEAndTime);            &#125;        &#125;    &#125;    void Update()    &#123;        //为了避免在循环的时候 从列表里面移除内容 我们可以倒着遍历        for (int i = list.Count - 1; i &gt;= 0; i--)        &#123;            //判断 当前该迭代器函数 是否到了下一次要执行的时间            //如果到了 就需要执行下一步了            if( list[i].time &lt;= Time.time  )            &#123;                //判断还能不能往后继续执行                //注意：只要调用了MoveNext其实就执行了yield return之前的逻辑 只不过假如没有yield return就返回false                if (list[i].ie.MoveNext())                &#123;                    //如果是true 那还需要对该迭代器函数 进行处理                    //如果是 int类型 证明是按秒等待                    if(list[i].ie.Current is int)                    &#123;                        list[i].time = Time.time + (int)list[i].ie.Current;                    &#125;                    //如果不是int类型 是别的类型 可以自己加if else 判断是啥类型 可能要声明新的容器存进去 这里就不写了                    else                    &#123;                        //该list 只是存储 处理时间相关 等待逻辑的 迭代器函数的                         //如果是别的类型 就不应该 存在这个list中 应该根据类型把它放入别的容器中                        list.RemoveAt(i);                    &#125;                &#125;                else                &#123;                    //后面已经没有可以等待和执行的了 证明已经执行完毕了逻辑                    list.RemoveAt(i);                &#125;            &#125;        &#125;    &#125;&#125;</code></pre><hr>]]></content>
+      
+      
+      <categories>
+          
+          <category> Unity </category>
+          
+          <category> Unity基础基础知识 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 基础知识 </tag>
+            
+            <tag> Unity </tag>
+            
+            <tag> MonoBehavior中的重要内容 </tag>
+            
+            <tag> Unity基础 </tag>
+            
+            <tag> 协同程序 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>15.协同程序</title>
       <link href="/2024/02/29/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/15.MonoBehavior%E4%B8%AD%E7%9A%84%E9%87%8D%E8%A6%81%E5%86%85%E5%AE%B9-%E5%8D%8F%E5%90%8C%E7%A8%8B%E5%BA%8F/"/>
       <url>/2024/02/29/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/15.MonoBehavior%E4%B8%AD%E7%9A%84%E9%87%8D%E8%A6%81%E5%86%85%E5%AE%B9-%E5%8D%8F%E5%90%8C%E7%A8%8B%E5%BA%8F/</url>
@@ -1424,11 +1591,11 @@
             
             <tag> 随机数 </tag>
             
+            <tag> 委托和事件 </tag>
+            
             <tag> Unity </tag>
             
             <tag> Unity入门 </tag>
-            
-            <tag> 委托和事件 </tag>
             
         </tags>
       
@@ -1907,11 +2074,11 @@
             
             <tag> 必备知识点 </tag>
             
+            <tag> 反射和特性 </tag>
+            
             <tag> UI系统 </tag>
             
             <tag> GUI </tag>
-            
-            <tag> 反射和特性 </tag>
             
         </tags>
       
@@ -1938,11 +2105,11 @@
       
         <tags>
             
+            <tag> 基础知识 </tag>
+            
             <tag> UI系统 </tag>
             
             <tag> GUI </tag>
-            
-            <tag> 基础知识 </tag>
             
         </tags>
       
@@ -1969,11 +2136,11 @@
       
         <tags>
             
+            <tag> 基础知识 </tag>
+            
             <tag> UI系统 </tag>
             
             <tag> GUI </tag>
-            
-            <tag> 基础知识 </tag>
             
             <tag> 自定义整体样式 </tag>
             
@@ -2002,11 +2169,11 @@
       
         <tags>
             
+            <tag> 基础知识 </tag>
+            
             <tag> UI系统 </tag>
             
             <tag> GUI </tag>
-            
-            <tag> 基础知识 </tag>
             
             <tag> 自定义整体样式 </tag>
             
@@ -2035,11 +2202,11 @@
       
         <tags>
             
+            <tag> 基础知识 </tag>
+            
             <tag> UI系统 </tag>
             
             <tag> GUI </tag>
-            
-            <tag> 基础知识 </tag>
             
             <tag> 控件 </tag>
             
@@ -2070,11 +2237,11 @@
       
         <tags>
             
+            <tag> 基础知识 </tag>
+            
             <tag> UI系统 </tag>
             
             <tag> GUI </tag>
-            
-            <tag> 基础知识 </tag>
             
             <tag> 控件 </tag>
             
@@ -2105,11 +2272,11 @@
       
         <tags>
             
+            <tag> 基础知识 </tag>
+            
             <tag> UI系统 </tag>
             
             <tag> GUI </tag>
-            
-            <tag> 基础知识 </tag>
             
             <tag> 控件 </tag>
             
@@ -2140,11 +2307,11 @@
       
         <tags>
             
+            <tag> 基础知识 </tag>
+            
             <tag> UI系统 </tag>
             
             <tag> GUI </tag>
-            
-            <tag> 基础知识 </tag>
             
             <tag> 控件 </tag>
             
@@ -2175,11 +2342,11 @@
       
         <tags>
             
+            <tag> 基础知识 </tag>
+            
             <tag> UI系统 </tag>
             
             <tag> GUI </tag>
-            
-            <tag> 基础知识 </tag>
             
             <tag> 控件 </tag>
             
@@ -2210,11 +2377,11 @@
       
         <tags>
             
+            <tag> 基础知识 </tag>
+            
             <tag> UI系统 </tag>
             
             <tag> GUI </tag>
-            
-            <tag> 基础知识 </tag>
             
             <tag> 控件 </tag>
             
@@ -2245,11 +2412,11 @@
       
         <tags>
             
+            <tag> 基础知识 </tag>
+            
             <tag> UI系统 </tag>
             
             <tag> GUI </tag>
-            
-            <tag> 基础知识 </tag>
             
             <tag> 控件 </tag>
             
@@ -2280,11 +2447,11 @@
       
         <tags>
             
+            <tag> 基础知识 </tag>
+            
             <tag> UI系统 </tag>
             
             <tag> GUI </tag>
-            
-            <tag> 基础知识 </tag>
             
         </tags>
       
@@ -2311,11 +2478,11 @@
       
         <tags>
             
+            <tag> 基础知识 </tag>
+            
             <tag> UI系统 </tag>
             
             <tag> GUI </tag>
-            
-            <tag> 基础知识 </tag>
             
         </tags>
       
@@ -2406,11 +2573,11 @@
             
             <tag> 实践项目 </tag>
             
-            <tag> 反射和特性 </tag>
-            
             <tag> 数据持久化 </tag>
             
             <tag> PlayerPrefs </tag>
+            
+            <tag> 反射和特性 </tag>
             
         </tags>
       
@@ -2439,11 +2606,11 @@
             
             <tag> 实践项目 </tag>
             
-            <tag> 反射和特性 </tag>
-            
             <tag> 数据持久化 </tag>
             
             <tag> PlayerPrefs </tag>
+            
+            <tag> 反射和特性 </tag>
             
         </tags>
       
@@ -2472,11 +2639,11 @@
             
             <tag> 实践项目 </tag>
             
-            <tag> 反射和特性 </tag>
-            
             <tag> 数据持久化 </tag>
             
             <tag> PlayerPrefs </tag>
+            
+            <tag> 反射和特性 </tag>
             
         </tags>
       
@@ -2505,11 +2672,11 @@
             
             <tag> 实践项目 </tag>
             
-            <tag> 反射和特性 </tag>
-            
             <tag> 数据持久化 </tag>
             
             <tag> PlayerPrefs </tag>
+            
+            <tag> 反射和特性 </tag>
             
         </tags>
       
@@ -2538,11 +2705,11 @@
             
             <tag> 实践项目 </tag>
             
-            <tag> 反射和特性 </tag>
-            
             <tag> 数据持久化 </tag>
             
             <tag> PlayerPrefs </tag>
+            
+            <tag> 反射和特性 </tag>
             
         </tags>
       
@@ -2571,11 +2738,11 @@
             
             <tag> 实践项目 </tag>
             
-            <tag> 反射和特性 </tag>
-            
             <tag> 数据持久化 </tag>
             
             <tag> PlayerPrefs </tag>
+            
+            <tag> 反射和特性 </tag>
             
         </tags>
       
@@ -2604,11 +2771,11 @@
             
             <tag> 实践项目 </tag>
             
-            <tag> 反射和特性 </tag>
-            
             <tag> 数据持久化 </tag>
             
             <tag> PlayerPrefs </tag>
+            
+            <tag> 反射和特性 </tag>
             
         </tags>
       
@@ -2637,11 +2804,11 @@
             
             <tag> 实践项目 </tag>
             
-            <tag> 反射和特性 </tag>
-            
             <tag> 数据持久化 </tag>
             
             <tag> PlayerPrefs </tag>
+            
+            <tag> 反射和特性 </tag>
             
         </tags>
       
@@ -2734,11 +2901,11 @@
             
             <tag> 必备知识点 </tag>
             
-            <tag> 反射和特性 </tag>
-            
             <tag> 数据持久化 </tag>
             
             <tag> PlayerPrefs </tag>
+            
+            <tag> 反射和特性 </tag>
             
         </tags>
       
@@ -2765,11 +2932,11 @@
       
         <tags>
             
-            <tag> 基础知识 </tag>
-            
             <tag> 数据持久化 </tag>
             
             <tag> PlayerPrefs </tag>
+            
+            <tag> 基础知识 </tag>
             
         </tags>
       
@@ -2796,11 +2963,11 @@
       
         <tags>
             
-            <tag> 基础知识 </tag>
-            
             <tag> 数据持久化 </tag>
             
             <tag> PlayerPrefs </tag>
+            
+            <tag> 基础知识 </tag>
             
         </tags>
       
@@ -2827,11 +2994,11 @@
       
         <tags>
             
-            <tag> 基础知识 </tag>
-            
             <tag> 数据持久化 </tag>
             
             <tag> PlayerPrefs </tag>
+            
+            <tag> 基础知识 </tag>
             
         </tags>
       
@@ -2858,11 +3025,11 @@
       
         <tags>
             
-            <tag> 基础知识 </tag>
-            
             <tag> 数据持久化 </tag>
             
             <tag> PlayerPrefs </tag>
+            
+            <tag> 基础知识 </tag>
             
         </tags>
       
@@ -4857,9 +5024,9 @@
             
             <tag> 语法知识 </tag>
             
-            <tag> 反射和特性 </tag>
-            
             <tag> CSharp进阶 </tag>
+            
+            <tag> 反射和特性 </tag>
             
         </tags>
       
@@ -4890,9 +5057,9 @@
             
             <tag> 语法知识 </tag>
             
-            <tag> 反射和特性 </tag>
-            
             <tag> CSharp进阶 </tag>
+            
+            <tag> 反射和特性 </tag>
             
         </tags>
       
@@ -5047,9 +5214,9 @@
             
             <tag> 语法知识 </tag>
             
-            <tag> 委托和事件 </tag>
-            
             <tag> CSharp进阶 </tag>
+            
+            <tag> 委托和事件 </tag>
             
         </tags>
       
@@ -5080,9 +5247,9 @@
             
             <tag> 语法知识 </tag>
             
-            <tag> 委托和事件 </tag>
-            
             <tag> CSharp进阶 </tag>
+            
+            <tag> 委托和事件 </tag>
             
         </tags>
       
@@ -5113,9 +5280,9 @@
             
             <tag> 语法知识 </tag>
             
-            <tag> 委托和事件 </tag>
-            
             <tag> CSharp进阶 </tag>
+            
+            <tag> 委托和事件 </tag>
             
         </tags>
       
@@ -5146,9 +5313,9 @@
             
             <tag> 语法知识 </tag>
             
-            <tag> 委托和事件 </tag>
-            
             <tag> CSharp进阶 </tag>
+            
+            <tag> 委托和事件 </tag>
             
         </tags>
       
