@@ -4,6 +4,138 @@
   
     
     <entry>
+      <title>24.射线检测</title>
+      <link href="/2024/03/03/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/24.%E6%A0%B8%E5%BF%83%E7%B3%BB%E7%BB%9F-%E7%89%A9%E7%90%86%E7%B3%BB%E7%BB%9F-%E5%B0%84%E7%BA%BF%E6%A3%80%E6%B5%8B/"/>
+      <url>/2024/03/03/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/24.%E6%A0%B8%E5%BF%83%E7%B3%BB%E7%BB%9F-%E7%89%A9%E7%90%86%E7%B3%BB%E7%BB%9F-%E5%B0%84%E7%BA%BF%E6%A3%80%E6%B5%8B/</url>
+      
+        <content type="html"><![CDATA[<h1 id="24-核心系统-物理系统-射线检测"><a href="#24-核心系统-物理系统-射线检测" class="headerlink" title="24.核心系统-物理系统-射线检测"></a>24.核心系统-物理系统-射线检测</h1><hr><h2 id="24-1-知识点"><a href="#24-1-知识点" class="headerlink" title="24.1 知识点"></a>24.1 知识点</h2><h3 id="什么是射线检测"><a href="#什么是射线检测" class="headerlink" title="什么是射线检测"></a>什么是射线检测</h3><ul><li>物理系统中</li><li>目前我们学习的物体相交判断</li><li><strong>碰撞检测</strong> - 必备条件 - 1刚体 2碰撞器</li><li><strong>范围检测</strong> - 必备条件 - 碰撞器</li></ul><p>如果想要做这样的碰撞检测呢？</p><ul><li>鼠标选择场景上一物体</li><li>FPS射击游戏（无弹道-不产生实际的子弹对象进行移动）</li><li>等等 需要判断一条线和物体的碰撞情况</li></ul><p>射线检测 就是来解决这些问题的</p><ul><li>它可以在指定点发射一个指定方向的射线</li><li>判断该射线与哪些碰撞器相交，得到对应对象</li></ul><h3 id="射线对象"><a href="#射线对象" class="headerlink" title="射线对象"></a>射线对象</h3><h4 id="Ray射线类"><a href="#Ray射线类" class="headerlink" title="Ray射线类"></a>Ray射线类</h4><p>假设有一条起点为坐标(1,0,0) 方向为世界坐标Z轴正方向的射线</p><h5 id="Ray的无参构造函数"><a href="#Ray的无参构造函数" class="headerlink" title="Ray的无参构造函数"></a>Ray的无参构造函数</h5><ul><li>一般不会用无参构造初始化射线，因为后面还需要重写设置，很麻烦</li></ul><pre><code class="csharp">Ray ray1 = new Ray();ray1.origin = Vector3.right;ray1.direction = Vector3.forward;</code></pre><h5 id="Ray的有参构造函数"><a href="#Ray的有参构造函数" class="headerlink" title="Ray的有参构造函数"></a>Ray的有参构造函数</h5><ul><li>参数一：起点 </li><li>参数二：方向</li></ul><pre><code class="csharp">Ray ray2 = new Ray(Vector3.right, Vector3.forward);</code></pre><h5 id="Ray类中的origin变量-射线的起点"><a href="#Ray类中的origin变量-射线的起点" class="headerlink" title="Ray类中的origin变量 - 射线的起点"></a>Ray类中的origin变量 - 射线的起点</h5><pre><code class="csharp">//Ray中的origin变量 起点//射线的原点。print(ray2.origin);//起点</code></pre><h5 id="Ray类中的direction变量-射线的方向"><a href="#Ray类中的direction变量-射线的方向" class="headerlink" title="Ray类中的direction变量 - 射线的方向"></a>Ray类中的direction变量 - 射线的方向</h5><pre><code class="csharp">//Ray中的direction变量 方向//射线的方向。print(ray2.direction);//方向</code></pre><h4 id="Camera类中的ScreenPointToRay方法-摄像机发射出的射线"><a href="#Camera类中的ScreenPointToRay方法-摄像机发射出的射线" class="headerlink" title="Camera类中的ScreenPointToRay方法 - 摄像机发射出的射线"></a>Camera类中的ScreenPointToRay方法 - 摄像机发射出的射线</h4><ul><li>返回从摄像机通过屏幕点的光线</li><li>得到一条从屏幕位置作为起点，摄像机视口方向为方向的射线</li></ul><pre><code class="csharp">Ray ray3 = Camera.main.ScreenPointToRay(Input.mousePosition);</code></pre><h4 id="注意："><a href="#注意：" class="headerlink" title="注意："></a>注意：</h4><ul><li>单独的射线对于我们来说没有实际的意义</li><li>我们需要用它结合物理系统进行射线碰撞判断</li></ul><h3 id="碰撞检测函数"><a href="#碰撞检测函数" class="headerlink" title="碰撞检测函数"></a>碰撞检测函数</h3><p>Physics类中提供了很多进行射线检测的静态函数</p><ul><li>他们有很多种重载类型，我们只需要掌握核心的几个函数，其它函数自然就明白什么意思了</li><li><strong>射线检测也是瞬时的</strong>，执行代码时进行一次射线检测</li></ul><h4 id="准备一条射线"><a href="#准备一条射线" class="headerlink" title="准备一条射线"></a>准备一条射线</h4><pre><code class="csharp">Ray ray4 = new Ray(Vector3.zero, Vector3.forward);</code></pre><h4 id="Physics类中的Raycast方法-发射射线"><a href="#Physics类中的Raycast方法-发射射线" class="headerlink" title="Physics类中的Raycast方法 - 发射射线"></a>Physics类中的Raycast方法 - 发射射线</h4><p>向场景中的所有碰撞体投射一条射线，该射线起点为 &#x2F; origin &#x2F;，朝向 &#x2F; direction &#x2F;，长度为 &#x2F; maxDistance &#x2F;。</p><pre><code class="csharp">//Physics类中的Raycast方法重载 最原始的射线检测 如果碰撞到对象 返回true//参数一：射线//参数二: 检测的最大距离 超出这个距离不检测//参数三：检测指定层级（不填检测所有层）//参数四：是否忽略触发器 UseGlobal-使用全局设置 不填默认使用UseGlobal 全局设置在ProjectSetting中的Physics里的 Queries Hit Triggers 可以查看并设置//返回值：bool 当碰撞到对象时 返回 true 没有 返回false//Physics类中的Raycast方法不传入RaycastHit对象的话不能得到碰到的对象是谁if (Physics.Raycast(ray4, 1000, 1 &lt;&lt; LayerMask.NameToLayer(&quot;Monster&quot;), QueryTriggerInteraction.UseGlobal))&#123;    print(&quot;碰撞到了对象&quot;);&#125;//还有一种重载 不用传入 射线 直接传入起点 和 方向 也可以用于判断//就是把 第一个参数射线 变成了 射线的 两个点 一个起点 一个方向//Physics类中的Raycast方法不传入RaycastHit对象的话不能得到碰到的对象是谁if (Physics.Raycast(Vector3.zero, Vector3.forward, 1000, 1 &lt;&lt; LayerMask.NameToLayer(&quot;Monster&quot;), QueryTriggerInteraction.UseGlobal))&#123;    print(&quot;碰撞到了对象2&quot;);&#125;//Physics类中的Raycast方法重载 获取相交的单个物体信息 如果碰撞到对象 返回true//物体信息类 RaycastHitRaycastHit raycastHitInfo;//参数一：射线//参数二：RaycastHit是结构体 是值类型 Unity会通过out 关键在 在函数内部处理后 得到碰撞数据后返回到该参数中//参数三：距离//参数四：检测指定层级（不填检测所有层）//参数五：是否忽略触发器 UseGlobal-使用全局设置 不填默认使用UseGlobal 全局设置在ProjectSetting中的Physics里的 Queries Hit Triggers 可以查看并设置//Physics类中的Raycast方法传入RaycastHit对象的话可以得到碰到的对象是谁if (Physics.Raycast(ray4, out raycastHitInfo, 1000, 1 &lt;&lt; LayerMask.NameToLayer(&quot;Monster&quot;), QueryTriggerInteraction.UseGlobal))&#123;    print(&quot;碰撞到了物体 得到了信息&quot;);    //RaycastHit类中的collider变量 碰撞器信息    //命中的 Collider。    print(&quot;碰撞到物体的名字&quot; + raycastHitInfo.collider.gameObject.name);    //RaycastHit类中的point变量 碰撞到的点    //世界空间中射线命中碰撞体的撞击点。    //可以用于射击游戏创建特效 比如被子弹打中飙血，墙壁被打贴图    print(raycastHitInfo.point);    //RaycastHit类中的normal变量 法线信息向量    //射线命中的表面的法线。    //可以用于射击游戏特效计算相关 比如被子弹打中后反射的角度 贴图的角度    print(raycastHitInfo.normal);    //RaycastHit类中的transform变量 得到碰撞到对象的位置    //命中的刚体或碰撞体的 Transform。    print(raycastHitInfo.transform.position);    //RaycastHit类中的distance变量 得到碰撞到对象 离自己的距离    //从射线原点到撞击点的距离。    //可能通过距离 模拟子弹受重力影响下落的高度    print(raycastHitInfo.distance);    //RaycastHit 该类 对于我们的意义    //它不仅可以得到我们碰撞到的对象信息    //还可以得到一些 碰撞的点 距离 法线等等的信息&#125;//还有一种重载 不用传入 射线 直接传入起点 和 方向 也可以用于判断//就是把 第一个参数射线 变成了 射线的 两个点 一个起点 一个方向//Physics类中的Raycast方法传入RaycastHit对象的话可以得到碰到的对象是谁if (Physics.Raycast(Vector3.zero, Vector3.forward, out raycastHitInfo, 1000, 1 &lt;&lt; LayerMask.NameToLayer(&quot;Monster&quot;), QueryTriggerInteraction.UseGlobal))&#123;&#125;</code></pre><h4 id="Physics类中的RaycastAll方法-发射射线-获取相交的多个物体"><a href="#Physics类中的RaycastAll方法-发射射线-获取相交的多个物体" class="headerlink" title="Physics类中的RaycastAll方法 - 发射射线 获取相交的多个物体"></a>Physics类中的RaycastAll方法 - 发射射线 获取相交的多个物体</h4><pre><code class="csharp">//Physics类中的RaycastAll方法 发射射线 获取相交的多个物体 可以得到碰撞到的多个对象 如果没有 就是容量为0的数组//向场景中投射射线并返回所有命中对象。注意，这些结果的顺序未定义。//参数一：射线//参数二：距离//参数三：检测指定层级（不填检测所有层）//参数四：是否忽略触发器 UseGlobal-使用全局设置 不填默认使用UseGlobal 全局设置在ProjectSetting中的Physics里的 Queries Hit Triggers 可以查看并设置//Physics类中的RaycastAll方法传入RaycastHit数组对象可以得到多个碰到的对象RaycastHit[] raycastHitInfos = Physics.RaycastAll(ray4, 1000, 1 &lt;&lt; LayerMask.NameToLayer(&quot;Monster&quot;), QueryTriggerInteraction.UseGlobal);for (int i = 0; i &lt; raycastHitInfos.Length; i++)&#123;    print(&quot;碰到的所有物体 名字分别是&quot; + raycastHitInfos[i].collider.gameObject.name);&#125;//还有一种重载 不用传入 射线 直接传入起点 和 方向 也可以用于判断//之前的参数一射线 通过两个点传入raycastHitInfos = Physics.RaycastAll(Vector3.zero, Vector3.forward, 1000, 1 &lt;&lt; LayerMask.NameToLayer(&quot;Monster&quot;), QueryTriggerInteraction.UseGlobal);</code></pre><h4 id="Physics类中的RaycastNonAlloc方法-发射射线获取相交的多个物体"><a href="#Physics类中的RaycastNonAlloc方法-发射射线获取相交的多个物体" class="headerlink" title="Physics类中的RaycastNonAlloc方法 - 发射射线获取相交的多个物体"></a>Physics类中的RaycastNonAlloc方法 - 发射射线获取相交的多个物体</h4><pre><code class="csharp">//Physics类中的RaycastNonAlloc方法 发射射线 要传入RaycastHit数组 通过out得到数据赋值到数组中 返回的碰撞的数量 //向场景中投射射线，并将命中对象存储到缓冲区中。if (Physics.RaycastNonAlloc(ray4, raycastHitInfos, 1000, 1 &lt;&lt; LayerMask.NameToLayer(&quot;Monster&quot;), QueryTriggerInteraction.UseGlobal) &gt; 0)&#123;&#125;</code></pre><h3 id="射线检测使用时注意的问题"><a href="#射线检测使用时注意的问题" class="headerlink" title="射线检测使用时注意的问题"></a>射线检测使用时注意的问题</h3><ul><li>距离、层级两个参数都是int类型</li><li>当我们传入参数时，一定要明确传入的参数代表的是距离还是层级</li></ul><p>举例：</p><ul><li>这样写是错误的，因为第二个参数代表的是距离，不是层级</li></ul><pre><code class="csharp">if (Physics.Raycast(ray4, 1 &lt;&lt; LayerMask.NameToLayer(&quot;Monster&quot;)))&#123;    // 错误的代码示例&#125;</code></pre><hr><h2 id="24-2-知识点代码"><a href="#24-2-知识点代码" class="headerlink" title="24.2 知识点代码"></a>24.2 知识点代码</h2><pre><code class="csharp">using System.Collections;using System.Collections.Generic;using UnityEngine;public class Lesson24_核心系统_物理系统之射线检测 : MonoBehaviour&#123;    void Start()    &#123;        #region 知识点一 什么是射线检测        //物理系统中         //目前我们学习的物体相交判断        //1.碰撞检测——必备条件 1刚体2碰撞器        //2.范围检测——必备条件 碰撞器        //如果想要做这样的碰撞检测呢？        //1.鼠标选择场景上一物体        //2.FPS射击游戏（无弹道-不产生实际的子弹对象进行移动）        //等等 需要判断一条线和物体的碰撞情况        //射线检测 就是来解决这些问题的        //它可以在指定点发射一个指定方向的射线        //判断该射线与哪些碰撞器相交，得到对应对象        #endregion        #region 知识点二 射线对象        //3D世界中的射线类 Ray        //假设有一条起点为坐标(1,0,0) 方向为世界坐标Z轴正方向的射线        //Ray的无参构造函数        //一般不会用无参构造初始化射线 不然后面还要重写设置 很麻烦        Ray ray1 = new Ray();        ray1.origin = Vector3.right;        ray1.direction = Vector3.forward;        //Ray的有参构造函数        //注意：理解参数含义        //参数一：起点         //参数二：方向        //（一定记住 不是两点决定射线方向，第二个参数 直接就代表方向向量）        //目前只是申明了一个射线对象 对于我们来说 没有任何的用处        Ray ray2 = new Ray(Vector3.right, Vector3.forward);        //Ray中的origin变量 起点        //射线的原点。        print(ray2.origin);//起点        //Ray中的direction变量 方向        //射线的方向。        print(ray2.direction);//方向        //Camera类中的ScreenPointToRay 摄像机发射出的射线        //返回从摄像机通过屏幕点的光线。        // 得到一条从屏幕位置作为起点        // 摄像机视口方向为 方向的射线        Ray ray3 = Camera.main.ScreenPointToRay(Input.mousePosition);        //注意：        //单独的射线对于我们来说没有实际的意义        //我们需要用它结合物理系统进行射线碰撞判断        #endregion        #region 知识点三 碰撞检测函数        //Physics类中提供了很多进行射线检测的静态函数        //他们有很多种重载类型 我们只需要掌握核心的几个函数 其它函数自然就明白什么意思了        //注意：射线检测也是瞬时的 执行代码时进行一次射线检测        // 准备一条射线        Ray ray4 = new Ray(Vector3.zero, Vector3.forward);        //Physics类中的Raycast方法 发射射线        //向场景中的所有碰撞体投射一条射线，该射线起点为 / origin /，朝向 / direction /，长度为 / maxDistance /。        //Physics类中的Raycast方法重载 最原始的射线检测 如果碰撞到对象 返回true        //参数一：射线        //参数二: 检测的最大距离 超出这个距离不检测        //参数三：检测指定层级（不填检测所有层）        //参数四：是否忽略触发器 UseGlobal-使用全局设置 不填默认使用UseGlobal 全局设置在ProjectSetting中的Physics里的 Queries Hit Triggers 可以查看并设置        //返回值：bool 当碰撞到对象时 返回 true 没有 返回false        //Physics类中的Raycast方法不传入RaycastHit对象的话不能得到碰到的对象是谁        if (Physics.Raycast(ray4, 1000, 1 &lt;&lt; LayerMask.NameToLayer(&quot;Monster&quot;), QueryTriggerInteraction.UseGlobal))        &#123;            print(&quot;碰撞到了对象&quot;);        &#125;        //还有一种重载 不用传入 射线 直接传入起点 和 方向 也可以用于判断        //就是把 第一个参数射线 变成了 射线的 两个点 一个起点 一个方向        //Physics类中的Raycast方法不传入RaycastHit对象的话不能得到碰到的对象是谁        if (Physics.Raycast(Vector3.zero, Vector3.forward, 1000, 1 &lt;&lt; LayerMask.NameToLayer(&quot;Monster&quot;), QueryTriggerInteraction.UseGlobal))        &#123;            print(&quot;碰撞到了对象2&quot;);        &#125;        //Physics类中的Raycast方法重载 获取相交的单个物体信息 如果碰撞到对象 返回true        //物体信息类 RaycastHit        RaycastHit raycastHitInfo;        //参数一：射线        //参数二：RaycastHit是结构体 是值类型 Unity会通过out 关键在 在函数内部处理后 得到碰撞数据后返回到该参数中        //参数三：距离        //参数四：检测指定层级（不填检测所有层）        //参数五：是否忽略触发器 UseGlobal-使用全局设置 不填默认使用UseGlobal 全局设置在ProjectSetting中的Physics里的 Queries Hit Triggers 可以查看并设置        //Physics类中的Raycast方法传入RaycastHit对象的话可以得到碰到的对象是谁        if (Physics.Raycast(ray4, out raycastHitInfo, 1000, 1 &lt;&lt; LayerMask.NameToLayer(&quot;Monster&quot;), QueryTriggerInteraction.UseGlobal))        &#123;            print(&quot;碰撞到了物体 得到了信息&quot;);            //RaycastHit类中的collider变量 碰撞器信息            //命中的 Collider。            print(&quot;碰撞到物体的名字&quot; + raycastHitInfo.collider.gameObject.name);            //RaycastHit类中的point变量 碰撞到的点            //世界空间中射线命中碰撞体的撞击点。            //可以用于射击游戏创建特效 比如被子弹打中飙血，墙壁被打贴图            print(raycastHitInfo.point);            //RaycastHit类中的normal变量 法线信息向量            //射线命中的表面的法线。            //可以用于射击游戏特效计算相关 比如被子弹打中后反射的角度 贴图的角度            print(raycastHitInfo.normal);            //RaycastHit类中的transform变量 得到碰撞到对象的位置            //命中的刚体或碰撞体的 Transform。            print(raycastHitInfo.transform.position);            //RaycastHit类中的distance变量 得到碰撞到对象 离自己的距离            //从射线原点到撞击点的距离。            //可能通过距离 模拟子弹受重力影响下落的高度            print(raycastHitInfo.distance);            //RaycastHit 该类 对于我们的意义            //它不仅可以得到我们碰撞到的对象信息            //还可以得到一些 碰撞的点 距离 法线等等的信息        &#125;        //还有一种重载 不用传入 射线 直接传入起点 和 方向 也可以用于判断        //就是把 第一个参数射线 变成了 射线的 两个点 一个起点 一个方向        //Physics类中的Raycast方法传入RaycastHit对象的话可以得到碰到的对象是谁        if (Physics.Raycast(Vector3.zero, Vector3.forward, out raycastHitInfo, 1000, 1 &lt;&lt; LayerMask.NameToLayer(&quot;Monster&quot;), QueryTriggerInteraction.UseGlobal))        &#123;        &#125;        //Physics类中的RaycastAll方法 发射射线 获取相交的多个物体 可以得到碰撞到的多个对象 如果没有 就是容量为0的数组        //向场景中投射射线并返回所有命中对象。注意，这些结果的顺序未定义。        //参数一：射线        //参数二：距离        //参数三：检测指定层级（不填检测所有层）        //参数四：是否忽略触发器 UseGlobal-使用全局设置 不填默认使用UseGlobal 全局设置在ProjectSetting中的Physics里的 Queries Hit Triggers 可以查看并设置        //Physics类中的RaycastAll方法传入RaycastHit数组对象可以得到多个碰到的对象        RaycastHit[] raycastHitInfos = Physics.RaycastAll(ray4, 1000, 1 &lt;&lt; LayerMask.NameToLayer(&quot;Monster&quot;), QueryTriggerInteraction.UseGlobal);        for (int i = 0; i &lt; raycastHitInfos.Length; i++)        &#123;            print(&quot;碰到的所有物体 名字分别是&quot; + raycastHitInfos[i].collider.gameObject.name);        &#125;        //还有一种重载 不用传入 射线 直接传入起点 和 方向 也可以用于判断        //之前的参数一射线 通过两个点传入        raycastHitInfos = Physics.RaycastAll(Vector3.zero, Vector3.forward, 1000, 1 &lt;&lt; LayerMask.NameToLayer(&quot;Monster&quot;), QueryTriggerInteraction.UseGlobal);        //Physics类中的RaycastNonAlloc方法 发射射线 要传入RaycastHit数组 通过out得到数据赋值到数组中 返回的碰撞的数量         //向场景中投射射线，并将命中对象存储到缓冲区中。        if (Physics.RaycastNonAlloc(ray4, raycastHitInfos, 1000, 1 &lt;&lt; LayerMask.NameToLayer(&quot;Monster&quot;), QueryTriggerInteraction.UseGlobal) &gt; 0)        &#123;        &#125;        #endregion        #region 知识点四 使用时注意的问题        //注意：        //距离、层级两个参数 都是int类型        //当我们传入参数时 一定要明确传入的参数代表的是距离还是层级        //举例        //这样写是错误的 因为第二个参数 代表的是距离 不是层级        if (Physics.Raycast(ray4, 1 &lt;&lt; LayerMask.NameToLayer(&quot;Monster&quot;)))        &#123;        &#125;        #endregion    &#125;&#125;</code></pre><hr><h2 id="24-3-练习题"><a href="#24-3-练习题" class="headerlink" title="24.3 练习题"></a>24.3 练习题</h2><h3 id="请用资料区给的资源，实现鼠标点击场景上一面墙，在点击的位置创建子弹特效和弹孔"><a href="#请用资料区给的资源，实现鼠标点击场景上一面墙，在点击的位置创建子弹特效和弹孔" class="headerlink" title="请用资料区给的资源，实现鼠标点击场景上一面墙，在点击的位置创建子弹特效和弹孔"></a>请用资料区给的资源，实现鼠标点击场景上一面墙，在点击的位置创建子弹特效和弹孔</h3><pre><code class="csharp">void Update()&#123;    // 将鼠标在屏幕上的位置通过主相机转换为世界坐标系中的一条视线射线并赋值给 ray1。    Ray ray1 = Camera.main.ScreenPointToRay(Input.mousePosition);    // 通过 Debug.DrawRay 方法可将检测到的射线绘制出来以便调试查看（仅在编辑模式下生效）。    Debug.DrawRay(ray1.origin, ray1.direction);    // 当鼠标左键被按下时进入条件语句块，通过 Physics.Raycast 方法检测碰撞对象，并在其前方创建打击特效和弹孔。    if (Input.GetMouseButtonDown(0))    &#123;        if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out info, 1000, 1 &lt;&lt; LayerMask.NameToLayer(&quot;Monster&quot;)))        &#123;            // 通过 Resources.Load 方法加载名为 &quot;HitEff&quot; 的预制件并实例化一个游戏对象，赋值给 obj。            GameObject obj = Instantiate(Resources.Load&lt;GameObject&gt;(&quot;Effect/HitEff&quot;));            // 设定打击特效在发生碰撞的物体前方偏移 0.2 米处，绕着所接触的表面产生向外倾斜的弧形运动，并在场景中呈现出来。            obj.transform.position = info.point + info.normal * 0.2f;            // 根据所接触的表面法线调整特效预制件的朝向角度，以适应目标物体产生视觉效果。            obj.transform.rotation = Quaternion.LookRotation(info.normal);            //销毁特效 Game Object 对象，在指定时间 delay 后进行操作删除。            Destroy(obj, 0.8f);            // 创建另一种打击类型的特效 DDD 并将其向量赋值给 obj。            obj = Instantiate(Resources.Load&lt;GameObject&gt;(&quot;Effect/DDD&quot;));            // 设定打击特效在发生碰撞的物体前方偏移 0.2 米处，绕着所接触的表面产生向外倾斜的弧形运动，并在场景中呈现出来。            obj.transform.position = info.point + info.normal * 0.2f;            // 根据所接触的表面法线调整特效预制件的朝向角度，以适应目标物体产生视觉效果。            obj.transform.rotation = Quaternion.LookRotation(info.normal);        &#125;    &#125;&#125;</code></pre><h3 id="场景上有一个平面，有一个立方体，当鼠标点击选中立方体时，长按鼠标左键-可以拖动立方体-在平面上移动，点击鼠标右键取消选中"><a href="#场景上有一个平面，有一个立方体，当鼠标点击选中立方体时，长按鼠标左键-可以拖动立方体-在平面上移动，点击鼠标右键取消选中" class="headerlink" title="场景上有一个平面，有一个立方体，当鼠标点击选中立方体时，长按鼠标左键 可以拖动立方体 在平面上移动，点击鼠标右键取消选中"></a>场景上有一个平面，有一个立方体，当鼠标点击选中立方体时，长按鼠标左键 可以拖动立方体 在平面上移动，点击鼠标右键取消选中</h3><pre><code class="csharp">// 声明一个公共浮点型变量 offsetY，用于设定物体拖曳时的高度偏移量。public float offsetY;// 声明一个私有 Transform 类型变量 nowSelObj，用于记录当前选中的对象的 Transform 组件。private Transform nowSelObj;// 创建一个 RaycastHit 类型的 info 变量。RaycastHit info;void Update()&#123;    //场景上有一个平面，有一个立方体，当鼠标点击选中立方体时，长按鼠标左键 可以拖动立方体 在平面上移动，点击鼠标右键取消选中    // 检测鼠标左键是否按下并检测到对象（Layer 为 Player），并将所检测到的 Game Object 的 Transform 组件赋值给 nowSelObj。    if (Input.GetMouseButtonDown(0))    &#123;        if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out info, 1000, 1 &lt;&lt; LayerMask.NameToLayer(&quot;Player&quot;)))        &#123;            //记录选中物体的Transform组件和位置信息            nowSelObj = info.transform;            print(&quot;选中&quot; + nowSelObj.name);        &#125;    &#125;    // 判断当前是否有选中的物体且左键长按处于开启状态下，将选中的物体沿着平面上的坐标轴向移动指定高度。    if (Input.GetMouseButton(0) &amp;&amp; nowSelObj != null)    &#123;        //注意:地板要改成Floor层级 进行射线检测        if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out info, 1000, 1 &lt;&lt; LayerMask.NameToLayer(&quot;Floor&quot;)))        &#123;            //使用偏移量 offsetY 避免立方体与平面粘合            nowSelObj.position = info.point + Vector3.up * offsetY;        &#125;    &#125;    // 判断右键是否被按下，若是则清除 nowSelObj 记录。    if (Input.GetMouseButtonDown(1))    &#123;        print(&quot;取消选中&quot; + nowSelObj.name);        //取消记录当前已经选中的Transform组件        nowSelObj = null;    &#125;&#125;</code></pre><hr><h2 id="24-4-练习题代码"><a href="#24-4-练习题代码" class="headerlink" title="24.4 练习题代码"></a>24.4 练习题代码</h2><pre><code class="csharp">using System.Collections;using System.Collections.Generic;using UnityEngine;public class Lesson24_练习题 : MonoBehaviour&#123;    // 声明一个公共浮点型变量 offsetY，用于设定物体拖曳时的高度偏移量。    public float offsetY;    // 声明一个私有 Transform 类型变量 nowSelObj，用于记录当前选中的对象的 Transform 组件。    private Transform nowSelObj;    // 创建一个 RaycastHit 类型的 info 变量。    RaycastHit info;    void Update()    &#123;        #region 练习题一        //请用资料区给的资源，实现鼠标点击场景上一面墙，在点击的位置创建子弹特效和弹孔        // 将鼠标在屏幕上的位置通过主相机转换为世界坐标系中的一条视线射线并赋值给 ray1。        Ray ray1 = Camera.main.ScreenPointToRay(Input.mousePosition);        // 通过 Debug.DrawRay 方法可将检测到的射线绘制出来以便调试查看（仅在编辑模式下生效）。        Debug.DrawRay(ray1.origin, ray1.direction);        // 当鼠标左键被按下时进入条件语句块，通过 Physics.Raycast 方法检测碰撞对象，并在其前方创建打击特效和弹孔。        if (Input.GetMouseButtonDown(0))        &#123;            if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out info, 1000, 1 &lt;&lt; LayerMask.NameToLayer(&quot;Monster&quot;)))            &#123;                // 通过 Resources.Load 方法加载名为 &quot;HitEff&quot; 的预制件并实例化一个游戏对象，赋值给 obj。                GameObject obj = Instantiate(Resources.Load&lt;GameObject&gt;(&quot;Effect/HitEff&quot;));                // 设定打击特效在发生碰撞的物体前方偏移 0.2 米处，绕着所接触的表面产生向外倾斜的弧形运动，并在场景中呈现出来。                obj.transform.position = info.point + info.normal * 0.2f;                // 根据所接触的表面法线调整特效预制件的朝向角度，以适应目标物体产生视觉效果。                obj.transform.rotation = Quaternion.LookRotation(info.normal);                //销毁特效 Game Object 对象，在指定时间 delay 后进行操作删除。                Destroy(obj, 0.8f);                // 创建另一种打击类型的特效 DDD 并将其向量赋值给 obj。                obj = Instantiate(Resources.Load&lt;GameObject&gt;(&quot;Effect/DDD&quot;));                // 设定打击特效在发生碰撞的物体前方偏移 0.2 米处，绕着所接触的表面产生向外倾斜的弧形运动，并在场景中呈现出来。                obj.transform.position = info.point + info.normal * 0.2f;                // 根据所接触的表面法线调整特效预制件的朝向角度，以适应目标物体产生视觉效果。                obj.transform.rotation = Quaternion.LookRotation(info.normal);            &#125;        &#125;        #endregion        #region 练习题二        //场景上有一个平面，有一个立方体，当鼠标点击选中立方体时，长按鼠标左键 可以拖动立方体 在平面上移动，点击鼠标右键取消选中        // 检测鼠标左键是否按下并检测到对象（Layer 为 Player），并将所检测到的 Game Object 的 Transform 组件赋值给 nowSelObj。        if (Input.GetMouseButtonDown(0))        &#123;            if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out info, 1000, 1 &lt;&lt; LayerMask.NameToLayer(&quot;Player&quot;)))            &#123;                //记录选中物体的Transform组件和位置信息                nowSelObj = info.transform;                print(&quot;选中&quot; + nowSelObj.name);            &#125;        &#125;        // 判断当前是否有选中的物体且左键长按处于开启状态下，将选中的物体沿着平面上的坐标轴向移动指定高度。        if (Input.GetMouseButton(0) &amp;&amp; nowSelObj != null)        &#123;            //注意:地板要改成Floor层级 进行射线检测            if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out info, 1000, 1 &lt;&lt; LayerMask.NameToLayer(&quot;Floor&quot;)))            &#123;                //使用偏移量 offsetY 避免立方体与平面粘合                nowSelObj.position = info.point + Vector3.up * offsetY;            &#125;        &#125;        // 判断右键是否被按下，若是则清除 nowSelObj 记录。        if (Input.GetMouseButtonDown(1))        &#123;            print(&quot;取消选中&quot; + nowSelObj.name);            //取消记录当前已经选中的Transform组件            nowSelObj = null;        &#125;        #endregion    &#125;&#125;</code></pre><hr>]]></content>
+      
+      
+      <categories>
+          
+          <category> Unity </category>
+          
+          <category> Unity基础基础知识 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 基础知识 </tag>
+            
+            <tag> Unity </tag>
+            
+            <tag> 核心系统 </tag>
+            
+            <tag> 物理系统 </tag>
+            
+            <tag> Unity基础 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>23.范围检测</title>
+      <link href="/2024/03/03/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/23.%E6%A0%B8%E5%BF%83%E7%B3%BB%E7%BB%9F-%E7%89%A9%E7%90%86%E7%B3%BB%E7%BB%9F-%E8%8C%83%E5%9B%B4%E6%A3%80%E6%B5%8B/"/>
+      <url>/2024/03/03/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/23.%E6%A0%B8%E5%BF%83%E7%B3%BB%E7%BB%9F-%E7%89%A9%E7%90%86%E7%B3%BB%E7%BB%9F-%E8%8C%83%E5%9B%B4%E6%A3%80%E6%B5%8B/</url>
+      
+        <content type="html"><![CDATA[<h1 id="23-核心系统-物理系统-范围检测"><a href="#23-核心系统-物理系统-范围检测" class="headerlink" title="23.核心系统-物理系统-范围检测"></a>23.核心系统-物理系统-范围检测</h1><hr><h2 id="23-1-知识点"><a href="#23-1-知识点" class="headerlink" title="23.1 知识点"></a>23.1 知识点</h2><h3 id="知识回顾-物理系统之碰撞检测"><a href="#知识回顾-物理系统之碰撞检测" class="headerlink" title="知识回顾 - 物理系统之碰撞检测"></a>知识回顾 - 物理系统之碰撞检测</h3><ul><li><p><strong>碰撞产生的必要条件</strong></p><ul><li>至少一个物体有刚体</li><li>两个物体都必须有碰撞器</li></ul></li><li><p><strong>碰撞和触发</strong></p><ul><li>碰撞会产生实际的物理效果</li><li>触发看起来不会产生碰撞，但是可以通过函数监听触发</li><li>碰撞检测主要用于实体物体之间产生物理效果时使用</li></ul></li></ul><h3 id="什么是范围检测"><a href="#什么是范围检测" class="headerlink" title="什么是范围检测"></a>什么是范围检测</h3><ul><li>游戏中瞬时的攻击范围判断一般会使用范围检测</li><li>举例：<ul><li>玩家在前方5m处释放一个地刺魔法，在此处范围内的对象将受到地刺伤害</li><li>玩家攻击，在前方1米圆形范围内对象都受到伤害</li><li>类似这种并没有实体物体，只想要检测在指定某一范围是否让敌方受到伤害时，便可以使用范围判断</li></ul></li><li>在指定位置进行范围判断，我们可以得到处于指定范围内的对象</li><li>目的是对对象进行处理，比如受伤、减血等等</li></ul><h3 id="层级"><a href="#层级" class="headerlink" title="层级"></a>层级</h3><h4 id="LayerMask中的NameToLayer方法-传入层级名字返回层级索引"><a href="#LayerMask中的NameToLayer方法-传入层级名字返回层级索引" class="headerlink" title="LayerMask中的NameToLayer方法 - 传入层级名字返回层级索引"></a>LayerMask中的NameToLayer方法 - 传入层级名字返回层级索引</h4><ul><li>给定层名称，返回在 Tags and Layers manager 中由 Builtin 或 User Layer 定义的层索引。</li></ul><pre><code class="csharp">print(LayerMask.NameToLayer(&quot;UI&quot;)); // 5</code></pre><h4 id="层级重要知识点补充-通过编号左移构建二进制数"><a href="#层级重要知识点补充-通过编号左移构建二进制数" class="headerlink" title="层级重要知识点补充 - 通过编号左移构建二进制数"></a>层级重要知识点补充 - 通过编号左移构建二进制数</h4><ul><li>通过名字得到层级编号 <code>LayerMask.NameToLayer</code></li><li>我们需要通过编号左移构建二进制数</li><li>这样每一个编号的层级都是对应位为1的2进制数</li><li>我们通过位运算可以选择想要检测的层级</li><li>好处是一个int就可以表示所有想要检测的层级信息</li><li>层级编号是 0~31，刚好32位，是一个int数的比特位数</li><li>每一个编号代表的都是二进制的一位<ul><li>第0层—— 1 &lt;&lt; 0——0000 0000 0000 0000 0000 0000 0000 0001 &#x3D; 1 </li><li>第1层—— 1 &lt;&lt; 1——0000 0000 0000 0000 0000 0000 0000 0010 &#x3D; 2</li><li>第2层—— 1 &lt;&lt; 2——0000 0000 0000 0000 0000 0000 0000 0100 &#x3D; 4</li><li>第3层—— 1 &lt;&lt; 3——0000 0000 0000 0000 0000 0000 0000 1000 &#x3D; 8</li><li>第4层—— 1 &lt;&lt; 4——0000 0000 0000 0000 0000 0000 0001 0000 &#x3D; 16</li><li>第5层—— 1 &lt;&lt; 5——0000 0000 0000 0000 0000 0000 0010 0000 &#x3D; 32</li></ul></li></ul><h4 id="层级重要知识点通俗理解"><a href="#层级重要知识点通俗理解" class="headerlink" title="层级重要知识点通俗理解"></a>层级重要知识点通俗理解</h4><ul><li>Unity是用二进制来判断层级的<ul><li>比如：<ul><li><code>LayerMask.NameToLayer(&quot;Default&quot;)</code> 是第0层，就用二进制0000 0001来代表这一层，1左移了0位</li><li><code>LayerMask.NameToLayer(&quot;UI&quot;)</code> 是第5层，就用二进制0010 0000来代表这一层，1左移了5位</li></ul></li><li>假如既想检测Default层又想检测UI层，就把这两个层级的二进制进行或运算<ul><li><code>1 &lt;&lt; LayerMask.NameToLayer(&quot;UI&quot;) | 1 &lt;&lt; LayerMask.NameToLayer(&quot;Default&quot;)</code></li></ul></li><li>或运算后的二进制是 0010 0001 </li><li>当触发层级检测时，就拿出这个算好的0010 0001和对应的层级的二进制进行与操作<ul><li>比如和第1层进行与操作<ul><li>0010 0001 </li><li>0000 0010</li><li>0000 0000</li><li>得到的是0，就不进行这一层级的判断了</li></ul></li><li>假如和第5层进行与操作<ul><li>0010 0001 </li><li>0010 0000 </li><li>0010 0000</li><li>得到的数不为0，就进行这一层级判断</li></ul></li></ul></li></ul></li></ul><h3 id="范围检测必备条件"><a href="#范围检测必备条件" class="headerlink" title="范围检测必备条件"></a>范围检测必备条件</h3><ul><li>想要被范围检测到的对象必须具备碰撞器</li></ul><h3 id="范围检测注意点"><a href="#范围检测注意点" class="headerlink" title="范围检测注意点"></a>范围检测注意点</h3><ul><li>范围检测相关API只有当执行该句代码时进行一次范围检测，它是瞬时的</li><li>范围检测相关API并不会真正产生一个碰撞器，只是碰撞判断计算而已</li></ul><h3 id="范围检测API"><a href="#范围检测API" class="headerlink" title="范围检测API"></a>范围检测API</h3><h4 id="Physics类中的OverlapBox方法-盒状范围检测"><a href="#Physics类中的OverlapBox方法-盒状范围检测" class="headerlink" title="Physics类中的OverlapBox方法 - 盒状范围检测"></a>Physics类中的OverlapBox方法 - 盒状范围检测</h4><ul><li>查找与给定盒体接触或位于盒体内部的所有碰撞体。</li><li>参数：<ul><li>立方体中心点</li><li>立方体三边大小，构成立方体的长宽高的一半</li><li>立方体角度，传入四元数</li><li>检测指定层级（不填检测所有层）</li><li>是否忽略触发器，UseGlobal-使用全局设置，不填默认使用UseGlobal</li></ul></li></ul><pre><code class="csharp">//Physics类中的OverlapBox静态方法 盒状范围检测//查找与给定盒体接触或位于盒体内部的所有碰撞体。//他不是一直都会检测的 可以通俗的理解为在执行代码的瞬间在场景创建一个盒型碰撞器检测碰撞的对象 但只是用于计算碰撞情况 不是真的创建出来//参数一：立方体中心点//参数二：立方体三边大小 构成立方体的长宽高的一半//参数三：立方体角度 传入四元数//参数四：检测指定层级（不填检测所有层） 用NameToLayer传入对应层级名字 并且要用1 &lt;&lt;左移 可以或运算//参数五：//是否忽略触发器 UseGlobal-使用全局设置 不填默认使用UseGlobal 全局设置在ProjectSetting中的Physics里的 Queries Hit Triggers 可以查看并设置//Collide-检测触发器 Ignore-忽略触发器 手动选择单独设置//返回值：在该范围内的碰撞器数组（得到了对象触发器就可以得到对象的所有信息）Collider[] colliders = Physics.OverlapBox(Vector3.zero, Vector3.one, Quaternion.AngleAxis(45, Vector3.up),                    1 &lt;&lt; LayerMask.NameToLayer(&quot;UI&quot;) |                    1 &lt;&lt; LayerMask.NameToLayer(&quot;Default&quot;), QueryTriggerInteraction.UseGlobal);//打印在该范围内的碰撞器的所有信息for (int i = 0; i &lt; colliders.Length; i++)&#123;    print(colliders[i].gameObject.name);&#125;</code></pre><h4 id="Physics类中的OverlapBoxNonAlloc方法-盒状范围检测"><a href="#Physics类中的OverlapBoxNonAlloc方法-盒状范围检测" class="headerlink" title="Physics类中的OverlapBoxNonAlloc方法 - 盒状范围检测"></a>Physics类中的OverlapBoxNonAlloc方法 - 盒状范围检测</h4><ul><li>查找与给定盒体接触或位于盒体内部的所有碰撞体，并将它们存储到缓冲区中。</li><li>返回值：碰撞到的碰撞器数量</li></ul><pre><code class="csharp">//Physics类中的OverlapBoxNonAlloc静态方法 盒状范围检测 并且要传入一个数组 数组会装载碰撞到的碰撞器 返回碰撞器个数//查找与给定盒体接触或位于盒体内部的所有碰撞体，并将它们存储到缓冲区中。//参数：和OverlapBox相比，要多传入一个数组，会存储碰撞到的碰撞器，其他参数都差不多//返回值：碰撞到的碰撞器数量//Physics.OverlapBoxNonAlloc()if (Physics.OverlapBoxNonAlloc(Vector3.zero, Vector3.one, colliders) != 0)&#123;    // 处理碰撞器&#125;</code></pre><h4 id="Physics类中的OverlapSphere方法-球形范围检测"><a href="#Physics类中的OverlapSphere方法-球形范围检测" class="headerlink" title="Physics类中的OverlapSphere方法 - 球形范围检测"></a>Physics类中的OverlapSphere方法 - 球形范围检测</h4><ul><li>计算并存储接触球体或位于球体内部的碰撞体。</li><li>返回值：在该范围内的触发器（得到了对象触发器就可以得到对象的所有信息）</li></ul><pre><code class="csharp">//Physics类中的OverlapSphere静态方法 球形范围检测//计算并存储接触球体或位于球体内部的碰撞体。//参数一：中心点//参数二：球半径//参数三：检测指定层级（不填检测所有层）//参数四：是否忽略触发器 UseGlobal-使用全局设置 Collide-检测触发器 Ignore-忽略触发器 不填使用UseGlobal//返回值：在该范围内的触发器（得到了对象触发器就可以得到对象的所有信息）colliders = Physics.OverlapSphere(Vector3.zero, 5, 1 &lt;&lt; LayerMask.NameToLayer(&quot;Default&quot;));</code></pre><h4 id="Physics类中的OverlapSphereNonAlloc方法-球形范围检测"><a href="#Physics类中的OverlapSphereNonAlloc方法-球形范围检测" class="headerlink" title="Physics类中的OverlapSphereNonAlloc方法 - 球形范围检测"></a>Physics类中的OverlapSphereNonAlloc方法 - 球形范围检测</h4><ul><li>计算与球体接触或位于球体内部的碰撞体，并将它们存储到提供的缓冲区中。</li><li>返回值：碰撞到的碰撞器数量</li></ul><pre><code class="csharp">//Physics类中的OverlapSphereNonAlloc静态方法 球形范围检测 并且要传入一个数组 数组会装载碰撞到的碰撞器 返回碰撞器个数//计算与球体接触或位于球体内部的碰撞体，并将它们存储到提供的缓冲区中。//参数：和OverlapSphereNonAlloc相比，要多传入一个数组，会存储碰撞到的碰撞器，其他参数都差不多//返回值：碰撞到的碰撞器数量if (Physics.OverlapSphereNonAlloc(Vector3.zero, 5, colliders) != 0)&#123;&#125;</code></pre><h4 id="Physics类中的OverlapCapsule方法-胶囊范围检测"><a href="#Physics类中的OverlapCapsule方法-胶囊范围检测" class="headerlink" title="Physics类中的OverlapCapsule方法 - 胶囊范围检测"></a>Physics类中的OverlapCapsule方法 - 胶囊范围检测</h4><ul><li>在物理世界中检查给定胶囊体，并返回所有重叠的碰撞体。</li><li>返回值：在该范围内的触发器（得到了对象触发器就可以得到对象的所有信息）</li></ul><pre><code class="csharp">//Physics类中的OverlapCapsule静态方法 胶囊范围检测//在物理世界中检查给定胶囊体，并返回所有重叠的碰撞体。//参数一：半圆一中心点//参数二：半圆二中心点//前两个参数决定胶囊中间的圆柱体情况//参数三：上下两个半球体半径//参数四：检测指定层级（不填检测所有层）//参数五：是否忽略触发器 UseGlobal-使用全局设置 Collide-检测触发器 Ignore-忽略触发器 不填使用UseGlobal//返回值：在该范围内的触发器（得到了对象触发器就可以得到对象的所有信息）colliders = Physics.OverlapCapsule(Vector3.zero, Vector3.up, 1, 1 &lt;&lt; LayerMask.NameToLayer(&quot;UI&quot;), QueryTriggerInteraction.UseGlobal);</code></pre><h4 id="Physics类中的OverlapCapsuleNonAlloc方法-胶囊范围检测"><a href="#Physics类中的OverlapCapsuleNonAlloc方法-胶囊范围检测" class="headerlink" title="Physics类中的OverlapCapsuleNonAlloc方法 - 胶囊范围检测"></a>Physics类中的OverlapCapsuleNonAlloc方法 - 胶囊范围检测</h4><ul><li>在物理世界中检查给定胶囊体，并在用户提供的缓冲区中返回所有重叠的碰撞体。</li><li>返回值：碰撞到的碰撞器数量</li></ul><pre><code class="csharp">//Physics类中的OverlapCapsuleNonAlloc静态方法 胶囊范围检测 并且要传入一个数组 数组会装载碰撞到的碰撞器 返回碰撞器个数//在物理世界中检查给定胶囊体，并在用户提供的缓冲区中返回所有重叠的碰撞体。//参数：和OverlapCapsule相比，要多传入一个数组，会存储碰撞到的碰撞器，其他参数都差不多//返回值：碰撞到的碰撞器数量if (Physics.OverlapCapsuleNonAlloc(Vector3.zero, Vector3.up, 1, colliders) != 0)&#123;&#125;</code></pre><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ul><li>范围检测主要用于瞬时的碰撞范围检测</li><li>主要掌握Physics类中的静态方法，球形、盒装、胶囊三种API的使用即可</li></ul><hr><h2 id="23-2-知识点代码"><a href="#23-2-知识点代码" class="headerlink" title="23.2 知识点代码"></a>23.2 知识点代码</h2><pre><code class="csharp">using System.Collections;using System.Collections.Generic;using UnityEngine;public class Lesson23_核心系统_物理系统之范围检测 : MonoBehaviour&#123;    void Start()    &#123;        #region 知识回顾 物理系统之碰撞检测        //碰撞产生的必要条件        //1.至少一个物体有刚体        //2.两个物体都必须有碰撞器        //碰撞和触发        //碰撞会产生实际的物理效果        //触发看起来不会产生碰撞但是可以通过函数监听触发        //碰撞检测主要用于实体物体之间产生物理效果时使用        #endregion        #region 知识点一 什么是范围检测        //游戏中瞬时的攻击范围判断一般会使用范围检测        //举例：        //1.玩家在前方5m处释放一个地刺魔法，在此处范围内的对象将受到地刺伤害        //2.玩家攻击，在前方1米圆形范围内对象都受到伤害        //等等        //类似这种并没有实体物体 只想要检测在指定某一范围是否让敌方受到伤害时 便可以使用范围判断        //简而言之        //在指定位置 进行 范围判断 我们可以得到处于指定范围内的 对象        //目的是对 对象进行处理        //比如 受伤 减血等等        #endregion        #region 知识点二 如何进行范围检测        //LayerMask中的NameToLayer静态方法 传入层级名字返回层级索引        //给定层名称，返回在 Tags and Layers manager 中由 Builtin 或 User Layer 定义的层索引。        print(LayerMask.NameToLayer(&quot;UI&quot;));//5        //层级重要知识点补充：        //通过名字得到层级编号 LayerMask.NameToLayer        //我们需要通过编号左移构建二进制数        //这样每一个编号的层级 都是 对应位为1的2进制数        //我们通过 位运算 可以选择想要检测层级        //好处 一个int 就可以表示所有想要检测的层级信息        //层级编号是 0~31 刚好32位        //是一个int数的比特位数        //每一个编号 代表的 都是二进制的一位        //第0层—— 1 &lt;&lt; 0——0000 0000 0000 0000 0000 0000 0000 0001 = 1         //第1层—— 1 &lt;&lt; 1——0000 0000 0000 0000 0000 0000 0000 0010 = 2        //第2层—— 1 &lt;&lt; 2——0000 0000 0000 0000 0000 0000 0000 0100 = 4        //第3层—— 1 &lt;&lt; 3——0000 0000 0000 0000 0000 0000 0000 1000 = 8        //第4层—— 1 &lt;&lt; 4——0000 0000 0000 0000 0000 0000 0001 0000 = 16        //第5层—— 1 &lt;&lt; 5——0000 0000 0000 0000 0000 0000 0010 0000 = 32        //层级重要知识点通俗理解        //Unity是用二进制来判断层级的        //比如：        //LayerMask.NameToLayer(&quot;Default&quot;) 是第0层 就用二进制0010 0000来代表这一层 1左移了0位        //LayerMask.NameToLayer(&quot;UI&quot;) 是第5层 就用二进制0010 0000来代表这一层 1左移了5位        //假如即想检测Default层 又想检测UI层 就把这两个层级的二进制或起来        //1 &lt;&lt; LayerMask.NameToLayer(&quot;UI&quot;) | 1 &lt;&lt; LayerMask.NameToLayer(&quot;Default&quot;)        //或过之后的二进制是 0010 0001         //当触发层级检测时 就拿出这个算好的0010 0001 和对应的层级的二进制 进行与操作        //比如和第1层进行与操作        // 0010 0001         // 0000 0010        // 0000 0000        //得到的是0 就不进行这一层级的判断了        //假如和第5层进行与操作        // 0010 0001         // 0010 0000         // 0010 0000        //得到的数不为0 就进行这一层级判断        //范围检测必备条件：想要被范围检测到的对象 必须具备碰撞器        //注意点：        //1.范围检测相关API 只有当执行该句代码时 进行一次范围检测 它是瞬时的        //2.范围检测相关API 并不会真正产生一个碰撞器 只是碰撞判断计算而已        //范围检测API        //Physics类中的OverlapBox静态方法 盒状范围检测        //查找与给定盒体接触或位于盒体内部的所有碰撞体。        //他不是一直都会检测的 可以通俗的理解为在执行代码的瞬间在场景创建一个盒型碰撞器检测碰撞的对象 但只是用于计算碰撞情况 不是真的创建出来        //参数一：立方体中心点        //参数二：立方体三边大小 构成立方体的长宽高的一半        //参数三：立方体角度 传入四元数        //参数四：检测指定层级（不填检测所有层） 用NameToLayer传入对应层级名字 并且要用1 &lt;&lt;左移 可以或运算        //参数五：        //是否忽略触发器 UseGlobal-使用全局设置 不填默认使用UseGlobal 全局设置在ProjectSetting中的Physics里的 Queries Hit Triggers 可以查看并设置        //Collide-检测触发器 Ignore-忽略触发器 手动选择单独设置        //返回值：在该范围内的碰撞器数组（得到了对象触发器就可以得到对象的所有信息）        Collider[] colliders = Physics.OverlapBox(Vector3.zero, Vector3.one, Quaternion.AngleAxis(45, Vector3.up),                            1 &lt;&lt; LayerMask.NameToLayer(&quot;UI&quot;) |                            1 &lt;&lt; LayerMask.NameToLayer(&quot;Default&quot;), QueryTriggerInteraction.UseGlobal);        //打印在该范围内的碰撞器的所有信息        for (int i = 0; i &lt; colliders.Length; i++)        &#123;            print(colliders[i].gameObject.name);        &#125;        //Physics类中的OverlapBoxNonAlloc静态方法 盒状范围检测 并且要传入一个数组 数组会装载碰撞到的碰撞器 返回碰撞器个数        //查找与给定盒体接触或位于盒体内部的所有碰撞体，并将它们存储到缓冲区中。        //参数：和OverlapBox相比，要多传入一个数组，会存储碰撞到的碰撞器，其他参数都差不多        //返回值：碰撞到的碰撞器数量        //Physics.OverlapBoxNonAlloc()        if (Physics.OverlapBoxNonAlloc(Vector3.zero, Vector3.one, colliders) != 0)        &#123;        &#125;        //Physics类中的OverlapSphere静态方法 球形范围检测        //计算并存储接触球体或位于球体内部的碰撞体。        //参数一：中心点        //参数二：球半径        //参数三：检测指定层级（不填检测所有层）        //参数四：是否忽略触发器 UseGlobal-使用全局设置 Collide-检测触发器 Ignore-忽略触发器 不填使用UseGlobal        //返回值：在该范围内的触发器（得到了对象触发器就可以得到对象的所有信息）        colliders = Physics.OverlapSphere(Vector3.zero, 5, 1 &lt;&lt; LayerMask.NameToLayer(&quot;Default&quot;));        //Physics类中的OverlapSphereNonAlloc静态方法 球形范围检测 并且要传入一个数组 数组会装载碰撞到的碰撞器 返回碰撞器个数        //计算与球体接触或位于球体内部的碰撞体，并将它们存储到提供的缓冲区中。        //参数：和OverlapSphereNonAlloc相比，要多传入一个数组，会存储碰撞到的碰撞器，其他参数都差不多        //返回值：碰撞到的碰撞器数量        if (Physics.OverlapSphereNonAlloc(Vector3.zero, 5, colliders) != 0)        &#123;        &#125;        //Physics类中的OverlapCapsule静态方法 胶囊范围检测        //在物理世界中检查给定胶囊体，并返回所有重叠的碰撞体。        //参数一：半圆一中心点        //参数二：半圆二中心点        //前两个参数决定胶囊中间的圆柱体情况        //参数三：上下两个半球体半径        //参数四：检测指定层级（不填检测所有层）        //参数五：是否忽略触发器 UseGlobal-使用全局设置 Collide-检测触发器 Ignore-忽略触发器 不填使用UseGlobal        //返回值：在该范围内的触发器（得到了对象触发器就可以得到对象的所有信息）        colliders = Physics.OverlapCapsule(Vector3.zero, Vector3.up, 1, 1 &lt;&lt; LayerMask.NameToLayer(&quot;UI&quot;), QueryTriggerInteraction.UseGlobal);        //Physics类中的OverlapCapsuleNonAlloc静态方法 胶囊范围检测 并且要传入一个数组 数组会装载碰撞到的碰撞器 返回碰撞器个数        //在物理世界中检查给定胶囊体，并在用户提供的缓冲区中返回所有重叠的碰撞体。        //参数：和OverlapCapsule相比，要多传入一个数组，会存储碰撞到的碰撞器，其他参数都差不多        //返回值：碰撞到的碰撞器数量        if (Physics.OverlapCapsuleNonAlloc(Vector3.zero, Vector3.up, 1, colliders) != 0)        &#123;        &#125;        #endregion        #region 总结        //范围检测主要用于瞬时的碰撞范围检测        //主要掌握        //Physics类中的静态方法        //球形 盒装 胶囊三种API的使用即可        #endregion    &#125;&#125;</code></pre><hr><h2 id="23-3-练习题"><a href="#23-3-练习题" class="headerlink" title="23.3 练习题"></a>23.3 练习题</h2><h3 id="世界坐标原点有一个立方体，键盘WASD键可以控制其前后移动和旋转-请结合所学知识实现-按J键在立方体面朝向前方1米处进行立方体范围检测-按K键在立方体前面5米范围内进行胶囊范围检测-按L键以立方体脚下为原点，半径10米内进行球形范围检测"><a href="#世界坐标原点有一个立方体，键盘WASD键可以控制其前后移动和旋转-请结合所学知识实现-按J键在立方体面朝向前方1米处进行立方体范围检测-按K键在立方体前面5米范围内进行胶囊范围检测-按L键以立方体脚下为原点，半径10米内进行球形范围检测" class="headerlink" title="世界坐标原点有一个立方体，键盘WASD键可以控制其前后移动和旋转,请结合所学知识实现,按J键在立方体面朝向前方1米处进行立方体范围检测,按K键在立方体前面5米范围内进行胶囊范围检测,按L键以立方体脚下为原点，半径10米内进行球形范围检测"></a>世界坐标原点有一个立方体，键盘WASD键可以控制其前后移动和旋转,请结合所学知识实现,按J键在立方体面朝向前方1米处进行立方体范围检测,按K键在立方体前面5米范围内进行胶囊范围检测,按L键以立方体脚下为原点，半径10米内进行球形范围检测</h3><h4 id="定义了两个公开变量，分别表示移动速度和旋转速度。"><a href="#定义了两个公开变量，分别表示移动速度和旋转速度。" class="headerlink" title="定义了两个公开变量，分别表示移动速度和旋转速度。"></a>定义了两个公开变量，分别表示移动速度和旋转速度。</h4><pre><code class="csharp">// 定义了两个公开变量，分别表示移动速度和旋转速度。public float moveSpeed;public float roundSpeed;</code></pre><h4 id="在-Update-函数中检测角色的输入操作，并且通过-Unity3D-提供的-Physics-类进行场景物理模拟碰撞检测的应用和执行，根据按下-J-K-和-L-键不同会得到不同类型的碰撞检测结果。"><a href="#在-Update-函数中检测角色的输入操作，并且通过-Unity3D-提供的-Physics-类进行场景物理模拟碰撞检测的应用和执行，根据按下-J-K-和-L-键不同会得到不同类型的碰撞检测结果。" class="headerlink" title="在 Update 函数中检测角色的输入操作，并且通过 Unity3D 提供的 Physics 类进行场景物理模拟碰撞检测的应用和执行，根据按下 J, K 和 L 键不同会得到不同类型的碰撞检测结果。"></a>在 Update 函数中检测角色的输入操作，并且通过 Unity3D 提供的 Physics 类进行场景物理模拟碰撞检测的应用和执行，根据按下 J, K 和 L 键不同会得到不同类型的碰撞检测结果。</h4><pre><code class="csharp">// 在 Update 函数中检测角色的输入操作，并且通过 Unity3D 提供的 Physics 类进行场景物理模拟碰撞检测的应用和执行，根据按下 J, K 和 L 键不同会得到不同类型的碰撞检测结果。void Update()&#123;    // 位移：使用 this.transform.Translate() 将角色对应的游戏对象在沿着 Z 轴正方向移动速度（moveSpeed）单位*(Input.GetAxis(&quot;Vertical&quot;))     this.transform.Translate(Vector3.forward * Time.deltaTime * moveSpeed * Input.GetAxis(&quot;Vertical&quot;));    // 旋转：使用 this.transform.Rotate() 将角色对应的游戏对象 沿着 Y 轴正方向 绕转速(roundSpeed)制*Time.deltaTime 角度*(Input.GetAxis(&quot;Horizontal&quot;))    this.transform.Rotate(Vector3.up, Input.GetAxis(&quot;Horizontal&quot;) * roundSpeed * Time.deltaTime);    // 按下J键进行碰撞检测：在当前位置追加一个长宽高半径为0.5f的盒子，在指定图层标识（Monster）中查找已有物体    if (Input.GetKeyDown(KeyCode.J))    &#123;        //因为是长宽高的一半 使用用单位向量乘0.5 传入 Vector3.one * 0.5f 这样才算一个长宽高都是1的立方体        //创建出来的立方体要保持和当前立方体相同的旋转，否则不是刚好在前面        Collider[] colliders = Physics.OverlapBox(this.transform.position + this.transform.forward, Vector3.one * 0.5f, this.transform.rotation, 1 &lt;&lt; LayerMask.NameToLayer(&quot;Monster&quot;));        for (int i = 0; i &lt; colliders.Length; i++)        &#123;            print(&quot;盒子 物体受伤&quot; + colliders[i].gameObject.name);        &#125;    &#125;    // 按下K键进行碰撞检测：在当前位置追加一个纵向长度为5,由一顶端圆柱和两个相互背离异形盘组成的胶囊体，并且在指定图层标识（Monster）中查找已有物体。    //可以理解为往前面吐火 或者刺出来长枪    if (Input.GetKeyDown(KeyCode.K))    &#123;        Collider[] colliders = Physics.OverlapCapsule(this.transform.position, this.transform.position + this.transform.forward * 5, 0.5f, 1 &lt;&lt; LayerMask.NameToLayer(&quot;Monster&quot;));        for (int i = 0; i &lt; colliders.Length; i++)        &#123;            print(&quot;胶囊 物体受伤&quot; + colliders[i].gameObject.name);        &#125;    &#125;    // 按下L键进行碰撞检测：以当前位置为球心，在半径为10米的范围内，检测并返回指定物理图层（Monster）下所有的碰撞体 collider    //比如有些时候范围内加buff或者震开敌人    if (Input.GetKeyDown(KeyCode.L))    &#123;        Collider[] colliders = Physics.OverlapSphere(this.transform.position, 10, 1 &lt;&lt; LayerMask.NameToLayer(&quot;Monster&quot;));        for (int i = 0; i &lt; colliders.Length; i++)        &#123;            print(&quot;球 物体受伤&quot; + colliders[i].gameObject.name);        &#125;    &#125;&#125;</code></pre><hr><h2 id="23-4-练习题代码"><a href="#23-4-练习题代码" class="headerlink" title="23.4 练习题代码"></a>23.4 练习题代码</h2><pre><code class="csharp">using System.Collections;using System.Collections.Generic;using UnityEngine;//这个脚本要挂载到立方体上public class Lesson23_练习题 : MonoBehaviour&#123;    #region 练习题一    //世界坐标原点有一个立方体，键盘WASD键可以控制其前后移动和旋转    //请结合所学知识实现    //1.按J键在立方体面朝向前方1米处进行立方体范围检测    //2.按K键在立方体前面5米范围内进行胶囊范围检测    //3.按L键以立方体脚下为原点，半径10米内进行球形范围检测    // 定义了两个公开变量，分别表示移动速度和旋转速度。    public float moveSpeed;    public float roundSpeed;    // 在 Update 函数中检测角色的输入操作，并且通过 Unity3D 提供的 Physics 类进行场景物理模拟碰撞检测的应用和执行，根据按下 J, K 和 L 键不同会得到不同类型的碰撞检测结果。    void Update()    &#123;        // 位移：使用 this.transform.Translate() 将角色对应的游戏对象在沿着 Z 轴正方向移动速度（moveSpeed）单位*(Input.GetAxis(&quot;Vertical&quot;))         this.transform.Translate(Vector3.forward * Time.deltaTime * moveSpeed * Input.GetAxis(&quot;Vertical&quot;));        // 旋转：使用 this.transform.Rotate() 将角色对应的游戏对象 沿着 Y 轴正方向 绕转速(roundSpeed)制*Time.deltaTime 角度*(Input.GetAxis(&quot;Horizontal&quot;))        this.transform.Rotate(Vector3.up, Input.GetAxis(&quot;Horizontal&quot;) * roundSpeed * Time.deltaTime);        // 按下J键进行碰撞检测：在当前位置追加一个长宽高半径为0.5f的盒子，在指定图层标识（Monster）中查找已有物体        if (Input.GetKeyDown(KeyCode.J))        &#123;            //因为是长宽高的一半 使用用单位向量乘0.5 传入 Vector3.one * 0.5f 这样才算一个长宽高都是1的立方体            //创建出来的立方体要保持和当前立方体相同的旋转，否则不是刚好在前面            Collider[] colliders = Physics.OverlapBox(this.transform.position + this.transform.forward, Vector3.one * 0.5f, this.transform.rotation, 1 &lt;&lt; LayerMask.NameToLayer(&quot;Monster&quot;));            for (int i = 0; i &lt; colliders.Length; i++)            &#123;                print(&quot;盒子 物体受伤&quot; + colliders[i].gameObject.name);            &#125;        &#125;        // 按下K键进行碰撞检测：在当前位置追加一个纵向长度为5,由一顶端圆柱和两个相互背离异形盘组成的胶囊体，并且在指定图层标识（Monster）中查找已有物体。        //可以理解为往前面吐火 或者刺出来长枪        if (Input.GetKeyDown(KeyCode.K))        &#123;            Collider[] colliders = Physics.OverlapCapsule(this.transform.position, this.transform.position + this.transform.forward * 5, 0.5f, 1 &lt;&lt; LayerMask.NameToLayer(&quot;Monster&quot;));            for (int i = 0; i &lt; colliders.Length; i++)            &#123;                print(&quot;胶囊 物体受伤&quot; + colliders[i].gameObject.name);            &#125;        &#125;        // 按下L键进行碰撞检测：以当前位置为球心，在半径为10米的范围内，检测并返回指定物理图层（Monster）下所有的碰撞体 collider        //比如有些时候范围内加buff或者震开敌人        if (Input.GetKeyDown(KeyCode.L))        &#123;            Collider[] colliders = Physics.OverlapSphere(this.transform.position, 10, 1 &lt;&lt; LayerMask.NameToLayer(&quot;Monster&quot;));            for (int i = 0; i &lt; colliders.Length; i++)            &#123;                print(&quot;球 物体受伤&quot; + colliders[i].gameObject.name);            &#125;        &#125;    &#125;    #endregion&#125;</code></pre><hr>]]></content>
+      
+      
+      <categories>
+          
+          <category> Unity </category>
+          
+          <category> Unity基础基础知识 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 基础知识 </tag>
+            
+            <tag> Unity </tag>
+            
+            <tag> 核心系统 </tag>
+            
+            <tag> 物理系统 </tag>
+            
+            <tag> Unity基础 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>22.LineRenderer画线渲染器</title>
+      <link href="/2024/03/03/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/22.%E7%94%BB%E7%BA%BF%E5%8A%9F%E8%83%BDLineRenderer/"/>
+      <url>/2024/03/03/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/22.%E7%94%BB%E7%BA%BF%E5%8A%9F%E8%83%BDLineRenderer/</url>
+      
+        <content type="html"><![CDATA[<h1 id="22-画线功能LineRenderer"><a href="#22-画线功能LineRenderer" class="headerlink" title="22.画线功能LineRenderer"></a>22.画线功能LineRenderer</h1><hr><h2 id="22-1-知识点"><a href="#22-1-知识点" class="headerlink" title="22.1 知识点"></a>22.1 知识点</h2><h3 id="LineRenderer画线渲染器是什么？"><a href="#LineRenderer画线渲染器是什么？" class="headerlink" title="LineRenderer画线渲染器是什么？"></a>LineRenderer画线渲染器是什么？</h3><ul><li><strong>LineRenderer</strong> 是Unity提供的一个用于画线的组件。</li><li>使用它我们可以在场景中绘制线段，一般可以用于：<ul><li>绘制攻击范围</li><li>武器红外线</li><li>辅助功能</li><li>其它画线功能</li></ul></li></ul><h3 id="LineRenderer画线渲染器组件参数"><a href="#LineRenderer画线渲染器组件参数" class="headerlink" title="LineRenderer画线渲染器组件参数"></a>LineRenderer画线渲染器组件参数</h3><p><img src="/../../../images/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/22.%E7%94%BB%E7%BA%BF%E5%8A%9F%E8%83%BDLineRenderer/1.png"><br><img src="/../../../images/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/22.%E7%94%BB%E7%BA%BF%E5%8A%9F%E8%83%BDLineRenderer/2.png"><br><img src="/../../../images/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/22.%E7%94%BB%E7%BA%BF%E5%8A%9F%E8%83%BDLineRenderer/3.png"><br><img src="/../../../images/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/22.%E7%94%BB%E7%BA%BF%E5%8A%9F%E8%83%BDLineRenderer/4.png"></p><h4 id="场景点编辑模式"><a href="#场景点编辑模式" class="headerlink" title="场景点编辑模式"></a>场景点编辑模式</h4><h5 id="编辑点和删除点"><a href="#编辑点和删除点" class="headerlink" title="编辑点和删除点"></a>编辑点和删除点</h5><p><img src="/../../../images/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/22.%E7%94%BB%E7%BA%BF%E5%8A%9F%E8%83%BDLineRenderer/5.png" alt="左侧编辑点 右侧添加点"></p><h5 id="无编辑操作"><a href="#无编辑操作" class="headerlink" title="无编辑操作"></a>无编辑操作</h5><p><img src="/../../../images/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/22.%E7%94%BB%E7%BA%BF%E5%8A%9F%E8%83%BDLineRenderer/6.png"></p><h6 id="Simplify-Preview-简化预览"><a href="#Simplify-Preview-简化预览" class="headerlink" title="Simplify Preview 简化预览"></a>Simplify Preview 简化预览</h6><p>开启会显示一个明显的线段</p><h6 id="Tolerance-宽容度"><a href="#Tolerance-宽容度" class="headerlink" title="Tolerance 宽容度"></a>Tolerance 宽容度</h6><ul><li>偏离值，越大，偏差越大</li><li>假如点分密集，宽容度越大，越只会画出粗略线段，一般设置为1就行</li></ul><h5 id="编辑点操作"><a href="#编辑点操作" class="headerlink" title="编辑点操作"></a>编辑点操作</h5><p><img src="/../../../images/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/22.%E7%94%BB%E7%BA%BF%E5%8A%9F%E8%83%BDLineRenderer/7.png"></p><h6 id="Show-Wireframe-显示线框"><a href="#Show-Wireframe-显示线框" class="headerlink" title="Show Wireframe 显示线框"></a>Show Wireframe 显示线框</h6><h6 id="Subdivide-Selected-细分选项"><a href="#Subdivide-Selected-细分选项" class="headerlink" title="Subdivide Selected 细分选项"></a>Subdivide Selected 细分选项</h6><ul><li>鼠标左键画框选择两个或多个相邻点时，该按钮启用，点击后会在相邻点之间插入一个新点，可以移动改变点的位置</li></ul><h5 id="添加点模式"><a href="#添加点模式" class="headerlink" title="添加点模式"></a>添加点模式</h5><p><img src="/../../../images/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/22.%E7%94%BB%E7%BA%BF%E5%8A%9F%E8%83%BDLineRenderer/8.png"></p><h6 id="Input-输入模式"><a href="#Input-输入模式" class="headerlink" title="Input 输入模式"></a>Input 输入模式</h6><ul><li>Mouse Position 鼠标位置：点击会在摄像机处创建点，一般不用</li><li>Physics Raycast 基于物理射线：鼠标点击到能触发射线的位置，添加点，比如平面，UI等</li></ul><h6 id="LayerMask-选择哪些层可以检测射线"><a href="#LayerMask-选择哪些层可以检测射线" class="headerlink" title="LayerMask 选择哪些层可以检测射线"></a>LayerMask 选择哪些层可以检测射线</h6><h6 id="Min-VertexDistance-最小顶点距离"><a href="#Min-VertexDistance-最小顶点距离" class="headerlink" title="Min VertexDistance 最小顶点距离"></a>Min VertexDistance 最小顶点距离</h6><ul><li>拖动鼠标创建点时，会在超出该距离时创建一个点</li></ul><h6 id="Offset-偏移量"><a href="#Offset-偏移量" class="headerlink" title="Offset 偏移量"></a>Offset 偏移量</h6><ul><li>创建点的偏移值</li></ul><h4 id="Loop-循环"><a href="#Loop-循环" class="headerlink" title="Loop 循环"></a>Loop 循环</h4><ul><li>是否终点起始自动相连。</li></ul><h4 id="Positions-位置"><a href="#Positions-位置" class="headerlink" title="Positions 位置"></a>Positions 位置</h4><ul><li>默认以世界坐标系为基准，设置线段的点并连接。</li><li>可以在 <strong>Use World Space</strong> 是否使用世界坐标系修改是否以世界坐标系为基准。</li><li>设置开不开启 <strong>Loop 循环</strong> 就能选择是否收尾线段点相连。<br><img src="/../../../images/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/22.%E7%94%BB%E7%BA%BF%E5%8A%9F%E8%83%BDLineRenderer/9.png"><br><img src="/../../../images/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/22.%E7%94%BB%E7%BA%BF%E5%8A%9F%E8%83%BDLineRenderer/10.png"></li></ul><h4 id="Width-宽度"><a href="#Width-宽度" class="headerlink" title="Width 宽度"></a>Width 宽度</h4><ul><li>线段宽度曲线调整。<br><img src="/../../../images/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/22.%E7%94%BB%E7%BA%BF%E5%8A%9F%E8%83%BDLineRenderer/11.png"><br><img src="/../../../images/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/22.%E7%94%BB%E7%BA%BF%E5%8A%9F%E8%83%BDLineRenderer/12.png"></li><li>可以在宽度表里右键添加key，添加秘钥，修改划线宽度曲线。<br><img src="/../../../images/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/22.%E7%94%BB%E7%BA%BF%E5%8A%9F%E8%83%BDLineRenderer/13.png"></li></ul><h4 id="Color-颜色"><a href="#Color-颜色" class="headerlink" title="Color 颜色"></a>Color 颜色</h4><ul><li>修改颜色变化，颜色也可以是渐变的，假如没有材质修改颜色不起作用。<br><img src="/../../../images/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/22.%E7%94%BB%E7%BA%BF%E5%8A%9F%E8%83%BDLineRenderer/14.png"></li></ul><h4 id="Corner-Vertices-角顶点"><a href="#Corner-Vertices-角顶点" class="headerlink" title="Corner Vertices 角顶点"></a>Corner Vertices 角顶点</h4><ul><li>角顶点可以理解为把划线的角变成圆角。</li><li>此属性指示在一条线中绘制角时使用了多少额外的顶点。</li><li>增加此值，使线角看起来更圆。<br><img src="/../../../images/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/22.%E7%94%BB%E7%BA%BF%E5%8A%9F%E8%83%BDLineRenderer/15.png"></li></ul><h4 id="End-Cap-Vertices-末端顶点"><a href="#End-Cap-Vertices-末端顶点" class="headerlink" title="End Cap Vertices 末端顶点"></a>End Cap Vertices 末端顶点</h4><ul><li>终端顶点也变成圆角。<br><img src="/../../../images/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/22.%E7%94%BB%E7%BA%BF%E5%8A%9F%E8%83%BDLineRenderer/16.png"></li></ul><h4 id="Alignment-对其方式"><a href="#Alignment-对其方式" class="headerlink" title="Alignment 对其方式"></a>Alignment 对其方式</h4><ul><li><strong>View</strong>：视点线段对着摄像机。</li><li><strong>Transform Z</strong>：线段面向其Z轴。</li></ul><h4 id="Texture-Mode-纹理模式"><a href="#Texture-Mode-纹理模式" class="headerlink" title="Texture Mode 纹理模式"></a>Texture Mode 纹理模式</h4><ul><li><strong>Stretch</strong>：拉伸，沿整条线映射纹理一次。</li><li><strong>Tile</strong>：瓷砖平铺，不停的重复纹理。</li><li><strong>Distribute Per Segment</strong>：分配执行。</li><li><strong>Repeat Per Segment</strong>：重复显示。</li></ul><h4 id="Shadow-Bias-阴影偏移"><a href="#Shadow-Bias-阴影偏移" class="headerlink" title="Shadow Bias 阴影偏移"></a>Shadow Bias 阴影偏移</h4><h4 id="Generate-Lighting-Data-生成光源数据"><a href="#Generate-Lighting-Data-生成光源数据" class="headerlink" title="Generate Lighting Data 生成光源数据"></a>Generate Lighting Data 生成光源数据</h4><h4 id="Use-World-Space-是否使用世界坐标系"><a href="#Use-World-Space-是否使用世界坐标系" class="headerlink" title="Use World Space 是否使用世界坐标系"></a>Use World Space 是否使用世界坐标系</h4><ul><li>勾选了，不管怎么改都是相对于世界坐标的线段点。</li><li>不勾选，就会是当前依附的游戏对象的相对坐标点，移动游戏对象也会移动划线。</li></ul><h4 id="Materials-划线使用的材质球"><a href="#Materials-划线使用的材质球" class="headerlink" title="Materials 划线使用的材质球"></a>Materials 划线使用的材质球</h4><ul><li>我们可以新建一个材质，使用默认shader，关联一张图片，拖拽到划线组件的材质球上。<br><img src="/../../../images/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/22.%E7%94%BB%E7%BA%BF%E5%8A%9F%E8%83%BDLineRenderer/17.png"></li><li>注意：假如一些材质需要光源，要开Generate Lighting Data 生成光源数据，不然可能变黑显示不出来。<br><img src="/../../../images/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/22.%E7%94%BB%E7%BA%BF%E5%8A%9F%E8%83%BDLineRenderer/18.png"></li><li>有了材质之后可以修改Texture Mode 纹理模式查看效果。</li></ul><h4 id="Lighting-光照影响"><a href="#Lighting-光照影响" class="headerlink" title="Lighting 光照影响"></a>Lighting 光照影响</h4><ul><li><strong>Cast Shadows</strong>：投射阴影，是否开启阴影。</li><li><strong>Receive Shadows</strong>：接收阴影。</li></ul><h4 id="Probes-光照探针"><a href="#Probes-光照探针" class="headerlink" title="Probes 光照探针"></a>Probes 光照探针</h4><ul><li><strong>Light Probes</strong>：光探测器模式<br><img src="/../../../images/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/22.%E7%94%BB%E7%BA%BF%E5%8A%9F%E8%83%BDLineRenderer/19.png"><ul><li>不使用光探针</li><li>使用内插光探针</li><li>使用三维网格内插光探针</li><li>自定义从材质决定</li></ul></li><li><strong>Reflection Probes</strong>：反射探测器模式<br><img src="/../../../images/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/22.%E7%94%BB%E7%BA%BF%E5%8A%9F%E8%83%BDLineRenderer/20.png"><ul><li>不使用反射探针</li><li>启用混合反射探针</li><li>启用混合反射探针并且和天空和混合</li><li>启用普通探针，重叠式不混合</li></ul></li></ul><h4 id="Additional-Settings-附加设置"><a href="#Additional-Settings-附加设置" class="headerlink" title="Additional Settings 附加设置"></a>Additional Settings 附加设置</h4><ul><li><strong>Motion Vectors</strong>：运动矢量<br><img src="/../../../images/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/22.%E7%94%BB%E7%BA%BF%E5%8A%9F%E8%83%BDLineRenderer/21.png"><ul><li>使用相机运动来跟踪运动</li><li>特定对象来跟踪运动</li><li>不跟踪</li></ul></li><li><strong>Dynamic Occludee</strong>：动态遮挡剔除</li><li><strong>Sorting Layer</strong>：排序图层</li><li><strong>Order in Layer</strong>：此线段在排序图层中的顺序</li></ul><h3 id="LineRenderer画线渲染器代码控制"><a href="#LineRenderer画线渲染器代码控制" class="headerlink" title="LineRenderer画线渲染器代码控制"></a>LineRenderer画线渲染器代码控制</h3><h4 id="动态添加一个线段"><a href="#动态添加一个线段" class="headerlink" title="动态添加一个线段"></a>动态添加一个线段</h4><pre><code class="csharp">GameObject line = new GameObject();line.name = &quot;Line&quot;;LineRenderer lineRenderer = line.AddComponent&lt;LineRenderer&gt;();</code></pre><h4 id="loop变量-首尾相连"><a href="#loop变量-首尾相连" class="headerlink" title="loop变量 首尾相连"></a>loop变量 首尾相连</h4><pre><code class="csharp">//将线的起点和终点位置连接在一起，以形成连续循环。lineRenderer.loop = true;</code></pre><h4 id="startWidth和endWidth变量-开始结束宽"><a href="#startWidth和endWidth变量-开始结束宽" class="headerlink" title="startWidth和endWidth变量 开始结束宽"></a>startWidth和endWidth变量 开始结束宽</h4><pre><code class="csharp">//设置线起点处的宽度。//设置线终点处的宽度。lineRenderer.startWidth = 0.02f;lineRenderer.endWidth = 0.02f;</code></pre><h4 id="startColor和endColor变量-开始结束颜色"><a href="#startColor和endColor变量-开始结束颜色" class="headerlink" title="startColor和endColor变量 开始结束颜色"></a>startColor和endColor变量 开始结束颜色</h4><pre><code class="csharp">//设置线起点处的颜色。//设置线终点处的颜色。lineRenderer.startColor = Color.white;lineRenderer.endColor = Color.red;</code></pre><h4 id="material变量-设置材质"><a href="#material变量-设置材质" class="headerlink" title="material变量 设置材质"></a>material变量 设置材质</h4><pre><code class="csharp">//返回指定给渲染器的第一个实例化 Material。material = Resources.Load&lt;Material&gt;(&quot;火焰材质&quot;);lineRenderer.material = material;</code></pre><h4 id="positionCount变量-设置点个数"><a href="#positionCount变量-设置点个数" class="headerlink" title="positionCount变量 设置点个数"></a>positionCount变量 设置点个数</h4><pre><code class="csharp">//设置 /获取顶点数。//一定注意 设置点 要 先设置点的个数lineRenderer.positionCount = 4;</code></pre><h4 id="SetPositions方法-设置点位置"><a href="#SetPositions方法-设置点位置" class="headerlink" title="SetPositions方法 设置点位置"></a>SetPositions方法 设置点位置</h4><pre><code class="csharp">//设置线中所有顶点的位置。//接着就设置 对应每个点的位置lineRenderer.SetPositions(new Vector3[] &#123; new Vector3(0,0,0),new Vector3(0,0,5), new Vector3(5,0,5)&#125;);//注意：假如positionCount设置的点的数量比SetPositions传入点具体值的数量多，多出的点默认就在(0,0,0)位置lineRenderer.SetPosition(3, new Vector3(5, 0, 0));//设置好最后一个点</code></pre><h4 id="useWorldSpace变量-是否使用世界坐标系"><a href="#useWorldSpace变量-是否使用世界坐标系" class="headerlink" title="useWorldSpace变量 是否使用世界坐标系"></a>useWorldSpace变量 是否使用世界坐标系</h4><pre><code class="csharp">//如果启用，则在世界空间中定义线。//决定了 是否随对象移动而移动lineRenderer.useWorldSpace = false;</code></pre><h4 id="generateLightingData变量-判断是否让线段受光影响"><a href="#generateLightingData变量-判断是否让线段受光影响" class="headerlink" title="generateLightingData变量 判断是否让线段受光影响"></a>generateLightingData变量 判断是否让线段受光影响</h4><pre><code class="csharp">//配置线以生成法线和切线。借助此数据，场景光照可以通过法线贴图和 Unity 标准着色器或是您自己的定制着色器来影响线。lineRenderer.generateLightingData = true;</code></pre><hr><h2 id="22-2-知识点代码"><a href="#22-2-知识点代码" class="headerlink" title="22.2 知识点代码"></a>22.2 知识点代码</h2><pre><code class="csharp">using System.Collections;using System.Collections.Generic;using UnityEngine;public class Lesson22_画线功能LineRenderer : MonoBehaviour&#123;    private Material material;    void Start()    &#123;        #region 知识点一 LineRenderer是什么        //LineRenderer是Unity提供的一个用于画线的组件        //使用它我们可以在场景中绘制线段        //一般可以用于        //1绘制攻击范围        //2武器红外线        //3辅助功能        //4其它画线功能        #endregion        #region 知识点二 LineRender参数相关        #endregion        #region 知识点三 LineRender代码相关        //动态添加一个线段        GameObject line = new GameObject();        line.name = &quot;Line&quot;;        LineRenderer lineRenderer = line.AddComponent&lt;LineRenderer&gt;();        //loop变量 首尾相连        //将线的起点和终点位置连接在一起，以形成连续循环。        lineRenderer.loop = true;        //startWidth变量和endWidth变量 开始结束宽        //设置线起点处的宽度。        //设置线终点处的宽度。        lineRenderer.startWidth = 0.02f;        lineRenderer.endWidth = 0.02f;        //startColor和endColor变量 开始结束颜色        //设置线起点处的颜色。        //设置线终点处的颜色。        lineRenderer.startColor = Color.white;        lineRenderer.endColor = Color.red;        //material变量 设置材质        //返回指定给渲染器的第一个实例化 Material。        material = Resources.Load&lt;Material&gt;(&quot;火焰材质&quot;);        lineRenderer.material = material;        //设置点        //positionCount变量 设置点个数        //设置 / 获取顶点数。        //一定注意 设置点 要 先设置点的个数        lineRenderer.positionCount = 4;        //SetPositions方法 设置点位置        //设置线中所有顶点的位置。        //接着就设置 对应每个点的位置        lineRenderer.SetPositions(new Vector3[] &#123; new Vector3(0,0,0),new Vector3(0,0,5), new Vector3(5,0,5)&#125;);        //注意：假如positionCount设置的点的数量比SetPositions传入点具体值的数量多，多出的点默认就在(0,0,0)位置        lineRenderer.SetPosition(3, new Vector3(5, 0, 0));//设置好最后一个点        //useWorldSpace变量 是否使用世界坐标系        //如果启用，则在世界空间中定义线。        //决定了 是否随对象移动而移动        lineRenderer.useWorldSpace = false;        //generateLightingData变量 判断是否让线段受光影响 会接受光数据 进行着色器计算        //配置线以生成法线和切线。借助此数据，场景光照可以通过法线贴图和 Unity 标准着色器或是您自己的定制着色器来影响线。        lineRenderer.generateLightingData = true;        #endregion    &#125;&#125;</code></pre><hr><h2 id="22-3-练习题"><a href="#22-3-练习题" class="headerlink" title="22.3 练习题"></a>22.3 练习题</h2><h3 id="请写一个方法，传入一个中心点，传入一个半径，用-LineRenderer-画一个圆出来"><a href="#请写一个方法，传入一个中心点，传入一个半径，用-LineRenderer-画一个圆出来" class="headerlink" title="请写一个方法，传入一个中心点，传入一个半径，用 LineRenderer 画一个圆出来"></a>请写一个方法，传入一个中心点，传入一个半径，用 LineRenderer 画一个圆出来</h3><h4 id="添加画圆函数，需要传入圆心位置-centerPos-，半径-r-，点的数量-pointNum"><a href="#添加画圆函数，需要传入圆心位置-centerPos-，半径-r-，点的数量-pointNum" class="headerlink" title="添加画圆函数，需要传入圆心位置(centerPos)，半径(r)，点的数量(pointNum)"></a>添加画圆函数，需要传入圆心位置(centerPos)，半径(r)，点的数量(pointNum)</h4><pre><code class="csharp">// 画圆函数，需要传入圆心位置(centerPos)，半径(r)，点的数量(pointNum)public void DrawLineRenderer(Vector3 centerPos, float r, int pointNum)&#123;    // 动态创建一个游戏对象，并设置其名称为 &quot;R&quot;    GameObject obj = new GameObject();    obj.name = &quot;R&quot;;    // 给该游戏对象添加 LineRenderer 组件    LineRenderer line = obj.AddComponent&lt;LineRenderer&gt;();    // 设置线段是否是闭合状态来避免首尾连接处有断裂    line.loop = true;    // 设置顶点数来确定每条线段的终点可以组成一个圆    line.positionCount = pointNum;    // 根据点的数量得到每个点之间的度数角度    float angle = 360f / pointNum;    // 遍历所有的顶点，计算每个顶点相对于圆心在平面上固定的偏移指向，并赋值形成圆环状    for (int i = 0; i &lt; pointNum; i++)    &#123;        // 知识点        // 1. 点加向量相当于平移点        // 2. 四元数 * 向量相当于在旋转向量        // 通过四元数进行旋转后，再进行位移操作        Vector3 pos = Quaternion.AngleAxis(angle * i, Vector3.up) * Vector3.forward * r + centerPos;        // Vector3.forward * r 代表方向向量乘半径，就是当前向量        // Quaternion.AngleAxis(angle * i, Vector3.up) 代表绕着 y 轴转，当前角转的度数是当前索引乘根据点的数量得到每个点之间的度数角度        // 设置当前索引的点        line.SetPosition(i, pos);    &#125;&#125;</code></pre><h4 id="调用画圆函数"><a href="#调用画圆函数" class="headerlink" title="调用画圆函数"></a>调用画圆函数</h4><pre><code class="csharp">// 调用画圆函数DrawLineRenderer(Vector3.zero, 5, 360);</code></pre><h3 id="请实现，在-Game-窗口长按鼠标用-LineRenderer-画出鼠标移动的轨迹"><a href="#请实现，在-Game-窗口长按鼠标用-LineRenderer-画出鼠标移动的轨迹" class="headerlink" title="请实现，在 Game 窗口长按鼠标用 LineRenderer 画出鼠标移动的轨迹"></a>请实现，在 Game 窗口长按鼠标用 LineRenderer 画出鼠标移动的轨迹</h3><pre><code class="csharp">// 练习题二用来装 LineRenderer 的临时变量private LineRenderer line2;void Start()&#123;    #region 练习题二    // 在 Game 窗口长按鼠标用 LineRenderer 画出鼠标移动的轨迹    ////假如没有添加鼠标左键被按下时的逻辑，那么每次只能接着上次画，会和上次画的末尾连接起来    //line2 = this.gameObject.AddComponent&lt;LineRenderer&gt;();    //line2.loop = false;    //line2.startWidth = 0.5f;    //line2.endWidth = 0.5f;    //line2.positionCount = 0;    #endregion&#125;// 定义一个类成员变量 nowPos，记录当前鼠标指针所在的位置private Vector3 nowPos;// 在 Update 函数中，检测鼠标点击事件，实现从当前鼠标指针处开始划线的功能。private void Update()&#123;    // 鼠标左键被按下时    if (Input.GetMouseButtonDown(0))    &#123;        // 鼠标左键被按下时，创建新的游戏对象，并且新增为其 LineRenderer 组件        GameObject obj = new GameObject();        line2 = obj.AddComponent&lt;LineRenderer&gt;();        // 设置线段状态为非闭合状态，设置开始和结束的宽度为 0.5        line2.loop = false;        line2.startWidth = 0.5f;        line2.endWidth = 0.5f;        // 设置顶点数目为 0 表示该线段暂时为空        line2.positionCount = 0;    &#125;    // 鼠标左键持续按压时    if (Input.GetMouseButton(0))    &#123;        // 鼠标左键持续按压时，不断新增线段中增加顶点，记录每个顶点的世界坐标，直到松开鼠标键停止绘制。        line2.positionCount += 1;        // 如何得到鼠标转世界坐标的对应点         // 知识点        // 1. 如何得到鼠标位置        // Input.mousePosition        // 2. 怎么把鼠标转世界坐标        // 使用 Camera.main.ScreenToWorldPoint() 方法来将当前鼠标所在的屏幕像素坐标转换到和场景中对象相对应的世界坐标上。        nowPos = Input.mousePosition;        // 这个 z 是设置和摄像机的距离的，这样画出来的线一直和摄像机的距离是 10        nowPos.z = 10;  // 将 Z 轴坐标设置为一个固定值，使得线段可以显示在屏幕上方        line2.SetPosition(line2.positionCount - 1, Camera.main.ScreenToWorldPoint(nowPos));    &#125;&#125;</code></pre><hr><h2 id="22-4-练习题代码"><a href="#22-4-练习题代码" class="headerlink" title="22.4 练习题代码"></a>22.4 练习题代码</h2><pre><code class="csharp">using System.Collections;using System.Collections.Generic;using UnityEngine;public class Lesson22_练习题 : MonoBehaviour&#123;    //练习题二用来装LineRenderer的临时变量    private LineRenderer line2;    void Start()    &#123;        #region 练习题一         //请写一个方法，传入一个中心点，传入一个半径，用LineRender画一个圆出来        //调用画圆函数        DrawLineRenderer(Vector3.zero, 5, 15);        #endregion        #region 练习题二        //在Game窗口长按鼠标用LineRenderer画出鼠标移动的轨迹        ////假如没有添加鼠标左键被按下时的逻辑 那么每次只能接着上次画 会和上次画的末尾连接起来        //line2 = this.gameObject.AddComponent&lt;LineRenderer&gt;();        //line2.loop = false;        //line2.startWidth = 0.5f;        //line2.endWidth = 0.5f;        //line2.positionCount = 0;        #endregion    &#125;    // 定义一个类成员变量nowPos，记录当前鼠标指针所在的位置    private Vector3 nowPos;    // 在Update函数中，检测鼠标点击事件，实现从当前鼠标指针处开始划线的功能。    private void Update()    &#123;        //鼠标左键被按下时        if (Input.GetMouseButtonDown(0))        &#123;            // 鼠标左键被按下时，创建新的游戏对象，并且新增为其 LineRenderer 组件            GameObject obj = new GameObject();            line2 = obj.AddComponent&lt;LineRenderer&gt;();            // 设置线段状态为非闭合状态，设置开始和结束的宽度为 0.5            line2.loop = false;            line2.startWidth = 0.5f;            line2.endWidth = 0.5f;            // 设置顶点数目为 0 表示该线段暂时为空            line2.positionCount = 0;        &#125;        //鼠标左键持续按压时        if (Input.GetMouseButton(0))        &#123;            // 鼠标左键持续按压时，不断新增线段中增加顶点，记录每个顶点的世界坐标，直到松开鼠标键停止绘制。            line2.positionCount += 1;            //如何得到鼠标转世界坐标的 对应点             //知识点            //1.如何得到鼠标位置            //Input.mousePosition            //2.怎么把鼠标 转世界坐标            // 使用Camera.main.ScreenToWorldPoint()方法来将当前鼠标所在的屏幕像素坐标转换到和场景中对象相对应的世界坐标上。            nowPos = Input.mousePosition;            //这个z是设置和摄像机的距离的，这样画出来的线一直和摄像机的距离是10            nowPos.z = 10;  // 将Z轴坐标设置为一个固定值，使得线段可以显示在屏幕上方            line2.SetPosition(line2.positionCount - 1, Camera.main.ScreenToWorldPoint(nowPos));        &#125;    &#125;    // 画圆函数，需要传入圆心位置(centerPos)，半径(r)，点的数量(pointNum)    public void DrawLineRenderer(Vector3 centerPos, float r, int pointNum)    &#123;        // 动态创建一个游戏对象，并设置其名称为 &quot;R&quot;        GameObject obj = new GameObject();        obj.name = &quot;R&quot;;        // 给该游戏对象添加 LineRender组件        LineRenderer line = obj.AddComponent&lt;LineRenderer&gt;();        // 设置线段是否是闭合状态来避免首尾连接处有断裂        line.loop = true;        // 设置顶点数来确定每条线段的终点可以组成一个圆        line.positionCount = pointNum;        // 根据点的数量得到每个点之间的度数角度        float angle = 360f / pointNum;        // 遍历所有的顶点，计算每个顶点相对于圆心在平面上固定的偏移指向，并赋值形成圆环状        for (int i = 0; i &lt; pointNum; i++)        &#123;            //知识点            //1.点加向量 相当于平移点            //2.四元数 * 向量 相当于在 旋转向量            // 通过四元数进行旋转后，再进行位移操作            Vector3 pos = Quaternion.AngleAxis(angle * i, Vector3.up) * Vector3.forward * r + centerPos;            //Vector3.forward* r 代表方向向量乘半径 就是当前向量            //Quaternion.AngleAxis(angle * i, Vector3.up) 代表绕着y轴转，当前角转的度数是当前索引*根据点的数量得到每个点之间的度数角度            //设置当前索引的点            line.SetPosition(i, pos);        &#125;    &#125;&#125;</code></pre><hr>]]></content>
+      
+      
+      <categories>
+          
+          <category> Unity </category>
+          
+          <category> Unity基础基础知识 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 基础知识 </tag>
+            
+            <tag> Unity </tag>
+            
+            <tag> Unity基础 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>21.场景异步加载</title>
+      <link href="/2024/03/03/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/21.%E5%9C%BA%E6%99%AF%E5%BC%82%E6%AD%A5%E5%8A%A0%E8%BD%BD/"/>
+      <url>/2024/03/03/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/21.%E5%9C%BA%E6%99%AF%E5%BC%82%E6%AD%A5%E5%8A%A0%E8%BD%BD/</url>
+      
+        <content type="html"><![CDATA[<h1 id="21-场景异步加载"><a href="#21-场景异步加载" class="headerlink" title="21.场景异步加载"></a>21.场景异步加载</h1><hr><h2 id="21-1-知识点"><a href="#21-1-知识点" class="headerlink" title="21.1 知识点"></a>21.1 知识点</h2><h3 id="回顾场景同步切换"><a href="#回顾场景同步切换" class="headerlink" title="回顾场景同步切换"></a>回顾场景同步切换</h3><h4 id="SceneManager-LoadScene-同步加载场景"><a href="#SceneManager-LoadScene-同步加载场景" class="headerlink" title="SceneManager.LoadScene - 同步加载场景"></a>SceneManager.LoadScene - 同步加载场景</h4><ul><li>引用命名空间 UnityEngine.SceneManagement;</li><li>场景同步切换<pre><code class="csharp">SceneManager.LoadScene(&quot;Lesson21_场景异步加载Test&quot;);</code></pre></li></ul><h4 id="场景同步切换的缺点"><a href="#场景同步切换的缺点" class="headerlink" title="场景同步切换的缺点"></a>场景同步切换的缺点</h4><ul><li>在切换场景时，Unity会删除当前场景上所有对象，并且去加载下一个场景的相关信息。</li><li>如果当前场景对象过多或者下一个场景对象过多，这个过程会非常耗时，会让玩家感受到卡顿。</li><li>所以异步切换就是来解决该问题的。</li></ul><h3 id="场景异步切换"><a href="#场景异步切换" class="headerlink" title="场景异步切换"></a>场景异步切换</h3><h4 id="SceneManager-LoadSceneAsync-事件回调异步加载场景"><a href="#SceneManager-LoadSceneAsync-事件回调异步加载场景" class="headerlink" title="SceneManager.LoadSceneAsync - 事件回调异步加载场景"></a>SceneManager.LoadSceneAsync - 事件回调异步加载场景</h4><pre><code class="csharp">void Start()&#123;    // SceneManager中的LoadSceneAsync方法通过事件回调函数异步加载    // 在后台异步加载场景。    // 这个方法有一个异步加载的协程返回值    // AsyncOperation类 异步操作协同程序。里面有isDone、progress、completed等成员    AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(&quot;Lesson21_场景异步加载Test&quot;);    // 当场景异步加载结束后就会自动调用该事件函数，我们如果希望在加载结束后做一些事情，那么就可以在该函数中写处理逻辑    asyncOperation.completed += (aO) =&gt;    &#123;        print(&quot;加载结束&quot;);    &#125;;    asyncOperation.completed += AsynLoadOver;    // 注意：    // 直接用法这种方法异步加载场景的话，就算过场景脚本或脚本依附的对象被销毁，异步加载的回调也能执行    // 因为异步加载的回调被存到事件中了&#125;// 异步加载场景回调private void AsynLoadOver(AsyncOperation ao)&#123;    print(&quot;AsynLoadOver&quot;);&#125;</code></pre><h4 id="协程异步加载"><a href="#协程异步加载" class="headerlink" title="协程异步加载"></a>协程异步加载</h4><pre><code class="csharp">void Start()&#123;    // 通过协程异步加载    // 需要注意的是，加载场景会把当前场景上没有特别处理的对象都删除了    // 所以，协程中的部分逻辑可能是执行不了的    // 因为过场景会把脚本或者脚本依附的对象都销毁了    // 解决思路：让处理场景加载的脚本依附的对象过场景时不被移除    // 让该脚本依附的对象过场景时不会被移除，这样脚本就不被移除，否则协程后面的逻辑会失效    DontDestroyOnLoad(this.gameObject);    // 协程后面的逻辑会失效是因为Unity的协程管理器的机制，只要依附的对象被删除或失活或者脚本被删除，协程就会失效，我们改不了这个机制    StartCoroutine(CoroutineAsynLoadScene(&quot;Lesson21_场景异步加载Test&quot;));&#125;// 异步加载场景协程函数IEnumerator CoroutineAsynLoadScene(string name)&#123;    // 异步加载场景    AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(name);    // 协程的好处是，在异步加载场景时，我可以在加载的同时做一些别的逻辑    print(&quot;异步加载过程中打印的信息&quot;);    // 比如，我们可以在异步加载过程中去更新进度条，一般有两种做法    // 更新进度条第一种做法就是利用场景异步加载的进度去更新，但是不是特别准确，一般也不会直接用    while (!asyncOperation.isDone)    &#123;        print(asyncOperation.progress);        yield return null;    &#125;    // 离开循环后就会认为场景加载结束    // 可以把进度条顶满，然后隐藏进度条    // Unity内部的协程协调器发现是异步加载类型的返回对象，那么就会等待    // 等待异步加载结束后才会继续执行迭代器函数中后面的步骤    yield return asyncOperation;    print(&quot;异步加载结束后打印的信息&quot;);    // 更新进度条第二种做法就是根据你游戏的规则自己定义进度条变化的条件    // 比如：当场景加载结束更新20%进度    // 接着去加载场景中的其他信息，比如动态加载怪物    // 这时进度条再更新20%    // 动态加载场景模型，这时就认为加载结束了，进度条顶满，隐藏进度条&#125;</code></pre><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ul><li><strong>场景异步加载</strong> 和 <strong>资源异步加载</strong> 一样，有两种方式<ul><li>通过事件回调函数</li><li>协程异步加载</li></ul></li><li>他们的优缺点表现和资源异步加载也是一样的<ul><li>事件回调函数<ul><li>优点：写法简单，逻辑清晰</li><li>缺点：只能加载完场景做一些事情，不能再加载过程中处理逻辑</li></ul></li><li>协程异步加载<ul><li>优点：可以在加载过程中处理逻辑，比如进度条更新等</li><li>缺点：写法较为麻烦，要通过协程</li></ul></li></ul></li></ul><hr><h2 id="21-2-知识点代码"><a href="#21-2-知识点代码" class="headerlink" title="21.2 知识点代码"></a>21.2 知识点代码</h2><pre><code class="csharp">using System.Collections;using System.Collections.Generic;using UnityEngine;using UnityEngine.SceneManagement;public class Lesson21_场景异步加载 : MonoBehaviour&#123;    void Start()    &#123;        #region 知识点一 回顾场景同步切换        //引用命名空间 UnityEngine.SceneManagement;        //场景同步切换        SceneManager.LoadScene(&quot;Lesson21_场景异步加载Test&quot;);        //场景同步切换的缺点        //在切换场景时        //Unity会删除当前场景上所有对象        //并且去加载下一个场景的相关信息        //如果当前场景 对象过多或者下一个场景对象过多        //这个过程会非常的耗时 会让玩家感受到卡顿        //所以异步切换就是来解决该问题的        #endregion        #region 知识点二 场景异步切换        //场景异步加载和资源异步加载 几乎一致 有两种方式        //SceneManager中的LoadSceneAsync方法 通过事件回调函数 异步加载        //在后台异步加载场景。        //这个方法有一个异步加载的协程返回值        //AsyncOperation类 异步操作协同程序。里面有isDone progress completed等成员        AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(&quot;Lesson21_场景异步加载Test&quot;);        //当场景异步加载结束后 就会自动调用该事件函数 我们如果希望在加载结束后 做一些事情 那么久可以在该函数中        //写处理逻辑        asyncOperation.completed += (aO) =&gt;        &#123;            print(&quot;加载结束&quot;);        &#125;;        asyncOperation.completed += AsynLoadOver;        //注意：        //直接用法这种方法异步加载场景的话，就算过场景脚本或脚本依附的对象被销毁，异步加载的回调也能执行        //因为异步加载的回调被存到事件中了        //通过协程异步加载        //需要注意的是 加载场景会把当前场景上 没有特别处理的对象 都删除了        //所以 协程中的部分逻辑 可能是执行不了的         //因为过场景会把脚本或者脚本依附的对象都销毁了        //解决思路：让处理场景加载的脚本依附的对象 过场景时 不被移除        //让该脚本依附的对象 过场景时 不会被 移除 这样脚本就不被移除 不然协程后面的逻辑会失效        DontDestroyOnLoad(this.gameObject);        //协程后面的逻辑会失效是因为Unity的协程管理器的机制，只要依附的对象被删除或失活或者脚本被删除协程就会失效，我们改不了这个机制        StartCoroutine(CoroutineAsynLoadScene(&quot;Lesson21_场景异步加载Test&quot;));        #endregion        #region 总结        //场景异步加载 和 资源异步加载 一样        //有两种方式        //1.通过事件回调函数        //2.协程异步加载        //他们的优缺点表现和资源异步加载 也是一样的        //1.事件回调函数        //优点：写法简单，逻辑清晰        //缺点：只能加载完场景做一些事情 不能再加载过程中处理逻辑        //2.协程异步加载        //优点：可以在加载过程中处理逻辑，比如进度条更新等        //缺点：写法较为麻烦，要通过协程        #endregion    &#125;    //异步加载场景回调    private void AsynLoadOver(AsyncOperation ao)    &#123;        print(&quot;AsynLoadOver&quot;);    &#125;    //异步加载场景协程函数    IEnumerator CoroutineAsynLoadScene(string name)    &#123;        //异步加载场景        AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(name);        //协程的好处 是异步加载场景时 我可以在加载的同时 做一些别的逻辑        print(&quot;异步加载过程中 打印的信息&quot;);        //比如 我们可以在异步加载过程中 去更新进度条 一般有两种做法        //更新进度条第一种做法 就是利用 场景异步加载 的进度 去更新 但是 不是特别准确 一般也不会直接用        while (!asyncOperation.isDone)        &#123;            print(asyncOperation.progress);            yield return null;        &#125;        //离开循环后 就会认为场景加载结束        //可以把进度条顶满 然后 隐藏进度条        //Unity内部的 协程协调器 发现是异步加载类型的返回对象 那么就会等待        //等待异步加载结束后 才会继续执行 迭代器函数中后面的步骤        yield return asyncOperation;        print(&quot;异步加载结束后 打印的信息&quot;);        //更新进度条第二种做法 就是根据你游戏的规则 自己定义 进度条变化的条件        //比如：当场景加载结束 更新20%进度        //接着去加载场景中 的其它信息        //比如        //动态加载怪物        //这时 进度条 再更新20%        //动态加载 场景模型        //这时 就认为 加载结束了 进度条顶满         //隐藏进度条    &#125;&#125;</code></pre><hr><h2 id="21-3-练习题"><a href="#21-3-练习题" class="headerlink" title="21.3 练习题"></a>21.3 练习题</h2><h3 id="请写一个简单的场景管理器，提供统一的方法给外部用于场景异步切换，外部可以传入委托用于当异步切换结束时执行某些逻辑"><a href="#请写一个简单的场景管理器，提供统一的方法给外部用于场景异步切换，外部可以传入委托用于当异步切换结束时执行某些逻辑" class="headerlink" title="请写一个简单的场景管理器，提供统一的方法给外部用于场景异步切换，外部可以传入委托用于当异步切换结束时执行某些逻辑"></a>请写一个简单的场景管理器，提供统一的方法给外部用于场景异步切换，外部可以传入委托用于当异步切换结束时执行某些逻辑</h3><h4 id="创建场景管理器单例类，添加异步加载场景函数并实现："><a href="#创建场景管理器单例类，添加异步加载场景函数并实现：" class="headerlink" title="创建场景管理器单例类，添加异步加载场景函数并实现："></a>创建场景管理器单例类，添加异步加载场景函数并实现：</h4><pre><code class="csharp">// 定义一个场景管理类 public class SceneMgr&#123;    // 使用instance来实现单例模式，因为构造函数被声明为private，    // 防止在类外部实例化本类的对象，保证了全局只有一个实例。    private static SceneMgr instance = new SceneMgr();            // 类似于getter方法，返回静态的SceneMgr实例    public static SceneMgr Instance =&gt; instance;        // 构造函数私有化，使得无法在类外部通过new直接创建该类的对象    private SceneMgr() &#123; &#125;        // 加载场景的方法，需要传入目标场景的名称和一个UnityAction类型的委托参数    public void LoadScene(string name, UnityAction action)    &#123;        //注意：资源异步加载的时候委托要有个泛型参数是因为要做的加载的是啥类型as一下                // 异步加载目标场景，SceneManager.LoadSceneAsync返回一个AsyncOperation类型的值        AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(name);                // 在异步加载完成后执行的回调函数，将传入的委托类型的参数作为参数传入        asyncOperation.completed += (aO) =&gt;        &#123;            //注意：资源异步加载的时候用到aO这个参数是因为要把aO处理下拿到asset            //(asyncOperation as ResourceRequest).asset                        //通过拉姆达表达式 包裹一层            //在内部 直接调用外部传入的委托即可            action();  // 直接执行传入的委托        &#125;;    &#125;&#125;</code></pre><h4 id="测试使用场景管理类异步加载："><a href="#测试使用场景管理类异步加载：" class="headerlink" title="测试使用场景管理类异步加载："></a>测试使用场景管理类异步加载：</h4><pre><code class="csharp">SceneMgr.Instance.LoadScene(&quot;Lesson21_场景异步加载Test&quot;, () =&gt; &#123;    print(&quot;加载结束&quot;);&#125;);// 这样加载一次代码量会少很多#endregion</code></pre><hr><h2 id="21-4-练习题代码"><a href="#21-4-练习题代码" class="headerlink" title="21.4 练习题代码"></a>21.4 练习题代码</h2><h3 id="SceneMgr"><a href="#SceneMgr" class="headerlink" title="SceneMgr"></a>SceneMgr</h3><pre><code class="csharp">// 引入常用的Unity命名空间using System.Collections;using System.Collections.Generic;using UnityEngine;using UnityEngine.Events;using UnityEngine.SceneManagement;// 定义一个场景管理类 public class SceneMgr&#123;    // 使用instance来实现单例模式，因为构造函数被声明为private，    // 防止在类外部实例化本类的对象，保证了全局只有一个实例。    private static SceneMgr instance = new SceneMgr();        // 类似于getter方法，返回静态的SceneMgr实例    public static SceneMgr Instance =&gt; instance;    // 构造函数私有化，使得无法在类外部通过new直接创建该类的对象    private SceneMgr() &#123; &#125;    // 加载场景的方法，需要传入目标场景的名称和一个UnityAction类型的委托参数    public void LoadScene(string name, UnityAction action)    &#123;        //注意：资源异步加载的时候委托要有个泛型参数是因为要做的加载的是啥类型as一下        // 异步加载目标场景，SceneManager.LoadSceneAsync返回一个AsyncOperation类型的值        AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(name);        // 在异步加载完成后执行的回调函数，将传入的委托类型的参数作为参数传入        asyncOperation.completed += (aO) =&gt;        &#123;            //注意：资源异步加载的时候用到aO这个参数是因为要把aO处理下拿到asset            //(asyncOperation as ResourceRequest).asset            //通过拉姆达表达式 包裹一层            //在内部 直接调用外部传入的委托即可            action();  // 直接执行传入的委托        &#125;;    &#125;&#125;</code></pre><h3 id="Lesson21-练习题"><a href="#Lesson21-练习题" class="headerlink" title="Lesson21_练习题"></a>Lesson21_练习题</h3><pre><code class="csharp">using System.Collections;using System.Collections.Generic;using UnityEngine;public class Lesson21_练习题 : MonoBehaviour&#123;    #region 练习题一    //请写一个简单的场景管理器，提供统一的方法给外部用于场景异步切换,外部可以传入委托用于当异步切换结束时执行某些逻辑    void Start()    &#123;        SceneMgr.Instance.LoadScene(&quot;Lesson21_场景异步加载Test&quot;, () =&gt; &#123;            print(&quot;加载结束&quot;);        &#125;);        //这样加载一次代码量会少很多    &#125;    #endregion&#125;</code></pre><hr>]]></content>
+      
+      
+      <categories>
+          
+          <category> Unity </category>
+          
+          <category> Unity基础基础知识 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 基础知识 </tag>
+            
+            <tag> Unity </tag>
+            
+            <tag> Unity基础 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>20.Resources卸载资源</title>
       <link href="/2024/03/01/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/20.Resources%E8%B5%84%E6%BA%90%E5%8A%A8%E6%80%81%E5%8A%A0%E8%BD%BD-Resources%E5%8D%B8%E8%BD%BD%E8%B5%84%E6%BA%90/"/>
       <url>/2024/03/01/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/20.Resources%E8%B5%84%E6%BA%90%E5%8A%A8%E6%80%81%E5%8A%A0%E8%BD%BD-Resources%E5%8D%B8%E8%BD%BD%E8%B5%84%E6%BA%90/</url>
@@ -158,9 +290,9 @@
             
             <tag> Unity </tag>
             
-            <tag> Unity基础 </tag>
-            
             <tag> MonoBehavior中的重要内容 </tag>
+            
+            <tag> Unity基础 </tag>
             
             <tag> 协同程序 </tag>
             
@@ -193,9 +325,9 @@
             
             <tag> Unity </tag>
             
-            <tag> Unity基础 </tag>
-            
             <tag> MonoBehavior中的重要内容 </tag>
+            
+            <tag> Unity基础 </tag>
             
             <tag> 协同程序 </tag>
             
@@ -228,9 +360,9 @@
             
             <tag> Unity </tag>
             
-            <tag> Unity基础 </tag>
-            
             <tag> MonoBehavior中的重要内容 </tag>
+            
+            <tag> Unity基础 </tag>
             
         </tags>
       
@@ -2074,11 +2206,11 @@
             
             <tag> 必备知识点 </tag>
             
+            <tag> 反射和特性 </tag>
+            
             <tag> UI系统 </tag>
             
             <tag> GUI </tag>
-            
-            <tag> 反射和特性 </tag>
             
         </tags>
       
@@ -3870,11 +4002,11 @@
             
             <tag> Unity </tag>
             
-            <tag> MonoBehavior中的重要内容 </tag>
-            
             <tag> Unity入门 </tag>
             
             <tag> Unity脚本基础 </tag>
+            
+            <tag> MonoBehavior中的重要内容 </tag>
             
         </tags>
       
@@ -5738,9 +5870,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> CSharp核心 </tag>
-            
             <tag> 实践项目 </tag>
+            
+            <tag> CSharp核心 </tag>
             
         </tags>
       
@@ -5769,9 +5901,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> CSharp核心 </tag>
-            
             <tag> 实践项目 </tag>
+            
+            <tag> CSharp核心 </tag>
             
         </tags>
       
@@ -5800,9 +5932,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> CSharp核心 </tag>
-            
             <tag> 实践项目 </tag>
+            
+            <tag> CSharp核心 </tag>
             
         </tags>
       
@@ -5831,9 +5963,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> CSharp核心 </tag>
-            
             <tag> 实践项目 </tag>
+            
+            <tag> CSharp核心 </tag>
             
         </tags>
       
@@ -5862,9 +5994,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> CSharp核心 </tag>
-            
             <tag> 实践项目 </tag>
+            
+            <tag> CSharp核心 </tag>
             
         </tags>
       
@@ -5893,9 +6025,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> CSharp核心 </tag>
-            
             <tag> 实践项目 </tag>
+            
+            <tag> CSharp核心 </tag>
             
         </tags>
       
@@ -5924,9 +6056,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> CSharp核心 </tag>
-            
             <tag> 实践项目 </tag>
+            
+            <tag> CSharp核心 </tag>
             
         </tags>
       
@@ -5955,9 +6087,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> CSharp核心 </tag>
-            
             <tag> 实践项目 </tag>
+            
+            <tag> CSharp核心 </tag>
             
         </tags>
       
@@ -5986,9 +6118,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> CSharp核心 </tag>
-            
             <tag> 实践项目 </tag>
+            
+            <tag> CSharp核心 </tag>
             
         </tags>
       
@@ -6017,9 +6149,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> CSharp核心 </tag>
-            
             <tag> 实践项目 </tag>
+            
+            <tag> CSharp核心 </tag>
             
         </tags>
       
@@ -6048,9 +6180,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> CSharp核心 </tag>
-            
             <tag> 实践项目 </tag>
+            
+            <tag> CSharp核心 </tag>
             
         </tags>
       
@@ -6079,9 +6211,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> CSharp核心 </tag>
-            
             <tag> 实践项目 </tag>
+            
+            <tag> CSharp核心 </tag>
             
         </tags>
       
@@ -6110,9 +6242,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> CSharp核心 </tag>
-            
             <tag> 实践项目 </tag>
+            
+            <tag> CSharp核心 </tag>
             
         </tags>
       
@@ -6141,9 +6273,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> CSharp核心 </tag>
-            
             <tag> 实践项目 </tag>
+            
+            <tag> CSharp核心 </tag>
             
         </tags>
       
@@ -6172,11 +6304,11 @@
             
             <tag> CSharp </tag>
             
-            <tag> CSharp核心 </tag>
-            
             <tag> 实践项目 </tag>
             
             <tag> 必备知识点 </tag>
+            
+            <tag> CSharp核心 </tag>
             
         </tags>
       
@@ -6205,11 +6337,11 @@
             
             <tag> CSharp </tag>
             
-            <tag> CSharp核心 </tag>
-            
             <tag> 实践项目 </tag>
             
             <tag> 必备知识点 </tag>
+            
+            <tag> CSharp核心 </tag>
             
         </tags>
       
@@ -6238,11 +6370,11 @@
             
             <tag> CSharp </tag>
             
-            <tag> CSharp核心 </tag>
-            
             <tag> 实践项目 </tag>
             
             <tag> 必备知识点 </tag>
+            
+            <tag> CSharp核心 </tag>
             
         </tags>
       
@@ -7266,9 +7398,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> CSharp基础 </tag>
-            
             <tag> 实践项目 </tag>
+            
+            <tag> CSharp基础 </tag>
             
         </tags>
       
@@ -7297,9 +7429,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> CSharp基础 </tag>
-            
             <tag> 实践项目 </tag>
+            
+            <tag> CSharp基础 </tag>
             
         </tags>
       
@@ -7328,9 +7460,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> CSharp基础 </tag>
-            
             <tag> 实践项目 </tag>
+            
+            <tag> CSharp基础 </tag>
             
         </tags>
       
@@ -7359,9 +7491,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> CSharp基础 </tag>
-            
             <tag> 实践项目 </tag>
+            
+            <tag> CSharp基础 </tag>
             
         </tags>
       
@@ -7390,9 +7522,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> CSharp基础 </tag>
-            
             <tag> 实践项目 </tag>
+            
+            <tag> CSharp基础 </tag>
             
         </tags>
       
@@ -7421,9 +7553,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> CSharp基础 </tag>
-            
             <tag> 实践项目 </tag>
+            
+            <tag> CSharp基础 </tag>
             
         </tags>
       
@@ -7452,9 +7584,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> CSharp基础 </tag>
-            
             <tag> 实践项目 </tag>
+            
+            <tag> CSharp基础 </tag>
             
         </tags>
       
@@ -7483,9 +7615,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> CSharp基础 </tag>
-            
             <tag> 实践项目 </tag>
+            
+            <tag> CSharp基础 </tag>
             
         </tags>
       
@@ -7514,9 +7646,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> CSharp基础 </tag>
-            
             <tag> 实践项目 </tag>
+            
+            <tag> CSharp基础 </tag>
             
         </tags>
       
@@ -7545,9 +7677,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> CSharp基础 </tag>
-            
             <tag> 实践项目 </tag>
+            
+            <tag> CSharp基础 </tag>
             
         </tags>
       
@@ -7576,9 +7708,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> CSharp基础 </tag>
-            
             <tag> 实践项目 </tag>
+            
+            <tag> CSharp基础 </tag>
             
         </tags>
       
@@ -7607,9 +7739,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> CSharp基础 </tag>
-            
             <tag> 实践项目 </tag>
+            
+            <tag> CSharp基础 </tag>
             
         </tags>
       
@@ -7638,9 +7770,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> CSharp基础 </tag>
-            
             <tag> 语法知识 </tag>
+            
+            <tag> CSharp基础 </tag>
             
         </tags>
       
@@ -7669,9 +7801,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> CSharp基础 </tag>
-            
             <tag> 语法知识 </tag>
+            
+            <tag> CSharp基础 </tag>
             
             <tag> 排序 </tag>
             
@@ -7702,9 +7834,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> CSharp基础 </tag>
-            
             <tag> 语法知识 </tag>
+            
+            <tag> CSharp基础 </tag>
             
             <tag> 排序 </tag>
             
@@ -7735,9 +7867,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> CSharp基础 </tag>
-            
             <tag> 语法知识 </tag>
+            
+            <tag> CSharp基础 </tag>
             
             <tag> 复杂数据类型 </tag>
             
@@ -7768,9 +7900,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> CSharp基础 </tag>
-            
             <tag> 语法知识 </tag>
+            
+            <tag> CSharp基础 </tag>
             
             <tag> 函数 </tag>
             
@@ -7801,9 +7933,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> CSharp基础 </tag>
-            
             <tag> 语法知识 </tag>
+            
+            <tag> CSharp基础 </tag>
             
             <tag> 函数 </tag>
             
@@ -7834,9 +7966,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> CSharp基础 </tag>
-            
             <tag> 语法知识 </tag>
+            
+            <tag> CSharp基础 </tag>
             
             <tag> 函数 </tag>
             
@@ -7867,9 +7999,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> CSharp基础 </tag>
-            
             <tag> 语法知识 </tag>
+            
+            <tag> CSharp基础 </tag>
             
             <tag> 函数 </tag>
             
@@ -7900,9 +8032,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> CSharp基础 </tag>
-            
             <tag> 语法知识 </tag>
+            
+            <tag> CSharp基础 </tag>
             
             <tag> 函数 </tag>
             
@@ -7933,9 +8065,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> CSharp基础 </tag>
-            
             <tag> 语法知识 </tag>
+            
+            <tag> CSharp基础 </tag>
             
             <tag> 值类型和引用类型 </tag>
             
@@ -7966,9 +8098,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> CSharp基础 </tag>
-            
             <tag> 语法知识 </tag>
+            
+            <tag> CSharp基础 </tag>
             
             <tag> 值类型和引用类型 </tag>
             
@@ -7999,9 +8131,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> CSharp基础 </tag>
-            
             <tag> 语法知识 </tag>
+            
+            <tag> CSharp基础 </tag>
             
             <tag> 复杂数据类型 </tag>
             
@@ -8032,9 +8164,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> CSharp基础 </tag>
-            
             <tag> 语法知识 </tag>
+            
+            <tag> CSharp基础 </tag>
             
             <tag> 复杂数据类型 </tag>
             
@@ -8065,9 +8197,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> CSharp基础 </tag>
-            
             <tag> 语法知识 </tag>
+            
+            <tag> CSharp基础 </tag>
             
             <tag> 复杂数据类型 </tag>
             
@@ -8098,9 +8230,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> CSharp基础 </tag>
-            
             <tag> 语法知识 </tag>
+            
+            <tag> CSharp基础 </tag>
             
             <tag> 复杂数据类型 </tag>
             
@@ -8131,9 +8263,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> CSharp基础 </tag>
-            
             <tag> 语法知识 </tag>
+            
+            <tag> CSharp基础 </tag>
             
             <tag> 复杂数据类型 </tag>
             
@@ -8164,9 +8296,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> CSharp基础 </tag>
-            
             <tag> 语法知识 </tag>
+            
+            <tag> CSharp基础 </tag>
             
         </tags>
       
@@ -8268,11 +8400,11 @@
     
     
     <entry>
-      <title>12.公主相关</title>
-      <link href="/2024/01/08/CSharp/02.CSharp%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/12.%E6%B8%B8%E6%88%8F%E5%9C%BA%E6%99%AF-%E5%85%AC%E4%B8%BB%E7%9B%B8%E5%85%B3/"/>
-      <url>/2024/01/08/CSharp/02.CSharp%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/12.%E6%B8%B8%E6%88%8F%E5%9C%BA%E6%99%AF-%E5%85%AC%E4%B8%BB%E7%9B%B8%E5%85%B3/</url>
+      <title>11.玩家战斗相关</title>
+      <link href="/2024/01/08/CSharp/02.CSharp%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/11.%E6%B8%B8%E6%88%8F%E5%9C%BA%E6%99%AF-%E7%8E%A9%E5%AE%B6%E6%88%98%E6%96%97%E7%9B%B8%E5%85%B3/"/>
+      <url>/2024/01/08/CSharp/02.CSharp%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/11.%E6%B8%B8%E6%88%8F%E5%9C%BA%E6%99%AF-%E7%8E%A9%E5%AE%B6%E6%88%98%E6%96%97%E7%9B%B8%E5%85%B3/</url>
       
-        <content type="html"><![CDATA[<h1 id="12-游戏场景-公主相关"><a href="#12-游戏场景-公主相关" class="headerlink" title="12.游戏场景-公主相关"></a>12.游戏场景-公主相关</h1><hr><h2 id="12-1-知识点"><a href="#12-1-知识点" class="headerlink" title="12.1 知识点"></a>12.1 知识点</h2><h3 id="声明公主的相关属性"><a href="#声明公主的相关属性" class="headerlink" title="声明公主的相关属性"></a>声明公主的相关属性</h3><pre><code class="csharp">int princessX = 24;int princessY = 5;string princessIcon = &quot;★&quot;;ConsoleColor princessColor = ConsoleColor.Blue;</code></pre><h3 id="声明成功拯救公主后跳出游戏主逻辑死循环的标识"><a href="#声明成功拯救公主后跳出游戏主逻辑死循环的标识" class="headerlink" title="声明成功拯救公主后跳出游戏主逻辑死循环的标识"></a>声明成功拯救公主后跳出游戏主逻辑死循环的标识</h3><pre><code class="csharp">// 作用是从while循环内部的switch改变标识，用来跳出外层的while循环bool isOver = false;</code></pre><h3 id="游戏场景死循环内，boss死亡时添加逻辑分支，把公主绘制出来"><a href="#游戏场景死循环内，boss死亡时添加逻辑分支，把公主绘制出来" class="headerlink" title="游戏场景死循环内，boss死亡时添加逻辑分支，把公主绘制出来"></a>游戏场景死循环内，boss死亡时添加逻辑分支，把公主绘制出来</h3><pre><code class="csharp">else&#123;    Console.SetCursorPosition(princessX, princessY);    Console.ForegroundColor = princessColor;    Console.Write(princessIcon);&#125;</code></pre><h3 id="游戏场景死循环内的玩家输入枚举分支中，WASD上下左右移动过程中，如果boss死亡且位置和公主重合了要回退，不能将公主覆盖"><a href="#游戏场景死循环内的玩家输入枚举分支中，WASD上下左右移动过程中，如果boss死亡且位置和公主重合了要回退，不能将公主覆盖" class="headerlink" title="游戏场景死循环内的玩家输入枚举分支中，WASD上下左右移动过程中，如果boss死亡且位置和公主重合了要回退，不能将公主覆盖"></a>游戏场景死循环内的玩家输入枚举分支中，WASD上下左右移动过程中，如果boss死亡且位置和公主重合了要回退，不能将公主覆盖</h3><pre><code class="csharp">else if (playerX == princessX &amp;&amp; playerY == princessY &amp;&amp; bossHp &lt;= 0)&#123;    // 拉回去    ++playerY;&#125;</code></pre><h3 id="游戏场景死循环内的玩家输入枚举分支中，添加按J键的分支逻辑"><a href="#游戏场景死循环内的玩家输入枚举分支中，添加按J键的分支逻辑" class="headerlink" title="游戏场景死循环内的玩家输入枚举分支中，添加按J键的分支逻辑"></a>游戏场景死循环内的玩家输入枚举分支中，添加按J键的分支逻辑</h3><pre><code class="csharp">// 判断是否在公主身边按J键else if ((playerX == princessX &amp;&amp; playerY == princessY - 1 ||          playerX == princessX &amp;&amp; playerY == princessY + 1 ||          playerX == princessX - 2 &amp;&amp; playerY == princessY ||          playerX == princessX + 2 &amp;&amp; playerY == princessY) &amp;&amp; bossHp &lt;= 0)&#123;    // 改变场景ID    nowSceneID = 3;    gameOverInfo = &quot;游戏通关&quot;;    // 改变跳出成功拯救公主后跳出游戏主逻辑死循环的标识    // 跳出游戏界面的while循环，回到主循环    isOver = true;&#125;</code></pre><h3 id="游戏场景逻辑末尾添加跳出是否跳出循环判断逻辑"><a href="#游戏场景逻辑末尾添加跳出是否跳出循环判断逻辑" class="headerlink" title="游戏场景逻辑末尾添加跳出是否跳出循环判断逻辑"></a>游戏场景逻辑末尾添加跳出是否跳出循环判断逻辑</h3><pre><code class="csharp">// 外层while循环逻辑if (isOver)&#123;    // 就是和while配对    break;&#125;</code></pre><hr><h2 id="12-2-知识点代码"><a href="#12-2-知识点代码" class="headerlink" title="12.2 知识点代码"></a>12.2 知识点代码</h2><pre><code class="csharp">#region 4-8 游戏场景逻辑#region 4 不变的红墙//设置颜色为红色 为画出红墙做准备Console.ForegroundColor = ConsoleColor.Red;//开始画墙//横着的墙for (int i = 0; i &lt; w; i += 2)&#123;    //上方墙    Console.SetCursorPosition(i, 0);    Console.Write(&quot;■&quot;);    //下方墙    Console.SetCursorPosition(i, h - 1);    Console.Write(&quot;■&quot;);    //中间墙    Console.SetCursorPosition(i, h - 6);    Console.Write(&quot;■&quot;);&#125;//竖着的墙for (int i = 0; i &lt; h; i++)&#123;    //左边的墙    Console.SetCursorPosition(0, i);    Console.Write(&quot;■&quot;);    //右边的墙    Console.SetCursorPosition(w - 2, i);    Console.Write(&quot;■&quot;);&#125;#endregion#region 5 Boss相关//声明boss的相关属性//包括位置坐标 最大最小攻击力 血量 boss图标 boss颜色int bossX = 24;int bossY = 15;int bossAtkMin = 7;int bossAtkMax = 13;int bossHp = 100;string bossIcon = &quot;■&quot;;//申明一个颜色变量 用于绘制boss时使用ConsoleColor bossColor = ConsoleColor.Green;#endregion#region 6 玩家属性相关//声明玩家的相关属性//包括位置坐标 最大最小攻击力 血量 玩家图标 玩家颜色 输入的内容int playerX = 4;int playerY = 5;int playerAtkMin = 8;int playerAtkMax = 12;int playerHp = 100;string playerIcon = &quot;●&quot;;//申明一个颜色变量 用于绘制玩家时使用ConsoleColor playerColor = ConsoleColor.Yellow;//申明一个字符型变量来存储玩家输入的内容  在外面申明可以节约性能char playerInput;#endregion#region 8 公主相关//声明公主的相关属性int princessX = 24;int princessY = 5;string princessIcon = &quot;★&quot;;ConsoleColor princessColor = ConsoleColor.Blue;//声明成功拯救公主后跳出游戏主逻辑死循环的标识//作用是 从while循环内部的switch 改变标识 用来跳出外层的while循环bool isOver = false;#endregion#region 7 玩家战斗相关//声明战斗状态标识bool isFight = false;#endregion//设置游戏场景死循环//专门用来 检测 玩家输入相关循环while (true)&#123;    #region 5 Boss相关    //游戏场景死循环内 把boss绘制出来    //boss活着时才绘制    if (bossHp &gt; 0)    &#123;        //设置光标位置和颜色 绘制boss图标        Console.SetCursorPosition(bossX, bossY);        Console.ForegroundColor = bossColor;        Console.Write(bossIcon);    &#125;    #endregion    #region 8 公主相关    //游戏场景死循环内 boss死亡时 添加逻辑分支 把公主绘制出来    else    &#123;        Console.SetCursorPosition(princessX, princessY);        Console.ForegroundColor = princessColor;        Console.Write(princessIcon);    &#125;    #endregion    #region 6 玩家移动相关    //游戏场景死循环内 把玩家绘制出来    //设置光标位置和颜色 绘制玩家图标    Console.SetCursorPosition(playerX, playerY);    Console.ForegroundColor = playerColor;    Console.Write(playerIcon);    //游戏场景死循环内 得到玩家输入    playerInput = Console.ReadKey(true).KeyChar;    #endregion    //游戏场景死循环内 根据是否是战斗状态处理不同逻辑 把绘制玩家图形和玩家输入枚举放在非战斗状态的分支中    //战斗状态处理什么逻辑    if (isFight)    &#123;        //玩家战斗相关逻辑        #region 7 玩家战斗相关        //游戏场景死循环内 处理进入战斗状态后按j键的逻辑        //如果是战斗状态 应该做什么        //只会处理J键的逻辑         if (playerInput == &#39;J&#39; || playerInput == &#39;j&#39;)        &#123;            //在这判断 玩家或者boss 是否死亡 如果死亡了 继续之后的流程            //如果玩家死亡            if (playerHp &lt;= 0)            &#123;                //游戏结束                //输掉了 应该直接显示 我们的 游戏结束界面                //切换场景id                nowSceneID = 3;                gameOverInfo = &quot;游戏失败&quot;;                break;            &#125;            //如果boss死亡            else if (bossHp &lt;= 0)            &#123;                //去营救公主                //boss擦除                Console.SetCursorPosition(bossX, bossY);                Console.Write(&quot;  &quot;);                isFight = false;            &#125;            //玩家和boss都没死 处理按J键对战逻辑            else            &#123;                //得到随机对象                Random r = new Random();                //玩家打boss                //随机出玩家的攻击力                int atk = r.Next(playerAtkMin, playerAtkMax);                //boss血量减对应的攻击力                bossHp -= atk;                //打印玩家的攻击信息                //设置输出的字体颜色                Console.ForegroundColor = ConsoleColor.Green;                //先擦除这一行 上次显示的内容                Console.SetCursorPosition(2, h - 4);                Console.Write(&quot;                                           &quot;);                //再来写新的信息                //输出玩家对boss的伤害信息                Console.SetCursorPosition(2, h - 4);                Console.Write(&quot;你对boss造成了&#123;0&#125;点伤害，boss剩余血量为&#123;1&#125;&quot;, atk, bossHp);                //boss打玩家                //boss大于0才可以对玩家进行攻击                if (bossHp &gt; 0)                &#123;                    //随机出boss的攻击力                    atk = r.Next(bossAtkMin, bossAtkMax);                    //玩家血量减对应的攻击力                    playerHp -= atk;                    //打印boss的攻击信息                    //设置输出的字体颜色                    Console.ForegroundColor = ConsoleColor.Yellow;                    //先擦除这一行 上次显示的内容                    Console.SetCursorPosition(2, h - 3);                    Console.Write(&quot;                                           &quot;);                    //再来写新的信息                    //如果boss把玩家打死了                    if (playerHp &lt;= 0)                    &#123;                        //输出失败信息                        Console.SetCursorPosition(2, h - 3);                        Console.Write(&quot;很遗憾，你未能通过boss的试炼，战败了&quot;);                    &#125;                    //boss没有把玩家打死                    else                    &#123;                        //输出boss对玩家的伤害信息                        Console.SetCursorPosition(2, h - 3);                        Console.Write(&quot;boss对你造成了&#123;0&#125;点伤害，你的剩余血量为&#123;1&#125;&quot;, atk, playerHp);                    &#125;                &#125;                //boss血量小于等于boss死亡了                else                &#123;                    //擦除之前的战斗信息                    Console.SetCursorPosition(2, h - 5);                    Console.Write(&quot;                                           &quot;);                    Console.SetCursorPosition(2, h - 4);                    Console.Write(&quot;                                           &quot;);                    Console.SetCursorPosition(2, h - 3);                    Console.Write(&quot;                                           &quot;);                    //显示恭喜胜利的信息                    Console.SetCursorPosition(2, h - 5);                    Console.Write(&quot;你战胜了boss，快去营救公主&quot;);                    Console.SetCursorPosition(2, h - 4);                    Console.Write(&quot;前往公主身边按J键继续&quot;);                &#125;            &#125;        &#125;        #endregion    &#125;    //非战斗状态处理什么逻辑    else    &#123;        //玩家移动相关逻辑        //包括擦除上一次玩家所在位置绘制的玩家图形和根据玩家输入的字符枚举获得新的位置信息的switch        #region 6 玩家移动相关        //游戏场景死循环内 擦除上一次玩家所在位置绘制的玩家图形        Console.SetCursorPosition(playerX, playerY);        Console.Write(&quot;  &quot;);        //游戏场景死循环内 根据玩家输入的字符枚举获得新的位置信息        switch (playerInput)        &#123;            case &#39;W&#39;:            case &#39;w&#39;:                --playerY;                if (playerY &lt; 1)                &#123;                    playerY = 1;                &#125;                //位置如果和boss重合了 并且boss没有死                else if (playerX == bossX &amp;&amp; playerY == bossY &amp;&amp; bossHp &gt; 0)                &#123;                    //拉回去                    ++playerY;                &#125;                //游戏场景死循环内的玩家输入枚举分支中 wasd上下左右移动过程中                //如果boss死亡且位置和公主重合了要回退 不能将公主覆盖                else if ( playerX == princessX &amp;&amp; playerY == princessY &amp;&amp; bossHp &lt;= 0 )                &#123;                    //拉回去                    ++playerY;                &#125;                break;            case &#39;A&#39;:            case &#39;a&#39;:                playerX -= 2;                if (playerX &lt; 2)                &#123;                    playerX = 2;                &#125;                else if (playerX == bossX &amp;&amp; playerY == bossY &amp;&amp; bossHp &gt; 0)                &#123;                    //拉回去                    playerX += 2;                &#125;                else if (playerX == princessX &amp;&amp; playerY == princessY &amp;&amp; bossHp &lt;= 0)                &#123;                    //拉回去                    playerX += 2;                &#125;                break;            case &#39;S&#39;:            case &#39;s&#39;:                ++playerY;                if (playerY &gt; h - 7)                &#123;                    playerY = h - 7;                &#125;                else if (playerX == bossX &amp;&amp; playerY == bossY &amp;&amp; bossHp &gt; 0)                &#123;                    //拉回去                    --playerY;                &#125;                else if (playerX == princessX &amp;&amp; playerY == princessY &amp;&amp; bossHp &lt;= 0)                &#123;                    //拉回去                    --playerY;                &#125;                break;            case &#39;D&#39;:            case &#39;d&#39;:                playerX += 2;                if (playerX &gt; w - 4)                &#123;                    playerX = w - 4;                &#125;                else if (playerX == bossX &amp;&amp; playerY == bossY &amp;&amp; bossHp &gt; 0)                &#123;                    //拉回去                    playerX -= 2;                &#125;                else if (playerX == princessX &amp;&amp; playerY == princessY &amp;&amp; bossHp &lt;= 0)                &#123;                    //拉回去                    playerX -= 2;                &#125;                break;            //游戏场景死循环内的玩家输入枚举分支中 添加按j键的分支逻辑            case &#39;J&#39;:            case &#39;j&#39;:                #region 7 玩家战斗相关                //游戏场景死循环内的玩家输入枚举分支中的j键的分支中 添加玩家战斗相关逻辑                //要让玩家不能再移动                //更改战斗状态标识 可以跳出当前游戏场景死循环 就进入战斗状态逻辑 不会进入非战斗状态的移动逻辑                //下方能够显示信息                // 当玩家在boss身边一格且boss血量大于0的时候可以开始战斗                if ((playerX == bossX &amp;&amp; playerY == bossY - 1 ||                    playerX == bossX &amp;&amp; playerY == bossY + 1 ||                    playerX == bossX - 2 &amp;&amp; playerY == bossY ||                    playerX == bossX + 2 &amp;&amp; playerY == bossY) &amp;&amp; bossHp &gt; 0)                &#123;                    //可以开始战斗 更改战斗状态标识                    isFight = true;                    //输出战斗中的对战信息                    Console.SetCursorPosition(2, h - 5);                    Console.ForegroundColor = ConsoleColor.White;                    Console.Write(&quot;开始和Boss战斗了，按J键继续&quot;);                    Console.SetCursorPosition(2, h - 4);                    Console.Write(&quot;玩家当前血量为&#123;0&#125;&quot;, playerHp);                    Console.SetCursorPosition(2, h - 3);                    Console.Write(&quot;boss当前血量为&#123;0&#125;&quot;, bossHp);                &#125;                #endregion                #region 8 公主相关                //判断是否在公主身边按J键                else if ((playerX == princessX &amp;&amp; playerY == princessY - 1 ||                    playerX == princessX &amp;&amp; playerY == princessY + 1 ||                    playerX == princessX - 2 &amp;&amp; playerY == princessY ||                    playerX == princessX + 2 &amp;&amp; playerY == princessY) &amp;&amp; bossHp &lt;= 0)                &#123;                    //改变 场景ID                    nowSceneID = 3;                    gameOverInfo = &quot;游戏通关&quot;;                    //改变跳出成功拯救公主后跳出游戏主逻辑死循环的标识                    //跳出 游戏界面的while循环 回到主循环                    isOver = true;                &#125;                #endregion                break;        &#125;        #endregion    &#125;    #region 8 公主相关    //游戏场景逻辑末尾添加跳出是否跳出循环判断逻辑    //外层while循环逻辑    if (isOver)    &#123;        //就是和while配对        break;    &#125;    #endregion&#125;#endregion</code></pre><hr>]]></content>
+        <content type="html"><![CDATA[<h1 id="11-游戏场景-玩家战斗相关"><a href="#11-游戏场景-玩家战斗相关" class="headerlink" title="11.游戏场景-玩家战斗相关"></a>11.游戏场景-玩家战斗相关</h1><hr><h2 id="11-1-知识点"><a href="#11-1-知识点" class="headerlink" title="11.1 知识点"></a>11.1 知识点</h2><h3 id="声明战斗状态标识"><a href="#声明战斗状态标识" class="headerlink" title="声明战斗状态标识"></a>声明战斗状态标识</h3><pre><code class="csharp">bool isFight = false;</code></pre><h3 id="游戏场景死循环内，根据是否是战斗状态处理不同逻辑，把绘制玩家图形和玩家输入枚举放在非战斗状态的分支中"><a href="#游戏场景死循环内，根据是否是战斗状态处理不同逻辑，把绘制玩家图形和玩家输入枚举放在非战斗状态的分支中" class="headerlink" title="游戏场景死循环内，根据是否是战斗状态处理不同逻辑，把绘制玩家图形和玩家输入枚举放在非战斗状态的分支中"></a>游戏场景死循环内，根据是否是战斗状态处理不同逻辑，把绘制玩家图形和玩家输入枚举放在非战斗状态的分支中</h3><pre><code class="csharp">// 战斗状态处理逻辑if (isFight)&#123;    // 玩家战斗相关的逻辑&#125;else&#123;    // 玩家移动相关逻辑    // 包括擦除上一次玩家所在位置绘制的玩家图形和根据玩家输入的字符枚举获得新的位置信息的switch&#125;</code></pre><h3 id="游戏场景死循环内的玩家输入枚举分支中，添加按j键的分支逻辑"><a href="#游戏场景死循环内的玩家输入枚举分支中，添加按j键的分支逻辑" class="headerlink" title="游戏场景死循环内的玩家输入枚举分支中，添加按j键的分支逻辑"></a>游戏场景死循环内的玩家输入枚举分支中，添加按j键的分支逻辑</h3><pre><code class="csharp">case &#39;J&#39;:case &#39;j&#39;:</code></pre><h3 id="游戏场景死循环内的玩家输入枚举分支中的j键的分支中，添加玩家战斗相关逻辑"><a href="#游戏场景死循环内的玩家输入枚举分支中的j键的分支中，添加玩家战斗相关逻辑" class="headerlink" title="游戏场景死循环内的玩家输入枚举分支中的j键的分支中，添加玩家战斗相关逻辑"></a>游戏场景死循环内的玩家输入枚举分支中的j键的分支中，添加玩家战斗相关逻辑</h3><pre><code class="csharp">// 要让玩家不能再移动// 更改战斗状态标识，可以跳出当前游戏场景死循环，进入战斗状态逻辑，不会进入非战斗状态的移动逻辑// 下方能够显示信息// 当玩家在boss身边一格且boss血量大于0的时候可以开始战斗if ((playerX == bossX &amp;&amp; playerY == bossY - 1 ||    playerX == bossX &amp;&amp; playerY == bossY + 1 ||    playerX == bossX - 2 &amp;&amp; playerY == bossY ||    playerX == bossX + 2 &amp;&amp; playerY == bossY) &amp;&amp; bossHp &gt; 0)&#123;    // 可以开始战斗，更改战斗状态标识    isFight = true;    // 输出战斗中的对战信息    Console.SetCursorPosition(2, h - 5);    Console.ForegroundColor = ConsoleColor.White;    Console.Write(&quot;开始和Boss战斗了，按J键继续&quot;);    Console.SetCursorPosition(2, h - 4);    Console.Write(&quot;玩家当前血量为&#123;0&#125;&quot;, playerHp);    Console.SetCursorPosition(2, h - 3);    Console.Write(&quot;boss当前血量为&#123;0&#125;&quot;, bossHp);&#125;</code></pre><h3 id="游戏场景死循环内，处理进入战斗状态后按j键的逻辑"><a href="#游戏场景死循环内，处理进入战斗状态后按j键的逻辑" class="headerlink" title="游戏场景死循环内，处理进入战斗状态后按j键的逻辑"></a>游戏场景死循环内，处理进入战斗状态后按j键的逻辑</h3><pre><code class="csharp">// 如果是战斗状态，应该做什么// 只会处理J键的逻辑if (playerInput == &#39;J&#39; || playerInput == &#39;j&#39;)&#123;    // 在这判断玩家或者boss是否死亡，如果死亡了，继续之后的流程    // 如果玩家死亡    if (playerHp &lt;= 0)    &#123;        // 游戏结束        // 输掉了，应该直接显示我们的游戏结束界面        // 切换场景id        nowSceneID = 3;        gameOverInfo = &quot;游戏失败&quot;;        break;    &#125;    // 如果boss死亡    else if (bossHp &lt;= 0)    &#123;        // 去营救公主        // boss擦除        Console.SetCursorPosition(bossX, bossY);        Console.Write(&quot;  &quot;);        isFight = false;    &#125;    // 玩家和boss都没死，处理按J键对战逻辑    else    &#123;        // 得到随机对象        Random r = new Random();        // 玩家打boss        // 随机出玩家的攻击力        int atk = r.Next(playerAtkMin, playerAtkMax);        // boss血量减对应的攻击力        bossHp -= atk;        // 打印玩家的攻击信息        // 设置输出的字体颜色        Console.ForegroundColor = ConsoleColor.Green;        // 先擦除这一行上次显示的内容        Console.SetCursorPosition(2, h - 4);        Console.Write(&quot;                                           &quot;);        // 再来写新的信息        // 输出玩家对boss的伤害信息        Console.SetCursorPosition(2, h - 4);        Console.Write(&quot;你对boss造成了&#123;0&#125;点伤害，boss剩余血量为&#123;1&#125;&quot;, atk, bossHp);        // boss打玩家        // boss大于0才可以对玩家进行攻击        if (bossHp &gt; 0)        &#123;            // 随机出boss的攻击力            atk = r.Next(bossAtkMin, bossAtkMax);            // 玩家血量减对应的攻击力            playerHp -= atk;            // 打印boss的攻击信息            // 设置输出的字体颜色            Console.ForegroundColor = ConsoleColor.Yellow;            // 先擦除这一行上次显示的内容            Console.SetCursorPosition(2, h - 3);            Console.Write(&quot;                                           &quot;);            // 再来写新的信息            // 如果boss把玩家打死了            if (playerHp &lt;= 0)            &#123;                // 输出失败信息                Console.SetCursorPosition(2, h - 3);                Console.Write(&quot;很遗憾，你未能通过boss的试炼，战败了&quot;);            &#125;            // boss没有把玩家打死            else            &#123;                // 输出boss对玩家的伤害信息                Console.SetCursorPosition(2, h - 3);                Console.Write(&quot;boss对你造成了&#123;0&#125;点伤害，你的剩余血量为&#123;1&#125;&quot;, atk, playerHp);            &#125;        &#125;        // boss血量小于等于boss死亡了        else        &#123;            // 擦除之前的战斗信息            Console.SetCursorPosition(2, h - 5);            Console.Write(&quot;                                           &quot;);            Console.SetCursorPosition(2, h - 4);            Console.Write(&quot;                                           &quot;);            Console.SetCursorPosition(2, h - 3);            Console.Write(&quot;                                           &quot;);            // 显示恭喜胜利的信息            Console.SetCursorPosition(2, h - 5);            Console.Write(&quot;你战胜了boss，快去营救公主&quot;);            Console.SetCursorPosition(2, h - 4);            Console.Write(&quot;前往公主身边按J键继续&quot;);        &#125;    &#125;&#125;</code></pre><hr><h2 id="11-2-知识点代码"><a href="#11-2-知识点代码" class="headerlink" title="11.2 知识点代码"></a>11.2 知识点代码</h2><h3 id="游戏场景死循环外"><a href="#游戏场景死循环外" class="headerlink" title="游戏场景死循环外"></a>游戏场景死循环外</h3><pre><code class="csharp">//声明战斗状态标识bool isFight = false;</code></pre><h3 id="游戏场景死循环内"><a href="#游戏场景死循环内" class="headerlink" title="游戏场景死循环内"></a>游戏场景死循环内</h3><pre><code class="csharp">//设置游戏场景死循环//专门用来 检测 玩家输入相关循环while (true)&#123;    #region 5 Boss相关    //游戏场景死循环内 把boss绘制出来    //boss活着时才绘制    if (bossHp &gt; 0)    &#123;        //设置光标位置和颜色 绘制boss图标        Console.SetCursorPosition(bossX, bossY);        Console.ForegroundColor = bossColor;        Console.Write(bossIcon);    &#125;    #endregion    #region 6 玩家移动相关    //游戏场景死循环内 把玩家绘制出来    //设置光标位置和颜色 绘制玩家图标    Console.SetCursorPosition(playerX, playerY);    Console.ForegroundColor = playerColor;    Console.Write(playerIcon);    //游戏场景死循环内 得到玩家输入    playerInput = Console.ReadKey(true).KeyChar;    #endregion    //游戏场景死循环内 根据是否是战斗状态处理不同逻辑 把绘制玩家图形和玩家输入枚举放在非战斗状态的分支中    //战斗状态处理什么逻辑    if (isFight)    &#123;        //玩家战斗相关逻辑        #region 7 玩家战斗相关        //游戏场景死循环内 处理进入战斗状态后按j键的逻辑        //如果是战斗状态 应该做什么        //只会处理J键的逻辑         if (playerInput == &#39;J&#39; || playerInput == &#39;j&#39;)        &#123;            //在这判断 玩家或者boss 是否死亡 如果死亡了 继续之后的流程            //如果玩家死亡            if (playerHp &lt;= 0)            &#123;                //游戏结束                //输掉了 应该直接显示 我们的 游戏结束界面                //切换场景id                nowSceneID = 3;                gameOverInfo = &quot;游戏失败&quot;;                break;            &#125;            //如果boss死亡            else if (bossHp &lt;= 0)            &#123;                //去营救公主                //boss擦除                Console.SetCursorPosition(bossX, bossY);                Console.Write(&quot;  &quot;);                isFight = false;            &#125;            //玩家和boss都没死 处理按J键对战逻辑            else            &#123;                //得到随机对象                Random r = new Random();                //玩家打boss                //随机出玩家的攻击力                int atk = r.Next(playerAtkMin, playerAtkMax);                //boss血量减对应的攻击力                bossHp -= atk;                //打印玩家的攻击信息                //设置输出的字体颜色                Console.ForegroundColor = ConsoleColor.Green;                //先擦除这一行 上次显示的内容                Console.SetCursorPosition(2, h - 4);                Console.Write(&quot;                                           &quot;);                //再来写新的信息                //输出玩家对boss的伤害信息                Console.SetCursorPosition(2, h - 4);                Console.Write(&quot;你对boss造成了&#123;0&#125;点伤害，boss剩余血量为&#123;1&#125;&quot;, atk, bossHp);                //boss打玩家                //boss大于0才可以对玩家进行攻击                if (bossHp &gt; 0)                &#123;                    //随机出boss的攻击力                    atk = r.Next(bossAtkMin, bossAtkMax);                    //玩家血量减对应的攻击力                    playerHp -= atk;                    //打印boss的攻击信息                    //设置输出的字体颜色                    Console.ForegroundColor = ConsoleColor.Yellow;                    //先擦除这一行 上次显示的内容                    Console.SetCursorPosition(2, h - 3);                    Console.Write(&quot;                                           &quot;);                    //再来写新的信息                    //如果boss把玩家打死了                    if (playerHp &lt;= 0)                    &#123;                        //输出失败信息                        Console.SetCursorPosition(2, h - 3);                        Console.Write(&quot;很遗憾，你未能通过boss的试炼，战败了&quot;);                    &#125;                    //boss没有把玩家打死                    else                    &#123;                        //输出boss对玩家的伤害信息                        Console.SetCursorPosition(2, h - 3);                        Console.Write(&quot;boss对你造成了&#123;0&#125;点伤害，你的剩余血量为&#123;1&#125;&quot;, atk, playerHp);                    &#125;                &#125;                //boss血量小于等于boss死亡了                else                &#123;                    //擦除之前的战斗信息                    Console.SetCursorPosition(2, h - 5);                    Console.Write(&quot;                                           &quot;);                    Console.SetCursorPosition(2, h - 4);                    Console.Write(&quot;                                           &quot;);                    Console.SetCursorPosition(2, h - 3);                    Console.Write(&quot;                                           &quot;);                    //显示恭喜胜利的信息                    Console.SetCursorPosition(2, h - 5);                    Console.Write(&quot;你战胜了boss，快去营救公主&quot;);                    Console.SetCursorPosition(2, h - 4);                    Console.Write(&quot;前往公主身边按J键继续&quot;);                &#125;            &#125;        &#125;        #endregion    &#125;    //非战斗状态处理什么逻辑    else    &#123;        //玩家移动相关逻辑        //包括擦除上一次玩家所在位置绘制的玩家图形和根据玩家输入的字符枚举获得新的位置信息的switch        #region 6 玩家移动相关        //游戏场景死循环内 擦除上一次玩家所在位置绘制的玩家图形        Console.SetCursorPosition(playerX, playerY);        Console.Write(&quot;  &quot;);        //游戏场景死循环内 根据玩家输入的字符枚举获得新的位置信息        switch (playerInput)        &#123;            case &#39;W&#39;:            case &#39;w&#39;:                --playerY;                if (playerY &lt; 1)                &#123;                    playerY = 1;                &#125;                //位置如果和boss重合了 并且boss没有死                else if (playerX == bossX &amp;&amp; playerY == bossY &amp;&amp; bossHp &gt; 0)                &#123;                    //拉回去                    ++playerY;                &#125;                break;            case &#39;A&#39;:            case &#39;a&#39;:                playerX -= 2;                if (playerX &lt; 2)                &#123;                    playerX = 2;                &#125;                else if (playerX == bossX &amp;&amp; playerY == bossY &amp;&amp; bossHp &gt; 0)                &#123;                    //拉回去                    playerX += 2;                &#125;                break;            case &#39;S&#39;:            case &#39;s&#39;:                ++playerY;                if (playerY &gt; h - 7)                &#123;                    playerY = h - 7;                &#125;                else if (playerX == bossX &amp;&amp; playerY == bossY &amp;&amp; bossHp &gt; 0)                &#123;                    //拉回去                    --playerY;                &#125;                break;            case &#39;D&#39;:            case &#39;d&#39;:                playerX += 2;                if (playerX &gt; w - 4)                &#123;                    playerX = w - 4;                &#125;                else if (playerX == bossX &amp;&amp; playerY == bossY &amp;&amp; bossHp &gt; 0)                &#123;                    //拉回去                    playerX -= 2;                &#125;                break;            //游戏场景死循环内的玩家输入枚举分支中 添加按j键的分支逻辑            case &#39;J&#39;:            case &#39;j&#39;:                #region 7 玩家战斗相关                //游戏场景死循环内的玩家输入枚举分支中的j键的分支中 添加玩家战斗相关逻辑                //要让玩家不能再移动                //更改战斗状态标识 可以跳出当前游戏场景死循环 就进入战斗状态逻辑 不会进入非战斗状态的移动逻辑                //下方能够显示信息                // 当玩家在boss身边一格且boss血量大于0的时候可以开始战斗                if ((playerX == bossX &amp;&amp; playerY == bossY - 1 ||                    playerX == bossX &amp;&amp; playerY == bossY + 1 ||                    playerX == bossX - 2 &amp;&amp; playerY == bossY ||                    playerX == bossX + 2 &amp;&amp; playerY == bossY) &amp;&amp; bossHp &gt; 0)                &#123;                    //可以开始战斗 更改战斗状态标识                    isFight = true;                    //输出战斗中的对战信息                    Console.SetCursorPosition(2, h - 5);                    Console.ForegroundColor = ConsoleColor.White;                    Console.Write(&quot;开始和Boss战斗了，按J键继续&quot;);                    Console.SetCursorPosition(2, h - 4);                    Console.Write(&quot;玩家当前血量为&#123;0&#125;&quot;, playerHp);                    Console.SetCursorPosition(2, h - 3);                    Console.Write(&quot;boss当前血量为&#123;0&#125;&quot;, bossHp);                &#125;                #endregion                break;        &#125;        #endregion    &#125;&#125;</code></pre><hr>]]></content>
       
       
       <categories>
@@ -8299,11 +8431,11 @@
     
     
     <entry>
-      <title>11.玩家战斗相关</title>
-      <link href="/2024/01/08/CSharp/02.CSharp%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/11.%E6%B8%B8%E6%88%8F%E5%9C%BA%E6%99%AF-%E7%8E%A9%E5%AE%B6%E6%88%98%E6%96%97%E7%9B%B8%E5%85%B3/"/>
-      <url>/2024/01/08/CSharp/02.CSharp%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/11.%E6%B8%B8%E6%88%8F%E5%9C%BA%E6%99%AF-%E7%8E%A9%E5%AE%B6%E6%88%98%E6%96%97%E7%9B%B8%E5%85%B3/</url>
+      <title>12.公主相关</title>
+      <link href="/2024/01/08/CSharp/02.CSharp%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/12.%E6%B8%B8%E6%88%8F%E5%9C%BA%E6%99%AF-%E5%85%AC%E4%B8%BB%E7%9B%B8%E5%85%B3/"/>
+      <url>/2024/01/08/CSharp/02.CSharp%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/12.%E6%B8%B8%E6%88%8F%E5%9C%BA%E6%99%AF-%E5%85%AC%E4%B8%BB%E7%9B%B8%E5%85%B3/</url>
       
-        <content type="html"><![CDATA[<h1 id="11-游戏场景-玩家战斗相关"><a href="#11-游戏场景-玩家战斗相关" class="headerlink" title="11.游戏场景-玩家战斗相关"></a>11.游戏场景-玩家战斗相关</h1><hr><h2 id="11-1-知识点"><a href="#11-1-知识点" class="headerlink" title="11.1 知识点"></a>11.1 知识点</h2><h3 id="声明战斗状态标识"><a href="#声明战斗状态标识" class="headerlink" title="声明战斗状态标识"></a>声明战斗状态标识</h3><pre><code class="csharp">bool isFight = false;</code></pre><h3 id="游戏场景死循环内，根据是否是战斗状态处理不同逻辑，把绘制玩家图形和玩家输入枚举放在非战斗状态的分支中"><a href="#游戏场景死循环内，根据是否是战斗状态处理不同逻辑，把绘制玩家图形和玩家输入枚举放在非战斗状态的分支中" class="headerlink" title="游戏场景死循环内，根据是否是战斗状态处理不同逻辑，把绘制玩家图形和玩家输入枚举放在非战斗状态的分支中"></a>游戏场景死循环内，根据是否是战斗状态处理不同逻辑，把绘制玩家图形和玩家输入枚举放在非战斗状态的分支中</h3><pre><code class="csharp">// 战斗状态处理逻辑if (isFight)&#123;    // 玩家战斗相关的逻辑&#125;else&#123;    // 玩家移动相关逻辑    // 包括擦除上一次玩家所在位置绘制的玩家图形和根据玩家输入的字符枚举获得新的位置信息的switch&#125;</code></pre><h3 id="游戏场景死循环内的玩家输入枚举分支中，添加按j键的分支逻辑"><a href="#游戏场景死循环内的玩家输入枚举分支中，添加按j键的分支逻辑" class="headerlink" title="游戏场景死循环内的玩家输入枚举分支中，添加按j键的分支逻辑"></a>游戏场景死循环内的玩家输入枚举分支中，添加按j键的分支逻辑</h3><pre><code class="csharp">case &#39;J&#39;:case &#39;j&#39;:</code></pre><h3 id="游戏场景死循环内的玩家输入枚举分支中的j键的分支中，添加玩家战斗相关逻辑"><a href="#游戏场景死循环内的玩家输入枚举分支中的j键的分支中，添加玩家战斗相关逻辑" class="headerlink" title="游戏场景死循环内的玩家输入枚举分支中的j键的分支中，添加玩家战斗相关逻辑"></a>游戏场景死循环内的玩家输入枚举分支中的j键的分支中，添加玩家战斗相关逻辑</h3><pre><code class="csharp">// 要让玩家不能再移动// 更改战斗状态标识，可以跳出当前游戏场景死循环，进入战斗状态逻辑，不会进入非战斗状态的移动逻辑// 下方能够显示信息// 当玩家在boss身边一格且boss血量大于0的时候可以开始战斗if ((playerX == bossX &amp;&amp; playerY == bossY - 1 ||    playerX == bossX &amp;&amp; playerY == bossY + 1 ||    playerX == bossX - 2 &amp;&amp; playerY == bossY ||    playerX == bossX + 2 &amp;&amp; playerY == bossY) &amp;&amp; bossHp &gt; 0)&#123;    // 可以开始战斗，更改战斗状态标识    isFight = true;    // 输出战斗中的对战信息    Console.SetCursorPosition(2, h - 5);    Console.ForegroundColor = ConsoleColor.White;    Console.Write(&quot;开始和Boss战斗了，按J键继续&quot;);    Console.SetCursorPosition(2, h - 4);    Console.Write(&quot;玩家当前血量为&#123;0&#125;&quot;, playerHp);    Console.SetCursorPosition(2, h - 3);    Console.Write(&quot;boss当前血量为&#123;0&#125;&quot;, bossHp);&#125;</code></pre><h3 id="游戏场景死循环内，处理进入战斗状态后按j键的逻辑"><a href="#游戏场景死循环内，处理进入战斗状态后按j键的逻辑" class="headerlink" title="游戏场景死循环内，处理进入战斗状态后按j键的逻辑"></a>游戏场景死循环内，处理进入战斗状态后按j键的逻辑</h3><pre><code class="csharp">// 如果是战斗状态，应该做什么// 只会处理J键的逻辑if (playerInput == &#39;J&#39; || playerInput == &#39;j&#39;)&#123;    // 在这判断玩家或者boss是否死亡，如果死亡了，继续之后的流程    // 如果玩家死亡    if (playerHp &lt;= 0)    &#123;        // 游戏结束        // 输掉了，应该直接显示我们的游戏结束界面        // 切换场景id        nowSceneID = 3;        gameOverInfo = &quot;游戏失败&quot;;        break;    &#125;    // 如果boss死亡    else if (bossHp &lt;= 0)    &#123;        // 去营救公主        // boss擦除        Console.SetCursorPosition(bossX, bossY);        Console.Write(&quot;  &quot;);        isFight = false;    &#125;    // 玩家和boss都没死，处理按J键对战逻辑    else    &#123;        // 得到随机对象        Random r = new Random();        // 玩家打boss        // 随机出玩家的攻击力        int atk = r.Next(playerAtkMin, playerAtkMax);        // boss血量减对应的攻击力        bossHp -= atk;        // 打印玩家的攻击信息        // 设置输出的字体颜色        Console.ForegroundColor = ConsoleColor.Green;        // 先擦除这一行上次显示的内容        Console.SetCursorPosition(2, h - 4);        Console.Write(&quot;                                           &quot;);        // 再来写新的信息        // 输出玩家对boss的伤害信息        Console.SetCursorPosition(2, h - 4);        Console.Write(&quot;你对boss造成了&#123;0&#125;点伤害，boss剩余血量为&#123;1&#125;&quot;, atk, bossHp);        // boss打玩家        // boss大于0才可以对玩家进行攻击        if (bossHp &gt; 0)        &#123;            // 随机出boss的攻击力            atk = r.Next(bossAtkMin, bossAtkMax);            // 玩家血量减对应的攻击力            playerHp -= atk;            // 打印boss的攻击信息            // 设置输出的字体颜色            Console.ForegroundColor = ConsoleColor.Yellow;            // 先擦除这一行上次显示的内容            Console.SetCursorPosition(2, h - 3);            Console.Write(&quot;                                           &quot;);            // 再来写新的信息            // 如果boss把玩家打死了            if (playerHp &lt;= 0)            &#123;                // 输出失败信息                Console.SetCursorPosition(2, h - 3);                Console.Write(&quot;很遗憾，你未能通过boss的试炼，战败了&quot;);            &#125;            // boss没有把玩家打死            else            &#123;                // 输出boss对玩家的伤害信息                Console.SetCursorPosition(2, h - 3);                Console.Write(&quot;boss对你造成了&#123;0&#125;点伤害，你的剩余血量为&#123;1&#125;&quot;, atk, playerHp);            &#125;        &#125;        // boss血量小于等于boss死亡了        else        &#123;            // 擦除之前的战斗信息            Console.SetCursorPosition(2, h - 5);            Console.Write(&quot;                                           &quot;);            Console.SetCursorPosition(2, h - 4);            Console.Write(&quot;                                           &quot;);            Console.SetCursorPosition(2, h - 3);            Console.Write(&quot;                                           &quot;);            // 显示恭喜胜利的信息            Console.SetCursorPosition(2, h - 5);            Console.Write(&quot;你战胜了boss，快去营救公主&quot;);            Console.SetCursorPosition(2, h - 4);            Console.Write(&quot;前往公主身边按J键继续&quot;);        &#125;    &#125;&#125;</code></pre><hr><h2 id="11-2-知识点代码"><a href="#11-2-知识点代码" class="headerlink" title="11.2 知识点代码"></a>11.2 知识点代码</h2><h3 id="游戏场景死循环外"><a href="#游戏场景死循环外" class="headerlink" title="游戏场景死循环外"></a>游戏场景死循环外</h3><pre><code class="csharp">//声明战斗状态标识bool isFight = false;</code></pre><h3 id="游戏场景死循环内"><a href="#游戏场景死循环内" class="headerlink" title="游戏场景死循环内"></a>游戏场景死循环内</h3><pre><code class="csharp">//设置游戏场景死循环//专门用来 检测 玩家输入相关循环while (true)&#123;    #region 5 Boss相关    //游戏场景死循环内 把boss绘制出来    //boss活着时才绘制    if (bossHp &gt; 0)    &#123;        //设置光标位置和颜色 绘制boss图标        Console.SetCursorPosition(bossX, bossY);        Console.ForegroundColor = bossColor;        Console.Write(bossIcon);    &#125;    #endregion    #region 6 玩家移动相关    //游戏场景死循环内 把玩家绘制出来    //设置光标位置和颜色 绘制玩家图标    Console.SetCursorPosition(playerX, playerY);    Console.ForegroundColor = playerColor;    Console.Write(playerIcon);    //游戏场景死循环内 得到玩家输入    playerInput = Console.ReadKey(true).KeyChar;    #endregion    //游戏场景死循环内 根据是否是战斗状态处理不同逻辑 把绘制玩家图形和玩家输入枚举放在非战斗状态的分支中    //战斗状态处理什么逻辑    if (isFight)    &#123;        //玩家战斗相关逻辑        #region 7 玩家战斗相关        //游戏场景死循环内 处理进入战斗状态后按j键的逻辑        //如果是战斗状态 应该做什么        //只会处理J键的逻辑         if (playerInput == &#39;J&#39; || playerInput == &#39;j&#39;)        &#123;            //在这判断 玩家或者boss 是否死亡 如果死亡了 继续之后的流程            //如果玩家死亡            if (playerHp &lt;= 0)            &#123;                //游戏结束                //输掉了 应该直接显示 我们的 游戏结束界面                //切换场景id                nowSceneID = 3;                gameOverInfo = &quot;游戏失败&quot;;                break;            &#125;            //如果boss死亡            else if (bossHp &lt;= 0)            &#123;                //去营救公主                //boss擦除                Console.SetCursorPosition(bossX, bossY);                Console.Write(&quot;  &quot;);                isFight = false;            &#125;            //玩家和boss都没死 处理按J键对战逻辑            else            &#123;                //得到随机对象                Random r = new Random();                //玩家打boss                //随机出玩家的攻击力                int atk = r.Next(playerAtkMin, playerAtkMax);                //boss血量减对应的攻击力                bossHp -= atk;                //打印玩家的攻击信息                //设置输出的字体颜色                Console.ForegroundColor = ConsoleColor.Green;                //先擦除这一行 上次显示的内容                Console.SetCursorPosition(2, h - 4);                Console.Write(&quot;                                           &quot;);                //再来写新的信息                //输出玩家对boss的伤害信息                Console.SetCursorPosition(2, h - 4);                Console.Write(&quot;你对boss造成了&#123;0&#125;点伤害，boss剩余血量为&#123;1&#125;&quot;, atk, bossHp);                //boss打玩家                //boss大于0才可以对玩家进行攻击                if (bossHp &gt; 0)                &#123;                    //随机出boss的攻击力                    atk = r.Next(bossAtkMin, bossAtkMax);                    //玩家血量减对应的攻击力                    playerHp -= atk;                    //打印boss的攻击信息                    //设置输出的字体颜色                    Console.ForegroundColor = ConsoleColor.Yellow;                    //先擦除这一行 上次显示的内容                    Console.SetCursorPosition(2, h - 3);                    Console.Write(&quot;                                           &quot;);                    //再来写新的信息                    //如果boss把玩家打死了                    if (playerHp &lt;= 0)                    &#123;                        //输出失败信息                        Console.SetCursorPosition(2, h - 3);                        Console.Write(&quot;很遗憾，你未能通过boss的试炼，战败了&quot;);                    &#125;                    //boss没有把玩家打死                    else                    &#123;                        //输出boss对玩家的伤害信息                        Console.SetCursorPosition(2, h - 3);                        Console.Write(&quot;boss对你造成了&#123;0&#125;点伤害，你的剩余血量为&#123;1&#125;&quot;, atk, playerHp);                    &#125;                &#125;                //boss血量小于等于boss死亡了                else                &#123;                    //擦除之前的战斗信息                    Console.SetCursorPosition(2, h - 5);                    Console.Write(&quot;                                           &quot;);                    Console.SetCursorPosition(2, h - 4);                    Console.Write(&quot;                                           &quot;);                    Console.SetCursorPosition(2, h - 3);                    Console.Write(&quot;                                           &quot;);                    //显示恭喜胜利的信息                    Console.SetCursorPosition(2, h - 5);                    Console.Write(&quot;你战胜了boss，快去营救公主&quot;);                    Console.SetCursorPosition(2, h - 4);                    Console.Write(&quot;前往公主身边按J键继续&quot;);                &#125;            &#125;        &#125;        #endregion    &#125;    //非战斗状态处理什么逻辑    else    &#123;        //玩家移动相关逻辑        //包括擦除上一次玩家所在位置绘制的玩家图形和根据玩家输入的字符枚举获得新的位置信息的switch        #region 6 玩家移动相关        //游戏场景死循环内 擦除上一次玩家所在位置绘制的玩家图形        Console.SetCursorPosition(playerX, playerY);        Console.Write(&quot;  &quot;);        //游戏场景死循环内 根据玩家输入的字符枚举获得新的位置信息        switch (playerInput)        &#123;            case &#39;W&#39;:            case &#39;w&#39;:                --playerY;                if (playerY &lt; 1)                &#123;                    playerY = 1;                &#125;                //位置如果和boss重合了 并且boss没有死                else if (playerX == bossX &amp;&amp; playerY == bossY &amp;&amp; bossHp &gt; 0)                &#123;                    //拉回去                    ++playerY;                &#125;                break;            case &#39;A&#39;:            case &#39;a&#39;:                playerX -= 2;                if (playerX &lt; 2)                &#123;                    playerX = 2;                &#125;                else if (playerX == bossX &amp;&amp; playerY == bossY &amp;&amp; bossHp &gt; 0)                &#123;                    //拉回去                    playerX += 2;                &#125;                break;            case &#39;S&#39;:            case &#39;s&#39;:                ++playerY;                if (playerY &gt; h - 7)                &#123;                    playerY = h - 7;                &#125;                else if (playerX == bossX &amp;&amp; playerY == bossY &amp;&amp; bossHp &gt; 0)                &#123;                    //拉回去                    --playerY;                &#125;                break;            case &#39;D&#39;:            case &#39;d&#39;:                playerX += 2;                if (playerX &gt; w - 4)                &#123;                    playerX = w - 4;                &#125;                else if (playerX == bossX &amp;&amp; playerY == bossY &amp;&amp; bossHp &gt; 0)                &#123;                    //拉回去                    playerX -= 2;                &#125;                break;            //游戏场景死循环内的玩家输入枚举分支中 添加按j键的分支逻辑            case &#39;J&#39;:            case &#39;j&#39;:                #region 7 玩家战斗相关                //游戏场景死循环内的玩家输入枚举分支中的j键的分支中 添加玩家战斗相关逻辑                //要让玩家不能再移动                //更改战斗状态标识 可以跳出当前游戏场景死循环 就进入战斗状态逻辑 不会进入非战斗状态的移动逻辑                //下方能够显示信息                // 当玩家在boss身边一格且boss血量大于0的时候可以开始战斗                if ((playerX == bossX &amp;&amp; playerY == bossY - 1 ||                    playerX == bossX &amp;&amp; playerY == bossY + 1 ||                    playerX == bossX - 2 &amp;&amp; playerY == bossY ||                    playerX == bossX + 2 &amp;&amp; playerY == bossY) &amp;&amp; bossHp &gt; 0)                &#123;                    //可以开始战斗 更改战斗状态标识                    isFight = true;                    //输出战斗中的对战信息                    Console.SetCursorPosition(2, h - 5);                    Console.ForegroundColor = ConsoleColor.White;                    Console.Write(&quot;开始和Boss战斗了，按J键继续&quot;);                    Console.SetCursorPosition(2, h - 4);                    Console.Write(&quot;玩家当前血量为&#123;0&#125;&quot;, playerHp);                    Console.SetCursorPosition(2, h - 3);                    Console.Write(&quot;boss当前血量为&#123;0&#125;&quot;, bossHp);                &#125;                #endregion                break;        &#125;        #endregion    &#125;&#125;</code></pre><hr>]]></content>
+        <content type="html"><![CDATA[<h1 id="12-游戏场景-公主相关"><a href="#12-游戏场景-公主相关" class="headerlink" title="12.游戏场景-公主相关"></a>12.游戏场景-公主相关</h1><hr><h2 id="12-1-知识点"><a href="#12-1-知识点" class="headerlink" title="12.1 知识点"></a>12.1 知识点</h2><h3 id="声明公主的相关属性"><a href="#声明公主的相关属性" class="headerlink" title="声明公主的相关属性"></a>声明公主的相关属性</h3><pre><code class="csharp">int princessX = 24;int princessY = 5;string princessIcon = &quot;★&quot;;ConsoleColor princessColor = ConsoleColor.Blue;</code></pre><h3 id="声明成功拯救公主后跳出游戏主逻辑死循环的标识"><a href="#声明成功拯救公主后跳出游戏主逻辑死循环的标识" class="headerlink" title="声明成功拯救公主后跳出游戏主逻辑死循环的标识"></a>声明成功拯救公主后跳出游戏主逻辑死循环的标识</h3><pre><code class="csharp">// 作用是从while循环内部的switch改变标识，用来跳出外层的while循环bool isOver = false;</code></pre><h3 id="游戏场景死循环内，boss死亡时添加逻辑分支，把公主绘制出来"><a href="#游戏场景死循环内，boss死亡时添加逻辑分支，把公主绘制出来" class="headerlink" title="游戏场景死循环内，boss死亡时添加逻辑分支，把公主绘制出来"></a>游戏场景死循环内，boss死亡时添加逻辑分支，把公主绘制出来</h3><pre><code class="csharp">else&#123;    Console.SetCursorPosition(princessX, princessY);    Console.ForegroundColor = princessColor;    Console.Write(princessIcon);&#125;</code></pre><h3 id="游戏场景死循环内的玩家输入枚举分支中，WASD上下左右移动过程中，如果boss死亡且位置和公主重合了要回退，不能将公主覆盖"><a href="#游戏场景死循环内的玩家输入枚举分支中，WASD上下左右移动过程中，如果boss死亡且位置和公主重合了要回退，不能将公主覆盖" class="headerlink" title="游戏场景死循环内的玩家输入枚举分支中，WASD上下左右移动过程中，如果boss死亡且位置和公主重合了要回退，不能将公主覆盖"></a>游戏场景死循环内的玩家输入枚举分支中，WASD上下左右移动过程中，如果boss死亡且位置和公主重合了要回退，不能将公主覆盖</h3><pre><code class="csharp">else if (playerX == princessX &amp;&amp; playerY == princessY &amp;&amp; bossHp &lt;= 0)&#123;    // 拉回去    ++playerY;&#125;</code></pre><h3 id="游戏场景死循环内的玩家输入枚举分支中，添加按J键的分支逻辑"><a href="#游戏场景死循环内的玩家输入枚举分支中，添加按J键的分支逻辑" class="headerlink" title="游戏场景死循环内的玩家输入枚举分支中，添加按J键的分支逻辑"></a>游戏场景死循环内的玩家输入枚举分支中，添加按J键的分支逻辑</h3><pre><code class="csharp">// 判断是否在公主身边按J键else if ((playerX == princessX &amp;&amp; playerY == princessY - 1 ||          playerX == princessX &amp;&amp; playerY == princessY + 1 ||          playerX == princessX - 2 &amp;&amp; playerY == princessY ||          playerX == princessX + 2 &amp;&amp; playerY == princessY) &amp;&amp; bossHp &lt;= 0)&#123;    // 改变场景ID    nowSceneID = 3;    gameOverInfo = &quot;游戏通关&quot;;    // 改变跳出成功拯救公主后跳出游戏主逻辑死循环的标识    // 跳出游戏界面的while循环，回到主循环    isOver = true;&#125;</code></pre><h3 id="游戏场景逻辑末尾添加跳出是否跳出循环判断逻辑"><a href="#游戏场景逻辑末尾添加跳出是否跳出循环判断逻辑" class="headerlink" title="游戏场景逻辑末尾添加跳出是否跳出循环判断逻辑"></a>游戏场景逻辑末尾添加跳出是否跳出循环判断逻辑</h3><pre><code class="csharp">// 外层while循环逻辑if (isOver)&#123;    // 就是和while配对    break;&#125;</code></pre><hr><h2 id="12-2-知识点代码"><a href="#12-2-知识点代码" class="headerlink" title="12.2 知识点代码"></a>12.2 知识点代码</h2><pre><code class="csharp">#region 4-8 游戏场景逻辑#region 4 不变的红墙//设置颜色为红色 为画出红墙做准备Console.ForegroundColor = ConsoleColor.Red;//开始画墙//横着的墙for (int i = 0; i &lt; w; i += 2)&#123;    //上方墙    Console.SetCursorPosition(i, 0);    Console.Write(&quot;■&quot;);    //下方墙    Console.SetCursorPosition(i, h - 1);    Console.Write(&quot;■&quot;);    //中间墙    Console.SetCursorPosition(i, h - 6);    Console.Write(&quot;■&quot;);&#125;//竖着的墙for (int i = 0; i &lt; h; i++)&#123;    //左边的墙    Console.SetCursorPosition(0, i);    Console.Write(&quot;■&quot;);    //右边的墙    Console.SetCursorPosition(w - 2, i);    Console.Write(&quot;■&quot;);&#125;#endregion#region 5 Boss相关//声明boss的相关属性//包括位置坐标 最大最小攻击力 血量 boss图标 boss颜色int bossX = 24;int bossY = 15;int bossAtkMin = 7;int bossAtkMax = 13;int bossHp = 100;string bossIcon = &quot;■&quot;;//申明一个颜色变量 用于绘制boss时使用ConsoleColor bossColor = ConsoleColor.Green;#endregion#region 6 玩家属性相关//声明玩家的相关属性//包括位置坐标 最大最小攻击力 血量 玩家图标 玩家颜色 输入的内容int playerX = 4;int playerY = 5;int playerAtkMin = 8;int playerAtkMax = 12;int playerHp = 100;string playerIcon = &quot;●&quot;;//申明一个颜色变量 用于绘制玩家时使用ConsoleColor playerColor = ConsoleColor.Yellow;//申明一个字符型变量来存储玩家输入的内容  在外面申明可以节约性能char playerInput;#endregion#region 8 公主相关//声明公主的相关属性int princessX = 24;int princessY = 5;string princessIcon = &quot;★&quot;;ConsoleColor princessColor = ConsoleColor.Blue;//声明成功拯救公主后跳出游戏主逻辑死循环的标识//作用是 从while循环内部的switch 改变标识 用来跳出外层的while循环bool isOver = false;#endregion#region 7 玩家战斗相关//声明战斗状态标识bool isFight = false;#endregion//设置游戏场景死循环//专门用来 检测 玩家输入相关循环while (true)&#123;    #region 5 Boss相关    //游戏场景死循环内 把boss绘制出来    //boss活着时才绘制    if (bossHp &gt; 0)    &#123;        //设置光标位置和颜色 绘制boss图标        Console.SetCursorPosition(bossX, bossY);        Console.ForegroundColor = bossColor;        Console.Write(bossIcon);    &#125;    #endregion    #region 8 公主相关    //游戏场景死循环内 boss死亡时 添加逻辑分支 把公主绘制出来    else    &#123;        Console.SetCursorPosition(princessX, princessY);        Console.ForegroundColor = princessColor;        Console.Write(princessIcon);    &#125;    #endregion    #region 6 玩家移动相关    //游戏场景死循环内 把玩家绘制出来    //设置光标位置和颜色 绘制玩家图标    Console.SetCursorPosition(playerX, playerY);    Console.ForegroundColor = playerColor;    Console.Write(playerIcon);    //游戏场景死循环内 得到玩家输入    playerInput = Console.ReadKey(true).KeyChar;    #endregion    //游戏场景死循环内 根据是否是战斗状态处理不同逻辑 把绘制玩家图形和玩家输入枚举放在非战斗状态的分支中    //战斗状态处理什么逻辑    if (isFight)    &#123;        //玩家战斗相关逻辑        #region 7 玩家战斗相关        //游戏场景死循环内 处理进入战斗状态后按j键的逻辑        //如果是战斗状态 应该做什么        //只会处理J键的逻辑         if (playerInput == &#39;J&#39; || playerInput == &#39;j&#39;)        &#123;            //在这判断 玩家或者boss 是否死亡 如果死亡了 继续之后的流程            //如果玩家死亡            if (playerHp &lt;= 0)            &#123;                //游戏结束                //输掉了 应该直接显示 我们的 游戏结束界面                //切换场景id                nowSceneID = 3;                gameOverInfo = &quot;游戏失败&quot;;                break;            &#125;            //如果boss死亡            else if (bossHp &lt;= 0)            &#123;                //去营救公主                //boss擦除                Console.SetCursorPosition(bossX, bossY);                Console.Write(&quot;  &quot;);                isFight = false;            &#125;            //玩家和boss都没死 处理按J键对战逻辑            else            &#123;                //得到随机对象                Random r = new Random();                //玩家打boss                //随机出玩家的攻击力                int atk = r.Next(playerAtkMin, playerAtkMax);                //boss血量减对应的攻击力                bossHp -= atk;                //打印玩家的攻击信息                //设置输出的字体颜色                Console.ForegroundColor = ConsoleColor.Green;                //先擦除这一行 上次显示的内容                Console.SetCursorPosition(2, h - 4);                Console.Write(&quot;                                           &quot;);                //再来写新的信息                //输出玩家对boss的伤害信息                Console.SetCursorPosition(2, h - 4);                Console.Write(&quot;你对boss造成了&#123;0&#125;点伤害，boss剩余血量为&#123;1&#125;&quot;, atk, bossHp);                //boss打玩家                //boss大于0才可以对玩家进行攻击                if (bossHp &gt; 0)                &#123;                    //随机出boss的攻击力                    atk = r.Next(bossAtkMin, bossAtkMax);                    //玩家血量减对应的攻击力                    playerHp -= atk;                    //打印boss的攻击信息                    //设置输出的字体颜色                    Console.ForegroundColor = ConsoleColor.Yellow;                    //先擦除这一行 上次显示的内容                    Console.SetCursorPosition(2, h - 3);                    Console.Write(&quot;                                           &quot;);                    //再来写新的信息                    //如果boss把玩家打死了                    if (playerHp &lt;= 0)                    &#123;                        //输出失败信息                        Console.SetCursorPosition(2, h - 3);                        Console.Write(&quot;很遗憾，你未能通过boss的试炼，战败了&quot;);                    &#125;                    //boss没有把玩家打死                    else                    &#123;                        //输出boss对玩家的伤害信息                        Console.SetCursorPosition(2, h - 3);                        Console.Write(&quot;boss对你造成了&#123;0&#125;点伤害，你的剩余血量为&#123;1&#125;&quot;, atk, playerHp);                    &#125;                &#125;                //boss血量小于等于boss死亡了                else                &#123;                    //擦除之前的战斗信息                    Console.SetCursorPosition(2, h - 5);                    Console.Write(&quot;                                           &quot;);                    Console.SetCursorPosition(2, h - 4);                    Console.Write(&quot;                                           &quot;);                    Console.SetCursorPosition(2, h - 3);                    Console.Write(&quot;                                           &quot;);                    //显示恭喜胜利的信息                    Console.SetCursorPosition(2, h - 5);                    Console.Write(&quot;你战胜了boss，快去营救公主&quot;);                    Console.SetCursorPosition(2, h - 4);                    Console.Write(&quot;前往公主身边按J键继续&quot;);                &#125;            &#125;        &#125;        #endregion    &#125;    //非战斗状态处理什么逻辑    else    &#123;        //玩家移动相关逻辑        //包括擦除上一次玩家所在位置绘制的玩家图形和根据玩家输入的字符枚举获得新的位置信息的switch        #region 6 玩家移动相关        //游戏场景死循环内 擦除上一次玩家所在位置绘制的玩家图形        Console.SetCursorPosition(playerX, playerY);        Console.Write(&quot;  &quot;);        //游戏场景死循环内 根据玩家输入的字符枚举获得新的位置信息        switch (playerInput)        &#123;            case &#39;W&#39;:            case &#39;w&#39;:                --playerY;                if (playerY &lt; 1)                &#123;                    playerY = 1;                &#125;                //位置如果和boss重合了 并且boss没有死                else if (playerX == bossX &amp;&amp; playerY == bossY &amp;&amp; bossHp &gt; 0)                &#123;                    //拉回去                    ++playerY;                &#125;                //游戏场景死循环内的玩家输入枚举分支中 wasd上下左右移动过程中                //如果boss死亡且位置和公主重合了要回退 不能将公主覆盖                else if ( playerX == princessX &amp;&amp; playerY == princessY &amp;&amp; bossHp &lt;= 0 )                &#123;                    //拉回去                    ++playerY;                &#125;                break;            case &#39;A&#39;:            case &#39;a&#39;:                playerX -= 2;                if (playerX &lt; 2)                &#123;                    playerX = 2;                &#125;                else if (playerX == bossX &amp;&amp; playerY == bossY &amp;&amp; bossHp &gt; 0)                &#123;                    //拉回去                    playerX += 2;                &#125;                else if (playerX == princessX &amp;&amp; playerY == princessY &amp;&amp; bossHp &lt;= 0)                &#123;                    //拉回去                    playerX += 2;                &#125;                break;            case &#39;S&#39;:            case &#39;s&#39;:                ++playerY;                if (playerY &gt; h - 7)                &#123;                    playerY = h - 7;                &#125;                else if (playerX == bossX &amp;&amp; playerY == bossY &amp;&amp; bossHp &gt; 0)                &#123;                    //拉回去                    --playerY;                &#125;                else if (playerX == princessX &amp;&amp; playerY == princessY &amp;&amp; bossHp &lt;= 0)                &#123;                    //拉回去                    --playerY;                &#125;                break;            case &#39;D&#39;:            case &#39;d&#39;:                playerX += 2;                if (playerX &gt; w - 4)                &#123;                    playerX = w - 4;                &#125;                else if (playerX == bossX &amp;&amp; playerY == bossY &amp;&amp; bossHp &gt; 0)                &#123;                    //拉回去                    playerX -= 2;                &#125;                else if (playerX == princessX &amp;&amp; playerY == princessY &amp;&amp; bossHp &lt;= 0)                &#123;                    //拉回去                    playerX -= 2;                &#125;                break;            //游戏场景死循环内的玩家输入枚举分支中 添加按j键的分支逻辑            case &#39;J&#39;:            case &#39;j&#39;:                #region 7 玩家战斗相关                //游戏场景死循环内的玩家输入枚举分支中的j键的分支中 添加玩家战斗相关逻辑                //要让玩家不能再移动                //更改战斗状态标识 可以跳出当前游戏场景死循环 就进入战斗状态逻辑 不会进入非战斗状态的移动逻辑                //下方能够显示信息                // 当玩家在boss身边一格且boss血量大于0的时候可以开始战斗                if ((playerX == bossX &amp;&amp; playerY == bossY - 1 ||                    playerX == bossX &amp;&amp; playerY == bossY + 1 ||                    playerX == bossX - 2 &amp;&amp; playerY == bossY ||                    playerX == bossX + 2 &amp;&amp; playerY == bossY) &amp;&amp; bossHp &gt; 0)                &#123;                    //可以开始战斗 更改战斗状态标识                    isFight = true;                    //输出战斗中的对战信息                    Console.SetCursorPosition(2, h - 5);                    Console.ForegroundColor = ConsoleColor.White;                    Console.Write(&quot;开始和Boss战斗了，按J键继续&quot;);                    Console.SetCursorPosition(2, h - 4);                    Console.Write(&quot;玩家当前血量为&#123;0&#125;&quot;, playerHp);                    Console.SetCursorPosition(2, h - 3);                    Console.Write(&quot;boss当前血量为&#123;0&#125;&quot;, bossHp);                &#125;                #endregion                #region 8 公主相关                //判断是否在公主身边按J键                else if ((playerX == princessX &amp;&amp; playerY == princessY - 1 ||                    playerX == princessX &amp;&amp; playerY == princessY + 1 ||                    playerX == princessX - 2 &amp;&amp; playerY == princessY ||                    playerX == princessX + 2 &amp;&amp; playerY == princessY) &amp;&amp; bossHp &lt;= 0)                &#123;                    //改变 场景ID                    nowSceneID = 3;                    gameOverInfo = &quot;游戏通关&quot;;                    //改变跳出成功拯救公主后跳出游戏主逻辑死循环的标识                    //跳出 游戏界面的while循环 回到主循环                    isOver = true;                &#125;                #endregion                break;        &#125;        #endregion    &#125;    #region 8 公主相关    //游戏场景逻辑末尾添加跳出是否跳出循环判断逻辑    //外层while循环逻辑    if (isOver)    &#123;        //就是和while配对        break;    &#125;    #endregion&#125;#endregion</code></pre><hr>]]></content>
       
       
       <categories>
@@ -8668,9 +8800,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> 语法知识 </tag>
-            
             <tag> CSharp入门 </tag>
+            
+            <tag> 语法知识 </tag>
             
         </tags>
       
@@ -8699,9 +8831,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> 语法知识 </tag>
-            
             <tag> CSharp入门 </tag>
+            
+            <tag> 语法知识 </tag>
             
             <tag> 循环语句 </tag>
             
@@ -8732,9 +8864,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> 语法知识 </tag>
-            
             <tag> CSharp入门 </tag>
+            
+            <tag> 语法知识 </tag>
             
             <tag> 循环语句 </tag>
             
@@ -8765,9 +8897,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> 语法知识 </tag>
-            
             <tag> CSharp入门 </tag>
+            
+            <tag> 语法知识 </tag>
             
             <tag> 循环语句 </tag>
             
@@ -8798,9 +8930,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> 语法知识 </tag>
-            
             <tag> CSharp入门 </tag>
+            
+            <tag> 语法知识 </tag>
             
             <tag> 条件分支语句 </tag>
             
@@ -8831,9 +8963,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> 语法知识 </tag>
-            
             <tag> CSharp入门 </tag>
+            
+            <tag> 语法知识 </tag>
             
             <tag> 条件分支语句 </tag>
             
@@ -8864,9 +8996,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> 语法知识 </tag>
-            
             <tag> CSharp入门 </tag>
+            
+            <tag> 语法知识 </tag>
             
             <tag> 运算符 </tag>
             
@@ -8897,9 +9029,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> 语法知识 </tag>
-            
             <tag> CSharp入门 </tag>
+            
+            <tag> 语法知识 </tag>
             
             <tag> 运算符 </tag>
             
@@ -8930,9 +9062,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> 语法知识 </tag>
-            
             <tag> CSharp入门 </tag>
+            
+            <tag> 语法知识 </tag>
             
             <tag> 运算符 </tag>
             
@@ -8963,9 +9095,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> 语法知识 </tag>
-            
             <tag> CSharp入门 </tag>
+            
+            <tag> 语法知识 </tag>
             
             <tag> 运算符 </tag>
             
@@ -8996,9 +9128,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> 语法知识 </tag>
-            
             <tag> CSharp入门 </tag>
+            
+            <tag> 语法知识 </tag>
             
             <tag> 运算符 </tag>
             
@@ -9029,9 +9161,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> 语法知识 </tag>
-            
             <tag> CSharp入门 </tag>
+            
+            <tag> 语法知识 </tag>
             
             <tag> 运算符 </tag>
             
@@ -9062,9 +9194,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> 语法知识 </tag>
-            
             <tag> CSharp入门 </tag>
+            
+            <tag> 语法知识 </tag>
             
         </tags>
       
@@ -9093,9 +9225,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> 语法知识 </tag>
-            
             <tag> CSharp入门 </tag>
+            
+            <tag> 语法知识 </tag>
             
             <tag> 类型转换 </tag>
             
@@ -9126,9 +9258,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> 语法知识 </tag>
-            
             <tag> CSharp入门 </tag>
+            
+            <tag> 语法知识 </tag>
             
             <tag> 类型转换 </tag>
             
@@ -9159,9 +9291,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> 语法知识 </tag>
-            
             <tag> CSharp入门 </tag>
+            
+            <tag> 语法知识 </tag>
             
         </tags>
       
@@ -9190,9 +9322,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> 语法知识 </tag>
-            
             <tag> CSharp入门 </tag>
+            
+            <tag> 语法知识 </tag>
             
         </tags>
       
@@ -9221,9 +9353,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> 语法知识 </tag>
-            
             <tag> CSharp入门 </tag>
+            
+            <tag> 语法知识 </tag>
             
         </tags>
       
@@ -9252,9 +9384,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> 语法知识 </tag>
-            
             <tag> CSharp入门 </tag>
+            
+            <tag> 语法知识 </tag>
             
         </tags>
       
@@ -9283,9 +9415,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> 语法知识 </tag>
-            
             <tag> CSharp入门 </tag>
+            
+            <tag> 语法知识 </tag>
             
         </tags>
       
@@ -9314,9 +9446,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> 语法知识 </tag>
-            
             <tag> CSharp入门 </tag>
+            
+            <tag> 语法知识 </tag>
             
         </tags>
       
@@ -9345,9 +9477,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> 语法知识 </tag>
-            
             <tag> CSharp入门 </tag>
+            
+            <tag> 语法知识 </tag>
             
             <tag> 开发环境 </tag>
             
@@ -9378,9 +9510,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> 语法知识 </tag>
-            
             <tag> CSharp入门 </tag>
+            
+            <tag> 语法知识 </tag>
             
         </tags>
       
@@ -9409,9 +9541,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> 语法知识 </tag>
-            
             <tag> CSharp入门 </tag>
+            
+            <tag> 语法知识 </tag>
             
         </tags>
       
