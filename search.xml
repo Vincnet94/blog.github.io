@@ -8,7 +8,7 @@
       <link href="/2024/03/01/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/20.Resources%E8%B5%84%E6%BA%90%E5%8A%A8%E6%80%81%E5%8A%A0%E8%BD%BD-Resources%E5%8D%B8%E8%BD%BD%E8%B5%84%E6%BA%90/"/>
       <url>/2024/03/01/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/20.Resources%E8%B5%84%E6%BA%90%E5%8A%A8%E6%80%81%E5%8A%A0%E8%BD%BD-Resources%E5%8D%B8%E8%BD%BD%E8%B5%84%E6%BA%90/</url>
       
-        <content type="html"><![CDATA[<h1 id="20-Resources资源动态加载-Resources卸载资源"><a href="#20-Resources资源动态加载-Resources卸载资源" class="headerlink" title="20.Resources资源动态加载-Resources卸载资源"></a>20.Resources资源动态加载-Resources卸载资源</h1><hr><h2 id="20-1-知识点"><a href="#20-1-知识点" class="headerlink" title="20.1 知识点"></a>20.1 知识点</h2><h3 id="Resources重复加载资源会浪费内存吗？"><a href="#Resources重复加载资源会浪费内存吗？" class="headerlink" title="Resources重复加载资源会浪费内存吗？"></a>Resources重复加载资源会浪费内存吗？</h3><h4 id="其实Resources加载一次资源过后"><a href="#其实Resources加载一次资源过后" class="headerlink" title="其实Resources加载一次资源过后"></a>其实Resources加载一次资源过后</h4><ul><li>该资源就一直存放在内存中作为缓存</li><li>第二次加载时发现缓存中存在该资源</li><li>会直接取出来进行使用</li><li>所以，多次重复加载不会浪费内存</li><li>但是会浪费性能（每次加载都会去查找取出，始终伴随一些性能消耗）</li></ul><h3 id="手动释放掉缓存中的资源"><a href="#手动释放掉缓存中的资源" class="headerlink" title="手动释放掉缓存中的资源"></a>手动释放掉缓存中的资源</h3><h4 id="Resources中的UnloadAsset方法-卸载指定资源"><a href="#Resources中的UnloadAsset方法-卸载指定资源" class="headerlink" title="Resources中的UnloadAsset方法 - 卸载指定资源"></a>Resources中的UnloadAsset方法 - 卸载指定资源</h4><pre><code class="csharp">//从内存中卸载 / assetToUnload ///注意：//该方法 不能释放 GameObject对象 因为它会用于实例化对象//它只能用于一些 不需要实例化的内容 比如 图片 和 音效 文本等等//一般情况下 我们很少单独使用它//GameObject obj = Resources.CoroutineAsynLoad&lt;GameObject&gt;(&quot;Cube&quot;)//即使是没有实例化的 GameObject对象也不能进行卸载//Resources.UnloadAsset(obj);//报错 不能卸载GameObject</code></pre><h4 id="Resources中的UnloadUnusedAssets方法-卸载未使用的资源"><a href="#Resources中的UnloadUnusedAssets方法-卸载未使用的资源" class="headerlink" title="Resources中的UnloadUnusedAssets方法 - 卸载未使用的资源"></a>Resources中的UnloadUnusedAssets方法 - 卸载未使用的资源</h4><pre><code class="csharp">//卸载未使用的资源。//注意：一般在过场景时和GC一起使用Resources.UnloadUnusedAssets();GC.Collect();</code></pre><h4 id="打开调试窗口，按下按键，可以查看加载图片和卸载图片内存的变化，重复按下加载，内存还是不会变化"><a href="#打开调试窗口，按下按键，可以查看加载图片和卸载图片内存的变化，重复按下加载，内存还是不会变化" class="headerlink" title="打开调试窗口，按下按键，可以查看加载图片和卸载图片内存的变化，重复按下加载，内存还是不会变化"></a>打开调试窗口，按下按键，可以查看加载图片和卸载图片内存的变化，重复按下加载，内存还是不会变化</h4><p><img src="/../../../images/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/20.Resources%E8%B5%84%E6%BA%90%E5%8A%A8%E6%80%81%E5%8A%A0%E8%BD%BD-Resources%E5%8D%B8%E8%BD%BD%E8%B5%84%E6%BA%90/1.png"><br><img src="/../../../images/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/20.Resources%E8%B5%84%E6%BA%90%E5%8A%A8%E6%80%81%E5%8A%A0%E8%BD%BD-Resources%E5%8D%B8%E8%BD%BD%E8%B5%84%E6%BA%90/2.png"><br><img src="/../../../images/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/20.Resources%E8%B5%84%E6%BA%90%E5%8A%A8%E6%80%81%E5%8A%A0%E8%BD%BD-Resources%E5%8D%B8%E8%BD%BD%E8%B5%84%E6%BA%90/3.png"><br><img src="/../../../images/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/20.Resources%E8%B5%84%E6%BA%90%E5%8A%A8%E6%80%81%E5%8A%A0%E8%BD%BD-Resources%E5%8D%B8%E8%BD%BD%E8%B5%84%E6%BA%90/4.png"></p><pre><code class="csharp">void Update()&#123;    //加载卸载不是GameObject可以正常使用    //按键加载卸载指定资源，查看变化    if (Input.GetKeyDown(KeyCode.Alpha1))    &#123;        print(&quot;加载资源&quot;);        tex = Resources.Load&lt;Texture&gt;(&quot;Tex/TestJPG&quot;);    &#125;    if (Input.GetKeyDown(KeyCode.Alpha2))    &#123;        print(&quot;卸载资源&quot;);        Resources.UnloadAsset(tex);        tex = null;    &#125;&#125;</code></pre><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ul><li><strong>Resources.UnloadAsset</strong> 卸载指定资源，但是不能卸载GameObject对象</li><li><strong>Resources.UnloadUnusedAssets</strong> 卸载未使用资源，一般过场景时配合GC使用</li></ul><hr><h2 id="20-2-知识点代码"><a href="#20-2-知识点代码" class="headerlink" title="20.2 知识点代码"></a>20.2 知识点代码</h2><pre><code class="csharp">using System;using System.Collections;using System.Collections.Generic;using UnityEngine;public class Lesson20_Resources资源动态加载_Resources卸载资源 : MonoBehaviour&#123;    private Texture tex;    // Start is called before the first frame update    void Start()    &#123;        #region 知识点一 Resources重复加载资源会浪费内存吗？        //其实Resources加载一次资源过后        //该资源就一直存放在内存中作为缓存        //第二次加载时发现缓存中存在该资源        //会直接取出来进行使用        //所以 多次重复加载不会浪费内存        //但是 会浪费性能（每次加载都会去查找取出，始终伴随一些性能消耗）        #endregion        #region 知识点二 如何手动释放掉缓存中的资源        //Resources中的UnloadAsset方法 卸载指定资源        //从内存中卸载 / assetToUnload /。        //注意：        //该方法 不能释放 GameObject对象 因为它会用于实例化对象        //它只能用于一些 不需要实例化的内容 比如 图片 和 音效 文本等等        //一般情况下 我们很少单独使用它        //GameObject obj = Resources.CoroutineAsynLoad&lt;GameObject&gt;(&quot;Cube&quot;);        //即使是没有实例化的 GameObject对象也不能进行卸载        //Resources.UnloadAsset(obj);//报错 不能卸载GameObject        //Resources中的UnloadUnusedAssets方法 卸载未使用的资源        //卸载未使用的资源。        //注意：一般在过场景时和GC一起使用        Resources.UnloadUnusedAssets();        GC.Collect();        #endregion        #region 总结        //Resources.UnloadAsset 卸载指定资源 但是不能卸载GameObject对象        //Resources.UnloadUnusedAssets 卸载未使用资源 一般过场景时配合GC使用        #endregion    &#125;    // Update is called once per frame    void Update()    &#123;        //加载卸载不是GameObject可以正常使用        //按键加载卸载指定资源，查看变化        if (Input.GetKeyDown(KeyCode.Alpha1))        &#123;            print(&quot;加载资源&quot;);            tex = Resources.Load&lt;Texture&gt;(&quot;Tex/TestJPG&quot;);        &#125;        if (Input.GetKeyDown(KeyCode.Alpha2))        &#123;            print(&quot;卸载资源&quot;);            Resources.UnloadAsset(tex);            tex = null;        &#125;    &#125;&#125;</code></pre><hr>]]></content>
+        <content type="html"><![CDATA[<h1 id="20-Resources资源动态加载-Resources卸载资源"><a href="#20-Resources资源动态加载-Resources卸载资源" class="headerlink" title="20.Resources资源动态加载-Resources卸载资源"></a>20.Resources资源动态加载-Resources卸载资源</h1><hr><h2 id="20-1-知识点"><a href="#20-1-知识点" class="headerlink" title="20.1 知识点"></a>20.1 知识点</h2><h3 id="Resources重复加载资源会浪费内存吗？"><a href="#Resources重复加载资源会浪费内存吗？" class="headerlink" title="Resources重复加载资源会浪费内存吗？"></a>Resources重复加载资源会浪费内存吗？</h3><ul><li>其实Resources加载一次资源过后</li><li>该资源就一直存放在内存中作为缓存</li><li>第二次加载时发现缓存中存在该资源</li><li>会直接取出来进行使用</li><li>所以，多次重复加载不会浪费内存</li><li>但是会浪费性能（每次加载都会去查找取出，始终伴随一些性能消耗）</li></ul><h3 id="手动释放掉缓存中的资源"><a href="#手动释放掉缓存中的资源" class="headerlink" title="手动释放掉缓存中的资源"></a>手动释放掉缓存中的资源</h3><h4 id="Resources中的UnloadAsset方法-卸载指定资源"><a href="#Resources中的UnloadAsset方法-卸载指定资源" class="headerlink" title="Resources中的UnloadAsset方法 - 卸载指定资源"></a>Resources中的UnloadAsset方法 - 卸载指定资源</h4><pre><code class="csharp">//从内存中卸载 / assetToUnload ///注意：//该方法 不能释放 GameObject对象 因为它会用于实例化对象//它只能用于一些 不需要实例化的内容 比如 图片 和 音效 文本等等//一般情况下 我们很少单独使用它//GameObject obj = Resources.CoroutineAsynLoad&lt;GameObject&gt;(&quot;Cube&quot;)//即使是没有实例化的 GameObject对象也不能进行卸载//Resources.UnloadAsset(obj);//报错 不能卸载GameObject</code></pre><h4 id="Resources中的UnloadUnusedAssets方法-卸载未使用的资源"><a href="#Resources中的UnloadUnusedAssets方法-卸载未使用的资源" class="headerlink" title="Resources中的UnloadUnusedAssets方法 - 卸载未使用的资源"></a>Resources中的UnloadUnusedAssets方法 - 卸载未使用的资源</h4><pre><code class="csharp">//卸载未使用的资源。//注意：一般在过场景时和GC一起使用Resources.UnloadUnusedAssets();GC.Collect();</code></pre><h4 id="打开调试窗口，按下按键，可以查看加载图片和卸载图片内存的变化，重复按下加载，内存还是不会变化"><a href="#打开调试窗口，按下按键，可以查看加载图片和卸载图片内存的变化，重复按下加载，内存还是不会变化" class="headerlink" title="打开调试窗口，按下按键，可以查看加载图片和卸载图片内存的变化，重复按下加载，内存还是不会变化"></a>打开调试窗口，按下按键，可以查看加载图片和卸载图片内存的变化，重复按下加载，内存还是不会变化</h4><p><img src="/../../../images/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/20.Resources%E8%B5%84%E6%BA%90%E5%8A%A8%E6%80%81%E5%8A%A0%E8%BD%BD-Resources%E5%8D%B8%E8%BD%BD%E8%B5%84%E6%BA%90/1.png"><br><img src="/../../../images/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/20.Resources%E8%B5%84%E6%BA%90%E5%8A%A8%E6%80%81%E5%8A%A0%E8%BD%BD-Resources%E5%8D%B8%E8%BD%BD%E8%B5%84%E6%BA%90/2.png"><br><img src="/../../../images/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/20.Resources%E8%B5%84%E6%BA%90%E5%8A%A8%E6%80%81%E5%8A%A0%E8%BD%BD-Resources%E5%8D%B8%E8%BD%BD%E8%B5%84%E6%BA%90/3.png"><br><img src="/../../../images/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/20.Resources%E8%B5%84%E6%BA%90%E5%8A%A8%E6%80%81%E5%8A%A0%E8%BD%BD-Resources%E5%8D%B8%E8%BD%BD%E8%B5%84%E6%BA%90/4.png"></p><pre><code class="csharp">void Update()&#123;    //加载卸载不是GameObject可以正常使用    //按键加载卸载指定资源，查看变化    if (Input.GetKeyDown(KeyCode.Alpha1))    &#123;        print(&quot;加载资源&quot;);        tex = Resources.Load&lt;Texture&gt;(&quot;Tex/TestJPG&quot;);    &#125;    if (Input.GetKeyDown(KeyCode.Alpha2))    &#123;        print(&quot;卸载资源&quot;);        Resources.UnloadAsset(tex);        tex = null;    &#125;&#125;</code></pre><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ul><li><strong>Resources.UnloadAsset</strong> 卸载指定资源，但是不能卸载GameObject对象</li><li><strong>Resources.UnloadUnusedAssets</strong> 卸载未使用资源，一般过场景时配合GC使用</li></ul><hr><h2 id="20-2-知识点代码"><a href="#20-2-知识点代码" class="headerlink" title="20.2 知识点代码"></a>20.2 知识点代码</h2><pre><code class="csharp">using System;using System.Collections;using System.Collections.Generic;using UnityEngine;public class Lesson20_Resources资源动态加载_Resources卸载资源 : MonoBehaviour&#123;    private Texture tex;    // Start is called before the first frame update    void Start()    &#123;        #region 知识点一 Resources重复加载资源会浪费内存吗？        //其实Resources加载一次资源过后        //该资源就一直存放在内存中作为缓存        //第二次加载时发现缓存中存在该资源        //会直接取出来进行使用        //所以 多次重复加载不会浪费内存        //但是 会浪费性能（每次加载都会去查找取出，始终伴随一些性能消耗）        #endregion        #region 知识点二 如何手动释放掉缓存中的资源        //Resources中的UnloadAsset方法 卸载指定资源        //从内存中卸载 / assetToUnload /。        //注意：        //该方法 不能释放 GameObject对象 因为它会用于实例化对象        //它只能用于一些 不需要实例化的内容 比如 图片 和 音效 文本等等        //一般情况下 我们很少单独使用它        //GameObject obj = Resources.CoroutineAsynLoad&lt;GameObject&gt;(&quot;Cube&quot;);        //即使是没有实例化的 GameObject对象也不能进行卸载        //Resources.UnloadAsset(obj);//报错 不能卸载GameObject        //Resources中的UnloadUnusedAssets方法 卸载未使用的资源        //卸载未使用的资源。        //注意：一般在过场景时和GC一起使用        Resources.UnloadUnusedAssets();        GC.Collect();        #endregion        #region 总结        //Resources.UnloadAsset 卸载指定资源 但是不能卸载GameObject对象        //Resources.UnloadUnusedAssets 卸载未使用资源 一般过场景时配合GC使用        #endregion    &#125;    // Update is called once per frame    void Update()    &#123;        //加载卸载不是GameObject可以正常使用        //按键加载卸载指定资源，查看变化        if (Input.GetKeyDown(KeyCode.Alpha1))        &#123;            print(&quot;加载资源&quot;);            tex = Resources.Load&lt;Texture&gt;(&quot;Tex/TestJPG&quot;);        &#125;        if (Input.GetKeyDown(KeyCode.Alpha2))        &#123;            print(&quot;卸载资源&quot;);            Resources.UnloadAsset(tex);            tex = null;        &#125;    &#125;&#125;</code></pre><hr>]]></content>
       
       
       <categories>
@@ -158,9 +158,9 @@
             
             <tag> Unity </tag>
             
-            <tag> MonoBehavior中的重要内容 </tag>
-            
             <tag> Unity基础 </tag>
+            
+            <tag> MonoBehavior中的重要内容 </tag>
             
             <tag> 协同程序 </tag>
             
@@ -193,9 +193,9 @@
             
             <tag> Unity </tag>
             
-            <tag> MonoBehavior中的重要内容 </tag>
-            
             <tag> Unity基础 </tag>
+            
+            <tag> MonoBehavior中的重要内容 </tag>
             
             <tag> 协同程序 </tag>
             
@@ -228,9 +228,9 @@
             
             <tag> Unity </tag>
             
-            <tag> MonoBehavior中的重要内容 </tag>
-            
             <tag> Unity基础 </tag>
+            
+            <tag> MonoBehavior中的重要内容 </tag>
             
         </tags>
       
@@ -2074,11 +2074,11 @@
             
             <tag> 必备知识点 </tag>
             
-            <tag> 反射和特性 </tag>
-            
             <tag> UI系统 </tag>
             
             <tag> GUI </tag>
+            
+            <tag> 反射和特性 </tag>
             
         </tags>
       
@@ -2105,11 +2105,11 @@
       
         <tags>
             
-            <tag> 基础知识 </tag>
-            
             <tag> UI系统 </tag>
             
             <tag> GUI </tag>
+            
+            <tag> 基础知识 </tag>
             
         </tags>
       
@@ -2136,11 +2136,11 @@
       
         <tags>
             
-            <tag> 基础知识 </tag>
-            
             <tag> UI系统 </tag>
             
             <tag> GUI </tag>
+            
+            <tag> 基础知识 </tag>
             
             <tag> 自定义整体样式 </tag>
             
@@ -2169,11 +2169,11 @@
       
         <tags>
             
-            <tag> 基础知识 </tag>
-            
             <tag> UI系统 </tag>
             
             <tag> GUI </tag>
+            
+            <tag> 基础知识 </tag>
             
             <tag> 自定义整体样式 </tag>
             
@@ -2202,11 +2202,11 @@
       
         <tags>
             
-            <tag> 基础知识 </tag>
-            
             <tag> UI系统 </tag>
             
             <tag> GUI </tag>
+            
+            <tag> 基础知识 </tag>
             
             <tag> 控件 </tag>
             
@@ -2237,11 +2237,11 @@
       
         <tags>
             
-            <tag> 基础知识 </tag>
-            
             <tag> UI系统 </tag>
             
             <tag> GUI </tag>
+            
+            <tag> 基础知识 </tag>
             
             <tag> 控件 </tag>
             
@@ -2272,11 +2272,11 @@
       
         <tags>
             
-            <tag> 基础知识 </tag>
-            
             <tag> UI系统 </tag>
             
             <tag> GUI </tag>
+            
+            <tag> 基础知识 </tag>
             
             <tag> 控件 </tag>
             
@@ -2307,11 +2307,11 @@
       
         <tags>
             
-            <tag> 基础知识 </tag>
-            
             <tag> UI系统 </tag>
             
             <tag> GUI </tag>
+            
+            <tag> 基础知识 </tag>
             
             <tag> 控件 </tag>
             
@@ -2342,11 +2342,11 @@
       
         <tags>
             
-            <tag> 基础知识 </tag>
-            
             <tag> UI系统 </tag>
             
             <tag> GUI </tag>
+            
+            <tag> 基础知识 </tag>
             
             <tag> 控件 </tag>
             
@@ -2377,11 +2377,11 @@
       
         <tags>
             
-            <tag> 基础知识 </tag>
-            
             <tag> UI系统 </tag>
             
             <tag> GUI </tag>
+            
+            <tag> 基础知识 </tag>
             
             <tag> 控件 </tag>
             
@@ -2412,11 +2412,11 @@
       
         <tags>
             
-            <tag> 基础知识 </tag>
-            
             <tag> UI系统 </tag>
             
             <tag> GUI </tag>
+            
+            <tag> 基础知识 </tag>
             
             <tag> 控件 </tag>
             
@@ -2447,11 +2447,11 @@
       
         <tags>
             
-            <tag> 基础知识 </tag>
-            
             <tag> UI系统 </tag>
             
             <tag> GUI </tag>
+            
+            <tag> 基础知识 </tag>
             
         </tags>
       
@@ -2478,11 +2478,11 @@
       
         <tags>
             
-            <tag> 基础知识 </tag>
-            
             <tag> UI系统 </tag>
             
             <tag> GUI </tag>
+            
+            <tag> 基础知识 </tag>
             
         </tags>
       
@@ -2573,11 +2573,11 @@
             
             <tag> 实践项目 </tag>
             
+            <tag> 反射和特性 </tag>
+            
             <tag> 数据持久化 </tag>
             
             <tag> PlayerPrefs </tag>
-            
-            <tag> 反射和特性 </tag>
             
         </tags>
       
@@ -2606,11 +2606,11 @@
             
             <tag> 实践项目 </tag>
             
+            <tag> 反射和特性 </tag>
+            
             <tag> 数据持久化 </tag>
             
             <tag> PlayerPrefs </tag>
-            
-            <tag> 反射和特性 </tag>
             
         </tags>
       
@@ -2639,11 +2639,11 @@
             
             <tag> 实践项目 </tag>
             
+            <tag> 反射和特性 </tag>
+            
             <tag> 数据持久化 </tag>
             
             <tag> PlayerPrefs </tag>
-            
-            <tag> 反射和特性 </tag>
             
         </tags>
       
@@ -2672,11 +2672,11 @@
             
             <tag> 实践项目 </tag>
             
+            <tag> 反射和特性 </tag>
+            
             <tag> 数据持久化 </tag>
             
             <tag> PlayerPrefs </tag>
-            
-            <tag> 反射和特性 </tag>
             
         </tags>
       
@@ -2705,11 +2705,11 @@
             
             <tag> 实践项目 </tag>
             
+            <tag> 反射和特性 </tag>
+            
             <tag> 数据持久化 </tag>
             
             <tag> PlayerPrefs </tag>
-            
-            <tag> 反射和特性 </tag>
             
         </tags>
       
@@ -2738,11 +2738,11 @@
             
             <tag> 实践项目 </tag>
             
+            <tag> 反射和特性 </tag>
+            
             <tag> 数据持久化 </tag>
             
             <tag> PlayerPrefs </tag>
-            
-            <tag> 反射和特性 </tag>
             
         </tags>
       
@@ -2771,11 +2771,11 @@
             
             <tag> 实践项目 </tag>
             
+            <tag> 反射和特性 </tag>
+            
             <tag> 数据持久化 </tag>
             
             <tag> PlayerPrefs </tag>
-            
-            <tag> 反射和特性 </tag>
             
         </tags>
       
@@ -2804,11 +2804,11 @@
             
             <tag> 实践项目 </tag>
             
+            <tag> 反射和特性 </tag>
+            
             <tag> 数据持久化 </tag>
             
             <tag> PlayerPrefs </tag>
-            
-            <tag> 反射和特性 </tag>
             
         </tags>
       
@@ -2901,11 +2901,11 @@
             
             <tag> 必备知识点 </tag>
             
+            <tag> 反射和特性 </tag>
+            
             <tag> 数据持久化 </tag>
             
             <tag> PlayerPrefs </tag>
-            
-            <tag> 反射和特性 </tag>
             
         </tags>
       
@@ -2932,11 +2932,11 @@
       
         <tags>
             
+            <tag> 基础知识 </tag>
+            
             <tag> 数据持久化 </tag>
             
             <tag> PlayerPrefs </tag>
-            
-            <tag> 基础知识 </tag>
             
         </tags>
       
@@ -2963,11 +2963,11 @@
       
         <tags>
             
+            <tag> 基础知识 </tag>
+            
             <tag> 数据持久化 </tag>
             
             <tag> PlayerPrefs </tag>
-            
-            <tag> 基础知识 </tag>
             
         </tags>
       
@@ -2994,11 +2994,11 @@
       
         <tags>
             
+            <tag> 基础知识 </tag>
+            
             <tag> 数据持久化 </tag>
             
             <tag> PlayerPrefs </tag>
-            
-            <tag> 基础知识 </tag>
             
         </tags>
       
@@ -3025,11 +3025,11 @@
       
         <tags>
             
+            <tag> 基础知识 </tag>
+            
             <tag> 数据持久化 </tag>
             
             <tag> PlayerPrefs </tag>
-            
-            <tag> 基础知识 </tag>
             
         </tags>
       
@@ -3870,11 +3870,11 @@
             
             <tag> Unity </tag>
             
+            <tag> MonoBehavior中的重要内容 </tag>
+            
             <tag> Unity入门 </tag>
             
             <tag> Unity脚本基础 </tag>
-            
-            <tag> MonoBehavior中的重要内容 </tag>
             
         </tags>
       
@@ -3901,9 +3901,9 @@
       
         <tags>
             
-            <tag> 基础知识 </tag>
-            
             <tag> 反射和特性 </tag>
+            
+            <tag> 基础知识 </tag>
             
             <tag> Unity </tag>
             
@@ -4035,9 +4035,9 @@
       
         <tags>
             
-            <tag> 基础知识 </tag>
-            
             <tag> 反射和特性 </tag>
+            
+            <tag> 基础知识 </tag>
             
             <tag> Unity </tag>
             
@@ -5738,9 +5738,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> 实践项目 </tag>
-            
             <tag> CSharp核心 </tag>
+            
+            <tag> 实践项目 </tag>
             
         </tags>
       
@@ -5769,9 +5769,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> 实践项目 </tag>
-            
             <tag> CSharp核心 </tag>
+            
+            <tag> 实践项目 </tag>
             
         </tags>
       
@@ -5800,9 +5800,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> 实践项目 </tag>
-            
             <tag> CSharp核心 </tag>
+            
+            <tag> 实践项目 </tag>
             
         </tags>
       
@@ -5831,9 +5831,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> 实践项目 </tag>
-            
             <tag> CSharp核心 </tag>
+            
+            <tag> 实践项目 </tag>
             
         </tags>
       
@@ -5862,9 +5862,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> 实践项目 </tag>
-            
             <tag> CSharp核心 </tag>
+            
+            <tag> 实践项目 </tag>
             
         </tags>
       
@@ -5893,9 +5893,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> 实践项目 </tag>
-            
             <tag> CSharp核心 </tag>
+            
+            <tag> 实践项目 </tag>
             
         </tags>
       
@@ -5924,9 +5924,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> 实践项目 </tag>
-            
             <tag> CSharp核心 </tag>
+            
+            <tag> 实践项目 </tag>
             
         </tags>
       
@@ -5955,9 +5955,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> 实践项目 </tag>
-            
             <tag> CSharp核心 </tag>
+            
+            <tag> 实践项目 </tag>
             
         </tags>
       
@@ -5986,9 +5986,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> 实践项目 </tag>
-            
             <tag> CSharp核心 </tag>
+            
+            <tag> 实践项目 </tag>
             
         </tags>
       
@@ -6017,9 +6017,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> 实践项目 </tag>
-            
             <tag> CSharp核心 </tag>
+            
+            <tag> 实践项目 </tag>
             
         </tags>
       
@@ -6048,9 +6048,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> 实践项目 </tag>
-            
             <tag> CSharp核心 </tag>
+            
+            <tag> 实践项目 </tag>
             
         </tags>
       
@@ -6079,9 +6079,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> 实践项目 </tag>
-            
             <tag> CSharp核心 </tag>
+            
+            <tag> 实践项目 </tag>
             
         </tags>
       
@@ -6110,9 +6110,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> 实践项目 </tag>
-            
             <tag> CSharp核心 </tag>
+            
+            <tag> 实践项目 </tag>
             
         </tags>
       
@@ -6141,9 +6141,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> 实践项目 </tag>
-            
             <tag> CSharp核心 </tag>
+            
+            <tag> 实践项目 </tag>
             
         </tags>
       
@@ -6172,11 +6172,11 @@
             
             <tag> CSharp </tag>
             
+            <tag> CSharp核心 </tag>
+            
             <tag> 实践项目 </tag>
             
             <tag> 必备知识点 </tag>
-            
-            <tag> CSharp核心 </tag>
             
         </tags>
       
@@ -6205,11 +6205,11 @@
             
             <tag> CSharp </tag>
             
+            <tag> CSharp核心 </tag>
+            
             <tag> 实践项目 </tag>
             
             <tag> 必备知识点 </tag>
-            
-            <tag> CSharp核心 </tag>
             
         </tags>
       
@@ -6238,11 +6238,11 @@
             
             <tag> CSharp </tag>
             
+            <tag> CSharp核心 </tag>
+            
             <tag> 实践项目 </tag>
             
             <tag> 必备知识点 </tag>
-            
-            <tag> CSharp核心 </tag>
             
         </tags>
       
@@ -7266,9 +7266,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> 实践项目 </tag>
-            
             <tag> CSharp基础 </tag>
+            
+            <tag> 实践项目 </tag>
             
         </tags>
       
@@ -7297,9 +7297,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> 实践项目 </tag>
-            
             <tag> CSharp基础 </tag>
+            
+            <tag> 实践项目 </tag>
             
         </tags>
       
@@ -7328,9 +7328,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> 实践项目 </tag>
-            
             <tag> CSharp基础 </tag>
+            
+            <tag> 实践项目 </tag>
             
         </tags>
       
@@ -7359,9 +7359,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> 实践项目 </tag>
-            
             <tag> CSharp基础 </tag>
+            
+            <tag> 实践项目 </tag>
             
         </tags>
       
@@ -7390,9 +7390,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> 实践项目 </tag>
-            
             <tag> CSharp基础 </tag>
+            
+            <tag> 实践项目 </tag>
             
         </tags>
       
@@ -7421,9 +7421,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> 实践项目 </tag>
-            
             <tag> CSharp基础 </tag>
+            
+            <tag> 实践项目 </tag>
             
         </tags>
       
@@ -7452,9 +7452,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> 实践项目 </tag>
-            
             <tag> CSharp基础 </tag>
+            
+            <tag> 实践项目 </tag>
             
         </tags>
       
@@ -7483,9 +7483,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> 实践项目 </tag>
-            
             <tag> CSharp基础 </tag>
+            
+            <tag> 实践项目 </tag>
             
         </tags>
       
@@ -7514,9 +7514,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> 实践项目 </tag>
-            
             <tag> CSharp基础 </tag>
+            
+            <tag> 实践项目 </tag>
             
         </tags>
       
@@ -7545,9 +7545,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> 实践项目 </tag>
-            
             <tag> CSharp基础 </tag>
+            
+            <tag> 实践项目 </tag>
             
         </tags>
       
@@ -7576,9 +7576,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> 实践项目 </tag>
-            
             <tag> CSharp基础 </tag>
+            
+            <tag> 实践项目 </tag>
             
         </tags>
       
@@ -7607,9 +7607,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> 实践项目 </tag>
-            
             <tag> CSharp基础 </tag>
+            
+            <tag> 实践项目 </tag>
             
         </tags>
       
@@ -7638,9 +7638,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> 语法知识 </tag>
-            
             <tag> CSharp基础 </tag>
+            
+            <tag> 语法知识 </tag>
             
         </tags>
       
@@ -7669,9 +7669,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> 语法知识 </tag>
-            
             <tag> CSharp基础 </tag>
+            
+            <tag> 语法知识 </tag>
             
             <tag> 排序 </tag>
             
@@ -7702,9 +7702,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> 语法知识 </tag>
-            
             <tag> CSharp基础 </tag>
+            
+            <tag> 语法知识 </tag>
             
             <tag> 排序 </tag>
             
@@ -7735,9 +7735,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> 语法知识 </tag>
-            
             <tag> CSharp基础 </tag>
+            
+            <tag> 语法知识 </tag>
             
             <tag> 复杂数据类型 </tag>
             
@@ -7768,9 +7768,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> 语法知识 </tag>
-            
             <tag> CSharp基础 </tag>
+            
+            <tag> 语法知识 </tag>
             
             <tag> 函数 </tag>
             
@@ -7801,9 +7801,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> 语法知识 </tag>
-            
             <tag> CSharp基础 </tag>
+            
+            <tag> 语法知识 </tag>
             
             <tag> 函数 </tag>
             
@@ -7834,9 +7834,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> 语法知识 </tag>
-            
             <tag> CSharp基础 </tag>
+            
+            <tag> 语法知识 </tag>
             
             <tag> 函数 </tag>
             
@@ -7867,9 +7867,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> 语法知识 </tag>
-            
             <tag> CSharp基础 </tag>
+            
+            <tag> 语法知识 </tag>
             
             <tag> 函数 </tag>
             
@@ -7900,9 +7900,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> 语法知识 </tag>
-            
             <tag> CSharp基础 </tag>
+            
+            <tag> 语法知识 </tag>
             
             <tag> 函数 </tag>
             
@@ -7933,9 +7933,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> 语法知识 </tag>
-            
             <tag> CSharp基础 </tag>
+            
+            <tag> 语法知识 </tag>
             
             <tag> 值类型和引用类型 </tag>
             
@@ -7966,9 +7966,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> 语法知识 </tag>
-            
             <tag> CSharp基础 </tag>
+            
+            <tag> 语法知识 </tag>
             
             <tag> 值类型和引用类型 </tag>
             
@@ -7999,9 +7999,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> 语法知识 </tag>
-            
             <tag> CSharp基础 </tag>
+            
+            <tag> 语法知识 </tag>
             
             <tag> 复杂数据类型 </tag>
             
@@ -8032,9 +8032,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> 语法知识 </tag>
-            
             <tag> CSharp基础 </tag>
+            
+            <tag> 语法知识 </tag>
             
             <tag> 复杂数据类型 </tag>
             
@@ -8065,9 +8065,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> 语法知识 </tag>
-            
             <tag> CSharp基础 </tag>
+            
+            <tag> 语法知识 </tag>
             
             <tag> 复杂数据类型 </tag>
             
@@ -8098,9 +8098,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> 语法知识 </tag>
-            
             <tag> CSharp基础 </tag>
+            
+            <tag> 语法知识 </tag>
             
             <tag> 复杂数据类型 </tag>
             
@@ -8131,9 +8131,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> 语法知识 </tag>
-            
             <tag> CSharp基础 </tag>
+            
+            <tag> 语法知识 </tag>
             
             <tag> 复杂数据类型 </tag>
             
@@ -8164,9 +8164,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> 语法知识 </tag>
-            
             <tag> CSharp基础 </tag>
+            
+            <tag> 语法知识 </tag>
             
         </tags>
       
@@ -8268,11 +8268,11 @@
     
     
     <entry>
-      <title>11.玩家战斗相关</title>
-      <link href="/2024/01/08/CSharp/02.CSharp%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/11.%E6%B8%B8%E6%88%8F%E5%9C%BA%E6%99%AF-%E7%8E%A9%E5%AE%B6%E6%88%98%E6%96%97%E7%9B%B8%E5%85%B3/"/>
-      <url>/2024/01/08/CSharp/02.CSharp%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/11.%E6%B8%B8%E6%88%8F%E5%9C%BA%E6%99%AF-%E7%8E%A9%E5%AE%B6%E6%88%98%E6%96%97%E7%9B%B8%E5%85%B3/</url>
+      <title>12.公主相关</title>
+      <link href="/2024/01/08/CSharp/02.CSharp%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/12.%E6%B8%B8%E6%88%8F%E5%9C%BA%E6%99%AF-%E5%85%AC%E4%B8%BB%E7%9B%B8%E5%85%B3/"/>
+      <url>/2024/01/08/CSharp/02.CSharp%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/12.%E6%B8%B8%E6%88%8F%E5%9C%BA%E6%99%AF-%E5%85%AC%E4%B8%BB%E7%9B%B8%E5%85%B3/</url>
       
-        <content type="html"><![CDATA[<h1 id="11-游戏场景-玩家战斗相关"><a href="#11-游戏场景-玩家战斗相关" class="headerlink" title="11.游戏场景-玩家战斗相关"></a>11.游戏场景-玩家战斗相关</h1><hr><h2 id="11-1-知识点"><a href="#11-1-知识点" class="headerlink" title="11.1 知识点"></a>11.1 知识点</h2><h3 id="声明战斗状态标识"><a href="#声明战斗状态标识" class="headerlink" title="声明战斗状态标识"></a>声明战斗状态标识</h3><pre><code class="csharp">bool isFight = false;</code></pre><h3 id="游戏场景死循环内，根据是否是战斗状态处理不同逻辑，把绘制玩家图形和玩家输入枚举放在非战斗状态的分支中"><a href="#游戏场景死循环内，根据是否是战斗状态处理不同逻辑，把绘制玩家图形和玩家输入枚举放在非战斗状态的分支中" class="headerlink" title="游戏场景死循环内，根据是否是战斗状态处理不同逻辑，把绘制玩家图形和玩家输入枚举放在非战斗状态的分支中"></a>游戏场景死循环内，根据是否是战斗状态处理不同逻辑，把绘制玩家图形和玩家输入枚举放在非战斗状态的分支中</h3><pre><code class="csharp">// 战斗状态处理逻辑if (isFight)&#123;    // 玩家战斗相关的逻辑&#125;else&#123;    // 玩家移动相关逻辑    // 包括擦除上一次玩家所在位置绘制的玩家图形和根据玩家输入的字符枚举获得新的位置信息的switch&#125;</code></pre><h3 id="游戏场景死循环内的玩家输入枚举分支中，添加按j键的分支逻辑"><a href="#游戏场景死循环内的玩家输入枚举分支中，添加按j键的分支逻辑" class="headerlink" title="游戏场景死循环内的玩家输入枚举分支中，添加按j键的分支逻辑"></a>游戏场景死循环内的玩家输入枚举分支中，添加按j键的分支逻辑</h3><pre><code class="csharp">case &#39;J&#39;:case &#39;j&#39;:</code></pre><h3 id="游戏场景死循环内的玩家输入枚举分支中的j键的分支中，添加玩家战斗相关逻辑"><a href="#游戏场景死循环内的玩家输入枚举分支中的j键的分支中，添加玩家战斗相关逻辑" class="headerlink" title="游戏场景死循环内的玩家输入枚举分支中的j键的分支中，添加玩家战斗相关逻辑"></a>游戏场景死循环内的玩家输入枚举分支中的j键的分支中，添加玩家战斗相关逻辑</h3><pre><code class="csharp">// 要让玩家不能再移动// 更改战斗状态标识，可以跳出当前游戏场景死循环，进入战斗状态逻辑，不会进入非战斗状态的移动逻辑// 下方能够显示信息// 当玩家在boss身边一格且boss血量大于0的时候可以开始战斗if ((playerX == bossX &amp;&amp; playerY == bossY - 1 ||    playerX == bossX &amp;&amp; playerY == bossY + 1 ||    playerX == bossX - 2 &amp;&amp; playerY == bossY ||    playerX == bossX + 2 &amp;&amp; playerY == bossY) &amp;&amp; bossHp &gt; 0)&#123;    // 可以开始战斗，更改战斗状态标识    isFight = true;    // 输出战斗中的对战信息    Console.SetCursorPosition(2, h - 5);    Console.ForegroundColor = ConsoleColor.White;    Console.Write(&quot;开始和Boss战斗了，按J键继续&quot;);    Console.SetCursorPosition(2, h - 4);    Console.Write(&quot;玩家当前血量为&#123;0&#125;&quot;, playerHp);    Console.SetCursorPosition(2, h - 3);    Console.Write(&quot;boss当前血量为&#123;0&#125;&quot;, bossHp);&#125;</code></pre><h3 id="游戏场景死循环内，处理进入战斗状态后按j键的逻辑"><a href="#游戏场景死循环内，处理进入战斗状态后按j键的逻辑" class="headerlink" title="游戏场景死循环内，处理进入战斗状态后按j键的逻辑"></a>游戏场景死循环内，处理进入战斗状态后按j键的逻辑</h3><pre><code class="csharp">// 如果是战斗状态，应该做什么// 只会处理J键的逻辑if (playerInput == &#39;J&#39; || playerInput == &#39;j&#39;)&#123;    // 在这判断玩家或者boss是否死亡，如果死亡了，继续之后的流程    // 如果玩家死亡    if (playerHp &lt;= 0)    &#123;        // 游戏结束        // 输掉了，应该直接显示我们的游戏结束界面        // 切换场景id        nowSceneID = 3;        gameOverInfo = &quot;游戏失败&quot;;        break;    &#125;    // 如果boss死亡    else if (bossHp &lt;= 0)    &#123;        // 去营救公主        // boss擦除        Console.SetCursorPosition(bossX, bossY);        Console.Write(&quot;  &quot;);        isFight = false;    &#125;    // 玩家和boss都没死，处理按J键对战逻辑    else    &#123;        // 得到随机对象        Random r = new Random();        // 玩家打boss        // 随机出玩家的攻击力        int atk = r.Next(playerAtkMin, playerAtkMax);        // boss血量减对应的攻击力        bossHp -= atk;        // 打印玩家的攻击信息        // 设置输出的字体颜色        Console.ForegroundColor = ConsoleColor.Green;        // 先擦除这一行上次显示的内容        Console.SetCursorPosition(2, h - 4);        Console.Write(&quot;                                           &quot;);        // 再来写新的信息        // 输出玩家对boss的伤害信息        Console.SetCursorPosition(2, h - 4);        Console.Write(&quot;你对boss造成了&#123;0&#125;点伤害，boss剩余血量为&#123;1&#125;&quot;, atk, bossHp);        // boss打玩家        // boss大于0才可以对玩家进行攻击        if (bossHp &gt; 0)        &#123;            // 随机出boss的攻击力            atk = r.Next(bossAtkMin, bossAtkMax);            // 玩家血量减对应的攻击力            playerHp -= atk;            // 打印boss的攻击信息            // 设置输出的字体颜色            Console.ForegroundColor = ConsoleColor.Yellow;            // 先擦除这一行上次显示的内容            Console.SetCursorPosition(2, h - 3);            Console.Write(&quot;                                           &quot;);            // 再来写新的信息            // 如果boss把玩家打死了            if (playerHp &lt;= 0)            &#123;                // 输出失败信息                Console.SetCursorPosition(2, h - 3);                Console.Write(&quot;很遗憾，你未能通过boss的试炼，战败了&quot;);            &#125;            // boss没有把玩家打死            else            &#123;                // 输出boss对玩家的伤害信息                Console.SetCursorPosition(2, h - 3);                Console.Write(&quot;boss对你造成了&#123;0&#125;点伤害，你的剩余血量为&#123;1&#125;&quot;, atk, playerHp);            &#125;        &#125;        // boss血量小于等于boss死亡了        else        &#123;            // 擦除之前的战斗信息            Console.SetCursorPosition(2, h - 5);            Console.Write(&quot;                                           &quot;);            Console.SetCursorPosition(2, h - 4);            Console.Write(&quot;                                           &quot;);            Console.SetCursorPosition(2, h - 3);            Console.Write(&quot;                                           &quot;);            // 显示恭喜胜利的信息            Console.SetCursorPosition(2, h - 5);            Console.Write(&quot;你战胜了boss，快去营救公主&quot;);            Console.SetCursorPosition(2, h - 4);            Console.Write(&quot;前往公主身边按J键继续&quot;);        &#125;    &#125;&#125;</code></pre><hr><h2 id="11-2-知识点代码"><a href="#11-2-知识点代码" class="headerlink" title="11.2 知识点代码"></a>11.2 知识点代码</h2><h3 id="游戏场景死循环外"><a href="#游戏场景死循环外" class="headerlink" title="游戏场景死循环外"></a>游戏场景死循环外</h3><pre><code class="csharp">//声明战斗状态标识bool isFight = false;</code></pre><h3 id="游戏场景死循环内"><a href="#游戏场景死循环内" class="headerlink" title="游戏场景死循环内"></a>游戏场景死循环内</h3><pre><code class="csharp">//设置游戏场景死循环//专门用来 检测 玩家输入相关循环while (true)&#123;    #region 5 Boss相关    //游戏场景死循环内 把boss绘制出来    //boss活着时才绘制    if (bossHp &gt; 0)    &#123;        //设置光标位置和颜色 绘制boss图标        Console.SetCursorPosition(bossX, bossY);        Console.ForegroundColor = bossColor;        Console.Write(bossIcon);    &#125;    #endregion    #region 6 玩家移动相关    //游戏场景死循环内 把玩家绘制出来    //设置光标位置和颜色 绘制玩家图标    Console.SetCursorPosition(playerX, playerY);    Console.ForegroundColor = playerColor;    Console.Write(playerIcon);    //游戏场景死循环内 得到玩家输入    playerInput = Console.ReadKey(true).KeyChar;    #endregion    //游戏场景死循环内 根据是否是战斗状态处理不同逻辑 把绘制玩家图形和玩家输入枚举放在非战斗状态的分支中    //战斗状态处理什么逻辑    if (isFight)    &#123;        //玩家战斗相关逻辑        #region 7 玩家战斗相关        //游戏场景死循环内 处理进入战斗状态后按j键的逻辑        //如果是战斗状态 应该做什么        //只会处理J键的逻辑         if (playerInput == &#39;J&#39; || playerInput == &#39;j&#39;)        &#123;            //在这判断 玩家或者boss 是否死亡 如果死亡了 继续之后的流程            //如果玩家死亡            if (playerHp &lt;= 0)            &#123;                //游戏结束                //输掉了 应该直接显示 我们的 游戏结束界面                //切换场景id                nowSceneID = 3;                gameOverInfo = &quot;游戏失败&quot;;                break;            &#125;            //如果boss死亡            else if (bossHp &lt;= 0)            &#123;                //去营救公主                //boss擦除                Console.SetCursorPosition(bossX, bossY);                Console.Write(&quot;  &quot;);                isFight = false;            &#125;            //玩家和boss都没死 处理按J键对战逻辑            else            &#123;                //得到随机对象                Random r = new Random();                //玩家打boss                //随机出玩家的攻击力                int atk = r.Next(playerAtkMin, playerAtkMax);                //boss血量减对应的攻击力                bossHp -= atk;                //打印玩家的攻击信息                //设置输出的字体颜色                Console.ForegroundColor = ConsoleColor.Green;                //先擦除这一行 上次显示的内容                Console.SetCursorPosition(2, h - 4);                Console.Write(&quot;                                           &quot;);                //再来写新的信息                //输出玩家对boss的伤害信息                Console.SetCursorPosition(2, h - 4);                Console.Write(&quot;你对boss造成了&#123;0&#125;点伤害，boss剩余血量为&#123;1&#125;&quot;, atk, bossHp);                //boss打玩家                //boss大于0才可以对玩家进行攻击                if (bossHp &gt; 0)                &#123;                    //随机出boss的攻击力                    atk = r.Next(bossAtkMin, bossAtkMax);                    //玩家血量减对应的攻击力                    playerHp -= atk;                    //打印boss的攻击信息                    //设置输出的字体颜色                    Console.ForegroundColor = ConsoleColor.Yellow;                    //先擦除这一行 上次显示的内容                    Console.SetCursorPosition(2, h - 3);                    Console.Write(&quot;                                           &quot;);                    //再来写新的信息                    //如果boss把玩家打死了                    if (playerHp &lt;= 0)                    &#123;                        //输出失败信息                        Console.SetCursorPosition(2, h - 3);                        Console.Write(&quot;很遗憾，你未能通过boss的试炼，战败了&quot;);                    &#125;                    //boss没有把玩家打死                    else                    &#123;                        //输出boss对玩家的伤害信息                        Console.SetCursorPosition(2, h - 3);                        Console.Write(&quot;boss对你造成了&#123;0&#125;点伤害，你的剩余血量为&#123;1&#125;&quot;, atk, playerHp);                    &#125;                &#125;                //boss血量小于等于boss死亡了                else                &#123;                    //擦除之前的战斗信息                    Console.SetCursorPosition(2, h - 5);                    Console.Write(&quot;                                           &quot;);                    Console.SetCursorPosition(2, h - 4);                    Console.Write(&quot;                                           &quot;);                    Console.SetCursorPosition(2, h - 3);                    Console.Write(&quot;                                           &quot;);                    //显示恭喜胜利的信息                    Console.SetCursorPosition(2, h - 5);                    Console.Write(&quot;你战胜了boss，快去营救公主&quot;);                    Console.SetCursorPosition(2, h - 4);                    Console.Write(&quot;前往公主身边按J键继续&quot;);                &#125;            &#125;        &#125;        #endregion    &#125;    //非战斗状态处理什么逻辑    else    &#123;        //玩家移动相关逻辑        //包括擦除上一次玩家所在位置绘制的玩家图形和根据玩家输入的字符枚举获得新的位置信息的switch        #region 6 玩家移动相关        //游戏场景死循环内 擦除上一次玩家所在位置绘制的玩家图形        Console.SetCursorPosition(playerX, playerY);        Console.Write(&quot;  &quot;);        //游戏场景死循环内 根据玩家输入的字符枚举获得新的位置信息        switch (playerInput)        &#123;            case &#39;W&#39;:            case &#39;w&#39;:                --playerY;                if (playerY &lt; 1)                &#123;                    playerY = 1;                &#125;                //位置如果和boss重合了 并且boss没有死                else if (playerX == bossX &amp;&amp; playerY == bossY &amp;&amp; bossHp &gt; 0)                &#123;                    //拉回去                    ++playerY;                &#125;                break;            case &#39;A&#39;:            case &#39;a&#39;:                playerX -= 2;                if (playerX &lt; 2)                &#123;                    playerX = 2;                &#125;                else if (playerX == bossX &amp;&amp; playerY == bossY &amp;&amp; bossHp &gt; 0)                &#123;                    //拉回去                    playerX += 2;                &#125;                break;            case &#39;S&#39;:            case &#39;s&#39;:                ++playerY;                if (playerY &gt; h - 7)                &#123;                    playerY = h - 7;                &#125;                else if (playerX == bossX &amp;&amp; playerY == bossY &amp;&amp; bossHp &gt; 0)                &#123;                    //拉回去                    --playerY;                &#125;                break;            case &#39;D&#39;:            case &#39;d&#39;:                playerX += 2;                if (playerX &gt; w - 4)                &#123;                    playerX = w - 4;                &#125;                else if (playerX == bossX &amp;&amp; playerY == bossY &amp;&amp; bossHp &gt; 0)                &#123;                    //拉回去                    playerX -= 2;                &#125;                break;            //游戏场景死循环内的玩家输入枚举分支中 添加按j键的分支逻辑            case &#39;J&#39;:            case &#39;j&#39;:                #region 7 玩家战斗相关                //游戏场景死循环内的玩家输入枚举分支中的j键的分支中 添加玩家战斗相关逻辑                //要让玩家不能再移动                //更改战斗状态标识 可以跳出当前游戏场景死循环 就进入战斗状态逻辑 不会进入非战斗状态的移动逻辑                //下方能够显示信息                // 当玩家在boss身边一格且boss血量大于0的时候可以开始战斗                if ((playerX == bossX &amp;&amp; playerY == bossY - 1 ||                    playerX == bossX &amp;&amp; playerY == bossY + 1 ||                    playerX == bossX - 2 &amp;&amp; playerY == bossY ||                    playerX == bossX + 2 &amp;&amp; playerY == bossY) &amp;&amp; bossHp &gt; 0)                &#123;                    //可以开始战斗 更改战斗状态标识                    isFight = true;                    //输出战斗中的对战信息                    Console.SetCursorPosition(2, h - 5);                    Console.ForegroundColor = ConsoleColor.White;                    Console.Write(&quot;开始和Boss战斗了，按J键继续&quot;);                    Console.SetCursorPosition(2, h - 4);                    Console.Write(&quot;玩家当前血量为&#123;0&#125;&quot;, playerHp);                    Console.SetCursorPosition(2, h - 3);                    Console.Write(&quot;boss当前血量为&#123;0&#125;&quot;, bossHp);                &#125;                #endregion                break;        &#125;        #endregion    &#125;&#125;</code></pre><hr>]]></content>
+        <content type="html"><![CDATA[<h1 id="12-游戏场景-公主相关"><a href="#12-游戏场景-公主相关" class="headerlink" title="12.游戏场景-公主相关"></a>12.游戏场景-公主相关</h1><hr><h2 id="12-1-知识点"><a href="#12-1-知识点" class="headerlink" title="12.1 知识点"></a>12.1 知识点</h2><h3 id="声明公主的相关属性"><a href="#声明公主的相关属性" class="headerlink" title="声明公主的相关属性"></a>声明公主的相关属性</h3><pre><code class="csharp">int princessX = 24;int princessY = 5;string princessIcon = &quot;★&quot;;ConsoleColor princessColor = ConsoleColor.Blue;</code></pre><h3 id="声明成功拯救公主后跳出游戏主逻辑死循环的标识"><a href="#声明成功拯救公主后跳出游戏主逻辑死循环的标识" class="headerlink" title="声明成功拯救公主后跳出游戏主逻辑死循环的标识"></a>声明成功拯救公主后跳出游戏主逻辑死循环的标识</h3><pre><code class="csharp">// 作用是从while循环内部的switch改变标识，用来跳出外层的while循环bool isOver = false;</code></pre><h3 id="游戏场景死循环内，boss死亡时添加逻辑分支，把公主绘制出来"><a href="#游戏场景死循环内，boss死亡时添加逻辑分支，把公主绘制出来" class="headerlink" title="游戏场景死循环内，boss死亡时添加逻辑分支，把公主绘制出来"></a>游戏场景死循环内，boss死亡时添加逻辑分支，把公主绘制出来</h3><pre><code class="csharp">else&#123;    Console.SetCursorPosition(princessX, princessY);    Console.ForegroundColor = princessColor;    Console.Write(princessIcon);&#125;</code></pre><h3 id="游戏场景死循环内的玩家输入枚举分支中，WASD上下左右移动过程中，如果boss死亡且位置和公主重合了要回退，不能将公主覆盖"><a href="#游戏场景死循环内的玩家输入枚举分支中，WASD上下左右移动过程中，如果boss死亡且位置和公主重合了要回退，不能将公主覆盖" class="headerlink" title="游戏场景死循环内的玩家输入枚举分支中，WASD上下左右移动过程中，如果boss死亡且位置和公主重合了要回退，不能将公主覆盖"></a>游戏场景死循环内的玩家输入枚举分支中，WASD上下左右移动过程中，如果boss死亡且位置和公主重合了要回退，不能将公主覆盖</h3><pre><code class="csharp">else if (playerX == princessX &amp;&amp; playerY == princessY &amp;&amp; bossHp &lt;= 0)&#123;    // 拉回去    ++playerY;&#125;</code></pre><h3 id="游戏场景死循环内的玩家输入枚举分支中，添加按J键的分支逻辑"><a href="#游戏场景死循环内的玩家输入枚举分支中，添加按J键的分支逻辑" class="headerlink" title="游戏场景死循环内的玩家输入枚举分支中，添加按J键的分支逻辑"></a>游戏场景死循环内的玩家输入枚举分支中，添加按J键的分支逻辑</h3><pre><code class="csharp">// 判断是否在公主身边按J键else if ((playerX == princessX &amp;&amp; playerY == princessY - 1 ||          playerX == princessX &amp;&amp; playerY == princessY + 1 ||          playerX == princessX - 2 &amp;&amp; playerY == princessY ||          playerX == princessX + 2 &amp;&amp; playerY == princessY) &amp;&amp; bossHp &lt;= 0)&#123;    // 改变场景ID    nowSceneID = 3;    gameOverInfo = &quot;游戏通关&quot;;    // 改变跳出成功拯救公主后跳出游戏主逻辑死循环的标识    // 跳出游戏界面的while循环，回到主循环    isOver = true;&#125;</code></pre><h3 id="游戏场景逻辑末尾添加跳出是否跳出循环判断逻辑"><a href="#游戏场景逻辑末尾添加跳出是否跳出循环判断逻辑" class="headerlink" title="游戏场景逻辑末尾添加跳出是否跳出循环判断逻辑"></a>游戏场景逻辑末尾添加跳出是否跳出循环判断逻辑</h3><pre><code class="csharp">// 外层while循环逻辑if (isOver)&#123;    // 就是和while配对    break;&#125;</code></pre><hr><h2 id="12-2-知识点代码"><a href="#12-2-知识点代码" class="headerlink" title="12.2 知识点代码"></a>12.2 知识点代码</h2><pre><code class="csharp">#region 4-8 游戏场景逻辑#region 4 不变的红墙//设置颜色为红色 为画出红墙做准备Console.ForegroundColor = ConsoleColor.Red;//开始画墙//横着的墙for (int i = 0; i &lt; w; i += 2)&#123;    //上方墙    Console.SetCursorPosition(i, 0);    Console.Write(&quot;■&quot;);    //下方墙    Console.SetCursorPosition(i, h - 1);    Console.Write(&quot;■&quot;);    //中间墙    Console.SetCursorPosition(i, h - 6);    Console.Write(&quot;■&quot;);&#125;//竖着的墙for (int i = 0; i &lt; h; i++)&#123;    //左边的墙    Console.SetCursorPosition(0, i);    Console.Write(&quot;■&quot;);    //右边的墙    Console.SetCursorPosition(w - 2, i);    Console.Write(&quot;■&quot;);&#125;#endregion#region 5 Boss相关//声明boss的相关属性//包括位置坐标 最大最小攻击力 血量 boss图标 boss颜色int bossX = 24;int bossY = 15;int bossAtkMin = 7;int bossAtkMax = 13;int bossHp = 100;string bossIcon = &quot;■&quot;;//申明一个颜色变量 用于绘制boss时使用ConsoleColor bossColor = ConsoleColor.Green;#endregion#region 6 玩家属性相关//声明玩家的相关属性//包括位置坐标 最大最小攻击力 血量 玩家图标 玩家颜色 输入的内容int playerX = 4;int playerY = 5;int playerAtkMin = 8;int playerAtkMax = 12;int playerHp = 100;string playerIcon = &quot;●&quot;;//申明一个颜色变量 用于绘制玩家时使用ConsoleColor playerColor = ConsoleColor.Yellow;//申明一个字符型变量来存储玩家输入的内容  在外面申明可以节约性能char playerInput;#endregion#region 8 公主相关//声明公主的相关属性int princessX = 24;int princessY = 5;string princessIcon = &quot;★&quot;;ConsoleColor princessColor = ConsoleColor.Blue;//声明成功拯救公主后跳出游戏主逻辑死循环的标识//作用是 从while循环内部的switch 改变标识 用来跳出外层的while循环bool isOver = false;#endregion#region 7 玩家战斗相关//声明战斗状态标识bool isFight = false;#endregion//设置游戏场景死循环//专门用来 检测 玩家输入相关循环while (true)&#123;    #region 5 Boss相关    //游戏场景死循环内 把boss绘制出来    //boss活着时才绘制    if (bossHp &gt; 0)    &#123;        //设置光标位置和颜色 绘制boss图标        Console.SetCursorPosition(bossX, bossY);        Console.ForegroundColor = bossColor;        Console.Write(bossIcon);    &#125;    #endregion    #region 8 公主相关    //游戏场景死循环内 boss死亡时 添加逻辑分支 把公主绘制出来    else    &#123;        Console.SetCursorPosition(princessX, princessY);        Console.ForegroundColor = princessColor;        Console.Write(princessIcon);    &#125;    #endregion    #region 6 玩家移动相关    //游戏场景死循环内 把玩家绘制出来    //设置光标位置和颜色 绘制玩家图标    Console.SetCursorPosition(playerX, playerY);    Console.ForegroundColor = playerColor;    Console.Write(playerIcon);    //游戏场景死循环内 得到玩家输入    playerInput = Console.ReadKey(true).KeyChar;    #endregion    //游戏场景死循环内 根据是否是战斗状态处理不同逻辑 把绘制玩家图形和玩家输入枚举放在非战斗状态的分支中    //战斗状态处理什么逻辑    if (isFight)    &#123;        //玩家战斗相关逻辑        #region 7 玩家战斗相关        //游戏场景死循环内 处理进入战斗状态后按j键的逻辑        //如果是战斗状态 应该做什么        //只会处理J键的逻辑         if (playerInput == &#39;J&#39; || playerInput == &#39;j&#39;)        &#123;            //在这判断 玩家或者boss 是否死亡 如果死亡了 继续之后的流程            //如果玩家死亡            if (playerHp &lt;= 0)            &#123;                //游戏结束                //输掉了 应该直接显示 我们的 游戏结束界面                //切换场景id                nowSceneID = 3;                gameOverInfo = &quot;游戏失败&quot;;                break;            &#125;            //如果boss死亡            else if (bossHp &lt;= 0)            &#123;                //去营救公主                //boss擦除                Console.SetCursorPosition(bossX, bossY);                Console.Write(&quot;  &quot;);                isFight = false;            &#125;            //玩家和boss都没死 处理按J键对战逻辑            else            &#123;                //得到随机对象                Random r = new Random();                //玩家打boss                //随机出玩家的攻击力                int atk = r.Next(playerAtkMin, playerAtkMax);                //boss血量减对应的攻击力                bossHp -= atk;                //打印玩家的攻击信息                //设置输出的字体颜色                Console.ForegroundColor = ConsoleColor.Green;                //先擦除这一行 上次显示的内容                Console.SetCursorPosition(2, h - 4);                Console.Write(&quot;                                           &quot;);                //再来写新的信息                //输出玩家对boss的伤害信息                Console.SetCursorPosition(2, h - 4);                Console.Write(&quot;你对boss造成了&#123;0&#125;点伤害，boss剩余血量为&#123;1&#125;&quot;, atk, bossHp);                //boss打玩家                //boss大于0才可以对玩家进行攻击                if (bossHp &gt; 0)                &#123;                    //随机出boss的攻击力                    atk = r.Next(bossAtkMin, bossAtkMax);                    //玩家血量减对应的攻击力                    playerHp -= atk;                    //打印boss的攻击信息                    //设置输出的字体颜色                    Console.ForegroundColor = ConsoleColor.Yellow;                    //先擦除这一行 上次显示的内容                    Console.SetCursorPosition(2, h - 3);                    Console.Write(&quot;                                           &quot;);                    //再来写新的信息                    //如果boss把玩家打死了                    if (playerHp &lt;= 0)                    &#123;                        //输出失败信息                        Console.SetCursorPosition(2, h - 3);                        Console.Write(&quot;很遗憾，你未能通过boss的试炼，战败了&quot;);                    &#125;                    //boss没有把玩家打死                    else                    &#123;                        //输出boss对玩家的伤害信息                        Console.SetCursorPosition(2, h - 3);                        Console.Write(&quot;boss对你造成了&#123;0&#125;点伤害，你的剩余血量为&#123;1&#125;&quot;, atk, playerHp);                    &#125;                &#125;                //boss血量小于等于boss死亡了                else                &#123;                    //擦除之前的战斗信息                    Console.SetCursorPosition(2, h - 5);                    Console.Write(&quot;                                           &quot;);                    Console.SetCursorPosition(2, h - 4);                    Console.Write(&quot;                                           &quot;);                    Console.SetCursorPosition(2, h - 3);                    Console.Write(&quot;                                           &quot;);                    //显示恭喜胜利的信息                    Console.SetCursorPosition(2, h - 5);                    Console.Write(&quot;你战胜了boss，快去营救公主&quot;);                    Console.SetCursorPosition(2, h - 4);                    Console.Write(&quot;前往公主身边按J键继续&quot;);                &#125;            &#125;        &#125;        #endregion    &#125;    //非战斗状态处理什么逻辑    else    &#123;        //玩家移动相关逻辑        //包括擦除上一次玩家所在位置绘制的玩家图形和根据玩家输入的字符枚举获得新的位置信息的switch        #region 6 玩家移动相关        //游戏场景死循环内 擦除上一次玩家所在位置绘制的玩家图形        Console.SetCursorPosition(playerX, playerY);        Console.Write(&quot;  &quot;);        //游戏场景死循环内 根据玩家输入的字符枚举获得新的位置信息        switch (playerInput)        &#123;            case &#39;W&#39;:            case &#39;w&#39;:                --playerY;                if (playerY &lt; 1)                &#123;                    playerY = 1;                &#125;                //位置如果和boss重合了 并且boss没有死                else if (playerX == bossX &amp;&amp; playerY == bossY &amp;&amp; bossHp &gt; 0)                &#123;                    //拉回去                    ++playerY;                &#125;                //游戏场景死循环内的玩家输入枚举分支中 wasd上下左右移动过程中                //如果boss死亡且位置和公主重合了要回退 不能将公主覆盖                else if ( playerX == princessX &amp;&amp; playerY == princessY &amp;&amp; bossHp &lt;= 0 )                &#123;                    //拉回去                    ++playerY;                &#125;                break;            case &#39;A&#39;:            case &#39;a&#39;:                playerX -= 2;                if (playerX &lt; 2)                &#123;                    playerX = 2;                &#125;                else if (playerX == bossX &amp;&amp; playerY == bossY &amp;&amp; bossHp &gt; 0)                &#123;                    //拉回去                    playerX += 2;                &#125;                else if (playerX == princessX &amp;&amp; playerY == princessY &amp;&amp; bossHp &lt;= 0)                &#123;                    //拉回去                    playerX += 2;                &#125;                break;            case &#39;S&#39;:            case &#39;s&#39;:                ++playerY;                if (playerY &gt; h - 7)                &#123;                    playerY = h - 7;                &#125;                else if (playerX == bossX &amp;&amp; playerY == bossY &amp;&amp; bossHp &gt; 0)                &#123;                    //拉回去                    --playerY;                &#125;                else if (playerX == princessX &amp;&amp; playerY == princessY &amp;&amp; bossHp &lt;= 0)                &#123;                    //拉回去                    --playerY;                &#125;                break;            case &#39;D&#39;:            case &#39;d&#39;:                playerX += 2;                if (playerX &gt; w - 4)                &#123;                    playerX = w - 4;                &#125;                else if (playerX == bossX &amp;&amp; playerY == bossY &amp;&amp; bossHp &gt; 0)                &#123;                    //拉回去                    playerX -= 2;                &#125;                else if (playerX == princessX &amp;&amp; playerY == princessY &amp;&amp; bossHp &lt;= 0)                &#123;                    //拉回去                    playerX -= 2;                &#125;                break;            //游戏场景死循环内的玩家输入枚举分支中 添加按j键的分支逻辑            case &#39;J&#39;:            case &#39;j&#39;:                #region 7 玩家战斗相关                //游戏场景死循环内的玩家输入枚举分支中的j键的分支中 添加玩家战斗相关逻辑                //要让玩家不能再移动                //更改战斗状态标识 可以跳出当前游戏场景死循环 就进入战斗状态逻辑 不会进入非战斗状态的移动逻辑                //下方能够显示信息                // 当玩家在boss身边一格且boss血量大于0的时候可以开始战斗                if ((playerX == bossX &amp;&amp; playerY == bossY - 1 ||                    playerX == bossX &amp;&amp; playerY == bossY + 1 ||                    playerX == bossX - 2 &amp;&amp; playerY == bossY ||                    playerX == bossX + 2 &amp;&amp; playerY == bossY) &amp;&amp; bossHp &gt; 0)                &#123;                    //可以开始战斗 更改战斗状态标识                    isFight = true;                    //输出战斗中的对战信息                    Console.SetCursorPosition(2, h - 5);                    Console.ForegroundColor = ConsoleColor.White;                    Console.Write(&quot;开始和Boss战斗了，按J键继续&quot;);                    Console.SetCursorPosition(2, h - 4);                    Console.Write(&quot;玩家当前血量为&#123;0&#125;&quot;, playerHp);                    Console.SetCursorPosition(2, h - 3);                    Console.Write(&quot;boss当前血量为&#123;0&#125;&quot;, bossHp);                &#125;                #endregion                #region 8 公主相关                //判断是否在公主身边按J键                else if ((playerX == princessX &amp;&amp; playerY == princessY - 1 ||                    playerX == princessX &amp;&amp; playerY == princessY + 1 ||                    playerX == princessX - 2 &amp;&amp; playerY == princessY ||                    playerX == princessX + 2 &amp;&amp; playerY == princessY) &amp;&amp; bossHp &lt;= 0)                &#123;                    //改变 场景ID                    nowSceneID = 3;                    gameOverInfo = &quot;游戏通关&quot;;                    //改变跳出成功拯救公主后跳出游戏主逻辑死循环的标识                    //跳出 游戏界面的while循环 回到主循环                    isOver = true;                &#125;                #endregion                break;        &#125;        #endregion    &#125;    #region 8 公主相关    //游戏场景逻辑末尾添加跳出是否跳出循环判断逻辑    //外层while循环逻辑    if (isOver)    &#123;        //就是和while配对        break;    &#125;    #endregion&#125;#endregion</code></pre><hr>]]></content>
       
       
       <categories>
@@ -8299,11 +8299,11 @@
     
     
     <entry>
-      <title>12.公主相关</title>
-      <link href="/2024/01/08/CSharp/02.CSharp%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/12.%E6%B8%B8%E6%88%8F%E5%9C%BA%E6%99%AF-%E5%85%AC%E4%B8%BB%E7%9B%B8%E5%85%B3/"/>
-      <url>/2024/01/08/CSharp/02.CSharp%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/12.%E6%B8%B8%E6%88%8F%E5%9C%BA%E6%99%AF-%E5%85%AC%E4%B8%BB%E7%9B%B8%E5%85%B3/</url>
+      <title>11.玩家战斗相关</title>
+      <link href="/2024/01/08/CSharp/02.CSharp%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/11.%E6%B8%B8%E6%88%8F%E5%9C%BA%E6%99%AF-%E7%8E%A9%E5%AE%B6%E6%88%98%E6%96%97%E7%9B%B8%E5%85%B3/"/>
+      <url>/2024/01/08/CSharp/02.CSharp%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/11.%E6%B8%B8%E6%88%8F%E5%9C%BA%E6%99%AF-%E7%8E%A9%E5%AE%B6%E6%88%98%E6%96%97%E7%9B%B8%E5%85%B3/</url>
       
-        <content type="html"><![CDATA[<h1 id="12-游戏场景-公主相关"><a href="#12-游戏场景-公主相关" class="headerlink" title="12.游戏场景-公主相关"></a>12.游戏场景-公主相关</h1><hr><h2 id="12-1-知识点"><a href="#12-1-知识点" class="headerlink" title="12.1 知识点"></a>12.1 知识点</h2><h3 id="声明公主的相关属性"><a href="#声明公主的相关属性" class="headerlink" title="声明公主的相关属性"></a>声明公主的相关属性</h3><pre><code class="csharp">int princessX = 24;int princessY = 5;string princessIcon = &quot;★&quot;;ConsoleColor princessColor = ConsoleColor.Blue;</code></pre><h3 id="声明成功拯救公主后跳出游戏主逻辑死循环的标识"><a href="#声明成功拯救公主后跳出游戏主逻辑死循环的标识" class="headerlink" title="声明成功拯救公主后跳出游戏主逻辑死循环的标识"></a>声明成功拯救公主后跳出游戏主逻辑死循环的标识</h3><pre><code class="csharp">// 作用是从while循环内部的switch改变标识，用来跳出外层的while循环bool isOver = false;</code></pre><h3 id="游戏场景死循环内，boss死亡时添加逻辑分支，把公主绘制出来"><a href="#游戏场景死循环内，boss死亡时添加逻辑分支，把公主绘制出来" class="headerlink" title="游戏场景死循环内，boss死亡时添加逻辑分支，把公主绘制出来"></a>游戏场景死循环内，boss死亡时添加逻辑分支，把公主绘制出来</h3><pre><code class="csharp">else&#123;    Console.SetCursorPosition(princessX, princessY);    Console.ForegroundColor = princessColor;    Console.Write(princessIcon);&#125;</code></pre><h3 id="游戏场景死循环内的玩家输入枚举分支中，WASD上下左右移动过程中，如果boss死亡且位置和公主重合了要回退，不能将公主覆盖"><a href="#游戏场景死循环内的玩家输入枚举分支中，WASD上下左右移动过程中，如果boss死亡且位置和公主重合了要回退，不能将公主覆盖" class="headerlink" title="游戏场景死循环内的玩家输入枚举分支中，WASD上下左右移动过程中，如果boss死亡且位置和公主重合了要回退，不能将公主覆盖"></a>游戏场景死循环内的玩家输入枚举分支中，WASD上下左右移动过程中，如果boss死亡且位置和公主重合了要回退，不能将公主覆盖</h3><pre><code class="csharp">else if (playerX == princessX &amp;&amp; playerY == princessY &amp;&amp; bossHp &lt;= 0)&#123;    // 拉回去    ++playerY;&#125;</code></pre><h3 id="游戏场景死循环内的玩家输入枚举分支中，添加按J键的分支逻辑"><a href="#游戏场景死循环内的玩家输入枚举分支中，添加按J键的分支逻辑" class="headerlink" title="游戏场景死循环内的玩家输入枚举分支中，添加按J键的分支逻辑"></a>游戏场景死循环内的玩家输入枚举分支中，添加按J键的分支逻辑</h3><pre><code class="csharp">// 判断是否在公主身边按J键else if ((playerX == princessX &amp;&amp; playerY == princessY - 1 ||          playerX == princessX &amp;&amp; playerY == princessY + 1 ||          playerX == princessX - 2 &amp;&amp; playerY == princessY ||          playerX == princessX + 2 &amp;&amp; playerY == princessY) &amp;&amp; bossHp &lt;= 0)&#123;    // 改变场景ID    nowSceneID = 3;    gameOverInfo = &quot;游戏通关&quot;;    // 改变跳出成功拯救公主后跳出游戏主逻辑死循环的标识    // 跳出游戏界面的while循环，回到主循环    isOver = true;&#125;</code></pre><h3 id="游戏场景逻辑末尾添加跳出是否跳出循环判断逻辑"><a href="#游戏场景逻辑末尾添加跳出是否跳出循环判断逻辑" class="headerlink" title="游戏场景逻辑末尾添加跳出是否跳出循环判断逻辑"></a>游戏场景逻辑末尾添加跳出是否跳出循环判断逻辑</h3><pre><code class="csharp">// 外层while循环逻辑if (isOver)&#123;    // 就是和while配对    break;&#125;</code></pre><hr><h2 id="12-2-知识点代码"><a href="#12-2-知识点代码" class="headerlink" title="12.2 知识点代码"></a>12.2 知识点代码</h2><pre><code class="csharp">#region 4-8 游戏场景逻辑#region 4 不变的红墙//设置颜色为红色 为画出红墙做准备Console.ForegroundColor = ConsoleColor.Red;//开始画墙//横着的墙for (int i = 0; i &lt; w; i += 2)&#123;    //上方墙    Console.SetCursorPosition(i, 0);    Console.Write(&quot;■&quot;);    //下方墙    Console.SetCursorPosition(i, h - 1);    Console.Write(&quot;■&quot;);    //中间墙    Console.SetCursorPosition(i, h - 6);    Console.Write(&quot;■&quot;);&#125;//竖着的墙for (int i = 0; i &lt; h; i++)&#123;    //左边的墙    Console.SetCursorPosition(0, i);    Console.Write(&quot;■&quot;);    //右边的墙    Console.SetCursorPosition(w - 2, i);    Console.Write(&quot;■&quot;);&#125;#endregion#region 5 Boss相关//声明boss的相关属性//包括位置坐标 最大最小攻击力 血量 boss图标 boss颜色int bossX = 24;int bossY = 15;int bossAtkMin = 7;int bossAtkMax = 13;int bossHp = 100;string bossIcon = &quot;■&quot;;//申明一个颜色变量 用于绘制boss时使用ConsoleColor bossColor = ConsoleColor.Green;#endregion#region 6 玩家属性相关//声明玩家的相关属性//包括位置坐标 最大最小攻击力 血量 玩家图标 玩家颜色 输入的内容int playerX = 4;int playerY = 5;int playerAtkMin = 8;int playerAtkMax = 12;int playerHp = 100;string playerIcon = &quot;●&quot;;//申明一个颜色变量 用于绘制玩家时使用ConsoleColor playerColor = ConsoleColor.Yellow;//申明一个字符型变量来存储玩家输入的内容  在外面申明可以节约性能char playerInput;#endregion#region 8 公主相关//声明公主的相关属性int princessX = 24;int princessY = 5;string princessIcon = &quot;★&quot;;ConsoleColor princessColor = ConsoleColor.Blue;//声明成功拯救公主后跳出游戏主逻辑死循环的标识//作用是 从while循环内部的switch 改变标识 用来跳出外层的while循环bool isOver = false;#endregion#region 7 玩家战斗相关//声明战斗状态标识bool isFight = false;#endregion//设置游戏场景死循环//专门用来 检测 玩家输入相关循环while (true)&#123;    #region 5 Boss相关    //游戏场景死循环内 把boss绘制出来    //boss活着时才绘制    if (bossHp &gt; 0)    &#123;        //设置光标位置和颜色 绘制boss图标        Console.SetCursorPosition(bossX, bossY);        Console.ForegroundColor = bossColor;        Console.Write(bossIcon);    &#125;    #endregion    #region 8 公主相关    //游戏场景死循环内 boss死亡时 添加逻辑分支 把公主绘制出来    else    &#123;        Console.SetCursorPosition(princessX, princessY);        Console.ForegroundColor = princessColor;        Console.Write(princessIcon);    &#125;    #endregion    #region 6 玩家移动相关    //游戏场景死循环内 把玩家绘制出来    //设置光标位置和颜色 绘制玩家图标    Console.SetCursorPosition(playerX, playerY);    Console.ForegroundColor = playerColor;    Console.Write(playerIcon);    //游戏场景死循环内 得到玩家输入    playerInput = Console.ReadKey(true).KeyChar;    #endregion    //游戏场景死循环内 根据是否是战斗状态处理不同逻辑 把绘制玩家图形和玩家输入枚举放在非战斗状态的分支中    //战斗状态处理什么逻辑    if (isFight)    &#123;        //玩家战斗相关逻辑        #region 7 玩家战斗相关        //游戏场景死循环内 处理进入战斗状态后按j键的逻辑        //如果是战斗状态 应该做什么        //只会处理J键的逻辑         if (playerInput == &#39;J&#39; || playerInput == &#39;j&#39;)        &#123;            //在这判断 玩家或者boss 是否死亡 如果死亡了 继续之后的流程            //如果玩家死亡            if (playerHp &lt;= 0)            &#123;                //游戏结束                //输掉了 应该直接显示 我们的 游戏结束界面                //切换场景id                nowSceneID = 3;                gameOverInfo = &quot;游戏失败&quot;;                break;            &#125;            //如果boss死亡            else if (bossHp &lt;= 0)            &#123;                //去营救公主                //boss擦除                Console.SetCursorPosition(bossX, bossY);                Console.Write(&quot;  &quot;);                isFight = false;            &#125;            //玩家和boss都没死 处理按J键对战逻辑            else            &#123;                //得到随机对象                Random r = new Random();                //玩家打boss                //随机出玩家的攻击力                int atk = r.Next(playerAtkMin, playerAtkMax);                //boss血量减对应的攻击力                bossHp -= atk;                //打印玩家的攻击信息                //设置输出的字体颜色                Console.ForegroundColor = ConsoleColor.Green;                //先擦除这一行 上次显示的内容                Console.SetCursorPosition(2, h - 4);                Console.Write(&quot;                                           &quot;);                //再来写新的信息                //输出玩家对boss的伤害信息                Console.SetCursorPosition(2, h - 4);                Console.Write(&quot;你对boss造成了&#123;0&#125;点伤害，boss剩余血量为&#123;1&#125;&quot;, atk, bossHp);                //boss打玩家                //boss大于0才可以对玩家进行攻击                if (bossHp &gt; 0)                &#123;                    //随机出boss的攻击力                    atk = r.Next(bossAtkMin, bossAtkMax);                    //玩家血量减对应的攻击力                    playerHp -= atk;                    //打印boss的攻击信息                    //设置输出的字体颜色                    Console.ForegroundColor = ConsoleColor.Yellow;                    //先擦除这一行 上次显示的内容                    Console.SetCursorPosition(2, h - 3);                    Console.Write(&quot;                                           &quot;);                    //再来写新的信息                    //如果boss把玩家打死了                    if (playerHp &lt;= 0)                    &#123;                        //输出失败信息                        Console.SetCursorPosition(2, h - 3);                        Console.Write(&quot;很遗憾，你未能通过boss的试炼，战败了&quot;);                    &#125;                    //boss没有把玩家打死                    else                    &#123;                        //输出boss对玩家的伤害信息                        Console.SetCursorPosition(2, h - 3);                        Console.Write(&quot;boss对你造成了&#123;0&#125;点伤害，你的剩余血量为&#123;1&#125;&quot;, atk, playerHp);                    &#125;                &#125;                //boss血量小于等于boss死亡了                else                &#123;                    //擦除之前的战斗信息                    Console.SetCursorPosition(2, h - 5);                    Console.Write(&quot;                                           &quot;);                    Console.SetCursorPosition(2, h - 4);                    Console.Write(&quot;                                           &quot;);                    Console.SetCursorPosition(2, h - 3);                    Console.Write(&quot;                                           &quot;);                    //显示恭喜胜利的信息                    Console.SetCursorPosition(2, h - 5);                    Console.Write(&quot;你战胜了boss，快去营救公主&quot;);                    Console.SetCursorPosition(2, h - 4);                    Console.Write(&quot;前往公主身边按J键继续&quot;);                &#125;            &#125;        &#125;        #endregion    &#125;    //非战斗状态处理什么逻辑    else    &#123;        //玩家移动相关逻辑        //包括擦除上一次玩家所在位置绘制的玩家图形和根据玩家输入的字符枚举获得新的位置信息的switch        #region 6 玩家移动相关        //游戏场景死循环内 擦除上一次玩家所在位置绘制的玩家图形        Console.SetCursorPosition(playerX, playerY);        Console.Write(&quot;  &quot;);        //游戏场景死循环内 根据玩家输入的字符枚举获得新的位置信息        switch (playerInput)        &#123;            case &#39;W&#39;:            case &#39;w&#39;:                --playerY;                if (playerY &lt; 1)                &#123;                    playerY = 1;                &#125;                //位置如果和boss重合了 并且boss没有死                else if (playerX == bossX &amp;&amp; playerY == bossY &amp;&amp; bossHp &gt; 0)                &#123;                    //拉回去                    ++playerY;                &#125;                //游戏场景死循环内的玩家输入枚举分支中 wasd上下左右移动过程中                //如果boss死亡且位置和公主重合了要回退 不能将公主覆盖                else if ( playerX == princessX &amp;&amp; playerY == princessY &amp;&amp; bossHp &lt;= 0 )                &#123;                    //拉回去                    ++playerY;                &#125;                break;            case &#39;A&#39;:            case &#39;a&#39;:                playerX -= 2;                if (playerX &lt; 2)                &#123;                    playerX = 2;                &#125;                else if (playerX == bossX &amp;&amp; playerY == bossY &amp;&amp; bossHp &gt; 0)                &#123;                    //拉回去                    playerX += 2;                &#125;                else if (playerX == princessX &amp;&amp; playerY == princessY &amp;&amp; bossHp &lt;= 0)                &#123;                    //拉回去                    playerX += 2;                &#125;                break;            case &#39;S&#39;:            case &#39;s&#39;:                ++playerY;                if (playerY &gt; h - 7)                &#123;                    playerY = h - 7;                &#125;                else if (playerX == bossX &amp;&amp; playerY == bossY &amp;&amp; bossHp &gt; 0)                &#123;                    //拉回去                    --playerY;                &#125;                else if (playerX == princessX &amp;&amp; playerY == princessY &amp;&amp; bossHp &lt;= 0)                &#123;                    //拉回去                    --playerY;                &#125;                break;            case &#39;D&#39;:            case &#39;d&#39;:                playerX += 2;                if (playerX &gt; w - 4)                &#123;                    playerX = w - 4;                &#125;                else if (playerX == bossX &amp;&amp; playerY == bossY &amp;&amp; bossHp &gt; 0)                &#123;                    //拉回去                    playerX -= 2;                &#125;                else if (playerX == princessX &amp;&amp; playerY == princessY &amp;&amp; bossHp &lt;= 0)                &#123;                    //拉回去                    playerX -= 2;                &#125;                break;            //游戏场景死循环内的玩家输入枚举分支中 添加按j键的分支逻辑            case &#39;J&#39;:            case &#39;j&#39;:                #region 7 玩家战斗相关                //游戏场景死循环内的玩家输入枚举分支中的j键的分支中 添加玩家战斗相关逻辑                //要让玩家不能再移动                //更改战斗状态标识 可以跳出当前游戏场景死循环 就进入战斗状态逻辑 不会进入非战斗状态的移动逻辑                //下方能够显示信息                // 当玩家在boss身边一格且boss血量大于0的时候可以开始战斗                if ((playerX == bossX &amp;&amp; playerY == bossY - 1 ||                    playerX == bossX &amp;&amp; playerY == bossY + 1 ||                    playerX == bossX - 2 &amp;&amp; playerY == bossY ||                    playerX == bossX + 2 &amp;&amp; playerY == bossY) &amp;&amp; bossHp &gt; 0)                &#123;                    //可以开始战斗 更改战斗状态标识                    isFight = true;                    //输出战斗中的对战信息                    Console.SetCursorPosition(2, h - 5);                    Console.ForegroundColor = ConsoleColor.White;                    Console.Write(&quot;开始和Boss战斗了，按J键继续&quot;);                    Console.SetCursorPosition(2, h - 4);                    Console.Write(&quot;玩家当前血量为&#123;0&#125;&quot;, playerHp);                    Console.SetCursorPosition(2, h - 3);                    Console.Write(&quot;boss当前血量为&#123;0&#125;&quot;, bossHp);                &#125;                #endregion                #region 8 公主相关                //判断是否在公主身边按J键                else if ((playerX == princessX &amp;&amp; playerY == princessY - 1 ||                    playerX == princessX &amp;&amp; playerY == princessY + 1 ||                    playerX == princessX - 2 &amp;&amp; playerY == princessY ||                    playerX == princessX + 2 &amp;&amp; playerY == princessY) &amp;&amp; bossHp &lt;= 0)                &#123;                    //改变 场景ID                    nowSceneID = 3;                    gameOverInfo = &quot;游戏通关&quot;;                    //改变跳出成功拯救公主后跳出游戏主逻辑死循环的标识                    //跳出 游戏界面的while循环 回到主循环                    isOver = true;                &#125;                #endregion                break;        &#125;        #endregion    &#125;    #region 8 公主相关    //游戏场景逻辑末尾添加跳出是否跳出循环判断逻辑    //外层while循环逻辑    if (isOver)    &#123;        //就是和while配对        break;    &#125;    #endregion&#125;#endregion</code></pre><hr>]]></content>
+        <content type="html"><![CDATA[<h1 id="11-游戏场景-玩家战斗相关"><a href="#11-游戏场景-玩家战斗相关" class="headerlink" title="11.游戏场景-玩家战斗相关"></a>11.游戏场景-玩家战斗相关</h1><hr><h2 id="11-1-知识点"><a href="#11-1-知识点" class="headerlink" title="11.1 知识点"></a>11.1 知识点</h2><h3 id="声明战斗状态标识"><a href="#声明战斗状态标识" class="headerlink" title="声明战斗状态标识"></a>声明战斗状态标识</h3><pre><code class="csharp">bool isFight = false;</code></pre><h3 id="游戏场景死循环内，根据是否是战斗状态处理不同逻辑，把绘制玩家图形和玩家输入枚举放在非战斗状态的分支中"><a href="#游戏场景死循环内，根据是否是战斗状态处理不同逻辑，把绘制玩家图形和玩家输入枚举放在非战斗状态的分支中" class="headerlink" title="游戏场景死循环内，根据是否是战斗状态处理不同逻辑，把绘制玩家图形和玩家输入枚举放在非战斗状态的分支中"></a>游戏场景死循环内，根据是否是战斗状态处理不同逻辑，把绘制玩家图形和玩家输入枚举放在非战斗状态的分支中</h3><pre><code class="csharp">// 战斗状态处理逻辑if (isFight)&#123;    // 玩家战斗相关的逻辑&#125;else&#123;    // 玩家移动相关逻辑    // 包括擦除上一次玩家所在位置绘制的玩家图形和根据玩家输入的字符枚举获得新的位置信息的switch&#125;</code></pre><h3 id="游戏场景死循环内的玩家输入枚举分支中，添加按j键的分支逻辑"><a href="#游戏场景死循环内的玩家输入枚举分支中，添加按j键的分支逻辑" class="headerlink" title="游戏场景死循环内的玩家输入枚举分支中，添加按j键的分支逻辑"></a>游戏场景死循环内的玩家输入枚举分支中，添加按j键的分支逻辑</h3><pre><code class="csharp">case &#39;J&#39;:case &#39;j&#39;:</code></pre><h3 id="游戏场景死循环内的玩家输入枚举分支中的j键的分支中，添加玩家战斗相关逻辑"><a href="#游戏场景死循环内的玩家输入枚举分支中的j键的分支中，添加玩家战斗相关逻辑" class="headerlink" title="游戏场景死循环内的玩家输入枚举分支中的j键的分支中，添加玩家战斗相关逻辑"></a>游戏场景死循环内的玩家输入枚举分支中的j键的分支中，添加玩家战斗相关逻辑</h3><pre><code class="csharp">// 要让玩家不能再移动// 更改战斗状态标识，可以跳出当前游戏场景死循环，进入战斗状态逻辑，不会进入非战斗状态的移动逻辑// 下方能够显示信息// 当玩家在boss身边一格且boss血量大于0的时候可以开始战斗if ((playerX == bossX &amp;&amp; playerY == bossY - 1 ||    playerX == bossX &amp;&amp; playerY == bossY + 1 ||    playerX == bossX - 2 &amp;&amp; playerY == bossY ||    playerX == bossX + 2 &amp;&amp; playerY == bossY) &amp;&amp; bossHp &gt; 0)&#123;    // 可以开始战斗，更改战斗状态标识    isFight = true;    // 输出战斗中的对战信息    Console.SetCursorPosition(2, h - 5);    Console.ForegroundColor = ConsoleColor.White;    Console.Write(&quot;开始和Boss战斗了，按J键继续&quot;);    Console.SetCursorPosition(2, h - 4);    Console.Write(&quot;玩家当前血量为&#123;0&#125;&quot;, playerHp);    Console.SetCursorPosition(2, h - 3);    Console.Write(&quot;boss当前血量为&#123;0&#125;&quot;, bossHp);&#125;</code></pre><h3 id="游戏场景死循环内，处理进入战斗状态后按j键的逻辑"><a href="#游戏场景死循环内，处理进入战斗状态后按j键的逻辑" class="headerlink" title="游戏场景死循环内，处理进入战斗状态后按j键的逻辑"></a>游戏场景死循环内，处理进入战斗状态后按j键的逻辑</h3><pre><code class="csharp">// 如果是战斗状态，应该做什么// 只会处理J键的逻辑if (playerInput == &#39;J&#39; || playerInput == &#39;j&#39;)&#123;    // 在这判断玩家或者boss是否死亡，如果死亡了，继续之后的流程    // 如果玩家死亡    if (playerHp &lt;= 0)    &#123;        // 游戏结束        // 输掉了，应该直接显示我们的游戏结束界面        // 切换场景id        nowSceneID = 3;        gameOverInfo = &quot;游戏失败&quot;;        break;    &#125;    // 如果boss死亡    else if (bossHp &lt;= 0)    &#123;        // 去营救公主        // boss擦除        Console.SetCursorPosition(bossX, bossY);        Console.Write(&quot;  &quot;);        isFight = false;    &#125;    // 玩家和boss都没死，处理按J键对战逻辑    else    &#123;        // 得到随机对象        Random r = new Random();        // 玩家打boss        // 随机出玩家的攻击力        int atk = r.Next(playerAtkMin, playerAtkMax);        // boss血量减对应的攻击力        bossHp -= atk;        // 打印玩家的攻击信息        // 设置输出的字体颜色        Console.ForegroundColor = ConsoleColor.Green;        // 先擦除这一行上次显示的内容        Console.SetCursorPosition(2, h - 4);        Console.Write(&quot;                                           &quot;);        // 再来写新的信息        // 输出玩家对boss的伤害信息        Console.SetCursorPosition(2, h - 4);        Console.Write(&quot;你对boss造成了&#123;0&#125;点伤害，boss剩余血量为&#123;1&#125;&quot;, atk, bossHp);        // boss打玩家        // boss大于0才可以对玩家进行攻击        if (bossHp &gt; 0)        &#123;            // 随机出boss的攻击力            atk = r.Next(bossAtkMin, bossAtkMax);            // 玩家血量减对应的攻击力            playerHp -= atk;            // 打印boss的攻击信息            // 设置输出的字体颜色            Console.ForegroundColor = ConsoleColor.Yellow;            // 先擦除这一行上次显示的内容            Console.SetCursorPosition(2, h - 3);            Console.Write(&quot;                                           &quot;);            // 再来写新的信息            // 如果boss把玩家打死了            if (playerHp &lt;= 0)            &#123;                // 输出失败信息                Console.SetCursorPosition(2, h - 3);                Console.Write(&quot;很遗憾，你未能通过boss的试炼，战败了&quot;);            &#125;            // boss没有把玩家打死            else            &#123;                // 输出boss对玩家的伤害信息                Console.SetCursorPosition(2, h - 3);                Console.Write(&quot;boss对你造成了&#123;0&#125;点伤害，你的剩余血量为&#123;1&#125;&quot;, atk, playerHp);            &#125;        &#125;        // boss血量小于等于boss死亡了        else        &#123;            // 擦除之前的战斗信息            Console.SetCursorPosition(2, h - 5);            Console.Write(&quot;                                           &quot;);            Console.SetCursorPosition(2, h - 4);            Console.Write(&quot;                                           &quot;);            Console.SetCursorPosition(2, h - 3);            Console.Write(&quot;                                           &quot;);            // 显示恭喜胜利的信息            Console.SetCursorPosition(2, h - 5);            Console.Write(&quot;你战胜了boss，快去营救公主&quot;);            Console.SetCursorPosition(2, h - 4);            Console.Write(&quot;前往公主身边按J键继续&quot;);        &#125;    &#125;&#125;</code></pre><hr><h2 id="11-2-知识点代码"><a href="#11-2-知识点代码" class="headerlink" title="11.2 知识点代码"></a>11.2 知识点代码</h2><h3 id="游戏场景死循环外"><a href="#游戏场景死循环外" class="headerlink" title="游戏场景死循环外"></a>游戏场景死循环外</h3><pre><code class="csharp">//声明战斗状态标识bool isFight = false;</code></pre><h3 id="游戏场景死循环内"><a href="#游戏场景死循环内" class="headerlink" title="游戏场景死循环内"></a>游戏场景死循环内</h3><pre><code class="csharp">//设置游戏场景死循环//专门用来 检测 玩家输入相关循环while (true)&#123;    #region 5 Boss相关    //游戏场景死循环内 把boss绘制出来    //boss活着时才绘制    if (bossHp &gt; 0)    &#123;        //设置光标位置和颜色 绘制boss图标        Console.SetCursorPosition(bossX, bossY);        Console.ForegroundColor = bossColor;        Console.Write(bossIcon);    &#125;    #endregion    #region 6 玩家移动相关    //游戏场景死循环内 把玩家绘制出来    //设置光标位置和颜色 绘制玩家图标    Console.SetCursorPosition(playerX, playerY);    Console.ForegroundColor = playerColor;    Console.Write(playerIcon);    //游戏场景死循环内 得到玩家输入    playerInput = Console.ReadKey(true).KeyChar;    #endregion    //游戏场景死循环内 根据是否是战斗状态处理不同逻辑 把绘制玩家图形和玩家输入枚举放在非战斗状态的分支中    //战斗状态处理什么逻辑    if (isFight)    &#123;        //玩家战斗相关逻辑        #region 7 玩家战斗相关        //游戏场景死循环内 处理进入战斗状态后按j键的逻辑        //如果是战斗状态 应该做什么        //只会处理J键的逻辑         if (playerInput == &#39;J&#39; || playerInput == &#39;j&#39;)        &#123;            //在这判断 玩家或者boss 是否死亡 如果死亡了 继续之后的流程            //如果玩家死亡            if (playerHp &lt;= 0)            &#123;                //游戏结束                //输掉了 应该直接显示 我们的 游戏结束界面                //切换场景id                nowSceneID = 3;                gameOverInfo = &quot;游戏失败&quot;;                break;            &#125;            //如果boss死亡            else if (bossHp &lt;= 0)            &#123;                //去营救公主                //boss擦除                Console.SetCursorPosition(bossX, bossY);                Console.Write(&quot;  &quot;);                isFight = false;            &#125;            //玩家和boss都没死 处理按J键对战逻辑            else            &#123;                //得到随机对象                Random r = new Random();                //玩家打boss                //随机出玩家的攻击力                int atk = r.Next(playerAtkMin, playerAtkMax);                //boss血量减对应的攻击力                bossHp -= atk;                //打印玩家的攻击信息                //设置输出的字体颜色                Console.ForegroundColor = ConsoleColor.Green;                //先擦除这一行 上次显示的内容                Console.SetCursorPosition(2, h - 4);                Console.Write(&quot;                                           &quot;);                //再来写新的信息                //输出玩家对boss的伤害信息                Console.SetCursorPosition(2, h - 4);                Console.Write(&quot;你对boss造成了&#123;0&#125;点伤害，boss剩余血量为&#123;1&#125;&quot;, atk, bossHp);                //boss打玩家                //boss大于0才可以对玩家进行攻击                if (bossHp &gt; 0)                &#123;                    //随机出boss的攻击力                    atk = r.Next(bossAtkMin, bossAtkMax);                    //玩家血量减对应的攻击力                    playerHp -= atk;                    //打印boss的攻击信息                    //设置输出的字体颜色                    Console.ForegroundColor = ConsoleColor.Yellow;                    //先擦除这一行 上次显示的内容                    Console.SetCursorPosition(2, h - 3);                    Console.Write(&quot;                                           &quot;);                    //再来写新的信息                    //如果boss把玩家打死了                    if (playerHp &lt;= 0)                    &#123;                        //输出失败信息                        Console.SetCursorPosition(2, h - 3);                        Console.Write(&quot;很遗憾，你未能通过boss的试炼，战败了&quot;);                    &#125;                    //boss没有把玩家打死                    else                    &#123;                        //输出boss对玩家的伤害信息                        Console.SetCursorPosition(2, h - 3);                        Console.Write(&quot;boss对你造成了&#123;0&#125;点伤害，你的剩余血量为&#123;1&#125;&quot;, atk, playerHp);                    &#125;                &#125;                //boss血量小于等于boss死亡了                else                &#123;                    //擦除之前的战斗信息                    Console.SetCursorPosition(2, h - 5);                    Console.Write(&quot;                                           &quot;);                    Console.SetCursorPosition(2, h - 4);                    Console.Write(&quot;                                           &quot;);                    Console.SetCursorPosition(2, h - 3);                    Console.Write(&quot;                                           &quot;);                    //显示恭喜胜利的信息                    Console.SetCursorPosition(2, h - 5);                    Console.Write(&quot;你战胜了boss，快去营救公主&quot;);                    Console.SetCursorPosition(2, h - 4);                    Console.Write(&quot;前往公主身边按J键继续&quot;);                &#125;            &#125;        &#125;        #endregion    &#125;    //非战斗状态处理什么逻辑    else    &#123;        //玩家移动相关逻辑        //包括擦除上一次玩家所在位置绘制的玩家图形和根据玩家输入的字符枚举获得新的位置信息的switch        #region 6 玩家移动相关        //游戏场景死循环内 擦除上一次玩家所在位置绘制的玩家图形        Console.SetCursorPosition(playerX, playerY);        Console.Write(&quot;  &quot;);        //游戏场景死循环内 根据玩家输入的字符枚举获得新的位置信息        switch (playerInput)        &#123;            case &#39;W&#39;:            case &#39;w&#39;:                --playerY;                if (playerY &lt; 1)                &#123;                    playerY = 1;                &#125;                //位置如果和boss重合了 并且boss没有死                else if (playerX == bossX &amp;&amp; playerY == bossY &amp;&amp; bossHp &gt; 0)                &#123;                    //拉回去                    ++playerY;                &#125;                break;            case &#39;A&#39;:            case &#39;a&#39;:                playerX -= 2;                if (playerX &lt; 2)                &#123;                    playerX = 2;                &#125;                else if (playerX == bossX &amp;&amp; playerY == bossY &amp;&amp; bossHp &gt; 0)                &#123;                    //拉回去                    playerX += 2;                &#125;                break;            case &#39;S&#39;:            case &#39;s&#39;:                ++playerY;                if (playerY &gt; h - 7)                &#123;                    playerY = h - 7;                &#125;                else if (playerX == bossX &amp;&amp; playerY == bossY &amp;&amp; bossHp &gt; 0)                &#123;                    //拉回去                    --playerY;                &#125;                break;            case &#39;D&#39;:            case &#39;d&#39;:                playerX += 2;                if (playerX &gt; w - 4)                &#123;                    playerX = w - 4;                &#125;                else if (playerX == bossX &amp;&amp; playerY == bossY &amp;&amp; bossHp &gt; 0)                &#123;                    //拉回去                    playerX -= 2;                &#125;                break;            //游戏场景死循环内的玩家输入枚举分支中 添加按j键的分支逻辑            case &#39;J&#39;:            case &#39;j&#39;:                #region 7 玩家战斗相关                //游戏场景死循环内的玩家输入枚举分支中的j键的分支中 添加玩家战斗相关逻辑                //要让玩家不能再移动                //更改战斗状态标识 可以跳出当前游戏场景死循环 就进入战斗状态逻辑 不会进入非战斗状态的移动逻辑                //下方能够显示信息                // 当玩家在boss身边一格且boss血量大于0的时候可以开始战斗                if ((playerX == bossX &amp;&amp; playerY == bossY - 1 ||                    playerX == bossX &amp;&amp; playerY == bossY + 1 ||                    playerX == bossX - 2 &amp;&amp; playerY == bossY ||                    playerX == bossX + 2 &amp;&amp; playerY == bossY) &amp;&amp; bossHp &gt; 0)                &#123;                    //可以开始战斗 更改战斗状态标识                    isFight = true;                    //输出战斗中的对战信息                    Console.SetCursorPosition(2, h - 5);                    Console.ForegroundColor = ConsoleColor.White;                    Console.Write(&quot;开始和Boss战斗了，按J键继续&quot;);                    Console.SetCursorPosition(2, h - 4);                    Console.Write(&quot;玩家当前血量为&#123;0&#125;&quot;, playerHp);                    Console.SetCursorPosition(2, h - 3);                    Console.Write(&quot;boss当前血量为&#123;0&#125;&quot;, bossHp);                &#125;                #endregion                break;        &#125;        #endregion    &#125;&#125;</code></pre><hr>]]></content>
       
       
       <categories>
@@ -8668,9 +8668,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> CSharp入门 </tag>
-            
             <tag> 语法知识 </tag>
+            
+            <tag> CSharp入门 </tag>
             
         </tags>
       
@@ -8699,9 +8699,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> CSharp入门 </tag>
-            
             <tag> 语法知识 </tag>
+            
+            <tag> CSharp入门 </tag>
             
             <tag> 循环语句 </tag>
             
@@ -8732,9 +8732,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> CSharp入门 </tag>
-            
             <tag> 语法知识 </tag>
+            
+            <tag> CSharp入门 </tag>
             
             <tag> 循环语句 </tag>
             
@@ -8765,9 +8765,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> CSharp入门 </tag>
-            
             <tag> 语法知识 </tag>
+            
+            <tag> CSharp入门 </tag>
             
             <tag> 循环语句 </tag>
             
@@ -8798,9 +8798,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> CSharp入门 </tag>
-            
             <tag> 语法知识 </tag>
+            
+            <tag> CSharp入门 </tag>
             
             <tag> 条件分支语句 </tag>
             
@@ -8831,9 +8831,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> CSharp入门 </tag>
-            
             <tag> 语法知识 </tag>
+            
+            <tag> CSharp入门 </tag>
             
             <tag> 条件分支语句 </tag>
             
@@ -8864,9 +8864,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> CSharp入门 </tag>
-            
             <tag> 语法知识 </tag>
+            
+            <tag> CSharp入门 </tag>
             
             <tag> 运算符 </tag>
             
@@ -8897,9 +8897,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> CSharp入门 </tag>
-            
             <tag> 语法知识 </tag>
+            
+            <tag> CSharp入门 </tag>
             
             <tag> 运算符 </tag>
             
@@ -8930,9 +8930,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> CSharp入门 </tag>
-            
             <tag> 语法知识 </tag>
+            
+            <tag> CSharp入门 </tag>
             
             <tag> 运算符 </tag>
             
@@ -8963,9 +8963,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> CSharp入门 </tag>
-            
             <tag> 语法知识 </tag>
+            
+            <tag> CSharp入门 </tag>
             
             <tag> 运算符 </tag>
             
@@ -8996,9 +8996,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> CSharp入门 </tag>
-            
             <tag> 语法知识 </tag>
+            
+            <tag> CSharp入门 </tag>
             
             <tag> 运算符 </tag>
             
@@ -9029,9 +9029,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> CSharp入门 </tag>
-            
             <tag> 语法知识 </tag>
+            
+            <tag> CSharp入门 </tag>
             
             <tag> 运算符 </tag>
             
@@ -9062,9 +9062,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> CSharp入门 </tag>
-            
             <tag> 语法知识 </tag>
+            
+            <tag> CSharp入门 </tag>
             
         </tags>
       
@@ -9093,9 +9093,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> CSharp入门 </tag>
-            
             <tag> 语法知识 </tag>
+            
+            <tag> CSharp入门 </tag>
             
             <tag> 类型转换 </tag>
             
@@ -9126,9 +9126,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> CSharp入门 </tag>
-            
             <tag> 语法知识 </tag>
+            
+            <tag> CSharp入门 </tag>
             
             <tag> 类型转换 </tag>
             
@@ -9159,9 +9159,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> CSharp入门 </tag>
-            
             <tag> 语法知识 </tag>
+            
+            <tag> CSharp入门 </tag>
             
         </tags>
       
@@ -9190,9 +9190,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> CSharp入门 </tag>
-            
             <tag> 语法知识 </tag>
+            
+            <tag> CSharp入门 </tag>
             
         </tags>
       
@@ -9221,9 +9221,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> CSharp入门 </tag>
-            
             <tag> 语法知识 </tag>
+            
+            <tag> CSharp入门 </tag>
             
         </tags>
       
@@ -9252,9 +9252,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> CSharp入门 </tag>
-            
             <tag> 语法知识 </tag>
+            
+            <tag> CSharp入门 </tag>
             
         </tags>
       
@@ -9283,9 +9283,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> CSharp入门 </tag>
-            
             <tag> 语法知识 </tag>
+            
+            <tag> CSharp入门 </tag>
             
         </tags>
       
@@ -9314,9 +9314,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> CSharp入门 </tag>
-            
             <tag> 语法知识 </tag>
+            
+            <tag> CSharp入门 </tag>
             
         </tags>
       
@@ -9345,9 +9345,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> CSharp入门 </tag>
-            
             <tag> 语法知识 </tag>
+            
+            <tag> CSharp入门 </tag>
             
             <tag> 开发环境 </tag>
             
@@ -9378,9 +9378,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> CSharp入门 </tag>
-            
             <tag> 语法知识 </tag>
+            
+            <tag> CSharp入门 </tag>
             
         </tags>
       
@@ -9409,9 +9409,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> CSharp入门 </tag>
-            
             <tag> 语法知识 </tag>
+            
+            <tag> CSharp入门 </tag>
             
         </tags>
       
