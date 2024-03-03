@@ -4,6 +4,136 @@
   
     
     <entry>
+      <title>7.总结</title>
+      <link href="/2024/03/04/%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96/03.Xml%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/7.%E6%80%BB%E7%BB%93/"/>
+      <url>/2024/03/04/%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96/03.Xml%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/7.%E6%80%BB%E7%BB%93/</url>
+      
+        <content type="html"><![CDATA[<h1 id="7-总结"><a href="#7-总结" class="headerlink" title="7.总结"></a>7.总结</h1><hr><h2 id="7-1-知识点"><a href="#7-1-知识点" class="headerlink" title="7.1 知识点"></a>7.1 知识点</h2><p><img src="/../../../images/%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96/03.Xml%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/7.%E6%80%BB%E7%BB%93/1.png"></p><h3 id="总结主要内容"><a href="#总结主要内容" class="headerlink" title="总结主要内容"></a>总结主要内容</h3><p><img src="/../../../images/%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96/03.Xml%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/7.%E6%80%BB%E7%BB%93/2.png"></p><h3 id="学习内容回顾"><a href="#学习内容回顾" class="headerlink" title="学习内容回顾"></a>学习内容回顾</h3><p><img src="/../../../images/%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96/03.Xml%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/7.%E6%80%BB%E7%BB%93/3.png"></p><h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><p><img src="/../../../images/%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96/03.Xml%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/7.%E6%80%BB%E7%BB%93/4.png"></p><h3 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h3><p><img src="/../../../images/%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96/03.Xml%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/7.%E6%80%BB%E7%BB%93/5.png"></p><h3 id="主要用处"><a href="#主要用处" class="headerlink" title="主要用处"></a>主要用处</h3><p><img src="/../../../images/%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96/03.Xml%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/7.%E6%80%BB%E7%BB%93/6.png"></p><hr>]]></content>
+      
+      
+      <categories>
+          
+          <category> 数据持久化 </category>
+          
+          <category> Xml基础知识 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 数据持久化 </tag>
+            
+            <tag> 基础知识 </tag>
+            
+            <tag> Xml </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>6.存储和修改Xml文件</title>
+      <link href="/2024/03/04/%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96/03.Xml%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/6.CSharp%E6%93%8D%E4%BD%9CXML-%E5%AD%98%E5%82%A8%E5%92%8C%E4%BF%AE%E6%94%B9XML%E6%96%87%E4%BB%B6/"/>
+      <url>/2024/03/04/%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96/03.Xml%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/6.CSharp%E6%93%8D%E4%BD%9CXML-%E5%AD%98%E5%82%A8%E5%92%8C%E4%BF%AE%E6%94%B9XML%E6%96%87%E4%BB%B6/</url>
+      
+        <content type="html"><![CDATA[<h1 id="6-CSharp操作XML-存储和修改XML文件"><a href="#6-CSharp操作XML-存储和修改XML文件" class="headerlink" title="6.CSharp操作XML-存储和修改XML文件"></a>6.CSharp操作XML-存储和修改XML文件</h1><hr><h2 id="6-1-知识点"><a href="#6-1-知识点" class="headerlink" title="6.1 知识点"></a>6.1 知识点</h2><h3 id="Xml决定存储在哪个文件夹下"><a href="#Xml决定存储在哪个文件夹下" class="headerlink" title="Xml决定存储在哪个文件夹下"></a>Xml决定存储在哪个文件夹下</h3><ul><li>注意：存储xml文件 在Unity中一定是使用各平台都可读可写可找到的路径<ul><li>Resources 可读 不可写 打包加密后通过路径找不到 ×</li><li>Application.streamingAssetsPath 可读 PC端可写 但是其他平台不可写 打包加密后通过路径找得到 可以存些不会改的xml文件 ×</li><li>Application.dataPath 编辑器上操作看起来没什么问题 但是打包后找不到 ×</li><li>Application.persistentDataPath 可读可写 各个平台找得到   √</li></ul></li><li>准备好我们最终要存储的路径<pre><code class="csharp">string path = Application.persistentDataPath + &quot;/PlayerInfo2.xml&quot;;print(Application.persistentDataPath);//C:/Users/LinWentao/AppData/LocalLow/DefaultCompany/XML教程</code></pre></li></ul><h3 id="存储xml文件"><a href="#存储xml文件" class="headerlink" title="存储xml文件"></a>存储xml文件</h3><h4 id="存储xml文件用到的关键类"><a href="#存储xml文件用到的关键类" class="headerlink" title="存储xml文件用到的关键类"></a>存储xml文件用到的关键类</h4><h5 id="XmlDocument-Xml文档类-用于创建节点存储文件"><a href="#XmlDocument-Xml文档类-用于创建节点存储文件" class="headerlink" title="XmlDocument Xml文档类  用于创建节点存储文件"></a>XmlDocument Xml文档类  用于创建节点存储文件</h5><h5 id="XmlDeclaration-Xml声明类-用于添加版本信息"><a href="#XmlDeclaration-Xml声明类-用于添加版本信息" class="headerlink" title="XmlDeclaration Xml声明类  用于添加版本信息"></a>XmlDeclaration Xml声明类  用于添加版本信息</h5><h5 id="XmlElement-Xml元素类"><a href="#XmlElement-Xml元素类" class="headerlink" title="XmlElement Xml元素类"></a>XmlElement Xml元素类</h5><h4 id="存储xml文件具体的五个步骤"><a href="#存储xml文件具体的五个步骤" class="headerlink" title="存储xml文件具体的五个步骤"></a>存储xml文件具体的五个步骤</h4><h5 id="创建XmlDocument文档对象"><a href="#创建XmlDocument文档对象" class="headerlink" title="创建XmlDocument文档对象"></a>创建XmlDocument文档对象</h5><pre><code class="csharp">//创建XmlDocument类文本对象 //相当于新建xml文件XmlDocument xmlDocument = new XmlDocument();</code></pre><h5 id="添加固定版本信息"><a href="#添加固定版本信息" class="headerlink" title="添加固定版本信息"></a>添加固定版本信息</h5><h6 id="XmlDocument-CreateXmlDeclaration方法-添加固定版本信息"><a href="#XmlDocument-CreateXmlDeclaration方法-添加固定版本信息" class="headerlink" title="XmlDocument.CreateXmlDeclaration方法 - 添加固定版本信息"></a>XmlDocument.CreateXmlDeclaration方法 - 添加固定版本信息</h6><pre><code class="csharp">//XmlDocument类中的CreateXmlDeclaration方法 添加固定版本信息//这一句代码 相当于就是创建&lt;?xmlDocument version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;这句内容XmlDeclaration xmlDec = xmlDocument.CreateXmlDeclaration(&quot;1.0&quot;, &quot;UTF-8&quot;, &quot;&quot;);</code></pre><h6 id="XmlDocument-AppendChild方法-把对象添加到xml文本对象中"><a href="#XmlDocument-AppendChild方法-把对象添加到xml文本对象中" class="headerlink" title="XmlDocument.AppendChild方法 - 把对象添加到xml文本对象中"></a>XmlDocument.AppendChild方法 - 把对象添加到xml文本对象中</h6><pre><code class="csharp">//XmlDocument类中的AppendChild方法 把版本信息对象添加到xml文本对象中 //创建完成过后 要添加进入 文本对象中xmlDocument.AppendChild(xmlDec);</code></pre><h5 id="添加根节点"><a href="#添加根节点" class="headerlink" title="添加根节点"></a>添加根节点</h5><h6 id="XmlDocument-CreateElement方法-创建根节点"><a href="#XmlDocument-CreateElement方法-创建根节点" class="headerlink" title="XmlDocument.CreateElement方法 - 创建根节点"></a>XmlDocument.CreateElement方法 - 创建根节点</h6><pre><code class="csharp">//XmlDocument类中的CreateElement方法 添加根节点XmlElement root = xmlDocument.CreateElement(&quot;Root&quot;);//创建完成过后 要添加进入 文本对象中xmlDocument.AppendChild(root);</code></pre><h5 id="为根节点添加子节点"><a href="#为根节点添加子节点" class="headerlink" title="为根节点添加子节点"></a>为根节点添加子节点</h5><h6 id="XmlElement-SetAttribute方法-给节点设置属性和属性值"><a href="#XmlElement-SetAttribute方法-给节点设置属性和属性值" class="headerlink" title="XmlElement.SetAttribute方法 - 给节点设置属性和属性值"></a>XmlElement.SetAttribute方法 - 给节点设置属性和属性值</h6><pre><code class="csharp">//为根节点添加子节点//创建了了一个name子节点XmlElement name = xmlDocument.CreateElement(&quot;name&quot;);//XmlElement中的InnerText属性 设置包裹信息name.InnerText = &quot;林文韬&quot;;//XmlElement类中的AppendChild方法 把子节点添加到xml文本对象中 root.AppendChild(name);//使用CreateElement方法在根节点下创建名称为“atk”的节点，并设置其InnerText（即节点内部的文本值）为“10”XmlElement atk = xmlDocument.CreateElement(&quot;atk&quot;);atk.InnerText = &quot;10&quot;;//将“atk”子节点添加至根节点“Root”中root.AppendChild(atk);//使用CreateElement方法在根节点下创建名称为“listInt”的XmlNode节点，并将三个名为“int”的子节点添加到该节点中。XmlElement listInt = xmlDocument.CreateElement(&quot;listInt&quot;);//遍历给listInt添加子节点for (int i = 1; i &lt;= 3; i++)&#123;    //使用CreateElement方法在“listInt”节点下依次创建三个名为“int”的XmlElement节点    XmlElement childNode = xmlDocument.CreateElement(&quot;int&quot;);    //依次设置三个“int”子节点的InnerText值，分别为1、2、3    childNode.InnerText = i.ToString();    listInt.AppendChild(childNode);&#125;//将“listInt”子节点添加至根节点“Root”中root.AppendChild(listInt);//使用CreateElement方法在根节点下创建名称为“itemList”的XmlElement节点，并将三个名为“Item”的子节点添加到该节点中，XmlElement itemList = xmlDocument.CreateElement(&quot;itemList&quot;);//遍历给itemList添加子节点for (int i = 1; i &lt;= 3; i++)&#123;    //使用CreateElement方法在“itemList”节点下依次创建三个名为“Item”的XmlElement节点    XmlElement childNode = xmlDocument.CreateElement(&quot;Item&quot;);    //XmlElement中的SetAttribute方法 给节点设置属性和属性值    //使用SetAttribute方法给每个“Item”节点设置两个属性，分别为“id”和“num”    childNode.SetAttribute(&quot;id&quot;, i.ToString());    childNode.SetAttribute(&quot;num&quot;, (i * 10).ToString());    itemList.AppendChild(childNode);&#125;//将“itemList”节点添加至根节点“Root”中root.AppendChild(itemList);</code></pre><h5 id="保存"><a href="#保存" class="headerlink" title="保存"></a>保存</h5><h6 id="XmlDocument-Save方法-在指定路径保存xml文件"><a href="#XmlDocument-Save方法-在指定路径保存xml文件" class="headerlink" title="XmlDocument.Save方法 - 在指定路径保存xml文件"></a>XmlDocument.Save方法 - 在指定路径保存xml文件</h6><pre><code class="csharp">//XmlDocument类中的Save方法 在指定路径保存xml文件xmlDocument.Save(path);</code></pre><h5 id="保存后的xml文件"><a href="#保存后的xml文件" class="headerlink" title="保存后的xml文件"></a>保存后的xml文件</h5><pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;Root&gt;  &lt;name&gt;林文韬&lt;/name&gt;  &lt;atk&gt;10&lt;/atk&gt;  &lt;listInt&gt;    &lt;int&gt;1&lt;/int&gt;    &lt;int&gt;2&lt;/int&gt;    &lt;int&gt;3&lt;/int&gt;  &lt;/listInt&gt;  &lt;itemList&gt;    &lt;Item id=&quot;1&quot; num=&quot;10&quot; /&gt;    &lt;Item id=&quot;2&quot; num=&quot;20&quot; /&gt;    &lt;Item id=&quot;3&quot; num=&quot;30&quot; /&gt;  &lt;/itemList&gt;&lt;/Root&gt;</code></pre><h3 id="修改xml文件"><a href="#修改xml文件" class="headerlink" title="修改xml文件"></a>修改xml文件</h3><h4 id="File-Exists方法-判断某路径是否存在文件"><a href="#File-Exists方法-判断某路径是否存在文件" class="headerlink" title="File.Exists方法 - 判断某路径是否存在文件"></a>File.Exists方法 - 判断某路径是否存在文件</h4><pre><code class="csharp">//File类中的Exists方法 判断路径是否存在if ( File.Exists(path) )&#123;&#125;</code></pre><h4 id="加载后利用学过的方法修改xml文件"><a href="#加载后利用学过的方法修改xml文件" class="headerlink" title="加载后利用学过的方法修改xml文件"></a>加载后利用学过的方法修改xml文件</h4><pre><code class="csharp">//File类中的Exists方法 判断路径是否存在if ( File.Exists(path) )&#123;    //2.加载后 直接添加节点 移除节点即可    //创建xml文本对象 加载对应路径的xml文件    XmlDocument newXml = new XmlDocument();    newXml.Load(path);    //修改就是在原有文件基础上 去移除 或者添加    //移除节点    XmlNode node;    //可以在XmlNode中连续使用SelectSingleNode方法得到子节点    node = newXml.SelectSingleNode(&quot;Root&quot;).SelectSingleNode(&quot;atk&quot;);    //也可以通过/来区分父子节点的关系 得到子节点    node = newXml.SelectSingleNode(&quot;Root/atk&quot;);    //得到自己的父节点    XmlNode root2 = newXml.SelectSingleNode(&quot;Root&quot;);    //XmlNode类中的RemoveChild方法 移除子节点方法    root2.RemoveChild(node);    //添加节点    //CreateElement创建一个节点    XmlElement moveSpeed = newXml.CreateElement(&quot;moveSpeed&quot;);    //设置包裹内容    moveSpeed.InnerText = &quot;20&quot;;    //加到更节点    root2.AppendChild(moveSpeed);    //改了记得保存文档对象    newXml.Save(path);&#125;</code></pre><h4 id="修改后的结果"><a href="#修改后的结果" class="headerlink" title="修改后的结果"></a>修改后的结果</h4><pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;Root&gt;  &lt;name&gt;林文韬&lt;/name&gt;  &lt;listInt&gt;    &lt;int&gt;1&lt;/int&gt;    &lt;int&gt;2&lt;/int&gt;    &lt;int&gt;3&lt;/int&gt;  &lt;/listInt&gt;  &lt;itemList&gt;    &lt;Item id=&quot;1&quot; num=&quot;10&quot; /&gt;    &lt;Item id=&quot;2&quot; num=&quot;20&quot; /&gt;    &lt;Item id=&quot;3&quot; num=&quot;30&quot; /&gt;  &lt;/itemList&gt;  &lt;moveSpeed&gt;20&lt;/moveSpeed&gt;&lt;/Root&gt;</code></pre><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ul><li>路径选取<ul><li>在运行过程中存储 只能往可写且能找到的文件夹存储</li><li>故选择了Application.persistentDataPath</li></ul></li><li>存储xml关键类<ul><li>XmlDocument 文件<ul><li>创建节点 CreateElement</li><li>创建固定内容方法 CreateXmlDeclaration</li><li>添加节点 AppendChild</li><li>保存 Save</li></ul></li><li>XmlDeclaration 版本</li><li>XmlElement 元素节点<ul><li>设置属性方法 SetAttribute</li></ul></li></ul></li><li>修改<ul><li>RemoveChild 移除节点</li><li>可以通过 &#x2F; 的形式来表示子节点的子节点</li></ul></li></ul><hr><h2 id="6-2-知识点代码"><a href="#6-2-知识点代码" class="headerlink" title="6.2 知识点代码"></a>6.2 知识点代码</h2><pre><code class="csharp">using System.Collections;using System.Collections.Generic;using System.IO;using System.Xml;using UnityEngine;public class SaveXml : MonoBehaviour&#123;    void Start()    &#123;        #region 知识点一 Xml决定存储在哪个文件夹下        //注意：存储xml文件 在Unity中一定是使用各平台都可读可写可找到的路径        // 1.Resources 可读 不可写 打包加密后通过路径找不到  ×        // 2.Application.streamingAssetsPath 可读 PC端可写 但是其他平台不可写 打包加密后通过路径找得到 可以存些不会改的xml文件  ×        // 3.Application.dataPath 编辑器上操作看起来没什么问题 但是打包后找不到  ×        // 4.Application.persistentDataPath 可读可写 各个平台找得到   √        //准备好我们最终要存储的路径        string path = Application.persistentDataPath + &quot;/PlayerInfo2.xml&quot;;        print(Application.persistentDataPath);//C:/Users/LinWentao/AppData/LocalLow/DefaultCompany/XML教程        #endregion        #region 知识点二 存储xml文件        //关键类 XmlDocument 用于创建节点 存储文件        //关键类 XmlDeclaration 用于添加版本信息        //关键类 XmlElement 节点类        //存储有5步        //1.创建文本对象        //创建XmlDocument类文本对象         //相当于新建xml文件        XmlDocument xmlDocument = new XmlDocument();        //2.添加固定版本信息        //XmlDocument类中的CreateXmlDeclaration方法 添加固定版本信息        //这一句代码 相当于就是创建&lt;?xmlDocument version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;这句内容        XmlDeclaration xmlDec = xmlDocument.CreateXmlDeclaration(&quot;1.0&quot;, &quot;UTF-8&quot;, &quot;&quot;);        //XmlDocument类中的AppendChild方法 把版本信息对象添加到xml文本对象中         //创建完成过后 要添加进入 文本对象中        xmlDocument.AppendChild(xmlDec);        //3.添加根节点        //XmlDocument类中的CreateElement方法 添加根节点        XmlElement root = xmlDocument.CreateElement(&quot;Root&quot;);        //创建完成过后 要添加进入 文本对象中        xmlDocument.AppendChild(root);        //4.为根节点添加子节点        //为根节点添加子节点        //创建了了一个name子节点        XmlElement name = xmlDocument.CreateElement(&quot;name&quot;);        //XmlElement中的InnerText属性 设置包裹信息        name.InnerText = &quot;林文韬&quot;;        //XmlElement类中的AppendChild方法 把子节点添加到xml文本对象中         root.AppendChild(name);        //使用CreateElement方法在根节点下创建名称为“atk”的节点，并设置其InnerText（即节点内部的文本值）为“10”        XmlElement atk = xmlDocument.CreateElement(&quot;atk&quot;);        atk.InnerText = &quot;10&quot;;        //将“atk”子节点添加至根节点“Root”中        root.AppendChild(atk);        //使用CreateElement方法在根节点下创建名称为“listInt”的XmlNode节点，并将三个名为“int”的子节点添加到该节点中。        XmlElement listInt = xmlDocument.CreateElement(&quot;listInt&quot;);        //遍历给listInt添加子节点        for (int i = 1; i &lt;= 3; i++)        &#123;            //使用CreateElement方法在“listInt”节点下依次创建三个名为“int”的XmlElement节点            XmlElement childNode = xmlDocument.CreateElement(&quot;int&quot;);            //依次设置三个“int”子节点的InnerText值，分别为1、2、3            childNode.InnerText = i.ToString();            listInt.AppendChild(childNode);        &#125;        //将“listInt”子节点添加至根节点“Root”中        root.AppendChild(listInt);        //使用CreateElement方法在根节点下创建名称为“itemList”的XmlElement节点，并将三个名为“Item”的子节点添加到该节点中，        XmlElement itemList = xmlDocument.CreateElement(&quot;itemList&quot;);        //遍历给itemList添加子节点        for (int i = 1; i &lt;= 3; i++)        &#123;            //使用CreateElement方法在“itemList”节点下依次创建三个名为“Item”的XmlElement节点            XmlElement childNode = xmlDocument.CreateElement(&quot;Item&quot;);            //XmlElement中的SetAttribute方法 给节点设置属性和属性值            //使用SetAttribute方法给每个“Item”节点设置两个属性，分别为“id”和“num”            childNode.SetAttribute(&quot;id&quot;, i.ToString());            childNode.SetAttribute(&quot;num&quot;, (i * 10).ToString());            itemList.AppendChild(childNode);        &#125;        //将“itemList”节点添加至根节点“Root”中        root.AppendChild(itemList);        //5.保存        //XmlDocument类中的Save方法 在指定路径保存xml文件        xmlDocument.Save(path);        #endregion        #region 知识点三 修改xml文件        //1.先判断是否存在文件        //File类中的Exists方法 判断路径是否存在        if ( File.Exists(path) )        &#123;            //2.加载后 直接添加节点 移除节点即可            //创建xml文本对象 加载对应路径的xml文件            XmlDocument newXml = new XmlDocument();            newXml.Load(path);            //修改就是在原有文件基础上 去移除 或者添加            //移除节点            XmlNode node;            //可以在XmlNode中连续使用SelectSingleNode方法得到子节点            node = newXml.SelectSingleNode(&quot;Root&quot;).SelectSingleNode(&quot;atk&quot;);            //也可以通过/来区分父子节点的关系 得到子节点            node = newXml.SelectSingleNode(&quot;Root/atk&quot;);            //得到自己的父节点            XmlNode root2 = newXml.SelectSingleNode(&quot;Root&quot;);            //XmlNode类中的RemoveChild方法 移除子节点方法            root2.RemoveChild(node);            //添加节点            //CreateElement创建一个节点            XmlElement moveSpeed = newXml.CreateElement(&quot;moveSpeed&quot;);            //设置包裹内容            moveSpeed.InnerText = &quot;20&quot;;            //加到更节点            root2.AppendChild(moveSpeed);            //改了记得保存文档对象            newXml.Save(path);        &#125;        #endregion        #region 总结        //1.路径选取        //在运行过程中存储 只能往可写且能找到的文件夹存储        //故 选择了Application.persistentDataPath        //2.存储xml关键类        //XmlDocument  文件          //   创建节点 CreateElement        //   创建固定内容方法 CreateXmlDeclaration        //   添加节点 AppendChild        //   保存 Save        //XmlDeclaration 版本        //XmlElement 元素节点          //   设置属性方法SetAttribute        //3.修改        //RemoveChild移除节点        //可以通过 /的形式 来表示 子节点的子节点         #endregion    &#125;&#125;</code></pre><hr><h2 id="6-3-练习题"><a href="#6-3-练习题" class="headerlink" title="6.3 练习题"></a>6.3 练习题</h2><h3 id="结合上一个知识点的练习题，实现将PlayerInfo数据存储到XML文件"><a href="#结合上一个知识点的练习题，实现将PlayerInfo数据存储到XML文件" class="headerlink" title="结合上一个知识点的练习题，实现将PlayerInfo数据存储到XML文件"></a>结合上一个知识点的练习题，实现将PlayerInfo数据存储到XML文件</h3><h4 id="在PlayerInfo类创建用XMl存储数据的方法，分五步骤存储xml文件"><a href="#在PlayerInfo类创建用XMl存储数据的方法，分五步骤存储xml文件" class="headerlink" title="在PlayerInfo类创建用XMl存储数据的方法，分五步骤存储xml文件"></a>在PlayerInfo类创建用XMl存储数据的方法，分五步骤存储xml文件</h4><pre><code class="csharp">//定义一个名为 SaveData 的公共方法，参数为文件名字符串 fileNamepublic void SaveData(string fileName)&#123;    //决定存储路径    string path = Application.persistentDataPath + &quot;/&quot; + fileName + &quot;.xml&quot;;    //输出该XML文档将保存在何处。    Debug.Log(Application.persistentDataPath);    //初始化5步操作。    //1.创建XmlDocument对象。稍后它将包含所需的Xml数据。    XmlDocument xml = new XmlDocument();    //2.使用CreateXmlDeclaration()方法创建XmlDeclaration对象声明文档类型和版本。    XmlDeclaration xmlDec = xml.CreateXmlDeclaration(&quot;1.0&quot;, &quot;UTF-8&quot;, &quot;&quot;);    //将XmlDeclaration对象添加到XmlDocument对象中。    //这将把该声明作为XML文件的第一行。    xml.AppendChild(xmlDec);    //3.添加根节点    //使用CreateElement()方法，创建一个根节点XmlElement对象并命名为“PlayerInfo”。    XmlElement playerInfo = xml.CreateElement(&quot;PlayerInfo&quot;);    //向XmlDocument对象添加根节点XmlElement对象“playerInfo”    xml.AppendChild(playerInfo);    //4.添加子节点 或者 属性相关    //使用CreateElement方法创建Xml子项XmlElement对象并设置它们的InnerText值。    //XmlElement对象表示不带数据的标记或元素。    XmlElement name = xml.CreateElement(&quot;name&quot;);    name.InnerText = this.name;    playerInfo.AppendChild(name);    XmlElement atk = xml.CreateElement(&quot;atk&quot;);    atk.InnerText = this.atk.ToString();    playerInfo.AppendChild(atk);    XmlElement def = xml.CreateElement(&quot;def&quot;);    def.InnerText = this.def.ToString();    playerInfo.AppendChild(def);    XmlElement moveSpeed = xml.CreateElement(&quot;moveSpeed&quot;);    moveSpeed.InnerText = this.moveSpeed.ToString();    playerInfo.AppendChild(moveSpeed);    XmlElement roundSpeed = xml.CreateElement(&quot;roundSpeed&quot;);    roundSpeed.InnerText = this.roundSpeed.ToString();    playerInfo.AppendChild(roundSpeed);    //创建XmlElement对象表示装备与其属性    XmlElement weapon = xml.CreateElement(&quot;weapon&quot;);    XmlElement id = xml.CreateElement(&quot;id&quot;);    id.InnerText = this.weapon.id.ToString();    weapon.AppendChild(id);    XmlElement num = xml.CreateElement(&quot;num&quot;);    num.InnerText = this.weapon.num.ToString();    weapon.AppendChild(num);    playerInfo.AppendChild(weapon);    //创建XmlAttribute对象表示一个整数列表（listInt）    XmlElement listInt = xml.CreateElement(&quot;listInt&quot;);    for (int i = 0; i &lt; this.listInt.Count; i++)    &#123;        //使用CreateElement方法创建名为“int”的子节点，设置InnerText值并添加到根节点中的列表项。        XmlElement intNode = xml.CreateElement(&quot;int&quot;);        intNode.InnerText = this.listInt[i].ToString();        listInt.AppendChild(intNode);    &#125;    playerInfo.AppendChild(listInt);    //构建名为$itemList的XmlElement对象，该对象将保存所有的Item项目 .    XmlElement itemList = xml.CreateElement(&quot;itemList&quot;);    for (int i = 0; i &lt; this.itemList.Count; i++)    &#123;        //使用CreateElement方法分别在itemList根节点下创建三个Xml子项&lt;Element&gt;对象。        XmlElement itemNode = xml.CreateElement(&quot;Item&quot;);        //谁每个XmlElement对象的ID和Num属性各自包含了itemList中的Item对象的ID属性和Num属性。        itemNode.SetAttribute(&quot;id&quot;, this.itemList[i].id.ToString());        itemNode.SetAttribute(&quot;num&quot;, this.itemList[i].num.ToString());        //将三个XmlElement对象都添加到itemList节点之下。        itemList.AppendChild(itemNode);    &#125;    playerInfo.AppendChild(itemList);    //创建一个名为itemDict的XmlElement对象，该对象将保存所有Item相关数据    XmlElement itemDic = xml.CreateElement(&quot;itemDic&quot;);    foreach (int key in this.itemDic.Keys)    &#123;        //分别实例化intNode和itemNode对象来存储Dictionary&lt;int,Item&gt;对象的键值对数据。        XmlElement intNode = xml.CreateElement(&quot;int&quot;);        intNode.InnerText = key.ToString();   //key作为标记内部的InnerText值        //itemNode的ID属性和Num属性包含字典项的Id属性和Num属性。        XmlElement itemNode = xml.CreateElement(&quot;Item&quot;);        itemNode.SetAttribute(&quot;id&quot;, this.itemDic[key].id.ToString());        itemNode.SetAttribute(&quot;num&quot;, this.itemDic[key].num.ToString());        //添加这两个XmlElement对象到XmlDocument对象中。        itemDic.AppendChild(intNode);        itemDic.AppendChild(itemNode);    &#125;    //将此XmlElement对象添加到根XmlElement对象之下    playerInfo.AppendChild(itemDic);    //5.使用XmlDocument类的Save()方法将生成的XML文本与指定路径path的文件进行存储。    xml.Save(path);&#125;</code></pre><h4 id="在测试类修改PlayerInfo对象的内容测试保存"><a href="#在测试类修改PlayerInfo对象的内容测试保存" class="headerlink" title="在测试类修改PlayerInfo对象的内容测试保存"></a>在测试类修改PlayerInfo对象的内容测试保存</h4><pre><code class="csharp">p.name = &quot;林文韬修改后的内容&quot;;p.listInt.Add(99);Item i = new Item();i.id = 666;i.num = 999;p.itemList.Add(i);p.itemDic.Add(250, i);p.SaveData(&quot;PlayerInfo&quot;);</code></pre><hr><h2 id="6-4-练习题代码"><a href="#6-4-练习题代码" class="headerlink" title="6.4 练习题代码"></a>6.4 练习题代码</h2><h3 id="PlayerInfo"><a href="#PlayerInfo" class="headerlink" title="PlayerInfo"></a>PlayerInfo</h3><pre><code class="csharp">using System;using System.Collections;using System.Collections.Generic;using System.IO;using System.Xml;using UnityEngine;// 定义Item类public class Item&#123;    public int id;    public int num;&#125;//定义一个名为 PlayerInfo 的公共类public class PlayerInfo&#123;    //以下为 PlayerInfo 类的成员变量    //玩家昵称，字符串类型    public string name;    //攻击力，整型    public int atk;    //防御力，整型    public int def;    //移动速度，浮点型    public float moveSpeed;    //回合速度，浮点型    public float roundSpeed;    //武器信息，Item 类型    public Item weapon;    //整数列表，使用 List&lt;int&gt; 实现    public List&lt;int&gt; listInt;    //物品列表，使用 List&lt;Item&gt; 实现    public List&lt;Item&gt; itemList;    //物品字典，使用 Dictionary&lt;int, Item&gt; 实现    public Dictionary&lt;int, Item&gt; itemDic;    //定义一个名为 LoadData 的公共方法，参数为文件名字符串 fileName    public void LoadData(string fileName)    &#123;        //构建文件路径，用于读取玩家存档数据        string path = Application.persistentDataPath + &quot;/&quot; + fileName + &quot;.xml&quot;;        //如果存档文件不存在，则从默认资源中获取数据        if (!File.Exists(path))        &#123;            path = Application.streamingAssetsPath + &quot;/&quot; + fileName + &quot;.xml&quot;;        &#125;        //加载 XML 文件信息        XmlDocument xml = new XmlDocument();        //加载        xml.Load(path);        //从文件中加载出具体的数据        //加载根节点才能加载后面的内容        XmlNode playerInfo = xml.SelectSingleNode(&quot;PlayerInfo&quot;);        //通过根节点去加载具体的信息        this.name = playerInfo.SelectSingleNode(&quot;name&quot;).InnerText;        this.atk = int.Parse(playerInfo.SelectSingleNode(&quot;atk&quot;).InnerText);        this.def = int.Parse(playerInfo.SelectSingleNode(&quot;def&quot;).InnerText);        this.moveSpeed = float.Parse(playerInfo.SelectSingleNode(&quot;moveSpeed&quot;).InnerText);        this.roundSpeed = float.Parse(playerInfo.SelectSingleNode(&quot;roundSpeed&quot;).InnerText);        //加载武器信息节点        XmlNode weaponNode = playerInfo.SelectSingleNode(&quot;weapon&quot;);        this.weapon = new Item();        this.weapon.id = int.Parse(weaponNode.SelectSingleNode(&quot;id&quot;).InnerText);        this.weapon.num = int.Parse(weaponNode.SelectSingleNode(&quot;num&quot;).InnerText);        //加载整数列表节点        XmlNode listIntNode = playerInfo.SelectSingleNode(&quot;listInt&quot;);        XmlNodeList intList = listIntNode.SelectNodes(&quot;int&quot;);        this.listInt = new List&lt;int&gt;();        for (int i = 0; i &lt; intList.Count; i++)        &#123;            this.listInt.Add(int.Parse(intList[i].InnerText));        &#125;        //加载物品列表节点        XmlNode itemListNode = playerInfo.SelectSingleNode(&quot;itemList&quot;);        XmlNodeList items = itemListNode.SelectNodes(&quot;Item&quot;);        this.itemList = new List&lt;Item&gt;();        foreach (XmlNode item in items)        &#123;            Item item2 = new Item();            item2.id = int.Parse(item.Attributes[&quot;id&quot;].Value);            item2.num = int.Parse(item.Attributes[&quot;num&quot;].Value);            this.itemList.Add(item2);        &#125;        //加载物品字典节点        XmlNode itemDicNode = playerInfo.SelectSingleNode(&quot;itemDic&quot;);        XmlNodeList keyInt = itemDicNode.SelectNodes(&quot;int&quot;);        XmlNodeList valueItem = itemDicNode.SelectNodes(&quot;Item&quot;);        this.itemDic = new Dictionary&lt;int, Item&gt;();        for (int i = 0; i &lt; keyInt.Count; i++)        &#123;            int key = int.Parse(keyInt[i].InnerText);            Item value = new Item();            value.id = int.Parse(valueItem[i].Attributes[&quot;id&quot;].Value);            value.num = int.Parse(valueItem[i].Attributes[&quot;num&quot;].Value);            this.itemDic.Add(key, value);        &#125;    &#125;    //定义一个名为 SaveData 的公共方法，参数为文件名字符串 fileName    public void SaveData(string fileName)    &#123;        //决定存储路径        string path = Application.persistentDataPath + &quot;/&quot; + fileName + &quot;.xml&quot;;        //输出该XML文档将保存在何处。        Debug.Log(Application.persistentDataPath);        //初始化5步操作。        //1.创建XmlDocument对象。稍后它将包含所需的Xml数据。        XmlDocument xml = new XmlDocument();        //2.使用CreateXmlDeclaration()方法创建XmlDeclaration对象声明文档类型和版本。        XmlDeclaration xmlDec = xml.CreateXmlDeclaration(&quot;1.0&quot;, &quot;UTF-8&quot;, &quot;&quot;);        //将XmlDeclaration对象添加到XmlDocument对象中。        //这将把该声明作为XML文件的第一行。        xml.AppendChild(xmlDec);        //3.添加根节点        //使用CreateElement()方法，创建一个根节点XmlElement对象并命名为“PlayerInfo”。        XmlElement playerInfo = xml.CreateElement(&quot;PlayerInfo&quot;);        //向XmlDocument对象添加根节点XmlElement对象“playerInfo”        xml.AppendChild(playerInfo);        //4.添加子节点 或者 属性相关        //使用CreateElement方法创建Xml子项XmlElement对象并设置它们的InnerText值。        //XmlElement对象表示不带数据的标记或元素。        XmlElement name = xml.CreateElement(&quot;name&quot;);        name.InnerText = this.name;        playerInfo.AppendChild(name);        XmlElement atk = xml.CreateElement(&quot;atk&quot;);        atk.InnerText = this.atk.ToString();        playerInfo.AppendChild(atk);        XmlElement def = xml.CreateElement(&quot;def&quot;);        def.InnerText = this.def.ToString();        playerInfo.AppendChild(def);        XmlElement moveSpeed = xml.CreateElement(&quot;moveSpeed&quot;);        moveSpeed.InnerText = this.moveSpeed.ToString();        playerInfo.AppendChild(moveSpeed);        XmlElement roundSpeed = xml.CreateElement(&quot;roundSpeed&quot;);        roundSpeed.InnerText = this.roundSpeed.ToString();        playerInfo.AppendChild(roundSpeed);        //创建XmlElement对象表示装备与其属性        XmlElement weapon = xml.CreateElement(&quot;weapon&quot;);        XmlElement id = xml.CreateElement(&quot;id&quot;);        id.InnerText = this.weapon.id.ToString();        weapon.AppendChild(id);        XmlElement num = xml.CreateElement(&quot;num&quot;);        num.InnerText = this.weapon.num.ToString();        weapon.AppendChild(num);        playerInfo.AppendChild(weapon);        //创建XmlAttribute对象表示一个整数列表（listInt）        XmlElement listInt = xml.CreateElement(&quot;listInt&quot;);        for (int i = 0; i &lt; this.listInt.Count; i++)        &#123;            //使用CreateElement方法创建名为“int”的子节点，设置InnerText值并添加到根节点中的列表项。            XmlElement intNode = xml.CreateElement(&quot;int&quot;);            intNode.InnerText = this.listInt[i].ToString();            listInt.AppendChild(intNode);        &#125;        playerInfo.AppendChild(listInt);        //构建名为$itemList的XmlElement对象，该对象将保存所有的Item项目 .        XmlElement itemList = xml.CreateElement(&quot;itemList&quot;);        for (int i = 0; i &lt; this.itemList.Count; i++)        &#123;            //使用CreateElement方法分别在itemList根节点下创建三个Xml子项&lt;Element&gt;对象。            XmlElement itemNode = xml.CreateElement(&quot;Item&quot;);            //谁每个XmlElement对象的ID和Num属性各自包含了itemList中的Item对象的ID属性和Num属性。            itemNode.SetAttribute(&quot;id&quot;, this.itemList[i].id.ToString());            itemNode.SetAttribute(&quot;num&quot;, this.itemList[i].num.ToString());            //将三个XmlElement对象都添加到itemList节点之下。            itemList.AppendChild(itemNode);        &#125;        playerInfo.AppendChild(itemList);        //创建一个名为itemDict的XmlElement对象，该对象将保存所有Item相关数据        XmlElement itemDic = xml.CreateElement(&quot;itemDic&quot;);        foreach (int key in this.itemDic.Keys)        &#123;            //分别实例化intNode和itemNode对象来存储Dictionary&lt;int,Item&gt;对象的键值对数据。            XmlElement intNode = xml.CreateElement(&quot;int&quot;);            intNode.InnerText = key.ToString();   //key作为标记内部的InnerText值            //itemNode的ID属性和Num属性包含字典项的Id属性和Num属性。            XmlElement itemNode = xml.CreateElement(&quot;Item&quot;);            itemNode.SetAttribute(&quot;id&quot;, this.itemDic[key].id.ToString());            itemNode.SetAttribute(&quot;num&quot;, this.itemDic[key].num.ToString());            //添加这两个XmlElement对象到XmlDocument对象中。            itemDic.AppendChild(intNode);            itemDic.AppendChild(itemNode);        &#125;        //将此XmlElement对象添加到根XmlElement对象之下        playerInfo.AppendChild(itemDic);        //5.使用XmlDocument类的Save()方法将生成的XML文本与指定路径path的文件进行存储。        xml.Save(path);    &#125;&#125;</code></pre><h3 id="Test"><a href="#Test" class="headerlink" title="Test"></a>Test</h3><pre><code class="csharp">using System.Collections;using System.Collections.Generic;using UnityEngine;public class Test : MonoBehaviour&#123;    void Start()    &#123;        PlayerInfo p = new PlayerInfo();        p.LoadData(&quot;PlayerInfo&quot;);        p.name = &quot;林文韬修改后的内容&quot;;        p.listInt.Add(99);                Item i = new Item();        i.id = 666;        i.num = 999;        p.itemList.Add(i);        p.itemDic.Add(250, i);        p.SaveData(&quot;PlayerInfo&quot;);    &#125;&#125;</code></pre><h3 id="PlayerInfo-xml"><a href="#PlayerInfo-xml" class="headerlink" title="PlayerInfo.xml"></a>PlayerInfo.xml</h3><pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;PlayerInfo&gt;  &lt;name&gt;林文韬修改后的内容&lt;/name&gt;  &lt;atk&gt;10&lt;/atk&gt;  &lt;def&gt;5&lt;/def&gt;  &lt;moveSpeed&gt;20&lt;/moveSpeed&gt;  &lt;roundSpeed&gt;20&lt;/roundSpeed&gt;  &lt;weapon&gt;    &lt;id&gt;1&lt;/id&gt;    &lt;num&gt;1&lt;/num&gt;  &lt;/weapon&gt;  &lt;listInt&gt;    &lt;int&gt;1&lt;/int&gt;    &lt;int&gt;2&lt;/int&gt;    &lt;int&gt;3&lt;/int&gt;    &lt;int&gt;99&lt;/int&gt;  &lt;/listInt&gt;  &lt;itemList&gt;    &lt;Item id=&quot;1&quot; num=&quot;10&quot; /&gt;    &lt;Item id=&quot;2&quot; num=&quot;20&quot; /&gt;    &lt;Item id=&quot;3&quot; num=&quot;30&quot; /&gt;    &lt;Item id=&quot;4&quot; num=&quot;40&quot; /&gt;    &lt;Item id=&quot;666&quot; num=&quot;999&quot; /&gt;  &lt;/itemList&gt;  &lt;itemDic&gt;    &lt;int&gt;1&lt;/int&gt;    &lt;Item id=&quot;1&quot; num=&quot;1&quot; /&gt;    &lt;int&gt;2&lt;/int&gt;    &lt;Item id=&quot;2&quot; num=&quot;1&quot; /&gt;    &lt;int&gt;3&lt;/int&gt;    &lt;Item id=&quot;3&quot; num=&quot;1&quot; /&gt;    &lt;int&gt;250&lt;/int&gt;    &lt;Item id=&quot;666&quot; num=&quot;999&quot; /&gt;  &lt;/itemDic&gt;&lt;/PlayerInfo&gt;</code></pre><hr>]]></content>
+      
+      
+      <categories>
+          
+          <category> 数据持久化 </category>
+          
+          <category> Xml基础知识 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 数据持久化 </tag>
+            
+            <tag> 基础知识 </tag>
+            
+            <tag> Xml </tag>
+            
+            <tag> CSharp操作Xml </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>4.Xml文件存放位置</title>
+      <link href="/2024/03/03/%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96/03.Xml%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/4.CSharp%E6%93%8D%E4%BD%9CXML-XML%E6%96%87%E4%BB%B6%E5%AD%98%E6%94%BE%E4%BD%8D%E7%BD%AE/"/>
+      <url>/2024/03/03/%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96/03.Xml%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/4.CSharp%E6%93%8D%E4%BD%9CXML-XML%E6%96%87%E4%BB%B6%E5%AD%98%E6%94%BE%E4%BD%8D%E7%BD%AE/</url>
+      
+        <content type="html"><![CDATA[<h1 id="4-CSharp操作XML-XML文件存放位置"><a href="#4-CSharp操作XML-XML文件存放位置" class="headerlink" title="4.CSharp操作XML-XML文件存放位置"></a>4.CSharp操作XML-XML文件存放位置</h1><hr><h2 id="4-1-知识点"><a href="#4-1-知识点" class="headerlink" title="4.1 知识点"></a>4.1 知识点</h2><h3 id="只读不写的XML文件可以放在Resources或者StreamingAssets-文件夹下"><a href="#只读不写的XML文件可以放在Resources或者StreamingAssets-文件夹下" class="headerlink" title="只读不写的XML文件可以放在Resources或者StreamingAssets 文件夹下"></a>只读不写的XML文件可以放在Resources或者StreamingAssets 文件夹下</h3><h3 id="动态存储的XML文件放在Application-persistentDataPath-路径下"><a href="#动态存储的XML文件放在Application-persistentDataPath-路径下" class="headerlink" title="动态存储的XML文件放在Application.persistentDataPath 路径下"></a>动态存储的XML文件放在Application.persistentDataPath 路径下</h3><h3 id="创建Resources和StreamAssets文件夹，放入相同的测试XML文件"><a href="#创建Resources和StreamAssets文件夹，放入相同的测试XML文件" class="headerlink" title="创建Resources和StreamAssets文件夹，放入相同的测试XML文件"></a>创建Resources和StreamAssets文件夹，放入相同的测试XML文件</h3><hr><h2 id="4-2-知识点代码"><a href="#4-2-知识点代码" class="headerlink" title="4.2 知识点代码"></a>4.2 知识点代码</h2><pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;Root&gt;    &lt;name&gt;林文韬&lt;/name&gt;    &lt;age&gt;18&lt;/age&gt;    &lt;Item id=&quot;1&quot; num=&quot;10&quot;/&gt;    &lt;Friend&gt;        &lt;name&gt;小明&lt;/name&gt;        &lt;age&gt;8&lt;/age&gt;    &lt;/Friend&gt;    &lt;Friend&gt;        &lt;name&gt;小红&lt;/name&gt;        &lt;age&gt;10&lt;/age&gt;    &lt;/Friend&gt;&lt;/Root&gt;</code></pre><hr>]]></content>
+      
+      
+      <categories>
+          
+          <category> 数据持久化 </category>
+          
+          <category> Xml基础知识 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 数据持久化 </tag>
+            
+            <tag> 基础知识 </tag>
+            
+            <tag> Xml </tag>
+            
+            <tag> CSharp操作Xml </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>5.读取Xml文件</title>
+      <link href="/2024/03/03/%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96/03.Xml%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/5.CSharp%E6%93%8D%E4%BD%9CXML-%E8%AF%BB%E5%8F%96XML%E6%96%87%E4%BB%B6/"/>
+      <url>/2024/03/03/%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96/03.Xml%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/5.CSharp%E6%93%8D%E4%BD%9CXML-%E8%AF%BB%E5%8F%96XML%E6%96%87%E4%BB%B6/</url>
+      
+        <content type="html"><![CDATA[<h1 id="5-CSharp操作XML-读取XML文件"><a href="#5-CSharp操作XML-读取XML文件" class="headerlink" title="5.CSharp操作XML-读取XML文件"></a>5.CSharp操作XML-读取XML文件</h1><hr><h2 id="5-1-知识点"><a href="#5-1-知识点" class="headerlink" title="5.1 知识点"></a>5.1 知识点</h2><h3 id="C-读取XML的方法的方式"><a href="#C-读取XML的方法的方式" class="headerlink" title="C#读取XML的方法的方式"></a>C#读取XML的方法的方式</h3><ul><li><p>XmlDocument（把数据加载到内存中，方便读取）</p></li><li><p>XmlTextReader（以流形式加载，内存占用更少，但是是单向只读，使用不是特别方便，除非有特殊需求，否则不会使用）</p></li><li><p>Linq（以后专门讲Linq的时候讲）</p></li><li><p>使用XmlDocument类读取是较方便最容易理解和操作的方法</p></li><li><p>现在在Resources文件夹和StreamingAssets文件夹分别放入以下<strong>TestXml.xml</strong></p></li></ul><pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;Root&gt;    &lt;name&gt;林文韬&lt;/name&gt;    &lt;age&gt;18&lt;/age&gt;    &lt;Item id=&quot;1&quot; num=&quot;10&quot;/&gt;    &lt;Friend&gt;        &lt;name&gt;小明&lt;/name&gt;        &lt;age&gt;8&lt;/age&gt;    &lt;/Friend&gt;    &lt;Friend&gt;        &lt;name&gt;小红&lt;/name&gt;        &lt;age&gt;10&lt;/age&gt;    &lt;/Friend&gt;&lt;/Root&gt;</code></pre><h3 id="读取xml文件信息"><a href="#读取xml文件信息" class="headerlink" title="读取xml文件信息"></a>读取xml文件信息</h3><h4 id="XmlDocument-Xml文档类"><a href="#XmlDocument-Xml文档类" class="headerlink" title="XmlDocument Xml文档类"></a>XmlDocument Xml文档类</h4><ul><li>引用 System.Xml 命名空间</li><li>表示XML文档的类 XmlDocument </li><li>新建一个XML文档对象</li></ul><pre><code class="csharp">XmlDocument xmlDocument = new XmlDocument();</code></pre><h4 id="XmlDocument读取xml文件"><a href="#XmlDocument读取xml文件" class="headerlink" title="XmlDocument读取xml文件"></a>XmlDocument读取xml文件</h4><h5 id="XmlDocument-LoadXml方法-传入xml字符串内容来加载xml文件"><a href="#XmlDocument-LoadXml方法-传入xml字符串内容来加载xml文件" class="headerlink" title="XmlDocument.LoadXml方法 - 传入xml字符串内容来加载xml文件"></a>XmlDocument.LoadXml方法 - 传入xml字符串内容来加载xml文件</h5><pre><code class="csharp">//加载存放在Resorces文件夹下的xml文件 类型是TextAssetTextAsset textAsset = Resources.Load&lt;TextAsset&gt;(&quot;TestXml&quot;);print(textAsset.text);//可以输出xml文本//XmlDocument类中的LoadXml方法 能够翻译字符串为xml对象xmlDocument.LoadXml(textAsset.text);</code></pre><h5 id="XmlDocument-Load方法-通过xml文件的路径加载"><a href="#XmlDocument-Load方法-通过xml文件的路径加载" class="headerlink" title="XmlDocument.Load方法 - 通过xml文件的路径加载"></a>XmlDocument.Load方法 - 通过xml文件的路径加载</h5><pre><code class="csharp">//XML文件要在StreamingAssets文件夹下 因为StreamingAssets不会被压缩加密 Resources文件夹会//XmlDocument类中的Load方法 传入xml文件的路径直接加载xmlxmlDocument.Load(Application.streamingAssetsPath + &quot;/TestXml.xml&quot;);</code></pre><h5 id="加载完成后-XML文档的所有信息就存在XML文档对象中"><a href="#加载完成后-XML文档的所有信息就存在XML文档对象中" class="headerlink" title="加载完成后 XML文档的所有信息就存在XML文档对象中"></a>加载完成后 XML文档的所有信息就存在XML文档对象中</h5><h3 id="读取元素和属性信息"><a href="#读取元素和属性信息" class="headerlink" title="读取元素和属性信息"></a>读取元素和属性信息</h3><h4 id="XmlNode-Xml节点信息类"><a href="#XmlNode-Xml节点信息类" class="headerlink" title="XmlNode Xml节点信息类"></a>XmlNode Xml节点信息类</h4><h4 id="XmlNodeList-Xml节点列表信息类"><a href="#XmlNodeList-Xml节点列表信息类" class="headerlink" title="XmlNodeList Xml节点列表信息类"></a>XmlNodeList Xml节点列表信息类</h4><h4 id="XmlDocument-SelectSingleNode方法-获取xml当中的根节点"><a href="#XmlDocument-SelectSingleNode方法-获取xml当中的根节点" class="headerlink" title="XmlDocument.SelectSingleNode方法 - 获取xml当中的根节点"></a>XmlDocument.SelectSingleNode方法 - 获取xml当中的根节点</h4><pre><code class="csharp">//XmlDocument中的SelectSingleNode方法 获取xml当中的根节点XmlNode root = xmlDocument.SelectSingleNode(&quot;Root&quot;);</code></pre><h4 id="XmlNode-SelectSingleNode方法-通过根节点去获取下面的子节点"><a href="#XmlNode-SelectSingleNode方法-通过根节点去获取下面的子节点" class="headerlink" title="XmlNode.SelectSingleNode方法 - 通过根节点去获取下面的子节点"></a>XmlNode.SelectSingleNode方法 - 通过根节点去获取下面的子节点</h4><pre><code class="csharp">//XmlNode中的SelectSingleNode方法 再通过根节点 去获取下面的子节点XmlNode nodeName = root.SelectSingleNode(&quot;name&quot;);</code></pre><h4 id="XmlNode-InnerText变量-获取节点包裹的元素信息"><a href="#XmlNode-InnerText变量-获取节点包裹的元素信息" class="headerlink" title="XmlNode.InnerText变量 获取节点包裹的元素信息"></a>XmlNode.InnerText变量 获取节点包裹的元素信息</h4><pre><code class="csharp">//XmlNode中的InnerText变量 获取节点包裹的元素信息//如果想要获取节点包裹的元素信息 直接 .InnerTextprint(nodeName.InnerText);//林文韬XmlNode nodeAge = root.SelectSingleNode(&quot;age&quot;);print(nodeAge.InnerText);//18</code></pre><h4 id="获得Xml节点中的属性信息"><a href="#获得Xml节点中的属性信息" class="headerlink" title="获得Xml节点中的属性信息"></a>获得Xml节点中的属性信息</h4><pre><code class="csharp">XmlNode nodeItem = root.SelectSingleNode(&quot;Item&quot;);</code></pre><h5 id="XmlNode-Attributes-“属性名”-Value-直接中括号获取信息"><a href="#XmlNode-Attributes-“属性名”-Value-直接中括号获取信息" class="headerlink" title="XmlNode.Attributes[“属性名”].Value - 直接中括号获取信息"></a>XmlNode.Attributes[“属性名”].Value - 直接中括号获取信息</h5><pre><code class="csharp">//XmlNode中的Attributes用中括号传入对应属性名字后.出Value  直接中括号获取信息print(nodeItem.Attributes[&quot;id&quot;].Value);//1print(nodeItem.Attributes[&quot;num&quot;].Value);//10</code></pre><h5 id="XmlNode-Attributes-GetNamedItem-“属性名”-Value-用GetNamedItem方法获取信息"><a href="#XmlNode-Attributes-GetNamedItem-“属性名”-Value-用GetNamedItem方法获取信息" class="headerlink" title="XmlNode.Attributes.GetNamedItem(“属性名”).Value - 用GetNamedItem方法获取信息"></a>XmlNode.Attributes.GetNamedItem(“属性名”).Value - 用GetNamedItem方法获取信息</h5><pre><code class="csharp">//XmlNode中的Attributes用GetNamedItem方法传入对应属性名字后.出Value  用GetNamedItem方法获取信息print(nodeItem.Attributes.GetNamedItem(&quot;id&quot;).Value);//1print(nodeItem.Attributes.GetNamedItem(&quot;num&quot;).Value);//10</code></pre><h4 id="XmlNodeList-SelectNodes方法-获取一个节点下的同名节点的方法"><a href="#XmlNodeList-SelectNodes方法-获取一个节点下的同名节点的方法" class="headerlink" title="XmlNodeList.SelectNodes方法 - 获取一个节点下的同名节点的方法"></a>XmlNodeList.SelectNodes方法 - 获取一个节点下的同名节点的方法</h4><pre><code class="csharp">//XmlNodeList中的SelectNodes方法 获取一个节点下的同名节点的方法XmlNodeList friendList = root.SelectNodes(&quot;Friend&quot;);</code></pre><h4 id="遍历获得XmlNodeList每个节点信息"><a href="#遍历获得XmlNodeList每个节点信息" class="headerlink" title="遍历获得XmlNodeList每个节点信息"></a>遍历获得XmlNodeList每个节点信息</h4><h5 id="迭代器遍历"><a href="#迭代器遍历" class="headerlink" title="迭代器遍历"></a>迭代器遍历</h5><pre><code class="csharp">//遍历方式一：迭代器遍历foreach (XmlNode item in friendList)&#123;    //相当于item选择是父节点了 像单个节点一样获得子节点    print(item.SelectSingleNode(&quot;name&quot;).InnerText);    print(item.SelectSingleNode(&quot;age&quot;).InnerText);&#125;</code></pre><h5 id="for循环遍历"><a href="#for循环遍历" class="headerlink" title="for循环遍历"></a>for循环遍历</h5><pre><code class="csharp">//遍历方式二：通过for循环遍历//通过XmlNodeList中的 成员变量 Count可以得到 节点数量for (int i = 0; i &lt; friendList.Count; i++)&#123;    print(friendList[i].SelectSingleNode(&quot;name&quot;).InnerText);    print(friendList[i].SelectSingleNode(&quot;age&quot;).InnerText);&#125;</code></pre><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ol><li><p>读取XML文件</p><ul><li>XmlDocument xmlDocument &#x3D; new XmlDocument();</li><li>读取文本方式1-xmlDocument.LoadXml(传入xml文本字符串)</li><li>读取文本方式2-xmlDocument.Load(传入路径)</li></ul></li><li><p>读取元素和属性</p><ul><li><p>获取单个节点 : XmlNode node &#x3D; xmlDocument.SelectSingleNode(节点名)</p></li><li><p>获取多个节点 : XmlNodeList nodeList &#x3D; xmlDocument.SelectNodes(节点名)</p></li><li><p>获取节点元素内容：node.InnerText</p></li><li><p>获取节点元素属性：</p><ul><li>item.Attributes[“属性名”].Value</li><li>item.Attributes.GetNamedItem(“属性名”).Value</li></ul></li><li><p>通过迭代器遍历或者循环遍历XmlNodeList对象可以获取到各单个元素节点</p></li></ul></li></ol><hr><h2 id="5-2-知识点代码"><a href="#5-2-知识点代码" class="headerlink" title="5.2 知识点代码"></a>5.2 知识点代码</h2><h3 id="TestXml-xml"><a href="#TestXml-xml" class="headerlink" title="TestXml.xml"></a>TestXml.xml</h3><pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;Root&gt;    &lt;name&gt;林文韬&lt;/name&gt;    &lt;age&gt;18&lt;/age&gt;    &lt;Item id=&quot;1&quot; num=&quot;10&quot;/&gt;    &lt;Friend&gt;        &lt;name&gt;小明&lt;/name&gt;        &lt;age&gt;8&lt;/age&gt;    &lt;/Friend&gt;    &lt;Friend&gt;        &lt;name&gt;小红&lt;/name&gt;        &lt;age&gt;10&lt;/age&gt;    &lt;/Friend&gt;&lt;/Root&gt;</code></pre><h3 id="LoadXml"><a href="#LoadXml" class="headerlink" title="LoadXml"></a>LoadXml</h3><pre><code class="csharp">using System.Collections;using System.Collections.Generic;using System.Xml;using UnityEngine;public class LoadXml : MonoBehaviour&#123;    void Start()    &#123;        #region 知识点一 C#读取XML的方法的方式         //1.XmlDocument    (把数据加载到内存中，方便读取)        //2.XmlTextReader  (以流形式加载，内存占用更少，但是是单向只读，使用不是特别方便，除非有特殊需求，否则不会使用)        //3.Linq           (以后专门讲Linq的时候讲)        //使用XmlDocument类读取是较方便最容易理解和操作的方法        #endregion        #region 知识点二 读取xml文件信息        //引用 System.Xml 命名空间        //表示XML文档的类 XmlDocument         //新建一个XML文档对象        XmlDocument xmlDocument = new XmlDocument();        //通过XmlDocument读取xml文件 有两种方法        //1.直接根据xml字符串内容 来加载xml文件        //加载存放在Resorces文件夹下的xml文件 类型是TextAsset        TextAsset textAsset = Resources.Load&lt;TextAsset&gt;(&quot;TestXml&quot;);        print(textAsset.text);//可以输出xml文本        //XmlDocument类中的LoadXml方法 能够翻译字符串为xml对象        xmlDocument.LoadXml(textAsset.text);        //2.通过xml文件的路径去进行加载        //XML文件要在StreamingAssets文件夹下 因为StreamingAssets不会被压缩加密 Resources文件夹会        //XmlDocument类中的Load方法 传入xml文件的路径直接加载xml        xmlDocument.Load(Application.streamingAssetsPath + &quot;/TestXml.xml&quot;);        //加载完成后 XML文档的所有信息就存在XML文档对象中        #endregion        #region 知识点三 读取元素和属性信息        //节点信息类 XmlNode        //XmlNode 单个节点信息类        //节点列表信息类 XmlNodeList        //XmlNodeList 多个节点信息类        //XmlDocument中的SelectSingleNode方法 获取xml当中的根节点        XmlNode root = xmlDocument.SelectSingleNode(&quot;Root&quot;);        //XmlNode中的SelectSingleNode方法 再通过根节点 去获取下面的子节点        XmlNode nodeName = root.SelectSingleNode(&quot;name&quot;);        //XmlNode中的InnerText变量 获取节点包裹的元素信息        //如果想要获取节点包裹的元素信息 直接 .InnerText        print(nodeName.InnerText);//林文韬        XmlNode nodeAge = root.SelectSingleNode(&quot;age&quot;);        print(nodeAge.InnerText);//18        //获得Xml节点中的属性信息        //有两种方式        XmlNode nodeItem = root.SelectSingleNode(&quot;Item&quot;);        //XmlNode中的Attributes用中括号传入对应属性名字后.出Value  直接中括号获取信息        print(nodeItem.Attributes[&quot;id&quot;].Value);//1        print(nodeItem.Attributes[&quot;num&quot;].Value);//10        //XmlNode中的Attributes用GetNamedItem方法传入对应属性名字后.出Value  用GetNamedItem方法获取信息        print(nodeItem.Attributes.GetNamedItem(&quot;id&quot;).Value);//1        print(nodeItem.Attributes.GetNamedItem(&quot;num&quot;).Value);//10        //XmlNodeList中的SelectNodes方法 获取一个节点下的同名节点的方法        XmlNodeList friendList = root.SelectNodes(&quot;Friend&quot;);        //遍历获得XmlNodeList节点信息的方式        //遍历方式一：迭代器遍历        foreach (XmlNode item in friendList)        &#123;            //相当于item选择是父节点了 像单个节点一样获得子节点            print(item.SelectSingleNode(&quot;name&quot;).InnerText);            print(item.SelectSingleNode(&quot;age&quot;).InnerText);        &#125;        //遍历方式二：通过for循环遍历        //通过XmlNodeList中的 成员变量 Count可以得到 节点数量        for (int i = 0; i &lt; friendList.Count; i++)        &#123;            print(friendList[i].SelectSingleNode(&quot;name&quot;).InnerText);            print(friendList[i].SelectSingleNode(&quot;age&quot;).InnerText);        &#125;        #endregion        #region 总结        //1.读取XML文件        //XmlDocument xmlDocument = new XmlDocument();        //读取文本方式1-xmlDocument.LoadXml(传入xml文本字符串)        //读取文本方式2-xmlDocument.Load(传入路径)        //2.读取元素和属性        //获取单个节点 : XmlNode node = xmlDocument.SelectSingleNode(节点名)        //获取多个节点 : XmlNodeList nodeList = xmlDocument.SelectNodes(节点名)        //获取节点元素内容：node.InnerText        //获取节点元素属性：        //1.item.Attributes[&quot;属性名&quot;].Value        //2.item.Attributes.GetNamedItem(&quot;属性名&quot;).Value        //通过迭代器遍历或者循环遍历XmlNodeList对象 可以获取到各单个元素节点        #endregion    &#125;&#125;</code></pre><hr><h2 id="5-3-练习题"><a href="#5-3-练习题" class="headerlink" title="5.3 练习题"></a>5.3 练习题</h2><h3 id="有一个玩家数据类，请为该类写一个方法结合XML读取知识点，将XML中数据读取到PlayerInfo的一个对象中"><a href="#有一个玩家数据类，请为该类写一个方法结合XML读取知识点，将XML中数据读取到PlayerInfo的一个对象中" class="headerlink" title="有一个玩家数据类，请为该类写一个方法结合XML读取知识点，将XML中数据读取到PlayerInfo的一个对象中"></a>有一个玩家数据类，请为该类写一个方法结合XML读取知识点，将XML中数据读取到PlayerInfo的一个对象中</h3><p><img src="/../../../images/%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96/03.Xml%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/5.CSharp%E6%93%8D%E4%BD%9CXML-%E8%AF%BB%E5%8F%96XML%E6%96%87%E4%BB%B6/1.png"></p><h4 id="StreamAssets文件夹下创建PlayerInfo-xml"><a href="#StreamAssets文件夹下创建PlayerInfo-xml" class="headerlink" title="StreamAssets文件夹下创建PlayerInfo.xml"></a>StreamAssets文件夹下创建PlayerInfo.xml</h4><h3 id="PlayerInfo-xml"><a href="#PlayerInfo-xml" class="headerlink" title="PlayerInfo.xml"></a>PlayerInfo.xml</h3><pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;PlayerInfo&gt;    &lt;!--自己定一个xml代表 类对象数据的规则    我们的元素节点名 就用我们的变量名命名    --&gt;    &lt;name&gt;韬老狮&lt;/name&gt;    &lt;atk&gt;10&lt;/atk&gt;    &lt;def&gt;5&lt;/def&gt;    &lt;moveSpeed&gt;20&lt;/moveSpeed&gt;    &lt;roundSpeed&gt;20&lt;/roundSpeed&gt;    &lt;weapon&gt;        &lt;id&gt;1&lt;/id&gt;        &lt;num&gt;1&lt;/num&gt;    &lt;/weapon&gt;    &lt;!--当出现没有变量名的数据时 我们就用变量类型名命名--&gt;    &lt;listInt&gt;        &lt;int&gt;1&lt;/int&gt;        &lt;int&gt;2&lt;/int&gt;        &lt;int&gt;3&lt;/int&gt;    &lt;/listInt&gt;    &lt;itemList&gt;        &lt;Item id=&quot;1&quot; num=&quot;10&quot;/&gt;        &lt;Item id=&quot;2&quot; num=&quot;20&quot;/&gt;        &lt;Item id=&quot;3&quot; num=&quot;30&quot;/&gt;        &lt;Item id=&quot;4&quot; num=&quot;40&quot;/&gt;    &lt;/itemList&gt;    &lt;itemDic&gt;        &lt;int&gt;1&lt;/int&gt;        &lt;Item id=&quot;1&quot; num=&quot;1&quot;/&gt;        &lt;int&gt;2&lt;/int&gt;        &lt;Item id=&quot;2&quot; num=&quot;1&quot;/&gt;        &lt;int&gt;3&lt;/int&gt;        &lt;Item id=&quot;3&quot; num=&quot;1&quot;/&gt;        &lt;!-- 另一种写法 但是建议大家都统一        &lt;int&gt;4&lt;/int&gt;        &lt;Item&gt;            &lt;id&gt;4&lt;/id&gt;            &lt;num&gt;1&lt;/num&gt;        &lt;/Item&gt;        --&gt;    &lt;/itemDic&gt;&lt;/PlayerInfo&gt;</code></pre><h4 id="定义Item类"><a href="#定义Item类" class="headerlink" title="定义Item类"></a>定义Item类</h4><pre><code class="csharp">// 定义Item类public class Item&#123;    public int id;    public int num;&#125;</code></pre><h4 id="定义一个名为-PlayerInfo-的公共类"><a href="#定义一个名为-PlayerInfo-的公共类" class="headerlink" title="定义一个名为 PlayerInfo 的公共类"></a>定义一个名为 PlayerInfo 的公共类</h4><pre><code class="csharp">//定义一个名为 PlayerInfo 的公共类public class PlayerInfo&#123;    //以下为 PlayerInfo 类的成员变量    //玩家昵称，字符串类型    public string name;    //攻击力，整型    public int atk;    //防御力，整型    public int def;    //移动速度，浮点型    public float moveSpeed;    //回合速度，浮点型    public float roundSpeed;    //武器信息，Item 类型    public Item weapon;    //整数列表，使用 List&lt;int&gt; 实现    public List&lt;int&gt; listInt;    //物品列表，使用 List&lt;Item&gt; 实现    public List&lt;Item&gt; itemList;    //物品字典，使用 Dictionary&lt;int, Item&gt; 实现    public Dictionary&lt;int, Item&gt; itemDic;&#125;</code></pre><h4 id="PlayerInfo中定义一个名为-LoadData-的公共方法，参数为文件名字符串-fileName"><a href="#PlayerInfo中定义一个名为-LoadData-的公共方法，参数为文件名字符串-fileName" class="headerlink" title="PlayerInfo中定义一个名为 LoadData 的公共方法，参数为文件名字符串 fileName"></a>PlayerInfo中定义一个名为 LoadData 的公共方法，参数为文件名字符串 fileName</h4><pre><code class="csharp">//定义一个名为 LoadData 的公共方法，参数为文件名字符串 fileNamepublic void LoadData(string fileName)&#123;    //构建文件路径，用于读取玩家存档数据    string path = Application.persistentDataPath + &quot;/&quot; + fileName + &quot;.xml&quot;;    //如果存档文件不存在，则从默认资源中获取数据    if (!File.Exists(path))    &#123;        path = Application.streamingAssetsPath + &quot;/&quot; + fileName + &quot;.xml&quot;;    &#125;    //加载 XML 文件信息    XmlDocument xml = new XmlDocument();    //加载    xml.Load(path);    //从文件中加载出具体的数据    //加载根节点才能加载后面的内容    XmlNode playerInfo = xml.SelectSingleNode(&quot;PlayerInfo&quot;);    //通过根节点去加载具体的信息    this.name = playerInfo.SelectSingleNode(&quot;name&quot;).InnerText;    this.atk = int.Parse(playerInfo.SelectSingleNode(&quot;atk&quot;).InnerText);    this.def = int.Parse(playerInfo.SelectSingleNode(&quot;def&quot;).InnerText);    this.moveSpeed = float.Parse(playerInfo.SelectSingleNode(&quot;moveSpeed&quot;).InnerText);    this.roundSpeed = float.Parse(playerInfo.SelectSingleNode(&quot;roundSpeed&quot;).InnerText);    //加载武器信息节点    XmlNode weaponNode = playerInfo.SelectSingleNode(&quot;weapon&quot;);    this.weapon = new Item();    this.weapon.id = int.Parse(weaponNode.SelectSingleNode(&quot;id&quot;).InnerText);    this.weapon.num = int.Parse(weaponNode.SelectSingleNode(&quot;num&quot;).InnerText);    //加载整数列表节点    XmlNode listIntNode = playerInfo.SelectSingleNode(&quot;listInt&quot;);    XmlNodeList intList = listIntNode.SelectNodes(&quot;int&quot;);    this.listInt = new List&lt;int&gt;();    for (int i = 0; i &lt; intList.Count; i++)    &#123;        this.listInt.Add(int.Parse(intList[i].InnerText));    &#125;    //加载物品列表节点    XmlNode itemListNode = playerInfo.SelectSingleNode(&quot;itemList&quot;);    XmlNodeList items = itemListNode.SelectNodes(&quot;Item&quot;);    this.itemList = new List&lt;Item&gt;();    foreach (XmlNode item in items)    &#123;        Item item2 = new Item();        item2.id = int.Parse(item.Attributes[&quot;id&quot;].Value);        item2.num = int.Parse(item.Attributes[&quot;num&quot;].Value);        this.itemList.Add(item2);    &#125;    //加载物品字典节点    XmlNode itemDicNode = playerInfo.SelectSingleNode(&quot;itemDic&quot;);    XmlNodeList keyInt = itemDicNode.SelectNodes(&quot;int&quot;);    XmlNodeList valueItem = itemDicNode.SelectNodes(&quot;Item&quot;);    this.itemDic = new Dictionary&lt;int, Item&gt;();    for (int i = 0; i &lt; keyInt.Count; i++)    &#123;        int key = int.Parse(keyInt[i].InnerText);        Item value = new Item();        value.id = int.Parse(valueItem[i].Attributes[&quot;id&quot;].Value);        value.num = int.Parse(valueItem[i].Attributes[&quot;num&quot;].Value);        this.itemDic.Add(key, value);    &#125;&#125;</code></pre><h4 id="创建测试脚本，测试脚本中断点测试看能不能获得XML文件数据"><a href="#创建测试脚本，测试脚本中断点测试看能不能获得XML文件数据" class="headerlink" title="创建测试脚本，测试脚本中断点测试看能不能获得XML文件数据"></a>创建测试脚本，测试脚本中断点测试看能不能获得XML文件数据</h4><pre><code class="csharp">PlayerInfo p = new PlayerInfo();p.LoadData(&quot;PlayerInfo&quot;);</code></pre><hr><h2 id="5-4-练习题代码"><a href="#5-4-练习题代码" class="headerlink" title="5.4 练习题代码"></a>5.4 练习题代码</h2><h3 id="PlayerInfo"><a href="#PlayerInfo" class="headerlink" title="PlayerInfo"></a>PlayerInfo</h3><pre><code class="csharp">using System;using System.Collections;using System.Collections.Generic;using System.IO;using System.Xml;using UnityEngine;// 定义Item类public class Item&#123;    public int id;    public int num;&#125;//定义一个名为 PlayerInfo 的公共类public class PlayerInfo&#123;    //以下为 PlayerInfo 类的成员变量    //玩家昵称，字符串类型    public string name;    //攻击力，整型    public int atk;    //防御力，整型    public int def;    //移动速度，浮点型    public float moveSpeed;    //回合速度，浮点型    public float roundSpeed;    //武器信息，Item 类型    public Item weapon;    //整数列表，使用 List&lt;int&gt; 实现    public List&lt;int&gt; listInt;    //物品列表，使用 List&lt;Item&gt; 实现    public List&lt;Item&gt; itemList;    //物品字典，使用 Dictionary&lt;int, Item&gt; 实现    public Dictionary&lt;int, Item&gt; itemDic;    //定义一个名为 LoadData 的公共方法，参数为文件名字符串 fileName    public void LoadData(string fileName)    &#123;        //构建文件路径，用于读取玩家存档数据        string path = Application.persistentDataPath + &quot;/&quot; + fileName + &quot;.xml&quot;;        //如果存档文件不存在，则从默认资源中获取数据        if (!File.Exists(path))        &#123;            path = Application.streamingAssetsPath + &quot;/&quot; + fileName + &quot;.xml&quot;;        &#125;        //加载 XML 文件信息        XmlDocument xml = new XmlDocument();        //加载        xml.Load(path);        //从文件中加载出具体的数据        //加载根节点才能加载后面的内容        XmlNode playerInfo = xml.SelectSingleNode(&quot;PlayerInfo&quot;);        //通过根节点去加载具体的信息        this.name = playerInfo.SelectSingleNode(&quot;name&quot;).InnerText;        this.atk = int.Parse(playerInfo.SelectSingleNode(&quot;atk&quot;).InnerText);        this.def = int.Parse(playerInfo.SelectSingleNode(&quot;def&quot;).InnerText);        this.moveSpeed = float.Parse(playerInfo.SelectSingleNode(&quot;moveSpeed&quot;).InnerText);        this.roundSpeed = float.Parse(playerInfo.SelectSingleNode(&quot;roundSpeed&quot;).InnerText);        //加载武器信息节点        XmlNode weaponNode = playerInfo.SelectSingleNode(&quot;weapon&quot;);        this.weapon = new Item();        this.weapon.id = int.Parse(weaponNode.SelectSingleNode(&quot;id&quot;).InnerText);        this.weapon.num = int.Parse(weaponNode.SelectSingleNode(&quot;num&quot;).InnerText);        //加载整数列表节点        XmlNode listIntNode = playerInfo.SelectSingleNode(&quot;listInt&quot;);        XmlNodeList intList = listIntNode.SelectNodes(&quot;int&quot;);        this.listInt = new List&lt;int&gt;();        for (int i = 0; i &lt; intList.Count; i++)        &#123;            this.listInt.Add(int.Parse(intList[i].InnerText));        &#125;        //加载物品列表节点        XmlNode itemListNode = playerInfo.SelectSingleNode(&quot;itemList&quot;);        XmlNodeList items = itemListNode.SelectNodes(&quot;Item&quot;);        this.itemList = new List&lt;Item&gt;();        foreach (XmlNode item in items)        &#123;            Item item2 = new Item();            item2.id = int.Parse(item.Attributes[&quot;id&quot;].Value);            item2.num = int.Parse(item.Attributes[&quot;num&quot;].Value);            this.itemList.Add(item2);        &#125;        //加载物品字典节点        XmlNode itemDicNode = playerInfo.SelectSingleNode(&quot;itemDic&quot;);        XmlNodeList keyInt = itemDicNode.SelectNodes(&quot;int&quot;);        XmlNodeList valueItem = itemDicNode.SelectNodes(&quot;Item&quot;);        this.itemDic = new Dictionary&lt;int, Item&gt;();        for (int i = 0; i &lt; keyInt.Count; i++)        &#123;            int key = int.Parse(keyInt[i].InnerText);            Item value = new Item();            value.id = int.Parse(valueItem[i].Attributes[&quot;id&quot;].Value);            value.num = int.Parse(valueItem[i].Attributes[&quot;num&quot;].Value);            this.itemDic.Add(key, value);        &#125;    &#125;&#125;</code></pre><h3 id="Test"><a href="#Test" class="headerlink" title="Test"></a>Test</h3><pre><code class="csharp">using System.Collections;using System.Collections.Generic;using UnityEngine;public class Test : MonoBehaviour&#123;    void Start()    &#123;        PlayerInfo p = new PlayerInfo();        p.LoadData(&quot;PlayerInfo&quot;);    &#125;&#125;</code></pre><h3 id="PlayerInfo-xml-1"><a href="#PlayerInfo-xml-1" class="headerlink" title="PlayerInfo.xml"></a>PlayerInfo.xml</h3><pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;PlayerInfo&gt;    &lt;!--自己定一个xml代表 类对象数据的规则    我们的元素节点名 就用我们的变量名命名    --&gt;    &lt;name&gt;韬老狮&lt;/name&gt;    &lt;atk&gt;10&lt;/atk&gt;    &lt;def&gt;5&lt;/def&gt;    &lt;moveSpeed&gt;20&lt;/moveSpeed&gt;    &lt;roundSpeed&gt;20&lt;/roundSpeed&gt;    &lt;weapon&gt;        &lt;id&gt;1&lt;/id&gt;        &lt;num&gt;1&lt;/num&gt;    &lt;/weapon&gt;    &lt;!--当出现没有变量名的数据时 我们就用变量类型名命名--&gt;    &lt;listInt&gt;        &lt;int&gt;1&lt;/int&gt;        &lt;int&gt;2&lt;/int&gt;        &lt;int&gt;3&lt;/int&gt;    &lt;/listInt&gt;    &lt;itemList&gt;        &lt;Item id=&quot;1&quot; num=&quot;10&quot;/&gt;        &lt;Item id=&quot;2&quot; num=&quot;20&quot;/&gt;        &lt;Item id=&quot;3&quot; num=&quot;30&quot;/&gt;        &lt;Item id=&quot;4&quot; num=&quot;40&quot;/&gt;    &lt;/itemList&gt;    &lt;itemDic&gt;        &lt;int&gt;1&lt;/int&gt;        &lt;Item id=&quot;1&quot; num=&quot;1&quot;/&gt;        &lt;int&gt;2&lt;/int&gt;        &lt;Item id=&quot;2&quot; num=&quot;1&quot;/&gt;        &lt;int&gt;3&lt;/int&gt;        &lt;Item id=&quot;3&quot; num=&quot;1&quot;/&gt;        &lt;!-- 另一种写法 但是建议大家都统一        &lt;int&gt;4&lt;/int&gt;        &lt;Item&gt;            &lt;id&gt;4&lt;/id&gt;            &lt;num&gt;1&lt;/num&gt;        &lt;/Item&gt;        --&gt;    &lt;/itemDic&gt;&lt;/PlayerInfo&gt;</code></pre><hr>]]></content>
+      
+      
+      <categories>
+          
+          <category> 数据持久化 </category>
+          
+          <category> Xml基础知识 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 数据持久化 </tag>
+            
+            <tag> 基础知识 </tag>
+            
+            <tag> Xml </tag>
+            
+            <tag> CSharp操作Xml </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>3.Xml属性</title>
       <link href="/2024/03/03/%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96/03.Xml%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/3.XML%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F-XML%E5%B1%9E%E6%80%A7/"/>
       <url>/2024/03/03/%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96/03.Xml%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/3.XML%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F-XML%E5%B1%9E%E6%80%A7/</url>
@@ -22,9 +152,9 @@
       
         <tags>
             
-            <tag> 基础知识 </tag>
-            
             <tag> 数据持久化 </tag>
+            
+            <tag> 基础知识 </tag>
             
             <tag> Xml </tag>
             
@@ -55,9 +185,9 @@
       
         <tags>
             
-            <tag> 基础知识 </tag>
-            
             <tag> 数据持久化 </tag>
+            
+            <tag> 基础知识 </tag>
             
             <tag> Xml </tag>
             
@@ -88,9 +218,9 @@
       
         <tags>
             
-            <tag> 基础知识 </tag>
-            
             <tag> 数据持久化 </tag>
+            
+            <tag> 基础知识 </tag>
             
             <tag> Xml </tag>
             
@@ -2334,11 +2464,11 @@
             
             <tag> 必备知识点 </tag>
             
-            <tag> 反射和特性 </tag>
-            
             <tag> UI系统 </tag>
             
             <tag> GUI </tag>
+            
+            <tag> 反射和特性 </tag>
             
         </tags>
       
@@ -2365,11 +2495,11 @@
       
         <tags>
             
+            <tag> 基础知识 </tag>
+            
             <tag> UI系统 </tag>
             
             <tag> GUI </tag>
-            
-            <tag> 基础知识 </tag>
             
         </tags>
       
@@ -2396,11 +2526,11 @@
       
         <tags>
             
+            <tag> 基础知识 </tag>
+            
             <tag> UI系统 </tag>
             
             <tag> GUI </tag>
-            
-            <tag> 基础知识 </tag>
             
             <tag> 自定义整体样式 </tag>
             
@@ -2429,11 +2559,11 @@
       
         <tags>
             
+            <tag> 基础知识 </tag>
+            
             <tag> UI系统 </tag>
             
             <tag> GUI </tag>
-            
-            <tag> 基础知识 </tag>
             
             <tag> 自定义整体样式 </tag>
             
@@ -2462,11 +2592,11 @@
       
         <tags>
             
+            <tag> 基础知识 </tag>
+            
             <tag> UI系统 </tag>
             
             <tag> GUI </tag>
-            
-            <tag> 基础知识 </tag>
             
             <tag> 控件 </tag>
             
@@ -2497,11 +2627,11 @@
       
         <tags>
             
+            <tag> 基础知识 </tag>
+            
             <tag> UI系统 </tag>
             
             <tag> GUI </tag>
-            
-            <tag> 基础知识 </tag>
             
             <tag> 控件 </tag>
             
@@ -2532,11 +2662,11 @@
       
         <tags>
             
+            <tag> 基础知识 </tag>
+            
             <tag> UI系统 </tag>
             
             <tag> GUI </tag>
-            
-            <tag> 基础知识 </tag>
             
             <tag> 控件 </tag>
             
@@ -2567,11 +2697,11 @@
       
         <tags>
             
+            <tag> 基础知识 </tag>
+            
             <tag> UI系统 </tag>
             
             <tag> GUI </tag>
-            
-            <tag> 基础知识 </tag>
             
             <tag> 控件 </tag>
             
@@ -2602,11 +2732,11 @@
       
         <tags>
             
+            <tag> 基础知识 </tag>
+            
             <tag> UI系统 </tag>
             
             <tag> GUI </tag>
-            
-            <tag> 基础知识 </tag>
             
             <tag> 控件 </tag>
             
@@ -2637,11 +2767,11 @@
       
         <tags>
             
+            <tag> 基础知识 </tag>
+            
             <tag> UI系统 </tag>
             
             <tag> GUI </tag>
-            
-            <tag> 基础知识 </tag>
             
             <tag> 控件 </tag>
             
@@ -2672,11 +2802,11 @@
       
         <tags>
             
+            <tag> 基础知识 </tag>
+            
             <tag> UI系统 </tag>
             
             <tag> GUI </tag>
-            
-            <tag> 基础知识 </tag>
             
             <tag> 控件 </tag>
             
@@ -2707,11 +2837,11 @@
       
         <tags>
             
+            <tag> 基础知识 </tag>
+            
             <tag> UI系统 </tag>
             
             <tag> GUI </tag>
-            
-            <tag> 基础知识 </tag>
             
         </tags>
       
@@ -2738,11 +2868,11 @@
       
         <tags>
             
+            <tag> 基础知识 </tag>
+            
             <tag> UI系统 </tag>
             
             <tag> GUI </tag>
-            
-            <tag> 基础知识 </tag>
             
         </tags>
       
@@ -2833,11 +2963,11 @@
             
             <tag> 实践项目 </tag>
             
-            <tag> 反射和特性 </tag>
-            
             <tag> 数据持久化 </tag>
             
             <tag> PlayerPrefs </tag>
+            
+            <tag> 反射和特性 </tag>
             
         </tags>
       
@@ -2866,11 +2996,11 @@
             
             <tag> 实践项目 </tag>
             
-            <tag> 反射和特性 </tag>
-            
             <tag> 数据持久化 </tag>
             
             <tag> PlayerPrefs </tag>
+            
+            <tag> 反射和特性 </tag>
             
         </tags>
       
@@ -2899,11 +3029,11 @@
             
             <tag> 实践项目 </tag>
             
-            <tag> 反射和特性 </tag>
-            
             <tag> 数据持久化 </tag>
             
             <tag> PlayerPrefs </tag>
+            
+            <tag> 反射和特性 </tag>
             
         </tags>
       
@@ -2932,11 +3062,11 @@
             
             <tag> 实践项目 </tag>
             
-            <tag> 反射和特性 </tag>
-            
             <tag> 数据持久化 </tag>
             
             <tag> PlayerPrefs </tag>
+            
+            <tag> 反射和特性 </tag>
             
         </tags>
       
@@ -2965,11 +3095,11 @@
             
             <tag> 实践项目 </tag>
             
-            <tag> 反射和特性 </tag>
-            
             <tag> 数据持久化 </tag>
             
             <tag> PlayerPrefs </tag>
+            
+            <tag> 反射和特性 </tag>
             
         </tags>
       
@@ -2998,11 +3128,11 @@
             
             <tag> 实践项目 </tag>
             
-            <tag> 反射和特性 </tag>
-            
             <tag> 数据持久化 </tag>
             
             <tag> PlayerPrefs </tag>
+            
+            <tag> 反射和特性 </tag>
             
         </tags>
       
@@ -3031,11 +3161,11 @@
             
             <tag> 实践项目 </tag>
             
-            <tag> 反射和特性 </tag>
-            
             <tag> 数据持久化 </tag>
             
             <tag> PlayerPrefs </tag>
+            
+            <tag> 反射和特性 </tag>
             
         </tags>
       
@@ -3064,11 +3194,11 @@
             
             <tag> 实践项目 </tag>
             
-            <tag> 反射和特性 </tag>
-            
             <tag> 数据持久化 </tag>
             
             <tag> PlayerPrefs </tag>
+            
+            <tag> 反射和特性 </tag>
             
         </tags>
       
@@ -3161,11 +3291,11 @@
             
             <tag> 必备知识点 </tag>
             
-            <tag> 反射和特性 </tag>
-            
             <tag> 数据持久化 </tag>
             
             <tag> PlayerPrefs </tag>
+            
+            <tag> 反射和特性 </tag>
             
         </tags>
       
@@ -3192,11 +3322,11 @@
       
         <tags>
             
-            <tag> 基础知识 </tag>
-            
             <tag> 数据持久化 </tag>
             
             <tag> PlayerPrefs </tag>
+            
+            <tag> 基础知识 </tag>
             
         </tags>
       
@@ -3223,11 +3353,11 @@
       
         <tags>
             
-            <tag> 基础知识 </tag>
-            
             <tag> 数据持久化 </tag>
             
             <tag> PlayerPrefs </tag>
+            
+            <tag> 基础知识 </tag>
             
         </tags>
       
@@ -3254,11 +3384,11 @@
       
         <tags>
             
-            <tag> 基础知识 </tag>
-            
             <tag> 数据持久化 </tag>
             
             <tag> PlayerPrefs </tag>
+            
+            <tag> 基础知识 </tag>
             
         </tags>
       
@@ -3285,11 +3415,11 @@
       
         <tags>
             
-            <tag> 基础知识 </tag>
-            
             <tag> 数据持久化 </tag>
             
             <tag> PlayerPrefs </tag>
+            
+            <tag> 基础知识 </tag>
             
         </tags>
       
@@ -4161,9 +4291,9 @@
       
         <tags>
             
-            <tag> 反射和特性 </tag>
-            
             <tag> 基础知识 </tag>
+            
+            <tag> 反射和特性 </tag>
             
             <tag> Unity </tag>
             
@@ -4295,9 +4425,9 @@
       
         <tags>
             
-            <tag> 反射和特性 </tag>
-            
             <tag> 基础知识 </tag>
+            
+            <tag> 反射和特性 </tag>
             
             <tag> Unity </tag>
             
@@ -7526,9 +7656,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> CSharp基础 </tag>
-            
             <tag> 实践项目 </tag>
+            
+            <tag> CSharp基础 </tag>
             
         </tags>
       
@@ -7557,9 +7687,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> CSharp基础 </tag>
-            
             <tag> 实践项目 </tag>
+            
+            <tag> CSharp基础 </tag>
             
         </tags>
       
@@ -7588,9 +7718,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> CSharp基础 </tag>
-            
             <tag> 实践项目 </tag>
+            
+            <tag> CSharp基础 </tag>
             
         </tags>
       
@@ -7619,9 +7749,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> CSharp基础 </tag>
-            
             <tag> 实践项目 </tag>
+            
+            <tag> CSharp基础 </tag>
             
         </tags>
       
@@ -7650,9 +7780,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> CSharp基础 </tag>
-            
             <tag> 实践项目 </tag>
+            
+            <tag> CSharp基础 </tag>
             
         </tags>
       
@@ -7681,9 +7811,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> CSharp基础 </tag>
-            
             <tag> 实践项目 </tag>
+            
+            <tag> CSharp基础 </tag>
             
         </tags>
       
@@ -7712,9 +7842,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> CSharp基础 </tag>
-            
             <tag> 实践项目 </tag>
+            
+            <tag> CSharp基础 </tag>
             
         </tags>
       
@@ -7743,9 +7873,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> CSharp基础 </tag>
-            
             <tag> 实践项目 </tag>
+            
+            <tag> CSharp基础 </tag>
             
         </tags>
       
@@ -7774,9 +7904,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> CSharp基础 </tag>
-            
             <tag> 实践项目 </tag>
+            
+            <tag> CSharp基础 </tag>
             
         </tags>
       
@@ -7805,9 +7935,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> CSharp基础 </tag>
-            
             <tag> 实践项目 </tag>
+            
+            <tag> CSharp基础 </tag>
             
         </tags>
       
@@ -7836,9 +7966,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> CSharp基础 </tag>
-            
             <tag> 实践项目 </tag>
+            
+            <tag> CSharp基础 </tag>
             
         </tags>
       
@@ -7867,9 +7997,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> CSharp基础 </tag>
-            
             <tag> 实践项目 </tag>
+            
+            <tag> CSharp基础 </tag>
             
         </tags>
       
