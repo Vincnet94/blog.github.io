@@ -4,6 +4,103 @@
   
     
     <entry>
+      <title>3.Xml属性</title>
+      <link href="/2024/03/03/%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96/03.Xml%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/3.XML%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F-XML%E5%B1%9E%E6%80%A7/"/>
+      <url>/2024/03/03/%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96/03.Xml%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/3.XML%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F-XML%E5%B1%9E%E6%80%A7/</url>
+      
+        <content type="html"><![CDATA[<h1 id="3-XML文件格式-XML属性"><a href="#3-XML文件格式-XML属性" class="headerlink" title="3.XML文件格式-XML属性"></a>3.XML文件格式-XML属性</h1><hr><h2 id="3-1-知识点"><a href="#3-1-知识点" class="headerlink" title="3.1 知识点"></a>3.1 知识点</h2><p><img src="/../../../images/%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96/03.Xml%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/3.XML%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F-XML%E5%B1%9E%E6%80%A7/1.png"></p><h3 id="主要学习内容"><a href="#主要学习内容" class="headerlink" title="主要学习内容"></a>主要学习内容</h3><p><img src="/../../../images/%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96/03.Xml%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/3.XML%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F-XML%E5%B1%9E%E6%80%A7/2.png"></p><h3 id="属性语法"><a href="#属性语法" class="headerlink" title="属性语法"></a>属性语法</h3><p><img src="/../../../images/%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96/03.Xml%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/3.XML%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F-XML%E5%B1%9E%E6%80%A7/3.png"></p><h3 id="属性和元素节点的区别"><a href="#属性和元素节点的区别" class="headerlink" title="属性和元素节点的区别"></a>属性和元素节点的区别</h3><p><img src="/../../../images/%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96/03.Xml%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/3.XML%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F-XML%E5%B1%9E%E6%80%A7/4.png"></p><h3 id="如何查语法错误"><a href="#如何查语法错误" class="headerlink" title="如何查语法错误"></a>如何查语法错误</h3><p><img src="/../../../images/%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96/03.Xml%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/3.XML%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F-XML%E5%B1%9E%E6%80%A7/5.png"></p><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p><img src="/../../../images/%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96/03.Xml%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/3.XML%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F-XML%E5%B1%9E%E6%80%A7/6.png"></p><hr><h2 id="3-2-知识点代码"><a href="#3-2-知识点代码" class="headerlink" title="3.2 知识点代码"></a>3.2 知识点代码</h2><pre><code class="xml">&lt;?xml version = &quot;1.0&quot; encoding = &quot;UTF-8&quot;?&gt;&lt;!--一定要有一个根节点--&gt;&lt;PlayerInfo&gt;    &lt;Friend&gt;    &lt;name&gt;小明&lt;/name&gt;    &lt;age&gt;8&lt;/age&gt;    &lt;/Friend&gt;    &lt;!--节点名 属性名 = &quot;内容&quot; --&gt;    &lt;!--/节点名--&gt;    &lt;Friend name=&quot;小明&quot; age=&quot;8&quot;&gt;    &lt;/Friend&gt;    &lt;!--节点名 属性名 = &quot;内容&quot; /--&gt;    &lt;Item name=&quot;小明&quot; age=&quot;8&quot;/&gt;    &lt;!--这些写法其实都是一个意思--&gt;&lt;/PlayerInfo&gt;</code></pre><hr><h2 id="3-3-练习题"><a href="#3-3-练习题" class="headerlink" title="3.3 练习题"></a>3.3 练习题</h2><h3 id="请把上面的类结构用XML文档的形式翻译过来"><a href="#请把上面的类结构用XML文档的形式翻译过来" class="headerlink" title="请把上面的类结构用XML文档的形式翻译过来"></a>请把上面的类结构用XML文档的形式翻译过来</h3><p><img src="/../../../images/%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96/03.Xml%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/3.XML%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F-XML%E5%B1%9E%E6%80%A7/7.png"></p><h4 id="先写"><a href="#先写" class="headerlink" title="先写&lt;?xml version&#x3D;”1.0” encoding&#x3D;”UTF-8”?&gt;"></a>先写&lt;?xml version&#x3D;”1.0” encoding&#x3D;”UTF-8”?&gt;</h4><h4 id="根节点写类名"><a href="#根节点写类名" class="headerlink" title="根节点写类名&lt;PlayerInfo&gt;&lt;&#x2F;PlayerInfo&gt;"></a>根节点写类名&lt;PlayerInfo&gt;&lt;&#x2F;PlayerInfo&gt;</h4><h4 id="自己定一个xml代表-类对象数据的规则我们的元素节点名-就用我们的变量名命名"><a href="#自己定一个xml代表-类对象数据的规则我们的元素节点名-就用我们的变量名命名" class="headerlink" title="自己定一个xml代表 类对象数据的规则我们的元素节点名 就用我们的变量名命名"></a>自己定一个xml代表 类对象数据的规则我们的元素节点名 就用我们的变量名命名</h4><pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;PlayerInfo&gt;    &lt;!--自己定一个xml代表 类对象数据的规则    我们的元素节点名 就用我们的变量名命名    --&gt;    &lt;name&gt;韬老狮&lt;/name&gt;    &lt;atk&gt;10&lt;/atk&gt;    &lt;def&gt;5&lt;/def&gt;    &lt;moveSpeed&gt;20&lt;/moveSpeed&gt;    &lt;roundSpeed&gt;20&lt;/roundSpeed&gt;    &lt;weapon&gt;        &lt;id&gt;1&lt;/id&gt;        &lt;num&gt;1&lt;/num&gt;    &lt;/weapon&gt;    &lt;!--当出现没有变量名的数据时 我们就用变量类型名命名--&gt;    &lt;listInt&gt;        &lt;int&gt;1&lt;/int&gt;        &lt;int&gt;2&lt;/int&gt;        &lt;int&gt;3&lt;/int&gt;    &lt;/listInt&gt;    &lt;itemList&gt;        &lt;Item id=&quot;1&quot; num=&quot;10&quot;/&gt;        &lt;Item id=&quot;2&quot; num=&quot;20&quot;/&gt;        &lt;Item id=&quot;3&quot; num=&quot;30&quot;/&gt;        &lt;Item id=&quot;4&quot; num=&quot;40&quot;/&gt;    &lt;/itemList&gt;    &lt;itemDic&gt;        &lt;int&gt;1&lt;/int&gt;        &lt;Item id=&quot;1&quot; num=&quot;1&quot;/&gt;        &lt;int&gt;2&lt;/int&gt;        &lt;Item id=&quot;2&quot; num=&quot;1&quot;/&gt;        &lt;int&gt;3&lt;/int&gt;        &lt;Item id=&quot;3&quot; num=&quot;1&quot;/&gt;        &lt;!-- 另一种写法 但是建议大家都统一        &lt;int&gt;4&lt;/int&gt;        &lt;Item&gt;            &lt;id&gt;4&lt;/id&gt;            &lt;num&gt;1&lt;/num&gt;        &lt;/Item&gt;        --&gt;    &lt;/itemDic&gt;&lt;/PlayerInfo&gt;</code></pre><hr><h2 id="3-4-练习题代码"><a href="#3-4-练习题代码" class="headerlink" title="3.4 练习题代码"></a>3.4 练习题代码</h2><pre><code class="xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;PlayerInfo&gt;    &lt;!--自己定一个xml代表 类对象数据的规则    我们的元素节点名 就用我们的变量名命名    --&gt;    &lt;name&gt;韬老狮&lt;/name&gt;    &lt;atk&gt;10&lt;/atk&gt;    &lt;def&gt;5&lt;/def&gt;    &lt;moveSpeed&gt;20&lt;/moveSpeed&gt;    &lt;roundSpeed&gt;20&lt;/roundSpeed&gt;    &lt;weapon&gt;        &lt;id&gt;1&lt;/id&gt;        &lt;num&gt;1&lt;/num&gt;    &lt;/weapon&gt;    &lt;!--当出现没有变量名的数据时 我们就用变量类型名命名--&gt;    &lt;listInt&gt;        &lt;int&gt;1&lt;/int&gt;        &lt;int&gt;2&lt;/int&gt;        &lt;int&gt;3&lt;/int&gt;    &lt;/listInt&gt;    &lt;itemList&gt;        &lt;Item id=&quot;1&quot; num=&quot;10&quot;/&gt;        &lt;Item id=&quot;2&quot; num=&quot;20&quot;/&gt;        &lt;Item id=&quot;3&quot; num=&quot;30&quot;/&gt;        &lt;Item id=&quot;4&quot; num=&quot;40&quot;/&gt;    &lt;/itemList&gt;    &lt;itemDic&gt;        &lt;int&gt;1&lt;/int&gt;        &lt;Item id=&quot;1&quot; num=&quot;1&quot;/&gt;        &lt;int&gt;2&lt;/int&gt;        &lt;Item id=&quot;2&quot; num=&quot;1&quot;/&gt;        &lt;int&gt;3&lt;/int&gt;        &lt;Item id=&quot;3&quot; num=&quot;1&quot;/&gt;        &lt;!-- 另一种写法 但是建议大家都统一        &lt;int&gt;4&lt;/int&gt;        &lt;Item&gt;            &lt;id&gt;4&lt;/id&gt;            &lt;num&gt;1&lt;/num&gt;        &lt;/Item&gt;        --&gt;    &lt;/itemDic&gt;&lt;/PlayerInfo&gt;</code></pre><hr>]]></content>
+      
+      
+      <categories>
+          
+          <category> 数据持久化 </category>
+          
+          <category> Xml基础知识 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 基础知识 </tag>
+            
+            <tag> 数据持久化 </tag>
+            
+            <tag> Xml </tag>
+            
+            <tag> Xml文件格式 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>2.Xml基本语法</title>
+      <link href="/2024/03/03/%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96/03.Xml%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2.XML%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F-XML%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/"/>
+      <url>/2024/03/03/%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96/03.Xml%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2.XML%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F-XML%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/</url>
+      
+        <content type="html"><![CDATA[<h1 id="2-XML文件格式-XML基本语法"><a href="#2-XML文件格式-XML基本语法" class="headerlink" title="2.XML文件格式-XML基本语法"></a>2.XML文件格式-XML基本语法</h1><hr><h2 id="2-1-知识点"><a href="#2-1-知识点" class="headerlink" title="2.1 知识点"></a>2.1 知识点</h2><p><img src="/../../../images/%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96/03.Xml%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2.XML%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F-XML%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/1.png"></p><h3 id="主要学习内容"><a href="#主要学习内容" class="headerlink" title="主要学习内容"></a>主要学习内容</h3><p><img src="/../../../images/%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96/03.Xml%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2.XML%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F-XML%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/2.png"></p><h3 id="推荐xml文本编辑器"><a href="#推荐xml文本编辑器" class="headerlink" title="推荐xml文本编辑器"></a>推荐xml文本编辑器</h3><p><img src="/../../../images/%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96/03.Xml%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2.XML%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F-XML%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/3.png"></p><h3 id="XML格式是一种树形结构"><a href="#XML格式是一种树形结构" class="headerlink" title="XML格式是一种树形结构"></a>XML格式是一种树形结构</h3><p><img src="/../../../images/%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96/03.Xml%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2.XML%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F-XML%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/4.png"></p><h3 id="创建XML文件"><a href="#创建XML文件" class="headerlink" title="创建XML文件"></a>创建XML文件</h3><p><img src="/../../../images/%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96/03.Xml%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2.XML%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F-XML%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/5.png"></p><h3 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h3><p><img src="/../../../images/%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96/03.Xml%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2.XML%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F-XML%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/6.png"></p><h3 id="固定内容"><a href="#固定内容" class="headerlink" title="固定内容"></a>固定内容</h3><p><img src="/../../../images/%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96/03.Xml%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2.XML%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F-XML%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/7.png"></p><h3 id="基本语法"><a href="#基本语法" class="headerlink" title="基本语法"></a>基本语法</h3><p><img src="/../../../images/%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96/03.Xml%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2.XML%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F-XML%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/8.png"></p><h3 id="基本规则"><a href="#基本规则" class="headerlink" title="基本规则"></a>基本规则</h3><p><img src="/../../../images/%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96/03.Xml%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2.XML%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F-XML%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/9.png"></p><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><h2 id=""><a href="#" class="headerlink" title=""></a><img src="/../../../images/%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96/03.Xml%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2.XML%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F-XML%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/10.png"></h2><h2 id="2-2-知识点代码"><a href="#2-2-知识点代码" class="headerlink" title="2.2 知识点代码"></a>2.2 知识点代码</h2><pre><code class="xml">&lt;!--注释语法--&gt;&lt;!--多行注释多行注释多行注释--&gt;&lt;!--version代表版本 encoding代表编码格式--&gt;&lt;!--编码格式就 是读取文件时 解析字符串使用的编码是什么编码格式：不同的字符 在内存中的二进制是不一样的 每个字符对应一个数字不同的编码格式 字符 对应的 二进制 是不一样的举个例子ASCII:A-11UTF-8:A-21乱码的出现就是因为用来不同的编码格式解析文本内容由于字符和对应的二进制不匹配 就会出现乱码--&gt;&lt;?xml version = &quot;1.0&quot; encoding = &quot;UTF-8&quot;?&gt;&lt;!--一定要有一个根节点--&gt;&lt;!--&lt;节点名&gt;可以填写数据 或者 在其中包裹别的节点&lt;/节点名&gt;--&gt;&lt;PlayerInfo&gt;    &lt;name&gt;林文韬&lt;/name&gt;    &lt;age&gt;18&lt;/age&gt;    &lt;Item id=&quot;1&quot; num=&quot;10&quot;/&gt;    &lt;Friend&gt;        &lt;name&gt;小明&lt;/name&gt;        &lt;age&gt;8&lt;/age&gt;    &lt;/Friend&gt;    &lt;Friend&gt;        &lt;name&gt;小红&lt;/name&gt;        &lt;age&gt;10&lt;/age&gt;    &lt;/Friend&gt;&lt;/PlayerInfo&gt;</code></pre><hr>]]></content>
+      
+      
+      <categories>
+          
+          <category> 数据持久化 </category>
+          
+          <category> Xml基础知识 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 基础知识 </tag>
+            
+            <tag> 数据持久化 </tag>
+            
+            <tag> Xml </tag>
+            
+            <tag> Xml文件格式 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>1.概述</title>
+      <link href="/2024/03/03/%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96/03.Xml%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/1.%E6%A6%82%E8%BF%B0/"/>
+      <url>/2024/03/03/%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96/03.Xml%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/1.%E6%A6%82%E8%BF%B0/</url>
+      
+        <content type="html"><![CDATA[<h1 id="1-概述"><a href="#1-概述" class="headerlink" title="1.概述"></a>1.概述</h1><hr><h2 id="1-1-知识点"><a href="#1-1-知识点" class="headerlink" title="1.1 知识点"></a>1.1 知识点</h2><p><img src="/../../../images/%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96/03.Xml%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/1.%E6%A6%82%E8%BF%B0/1.png"><br><img src="/../../../images/%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96/03.Xml%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/1.%E6%A6%82%E8%BF%B0/2.png"></p><h3 id="什么是数据持久化"><a href="#什么是数据持久化" class="headerlink" title="什么是数据持久化"></a>什么是数据持久化</h3><p><img src="/../../../images/%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96/03.Xml%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/1.%E6%A6%82%E8%BF%B0/3.png"><br><img src="/../../../images/%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96/03.Xml%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/1.%E6%A6%82%E8%BF%B0/4.png"></p><h3 id="XML是什么？"><a href="#XML是什么？" class="headerlink" title="XML是什么？"></a>XML是什么？</h3><p><img src="/../../../images/%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96/03.Xml%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/1.%E6%A6%82%E8%BF%B0/5.png"></p><h3 id="如何理解不同后缀的文件"><a href="#如何理解不同后缀的文件" class="headerlink" title="如何理解不同后缀的文件"></a>如何理解不同后缀的文件</h3><p><img src="/../../../images/%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96/03.Xml%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/1.%E6%A6%82%E8%BF%B0/6.png"></p><h3 id="我们一般使用XML文件来记录和传输数据"><a href="#我们一般使用XML文件来记录和传输数据" class="headerlink" title="我们一般使用XML文件来记录和传输数据"></a>我们一般使用XML文件来记录和传输数据</h3><p><img src="/../../../images/%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96/03.Xml%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/1.%E6%A6%82%E8%BF%B0/7.png"></p><h3 id="主要学习内容"><a href="#主要学习内容" class="headerlink" title="主要学习内容"></a>主要学习内容</h3><p><img src="/../../../images/%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96/03.Xml%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/1.%E6%A6%82%E8%BF%B0/8.png"></p><h3 id="学会后对于我们的意义"><a href="#学会后对于我们的意义" class="headerlink" title="学会后对于我们的意义"></a>学会后对于我们的意义</h3><p><img src="/../../../images/%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96/03.Xml%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/1.%E6%A6%82%E8%BF%B0/9.png"></p><h3 id="主要学习方式"><a href="#主要学习方式" class="headerlink" title="主要学习方式"></a>主要学习方式</h3><p><img src="/../../../images/%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96/03.Xml%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/1.%E6%A6%82%E8%BF%B0/10.png"></p><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p><img src="/../../../images/%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96/03.Xml%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/1.%E6%A6%82%E8%BF%B0/11.png"></p><hr>]]></content>
+      
+      
+      <categories>
+          
+          <category> 数据持久化 </category>
+          
+          <category> Xml基础知识 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 基础知识 </tag>
+            
+            <tag> 数据持久化 </tag>
+            
+            <tag> Xml </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>25.总结</title>
       <link href="/2024/03/03/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/25.%E6%80%BB%E7%BB%93/"/>
       <url>/2024/03/03/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/25.%E6%80%BB%E7%BB%93/</url>
@@ -57,11 +154,11 @@
             
             <tag> Unity </tag>
             
-            <tag> Unity基础 </tag>
-            
             <tag> 核心系统 </tag>
             
             <tag> 物理系统 </tag>
+            
+            <tag> Unity基础 </tag>
             
         </tags>
       
@@ -92,11 +189,11 @@
             
             <tag> Unity </tag>
             
-            <tag> Unity基础 </tag>
-            
             <tag> 核心系统 </tag>
             
             <tag> 物理系统 </tag>
+            
+            <tag> Unity基础 </tag>
             
         </tags>
       
@@ -321,9 +418,9 @@
             
             <tag> Unity </tag>
             
-            <tag> Unity基础 </tag>
-            
             <tag> MonoBehavior中的重要内容 </tag>
+            
+            <tag> Unity基础 </tag>
             
             <tag> 协同程序 </tag>
             
@@ -356,9 +453,9 @@
             
             <tag> Unity </tag>
             
-            <tag> Unity基础 </tag>
-            
             <tag> MonoBehavior中的重要内容 </tag>
+            
+            <tag> Unity基础 </tag>
             
             <tag> 协同程序 </tag>
             
@@ -391,9 +488,9 @@
             
             <tag> Unity </tag>
             
-            <tag> Unity基础 </tag>
-            
             <tag> MonoBehavior中的重要内容 </tag>
+            
+            <tag> Unity基础 </tag>
             
         </tags>
       
@@ -4035,9 +4132,9 @@
             
             <tag> Unity入门 </tag>
             
-            <tag> MonoBehavior中的重要内容 </tag>
-            
             <tag> Unity脚本基础 </tag>
+            
+            <tag> MonoBehavior中的重要内容 </tag>
             
         </tags>
       
@@ -4927,9 +5024,9 @@
             
             <tag> 语法知识 </tag>
             
-            <tag> CSharp进阶 </tag>
-            
             <tag> 排序 </tag>
+            
+            <tag> CSharp进阶 </tag>
             
         </tags>
       
@@ -4960,9 +5057,9 @@
             
             <tag> 语法知识 </tag>
             
-            <tag> CSharp进阶 </tag>
-            
             <tag> 排序 </tag>
+            
+            <tag> CSharp进阶 </tag>
             
         </tags>
       
@@ -4993,9 +5090,9 @@
             
             <tag> 语法知识 </tag>
             
-            <tag> CSharp进阶 </tag>
-            
             <tag> 排序 </tag>
+            
+            <tag> CSharp进阶 </tag>
             
         </tags>
       
@@ -5026,9 +5123,9 @@
             
             <tag> 语法知识 </tag>
             
-            <tag> CSharp进阶 </tag>
-            
             <tag> 排序 </tag>
+            
+            <tag> CSharp进阶 </tag>
             
         </tags>
       
@@ -5059,9 +5156,9 @@
             
             <tag> 语法知识 </tag>
             
-            <tag> CSharp进阶 </tag>
-            
             <tag> 排序 </tag>
+            
+            <tag> CSharp进阶 </tag>
             
         </tags>
       
@@ -5092,9 +5189,9 @@
             
             <tag> 语法知识 </tag>
             
-            <tag> CSharp进阶 </tag>
-            
             <tag> 值类型和引用类型 </tag>
+            
+            <tag> CSharp进阶 </tag>
             
         </tags>
       
@@ -7429,9 +7526,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> 实践项目 </tag>
-            
             <tag> CSharp基础 </tag>
+            
+            <tag> 实践项目 </tag>
             
         </tags>
       
@@ -7460,9 +7557,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> 实践项目 </tag>
-            
             <tag> CSharp基础 </tag>
+            
+            <tag> 实践项目 </tag>
             
         </tags>
       
@@ -7491,9 +7588,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> 实践项目 </tag>
-            
             <tag> CSharp基础 </tag>
+            
+            <tag> 实践项目 </tag>
             
         </tags>
       
@@ -7522,9 +7619,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> 实践项目 </tag>
-            
             <tag> CSharp基础 </tag>
+            
+            <tag> 实践项目 </tag>
             
         </tags>
       
@@ -7553,9 +7650,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> 实践项目 </tag>
-            
             <tag> CSharp基础 </tag>
+            
+            <tag> 实践项目 </tag>
             
         </tags>
       
@@ -7584,9 +7681,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> 实践项目 </tag>
-            
             <tag> CSharp基础 </tag>
+            
+            <tag> 实践项目 </tag>
             
         </tags>
       
@@ -7615,9 +7712,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> 实践项目 </tag>
-            
             <tag> CSharp基础 </tag>
+            
+            <tag> 实践项目 </tag>
             
         </tags>
       
@@ -7646,9 +7743,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> 实践项目 </tag>
-            
             <tag> CSharp基础 </tag>
+            
+            <tag> 实践项目 </tag>
             
         </tags>
       
@@ -7677,9 +7774,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> 实践项目 </tag>
-            
             <tag> CSharp基础 </tag>
+            
+            <tag> 实践项目 </tag>
             
         </tags>
       
@@ -7708,9 +7805,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> 实践项目 </tag>
-            
             <tag> CSharp基础 </tag>
+            
+            <tag> 实践项目 </tag>
             
         </tags>
       
@@ -7739,9 +7836,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> 实践项目 </tag>
-            
             <tag> CSharp基础 </tag>
+            
+            <tag> 实践项目 </tag>
             
         </tags>
       
@@ -7770,9 +7867,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> 实践项目 </tag>
-            
             <tag> CSharp基础 </tag>
+            
+            <tag> 实践项目 </tag>
             
         </tags>
       
