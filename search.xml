@@ -4,6 +4,114 @@
   
     
     <entry>
+      <title></title>
+      <link href="/2024/03/05/UI%E7%B3%BB%E7%BB%9F/03.NGUI%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/4.NGUI%E5%9F%BA%E7%A1%80-%E4%B8%89%E5%A4%A7%E5%9F%BA%E7%A1%80%E7%BB%84%E4%BB%B6-Panel%E7%BB%84%E4%BB%B6UIPanel/"/>
+      <url>/2024/03/05/UI%E7%B3%BB%E7%BB%9F/03.NGUI%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/4.NGUI%E5%9F%BA%E7%A1%80-%E4%B8%89%E5%A4%A7%E5%9F%BA%E7%A1%80%E7%BB%84%E4%BB%B6-Panel%E7%BB%84%E4%BB%B6UIPanel/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>3.Root根组件</title>
+      <link href="/2024/03/05/UI%E7%B3%BB%E7%BB%9F/03.NGUI%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/3.NGUI%E5%9F%BA%E7%A1%80-%E4%B8%89%E5%A4%A7%E5%9F%BA%E7%A1%80%E7%BB%84%E4%BB%B6-Root%E7%BB%84%E4%BB%B6UIRoot/"/>
+      <url>/2024/03/05/UI%E7%B3%BB%E7%BB%9F/03.NGUI%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/3.NGUI%E5%9F%BA%E7%A1%80-%E4%B8%89%E5%A4%A7%E5%9F%BA%E7%A1%80%E7%BB%84%E4%BB%B6-Root%E7%BB%84%E4%BB%B6UIRoot/</url>
+      
+        <content type="html"><![CDATA[<h1 id="3-NGUI基础-三大基础组件-Root组件UIRoot"><a href="#3-NGUI基础-三大基础组件-Root组件UIRoot" class="headerlink" title="3.NGUI基础-三大基础组件-Root组件UIRoot"></a>3.NGUI基础-三大基础组件-Root组件UIRoot</h1><hr><h2 id="3-1-知识点"><a href="#3-1-知识点" class="headerlink" title="3.1 知识点"></a>3.1 知识点</h2><h3 id="分辨率概念"><a href="#分辨率概念" class="headerlink" title="分辨率概念"></a>分辨率概念</h3><ul><li>关于屏幕分辨率自适应的一些关键词</li></ul><h4 id="分辨率"><a href="#分辨率" class="headerlink" title="分辨率"></a>分辨率</h4><ul><li>屏幕宽高两个方向的像素点</li><li>比如1920*1080</li><li>宽1920个像素</li><li>高1080个像素</li></ul><h4 id="像素"><a href="#像素" class="headerlink" title="像素"></a>像素</h4><ul><li>像素即px</li><li>是画面中最小的点(单位色块)</li></ul><h4 id="屏幕尺寸"><a href="#屏幕尺寸" class="headerlink" title="屏幕尺寸"></a>屏幕尺寸</h4><ul><li>屏幕对角线长度</li></ul><h4 id="屏幕比例"><a href="#屏幕比例" class="headerlink" title="屏幕比例"></a>屏幕比例</h4><ul><li>宽高比</li><li>PC显示器</li><li>1920:1080&#x3D;16:9</li><li>苹果手机</li><li>iPhone7,8：1334*750 &#x3D; 16:9</li><li>iPhone 7,8 Plus：1920*1080 &#x3D; 16:9</li><li>iPhoneX：2436*1125 &#x3D; 19.5:9</li><li>iPhone12:2532*1170 &#x3D; 19.5:9</li><li>目前市面上设备分辨率比例传统的有：<ul><li>4:3( ipad )</li><li>16:10</li><li>16:9( 老手机 、电脑显示器 )</li><li>18:9（去掉留海屏幕）</li><li>19.5:9（ 新款手机）</li><li>19.9:9</li></ul></li></ul><h4 id="dpi"><a href="#dpi" class="headerlink" title="dpi"></a>dpi</h4><ul><li>像素密度</li><li>单位面积上有多少个像素点</li><li>一般指一英寸有多少个像素点</li></ul><h3 id="Root根组件的作用"><a href="#Root根组件的作用" class="headerlink" title="Root根组件的作用"></a>Root根组件的作用</h3><ul><li>Root是用于分辨率自适应的根对象，是控制分辨率自适应模式的基础，可以设置基本分辨率，用于设置UI显示区域，并且管理所有UI控件的分辨率自适应</li><li>可以简单理解 它管理一个 UI画布 所有的UI都是显示在这个画布上的，它会管理 UI画布 和 不同屏幕分辨率的 适应关系</li></ul><h3 id="创建UIRoot对象和Root根组件"><a href="#创建UIRoot对象和Root根组件" class="headerlink" title="创建UIRoot对象和Root根组件"></a>创建UIRoot对象和Root根组件</h3><p>直接在Project窗口创建2DUI对象即可 Root组件会自动添加到UIRoot对象<br><img src="/../../../images/UI%E7%B3%BB%E7%BB%9F/03.NGUI%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/3.NGUI%E5%9F%BA%E7%A1%80-%E4%B8%89%E5%A4%A7%E5%9F%BA%E7%A1%80%E7%BB%84%E4%BB%B6-Root%E7%BB%84%E4%BB%B6UIRoot/1.png"><br><img src="/../../../images/UI%E7%B3%BB%E7%BB%9F/03.NGUI%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/3.NGUI%E5%9F%BA%E7%A1%80-%E4%B8%89%E5%A4%A7%E5%9F%BA%E7%A1%80%E7%BB%84%E4%BB%B6-Root%E7%BB%84%E4%BB%B6UIRoot/2.png"></p><h3 id="Root根组件参数"><a href="#Root根组件参数" class="headerlink" title="Root根组件参数"></a>Root根组件参数</h3><h4 id="Flexible-灵活模式"><a href="#Flexible-灵活模式" class="headerlink" title="Flexible 灵活模式"></a>Flexible 灵活模式</h4><p><img src="/../../../images/UI%E7%B3%BB%E7%BB%9F/03.NGUI%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/3.NGUI%E5%9F%BA%E7%A1%80-%E4%B8%89%E5%A4%A7%E5%9F%BA%E7%A1%80%E7%BB%84%E4%BB%B6-Root%E7%BB%84%E4%BB%B6UIRoot/3.png"></p><ul><li>Flexible灵活模式下，UI都是以像素为基础，100像素的物体无论在多少分辨率上都是100像素。这就意味着，100像素在分辨率低的屏幕上可能显示正常，但是在高分辨率上就会显得很小</li><li>Flexible灵活模式一般用于PC端这种游戏窗口可以随便拖拽大小的游戏</li></ul><h5 id="Minimum-Height-最小不缩放高度"><a href="#Minimum-Height-最小不缩放高度" class="headerlink" title="Minimum Height 最小不缩放高度"></a>Minimum Height 最小不缩放高度</h5><ul><li>屏幕高小于该值时开始按比例缩放</li></ul><h5 id="Maximum-Height-最大不缩放高度"><a href="#Maximum-Height-最大不缩放高度" class="headerlink" title="Maximum Height 最大不缩放高度"></a>Maximum Height 最大不缩放高度</h5><ul><li>屏幕高大于改值时开始按比例缩放</li></ul><h5 id="Shrink-Portrait-UI-收缩竖屏UI"><a href="#Shrink-Portrait-UI-收缩竖屏UI" class="headerlink" title="Shrink Portrait UI 收缩竖屏UI"></a>Shrink Portrait UI 收缩竖屏UI</h5><ul><li>竖屏模式时（就是屏幕高大于屏幕宽时），按上面两个最小不缩放高度和最大不缩放高度改为用宽度来计算适配</li></ul><h5 id="Adjust-by-DPI-DPI调整"><a href="#Adjust-by-DPI-DPI调整" class="headerlink" title="Adjust by DPI DPI调整"></a>Adjust by DPI DPI调整</h5><ul><li>使用dpi做适配计算，在不同设备按密度计算调整UI，建议勾选</li></ul><h4 id="Constrained-约束模式"><a href="#Constrained-约束模式" class="headerlink" title="Constrained 约束模式"></a>Constrained 约束模式</h4><p><img src="/../../../images/UI%E7%B3%BB%E7%BB%9F/03.NGUI%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/3.NGUI%E5%9F%BA%E7%A1%80-%E4%B8%89%E5%A4%A7%E5%9F%BA%E7%A1%80%E7%BB%84%E4%BB%B6-Root%E7%BB%84%E4%BB%B6UIRoot/4.png"></p><ul><li>Constrained约束模式下，屏幕按尺寸比例来适配，不管实际屏幕有多大，NGUI都会通过合适的缩放来适配屏幕。这样在高分辨率上显示的UI就会被放大保持原有大小，但有可能会模糊，好处是各设备看到的UI和屏幕比例是一样的</li><li>Constrained约束模式下，一般用于手机游戏这种窗口不会变化的游戏</li><li>Constrained约束模式下，点击Root组件下的Panel脚本组件，可以看到蓝框和红框。蓝框可以通俗的理解成Root这个画布设置的Content Width和Content Height的大小，可以修改调整Content Width和Content Height的大小查看蓝框变化，设置好了Content Width和Content Height蓝框的比例就被定死了。红框可以通俗的理解为真正玩游戏显示到游戏窗口的大小，可以修改游戏窗口比例和大小查看红框的变化<br><img src="/../../../images/UI%E7%B3%BB%E7%BB%9F/03.NGUI%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/3.NGUI%E5%9F%BA%E7%A1%80-%E4%B8%89%E5%A4%A7%E5%9F%BA%E7%A1%80%E7%BB%84%E4%BB%B6-Root%E7%BB%84%E4%BB%B6UIRoot/5.png"></li></ul><h5 id="Content-Width-宽"><a href="#Content-Width-宽" class="headerlink" title="Content Width 宽"></a>Content Width 宽</h5><ul><li>按照该宽度值适配屏幕</li><li>制作资源时的默认分辨率宽</li></ul><h5 id="Content-Height-高"><a href="#Content-Height-高" class="headerlink" title="Content Height 高"></a>Content Height 高</h5><ul><li>按照该高度值适配屏幕</li><li>制作资源时的默认分辨率高</li></ul><h5 id="Fit-适配"><a href="#Fit-适配" class="headerlink" title="Fit 适配"></a>Fit 适配</h5><ul><li>表示以哪个值做适配</li></ul><h6 id="勾选Content-Width的Fit"><a href="#勾选Content-Width的Fit" class="headerlink" title="勾选Content Width的Fit"></a>勾选Content Width的Fit</h6><ul><li>屏幕比例变化时，按照宽度来适配（宽度始终不变）</li><li>建议竖屏游戏勾选上</li><li>始终保证蓝框的宽能完全显示到红框上，高度不管</li><li>无论怎么修改游戏屏幕大小，对应画布上的ui大小都不变，可以理解为无论红框的比例怎么变都让红框的宽和蓝框的宽相等，高度不管。修改游戏屏幕红框大小可能会让游戏内上下有黑边或者显示不全导致裁剪，这是因为游戏屏幕红框比例可能和蓝框画布的比例不同，但是能始终保证画布的宽能完整的显示出来<br><img src="/../../../images/UI%E7%B3%BB%E7%BB%9F/03.NGUI%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/3.NGUI%E5%9F%BA%E7%A1%80-%E4%B8%89%E5%A4%A7%E5%9F%BA%E7%A1%80%E7%BB%84%E4%BB%B6-Root%E7%BB%84%E4%BB%B6UIRoot/6.png"><br><img src="/../../../images/UI%E7%B3%BB%E7%BB%9F/03.NGUI%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/3.NGUI%E5%9F%BA%E7%A1%80-%E4%B8%89%E5%A4%A7%E5%9F%BA%E7%A1%80%E7%BB%84%E4%BB%B6-Root%E7%BB%84%E4%BB%B6UIRoot/7.png"></li></ul><h6 id="勾选Content-Height的Fit"><a href="#勾选Content-Height的Fit" class="headerlink" title="勾选Content Height的Fit"></a>勾选Content Height的Fit</h6><ul><li>屏幕比例变化时，按照高度来适配（高度始终不变）</li><li>建议横屏游戏勾选上</li><li>始终保证蓝框的高能完全显示到红框，宽不管</li><li>无论怎么修改游戏屏幕大小，对应画布上的ui大小都不变，可以理解为无论红框的比例怎么变都让红框的高和蓝框的高相等，宽度不管。修改游戏屏幕红框大小可能会让游戏内左右有黑边或者显示不全导致裁剪，这是因为游戏屏幕红框比例可能和蓝框画布的比例不同，但是能始终保证画布的高能完整的显示出来<br><img src="/../../../images/UI%E7%B3%BB%E7%BB%9F/03.NGUI%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/3.NGUI%E5%9F%BA%E7%A1%80-%E4%B8%89%E5%A4%A7%E5%9F%BA%E7%A1%80%E7%BB%84%E4%BB%B6-Root%E7%BB%84%E4%BB%B6UIRoot/8.png"><br><img src="/../../../images/UI%E7%B3%BB%E7%BB%9F/03.NGUI%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/3.NGUI%E5%9F%BA%E7%A1%80-%E4%B8%89%E5%A4%A7%E5%9F%BA%E7%A1%80%E7%BB%84%E4%BB%B6-Root%E7%BB%84%E4%BB%B6UIRoot/9.png"></li></ul><h6 id="Content-Width和Content-Height两个的Fit都勾选"><a href="#Content-Width和Content-Height两个的Fit都勾选" class="headerlink" title="Content Width和Content Height两个的Fit都勾选"></a>Content Width和Content Height两个的Fit都勾选</h6><ul><li>不会被裁剪，但是有黑边</li><li>当适配宽高比大于实际宽高比时，就会按照宽度适配，反之按照高度适配</li><li>建议又能横屏又能竖屏的游戏勾选上</li><li>假如游戏屏幕红框的宽大于高，就按蓝框画布的高最大来适配，这样左右两边可能出现黑边。假如游戏屏幕红框的高大于宽，就按蓝框画布的宽最大来适配，这样上下两边可能出现黑边。<br><img src="/../../../images/UI%E7%B3%BB%E7%BB%9F/03.NGUI%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/3.NGUI%E5%9F%BA%E7%A1%80-%E4%B8%89%E5%A4%A7%E5%9F%BA%E7%A1%80%E7%BB%84%E4%BB%B6-Root%E7%BB%84%E4%BB%B6UIRoot/10.png"><br><img src="/../../../images/UI%E7%B3%BB%E7%BB%9F/03.NGUI%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/3.NGUI%E5%9F%BA%E7%A1%80-%E4%B8%89%E5%A4%A7%E5%9F%BA%E7%A1%80%E7%BB%84%E4%BB%B6-Root%E7%BB%84%E4%BB%B6UIRoot/11.png"></li></ul><h6 id="Content-Width和Content-Height两个的Fit都不勾选"><a href="#Content-Width和Content-Height两个的Fit都不勾选" class="headerlink" title="Content Width和Content Height两个的Fit都不勾选"></a>Content Width和Content Height两个的Fit都不勾选</h6><ul><li>始终保证屏幕被UI填充满</li><li>不会有黑边</li><li>可能会被裁剪</li><li>蓝框一定会大于红框</li><li>不适配高也不适配宽。根据游戏窗口屏幕大小的不同，动态的变大变小蓝框画布的大小，始终保证蓝框包裹红框，可能因为蓝框红框比例不同，蓝框画布的内容被裁剪。比如下图，无论你的游戏屏幕是宽比高大很多或者高比宽大很多，都会保证画布适应宽或高，让宽或高能被填满，但是适应了宽或高，另一个维度的高或宽会因为游戏屏幕和画布的不同被裁剪。调整游戏窗口的比例画布里面对应的UI大小也会相应变化。<br><img src="/../../../images/UI%E7%B3%BB%E7%BB%9F/03.NGUI%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/3.NGUI%E5%9F%BA%E7%A1%80-%E4%B8%89%E5%A4%A7%E5%9F%BA%E7%A1%80%E7%BB%84%E4%BB%B6-Root%E7%BB%84%E4%BB%B6UIRoot/12.png"><br><img src="/../../../images/UI%E7%B3%BB%E7%BB%9F/03.NGUI%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/3.NGUI%E5%9F%BA%E7%A1%80-%E4%B8%89%E5%A4%A7%E5%9F%BA%E7%A1%80%E7%BB%84%E4%BB%B6-Root%E7%BB%84%E4%BB%B6UIRoot/13.png"></li></ul><h4 id="Constrained-On-Mobiles-综合模式"><a href="#Constrained-On-Mobiles-综合模式" class="headerlink" title="Constrained On Mobiles 综合模式"></a>Constrained On Mobiles 综合模式</h4><p><img src="/../../../images/UI%E7%B3%BB%E7%BB%9F/03.NGUI%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/3.NGUI%E5%9F%BA%E7%A1%80-%E4%B8%89%E5%A4%A7%E5%9F%BA%E7%A1%80%E7%BB%84%E4%BB%B6-Root%E7%BB%84%E4%BB%B6UIRoot/14.png"></p><ul><li>上两种模式的综合体，在PC和Mac等桌面设备上用Flexible模式，在移动设备上用Constrained模式</li><li>适用于多平台游戏</li></ul><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ul><li>Flexible 适用于可以手动拖窗口改变分辨率的设备 比如pc端</li><li>Constrained 适用于移动设备<ul><li>因为移动设备都是全屏应用 不会频繁改变分辨率 只用适配不同分辨率的设备</li><li>横屏勾选 高 fit  竖屏 勾选 宽 fit 一般就可以比较好的进行分辨率适应了 </li><li>需要注意的是 背景图 一定要考虑 极限 宽高比来出 最大宽高比  19.9:9</li></ul></li><li>Constrained On Mobiles 是上面两者的综合体 适用于多平台发布的游戏和应用</li></ul><hr><h2 id="3-2-知识点代码"><a href="#3-2-知识点代码" class="headerlink" title="3.2 知识点代码"></a>3.2 知识点代码</h2><pre><code class="csharp">using System.Collections;using System.Collections.Generic;using UnityEngine;public class Lesson03_NGUI基础_三大基础组件_Root组件 : MonoBehaviour&#123;    void Start()    &#123;        #region 知识点一 必备知识——分辨率概念        //1.分辨率        //屏幕宽高两个方向的像素点        //比如1920 * 1080        //宽1920个像素        //高1080个像素        //2.像素        //像素        //像素即px        //是画面中最小的点(单位色块)        //3.屏幕尺寸        //屏幕对角线长度        //4.屏幕比例        //PC显示器        //1920:1080 = 16:9        //苹果手机        //iPhone7,8：1334 * 750 = 16:9        //iPhone 7,8 Plus：1920 * 1080 = 16:9        //iPhoneX：2436 * 1125 = 19.5:9        //iPhone12: 2532 * 1170 = 19.5:9        //目前市面上设备分辨率比例传统的有：        //4:3(ipad)        //16:10        //16:9(老手机 、电脑显示器)        //18:9（去掉留海屏幕）        //19.5:9（ 新款手机）        //19.9:9        //5.dpi        //像素密度        //单位面积上有多少个像素点        //一般指一英寸有多少个像素点        #endregion        #region 知识点二 Root是用来干啥的        //Root是用于分辨率自适应的根对象        //可以设置基本分辨率,相当于设置UI显示区域        //并且管理所有UI控件的分辨率自适应        //可以简单理解 它管理一个 UI画布 所有的UI都是显示在这个画布上的        //它会管理 UI画布 和 不同屏幕分辨率的 适应关系        #endregion        #region 知识点三 Root相关参数        #endregion        #region 总结        //1.Flexible 适用于可以手动拖窗口改变分辨率的设备 比如pc端        //2.Constrained 适用于移动设备        //  因为移动设备都是全屏应用 不会频繁改变分辨率 只用适配不同分辨率的设备        //  横屏勾选 高 fit  竖屏 勾选 宽 fit 一般就可以比较好的进行分辨率适应了         //  需要注意的是 背景图 一定要考虑 极限 宽高比来出 最大宽高比  19.9:9        //3.Constrained On Mobiles 是上面两者的综合体 适用于多平台发布的游戏和应用        #endregion    &#125;&#125;</code></pre><hr>]]></content>
+      
+      
+      <categories>
+          
+          <category> UI系统 </category>
+          
+          <category> NGUI基础知识 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> UI系统 </tag>
+            
+            <tag> 基础知识 </tag>
+            
+            <tag> NGUI </tag>
+            
+            <tag> 基础组件 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>2.NGUI下载和导入</title>
+      <link href="/2024/03/05/UI%E7%B3%BB%E7%BB%9F/03.NGUI%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2.NGUI%E4%B8%8B%E8%BD%BD%E5%92%8C%E5%AF%BC%E5%85%A5/"/>
+      <url>/2024/03/05/UI%E7%B3%BB%E7%BB%9F/03.NGUI%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2.NGUI%E4%B8%8B%E8%BD%BD%E5%92%8C%E5%AF%BC%E5%85%A5/</url>
+      
+        <content type="html"><![CDATA[<h1 id="2-NGUI下载和导入"><a href="#2-NGUI下载和导入" class="headerlink" title="2.NGUI下载和导入"></a>2.NGUI下载和导入</h1><hr><h2 id="2-1-知识点"><a href="#2-1-知识点" class="headerlink" title="2.1 知识点"></a>2.1 知识点</h2><h3 id="资源商店搜索NGUI下载即可"><a href="#资源商店搜索NGUI下载即可" class="headerlink" title="资源商店搜索NGUI下载即可"></a>资源商店搜索NGUI下载即可</h3><p><img src="/../../../images/UI%E7%B3%BB%E7%BB%9F/03.NGUI%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2.NGUI%E4%B8%8B%E8%BD%BD%E5%92%8C%E5%AF%BC%E5%85%A5/1.png"></p><h3 id="导入NGUI资源包，查看NGUI相关文件夹"><a href="#导入NGUI资源包，查看NGUI相关文件夹" class="headerlink" title="导入NGUI资源包，查看NGUI相关文件夹"></a>导入NGUI资源包，查看NGUI相关文件夹</h3><p><img src="/../../../images/UI%E7%B3%BB%E7%BB%9F/03.NGUI%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2.NGUI%E4%B8%8B%E8%BD%BD%E5%92%8C%E5%AF%BC%E5%85%A5/2.png"></p><h3 id="新建NGUI相关"><a href="#新建NGUI相关" class="headerlink" title="新建NGUI相关"></a>新建NGUI相关</h3><p><img src="/../../../images/UI%E7%B3%BB%E7%BB%9F/03.NGUI%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2.NGUI%E4%B8%8B%E8%BD%BD%E5%92%8C%E5%AF%BC%E5%85%A5/3.png"></p><hr>]]></content>
+      
+      
+      <categories>
+          
+          <category> UI系统 </category>
+          
+          <category> NGUI基础知识 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> UI系统 </tag>
+            
+            <tag> 基础知识 </tag>
+            
+            <tag> NGUI </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>1.概述</title>
+      <link href="/2024/03/05/UI%E7%B3%BB%E7%BB%9F/03.NGUI%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/1.%E6%A6%82%E8%BF%B0/"/>
+      <url>/2024/03/05/UI%E7%B3%BB%E7%BB%9F/03.NGUI%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/1.%E6%A6%82%E8%BF%B0/</url>
+      
+        <content type="html"><![CDATA[<h1 id="1-概述"><a href="#1-概述" class="headerlink" title="1.概述"></a>1.概述</h1><hr><h2 id="1-1-知识点"><a href="#1-1-知识点" class="headerlink" title="1.1 知识点"></a>1.1 知识点</h2><p><img src="/../../../images/UI%E7%B3%BB%E7%BB%9F/03.NGUI%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/1.%E6%A6%82%E8%BF%B0/1.png"><br><img src="/../../../images/UI%E7%B3%BB%E7%BB%9F/03.NGUI%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/1.%E6%A6%82%E8%BF%B0/2.png"></p><h3 id="NGUI是什么"><a href="#NGUI是什么" class="headerlink" title="NGUI是什么"></a>NGUI是什么</h3><p><img src="/../../../images/UI%E7%B3%BB%E7%BB%9F/03.NGUI%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/1.%E6%A6%82%E8%BF%B0/3.png"></p><h3 id="NGUI的发展史"><a href="#NGUI的发展史" class="headerlink" title="NGUI的发展史"></a>NGUI的发展史</h3><p><img src="/../../../images/UI%E7%B3%BB%E7%BB%9F/03.NGUI%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/1.%E6%A6%82%E8%BF%B0/4.png"></p><h3 id="为什么要学NGUI"><a href="#为什么要学NGUI" class="headerlink" title="为什么要学NGUI"></a>为什么要学NGUI</h3><p><img src="/../../../images/UI%E7%B3%BB%E7%BB%9F/03.NGUI%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/1.%E6%A6%82%E8%BF%B0/5.png"></p><h3 id="再次强调UI系统的重要性"><a href="#再次强调UI系统的重要性" class="headerlink" title="再次强调UI系统的重要性"></a>再次强调UI系统的重要性</h3><p><img src="/../../../images/UI%E7%B3%BB%E7%BB%9F/03.NGUI%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/1.%E6%A6%82%E8%BF%B0/6.png"></p><h3 id="主要学习方式"><a href="#主要学习方式" class="headerlink" title="主要学习方式"></a>主要学习方式</h3><p><img src="/../../../images/UI%E7%B3%BB%E7%BB%9F/03.NGUI%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/1.%E6%A6%82%E8%BF%B0/7.png"></p><h3 id="主要学习内容"><a href="#主要学习内容" class="headerlink" title="主要学习内容"></a>主要学习内容</h3><p><img src="/../../../images/UI%E7%B3%BB%E7%BB%9F/03.NGUI%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/1.%E6%A6%82%E8%BF%B0/8.png"></p><hr>]]></content>
+      
+      
+      <categories>
+          
+          <category> UI系统 </category>
+          
+          <category> NGUI基础知识 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> UI系统 </tag>
+            
+            <tag> 基础知识 </tag>
+            
+            <tag> NGUI </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>7.生成资源包</title>
       <link href="/2024/03/05/%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96/04.Xml%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/7.%E7%94%9F%E6%88%90%E8%B5%84%E6%BA%90%E5%8C%85/"/>
       <url>/2024/03/05/%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96/04.Xml%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/7.%E7%94%9F%E6%88%90%E8%B5%84%E6%BA%90%E5%8C%85/</url>
@@ -7883,9 +7991,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> CSharp基础 </tag>
-            
             <tag> 实践项目 </tag>
+            
+            <tag> CSharp基础 </tag>
             
         </tags>
       
@@ -7914,9 +8022,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> CSharp基础 </tag>
-            
             <tag> 实践项目 </tag>
+            
+            <tag> CSharp基础 </tag>
             
         </tags>
       
@@ -7945,9 +8053,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> CSharp基础 </tag>
-            
             <tag> 实践项目 </tag>
+            
+            <tag> CSharp基础 </tag>
             
         </tags>
       
@@ -7976,9 +8084,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> CSharp基础 </tag>
-            
             <tag> 实践项目 </tag>
+            
+            <tag> CSharp基础 </tag>
             
         </tags>
       
@@ -8007,9 +8115,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> CSharp基础 </tag>
-            
             <tag> 实践项目 </tag>
+            
+            <tag> CSharp基础 </tag>
             
         </tags>
       
@@ -8038,9 +8146,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> CSharp基础 </tag>
-            
             <tag> 实践项目 </tag>
+            
+            <tag> CSharp基础 </tag>
             
         </tags>
       
@@ -8069,9 +8177,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> CSharp基础 </tag>
-            
             <tag> 实践项目 </tag>
+            
+            <tag> CSharp基础 </tag>
             
         </tags>
       
@@ -8100,9 +8208,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> CSharp基础 </tag>
-            
             <tag> 实践项目 </tag>
+            
+            <tag> CSharp基础 </tag>
             
         </tags>
       
@@ -8131,9 +8239,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> CSharp基础 </tag>
-            
             <tag> 实践项目 </tag>
+            
+            <tag> CSharp基础 </tag>
             
         </tags>
       
@@ -8162,9 +8270,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> CSharp基础 </tag>
-            
             <tag> 实践项目 </tag>
+            
+            <tag> CSharp基础 </tag>
             
         </tags>
       
@@ -8193,9 +8301,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> CSharp基础 </tag>
-            
             <tag> 实践项目 </tag>
+            
+            <tag> CSharp基础 </tag>
             
         </tags>
       
@@ -8224,9 +8332,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> CSharp基础 </tag>
-            
             <tag> 实践项目 </tag>
+            
+            <tag> CSharp基础 </tag>
             
         </tags>
       
