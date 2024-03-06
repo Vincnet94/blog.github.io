@@ -4,13 +4,99 @@
   
     
     <entry>
-      <title></title>
+      <title>6.图集制作</title>
+      <link href="/2024/03/06/UI%E7%B3%BB%E7%BB%9F/03.NGUI%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/6.NGUI%E5%9F%BA%E7%A1%80-%E5%9B%BE%E9%9B%86%E5%88%B6%E4%BD%9C/"/>
+      <url>/2024/03/06/UI%E7%B3%BB%E7%BB%9F/03.NGUI%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/6.NGUI%E5%9F%BA%E7%A1%80-%E5%9B%BE%E9%9B%86%E5%88%B6%E4%BD%9C/</url>
+      
+        <content type="html"><![CDATA[<h1 id="6-NGUI基础-图集制作"><a href="#6-NGUI基础-图集制作" class="headerlink" title="6.NGUI基础-图集制作"></a>6.NGUI基础-图集制作</h1><hr><h2 id="6-1-知识点"><a href="#6-1-知识点" class="headerlink" title="6.1 知识点"></a>6.1 知识点</h2><h3 id="图集的作用"><a href="#图集的作用" class="headerlink" title="图集的作用"></a>图集的作用</h3><ul><li>NGUI中的最小图片控件Sprite要使用图集中的图片进行显示</li><li>图集 就是把很多单独的小图 合并为 一张大图 合并后的大图就是图集</li><li>目的：提高渲染性能</li></ul><h3 id="打开图集制作工具"><a href="#打开图集制作工具" class="headerlink" title="打开图集制作工具"></a>打开图集制作工具</h3><h4 id="方法一：Project窗口右键"><a href="#方法一：Project窗口右键" class="headerlink" title="方法一：Project窗口右键"></a>方法一：Project窗口右键</h4><p><img src="/../../../images/UI%E7%B3%BB%E7%BB%9F/03.NGUI%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/6.NGUI%E5%9F%BA%E7%A1%80-%E5%9B%BE%E9%9B%86%E5%88%B6%E4%BD%9C/1.png"></p><h4 id="方法二：工具栏-Open"><a href="#方法二：工具栏-Open" class="headerlink" title="方法二：工具栏 Open"></a>方法二：工具栏 Open</h4><p><img src="/../../../images/UI%E7%B3%BB%E7%BB%9F/03.NGUI%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/6.NGUI%E5%9F%BA%E7%A1%80-%E5%9B%BE%E9%9B%86%E5%88%B6%E4%BD%9C/2.png"></p><h4 id="查看图集制作工具窗口"><a href="#查看图集制作工具窗口" class="headerlink" title="查看图集制作工具窗口"></a>查看图集制作工具窗口</h4><p><img src="/../../../images/UI%E7%B3%BB%E7%BB%9F/03.NGUI%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/6.NGUI%E5%9F%BA%E7%A1%80-%E5%9B%BE%E9%9B%86%E5%88%B6%E4%BD%9C/3.png"></p><h3 id="新建图集"><a href="#新建图集" class="headerlink" title="新建图集"></a>新建图集</h3><p><img src="/../../../images/UI%E7%B3%BB%E7%BB%9F/03.NGUI%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/6.NGUI%E5%9F%BA%E7%A1%80-%E5%9B%BE%E9%9B%86%E5%88%B6%E4%BD%9C/4.png"></p><h4 id="在图集工具中新建图集"><a href="#在图集工具中新建图集" class="headerlink" title="在图集工具中新建图集"></a>在图集工具中新建图集</h4><ul><li>在图集制作工具点击New，进入创建图集界面，假如点不了New直接下一步<br><img src="/../../../images/UI%E7%B3%BB%E7%BB%9F/03.NGUI%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/6.NGUI%E5%9F%BA%E7%A1%80-%E5%9B%BE%E9%9B%86%E5%88%B6%E4%BD%9C/5.png"></li><li>选择要打成图集的文件<br><img src="/../../../images/UI%E7%B3%BB%E7%BB%9F/03.NGUI%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/6.NGUI%E5%9F%BA%E7%A1%80-%E5%9B%BE%E9%9B%86%E5%88%B6%E4%BD%9C/6.png"></li><li>点击Create创建图集，一般创建在Resources文件夹下<br><img src="/../../../images/UI%E7%B3%BB%E7%BB%9F/03.NGUI%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/6.NGUI%E5%9F%BA%E7%A1%80-%E5%9B%BE%E9%9B%86%E5%88%B6%E4%BD%9C/7.png"></li><li>可以在Resources文件夹下看到创建出来的图集，图集关键文件有三个，分别是：图集文件，图集材质，图集图片<br><img src="/../../../images/UI%E7%B3%BB%E7%BB%9F/03.NGUI%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/6.NGUI%E5%9F%BA%E7%A1%80-%E5%9B%BE%E9%9B%86%E5%88%B6%E4%BD%9C/8.png"></li></ul><h4 id="Atlas-查看图集"><a href="#Atlas-查看图集" class="headerlink" title="Atlas 查看图集"></a>Atlas 查看图集</h4><ul><li>点击会弹出图集选择窗口，点击ShowAll可以显示这个项目里的所有图集，点击Select可以选择切换编辑哪个图集<br><img src="/../../../images/UI%E7%B3%BB%E7%BB%9F/03.NGUI%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/6.NGUI%E5%9F%BA%E7%A1%80-%E5%9B%BE%E9%9B%86%E5%88%B6%E4%BD%9C/9.png"></li><li>点击这三个按钮可以分别让指定的图集文件，图集材质，图集图片在Project窗口显示出来<br><img src="/../../../images/UI%E7%B3%BB%E7%BB%9F/03.NGUI%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/6.NGUI%E5%9F%BA%E7%A1%80-%E5%9B%BE%E9%9B%86%E5%88%B6%E4%BD%9C/10.png"></li></ul><h4 id="Padding-图片间像素间隔"><a href="#Padding-图片间像素间隔" class="headerlink" title="Padding 图片间像素间隔"></a>Padding 图片间像素间隔</h4><ul><li>可以改变图集中图片之间的间隔</li></ul><h4 id="Trim-Alpha-移除图片多余空白空间"><a href="#Trim-Alpha-移除图片多余空白空间" class="headerlink" title="Trim Alpha 移除图片多余空白空间"></a>Trim Alpha 移除图片多余空白空间</h4><h4 id="PMA-Shader-预乘透明通道"><a href="#PMA-Shader-预乘透明通道" class="headerlink" title="PMA Shader 预乘透明通道"></a>PMA Shader 预乘透明通道</h4><h4 id="Unity-Packer-自定义打包器"><a href="#Unity-Packer-自定义打包器" class="headerlink" title="Unity Packer 自定义打包器"></a>Unity Packer 自定义打包器</h4><h4 id="Truecolor-强制ARGB32纹理"><a href="#Truecolor-强制ARGB32纹理" class="headerlink" title="Truecolor 强制ARGB32纹理"></a>Truecolor 强制ARGB32纹理</h4><h4 id="Auto-upgrade-自动更新，用精灵替换纹理"><a href="#Auto-upgrade-自动更新，用精灵替换纹理" class="headerlink" title="Auto-upgrade 自动更新，用精灵替换纹理"></a>Auto-upgrade 自动更新，用精灵替换纹理</h4><h4 id="Force-Square-强制正方形图集"><a href="#Force-Square-强制正方形图集" class="headerlink" title="Force Square 强制正方形图集"></a>Force Square 强制正方形图集</h4><ul><li>如果启用，将强制变成正方形图集纹理，长宽都为2的n次方，不启用则使用默认最小能装下所有图的图集长宽</li></ul><h4 id="Pre-processor-预处理器"><a href="#Pre-processor-预处理器" class="headerlink" title="Pre-processor 预处理器"></a>Pre-processor 预处理器</h4><h4 id="View-Sprites-查看图集中一张一张小图有哪些"><a href="#View-Sprites-查看图集中一张一张小图有哪些" class="headerlink" title="View Sprites 查看图集中一张一张小图有哪些"></a>View Sprites 查看图集中一张一张小图有哪些</h4><h3 id="修改删除图集元素"><a href="#修改删除图集元素" class="headerlink" title="修改删除图集元素"></a>修改删除图集元素</h3><ul><li>选中想新增加到图集里的的图，点击Add&#x2F;Update添加或更新，等一会后新加的图片就会打到图集里去了<br><img src="/../../../images/UI%E7%B3%BB%E7%BB%9F/03.NGUI%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/6.NGUI%E5%9F%BA%E7%A1%80-%E5%9B%BE%E9%9B%86%E5%88%B6%E4%BD%9C/11.png"></li><li>删除图集中的某个图的话点击X再点击Delete，删除图集中的某个图<br><img src="/../../../images/UI%E7%B3%BB%E7%BB%9F/03.NGUI%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/6.NGUI%E5%9F%BA%E7%A1%80-%E5%9B%BE%E9%9B%86%E5%88%B6%E4%BD%9C/12.png"></li></ul><hr><h2 id="6-2-知识点代码"><a href="#6-2-知识点代码" class="headerlink" title="6.2 知识点代码"></a>6.2 知识点代码</h2><pre><code class="csharp">using System.Collections;using System.Collections.Generic;using UnityEngine;public class Lesson06_NGUI基础_图集制作 : MonoBehaviour&#123;    void Start()    &#123;        #region 知识点一 图集用来干啥        //NGUI中的最小图片控件Sprite要使用图集中的图片进行显示        //图集 就是把很多单独的小图 合并为 一张大图 合并后的大图就是图集        //目的：提高渲染性能        #endregion        #region 知识点二 打开图集制作工具        //方法一：Project右键打开        //方法二：上方工具栏NGUI——Open——Atlas Maker        #endregion        #region 知识点三 新建图集        //在图集工具中创建        //图集关键文件有三个        //1.图集文件        //2.图集材质        //3.图集图片        #endregion        #region 知识点四 修改删除图集元素        //在图集工具中操作        //增删改        #endregion    &#125;&#125;</code></pre><hr><h2 id="6-3-练习题"><a href="#6-3-练习题" class="headerlink" title="6.3 练习题"></a>6.3 练习题</h2><h3 id="找一些通用资源，做成图集-为之后的课程做准备"><a href="#找一些通用资源，做成图集-为之后的课程做准备" class="headerlink" title="找一些通用资源，做成图集,为之后的课程做准备"></a>找一些通用资源，做成图集,为之后的课程做准备</h3><p><img src="/../../../images/UI%E7%B3%BB%E7%BB%9F/03.NGUI%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/6.NGUI%E5%9F%BA%E7%A1%80-%E5%9B%BE%E9%9B%86%E5%88%B6%E4%BD%9C/13.png"></p><hr>]]></content>
+      
+      
+      <categories>
+          
+          <category> UI系统 </category>
+          
+          <category> NGUI基础知识 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> UI系统 </tag>
+            
+            <tag> 基础知识 </tag>
+            
+            <tag> NGUI </tag>
+            
+            <tag> 图集 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>5.EventSystem事件系统组件</title>
+      <link href="/2024/03/06/UI%E7%B3%BB%E7%BB%9F/03.NGUI%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/5.NGUI%E5%9F%BA%E7%A1%80-%E4%B8%89%E5%A4%A7%E5%9F%BA%E7%A1%80%E7%BB%84%E4%BB%B6-EventSystem%E7%BB%84%E4%BB%B6UICamera/"/>
+      <url>/2024/03/06/UI%E7%B3%BB%E7%BB%9F/03.NGUI%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/5.NGUI%E5%9F%BA%E7%A1%80-%E4%B8%89%E5%A4%A7%E5%9F%BA%E7%A1%80%E7%BB%84%E4%BB%B6-EventSystem%E7%BB%84%E4%BB%B6UICamera/</url>
+      
+        <content type="html"><![CDATA[<h1 id="5-NGUI基础-三大基础组件-EventSystem组件UICamera"><a href="#5-NGUI基础-三大基础组件-EventSystem组件UICamera" class="headerlink" title="5.NGUI基础-三大基础组件-EventSystem组件UICamera"></a>5.NGUI基础-三大基础组件-EventSystem组件UICamera</h1><hr><h2 id="5-1-知识点"><a href="#5-1-知识点" class="headerlink" title="5.1 知识点"></a>5.1 知识点</h2><h3 id="EventSystem事件系统组件的作用"><a href="#EventSystem事件系统组件的作用" class="headerlink" title="EventSystem事件系统组件的作用"></a>EventSystem事件系统组件的作用</h3><ul><li>输入事件监听的基础，主要作用是让摄像机渲染出来的物体，能够接收到NGUI的事件。大部分设置不需要我们去修改，有了它我们通过鼠标 触碰 键盘 控制器 操作UI 响应玩家的输入</li><li>注意：UIRoot下的只要创建UI控件就会默认创建一个Camera对象，Camera对象默认有一个Camera组件和EventSystem组件 。Camera组件会根据创建的是2DUI还是3DUI调整是正交模式或者是透视模式<br><img src="/../../../images/UI%E7%B3%BB%E7%BB%9F/03.NGUI%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/5.NGUI%E5%9F%BA%E7%A1%80-%E4%B8%89%E5%A4%A7%E5%9F%BA%E7%A1%80%E7%BB%84%E4%BB%B6-EventSystem%E7%BB%84%E4%BB%B6UICamera/1.png"></li></ul><h3 id="EventSystem事件系统组件参数"><a href="#EventSystem事件系统组件参数" class="headerlink" title="EventSystem事件系统组件参数"></a>EventSystem事件系统组件参数</h3><p><img src="/../../../images/UI%E7%B3%BB%E7%BB%9F/03.NGUI%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/5.NGUI%E5%9F%BA%E7%A1%80-%E4%B8%89%E5%A4%A7%E5%9F%BA%E7%A1%80%E7%BB%84%E4%BB%B6-EventSystem%E7%BB%84%E4%BB%B6UICamera/2.png"></p><h4 id="Event-Type-事件类型"><a href="#Event-Type-事件类型" class="headerlink" title="Event Type 事件类型"></a>Event Type 事件类型</h4><p><img src="/../../../images/UI%E7%B3%BB%E7%BB%9F/03.NGUI%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/5.NGUI%E5%9F%BA%E7%A1%80-%E4%B8%89%E5%A4%A7%E5%9F%BA%E7%A1%80%E7%BB%84%E4%BB%B6-EventSystem%E7%BB%84%E4%BB%B6UICamera/3.png"></p><ul><li>决定了脚本如何对鼠标和触屏事件进行响应</li><li>UI模式，那么他们处理事件的方式是根据UI控件对象的深度计算</li><li>world模式，那么则会根据UI控件对象距离主摄像机的远近来进行响应排序</li><li>2D和3D的区别是，碰撞器是用3D碰撞器还是2D碰撞器，可以在NGUI菜单栏点击Attach选择给UI控件添加碰撞器。这个选项和Camera组件的正交模式或者透视模式无关。</li></ul><h4 id="Events-go-to-事件发生在"><a href="#Events-go-to-事件发生在" class="headerlink" title="Events go to 事件发生在"></a>Events go to 事件发生在</h4><p><img src="/../../../images/UI%E7%B3%BB%E7%BB%9F/03.NGUI%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/5.NGUI%E5%9F%BA%E7%A1%80-%E4%B8%89%E5%A4%A7%E5%9F%BA%E7%A1%80%E7%BB%84%E4%BB%B6-EventSystem%E7%BB%84%E4%BB%B6UICamera/4.png"></p><ul><li>事件通过刚体还是碰撞盒传递</li></ul><h4 id="Process-Events-In-在什么函数处理事件"><a href="#Process-Events-In-在什么函数处理事件" class="headerlink" title="Process Events In 在什么函数处理事件"></a>Process Events In 在什么函数处理事件</h4><p><img src="/../../../images/UI%E7%B3%BB%E7%BB%9F/03.NGUI%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/5.NGUI%E5%9F%BA%E7%A1%80-%E4%B8%89%E5%A4%A7%E5%9F%BA%E7%A1%80%E7%BB%84%E4%BB%B6-EventSystem%E7%BB%84%E4%BB%B6UICamera/5.png"></p><ul><li>选择事件更新进度在Update中还是LateUpdate中</li><li>一般不改，默认在Update中</li></ul><h4 id="Event-Mask-事件层级选择"><a href="#Event-Mask-事件层级选择" class="headerlink" title="Event Mask 事件层级选择"></a>Event Mask 事件层级选择</h4><ul><li>决定哪个游戏对象层级将会接受事件</li></ul><h4 id="Debug-是否开启调试模式"><a href="#Debug-是否开启调试模式" class="headerlink" title="Debug 是否开启调试模式"></a>Debug 是否开启调试模式</h4><p><img src="/../../../images/UI%E7%B3%BB%E7%BB%9F/03.NGUI%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/5.NGUI%E5%9F%BA%E7%A1%80-%E4%B8%89%E5%A4%A7%E5%9F%BA%E7%A1%80%E7%BB%84%E4%BB%B6-EventSystem%E7%BB%84%E4%BB%B6UICamera/7.png"></p><ul><li>如果开启，可以帮助你在点击时，判断当前和鼠标事件交互的是什么对象</li><li>能在Scene窗口看到UI相关信息</li></ul><h4 id="Command-Click-苹果右键点击"><a href="#Command-Click-苹果右键点击" class="headerlink" title="Command Click 苹果右键点击"></a>Command Click 苹果右键点击</h4><ul><li>苹果电脑上是否用Command按键模拟右键操作</li></ul><h4 id="Allow-Multi-Touch-是否支持多点触碰"><a href="#Allow-Multi-Touch-是否支持多点触碰" class="headerlink" title="Allow Multi Touch 是否支持多点触碰"></a>Allow Multi Touch 是否支持多点触碰</h4><h4 id="Auto-Hide-Cursor-自动隐藏关闭"><a href="#Auto-Hide-Cursor-自动隐藏关闭" class="headerlink" title="Auto Hide Cursor 自动隐藏关闭"></a>Auto Hide Cursor 自动隐藏关闭</h4><ul><li>当游戏有控制器或者其他输入设备时，是否自动隐藏光标</li></ul><h4 id="Sticky-Tooltip-是否使用tooltip"><a href="#Sticky-Tooltip-是否使用tooltip" class="headerlink" title="Sticky Tooltip 是否使用tooltip"></a>Sticky Tooltip 是否使用tooltip</h4><h4 id="Long-Press-Tooltip-是否长按出提示"><a href="#Long-Press-Tooltip-是否长按出提示" class="headerlink" title="Long Press Tooltip 是否长按出提示"></a>Long Press Tooltip 是否长按出提示</h4><h4 id="Tooltip-Delay-停留多久出现tip"><a href="#Tooltip-Delay-停留多久出现tip" class="headerlink" title="Tooltip Delay 停留多久出现tip"></a>Tooltip Delay 停留多久出现tip</h4><h4 id="Raycast-Range-射线长度"><a href="#Raycast-Range-射线长度" class="headerlink" title="Raycast Range 射线长度"></a>Raycast Range 射线长度</h4><ul><li>一般不修改</li></ul><h4 id="EventSources-接收的事件来源"><a href="#EventSources-接收的事件来源" class="headerlink" title="EventSources 接收的事件来源"></a>EventSources 接收的事件来源</h4><ul><li>Mouse 鼠标</li><li>Touch 触摸</li><li>Keyboard 键盘</li><li>Controller 控制器</li></ul><h4 id="Thresholds-调整鼠标和触屏拖拽或点击响应相关事件时的像素阈值"><a href="#Thresholds-调整鼠标和触屏拖拽或点击响应相关事件时的像素阈值" class="headerlink" title="Thresholds 调整鼠标和触屏拖拽或点击响应相关事件时的像素阈值"></a>Thresholds 调整鼠标和触屏拖拽或点击响应相关事件时的像素阈值</h4><ul><li>Mouse Drag 鼠标拖拽</li><li>Mouse Click 鼠标点击</li><li>Touch Drag 触屏拖拽</li><li>Touch Tap 快速触屏</li></ul><h4 id="Axes-and-keys-热键关系"><a href="#Axes-and-keys-热键关系" class="headerlink" title="Axes and keys 热键关系"></a>Axes and keys 热键关系</h4><p><img src="/../../../images/UI%E7%B3%BB%E7%BB%9F/03.NGUI%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/5.NGUI%E5%9F%BA%E7%A1%80-%E4%B8%89%E5%A4%A7%E5%9F%BA%E7%A1%80%E7%BB%84%E4%BB%B6-EventSystem%E7%BB%84%E4%BB%B6UICamera/8.png"></p><ul><li>一般不修改</li></ul><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ul><li>EventSystem很重要，如果没有它，我们没有办法监听玩家输入</li><li>创建UI时的 2DUI 和3DUI 主要就是摄像机的模式不一样</li><li>EventSystem的2D和3D主要是 采用2D碰撞器 还是3D碰撞器 不能直接改变摄像机模式</li></ul><hr><h2 id="5-2-知识点代码"><a href="#5-2-知识点代码" class="headerlink" title="5.2 知识点代码"></a>5.2 知识点代码</h2><pre><code class="csharp">using System.Collections;using System.Collections.Generic;using UnityEngine;public class Lesson05_NGUI基础_三大基础组件_EventSystem组件 : MonoBehaviour&#123;    void Start()    &#123;        #region 知识点一 EventSystem是用来干啥的        //主要作用是让摄像机渲染出来的物体        //能够接收到NGUI的输入事件        //大部分设置不需要我们去修改        //有了它我们通过鼠标 触碰 键盘 控制器 操作UI 响应玩家的输入        #endregion        #region 知识点二 EventSystem相关参数        #endregion        #region 总结        //1.EventSystem很重要，如果没有它，我们没有办法监听玩家输入        //2.创建UI时的 2DUI 和3DUI 主要就是摄像机的模式不一样        //  EventSystem的2D和3D主要是 采用2D碰撞器 还是3D碰撞器 不能直接改变摄像机模式        #endregion    &#125;&#125;</code></pre><hr>]]></content>
+      
+      
+      <categories>
+          
+          <category> UI系统 </category>
+          
+          <category> NGUI基础知识 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> UI系统 </tag>
+            
+            <tag> 基础知识 </tag>
+            
+            <tag> NGUI </tag>
+            
+            <tag> 基础组件 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>4.Panel面板组件</title>
       <link href="/2024/03/05/UI%E7%B3%BB%E7%BB%9F/03.NGUI%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/4.NGUI%E5%9F%BA%E7%A1%80-%E4%B8%89%E5%A4%A7%E5%9F%BA%E7%A1%80%E7%BB%84%E4%BB%B6-Panel%E7%BB%84%E4%BB%B6UIPanel/"/>
       <url>/2024/03/05/UI%E7%B3%BB%E7%BB%9F/03.NGUI%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/4.NGUI%E5%9F%BA%E7%A1%80-%E4%B8%89%E5%A4%A7%E5%9F%BA%E7%A1%80%E7%BB%84%E4%BB%B6-Panel%E7%BB%84%E4%BB%B6UIPanel/</url>
       
-        <content type="html"><![CDATA[]]></content>
+        <content type="html"><![CDATA[<h1 id="4-NGUI基础-三大基础组件-Panel组件UIPanel"><a href="#4-NGUI基础-三大基础组件-Panel组件UIPanel" class="headerlink" title="4.NGUI基础-三大基础组件-Panel组件UIPanel"></a>4.NGUI基础-三大基础组件-Panel组件UIPanel</h1><hr><h2 id="4-1-知识点"><a href="#4-1-知识点" class="headerlink" title="4.1 知识点"></a>4.1 知识点</h2><h3 id="Panel面板组件的作用"><a href="#Panel面板组件的作用" class="headerlink" title="Panel面板组件的作用"></a>Panel面板组件的作用</h3><ul><li>它是用于让UI元素能够被渲染的关键组件，控件显示的基础，一般情况下一个面板就需要一个UIPanel，所有的UI元素会依托在离自己最近的Panel下</li><li>用于管理一个UI面板的渲染顺序</li><li>用于管理一个UI面板上的所有子控件</li><li>UIRoot默认就会带一个Panel组件，如果Panel组件失活了，其他在UIRoot下暴露在外不在其他Panel下的UI控件都显示不了<br><img src="/../../../images/UI%E7%B3%BB%E7%BB%9F/03.NGUI%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/4.NGUI%E5%9F%BA%E7%A1%80-%E4%B8%89%E5%A4%A7%E5%9F%BA%E7%A1%80%E7%BB%84%E4%BB%B6-Panel%E7%BB%84%E4%BB%B6UIPanel/1.png"></li><li>也可以创建Panel，创建的Panel自带Panel组件，拖拽其他UI控件到创建Panel对象上，就可以显示了<br><img src="/../../../images/UI%E7%B3%BB%E7%BB%9F/03.NGUI%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/4.NGUI%E5%9F%BA%E7%A1%80-%E4%B8%89%E5%A4%A7%E5%9F%BA%E7%A1%80%E7%BB%84%E4%BB%B6-Panel%E7%BB%84%E4%BB%B6UIPanel/2.png"></li></ul><h3 id="Panel面板组件参数"><a href="#Panel面板组件参数" class="headerlink" title="Panel面板组件参数"></a>Panel面板组件参数</h3><h4 id="基础参数"><a href="#基础参数" class="headerlink" title="基础参数"></a>基础参数</h4><p><img src="/../../../images/UI%E7%B3%BB%E7%BB%9F/03.NGUI%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/4.NGUI%E5%9F%BA%E7%A1%80-%E4%B8%89%E5%A4%A7%E5%9F%BA%E7%A1%80%E7%BB%84%E4%BB%B6-Panel%E7%BB%84%E4%BB%B6UIPanel/3.png"></p><h5 id="Alpha-透明度"><a href="#Alpha-透明度" class="headerlink" title="Alpha 透明度"></a>Alpha 透明度</h5><ul><li>控制Panel下所有子UI控件元素的透明度</li></ul><h5 id="Depth-深度"><a href="#Depth-深度" class="headerlink" title="Depth 深度"></a>Depth 深度</h5><ul><li>控制该Panel的层级</li><li>层级高的Panel后渲染会把层级低的Panel先渲染的遮挡住</li><li>不要把两个Panel设置成一样的深度，假如有两个Panel一样深度会发出警告<br><img src="/../../../images/UI%E7%B3%BB%E7%BB%9F/03.NGUI%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/4.NGUI%E5%9F%BA%E7%A1%80-%E4%B8%89%E5%A4%A7%E5%9F%BA%E7%A1%80%E7%BB%84%E4%BB%B6-Panel%E7%BB%84%E4%BB%B6UIPanel/4.png"></li></ul><h5 id="Clipping-裁剪"><a href="#Clipping-裁剪" class="headerlink" title="Clipping 裁剪"></a>Clipping 裁剪</h5><h6 id="None-不处理"><a href="#None-不处理" class="headerlink" title="None 不处理"></a>None 不处理</h6><ul><li>正常模式</li></ul><h6 id="Texture-Mask-根据图片信息进行遮罩"><a href="#Texture-Mask-根据图片信息进行遮罩" class="headerlink" title="Texture Mask 根据图片信息进行遮罩"></a>Texture Mask 根据图片信息进行遮罩</h6><ul><li>比如人物头像，选择圆形图案按圆形裁剪，这样只有移动Panel下其他UI控件到Panel中间圆型的空白才看得见，通过size设置裁剪框大小<br><img src="/../../../images/UI%E7%B3%BB%E7%BB%9F/03.NGUI%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/4.NGUI%E5%9F%BA%E7%A1%80-%E4%B8%89%E5%A4%A7%E5%9F%BA%E7%A1%80%E7%BB%84%E4%BB%B6-Panel%E7%BB%84%E4%BB%B6UIPanel/5.png"><br><img src="/../../../images/UI%E7%B3%BB%E7%BB%9F/03.NGUI%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/4.NGUI%E5%9F%BA%E7%A1%80-%E4%B8%89%E5%A4%A7%E5%9F%BA%E7%A1%80%E7%BB%84%E4%BB%B6-Panel%E7%BB%84%E4%BB%B6UIPanel/6.png"></li></ul><h6 id="Soft-Clip-自己定范围裁剪"><a href="#Soft-Clip-自己定范围裁剪" class="headerlink" title="Soft Clip 自己定范围裁剪"></a>Soft Clip 自己定范围裁剪</h6><ul><li>比如拖动框，调整Size自定义设置裁剪大小，调整Softness设置虚化过渡范围<br><img src="/../../../images/UI%E7%B3%BB%E7%BB%9F/03.NGUI%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/4.NGUI%E5%9F%BA%E7%A1%80-%E4%B8%89%E5%A4%A7%E5%9F%BA%E7%A1%80%E7%BB%84%E4%BB%B6-Panel%E7%BB%84%E4%BB%B6UIPanel/7.png"></li></ul><h6 id="Constrain-But-Dont-Clip-约束但不剪裁"><a href="#Constrain-But-Dont-Clip-约束但不剪裁" class="headerlink" title="Constrain But Dont Clip 约束但不剪裁"></a>Constrain But Dont Clip 约束但不剪裁</h6><ul><li>不裁剪画面，只是修改Size限制响应范围，比如点击时只有某个范围内有效<br><img src="/../../../images/UI%E7%B3%BB%E7%BB%9F/03.NGUI%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/4.NGUI%E5%9F%BA%E7%A1%80-%E4%B8%89%E5%A4%A7%E5%9F%BA%E7%A1%80%E7%BB%84%E4%BB%B6-Panel%E7%BB%84%E4%BB%B6UIPanel/8.png"></li></ul><h5 id="Sorting-Layer-排序层"><a href="#Sorting-Layer-排序层" class="headerlink" title="Sorting Layer 排序层"></a>Sorting Layer 排序层</h5><h4 id="高级参数"><a href="#高级参数" class="headerlink" title="高级参数"></a>高级参数</h4><p><img src="/../../../images/UI%E7%B3%BB%E7%BB%9F/03.NGUI%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/4.NGUI%E5%9F%BA%E7%A1%80-%E4%B8%89%E5%A4%A7%E5%9F%BA%E7%A1%80%E7%BB%84%E4%BB%B6-Panel%E7%BB%84%E4%BB%B6UIPanel/9.png"></p><h5 id="Advanced-Options-渲染相关高级选项"><a href="#Advanced-Options-渲染相关高级选项" class="headerlink" title="Advanced Options 渲染相关高级选项"></a>Advanced Options 渲染相关高级选项</h5><h6 id="Render-Q-渲染队列"><a href="#Render-Q-渲染队列" class="headerlink" title="Render Q 渲染队列"></a>Render Q 渲染队列</h6><h6 id="Sort-Order-排序"><a href="#Sort-Order-排序" class="headerlink" title="Sort Order 排序"></a>Sort Order 排序</h6><h6 id="Normals-是否需要灯光着色器"><a href="#Normals-是否需要灯光着色器" class="headerlink" title="Normals 是否需要灯光着色器"></a>Normals 是否需要灯光着色器</h6><h6 id="UV2-是否用于自定义着色器效果"><a href="#UV2-是否用于自定义着色器效果" class="headerlink" title="UV2 是否用于自定义着色器效果"></a>UV2 是否用于自定义着色器效果</h6><h6 id="Shadow-Mode-阴影模式"><a href="#Shadow-Mode-阴影模式" class="headerlink" title="Shadow Mode 阴影模式"></a>Shadow Mode 阴影模式</h6><h6 id="Cull-元素组件拖动时提出"><a href="#Cull-元素组件拖动时提出" class="headerlink" title="Cull 元素组件拖动时提出"></a>Cull 元素组件拖动时提出</h6><h6 id="Visible-检查元素组件是否离开屏幕"><a href="#Visible-检查元素组件是否离开屏幕" class="headerlink" title="Visible 检查元素组件是否离开屏幕"></a>Visible 检查元素组件是否离开屏幕</h6><h6 id="Padding-边界内容"><a href="#Padding-边界内容" class="headerlink" title="Padding 边界内容"></a>Padding 边界内容</h6><h6 id="Offset-抵消偏移位置"><a href="#Offset-抵消偏移位置" class="headerlink" title="Offset 抵消偏移位置"></a>Offset 抵消偏移位置</h6><h6 id="Static-检查子元素是否会移动"><a href="#Static-检查子元素是否会移动" class="headerlink" title="Static 检查子元素是否会移动"></a>Static 检查子元素是否会移动</h6><h6 id="Panel-Tool-是否显示面板工具"><a href="#Panel-Tool-是否显示面板工具" class="headerlink" title="Panel Tool 是否显示面板工具"></a>Panel Tool 是否显示面板工具</h6><h5 id="Anchors-锚点设置"><a href="#Anchors-锚点设置" class="headerlink" title="Anchors 锚点设置"></a>Anchors 锚点设置</h5><ul><li>用于分辨率自适应设置大小</li></ul><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ul><li>没有Panel父对象 UI控件看不到</li><li>Panel一般用于管理面板 控制层级</li><li>Panel可以有多个 一般一个Panel管理一个面板</li></ul><hr><h2 id="4-2-知识点代码"><a href="#4-2-知识点代码" class="headerlink" title="4.2 知识点代码"></a>4.2 知识点代码</h2><pre><code class="csharp">using System.Collections;using System.Collections.Generic;using UnityEngine;public class Lesson04_NGUI基础_三大基础组件_Panel组件 : MonoBehaviour&#123;    void Start()    &#123;        #region 知识点一 Panel用来干啥        //它是用于让UI元素能够被渲染的关键组件，控件显示的基础，一般情况下 一个面板 就需要一个UIPanel，所有的UI元素会依托在离自己最近的Panel下        //1.管理一个UI面板的渲染顺序        //2.管理一个UI面板上的所有子控件        #endregion        #region 知识点二 Panel参数相关        #endregion        #region 总结        //1.没有Panel父对象 UI控件看不到        //2.Panel一般用于管理面板 控制层级        //3.Panel可以有多个 一般一个Panel管理一个面板        #endregion    &#125;&#125;</code></pre><hr>]]></content>
       
       
+      <categories>
+          
+          <category> UI系统 </category>
+          
+          <category> NGUI基础知识 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> UI系统 </tag>
+            
+            <tag> 基础知识 </tag>
+            
+            <tag> NGUI </tag>
+            
+            <tag> 基础组件 </tag>
+            
+        </tags>
       
     </entry>
     
@@ -2799,11 +2885,11 @@
             
             <tag> 必备知识点 </tag>
             
-            <tag> 反射和特性 </tag>
-            
             <tag> UI系统 </tag>
             
             <tag> GUI </tag>
+            
+            <tag> 反射和特性 </tag>
             
         </tags>
       
@@ -4626,9 +4712,9 @@
       
         <tags>
             
-            <tag> 反射和特性 </tag>
-            
             <tag> 基础知识 </tag>
+            
+            <tag> 反射和特性 </tag>
             
             <tag> Unity </tag>
             
@@ -4760,9 +4846,9 @@
       
         <tags>
             
-            <tag> 反射和特性 </tag>
-            
             <tag> 基础知识 </tag>
+            
+            <tag> 反射和特性 </tag>
             
             <tag> Unity </tag>
             
@@ -7765,7 +7851,7 @@
     
     
     <entry>
-      <title>6.构造函数和析构函数</title>
+      <title>6.构造函数、析构函数和垃圾回收</title>
       <link href="/2024/01/12/CSharp/05.Csharp%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/6.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E5%B0%81%E8%A3%85-%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E5%92%8C%E6%9E%90%E6%9E%84%E5%87%BD%E6%95%B0/"/>
       <url>/2024/01/12/CSharp/05.Csharp%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/6.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E5%B0%81%E8%A3%85-%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E5%92%8C%E6%9E%90%E6%9E%84%E5%87%BD%E6%95%B0/</url>
       
@@ -7991,9 +8077,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> 实践项目 </tag>
-            
             <tag> CSharp基础 </tag>
+            
+            <tag> 实践项目 </tag>
             
         </tags>
       
@@ -8022,9 +8108,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> 实践项目 </tag>
-            
             <tag> CSharp基础 </tag>
+            
+            <tag> 实践项目 </tag>
             
         </tags>
       
@@ -8053,9 +8139,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> 实践项目 </tag>
-            
             <tag> CSharp基础 </tag>
+            
+            <tag> 实践项目 </tag>
             
         </tags>
       
@@ -8084,9 +8170,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> 实践项目 </tag>
-            
             <tag> CSharp基础 </tag>
+            
+            <tag> 实践项目 </tag>
             
         </tags>
       
@@ -8115,9 +8201,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> 实践项目 </tag>
-            
             <tag> CSharp基础 </tag>
+            
+            <tag> 实践项目 </tag>
             
         </tags>
       
@@ -8146,9 +8232,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> 实践项目 </tag>
-            
             <tag> CSharp基础 </tag>
+            
+            <tag> 实践项目 </tag>
             
         </tags>
       
@@ -8177,9 +8263,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> 实践项目 </tag>
-            
             <tag> CSharp基础 </tag>
+            
+            <tag> 实践项目 </tag>
             
         </tags>
       
@@ -8208,9 +8294,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> 实践项目 </tag>
-            
             <tag> CSharp基础 </tag>
+            
+            <tag> 实践项目 </tag>
             
         </tags>
       
@@ -8239,9 +8325,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> 实践项目 </tag>
-            
             <tag> CSharp基础 </tag>
+            
+            <tag> 实践项目 </tag>
             
         </tags>
       
@@ -8270,9 +8356,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> 实践项目 </tag>
-            
             <tag> CSharp基础 </tag>
+            
+            <tag> 实践项目 </tag>
             
         </tags>
       
@@ -8301,9 +8387,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> 实践项目 </tag>
-            
             <tag> CSharp基础 </tag>
+            
+            <tag> 实践项目 </tag>
             
         </tags>
       
@@ -8332,9 +8418,9 @@
             
             <tag> CSharp </tag>
             
-            <tag> 实践项目 </tag>
-            
             <tag> CSharp基础 </tag>
+            
+            <tag> 实践项目 </tag>
             
         </tags>
       
