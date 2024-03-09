@@ -6,43 +6,43 @@
   <meta name="keywords" content=" 实践项目 , UI系统 , GUI , 自定义常用控件 ">
   <meta name="description" content="9.自定义单选框 | 人间自有韬哥在的游戏开发博客">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="12.2D相关-Sprite-SpriteRenderer精灵渲染器 12.1 知识点Sprite知识回顾 我们目前已经学习了如何设置导入的图片 如果我们想将导入的图片用于2D游戏开发，需要将图片类型设置为 Sprite精灵类型   我们还学习了使用Sprite Editor精灵图片编辑器来对精灵图片进行编辑 但是我们还没有真正的使用这些图片 这节课我们就来讲解Sprite精灵图片的使用  Spr">
+<meta name="description" content="21.2D相关-2D物理系统-效应器 21.1 知识点2D效应器是什么 2D效应器是配合2D碰撞器一起使用，可以让游戏对象在相互接触时产生一些特殊的物理作用力。 通过2D效应器，可以快捷的实现一些传送带、互斥、吸引、漂浮、单向碰撞等等效果。  不同种类2D效应器组件参数和使用AreaEffector2D区域效应器2D 创建一个方形图片。添加碰撞器和区域效应器。注意碰撞器要设置为触发器并且开启效应器">
 <meta property="og:type" content="article">
-<meta property="og:title" content="12.SpriteRenderer精灵渲染器">
-<meta property="og:url" content="https://linwentao785293209.github.io/2024/03/08/Unity/05.Unity%E6%A0%B8%E5%BF%83%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/12.2D%E7%9B%B8%E5%85%B3-Sprite-SpriteRenderer%E7%B2%BE%E7%81%B5%E6%B8%B2%E6%9F%93%E5%99%A8/index.html">
+<meta property="og:title" content="21.Effector2D效应器2D组件">
+<meta property="og:url" content="https://linwentao785293209.github.io/2024/03/09/Unity/05.Unity%E6%A0%B8%E5%BF%83%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/21.2D%E7%9B%B8%E5%85%B3-2D%E7%89%A9%E7%90%86%E7%B3%BB%E7%BB%9F-%E6%95%88%E5%BA%94%E5%99%A8/index.html">
 <meta property="og:site_name" content="人间自有韬哥在的游戏开发博客">
-<meta property="og:description" content="12.2D相关-Sprite-SpriteRenderer精灵渲染器 12.1 知识点Sprite知识回顾 我们目前已经学习了如何设置导入的图片 如果我们想将导入的图片用于2D游戏开发，需要将图片类型设置为 Sprite精灵类型   我们还学习了使用Sprite Editor精灵图片编辑器来对精灵图片进行编辑 但是我们还没有真正的使用这些图片 这节课我们就来讲解Sprite精灵图片的使用  Spr">
+<meta property="og:description" content="21.2D相关-2D物理系统-效应器 21.1 知识点2D效应器是什么 2D效应器是配合2D碰撞器一起使用，可以让游戏对象在相互接触时产生一些特殊的物理作用力。 通过2D效应器，可以快捷的实现一些传送带、互斥、吸引、漂浮、单向碰撞等等效果。  不同种类2D效应器组件参数和使用AreaEffector2D区域效应器2D 创建一个方形图片。添加碰撞器和区域效应器。注意碰撞器要设置为触发器并且开启效应器">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/05.Unity%E6%A0%B8%E5%BF%83%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/12.2D%E7%9B%B8%E5%85%B3-Sprite-SpriteRenderer%E7%B2%BE%E7%81%B5%E6%B8%B2%E6%9F%93%E5%99%A8/1.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/05.Unity%E6%A0%B8%E5%BF%83%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/12.2D%E7%9B%B8%E5%85%B3-Sprite-SpriteRenderer%E7%B2%BE%E7%81%B5%E6%B8%B2%E6%9F%93%E5%99%A8/2.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/05.Unity%E6%A0%B8%E5%BF%83%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/12.2D%E7%9B%B8%E5%85%B3-Sprite-SpriteRenderer%E7%B2%BE%E7%81%B5%E6%B8%B2%E6%9F%93%E5%99%A8/3.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/05.Unity%E6%A0%B8%E5%BF%83%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/12.2D%E7%9B%B8%E5%85%B3-Sprite-SpriteRenderer%E7%B2%BE%E7%81%B5%E6%B8%B2%E6%9F%93%E5%99%A8/4.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/05.Unity%E6%A0%B8%E5%BF%83%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/12.2D%E7%9B%B8%E5%85%B3-Sprite-SpriteRenderer%E7%B2%BE%E7%81%B5%E6%B8%B2%E6%9F%93%E5%99%A8/5.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/05.Unity%E6%A0%B8%E5%BF%83%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/12.2D%E7%9B%B8%E5%85%B3-Sprite-SpriteRenderer%E7%B2%BE%E7%81%B5%E6%B8%B2%E6%9F%93%E5%99%A8/6.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/05.Unity%E6%A0%B8%E5%BF%83%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/12.2D%E7%9B%B8%E5%85%B3-Sprite-SpriteRenderer%E7%B2%BE%E7%81%B5%E6%B8%B2%E6%9F%93%E5%99%A8/7.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/05.Unity%E6%A0%B8%E5%BF%83%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/12.2D%E7%9B%B8%E5%85%B3-Sprite-SpriteRenderer%E7%B2%BE%E7%81%B5%E6%B8%B2%E6%9F%93%E5%99%A8/8.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/05.Unity%E6%A0%B8%E5%BF%83%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/12.2D%E7%9B%B8%E5%85%B3-Sprite-SpriteRenderer%E7%B2%BE%E7%81%B5%E6%B8%B2%E6%9F%93%E5%99%A8/9.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/05.Unity%E6%A0%B8%E5%BF%83%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/12.2D%E7%9B%B8%E5%85%B3-Sprite-SpriteRenderer%E7%B2%BE%E7%81%B5%E6%B8%B2%E6%9F%93%E5%99%A8/10.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/05.Unity%E6%A0%B8%E5%BF%83%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/12.2D%E7%9B%B8%E5%85%B3-Sprite-SpriteRenderer%E7%B2%BE%E7%81%B5%E6%B8%B2%E6%9F%93%E5%99%A8/11.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/05.Unity%E6%A0%B8%E5%BF%83%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/12.2D%E7%9B%B8%E5%85%B3-Sprite-SpriteRenderer%E7%B2%BE%E7%81%B5%E6%B8%B2%E6%9F%93%E5%99%A8/12.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/05.Unity%E6%A0%B8%E5%BF%83%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/12.2D%E7%9B%B8%E5%85%B3-Sprite-SpriteRenderer%E7%B2%BE%E7%81%B5%E6%B8%B2%E6%9F%93%E5%99%A8/13.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/05.Unity%E6%A0%B8%E5%BF%83%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/12.2D%E7%9B%B8%E5%85%B3-Sprite-SpriteRenderer%E7%B2%BE%E7%81%B5%E6%B8%B2%E6%9F%93%E5%99%A8/14.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/05.Unity%E6%A0%B8%E5%BF%83%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/12.2D%E7%9B%B8%E5%85%B3-Sprite-SpriteRenderer%E7%B2%BE%E7%81%B5%E6%B8%B2%E6%9F%93%E5%99%A8/15.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/05.Unity%E6%A0%B8%E5%BF%83%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/12.2D%E7%9B%B8%E5%85%B3-Sprite-SpriteRenderer%E7%B2%BE%E7%81%B5%E6%B8%B2%E6%9F%93%E5%99%A8/16.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/05.Unity%E6%A0%B8%E5%BF%83%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/12.2D%E7%9B%B8%E5%85%B3-Sprite-SpriteRenderer%E7%B2%BE%E7%81%B5%E6%B8%B2%E6%9F%93%E5%99%A8/17.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/05.Unity%E6%A0%B8%E5%BF%83%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/12.2D%E7%9B%B8%E5%85%B3-Sprite-SpriteRenderer%E7%B2%BE%E7%81%B5%E6%B8%B2%E6%9F%93%E5%99%A8/18.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/05.Unity%E6%A0%B8%E5%BF%83%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/12.2D%E7%9B%B8%E5%85%B3-Sprite-SpriteRenderer%E7%B2%BE%E7%81%B5%E6%B8%B2%E6%9F%93%E5%99%A8/19.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/05.Unity%E6%A0%B8%E5%BF%83%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/12.2D%E7%9B%B8%E5%85%B3-Sprite-SpriteRenderer%E7%B2%BE%E7%81%B5%E6%B8%B2%E6%9F%93%E5%99%A8/20.png">
-<meta property="article:published_time" content="2024-03-08T15:29:38.000Z">
-<meta property="article:modified_time" content="2024-03-08T16:21:17.662Z">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/05.Unity%E6%A0%B8%E5%BF%83%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/21.2D%E7%9B%B8%E5%85%B3-2D%E7%89%A9%E7%90%86%E7%B3%BB%E7%BB%9F-%E6%95%88%E5%BA%94%E5%99%A8/1.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/05.Unity%E6%A0%B8%E5%BF%83%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/21.2D%E7%9B%B8%E5%85%B3-2D%E7%89%A9%E7%90%86%E7%B3%BB%E7%BB%9F-%E6%95%88%E5%BA%94%E5%99%A8/2.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/05.Unity%E6%A0%B8%E5%BF%83%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/21.2D%E7%9B%B8%E5%85%B3-2D%E7%89%A9%E7%90%86%E7%B3%BB%E7%BB%9F-%E6%95%88%E5%BA%94%E5%99%A8/3.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/05.Unity%E6%A0%B8%E5%BF%83%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/21.2D%E7%9B%B8%E5%85%B3-2D%E7%89%A9%E7%90%86%E7%B3%BB%E7%BB%9F-%E6%95%88%E5%BA%94%E5%99%A8/4.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/05.Unity%E6%A0%B8%E5%BF%83%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/21.2D%E7%9B%B8%E5%85%B3-2D%E7%89%A9%E7%90%86%E7%B3%BB%E7%BB%9F-%E6%95%88%E5%BA%94%E5%99%A8/5.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/05.Unity%E6%A0%B8%E5%BF%83%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/21.2D%E7%9B%B8%E5%85%B3-2D%E7%89%A9%E7%90%86%E7%B3%BB%E7%BB%9F-%E6%95%88%E5%BA%94%E5%99%A8/6.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/05.Unity%E6%A0%B8%E5%BF%83%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/21.2D%E7%9B%B8%E5%85%B3-2D%E7%89%A9%E7%90%86%E7%B3%BB%E7%BB%9F-%E6%95%88%E5%BA%94%E5%99%A8/7.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/05.Unity%E6%A0%B8%E5%BF%83%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/21.2D%E7%9B%B8%E5%85%B3-2D%E7%89%A9%E7%90%86%E7%B3%BB%E7%BB%9F-%E6%95%88%E5%BA%94%E5%99%A8/8.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/05.Unity%E6%A0%B8%E5%BF%83%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/21.2D%E7%9B%B8%E5%85%B3-2D%E7%89%A9%E7%90%86%E7%B3%BB%E7%BB%9F-%E6%95%88%E5%BA%94%E5%99%A8/9.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/05.Unity%E6%A0%B8%E5%BF%83%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/21.2D%E7%9B%B8%E5%85%B3-2D%E7%89%A9%E7%90%86%E7%B3%BB%E7%BB%9F-%E6%95%88%E5%BA%94%E5%99%A8/10.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/05.Unity%E6%A0%B8%E5%BF%83%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/21.2D%E7%9B%B8%E5%85%B3-2D%E7%89%A9%E7%90%86%E7%B3%BB%E7%BB%9F-%E6%95%88%E5%BA%94%E5%99%A8/11.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/05.Unity%E6%A0%B8%E5%BF%83%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/21.2D%E7%9B%B8%E5%85%B3-2D%E7%89%A9%E7%90%86%E7%B3%BB%E7%BB%9F-%E6%95%88%E5%BA%94%E5%99%A8/12.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/05.Unity%E6%A0%B8%E5%BF%83%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/21.2D%E7%9B%B8%E5%85%B3-2D%E7%89%A9%E7%90%86%E7%B3%BB%E7%BB%9F-%E6%95%88%E5%BA%94%E5%99%A8/13.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/05.Unity%E6%A0%B8%E5%BF%83%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/21.2D%E7%9B%B8%E5%85%B3-2D%E7%89%A9%E7%90%86%E7%B3%BB%E7%BB%9F-%E6%95%88%E5%BA%94%E5%99%A8/14.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/05.Unity%E6%A0%B8%E5%BF%83%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/21.2D%E7%9B%B8%E5%85%B3-2D%E7%89%A9%E7%90%86%E7%B3%BB%E7%BB%9F-%E6%95%88%E5%BA%94%E5%99%A8/15.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/05.Unity%E6%A0%B8%E5%BF%83%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/21.2D%E7%9B%B8%E5%85%B3-2D%E7%89%A9%E7%90%86%E7%B3%BB%E7%BB%9F-%E6%95%88%E5%BA%94%E5%99%A8/16.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/05.Unity%E6%A0%B8%E5%BF%83%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/21.2D%E7%9B%B8%E5%85%B3-2D%E7%89%A9%E7%90%86%E7%B3%BB%E7%BB%9F-%E6%95%88%E5%BA%94%E5%99%A8/17.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/05.Unity%E6%A0%B8%E5%BF%83%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/21.2D%E7%9B%B8%E5%85%B3-2D%E7%89%A9%E7%90%86%E7%B3%BB%E7%BB%9F-%E6%95%88%E5%BA%94%E5%99%A8/18.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/05.Unity%E6%A0%B8%E5%BF%83%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/21.2D%E7%9B%B8%E5%85%B3-2D%E7%89%A9%E7%90%86%E7%B3%BB%E7%BB%9F-%E6%95%88%E5%BA%94%E5%99%A8/19.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/05.Unity%E6%A0%B8%E5%BF%83%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/21.2D%E7%9B%B8%E5%85%B3-2D%E7%89%A9%E7%90%86%E7%B3%BB%E7%BB%9F-%E6%95%88%E5%BA%94%E5%99%A8/20.png">
+<meta property="article:published_time" content="2024-03-09T03:17:32.000Z">
+<meta property="article:modified_time" content="2024-03-09T04:01:56.610Z">
 <meta property="article:author" content="人间自有韬哥在">
 <meta property="article:tag" content="基础知识">
 <meta property="article:tag" content="Unity">
 <meta property="article:tag" content="Unity核心">
 <meta property="article:tag" content="2D相关">
-<meta property="article:tag" content="Sprite精灵">
+<meta property="article:tag" content="2D物理系统">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://linwentao785293209.github.io/images/Unity/05.Unity%E6%A0%B8%E5%BF%83%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/12.2D%E7%9B%B8%E5%85%B3-Sprite-SpriteRenderer%E7%B2%BE%E7%81%B5%E6%B8%B2%E6%9F%93%E5%99%A8/1.png">
+<meta name="twitter:image" content="https://linwentao785293209.github.io/images/Unity/05.Unity%E6%A0%B8%E5%BF%83%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/21.2D%E7%9B%B8%E5%85%B3-2D%E7%89%A9%E7%90%86%E7%B3%BB%E7%BB%9F-%E6%95%88%E5%BA%94%E5%99%A8/1.png">
 
 
 <link rel="icon" href="/img/avatar.jpg">
@@ -169,7 +169,7 @@
     <li>
         <div class="all active" data-rel="全部文章">全部文章
             
-                <small>(375)</small>
+                <small>(384)</small>
             
         </div>
     </li>
@@ -320,7 +320,7 @@
         <div data-rel="Unity">
             <i class="fold iconfont icon-right"></i>
             Unity
-            <small>(127)</small>
+            <small>(136)</small>
         </div>
         
             <ul class="sub hide">
@@ -374,7 +374,7 @@
         <div data-rel="Unity&lt;---&gt;Unity核心基础知识">
             
             Unity核心基础知识
-            <small>(12)</small>
+            <small>(21)</small>
         </div>
         
     </li>
@@ -580,8 +580,8 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="375">
-<input type="hidden" id="yelog_site_word_count" value="619.5k">
+<input type="hidden" id="yelog_site_posts_number" value="384">
+<input type="hidden" id="yelog_site_word_count" value="631.3k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -625,6 +625,10 @@
     <div class="tags-list">
     <input id="tag-search" />
     <div class="tag-wrapper">
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>2D物理系统</a>
+            </li>
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>2D相关</a>
@@ -888,6 +892,87 @@
 
     
     <nav id="title-list-nav">
+        
+        
+        <a  class="全部文章 Unity Unity核心基础知识 "
+           href="/2024/03/09/Unity/05.Unity%E6%A0%B8%E5%BF%83%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/21.2D%E7%9B%B8%E5%85%B3-2D%E7%89%A9%E7%90%86%E7%B3%BB%E7%BB%9F-%E6%95%88%E5%BA%94%E5%99%A8/"
+           data-tag="基础知识,Unity,Unity核心,2D相关,2D物理系统"
+           data-author="" >
+            <span class="post-title" title="21.Effector2D效应器2D组件">21.Effector2D效应器2D组件</span>
+            <span class="post-date" title="2024-03-09 11:17:32">2024/03/09</span>
+        </a>
+        
+        
+        <a  class="全部文章 Unity Unity核心基础知识 "
+           href="/2024/03/09/Unity/05.Unity%E6%A0%B8%E5%BF%83%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/20.2D%E7%9B%B8%E5%85%B3-2D%E7%89%A9%E7%90%86%E7%B3%BB%E7%BB%9F-%E6%81%92%E5%AE%9A%E5%8A%9B/"
+           data-tag="基础知识,Unity,Unity核心,2D相关,2D物理系统"
+           data-author="" >
+            <span class="post-title" title="20.ConstantForce2D恒定力2D组件">20.ConstantForce2D恒定力2D组件</span>
+            <span class="post-date" title="2024-03-09 11:13:10">2024/03/09</span>
+        </a>
+        
+        
+        <a  class="全部文章 Unity Unity核心基础知识 "
+           href="/2024/03/09/Unity/05.Unity%E6%A0%B8%E5%BF%83%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/19.2D%E7%9B%B8%E5%85%B3-2D%E7%89%A9%E7%90%86%E7%B3%BB%E7%BB%9F-%E7%89%A9%E7%90%86%E6%9D%90%E8%B4%A8/"
+           data-tag="基础知识,Unity,Unity核心,2D相关,2D物理系统"
+           data-author="" >
+            <span class="post-title" title="19.PhysicsMaterial2D物理材质2D">19.PhysicsMaterial2D物理材质2D</span>
+            <span class="post-date" title="2024-03-09 11:04:31">2024/03/09</span>
+        </a>
+        
+        
+        <a  class="全部文章 Unity Unity核心基础知识 "
+           href="/2024/03/09/Unity/05.Unity%E6%A0%B8%E5%BF%83%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/18.2D%E7%9B%B8%E5%85%B3-2D%E7%89%A9%E7%90%86%E7%B3%BB%E7%BB%9F-%E7%A2%B0%E6%92%9E%E4%BD%93/"
+           data-tag="基础知识,Unity,Unity核心,2D相关,2D物理系统"
+           data-author="" >
+            <span class="post-title" title="18.Collision2D碰撞体2D和碰撞检测函数2D">18.Collision2D碰撞体2D和碰撞检测函数2D</span>
+            <span class="post-date" title="2024-03-09 10:40:40">2024/03/09</span>
+        </a>
+        
+        
+        <a  class="全部文章 Unity Unity核心基础知识 "
+           href="/2024/03/09/Unity/05.Unity%E6%A0%B8%E5%BF%83%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/17.2D%E7%9B%B8%E5%85%B3-2D%E7%89%A9%E7%90%86%E7%B3%BB%E7%BB%9F-%E5%88%9A%E4%BD%93/"
+           data-tag="基础知识,Unity,Unity核心,2D相关,2D物理系统"
+           data-author="" >
+            <span class="post-title" title="17.Rigidbody2D刚体2D">17.Rigidbody2D刚体2D</span>
+            <span class="post-date" title="2024-03-09 10:10:25">2024/03/09</span>
+        </a>
+        
+        
+        <a  class="全部文章 Unity Unity核心基础知识 "
+           href="/2024/03/09/Unity/05.Unity%E6%A0%B8%E5%BF%83%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/16.2D%E7%9B%B8%E5%85%B3-Sprite-SpriteAtlas%E7%B2%BE%E7%81%B5%E5%9B%BE%E9%9B%86/"
+           data-tag="基础知识,Unity,Unity核心,2D相关,Sprite精灵"
+           data-author="" >
+            <span class="post-title" title="16.SpriteAtlas精灵图集">16.SpriteAtlas精灵图集</span>
+            <span class="post-date" title="2024-03-09 09:47:22">2024/03/09</span>
+        </a>
+        
+        
+        <a  class="全部文章 Unity Unity核心基础知识 "
+           href="/2024/03/09/Unity/05.Unity%E6%A0%B8%E5%BF%83%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/15.2D%E7%9B%B8%E5%85%B3-Sprite-SortingGroup%E6%8E%92%E5%BA%8F%E5%88%86%E7%BB%84/"
+           data-tag="基础知识,Unity,Unity核心,2D相关,Sprite精灵"
+           data-author="" >
+            <span class="post-title" title="15.SortingGroup排序分组">15.SortingGroup排序分组</span>
+            <span class="post-date" title="2024-03-09 09:37:24">2024/03/09</span>
+        </a>
+        
+        
+        <a  class="全部文章 Unity Unity核心基础知识 "
+           href="/2024/03/09/Unity/05.Unity%E6%A0%B8%E5%BF%83%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/14.2D%E7%9B%B8%E5%85%B3-Sprite-SpriteMask%E7%B2%BE%E7%81%B5%E9%81%AE%E7%BD%A9/"
+           data-tag="基础知识,Unity,Unity核心,2D相关,Sprite精灵"
+           data-author="" >
+            <span class="post-title" title="14.SpriteMask精灵遮罩">14.SpriteMask精灵遮罩</span>
+            <span class="post-date" title="2024-03-09 09:24:11">2024/03/09</span>
+        </a>
+        
+        
+        <a  class="全部文章 Unity Unity核心基础知识 "
+           href="/2024/03/09/Unity/05.Unity%E6%A0%B8%E5%BF%83%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/13.2D%E7%9B%B8%E5%85%B3-Sprite-SpriteCreator%E7%B2%BE%E7%81%B5%E5%88%9B%E9%80%A0%E8%80%85/"
+           data-tag="基础知识,Unity,Unity核心,2D相关,Sprite精灵"
+           data-author="" >
+            <span class="post-title" title="13.SpriteCreator精灵创造者">13.SpriteCreator精灵创造者</span>
+            <span class="post-date" title="2024-03-09 09:19:02">2024/03/09</span>
+        </a>
         
         
         <a  class="全部文章 Unity Unity核心基础知识 "
@@ -2568,7 +2653,7 @@
            href="/2024/02/25/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/29.%E6%A0%B8%E5%BF%83%E7%B3%BB%E7%BB%9F-%E7%89%A9%E7%90%86%E7%B3%BB%E7%BB%9F-%E7%89%A9%E7%90%86%E6%9D%90%E8%B4%A8/"
            data-tag="基础知识,Unity,Unity入门,核心系统,物理系统"
            data-author="" >
-            <span class="post-title" title="29.PhysicMaterial物理材质参数">29.PhysicMaterial物理材质参数</span>
+            <span class="post-title" title="29.PhysicMaterial物理材质">29.PhysicMaterial物理材质</span>
             <span class="post-date" title="2024-02-25 13:09:09">2024/02/25</span>
         </a>
         
