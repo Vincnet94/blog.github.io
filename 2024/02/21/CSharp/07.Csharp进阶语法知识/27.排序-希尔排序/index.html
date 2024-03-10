@@ -6,33 +6,33 @@
   <meta name="keywords" content=" CSharp , 语法知识 , 排序 , CSharp进阶 ">
   <meta name="description" content="27.希尔排序 | 人间自有韬哥在的游戏开发博客">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="43.2D动画-2D骨骼动画-2DAnimation-换装-换装资源在不同文件中 43.1 知识点如何在不同psb文件中制作换装资源 保证个部位在PS文件中的统一，比如不同资源的头盔位置都要在同一位置 基础部位可选择性隐藏，比如上一站图有的身体头四肢，这张图只有各个装备就行了  编辑换装资源的骨骼信息首先按选择psb图片，不勾选导入隐藏模式。进入精灵编辑器。按套路先创建骨骼，创建后生成蒙皮，生成蒙">
+<meta name="description" content="55.模型导入相关-Animation动画页签-预览窗口 55.1 知识点动画预览窗口 动画剪辑名称 IK：是否开启脚步反向动力学预览 2D：2D模式预览 箭头：是否显示轴心和质心辅助图标 切换预览操作的游戏对象 播放暂停键 时间轴（可拖动预览） 播放速度 播放状态标记 秒、百分比、帧编号显示当前播放到的位置 可以为资源添加标签Tag AB包相关设置，AB包知识时会讲解">
 <meta property="og:type" content="article">
-<meta property="og:title" content="43.2DAnimation换装不同文件资源">
-<meta property="og:url" content="https://linwentao785293209.github.io/2024/03/09/Unity/05.Unity%E6%A0%B8%E5%BF%83%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/43.2D%E5%8A%A8%E7%94%BB-2D%E9%AA%A8%E9%AA%BC%E5%8A%A8%E7%94%BB-2DAnimation-%E6%8D%A2%E8%A3%85-%E6%8D%A2%E8%A3%85%E8%B5%84%E6%BA%90%E5%9C%A8%E4%B8%8D%E5%90%8C%E6%96%87%E4%BB%B6%E4%B8%AD/index.html">
+<meta property="og:title" content="55.模型导入Ani动画页签预览窗口">
+<meta property="og:url" content="https://linwentao785293209.github.io/2024/03/10/Unity/05.Unity%E6%A0%B8%E5%BF%83%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/55.%E6%A8%A1%E5%9E%8B%E5%AF%BC%E5%85%A5%E7%9B%B8%E5%85%B3-Animation%E5%8A%A8%E7%94%BB%E9%A1%B5%E7%AD%BE-%E9%A2%84%E8%A7%88%E7%AA%97%E5%8F%A3/index.html">
 <meta property="og:site_name" content="人间自有韬哥在的游戏开发博客">
-<meta property="og:description" content="43.2D动画-2D骨骼动画-2DAnimation-换装-换装资源在不同文件中 43.1 知识点如何在不同psb文件中制作换装资源 保证个部位在PS文件中的统一，比如不同资源的头盔位置都要在同一位置 基础部位可选择性隐藏，比如上一站图有的身体头四肢，这张图只有各个装备就行了  编辑换装资源的骨骼信息首先按选择psb图片，不勾选导入隐藏模式。进入精灵编辑器。按套路先创建骨骼，创建后生成蒙皮，生成蒙">
+<meta property="og:description" content="55.模型导入相关-Animation动画页签-预览窗口 55.1 知识点动画预览窗口 动画剪辑名称 IK：是否开启脚步反向动力学预览 2D：2D模式预览 箭头：是否显示轴心和质心辅助图标 切换预览操作的游戏对象 播放暂停键 时间轴（可拖动预览） 播放速度 播放状态标记 秒、百分比、帧编号显示当前播放到的位置 可以为资源添加标签Tag AB包相关设置，AB包知识时会讲解">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/05.Unity%E6%A0%B8%E5%BF%83%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/43.2D%E5%8A%A8%E7%94%BB-2D%E9%AA%A8%E9%AA%BC%E5%8A%A8%E7%94%BB-2DAnimation-%E6%8D%A2%E8%A3%85-%E6%8D%A2%E8%A3%85%E8%B5%84%E6%BA%90%E5%9C%A8%E4%B8%8D%E5%90%8C%E6%96%87%E4%BB%B6%E4%B8%AD/1.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/05.Unity%E6%A0%B8%E5%BF%83%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/43.2D%E5%8A%A8%E7%94%BB-2D%E9%AA%A8%E9%AA%BC%E5%8A%A8%E7%94%BB-2DAnimation-%E6%8D%A2%E8%A3%85-%E6%8D%A2%E8%A3%85%E8%B5%84%E6%BA%90%E5%9C%A8%E4%B8%8D%E5%90%8C%E6%96%87%E4%BB%B6%E4%B8%AD/2.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/05.Unity%E6%A0%B8%E5%BF%83%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/43.2D%E5%8A%A8%E7%94%BB-2D%E9%AA%A8%E9%AA%BC%E5%8A%A8%E7%94%BB-2DAnimation-%E6%8D%A2%E8%A3%85-%E6%8D%A2%E8%A3%85%E8%B5%84%E6%BA%90%E5%9C%A8%E4%B8%8D%E5%90%8C%E6%96%87%E4%BB%B6%E4%B8%AD/3.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/05.Unity%E6%A0%B8%E5%BF%83%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/43.2D%E5%8A%A8%E7%94%BB-2D%E9%AA%A8%E9%AA%BC%E5%8A%A8%E7%94%BB-2DAnimation-%E6%8D%A2%E8%A3%85-%E6%8D%A2%E8%A3%85%E8%B5%84%E6%BA%90%E5%9C%A8%E4%B8%8D%E5%90%8C%E6%96%87%E4%BB%B6%E4%B8%AD/4.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/05.Unity%E6%A0%B8%E5%BF%83%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/43.2D%E5%8A%A8%E7%94%BB-2D%E9%AA%A8%E9%AA%BC%E5%8A%A8%E7%94%BB-2DAnimation-%E6%8D%A2%E8%A3%85-%E6%8D%A2%E8%A3%85%E8%B5%84%E6%BA%90%E5%9C%A8%E4%B8%8D%E5%90%8C%E6%96%87%E4%BB%B6%E4%B8%AD/5.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/05.Unity%E6%A0%B8%E5%BF%83%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/43.2D%E5%8A%A8%E7%94%BB-2D%E9%AA%A8%E9%AA%BC%E5%8A%A8%E7%94%BB-2DAnimation-%E6%8D%A2%E8%A3%85-%E6%8D%A2%E8%A3%85%E8%B5%84%E6%BA%90%E5%9C%A8%E4%B8%8D%E5%90%8C%E6%96%87%E4%BB%B6%E4%B8%AD/6.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/05.Unity%E6%A0%B8%E5%BF%83%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/43.2D%E5%8A%A8%E7%94%BB-2D%E9%AA%A8%E9%AA%BC%E5%8A%A8%E7%94%BB-2DAnimation-%E6%8D%A2%E8%A3%85-%E6%8D%A2%E8%A3%85%E8%B5%84%E6%BA%90%E5%9C%A8%E4%B8%8D%E5%90%8C%E6%96%87%E4%BB%B6%E4%B8%AD/7.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/05.Unity%E6%A0%B8%E5%BF%83%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/43.2D%E5%8A%A8%E7%94%BB-2D%E9%AA%A8%E9%AA%BC%E5%8A%A8%E7%94%BB-2DAnimation-%E6%8D%A2%E8%A3%85-%E6%8D%A2%E8%A3%85%E8%B5%84%E6%BA%90%E5%9C%A8%E4%B8%8D%E5%90%8C%E6%96%87%E4%BB%B6%E4%B8%AD/8.png">
-<meta property="article:published_time" content="2024-03-09T14:16:04.000Z">
-<meta property="article:modified_time" content="2024-03-09T14:30:15.731Z">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/05.Unity%E6%A0%B8%E5%BF%83%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/55.%E6%A8%A1%E5%9E%8B%E5%AF%BC%E5%85%A5%E7%9B%B8%E5%85%B3-Animation%E5%8A%A8%E7%94%BB%E9%A1%B5%E7%AD%BE-%E9%A2%84%E8%A7%88%E7%AA%97%E5%8F%A3/1.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/05.Unity%E6%A0%B8%E5%BF%83%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/55.%E6%A8%A1%E5%9E%8B%E5%AF%BC%E5%85%A5%E7%9B%B8%E5%85%B3-Animation%E5%8A%A8%E7%94%BB%E9%A1%B5%E7%AD%BE-%E9%A2%84%E8%A7%88%E7%AA%97%E5%8F%A3/3.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/05.Unity%E6%A0%B8%E5%BF%83%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/55.%E6%A8%A1%E5%9E%8B%E5%AF%BC%E5%85%A5%E7%9B%B8%E5%85%B3-Animation%E5%8A%A8%E7%94%BB%E9%A1%B5%E7%AD%BE-%E9%A2%84%E8%A7%88%E7%AA%97%E5%8F%A3/2.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/05.Unity%E6%A0%B8%E5%BF%83%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/55.%E6%A8%A1%E5%9E%8B%E5%AF%BC%E5%85%A5%E7%9B%B8%E5%85%B3-Animation%E5%8A%A8%E7%94%BB%E9%A1%B5%E7%AD%BE-%E9%A2%84%E8%A7%88%E7%AA%97%E5%8F%A3/2.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/05.Unity%E6%A0%B8%E5%BF%83%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/55.%E6%A8%A1%E5%9E%8B%E5%AF%BC%E5%85%A5%E7%9B%B8%E5%85%B3-Animation%E5%8A%A8%E7%94%BB%E9%A1%B5%E7%AD%BE-%E9%A2%84%E8%A7%88%E7%AA%97%E5%8F%A3/2.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/05.Unity%E6%A0%B8%E5%BF%83%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/55.%E6%A8%A1%E5%9E%8B%E5%AF%BC%E5%85%A5%E7%9B%B8%E5%85%B3-Animation%E5%8A%A8%E7%94%BB%E9%A1%B5%E7%AD%BE-%E9%A2%84%E8%A7%88%E7%AA%97%E5%8F%A3/4.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/05.Unity%E6%A0%B8%E5%BF%83%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/55.%E6%A8%A1%E5%9E%8B%E5%AF%BC%E5%85%A5%E7%9B%B8%E5%85%B3-Animation%E5%8A%A8%E7%94%BB%E9%A1%B5%E7%AD%BE-%E9%A2%84%E8%A7%88%E7%AA%97%E5%8F%A3/5.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/05.Unity%E6%A0%B8%E5%BF%83%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/55.%E6%A8%A1%E5%9E%8B%E5%AF%BC%E5%85%A5%E7%9B%B8%E5%85%B3-Animation%E5%8A%A8%E7%94%BB%E9%A1%B5%E7%AD%BE-%E9%A2%84%E8%A7%88%E7%AA%97%E5%8F%A3/6.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/05.Unity%E6%A0%B8%E5%BF%83%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/55.%E6%A8%A1%E5%9E%8B%E5%AF%BC%E5%85%A5%E7%9B%B8%E5%85%B3-Animation%E5%8A%A8%E7%94%BB%E9%A1%B5%E7%AD%BE-%E9%A2%84%E8%A7%88%E7%AA%97%E5%8F%A3/7.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/05.Unity%E6%A0%B8%E5%BF%83%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/55.%E6%A8%A1%E5%9E%8B%E5%AF%BC%E5%85%A5%E7%9B%B8%E5%85%B3-Animation%E5%8A%A8%E7%94%BB%E9%A1%B5%E7%AD%BE-%E9%A2%84%E8%A7%88%E7%AA%97%E5%8F%A3/8.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/05.Unity%E6%A0%B8%E5%BF%83%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/55.%E6%A8%A1%E5%9E%8B%E5%AF%BC%E5%85%A5%E7%9B%B8%E5%85%B3-Animation%E5%8A%A8%E7%94%BB%E9%A1%B5%E7%AD%BE-%E9%A2%84%E8%A7%88%E7%AA%97%E5%8F%A3/9.png">
+<meta property="article:published_time" content="2024-03-10T03:44:57.000Z">
+<meta property="article:modified_time" content="2024-03-10T03:49:55.912Z">
 <meta property="article:author" content="人间自有韬哥在">
 <meta property="article:tag" content="基础知识">
 <meta property="article:tag" content="Unity">
 <meta property="article:tag" content="Unity核心">
-<meta property="article:tag" content="2D动画">
-<meta property="article:tag" content="2D骨骼动画">
-<meta property="article:tag" content="2DAnimation">
-<meta property="article:tag" content="换装">
+<meta property="article:tag" content="模型导入">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://linwentao785293209.github.io/images/Unity/05.Unity%E6%A0%B8%E5%BF%83%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/43.2D%E5%8A%A8%E7%94%BB-2D%E9%AA%A8%E9%AA%BC%E5%8A%A8%E7%94%BB-2DAnimation-%E6%8D%A2%E8%A3%85-%E6%8D%A2%E8%A3%85%E8%B5%84%E6%BA%90%E5%9C%A8%E4%B8%8D%E5%90%8C%E6%96%87%E4%BB%B6%E4%B8%AD/1.png">
+<meta name="twitter:image" content="https://linwentao785293209.github.io/images/Unity/05.Unity%E6%A0%B8%E5%BF%83%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/55.%E6%A8%A1%E5%9E%8B%E5%AF%BC%E5%85%A5%E7%9B%B8%E5%85%B3-Animation%E5%8A%A8%E7%94%BB%E9%A1%B5%E7%AD%BE-%E9%A2%84%E8%A7%88%E7%AA%97%E5%8F%A3/1.png">
 
 
 <link rel="icon" href="/img/avatar.jpg">
@@ -159,7 +159,7 @@
     <li>
         <div class="all active" data-rel="全部文章">全部文章
             
-                <small>(406)</small>
+                <small>(419)</small>
             
         </div>
     </li>
@@ -310,7 +310,7 @@
         <div data-rel="Unity">
             <i class="fold iconfont icon-right"></i>
             Unity
-            <small>(158)</small>
+            <small>(171)</small>
         </div>
         
             <ul class="sub hide">
@@ -364,7 +364,7 @@
         <div data-rel="Unity&lt;---&gt;Unity核心基础知识">
             
             Unity核心基础知识
-            <small>(43)</small>
+            <small>(56)</small>
         </div>
         
     </li>
@@ -570,8 +570,8 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="406">
-<input type="hidden" id="yelog_site_word_count" value="662.9k">
+<input type="hidden" id="yelog_site_posts_number" value="419">
+<input type="hidden" id="yelog_site_word_count" value="674.9k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -737,6 +737,10 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>模型导入</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>排序</a>
             </li>
         
@@ -853,6 +857,10 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Spine</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>Sprite精灵</a>
             </li>
         
@@ -914,6 +922,123 @@
 
     
     <nav id="title-list-nav">
+        
+        
+        <a  class="全部文章 Unity Unity核心基础知识 "
+           href="/2024/03/10/Unity/05.Unity%E6%A0%B8%E5%BF%83%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/56.%E6%A8%A1%E5%9E%8B%E5%AF%BC%E5%85%A5%E7%9B%B8%E5%85%B3-Materials%E6%9D%90%E8%B4%A8%E7%BA%B9%E7%90%86%E9%A1%B5%E7%AD%BE/"
+           data-tag="基础知识,Unity,Unity核心,模型导入"
+           data-author="" >
+            <span class="post-title" title="56.模型导入Materials材质纹理页签">56.模型导入Materials材质纹理页签</span>
+            <span class="post-date" title="2024-03-10 11:51:00">2024/03/10</span>
+        </a>
+        
+        
+        <a  class="全部文章 Unity Unity核心基础知识 "
+           href="/2024/03/10/Unity/05.Unity%E6%A0%B8%E5%BF%83%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/55.%E6%A8%A1%E5%9E%8B%E5%AF%BC%E5%85%A5%E7%9B%B8%E5%85%B3-Animation%E5%8A%A8%E7%94%BB%E9%A1%B5%E7%AD%BE-%E9%A2%84%E8%A7%88%E7%AA%97%E5%8F%A3/"
+           data-tag="基础知识,Unity,Unity核心,模型导入"
+           data-author="" >
+            <span class="post-title" title="55.模型导入Ani动画页签预览窗口">55.模型导入Ani动画页签预览窗口</span>
+            <span class="post-date" title="2024-03-10 11:44:57">2024/03/10</span>
+        </a>
+        
+        
+        <a  class="全部文章 Unity Unity核心基础知识 "
+           href="/2024/03/10/Unity/05.Unity%E6%A0%B8%E5%BF%83%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/54.%E6%A8%A1%E5%9E%8B%E5%AF%BC%E5%85%A5%E7%9B%B8%E5%85%B3-Animation%E5%8A%A8%E7%94%BB%E9%A1%B5%E7%AD%BE-%E5%8A%A8%E7%94%BB%E5%89%AA%E8%BE%91%E5%85%B6%E4%BB%96%E4%BF%A1%E6%81%AF%E8%AE%BE%E7%BD%AE/"
+           data-tag="基础知识,Unity,Unity核心,模型导入"
+           data-author="" >
+            <span class="post-title" title="54.模型导入Ani动画页签动画剪辑其他信息设置">54.模型导入Ani动画页签动画剪辑其他信息设置</span>
+            <span class="post-date" title="2024-03-10 11:43:22">2024/03/10</span>
+        </a>
+        
+        
+        <a  class="全部文章 Unity Unity核心基础知识 "
+           href="/2024/03/10/Unity/05.Unity%E6%A0%B8%E5%BF%83%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/53.%E6%A8%A1%E5%9E%8B%E5%AF%BC%E5%85%A5%E7%9B%B8%E5%85%B3-Animation%E5%8A%A8%E7%94%BB%E9%A1%B5%E7%AD%BE-%E5%8A%A8%E7%94%BB%E5%89%AA%E8%BE%91%E5%9F%BA%E7%A1%80%E4%BF%A1%E6%81%AF%E8%AE%BE%E7%BD%AE/"
+           data-tag="基础知识,Unity,Unity核心,模型导入"
+           data-author="" >
+            <span class="post-title" title="53.模型导入Ani动画页签动画剪辑基础信息设置">53.模型导入Ani动画页签动画剪辑基础信息设置</span>
+            <span class="post-date" title="2024-03-10 11:16:35">2024/03/10</span>
+        </a>
+        
+        
+        <a  class="全部文章 Unity Unity核心基础知识 "
+           href="/2024/03/10/Unity/05.Unity%E6%A0%B8%E5%BF%83%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/52.%E6%A8%A1%E5%9E%8B%E5%AF%BC%E5%85%A5%E7%9B%B8%E5%85%B3-Animation%E5%8A%A8%E7%94%BB%E9%A1%B5%E7%AD%BE-%E5%9F%BA%E7%A1%80%E4%BF%A1%E6%81%AF%E8%AE%BE%E7%BD%AE/"
+           data-tag="基础知识,Unity,Unity核心,模型导入"
+           data-author="" >
+            <span class="post-title" title="52.模型导入Ani动画页签基础信息设置">52.模型导入Ani动画页签基础信息设置</span>
+            <span class="post-date" title="2024-03-10 11:10:44">2024/03/10</span>
+        </a>
+        
+        
+        <a  class="全部文章 Unity Unity核心基础知识 "
+           href="/2024/03/10/Unity/05.Unity%E6%A0%B8%E5%BF%83%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/51.%E6%A8%A1%E5%9E%8B%E5%AF%BC%E5%85%A5%E7%9B%B8%E5%85%B3-Animation%E5%8A%A8%E7%94%BB%E9%A1%B5%E7%AD%BE-%E6%A6%82%E8%BF%B0/"
+           data-tag="基础知识,Unity,Unity核心,模型导入"
+           data-author="" >
+            <span class="post-title" title="51.模型导入Ani动画页签概述">51.模型导入Ani动画页签概述</span>
+            <span class="post-date" title="2024-03-10 11:04:37">2024/03/10</span>
+        </a>
+        
+        
+        <a  class="全部文章 Unity Unity核心基础知识 "
+           href="/2024/03/10/Unity/05.Unity%E6%A0%B8%E5%BF%83%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/50.%E6%A8%A1%E5%9E%8B%E5%AF%BC%E5%85%A5%E7%9B%B8%E5%85%B3-Rig%E6%93%8D%E7%BA%B5%E9%AA%A8%E9%AA%BC%E9%A1%B5%E7%AD%BE/"
+           data-tag="基础知识,Unity,Unity核心,模型导入"
+           data-author="" >
+            <span class="post-title" title="50.模型导入Rig操纵骨骼页签">50.模型导入Rig操纵骨骼页签</span>
+            <span class="post-date" title="2024-03-10 10:36:11">2024/03/10</span>
+        </a>
+        
+        
+        <a  class="全部文章 Unity Unity核心基础知识 "
+           href="/2024/03/10/Unity/05.Unity%E6%A0%B8%E5%BF%83%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/49.%E6%A8%A1%E5%9E%8B%E5%AF%BC%E5%85%A5%E7%9B%B8%E5%85%B3-Model%E6%A8%A1%E5%9E%8B%E9%A1%B5%E7%AD%BE/"
+           data-tag="基础知识,Unity,Unity核心,模型导入"
+           data-author="" >
+            <span class="post-title" title="49.模型导入Model模型页签">49.模型导入Model模型页签</span>
+            <span class="post-date" title="2024-03-10 10:16:00">2024/03/10</span>
+        </a>
+        
+        
+        <a  class="全部文章 Unity Unity核心基础知识 "
+           href="/2024/03/10/Unity/05.Unity%E6%A0%B8%E5%BF%83%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/48.%E6%A8%A1%E5%9E%8B%E5%AF%BC%E5%85%A5%E7%9B%B8%E5%85%B3-%E6%A8%A1%E5%9E%8B%E5%AF%BC%E5%85%A5%E6%A6%82%E8%BF%B0/"
+           data-tag="基础知识,Unity,Unity核心,模型导入"
+           data-author="" >
+            <span class="post-title" title="48.模型导入概述">48.模型导入概述</span>
+            <span class="post-date" title="2024-03-10 10:11:33">2024/03/10</span>
+        </a>
+        
+        
+        <a  class="全部文章 Unity Unity核心基础知识 "
+           href="/2024/03/10/Unity/05.Unity%E6%A0%B8%E5%BF%83%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/47.2D%E5%8A%A8%E7%94%BB-2D%E9%AA%A8%E9%AA%BC%E5%8A%A8%E7%94%BB-Spine-%E9%AA%A8%E9%AA%BC%E5%8A%A8%E7%94%BB%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3/"
+           data-tag="反射和特性,基础知识,Unity,Unity核心,2D动画,2D骨骼动画,Spine"
+           data-author="" >
+            <span class="post-title" title="47.Spine骨骼动画代码控制">47.Spine骨骼动画代码控制</span>
+            <span class="post-date" title="2024-03-10 09:54:50">2024/03/10</span>
+        </a>
+        
+        
+        <a  class="全部文章 Unity Unity核心基础知识 "
+           href="/2024/03/10/Unity/05.Unity%E6%A0%B8%E5%BF%83%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/46.2D%E5%8A%A8%E7%94%BB-2D%E9%AA%A8%E9%AA%BC%E5%8A%A8%E7%94%BB-Spine-%E9%AA%A8%E9%AA%BC%E5%8A%A8%E7%94%BB%E5%8F%82%E6%95%B0%E7%9B%B8%E5%85%B3/"
+           data-tag="基础知识,Unity,Unity核心,2D动画,2D骨骼动画,Spine"
+           data-author="" >
+            <span class="post-title" title="46.Spine骨骼动画参数">46.Spine骨骼动画参数</span>
+            <span class="post-date" title="2024-03-10 09:40:47">2024/03/10</span>
+        </a>
+        
+        
+        <a  class="全部文章 Unity Unity核心基础知识 "
+           href="/2024/03/10/Unity/05.Unity%E6%A0%B8%E5%BF%83%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/45.2D%E5%8A%A8%E7%94%BB-2D%E9%AA%A8%E9%AA%BC%E5%8A%A8%E7%94%BB-Spine-%E9%AA%A8%E9%AA%BC%E5%8A%A8%E7%94%BB%E6%96%87%E4%BB%B6%E7%9A%84%E4%BD%BF%E7%94%A8/"
+           data-tag="基础知识,Unity,Unity核心,2D动画,2D骨骼动画,Spine"
+           data-author="" >
+            <span class="post-title" title="45.Spine使用骨骼动画文件">45.Spine使用骨骼动画文件</span>
+            <span class="post-date" title="2024-03-10 09:37:25">2024/03/10</span>
+        </a>
+        
+        
+        <a  class="全部文章 Unity Unity核心基础知识 "
+           href="/2024/03/10/Unity/05.Unity%E6%A0%B8%E5%BF%83%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/44.2D%E5%8A%A8%E7%94%BB-2D%E9%AA%A8%E9%AA%BC%E5%8A%A8%E7%94%BB-Spine-%E8%BF%90%E8%A1%8C%E5%BA%93%E5%AF%BC%E5%85%A5/"
+           data-tag="基础知识,Unity,Unity核心,2D动画,2D骨骼动画,Spine"
+           data-author="" >
+            <span class="post-title" title="44.Spine导入">44.Spine导入</span>
+            <span class="post-date" title="2024-03-10 09:28:53">2024/03/10</span>
+        </a>
         
         
         <a  class="全部文章 Unity Unity核心基础知识 "
@@ -2538,7 +2663,7 @@
         
         <a  class="全部文章 UI系统 GUI实践项目 "
            href="/2024/02/27/UI%E7%B3%BB%E7%BB%9F/02.GUI%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/1.%E5%BF%85%E5%A4%87%E7%9F%A5%E8%AF%86%E7%82%B9-%E7%BC%96%E8%BE%91%E6%A8%A1%E5%BC%8F%E4%B8%8B%E8%AE%A9%E6%8C%87%E5%AE%9A%E4%BB%A3%E7%A0%81%E8%BF%90%E8%A1%8C/"
-           data-tag="实践项目,必备知识点,UI系统,GUI,反射和特性"
+           data-tag="实践项目,必备知识点,反射和特性,UI系统,GUI"
            data-author="" >
             <span class="post-title" title="1.编辑模式下让指定代码运行">1.编辑模式下让指定代码运行</span>
             <span class="post-date" title="2024-02-27 11:18:43">2024/02/27</span>
@@ -3033,7 +3158,7 @@
         
         <a  class="全部文章 Unity Unity入门基础知识 "
            href="/2024/02/24/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/11.Unity%E8%84%9A%E6%9C%AC%E5%9F%BA%E7%A1%80-Inspector%E7%AA%97%E5%8F%A3%E5%8F%AF%E7%BC%96%E8%BE%91%E7%9A%84%E5%8F%98%E9%87%8F/"
-           data-tag="基础知识,反射和特性,Unity,Unity入门,Unity脚本基础"
+           data-tag="反射和特性,基础知识,Unity,Unity入门,Unity脚本基础"
            data-author="" >
             <span class="post-title" title="11.Inspector窗口可编辑的变量">11.Inspector窗口可编辑的变量</span>
             <span class="post-date" title="2024-02-24 12:38:36">2024/02/24</span>
@@ -3069,7 +3194,7 @@
         
         <a  class="全部文章 Unity Unity入门基础知识 "
            href="/2024/02/24/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/7.Unity%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86-%E5%8F%8D%E5%B0%84%E6%9C%BA%E5%88%B6%E5%92%8C%E6%B8%B8%E6%88%8F%E5%9C%BA%E6%99%AF/"
-           data-tag="基础知识,反射和特性,Unity,Unity入门,Unity工作原理"
+           data-tag="反射和特性,基础知识,Unity,Unity入门,Unity工作原理"
            data-author="" >
             <span class="post-title" title="7.反射机制和游戏场景">7.反射机制和游戏场景</span>
             <span class="post-date" title="2024-02-24 10:09:09">2024/02/24</span>
