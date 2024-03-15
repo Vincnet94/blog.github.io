@@ -6,29 +6,22 @@
   <meta name="keywords" content=" 实践项目 , Unity , Unity入门 ">
   <meta name="description" content="6.代码和资源导入 | 人间自有韬哥在的游戏开发博客">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="5.Unity跨平台的基本原理-IL2CPP模式可能存在的问题处理 5.1 知识点安装Unity IL2CPP打包工具 去 ProjectSetting-&gt;Player-&gt;OtherSetting-&gt;Configuration-&gt;Scripting Backend 把脚本后端设置成IL2CPP 假如没有下载对应平台的IL2CPP包 BuildSetting会报错 在Unit">
+<meta name="description" content="9.CSharp各版本新功能和语法-CSharp5功能和语法-Task任务类 9.1 知识点认识Task 命名空间： System.Threading.Tasks 类名： Task Task顾名思义就是任务的意思 Task是在线程池基础上进行的改进，它拥有线程池的优点，同时解决了使用线程池不易控制的弊端 它是基于线程池的优点对线程的封装，可以让我们更方便高效的进行多线程开发  简单理解：  Tas">
 <meta property="og:type" content="article">
-<meta property="og:title" content="5.IL2CPP跨平台模式可能存在的问题处理">
-<meta property="og:url" content="https://linwentao785293209.github.io/2024/03/14/Unity/08.Unity%E8%BF%9B%E9%98%B6CSharp%E7%9F%A5%E8%AF%86%E8%A1%A5%E5%85%85.md/5.Unity%E8%B7%A8%E5%B9%B3%E5%8F%B0%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86-IL2CPP%E6%A8%A1%E5%BC%8F%E5%8F%AF%E8%83%BD%E5%AD%98%E5%9C%A8%E7%9A%84%E9%97%AE%E9%A2%98%E5%A4%84%E7%90%86/index.html">
+<meta property="og:title" content="9.Task任务类">
+<meta property="og:url" content="https://linwentao785293209.github.io/2024/03/15/Unity/08.Unity%E8%BF%9B%E9%98%B6CSharp%E7%9F%A5%E8%AF%86%E8%A1%A5%E5%85%85.md/9.CSharp%E5%90%84%E7%89%88%E6%9C%AC%E6%96%B0%E5%8A%9F%E8%83%BD%E5%92%8C%E8%AF%AD%E6%B3%95-CSharp5%E5%8A%9F%E8%83%BD%E5%92%8C%E8%AF%AD%E6%B3%95-Task%E4%BB%BB%E5%8A%A1%E7%B1%BB/index.html">
 <meta property="og:site_name" content="人间自有韬哥在的游戏开发博客">
-<meta property="og:description" content="5.Unity跨平台的基本原理-IL2CPP模式可能存在的问题处理 5.1 知识点安装Unity IL2CPP打包工具 去 ProjectSetting-&gt;Player-&gt;OtherSetting-&gt;Configuration-&gt;Scripting Backend 把脚本后端设置成IL2CPP 假如没有下载对应平台的IL2CPP包 BuildSetting会报错 在Unit">
+<meta property="og:description" content="9.CSharp各版本新功能和语法-CSharp5功能和语法-Task任务类 9.1 知识点认识Task 命名空间： System.Threading.Tasks 类名： Task Task顾名思义就是任务的意思 Task是在线程池基础上进行的改进，它拥有线程池的优点，同时解决了使用线程池不易控制的弊端 它是基于线程池的优点对线程的封装，可以让我们更方便高效的进行多线程开发  简单理解：  Tas">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/08.Unity%E8%BF%9B%E9%98%B6CSharp%E7%9F%A5%E8%AF%86%E8%A1%A5%E5%85%85/5.Unity%E8%B7%A8%E5%B9%B3%E5%8F%B0%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86-IL2CPP%E6%A8%A1%E5%BC%8F%E5%8F%AF%E8%83%BD%E5%AD%98%E5%9C%A8%E7%9A%84%E9%97%AE%E9%A2%98%E5%A4%84%E7%90%86/1.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/08.Unity%E8%BF%9B%E9%98%B6CSharp%E7%9F%A5%E8%AF%86%E8%A1%A5%E5%85%85/5.Unity%E8%B7%A8%E5%B9%B3%E5%8F%B0%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86-IL2CPP%E6%A8%A1%E5%BC%8F%E5%8F%AF%E8%83%BD%E5%AD%98%E5%9C%A8%E7%9A%84%E9%97%AE%E9%A2%98%E5%A4%84%E7%90%86/2.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/08.Unity%E8%BF%9B%E9%98%B6CSharp%E7%9F%A5%E8%AF%86%E8%A1%A5%E5%85%85/5.Unity%E8%B7%A8%E5%B9%B3%E5%8F%B0%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86-IL2CPP%E6%A8%A1%E5%BC%8F%E5%8F%AF%E8%83%BD%E5%AD%98%E5%9C%A8%E7%9A%84%E9%97%AE%E9%A2%98%E5%A4%84%E7%90%86/3.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/08.Unity%E8%BF%9B%E9%98%B6CSharp%E7%9F%A5%E8%AF%86%E8%A1%A5%E5%85%85/5.Unity%E8%B7%A8%E5%B9%B3%E5%8F%B0%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86-IL2CPP%E6%A8%A1%E5%BC%8F%E5%8F%AF%E8%83%BD%E5%AD%98%E5%9C%A8%E7%9A%84%E9%97%AE%E9%A2%98%E5%A4%84%E7%90%86/4.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/08.Unity%E8%BF%9B%E9%98%B6CSharp%E7%9F%A5%E8%AF%86%E8%A1%A5%E5%85%85/5.Unity%E8%B7%A8%E5%B9%B3%E5%8F%B0%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86-IL2CPP%E6%A8%A1%E5%BC%8F%E5%8F%AF%E8%83%BD%E5%AD%98%E5%9C%A8%E7%9A%84%E9%97%AE%E9%A2%98%E5%A4%84%E7%90%86/5.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/08.Unity%E8%BF%9B%E9%98%B6CSharp%E7%9F%A5%E8%AF%86%E8%A1%A5%E5%85%85/5.Unity%E8%B7%A8%E5%B9%B3%E5%8F%B0%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86-IL2CPP%E6%A8%A1%E5%BC%8F%E5%8F%AF%E8%83%BD%E5%AD%98%E5%9C%A8%E7%9A%84%E9%97%AE%E9%A2%98%E5%A4%84%E7%90%86/6.png">
-<meta property="article:published_time" content="2024-03-14T12:41:00.000Z">
-<meta property="article:modified_time" content="2024-03-14T12:47:46.996Z">
+<meta property="article:published_time" content="2024-03-14T21:26:18.000Z">
+<meta property="article:modified_time" content="2024-03-14T22:03:09.865Z">
 <meta property="article:author" content="人间自有韬哥在">
 <meta property="article:tag" content="基础知识">
 <meta property="article:tag" content="Unity">
 <meta property="article:tag" content="Unity进阶">
 <meta property="article:tag" content="CSharp知识补充">
-<meta property="article:tag" content="Unity跨平台的基本原理">
+<meta property="article:tag" content="CSharp各版本新功能和语法">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://linwentao785293209.github.io/images/Unity/08.Unity%E8%BF%9B%E9%98%B6CSharp%E7%9F%A5%E8%AF%86%E8%A1%A5%E5%85%85/5.Unity%E8%B7%A8%E5%B9%B3%E5%8F%B0%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86-IL2CPP%E6%A8%A1%E5%BC%8F%E5%8F%AF%E8%83%BD%E5%AD%98%E5%9C%A8%E7%9A%84%E9%97%AE%E9%A2%98%E5%A4%84%E7%90%86/1.png">
 
 
 <link rel="icon" href="/img/avatar.jpg">
@@ -155,7 +148,7 @@
     <li>
         <div class="all active" data-rel="全部文章">全部文章
             
-                <small>(514)</small>
+                <small>(518)</small>
             
         </div>
     </li>
@@ -306,7 +299,7 @@
         <div data-rel="Unity">
             <i class="fold iconfont icon-right"></i>
             Unity
-            <small>(217)</small>
+            <small>(221)</small>
         </div>
         
             <ul class="sub hide">
@@ -393,7 +386,7 @@
         <div data-rel="Unity&lt;---&gt;Unity进阶CSharp知识补充">
             
             Unity进阶CSharp知识补充
-            <small>(5)</small>
+            <small>(9)</small>
         </div>
         
     </li>
@@ -671,8 +664,8 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="514">
-<input type="hidden" id="yelog_site_word_count" value="808.7k">
+<input type="hidden" id="yelog_site_posts_number" value="518">
+<input type="hidden" id="yelog_site_word_count" value="819.5k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -938,6 +931,10 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>CSharp各版本新功能和语法</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>CSharp核心</a>
             </li>
         
@@ -1063,6 +1060,42 @@
 
     
     <nav id="title-list-nav">
+        
+        
+        <a  class="全部文章 Unity Unity进阶CSharp知识补充 "
+           href="/2024/03/15/Unity/08.Unity%E8%BF%9B%E9%98%B6CSharp%E7%9F%A5%E8%AF%86%E8%A1%A5%E5%85%85.md/9.CSharp%E5%90%84%E7%89%88%E6%9C%AC%E6%96%B0%E5%8A%9F%E8%83%BD%E5%92%8C%E8%AF%AD%E6%B3%95-CSharp5%E5%8A%9F%E8%83%BD%E5%92%8C%E8%AF%AD%E6%B3%95-Task%E4%BB%BB%E5%8A%A1%E7%B1%BB/"
+           data-tag="基础知识,Unity,Unity进阶,CSharp知识补充,CSharp各版本新功能和语法"
+           data-author="" >
+            <span class="post-title" title="9.Task任务类">9.Task任务类</span>
+            <span class="post-date" title="2024-03-15 05:26:18">2024/03/15</span>
+        </a>
+        
+        
+        <a  class="全部文章 Unity Unity进阶CSharp知识补充 "
+           href="/2024/03/14/Unity/08.Unity%E8%BF%9B%E9%98%B6CSharp%E7%9F%A5%E8%AF%86%E8%A1%A5%E5%85%85.md/8.CSharp%E5%90%84%E7%89%88%E6%9C%AC%E6%96%B0%E5%8A%9F%E8%83%BD%E5%92%8C%E8%AF%AD%E6%B3%95-CSharp5%E5%8A%9F%E8%83%BD%E5%92%8C%E8%AF%AD%E6%B3%95-%E7%BA%BF%E7%A8%8B%E5%92%8C%E7%BA%BF%E7%A8%8B%E6%B1%A0/"
+           data-tag="基础知识,Unity,Unity进阶,CSharp知识补充,CSharp各版本新功能和语法"
+           data-author="" >
+            <span class="post-title" title="8.线程和线程池">8.线程和线程池</span>
+            <span class="post-date" title="2024-03-14 23:51:43">2024/03/14</span>
+        </a>
+        
+        
+        <a  class="全部文章 Unity Unity进阶CSharp知识补充 "
+           href="/2024/03/14/Unity/08.Unity%E8%BF%9B%E9%98%B6CSharp%E7%9F%A5%E8%AF%86%E8%A1%A5%E5%85%85.md/7.CSharp%E5%90%84%E7%89%88%E6%9C%AC%E6%96%B0%E5%8A%9F%E8%83%BD%E5%92%8C%E8%AF%AD%E6%B3%95-CSharp1-4%E5%8A%9F%E8%83%BD%E5%92%8C%E8%AF%AD%E6%B3%95/"
+           data-tag="基础知识,Unity,Unity进阶,CSharp知识补充,CSharp各版本新功能和语法"
+           data-author="" >
+            <span class="post-title" title="7.命名参数、可选参数和动态类型">7.命名参数、可选参数和动态类型</span>
+            <span class="post-date" title="2024-03-14 23:31:10">2024/03/14</span>
+        </a>
+        
+        
+        <a  class="全部文章 Unity Unity进阶CSharp知识补充 "
+           href="/2024/03/14/Unity/08.Unity%E8%BF%9B%E9%98%B6CSharp%E7%9F%A5%E8%AF%86%E8%A1%A5%E5%85%85.md/6.CSharp%E7%89%88%E6%9C%AC%E5%92%8CUnity%E7%9A%84%E5%85%B3%E7%B3%BB/"
+           data-tag="基础知识,Unity,Unity进阶,CSharp知识补充"
+           data-author="" >
+            <span class="post-title" title="6.CSharp版本和Unity的关系">6.CSharp版本和Unity的关系</span>
+            <span class="post-date" title="2024-03-14 23:26:26">2024/03/14</span>
+        </a>
         
         
         <a  class="全部文章 Unity Unity进阶CSharp知识补充 "
@@ -3227,7 +3260,7 @@
         
         <a  class="全部文章 Unity Unity基础基础知识 "
            href="/2024/02/28/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/4.3D%E6%95%B0%E5%AD%A6-%E5%9D%90%E6%A0%87%E7%B3%BB/"
-           data-tag="基础知识,坐标,Unity,Unity基础,3D数学"
+           data-tag="基础知识,Unity,坐标,Unity基础,3D数学"
            data-author="" >
             <span class="post-title" title="4.坐标系">4.坐标系</span>
             <span class="post-date" title="2024-02-28 12:39:16">2024/02/28</span>
@@ -4073,7 +4106,7 @@
         
         <a  class="全部文章 Unity Unity入门基础知识 "
            href="/2024/02/24/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/20.Unity%E9%87%8D%E8%A6%81%E7%BB%84%E4%BB%B6%E5%92%8CAPI-Transform%E5%9D%90%E6%A0%87%E8%BD%AC%E6%8D%A2/"
-           data-tag="基础知识,坐标,Unity,Unity入门,Unity重要组件和API"
+           data-tag="基础知识,Unity,Unity入门,Unity重要组件和API,坐标"
            data-author="" >
             <span class="post-title" title="20.Transform变换组件坐标转换">20.Transform变换组件坐标转换</span>
             <span class="post-date" title="2024-02-24 16:33:35">2024/02/24</span>
@@ -4469,7 +4502,7 @@
         
         <a  class="全部文章 CSharp CSharp进阶语法知识 "
            href="/2024/02/21/CSharp/07.Csharp%E8%BF%9B%E9%98%B6%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/22.%E5%8F%8D%E5%B0%84%E5%92%8C%E7%89%B9%E6%80%A7-%E7%89%B9%E6%80%A7/"
-           data-tag="CSharp,语法知识,反射和特性,CSharp进阶"
+           data-tag="CSharp,语法知识,CSharp进阶,反射和特性"
            data-author="" >
             <span class="post-title" title="22.特性">22.特性</span>
             <span class="post-date" title="2024-02-21 13:02:24">2024/02/21</span>
@@ -4478,7 +4511,7 @@
         
         <a  class="全部文章 CSharp CSharp进阶语法知识 "
            href="/2024/02/21/CSharp/07.Csharp%E8%BF%9B%E9%98%B6%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/21.%E5%8F%8D%E5%B0%84%E5%92%8C%E7%89%B9%E6%80%A7-%E5%8F%8D%E5%B0%84/"
-           data-tag="CSharp,语法知识,反射和特性,CSharp进阶"
+           data-tag="CSharp,语法知识,CSharp进阶,反射和特性"
            data-author="" >
             <span class="post-title" title="21.反射">21.反射</span>
             <span class="post-date" title="2024-02-21 09:49:59">2024/02/21</span>
@@ -4498,7 +4531,7 @@
            href="/2024/02/20/CSharp/07.Csharp%E8%BF%9B%E9%98%B6%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/19.%E5%A4%9A%E7%BA%BF%E7%A8%8B/"
            data-tag="CSharp,语法知识,CSharp进阶"
            data-author="" >
-            <span class="post-title" title="19.多线程">19.多线程</span>
+            <span class="post-title" title="19.多线程和锁">19.多线程和锁</span>
             <span class="post-date" title="2024-02-20 23:21:04">2024/02/20</span>
         </a>
         

@@ -3,32 +3,25 @@
 <head>
   <meta charset="utf-8">
   <title>22.特性 | 人间自有韬哥在的游戏开发博客</title>
-  <meta name="keywords" content=" CSharp , 语法知识 , 反射和特性 , CSharp进阶 ">
+  <meta name="keywords" content=" CSharp , 语法知识 , CSharp进阶 , 反射和特性 ">
   <meta name="description" content="22.特性 | 人间自有韬哥在的游戏开发博客">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="5.Unity跨平台的基本原理-IL2CPP模式可能存在的问题处理 5.1 知识点安装Unity IL2CPP打包工具 去 ProjectSetting-&gt;Player-&gt;OtherSetting-&gt;Configuration-&gt;Scripting Backend 把脚本后端设置成IL2CPP 假如没有下载对应平台的IL2CPP包 BuildSetting会报错 在Unit">
+<meta name="description" content="9.CSharp各版本新功能和语法-CSharp5功能和语法-Task任务类 9.1 知识点认识Task 命名空间： System.Threading.Tasks 类名： Task Task顾名思义就是任务的意思 Task是在线程池基础上进行的改进，它拥有线程池的优点，同时解决了使用线程池不易控制的弊端 它是基于线程池的优点对线程的封装，可以让我们更方便高效的进行多线程开发  简单理解：  Tas">
 <meta property="og:type" content="article">
-<meta property="og:title" content="5.IL2CPP跨平台模式可能存在的问题处理">
-<meta property="og:url" content="https://linwentao785293209.github.io/2024/03/14/Unity/08.Unity%E8%BF%9B%E9%98%B6CSharp%E7%9F%A5%E8%AF%86%E8%A1%A5%E5%85%85.md/5.Unity%E8%B7%A8%E5%B9%B3%E5%8F%B0%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86-IL2CPP%E6%A8%A1%E5%BC%8F%E5%8F%AF%E8%83%BD%E5%AD%98%E5%9C%A8%E7%9A%84%E9%97%AE%E9%A2%98%E5%A4%84%E7%90%86/index.html">
+<meta property="og:title" content="9.Task任务类">
+<meta property="og:url" content="https://linwentao785293209.github.io/2024/03/15/Unity/08.Unity%E8%BF%9B%E9%98%B6CSharp%E7%9F%A5%E8%AF%86%E8%A1%A5%E5%85%85.md/9.CSharp%E5%90%84%E7%89%88%E6%9C%AC%E6%96%B0%E5%8A%9F%E8%83%BD%E5%92%8C%E8%AF%AD%E6%B3%95-CSharp5%E5%8A%9F%E8%83%BD%E5%92%8C%E8%AF%AD%E6%B3%95-Task%E4%BB%BB%E5%8A%A1%E7%B1%BB/index.html">
 <meta property="og:site_name" content="人间自有韬哥在的游戏开发博客">
-<meta property="og:description" content="5.Unity跨平台的基本原理-IL2CPP模式可能存在的问题处理 5.1 知识点安装Unity IL2CPP打包工具 去 ProjectSetting-&gt;Player-&gt;OtherSetting-&gt;Configuration-&gt;Scripting Backend 把脚本后端设置成IL2CPP 假如没有下载对应平台的IL2CPP包 BuildSetting会报错 在Unit">
+<meta property="og:description" content="9.CSharp各版本新功能和语法-CSharp5功能和语法-Task任务类 9.1 知识点认识Task 命名空间： System.Threading.Tasks 类名： Task Task顾名思义就是任务的意思 Task是在线程池基础上进行的改进，它拥有线程池的优点，同时解决了使用线程池不易控制的弊端 它是基于线程池的优点对线程的封装，可以让我们更方便高效的进行多线程开发  简单理解：  Tas">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/08.Unity%E8%BF%9B%E9%98%B6CSharp%E7%9F%A5%E8%AF%86%E8%A1%A5%E5%85%85/5.Unity%E8%B7%A8%E5%B9%B3%E5%8F%B0%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86-IL2CPP%E6%A8%A1%E5%BC%8F%E5%8F%AF%E8%83%BD%E5%AD%98%E5%9C%A8%E7%9A%84%E9%97%AE%E9%A2%98%E5%A4%84%E7%90%86/1.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/08.Unity%E8%BF%9B%E9%98%B6CSharp%E7%9F%A5%E8%AF%86%E8%A1%A5%E5%85%85/5.Unity%E8%B7%A8%E5%B9%B3%E5%8F%B0%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86-IL2CPP%E6%A8%A1%E5%BC%8F%E5%8F%AF%E8%83%BD%E5%AD%98%E5%9C%A8%E7%9A%84%E9%97%AE%E9%A2%98%E5%A4%84%E7%90%86/2.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/08.Unity%E8%BF%9B%E9%98%B6CSharp%E7%9F%A5%E8%AF%86%E8%A1%A5%E5%85%85/5.Unity%E8%B7%A8%E5%B9%B3%E5%8F%B0%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86-IL2CPP%E6%A8%A1%E5%BC%8F%E5%8F%AF%E8%83%BD%E5%AD%98%E5%9C%A8%E7%9A%84%E9%97%AE%E9%A2%98%E5%A4%84%E7%90%86/3.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/08.Unity%E8%BF%9B%E9%98%B6CSharp%E7%9F%A5%E8%AF%86%E8%A1%A5%E5%85%85/5.Unity%E8%B7%A8%E5%B9%B3%E5%8F%B0%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86-IL2CPP%E6%A8%A1%E5%BC%8F%E5%8F%AF%E8%83%BD%E5%AD%98%E5%9C%A8%E7%9A%84%E9%97%AE%E9%A2%98%E5%A4%84%E7%90%86/4.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/08.Unity%E8%BF%9B%E9%98%B6CSharp%E7%9F%A5%E8%AF%86%E8%A1%A5%E5%85%85/5.Unity%E8%B7%A8%E5%B9%B3%E5%8F%B0%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86-IL2CPP%E6%A8%A1%E5%BC%8F%E5%8F%AF%E8%83%BD%E5%AD%98%E5%9C%A8%E7%9A%84%E9%97%AE%E9%A2%98%E5%A4%84%E7%90%86/5.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/08.Unity%E8%BF%9B%E9%98%B6CSharp%E7%9F%A5%E8%AF%86%E8%A1%A5%E5%85%85/5.Unity%E8%B7%A8%E5%B9%B3%E5%8F%B0%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86-IL2CPP%E6%A8%A1%E5%BC%8F%E5%8F%AF%E8%83%BD%E5%AD%98%E5%9C%A8%E7%9A%84%E9%97%AE%E9%A2%98%E5%A4%84%E7%90%86/6.png">
-<meta property="article:published_time" content="2024-03-14T12:41:00.000Z">
-<meta property="article:modified_time" content="2024-03-14T12:47:46.996Z">
+<meta property="article:published_time" content="2024-03-14T21:26:18.000Z">
+<meta property="article:modified_time" content="2024-03-14T22:03:09.865Z">
 <meta property="article:author" content="人间自有韬哥在">
 <meta property="article:tag" content="基础知识">
 <meta property="article:tag" content="Unity">
 <meta property="article:tag" content="Unity进阶">
 <meta property="article:tag" content="CSharp知识补充">
-<meta property="article:tag" content="Unity跨平台的基本原理">
+<meta property="article:tag" content="CSharp各版本新功能和语法">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://linwentao785293209.github.io/images/Unity/08.Unity%E8%BF%9B%E9%98%B6CSharp%E7%9F%A5%E8%AF%86%E8%A1%A5%E5%85%85/5.Unity%E8%B7%A8%E5%B9%B3%E5%8F%B0%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86-IL2CPP%E6%A8%A1%E5%BC%8F%E5%8F%AF%E8%83%BD%E5%AD%98%E5%9C%A8%E7%9A%84%E9%97%AE%E9%A2%98%E5%A4%84%E7%90%86/1.png">
 
 
 <link rel="icon" href="/img/avatar.jpg">
@@ -155,7 +148,7 @@
     <li>
         <div class="all active" data-rel="全部文章">全部文章
             
-                <small>(514)</small>
+                <small>(518)</small>
             
         </div>
     </li>
@@ -306,7 +299,7 @@
         <div data-rel="Unity">
             <i class="fold iconfont icon-right"></i>
             Unity
-            <small>(217)</small>
+            <small>(221)</small>
         </div>
         
             <ul class="sub hide">
@@ -393,7 +386,7 @@
         <div data-rel="Unity&lt;---&gt;Unity进阶CSharp知识补充">
             
             Unity进阶CSharp知识补充
-            <small>(5)</small>
+            <small>(9)</small>
         </div>
         
     </li>
@@ -671,8 +664,8 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="514">
-<input type="hidden" id="yelog_site_word_count" value="808.7k">
+<input type="hidden" id="yelog_site_posts_number" value="518">
+<input type="hidden" id="yelog_site_word_count" value="819.5k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -938,6 +931,10 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>CSharp各版本新功能和语法</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>CSharp核心</a>
             </li>
         
@@ -1063,6 +1060,42 @@
 
     
     <nav id="title-list-nav">
+        
+        
+        <a  class="全部文章 Unity Unity进阶CSharp知识补充 "
+           href="/2024/03/15/Unity/08.Unity%E8%BF%9B%E9%98%B6CSharp%E7%9F%A5%E8%AF%86%E8%A1%A5%E5%85%85.md/9.CSharp%E5%90%84%E7%89%88%E6%9C%AC%E6%96%B0%E5%8A%9F%E8%83%BD%E5%92%8C%E8%AF%AD%E6%B3%95-CSharp5%E5%8A%9F%E8%83%BD%E5%92%8C%E8%AF%AD%E6%B3%95-Task%E4%BB%BB%E5%8A%A1%E7%B1%BB/"
+           data-tag="基础知识,Unity,Unity进阶,CSharp知识补充,CSharp各版本新功能和语法"
+           data-author="" >
+            <span class="post-title" title="9.Task任务类">9.Task任务类</span>
+            <span class="post-date" title="2024-03-15 05:26:18">2024/03/15</span>
+        </a>
+        
+        
+        <a  class="全部文章 Unity Unity进阶CSharp知识补充 "
+           href="/2024/03/14/Unity/08.Unity%E8%BF%9B%E9%98%B6CSharp%E7%9F%A5%E8%AF%86%E8%A1%A5%E5%85%85.md/8.CSharp%E5%90%84%E7%89%88%E6%9C%AC%E6%96%B0%E5%8A%9F%E8%83%BD%E5%92%8C%E8%AF%AD%E6%B3%95-CSharp5%E5%8A%9F%E8%83%BD%E5%92%8C%E8%AF%AD%E6%B3%95-%E7%BA%BF%E7%A8%8B%E5%92%8C%E7%BA%BF%E7%A8%8B%E6%B1%A0/"
+           data-tag="基础知识,Unity,Unity进阶,CSharp知识补充,CSharp各版本新功能和语法"
+           data-author="" >
+            <span class="post-title" title="8.线程和线程池">8.线程和线程池</span>
+            <span class="post-date" title="2024-03-14 23:51:43">2024/03/14</span>
+        </a>
+        
+        
+        <a  class="全部文章 Unity Unity进阶CSharp知识补充 "
+           href="/2024/03/14/Unity/08.Unity%E8%BF%9B%E9%98%B6CSharp%E7%9F%A5%E8%AF%86%E8%A1%A5%E5%85%85.md/7.CSharp%E5%90%84%E7%89%88%E6%9C%AC%E6%96%B0%E5%8A%9F%E8%83%BD%E5%92%8C%E8%AF%AD%E6%B3%95-CSharp1-4%E5%8A%9F%E8%83%BD%E5%92%8C%E8%AF%AD%E6%B3%95/"
+           data-tag="基础知识,Unity,Unity进阶,CSharp知识补充,CSharp各版本新功能和语法"
+           data-author="" >
+            <span class="post-title" title="7.命名参数、可选参数和动态类型">7.命名参数、可选参数和动态类型</span>
+            <span class="post-date" title="2024-03-14 23:31:10">2024/03/14</span>
+        </a>
+        
+        
+        <a  class="全部文章 Unity Unity进阶CSharp知识补充 "
+           href="/2024/03/14/Unity/08.Unity%E8%BF%9B%E9%98%B6CSharp%E7%9F%A5%E8%AF%86%E8%A1%A5%E5%85%85.md/6.CSharp%E7%89%88%E6%9C%AC%E5%92%8CUnity%E7%9A%84%E5%85%B3%E7%B3%BB/"
+           data-tag="基础知识,Unity,Unity进阶,CSharp知识补充"
+           data-author="" >
+            <span class="post-title" title="6.CSharp版本和Unity的关系">6.CSharp版本和Unity的关系</span>
+            <span class="post-date" title="2024-03-14 23:26:26">2024/03/14</span>
+        </a>
         
         
         <a  class="全部文章 Unity Unity进阶CSharp知识补充 "
@@ -3227,7 +3260,7 @@
         
         <a  class="全部文章 Unity Unity基础基础知识 "
            href="/2024/02/28/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/4.3D%E6%95%B0%E5%AD%A6-%E5%9D%90%E6%A0%87%E7%B3%BB/"
-           data-tag="基础知识,坐标,Unity,Unity基础,3D数学"
+           data-tag="基础知识,Unity,坐标,Unity基础,3D数学"
            data-author="" >
             <span class="post-title" title="4.坐标系">4.坐标系</span>
             <span class="post-date" title="2024-02-28 12:39:16">2024/02/28</span>
@@ -4073,7 +4106,7 @@
         
         <a  class="全部文章 Unity Unity入门基础知识 "
            href="/2024/02/24/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/20.Unity%E9%87%8D%E8%A6%81%E7%BB%84%E4%BB%B6%E5%92%8CAPI-Transform%E5%9D%90%E6%A0%87%E8%BD%AC%E6%8D%A2/"
-           data-tag="基础知识,坐标,Unity,Unity入门,Unity重要组件和API"
+           data-tag="基础知识,Unity,Unity入门,Unity重要组件和API,坐标"
            data-author="" >
             <span class="post-title" title="20.Transform变换组件坐标转换">20.Transform变换组件坐标转换</span>
             <span class="post-date" title="2024-02-24 16:33:35">2024/02/24</span>
@@ -4469,7 +4502,7 @@
         
         <a  class="全部文章 CSharp CSharp进阶语法知识 "
            href="/2024/02/21/CSharp/07.Csharp%E8%BF%9B%E9%98%B6%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/22.%E5%8F%8D%E5%B0%84%E5%92%8C%E7%89%B9%E6%80%A7-%E7%89%B9%E6%80%A7/"
-           data-tag="CSharp,语法知识,反射和特性,CSharp进阶"
+           data-tag="CSharp,语法知识,CSharp进阶,反射和特性"
            data-author="" >
             <span class="post-title" title="22.特性">22.特性</span>
             <span class="post-date" title="2024-02-21 13:02:24">2024/02/21</span>
@@ -4478,7 +4511,7 @@
         
         <a  class="全部文章 CSharp CSharp进阶语法知识 "
            href="/2024/02/21/CSharp/07.Csharp%E8%BF%9B%E9%98%B6%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/21.%E5%8F%8D%E5%B0%84%E5%92%8C%E7%89%B9%E6%80%A7-%E5%8F%8D%E5%B0%84/"
-           data-tag="CSharp,语法知识,反射和特性,CSharp进阶"
+           data-tag="CSharp,语法知识,CSharp进阶,反射和特性"
            data-author="" >
             <span class="post-title" title="21.反射">21.反射</span>
             <span class="post-date" title="2024-02-21 09:49:59">2024/02/21</span>
@@ -4498,7 +4531,7 @@
            href="/2024/02/20/CSharp/07.Csharp%E8%BF%9B%E9%98%B6%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/19.%E5%A4%9A%E7%BA%BF%E7%A8%8B/"
            data-tag="CSharp,语法知识,CSharp进阶"
            data-author="" >
-            <span class="post-title" title="19.多线程">19.多线程</span>
+            <span class="post-title" title="19.多线程和锁">19.多线程和锁</span>
             <span class="post-date" title="2024-02-20 23:21:04">2024/02/20</span>
         </a>
         
@@ -5734,21 +5767,21 @@
             
             <a class="color5">语法知识</a>
             
-            <a class="color1">反射和特性</a>
-            
             <a class="color4">CSharp进阶</a>
+            
+            <a class="color1">反射和特性</a>
             
         </span>
         
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2024-02-23 10:40:59'>2024-02-21 13:02</time>
+            发布时间 : <time class="date" title='最后更新: 2024-03-15 12:37:47'>2024-02-21 13:02</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:6.8k</span>
+        <span>字数:7.3k</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -5778,7 +5811,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#22-%E5%8F%8D%E5%B0%84%E5%92%8C%E7%89%B9%E6%80%A7-%E7%89%B9%E6%80%A7"><span class="toc-text">22.反射和特性-特性</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#22-1-%E7%9F%A5%E8%AF%86%E7%82%B9"><span class="toc-text">22.1 知识点</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%89%B9%E6%80%A7%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-text">特性是什么</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E7%89%B9%E6%80%A7"><span class="toc-text">自定义特性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%89%B9%E6%80%A7%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-text">特性的使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%99%90%E5%88%B6%E8%87%AA%E5%AE%9A%E4%B9%89%E7%89%B9%E6%80%A7%E7%9A%84%E4%BD%BF%E7%94%A8%E8%8C%83%E5%9B%B4"><span class="toc-text">限制自定义特性的使用范围</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E8%87%AA%E5%B8%A6%E7%89%B9%E6%80%A7%E2%80%94%E2%80%94%E8%BF%87%E6%97%B6%E7%89%B9%E6%80%A7"><span class="toc-text">系统自带特性——过时特性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E8%87%AA%E5%B8%A6%E7%89%B9%E6%80%A7%E2%80%94%E2%80%94%E8%B0%83%E7%94%A8%E8%80%85%E4%BF%A1%E6%81%AF%E7%89%B9%E6%80%A7"><span class="toc-text">系统自带特性——调用者信息特性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E8%87%AA%E5%B8%A6%E7%89%B9%E6%80%A7%E2%80%94%E2%80%94%E6%9D%A1%E4%BB%B6%E7%BC%96%E8%AF%91%E7%89%B9%E6%80%A7"><span class="toc-text">系统自带特性——条件编译特性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E8%87%AA%E5%B8%A6%E7%89%B9%E6%80%A7%E2%80%94%E2%80%94%E5%A4%96%E9%83%A8-DLL-%E5%8C%85%E5%87%BD%E6%95%B0%E7%89%B9%E6%80%A7"><span class="toc-text">系统自带特性——外部 DLL 包函数特性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-text">总结</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#22-2-%E7%9F%A5%E8%AF%86%E7%82%B9%E4%BB%A3%E7%A0%81"><span class="toc-text">22.2 知识点代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#22-3-%E7%BB%83%E4%B9%A0%E9%A2%98"><span class="toc-text">22.3 练习题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BA%E5%8F%8D%E5%B0%84%E7%BB%83%E4%B9%A0%E9%A2%98%E4%B8%AD%E7%9A%84%E7%B1%BB%E5%BA%93%E5%B7%A5%E7%A8%8B%E4%B8%AD%E7%9A%84Player%E5%AF%B9%E8%B1%A1%EF%BC%8C%E9%9A%8F%E4%BE%BF%E4%B8%BA%E5%85%B6%E4%B8%AD%E4%B8%80%E4%B8%AA%E6%88%90%E5%91%98%E5%8F%98%E9%87%8F%E5%8A%A0%E4%B8%80%E4%B8%AA%E8%87%AA%E5%AE%9A%E4%B9%89%E7%89%B9%E6%80%A7%EF%BC%8C%E5%90%8C%E6%A0%B7%E5%AE%9E%E7%8E%B0%E5%8F%8D%E5%B0%84%E7%BB%83%E4%B9%A0%E9%A2%98%E4%B8%AD%E7%9A%84%E8%A6%81%E6%B1%82%EF%BC%8C%E4%BD%86%E6%98%AF%E5%BD%93%E5%9C%A8%E8%AE%BE%E7%BD%AE%E5%8A%A0%E4%BA%86%E8%87%AA%E5%AE%9A%E4%B9%89%E7%89%B9%E6%80%A7%E7%9A%84%E6%88%90%E5%91%98%E5%8F%98%E9%87%8F%E6%97%B6%EF%BC%8C%E5%9C%A8%E6%8E%A7%E5%88%B6%E5%8F%B0%E4%B8%AD%E6%89%93%E5%8D%B0%E4%B8%80%E5%8F%A5%EF%BC%8C%E9%9D%9E%E6%B3%95%E6%93%8D%E4%BD%9C%EF%BC%8C%E9%9A%8F%E6%84%8F%E4%BF%AE%E6%94%B9XXX%E6%88%90%E5%91%98"><span class="toc-text">为反射练习题中的类库工程中的Player对象，随便为其中一个成员变量加一个自定义特性，同样实现反射练习题中的要求，但是当在设置加了自定义特性的成员变量时，在控制台中打印一句，非法操作，随意修改XXX成员</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#22-4-%E7%BB%83%E4%B9%A0%E9%A2%98%E4%BB%A3%E7%A0%81"><span class="toc-text">22.4 练习题代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#22-5-%E7%B1%BB%E5%BA%93%E5%B7%A5%E7%A8%8B%E4%BB%A3%E7%A0%81"><span class="toc-text">22.5 类库工程代码</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#22-%E5%8F%8D%E5%B0%84%E5%92%8C%E7%89%B9%E6%80%A7-%E7%89%B9%E6%80%A7"><span class="toc-text">22.反射和特性-特性</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#22-1-%E7%9F%A5%E8%AF%86%E7%82%B9"><span class="toc-text">22.1 知识点</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%89%B9%E6%80%A7%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-text">特性是什么</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E7%89%B9%E6%80%A7"><span class="toc-text">自定义特性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%89%B9%E6%80%A7%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-text">特性的使用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Type-IsDefined%E6%96%B9%E6%B3%95-%E5%88%A4%E6%96%AD%E8%BF%99%E4%B8%AA%E7%B1%BB%E6%98%AF%E5%90%A6%E4%BD%BF%E7%94%A8%E4%BA%86%E6%9F%90%E4%B8%AA%E7%89%B9%E6%80%A7"><span class="toc-text">Type.IsDefined方法 判断这个类是否使用了某个特性</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Type-GetCustomAttributes%E6%96%B9%E6%B3%95-%E8%8E%B7%E5%8F%96Type%E7%B1%BB%E5%85%83%E6%95%B0%E6%8D%AE%E4%B8%AD%E7%9A%84%E6%89%80%E6%9C%89%E7%89%B9%E6%80%A7-%E4%B8%80%E4%B8%AA%E7%B1%BB%E5%8F%AF%E8%83%BD%E6%9C%89%E5%BE%88%E5%A4%9A%E7%89%B9%E6%80%A7%E4%B8%80%E8%B5%B7%E4%BF%AE%E9%A5%B0-%E8%BF%94%E5%9B%9E%E4%B8%80%E4%B8%AAobject%E6%95%B0%E7%BB%84"><span class="toc-text">Type.GetCustomAttributes方法 获取Type类元数据中的所有特性 一个类可能有很多特性一起修饰 返回一个object数组</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%99%90%E5%88%B6%E8%87%AA%E5%AE%9A%E4%B9%89%E7%89%B9%E6%80%A7%E7%9A%84%E4%BD%BF%E7%94%A8%E8%8C%83%E5%9B%B4"><span class="toc-text">限制自定义特性的使用范围</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E8%87%AA%E5%B8%A6%E7%89%B9%E6%80%A7%E2%80%94%E2%80%94%E8%BF%87%E6%97%B6%E7%89%B9%E6%80%A7"><span class="toc-text">系统自带特性——过时特性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E8%87%AA%E5%B8%A6%E7%89%B9%E6%80%A7%E2%80%94%E2%80%94%E8%B0%83%E7%94%A8%E8%80%85%E4%BF%A1%E6%81%AF%E7%89%B9%E6%80%A7"><span class="toc-text">系统自带特性——调用者信息特性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E8%87%AA%E5%B8%A6%E7%89%B9%E6%80%A7%E2%80%94%E2%80%94%E6%9D%A1%E4%BB%B6%E7%BC%96%E8%AF%91%E7%89%B9%E6%80%A7"><span class="toc-text">系统自带特性——条件编译特性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E8%87%AA%E5%B8%A6%E7%89%B9%E6%80%A7%E2%80%94%E2%80%94%E5%A4%96%E9%83%A8-DLL-%E5%8C%85%E5%87%BD%E6%95%B0%E7%89%B9%E6%80%A7"><span class="toc-text">系统自带特性——外部 DLL 包函数特性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-text">总结</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#22-2-%E7%9F%A5%E8%AF%86%E7%82%B9%E4%BB%A3%E7%A0%81"><span class="toc-text">22.2 知识点代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#22-3-%E7%BB%83%E4%B9%A0%E9%A2%98"><span class="toc-text">22.3 练习题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BA%E5%8F%8D%E5%B0%84%E7%BB%83%E4%B9%A0%E9%A2%98%E4%B8%AD%E7%9A%84%E7%B1%BB%E5%BA%93%E5%B7%A5%E7%A8%8B%E4%B8%AD%E7%9A%84Player%E5%AF%B9%E8%B1%A1%EF%BC%8C%E9%9A%8F%E4%BE%BF%E4%B8%BA%E5%85%B6%E4%B8%AD%E4%B8%80%E4%B8%AA%E6%88%90%E5%91%98%E5%8F%98%E9%87%8F%E5%8A%A0%E4%B8%80%E4%B8%AA%E8%87%AA%E5%AE%9A%E4%B9%89%E7%89%B9%E6%80%A7%EF%BC%8C%E5%90%8C%E6%A0%B7%E5%AE%9E%E7%8E%B0%E5%8F%8D%E5%B0%84%E7%BB%83%E4%B9%A0%E9%A2%98%E4%B8%AD%E7%9A%84%E8%A6%81%E6%B1%82%EF%BC%8C%E4%BD%86%E6%98%AF%E5%BD%93%E5%9C%A8%E8%AE%BE%E7%BD%AE%E5%8A%A0%E4%BA%86%E8%87%AA%E5%AE%9A%E4%B9%89%E7%89%B9%E6%80%A7%E7%9A%84%E6%88%90%E5%91%98%E5%8F%98%E9%87%8F%E6%97%B6%EF%BC%8C%E5%9C%A8%E6%8E%A7%E5%88%B6%E5%8F%B0%E4%B8%AD%E6%89%93%E5%8D%B0%E4%B8%80%E5%8F%A5%EF%BC%8C%E9%9D%9E%E6%B3%95%E6%93%8D%E4%BD%9C%EF%BC%8C%E9%9A%8F%E6%84%8F%E4%BF%AE%E6%94%B9XXX%E6%88%90%E5%91%98"><span class="toc-text">为反射练习题中的类库工程中的Player对象，随便为其中一个成员变量加一个自定义特性，同样实现反射练习题中的要求，但是当在设置加了自定义特性的成员变量时，在控制台中打印一句，非法操作，随意修改XXX成员</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#22-4-%E7%BB%83%E4%B9%A0%E9%A2%98%E4%BB%A3%E7%A0%81"><span class="toc-text">22.4 练习题代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#22-5-%E7%B1%BB%E5%BA%93%E5%B7%A5%E7%A8%8B%E4%BB%A3%E7%A0%81"><span class="toc-text">22.5 类库工程代码</span></a></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -5842,6 +5875,40 @@ class MyClass
     public void myClassFun([MyCustom(&quot;这是我的类中的测试函数的参数&quot;)] int a)
     &#123;
 
+    &#125;
+&#125;
+</code></pre>
+<p>在主函数中使用</p>
+<p>实例化测试类对象</p>
+<pre><code class="csharp">//创建myClass变量 得到myClass的Type
+MyClass myClass = new MyClass();
+Type myClassType = myClass.GetType();
+//myClassType = typeof(MyClass);
+//myClassType = Type.GetType(&quot;Lesson21_特性.MyClass&quot;);
+</code></pre>
+<h4 id="Type-IsDefined方法-判断这个类是否使用了某个特性"><a href="#Type-IsDefined方法-判断这个类是否使用了某个特性" class="headerlink" title="Type.IsDefined方法 判断这个类是否使用了某个特性"></a>Type.IsDefined方法 判断这个类是否使用了某个特性</h4><pre><code class="csharp">//Type类中的IsDefined方法 判断这个类是否使用了某个特性 返回一个bool值
+//参数一：特性的类型 传入特性的Type
+//参数二：代表是否搜索继承链 比如父类里面有没有这个特性 属性和事件忽略此参数
+//注意：Type类中的IsDefined方法只会判断这个类有没有使用某个特性 假如这个类没有使用这个特性 但是类中的其他成员使用了这个特性 仍然返回false
+if (myClassType.IsDefined(typeof(MyCustomAttribute), false))
+&#123;
+    Console.WriteLine(&quot;该类型应用了MyCustom特性&quot;);//该类型应用了MyCustom特性
+&#125;
+</code></pre>
+<h4 id="Type-GetCustomAttributes方法-获取Type类元数据中的所有特性-一个类可能有很多特性一起修饰-返回一个object数组"><a href="#Type-GetCustomAttributes方法-获取Type类元数据中的所有特性-一个类可能有很多特性一起修饰-返回一个object数组" class="headerlink" title="Type.GetCustomAttributes方法 获取Type类元数据中的所有特性 一个类可能有很多特性一起修饰 返回一个object数组"></a>Type.GetCustomAttributes方法 获取Type类元数据中的所有特性 一个类可能有很多特性一起修饰 返回一个object数组</h4><pre><code class="csharp">//Type类中的GetCustomAttributes方法 获取Type类元数据中的所有特性 一个类可能有很多特性一起修饰 返回一个object数组
+//参数一：代表是否搜索继承链 比如父类里面有没有这个特性 属性和事件忽略此参数
+object[] myClassTypeAllCustomAttributesArray = myClassType.GetCustomAttributes(true);
+
+//for循环遍历Type类元数据中的所有特性数组 判断特性是不是你想得到的特性 是的话可以调用特性中的成员
+for (int i = 0; i &lt; myClassTypeAllCustomAttributesArray.Length; i++)
+&#123;
+    //一个类可能有很多特性一起修饰 用is判断特性是不是你想得到的特性
+    if (myClassTypeAllCustomAttributesArray[i] is MyCustomAttribute)
+    &#123;
+        //输出我的自定义特性类中的信息
+        Console.WriteLine((myClassTypeAllCustomAttributesArray[i] as MyCustomAttribute).myCustomAttributeInfo);//这个是我自己写的一个我的类
+        //调用我的自定义特性类中的函数
+        (myClassTypeAllCustomAttributesArray[i] as MyCustomAttribute).MyCustomAttributeFun();//我的自定义特性类中的函数
     &#125;
 &#125;
 </code></pre>
