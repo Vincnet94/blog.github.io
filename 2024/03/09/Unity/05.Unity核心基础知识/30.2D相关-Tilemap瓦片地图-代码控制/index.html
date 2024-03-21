@@ -6,28 +6,32 @@
   <meta name="keywords" content=" 基础知识 , Unity , Unity核心 , 2D相关 , Tilemap瓦片地图 ">
   <meta name="description" content="30.Tilemap瓦片地图代码控制 | 人间自有韬哥在的游戏开发博客">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="19.总结 19.1 知识点 学习的主要内容 总结讲什么 对比 选择建议 总结">
+<meta name="description" content="1.概述 1.1 知识点 知识回顾 什么是数据持久化 如何理解不同后缀的文件 2进制是什么 学习2进制读写数据的原因 数据持久化之2进制的好处 主要学习方式 学会后对于我们的意义">
 <meta property="og:type" content="article">
-<meta property="og:title" content="19.总结">
-<meta property="og:url" content="https://linwentao785293209.github.io/2024/03/20/Unity/10.Unity%E8%BF%9B%E9%98%B6InputSystem/19.%E6%80%BB%E7%BB%93/index.html">
+<meta property="og:title" content="1.概述">
+<meta property="og:url" content="https://linwentao785293209.github.io/2024/03/21/%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96/07.%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/1.%E6%A6%82%E8%BF%B0/index.html">
 <meta property="og:site_name" content="人间自有韬哥在的游戏开发博客">
-<meta property="og:description" content="19.总结 19.1 知识点 学习的主要内容 总结讲什么 对比 选择建议 总结">
+<meta property="og:description" content="1.概述 1.1 知识点 知识回顾 什么是数据持久化 如何理解不同后缀的文件 2进制是什么 学习2进制读写数据的原因 数据持久化之2进制的好处 主要学习方式 学会后对于我们的意义">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/10.Unity%E8%BF%9B%E9%98%B6InputSystem/19.%E6%80%BB%E7%BB%93/1.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/10.Unity%E8%BF%9B%E9%98%B6InputSystem/19.%E6%80%BB%E7%BB%93/2.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/10.Unity%E8%BF%9B%E9%98%B6InputSystem/19.%E6%80%BB%E7%BB%93/3.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/10.Unity%E8%BF%9B%E9%98%B6InputSystem/19.%E6%80%BB%E7%BB%93/4.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/10.Unity%E8%BF%9B%E9%98%B6InputSystem/19.%E6%80%BB%E7%BB%93/5.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/10.Unity%E8%BF%9B%E9%98%B6InputSystem/19.%E6%80%BB%E7%BB%93/6.png">
-<meta property="article:published_time" content="2024-03-20T14:22:06.000Z">
-<meta property="article:modified_time" content="2024-03-20T14:25:40.814Z">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96/07.%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/1.%E6%A6%82%E8%BF%B0/1.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96/07.%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/1.%E6%A6%82%E8%BF%B0/2.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96/07.%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/1.%E6%A6%82%E8%BF%B0/3.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96/07.%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/1.%E6%A6%82%E8%BF%B0/4.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96/07.%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/1.%E6%A6%82%E8%BF%B0/5.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96/07.%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/1.%E6%A6%82%E8%BF%B0/6.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96/07.%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/1.%E6%A6%82%E8%BF%B0/7.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96/07.%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/1.%E6%A6%82%E8%BF%B0/8.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96/07.%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/1.%E6%A6%82%E8%BF%B0/9.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96/07.%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/1.%E6%A6%82%E8%BF%B0/10.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96/07.%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/1.%E6%A6%82%E8%BF%B0/11.png">
+<meta property="article:published_time" content="2024-03-21T01:19:47.000Z">
+<meta property="article:modified_time" content="2024-03-21T01:25:02.102Z">
 <meta property="article:author" content="人间自有韬哥在">
 <meta property="article:tag" content="基础知识">
-<meta property="article:tag" content="Unity">
-<meta property="article:tag" content="Unity进阶">
-<meta property="article:tag" content="InputSystem">
+<meta property="article:tag" content="数据持久化">
+<meta property="article:tag" content="二进制">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://linwentao785293209.github.io/images/Unity/10.Unity%E8%BF%9B%E9%98%B6InputSystem/19.%E6%80%BB%E7%BB%93/1.png">
+<meta name="twitter:image" content="https://linwentao785293209.github.io/images/%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96/07.%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/1.%E6%A6%82%E8%BF%B0/1.png">
 
 
 <link rel="icon" href="/img/avatar.jpg">
@@ -154,7 +158,7 @@
     <li>
         <div class="all active" data-rel="全部文章">全部文章
             
-                <small>(556)</small>
+                <small>(564)</small>
             
         </div>
     </li>
@@ -305,7 +309,7 @@
         <div data-rel="Unity">
             <i class="fold iconfont icon-right"></i>
             Unity
-            <small>(259)</small>
+            <small>(266)</small>
         </div>
         
             <ul class="sub hide">
@@ -420,10 +424,25 @@
     </li>
 
                 
+                    
+    <li>
+        <div data-rel="Unity&lt;---&gt;Unity进阶视频播放">
+            
+            Unity进阶视频播放
+            <small>(7)</small>
+        </div>
+        
+    </li>
+
+                
             </ul>
         
     </li>
 
+            
+        
+    
+        
             
         
     
@@ -474,7 +493,7 @@
         <div data-rel="数据持久化">
             <i class="fold iconfont icon-right"></i>
             数据持久化
-            <small>(42)</small>
+            <small>(43)</small>
         </div>
         
             <ul class="sub hide">
@@ -545,10 +564,25 @@
     </li>
 
                 
+                    
+    <li>
+        <div data-rel="数据持久化&lt;---&gt;二进制基础知识">
+            
+            二进制基础知识
+            <small>(1)</small>
+        </div>
+        
+    </li>
+
+                
             </ul>
         
     </li>
 
+            
+        
+    
+        
             
         
     
@@ -700,8 +734,8 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="556">
-<input type="hidden" id="yelog_site_word_count" value="889k">
+<input type="hidden" id="yelog_site_posts_number" value="564">
+<input type="hidden" id="yelog_site_word_count" value="895.8k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -799,6 +833,10 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>二进制</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>反射和特性</a>
             </li>
         
@@ -884,6 +922,10 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>实践项目</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>视频播放</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -1104,6 +1146,78 @@
 
     
     <nav id="title-list-nav">
+        
+        
+        <a  class="全部文章 数据持久化 二进制基础知识 "
+           href="/2024/03/21/%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96/07.%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/1.%E6%A6%82%E8%BF%B0/"
+           data-tag="基础知识,数据持久化,二进制"
+           data-author="" >
+            <span class="post-title" title="1.概述">1.概述</span>
+            <span class="post-date" title="2024-03-21 09:19:47">2024/03/21</span>
+        </a>
+        
+        
+        <a  class="全部文章 Unity Unity进阶视频播放 "
+           href="/2024/03/21/Unity/11.Unity%E8%BF%9B%E9%98%B6%E8%A7%86%E9%A2%91%E6%92%AD%E6%94%BE/7.%E6%80%BB%E7%BB%93/"
+           data-tag="基础知识,Unity,Unity进阶,视频播放"
+           data-author="" >
+            <span class="post-title" title="7.总结">7.总结</span>
+            <span class="post-date" title="2024-03-21 09:14:54">2024/03/21</span>
+        </a>
+        
+        
+        <a  class="全部文章 Unity Unity进阶视频播放 "
+           href="/2024/03/21/Unity/11.Unity%E8%BF%9B%E9%98%B6%E8%A7%86%E9%A2%91%E6%92%AD%E6%94%BE/6.%E5%85%A8%E6%99%AF%E8%A7%86%E9%A2%91/"
+           data-tag="基础知识,Unity,Unity进阶,视频播放"
+           data-author="" >
+            <span class="post-title" title="6.全景视频">6.全景视频</span>
+            <span class="post-date" title="2024-03-21 09:07:20">2024/03/21</span>
+        </a>
+        
+        
+        <a  class="全部文章 Unity Unity进阶视频播放 "
+           href="/2024/03/21/Unity/11.Unity%E8%BF%9B%E9%98%B6%E8%A7%86%E9%A2%91%E6%92%AD%E6%94%BE/5.VideoPlayer%E8%A7%86%E9%A2%91%E6%92%AD%E6%94%BE%E5%99%A8/"
+           data-tag="基础知识,Unity,Unity进阶,视频播放"
+           data-author="" >
+            <span class="post-title" title="5.VideoPlayer视频播放器">5.VideoPlayer视频播放器</span>
+            <span class="post-date" title="2024-03-21 08:28:15">2024/03/21</span>
+        </a>
+        
+        
+        <a  class="全部文章 Unity Unity进阶视频播放 "
+           href="/2024/03/20/Unity/11.Unity%E8%BF%9B%E9%98%B6%E8%A7%86%E9%A2%91%E6%92%AD%E6%94%BE/4.%E8%A7%86%E9%A2%91%E5%89%AA%E8%BE%91%E8%AE%BE%E7%BD%AE%E7%9B%B8%E5%85%B3/"
+           data-tag="基础知识,Unity,Unity进阶,视频播放"
+           data-author="" >
+            <span class="post-title" title="4.视频资源参数">4.视频资源参数</span>
+            <span class="post-date" title="2024-03-20 23:42:25">2024/03/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 Unity Unity进阶视频播放 "
+           href="/2024/03/20/Unity/11.Unity%E8%BF%9B%E9%98%B6%E8%A7%86%E9%A2%91%E6%92%AD%E6%94%BE/3.Unity%E4%B8%AD%E7%9A%84%E8%A7%86%E9%A2%91%E5%85%BC%E5%AE%B9%E6%80%A7/"
+           data-tag="基础知识,Unity,Unity进阶,视频播放"
+           data-author="" >
+            <span class="post-title" title="3.Unity中的视频兼容性">3.Unity中的视频兼容性</span>
+            <span class="post-date" title="2024-03-20 23:32:51">2024/03/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 Unity Unity进阶视频播放 "
+           href="/2024/03/20/Unity/11.Unity%E8%BF%9B%E9%98%B6%E8%A7%86%E9%A2%91%E6%92%AD%E6%94%BE/2.%E8%A7%86%E9%A2%91%E6%A0%BC%E5%BC%8F%E5%92%8C%E7%BC%96%E8%A7%A3%E7%A0%81%E5%99%A8/"
+           data-tag="基础知识,Unity,Unity进阶,视频播放"
+           data-author="" >
+            <span class="post-title" title="2.视频格式和编解码器">2.视频格式和编解码器</span>
+            <span class="post-date" title="2024-03-20 23:26:38">2024/03/20</span>
+        </a>
+        
+        
+        <a  class="全部文章 Unity Unity进阶视频播放 "
+           href="/2024/03/20/Unity/11.Unity%E8%BF%9B%E9%98%B6%E8%A7%86%E9%A2%91%E6%92%AD%E6%94%BE/1.%E6%A6%82%E8%BF%B0/"
+           data-tag="基础知识,Unity,Unity进阶,视频播放"
+           data-author="" >
+            <span class="post-title" title="1.概述">1.概述</span>
+            <span class="post-date" title="2024-03-20 23:25:13">2024/03/20</span>
+        </a>
         
         
         <a  class="全部文章 Unity Unity进阶InputSystem "
@@ -2035,7 +2149,7 @@
         
         <a  class="全部文章 UI系统 UGUI基础知识 "
            href="/2024/03/11/UI%E7%B3%BB%E7%BB%9F/05.UGUI%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/7.UGUI%E5%9F%BA%E7%A1%80-%E5%85%AD%E5%A4%A7%E5%9F%BA%E7%A1%80%E7%BB%84%E4%BB%B6-RectTransform%E7%9F%A9%E5%BD%A2%E5%8F%98%E6%8D%A2%E7%BB%84%E4%BB%B6/"
-           data-tag="UI系统,基础知识,基础组件,UGUI"
+           data-tag="UI系统,基础知识,UGUI,基础组件"
            data-author="" >
             <span class="post-title" title="7.RectTransform矩形变换组件">7.RectTransform矩形变换组件</span>
             <span class="post-date" title="2024-03-11 09:11:02">2024/03/11</span>
@@ -2044,7 +2158,7 @@
         
         <a  class="全部文章 UI系统 UGUI基础知识 "
            href="/2024/03/11/UI%E7%B3%BB%E7%BB%9F/05.UGUI%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/6.UGUI%E5%9F%BA%E7%A1%80-%E5%85%AD%E5%A4%A7%E5%9F%BA%E7%A1%80%E7%BB%84%E4%BB%B6-EventSystem%E4%BA%8B%E4%BB%B6%E7%B3%BB%E7%BB%9F%E7%BB%84%E4%BB%B6%E5%92%8CStandaloneInputModule%E7%8B%AC%E7%AB%8B%E8%BE%93%E5%85%A5%E6%A8%A1%E5%9D%97%E7%BB%84%E4%BB%B6/"
-           data-tag="UI系统,基础知识,基础组件,UGUI"
+           data-tag="UI系统,基础知识,UGUI,基础组件"
            data-author="" >
             <span class="post-title" title="6.EventSystem事件系统组件和StandaloneInputModule独立输入模块组件">6.EventSystem事件系统组件和StandaloneInputModule独立输入模块组件</span>
             <span class="post-date" title="2024-03-11 09:02:36">2024/03/11</span>
@@ -2053,7 +2167,7 @@
         
         <a  class="全部文章 UI系统 UGUI基础知识 "
            href="/2024/03/11/UI%E7%B3%BB%E7%BB%9F/05.UGUI%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/5.UGUI%E5%9F%BA%E7%A1%80-%E5%85%AD%E5%A4%A7%E5%9F%BA%E7%A1%80%E7%BB%84%E4%BB%B6-GraphicRaycaster%E5%9B%BE%E5%BD%A2%E5%B0%84%E7%BA%BF%E6%8A%95%E5%B0%84%E5%99%A8%E7%BB%84%E4%BB%B6/"
-           data-tag="UI系统,基础知识,基础组件,UGUI"
+           data-tag="UI系统,基础知识,UGUI,基础组件"
            data-author="" >
             <span class="post-title" title="5.GraphicRaycaster图形射线投射器组件">5.GraphicRaycaster图形射线投射器组件</span>
             <span class="post-date" title="2024-03-11 08:53:22">2024/03/11</span>
@@ -2062,7 +2176,7 @@
         
         <a  class="全部文章 UI系统 UGUI基础知识 "
            href="/2024/03/10/UI%E7%B3%BB%E7%BB%9F/05.UGUI%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/4.UGUI%E5%9F%BA%E7%A1%80-%E5%85%AD%E5%A4%A7%E5%9F%BA%E7%A1%80%E7%BB%84%E4%BB%B6-CanvasScaler%E7%94%BB%E5%B8%83%E7%BC%A9%E6%94%BE%E5%99%A8%E7%BB%84%E4%BB%B6/"
-           data-tag="UI系统,基础知识,基础组件,UGUI"
+           data-tag="UI系统,基础知识,UGUI,基础组件"
            data-author="" >
             <span class="post-title" title="4.CanvasScaler画布缩放器组件">4.CanvasScaler画布缩放器组件</span>
             <span class="post-date" title="2024-03-10 22:36:20">2024/03/10</span>
@@ -2071,7 +2185,7 @@
         
         <a  class="全部文章 UI系统 UGUI基础知识 "
            href="/2024/03/10/UI%E7%B3%BB%E7%BB%9F/05.UGUI%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/3.UGUI%E5%9F%BA%E7%A1%80-%E5%85%AD%E5%A4%A7%E5%9F%BA%E7%A1%80%E7%BB%84%E4%BB%B6-Canvas%E7%94%BB%E5%B8%83%E7%BB%84%E4%BB%B6/"
-           data-tag="UI系统,基础知识,基础组件,UGUI"
+           data-tag="UI系统,基础知识,UGUI,基础组件"
            data-author="" >
             <span class="post-title" title="3.Canvas画布组件">3.Canvas画布组件</span>
             <span class="post-date" title="2024-03-10 22:29:59">2024/03/10</span>
@@ -2080,7 +2194,7 @@
         
         <a  class="全部文章 UI系统 UGUI基础知识 "
            href="/2024/03/10/UI%E7%B3%BB%E7%BB%9F/05.UGUI%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2.UGUI%E5%9F%BA%E7%A1%80-%E5%85%AD%E5%A4%A7%E5%9F%BA%E7%A1%80%E7%BB%84%E4%BB%B6-%E6%A6%82%E8%BF%B0/"
-           data-tag="UI系统,基础知识,基础组件,UGUI"
+           data-tag="UI系统,基础知识,UGUI,基础组件"
            data-author="" >
             <span class="post-title" title="2.基础组件概述">2.基础组件概述</span>
             <span class="post-date" title="2024-03-10 21:38:52">2024/03/10</span>
