@@ -6,28 +6,36 @@
   <meta name="keywords" content=" 实践项目 , 必备知识点 , 数据持久化 , Xml ">
   <meta name="description" content="2.反序列化Xml | 人间自有韬哥在的游戏开发博客">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="5.FGUI基础-基础知识-包的概念 5.1 知识点包的定义 包是FairyGUI中用于组织资源的。 在文件系统中，每个包在assets文件夹下都表示为一个子目录。 在最终打包过程中，也是以包为单位进行打包的。 每个包都包含一个名为package.xml的数据文件，它记录了包中的资源关联信息，如控件位置、资源等等。这个文件非常重要。 在包发布后，会生成一个描述文件和一张或多张纹理集（图集）。 当我">
+<meta name="description" content="7.FGUI基础-基础知识-发布UI 7.1 知识点发布设置讲解打开发布设置 发布设置窗口 包列表切换包设置和全局设置 一般先设置好全局设置再设置包设置  全局设置 打包  发布路径：发布结果放置的目录。发布路径支持相对于项目根目录的相对路径和绝对路径。相对路径需要手工输入，不能通过“浏览”按钮选择。注意：如果你的 UI 项目同时在 Windows 和 Mac 下使用，路径分割符应该使用 “&amp;#x">
 <meta property="og:type" content="article">
-<meta property="og:title" content="5.包的概念">
-<meta property="og:url" content="https://linwentao785293209.github.io/2024/03/22/UI%E7%B3%BB%E7%BB%9F/07.FGUI%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/5.FGUI%E5%9F%BA%E7%A1%80-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86-%E5%8C%85%E7%9A%84%E6%A6%82%E5%BF%B5/index.html">
+<meta property="og:title" content="7.发布UI和发布设置">
+<meta property="og:url" content="https://linwentao785293209.github.io/2024/03/22/UI%E7%B3%BB%E7%BB%9F/07.FGUI%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/7.FGUI%E5%9F%BA%E7%A1%80-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86-%E5%8F%91%E5%B8%83UI/index.html">
 <meta property="og:site_name" content="人间自有韬哥在的游戏开发博客">
-<meta property="og:description" content="5.FGUI基础-基础知识-包的概念 5.1 知识点包的定义 包是FairyGUI中用于组织资源的。 在文件系统中，每个包在assets文件夹下都表示为一个子目录。 在最终打包过程中，也是以包为单位进行打包的。 每个包都包含一个名为package.xml的数据文件，它记录了包中的资源关联信息，如控件位置、资源等等。这个文件非常重要。 在包发布后，会生成一个描述文件和一张或多张纹理集（图集）。 当我">
+<meta property="og:description" content="7.FGUI基础-基础知识-发布UI 7.1 知识点发布设置讲解打开发布设置 发布设置窗口 包列表切换包设置和全局设置 一般先设置好全局设置再设置包设置  全局设置 打包  发布路径：发布结果放置的目录。发布路径支持相对于项目根目录的相对路径和绝对路径。相对路径需要手工输入，不能通过“浏览”按钮选择。注意：如果你的 UI 项目同时在 Windows 和 Mac 下使用，路径分割符应该使用 “&amp;#x">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/UI%E7%B3%BB%E7%BB%9F/07.FGUI%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/5.FGUI%E5%9F%BA%E7%A1%80-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86-%E5%8C%85%E7%9A%84%E6%A6%82%E5%BF%B5/1.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/UI%E7%B3%BB%E7%BB%9F/07.FGUI%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/5.FGUI%E5%9F%BA%E7%A1%80-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86-%E5%8C%85%E7%9A%84%E6%A6%82%E5%BF%B5/2.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/UI%E7%B3%BB%E7%BB%9F/07.FGUI%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/5.FGUI%E5%9F%BA%E7%A1%80-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86-%E5%8C%85%E7%9A%84%E6%A6%82%E5%BF%B5/3.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/UI%E7%B3%BB%E7%BB%9F/07.FGUI%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/5.FGUI%E5%9F%BA%E7%A1%80-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86-%E5%8C%85%E7%9A%84%E6%A6%82%E5%BF%B5/7.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/UI%E7%B3%BB%E7%BB%9F/07.FGUI%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/5.FGUI%E5%9F%BA%E7%A1%80-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86-%E5%8C%85%E7%9A%84%E6%A6%82%E5%BF%B5/4.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/UI%E7%B3%BB%E7%BB%9F/07.FGUI%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/5.FGUI%E5%9F%BA%E7%A1%80-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86-%E5%8C%85%E7%9A%84%E6%A6%82%E5%BF%B5/5.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/UI%E7%B3%BB%E7%BB%9F/07.FGUI%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/5.FGUI%E5%9F%BA%E7%A1%80-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86-%E5%8C%85%E7%9A%84%E6%A6%82%E5%BF%B5/6.png">
-<meta property="article:published_time" content="2024-03-22T04:58:48.000Z">
-<meta property="article:modified_time" content="2024-03-22T05:03:23.984Z">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/UI%E7%B3%BB%E7%BB%9F/07.FGUI%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/7.FGUI%E5%9F%BA%E7%A1%80-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86-%E5%8F%91%E5%B8%83UI/1.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/UI%E7%B3%BB%E7%BB%9F/07.FGUI%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/7.FGUI%E5%9F%BA%E7%A1%80-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86-%E5%8F%91%E5%B8%83UI/2.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/UI%E7%B3%BB%E7%BB%9F/07.FGUI%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/7.FGUI%E5%9F%BA%E7%A1%80-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86-%E5%8F%91%E5%B8%83UI/3.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/UI%E7%B3%BB%E7%BB%9F/07.FGUI%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/7.FGUI%E5%9F%BA%E7%A1%80-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86-%E5%8F%91%E5%B8%83UI/4.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/UI%E7%B3%BB%E7%BB%9F/07.FGUI%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/7.FGUI%E5%9F%BA%E7%A1%80-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86-%E5%8F%91%E5%B8%83UI/5.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/UI%E7%B3%BB%E7%BB%9F/07.FGUI%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/7.FGUI%E5%9F%BA%E7%A1%80-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86-%E5%8F%91%E5%B8%83UI/6.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/UI%E7%B3%BB%E7%BB%9F/07.FGUI%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/7.FGUI%E5%9F%BA%E7%A1%80-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86-%E5%8F%91%E5%B8%83UI/7.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/UI%E7%B3%BB%E7%BB%9F/07.FGUI%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/7.FGUI%E5%9F%BA%E7%A1%80-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86-%E5%8F%91%E5%B8%83UI/8.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/UI%E7%B3%BB%E7%BB%9F/07.FGUI%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/7.FGUI%E5%9F%BA%E7%A1%80-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86-%E5%8F%91%E5%B8%83UI/9.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/UI%E7%B3%BB%E7%BB%9F/07.FGUI%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/7.FGUI%E5%9F%BA%E7%A1%80-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86-%E5%8F%91%E5%B8%83UI/10.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/UI%E7%B3%BB%E7%BB%9F/07.FGUI%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/7.FGUI%E5%9F%BA%E7%A1%80-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86-%E5%8F%91%E5%B8%83UI/11.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/UI%E7%B3%BB%E7%BB%9F/07.FGUI%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/7.FGUI%E5%9F%BA%E7%A1%80-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86-%E5%8F%91%E5%B8%83UI/12.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/UI%E7%B3%BB%E7%BB%9F/07.FGUI%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/7.FGUI%E5%9F%BA%E7%A1%80-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86-%E5%8F%91%E5%B8%83UI/13.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/UI%E7%B3%BB%E7%BB%9F/07.FGUI%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/7.FGUI%E5%9F%BA%E7%A1%80-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86-%E5%8F%91%E5%B8%83UI/14.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/UI%E7%B3%BB%E7%BB%9F/07.FGUI%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/7.FGUI%E5%9F%BA%E7%A1%80-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86-%E5%8F%91%E5%B8%83UI/15.png">
+<meta property="article:published_time" content="2024-03-22T12:30:25.000Z">
+<meta property="article:modified_time" content="2024-03-22T13:10:32.680Z">
 <meta property="article:author" content="人间自有韬哥在">
 <meta property="article:tag" content="UI系统">
 <meta property="article:tag" content="基础知识">
 <meta property="article:tag" content="FGUI">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://linwentao785293209.github.io/images/UI%E7%B3%BB%E7%BB%9F/07.FGUI%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/5.FGUI%E5%9F%BA%E7%A1%80-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86-%E5%8C%85%E7%9A%84%E6%A6%82%E5%BF%B5/1.png">
+<meta name="twitter:image" content="https://linwentao785293209.github.io/images/UI%E7%B3%BB%E7%BB%9F/07.FGUI%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/7.FGUI%E5%9F%BA%E7%A1%80-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86-%E5%8F%91%E5%B8%83UI/1.png">
 
 
 <link rel="icon" href="/img/avatar.jpg">
@@ -154,7 +162,7 @@
     <li>
         <div class="all active" data-rel="全部文章">全部文章
             
-                <small>(590)</small>
+                <small>(592)</small>
             
         </div>
     </li>
@@ -628,7 +636,7 @@
         <div data-rel="UI系统">
             <i class="fold iconfont icon-right"></i>
             UI系统
-            <small>(100)</small>
+            <small>(102)</small>
         </div>
         
             <ul class="sub hide">
@@ -704,7 +712,7 @@
         <div data-rel="UI系统&lt;---&gt;FGUI基础知识">
             
             FGUI基础知识
-            <small>(5)</small>
+            <small>(7)</small>
         </div>
         
     </li>
@@ -760,8 +768,8 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="590">
-<input type="hidden" id="yelog_site_word_count" value="929.4k">
+<input type="hidden" id="yelog_site_posts_number" value="592">
+<input type="hidden" id="yelog_site_word_count" value="935.1k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -1184,6 +1192,24 @@
 
     
     <nav id="title-list-nav">
+        
+        
+        <a  class="全部文章 UI系统 FGUI基础知识 "
+           href="/2024/03/22/UI%E7%B3%BB%E7%BB%9F/07.FGUI%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/7.FGUI%E5%9F%BA%E7%A1%80-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86-%E5%8F%91%E5%B8%83UI/"
+           data-tag="UI系统,基础知识,FGUI"
+           data-author="" >
+            <span class="post-title" title="7.发布UI和发布设置">7.发布UI和发布设置</span>
+            <span class="post-date" title="2024-03-22 20:30:25">2024/03/22</span>
+        </a>
+        
+        
+        <a  class="全部文章 UI系统 FGUI基础知识 "
+           href="/2024/03/22/UI%E7%B3%BB%E7%BB%9F/07.FGUI%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/6.FGUI%E5%9F%BA%E7%A1%80-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86-%E7%BB%84%E4%BB%B6/"
+           data-tag="UI系统,基础知识,FGUI"
+           data-author="" >
+            <span class="post-title" title="6.组件">6.组件</span>
+            <span class="post-date" title="2024-03-22 19:51:55">2024/03/22</span>
+        </a>
         
         
         <a  class="全部文章 UI系统 FGUI基础知识 "
@@ -5886,7 +5912,7 @@
         
         <a  class="全部文章 CSharp CSharp基础实践项目 "
            href="/2024/01/11/CSharp/04.CSharp%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/12.%E6%80%BB%E7%BB%93/"
-           data-tag="CSharp,实践项目,CSharp基础"
+           data-tag="CSharp,CSharp基础,实践项目"
            data-author="" >
             <span class="post-title" title="12.总结">12.总结</span>
             <span class="post-date" title="2024-01-11 21:13:38">2024/01/11</span>
@@ -5895,7 +5921,7 @@
         
         <a  class="全部文章 CSharp CSharp基础实践项目 "
            href="/2024/01/11/CSharp/04.CSharp%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/11.%E4%BB%A3%E7%A0%81%E6%B1%87%E6%80%BB/"
-           data-tag="CSharp,实践项目,CSharp基础"
+           data-tag="CSharp,CSharp基础,实践项目"
            data-author="" >
             <span class="post-title" title="11.代码汇总">11.代码汇总</span>
             <span class="post-date" title="2024-01-11 21:07:59">2024/01/11</span>
@@ -5904,7 +5930,7 @@
         
         <a  class="全部文章 CSharp CSharp基础实践项目 "
            href="/2024/01/11/CSharp/04.CSharp%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/10.%E7%BB%93%E6%9D%9F%E5%9C%BA%E6%99%AF/"
-           data-tag="CSharp,实践项目,CSharp基础"
+           data-tag="CSharp,CSharp基础,实践项目"
            data-author="" >
             <span class="post-title" title="10.结束场景">10.结束场景</span>
             <span class="post-date" title="2024-01-11 20:57:28">2024/01/11</span>
@@ -5913,7 +5939,7 @@
         
         <a  class="全部文章 CSharp CSharp基础实践项目 "
            href="/2024/01/11/CSharp/04.CSharp%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/9.%E6%B8%B8%E6%88%8F%E5%9C%BA%E6%99%AF-%E6%89%94%E9%AA%B0%E5%AD%90/"
-           data-tag="CSharp,实践项目,CSharp基础"
+           data-tag="CSharp,CSharp基础,实践项目"
            data-author="" >
             <span class="post-title" title="9.扔骰子">9.扔骰子</span>
             <span class="post-date" title="2024-01-11 20:32:31">2024/01/11</span>
@@ -5922,7 +5948,7 @@
         
         <a  class="全部文章 CSharp CSharp基础实践项目 "
            href="/2024/01/11/CSharp/04.CSharp%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/8.%E6%B8%B8%E6%88%8F%E5%9C%BA%E6%99%AF-%E7%8E%A9%E5%AE%B6%E5%92%8C%E7%94%B5%E8%84%91%E7%BB%93%E6%9E%84%E4%BD%93/"
-           data-tag="CSharp,实践项目,CSharp基础"
+           data-tag="CSharp,CSharp基础,实践项目"
            data-author="" >
             <span class="post-title" title="8.玩家和电脑结构体">8.玩家和电脑结构体</span>
             <span class="post-date" title="2024-01-11 20:25:32">2024/01/11</span>
@@ -5931,7 +5957,7 @@
         
         <a  class="全部文章 CSharp CSharp基础实践项目 "
            href="/2024/01/11/CSharp/04.CSharp%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/7.%E6%B8%B8%E6%88%8F%E5%9C%BA%E6%99%AF-%E5%9C%B0%E5%9B%BE%E7%BB%93%E6%9E%84%E4%BD%93/"
-           data-tag="CSharp,实践项目,CSharp基础"
+           data-tag="CSharp,CSharp基础,实践项目"
            data-author="" >
             <span class="post-title" title="7.地图结构体">7.地图结构体</span>
             <span class="post-date" title="2024-01-11 20:22:00">2024/01/11</span>
@@ -5940,7 +5966,7 @@
         
         <a  class="全部文章 CSharp CSharp基础实践项目 "
            href="/2024/01/11/CSharp/04.CSharp%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/6.%E6%B8%B8%E6%88%8F%E5%9C%BA%E6%99%AF-%E6%A0%BC%E5%AD%90%E7%B1%BB%E5%9E%8B%E6%9E%9A%E4%B8%BE%E5%92%8C%E6%A0%BC%E5%AD%90%E7%BB%93%E6%9E%84%E4%BD%93/"
-           data-tag="CSharp,实践项目,CSharp基础"
+           data-tag="CSharp,CSharp基础,实践项目"
            data-author="" >
             <span class="post-title" title="6.格子类型枚举和格子结构体">6.格子类型枚举和格子结构体</span>
             <span class="post-date" title="2024-01-11 13:02:56">2024/01/11</span>
@@ -5949,7 +5975,7 @@
         
         <a  class="全部文章 CSharp CSharp基础实践项目 "
            href="/2024/01/11/CSharp/04.CSharp%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/5.%E6%B8%B8%E6%88%8F%E5%9C%BA%E6%99%AF-%E4%B8%8D%E5%8F%98%E7%9A%84%E7%BA%A2%E5%A2%99/"
-           data-tag="CSharp,实践项目,CSharp基础"
+           data-tag="CSharp,CSharp基础,实践项目"
            data-author="" >
             <span class="post-title" title="5.不变的红墙">5.不变的红墙</span>
             <span class="post-date" title="2024-01-11 13:02:47">2024/01/11</span>
@@ -5958,7 +5984,7 @@
         
         <a  class="全部文章 CSharp CSharp基础实践项目 "
            href="/2024/01/11/CSharp/04.CSharp%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/4.%E5%BC%80%E5%A7%8B%E5%9C%BA%E6%99%AF/"
-           data-tag="CSharp,实践项目,CSharp基础"
+           data-tag="CSharp,CSharp基础,实践项目"
            data-author="" >
             <span class="post-title" title="4.开始场景">4.开始场景</span>
             <span class="post-date" title="2024-01-11 00:05:38">2024/01/11</span>
@@ -5967,7 +5993,7 @@
         
         <a  class="全部文章 CSharp CSharp基础实践项目 "
            href="/2024/01/10/CSharp/04.CSharp%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/3.%E5%A4%9A%E4%B8%AA%E5%9C%BA%E6%99%AF/"
-           data-tag="CSharp,实践项目,CSharp基础"
+           data-tag="CSharp,CSharp基础,实践项目"
            data-author="" >
             <span class="post-title" title="3.多个场景">3.多个场景</span>
             <span class="post-date" title="2024-01-10 23:58:28">2024/01/10</span>
@@ -5976,7 +6002,7 @@
         
         <a  class="全部文章 CSharp CSharp基础实践项目 "
            href="/2024/01/10/CSharp/04.CSharp%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/2.%E6%8E%A7%E5%88%B6%E5%8F%B0%E5%9F%BA%E7%A1%80%E8%AE%BE%E7%BD%AE/"
-           data-tag="CSharp,实践项目,CSharp基础"
+           data-tag="CSharp,CSharp基础,实践项目"
            data-author="" >
             <span class="post-title" title="2.控制台基础设置">2.控制台基础设置</span>
             <span class="post-date" title="2024-01-10 23:58:23">2024/01/10</span>
@@ -5985,7 +6011,7 @@
         
         <a  class="全部文章 CSharp CSharp基础实践项目 "
            href="/2024/01/10/CSharp/04.CSharp%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/1.%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90/"
-           data-tag="CSharp,实践项目,CSharp基础"
+           data-tag="CSharp,CSharp基础,实践项目"
            data-author="" >
             <span class="post-title" title="1.需求分析">1.需求分析</span>
             <span class="post-date" title="2024-01-10 23:10:40">2024/01/10</span>
