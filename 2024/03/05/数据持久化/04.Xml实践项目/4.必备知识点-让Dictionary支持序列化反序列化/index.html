@@ -6,20 +6,22 @@
   <meta name="keywords" content=" 实践项目 , 必备知识点 , 数据持久化 , Xml ">
   <meta name="description" content="4.Dictionary支持Xml序列化反序列化 | 人间自有韬哥在的游戏开发博客">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="3.使用AB包资源文件 3.1 知识点同步加载AB包和AB包中的资源AssetBundle.LoadFromFile同步地从指定路径加载AB包，返回加载后的AB包。&#x2F;&#x2F;LoadFromFile方法 同步的从指定路径加载AB包 返回加载后的AB包 &#x2F;&#x2F;由于我们选择了StreamingAssets中多拷贝一份 可以直接从StreamingAssets加载AB包 AssetBundle modelAss">
+<meta name="description" content="5.AB包资源管理器 5.1 知识点创建AssetBundleManager类，实现单例&#x2F;&#x2F;&#x2F; &lt;summary&gt; &#x2F;&#x2F;&#x2F; AssetBundle管理器 &#x2F;&#x2F;&#x2F; &lt;&#x2F;summary&gt; public class AssetBundleManager : BaseSingletonInMonoBehaviour&lt;AssetBundleManager&gt; &#123;">
 <meta property="og:type" content="article">
-<meta property="og:title" content="3.代码加载AB包和AB包中的资源">
-<meta property="og:url" content="https://linwentao785293209.github.io/2024/04/01/%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86/02.AssetBundle%E5%9F%BA%E7%A1%80/3.%E4%BD%BF%E7%94%A8AB%E5%8C%85%E8%B5%84%E6%BA%90%E6%96%87%E4%BB%B6/index.html">
+<meta property="og:title" content="5.AB包资源管理器">
+<meta property="og:url" content="https://linwentao785293209.github.io/2024/04/01/%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86/02.AssetBundle%E5%9F%BA%E7%A1%80/5.AB%E5%8C%85%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86%E5%99%A8/index.html">
 <meta property="og:site_name" content="人间自有韬哥在的游戏开发博客">
-<meta property="og:description" content="3.使用AB包资源文件 3.1 知识点同步加载AB包和AB包中的资源AssetBundle.LoadFromFile同步地从指定路径加载AB包，返回加载后的AB包。&#x2F;&#x2F;LoadFromFile方法 同步的从指定路径加载AB包 返回加载后的AB包 &#x2F;&#x2F;由于我们选择了StreamingAssets中多拷贝一份 可以直接从StreamingAssets加载AB包 AssetBundle modelAss">
+<meta property="og:description" content="5.AB包资源管理器 5.1 知识点创建AssetBundleManager类，实现单例&#x2F;&#x2F;&#x2F; &lt;summary&gt; &#x2F;&#x2F;&#x2F; AssetBundle管理器 &#x2F;&#x2F;&#x2F; &lt;&#x2F;summary&gt; public class AssetBundleManager : BaseSingletonInMonoBehaviour&lt;AssetBundleManager&gt; &#123;">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-04-01T05:10:06.000Z">
-<meta property="article:modified_time" content="2024-04-01T05:23:46.222Z">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86/02.AssetBundle%E5%9F%BA%E7%A1%80/5.AB%E5%8C%85%E7%AE%A1%E7%90%86%E5%99%A8/1.png">
+<meta property="article:published_time" content="2024-04-01T12:42:43.000Z">
+<meta property="article:modified_time" content="2024-04-01T12:50:20.202Z">
 <meta property="article:author" content="人间自有韬哥在">
 <meta property="article:tag" content="资源管理">
 <meta property="article:tag" content="AssetBundle">
 <meta property="article:tag" content="AssetBundle基础">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://linwentao785293209.github.io/images/%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86/02.AssetBundle%E5%9F%BA%E7%A1%80/5.AB%E5%8C%85%E7%AE%A1%E7%90%86%E5%99%A8/1.png">
 
 
 <link rel="icon" href="/img/avatar.jpg">
@@ -146,7 +148,7 @@
     <li>
         <div class="all active" data-rel="全部文章">全部文章
             
-                <small>(690)</small>
+                <small>(692)</small>
             
         </div>
     </li>
@@ -808,7 +810,7 @@
         <div data-rel="资源管理">
             <i class="fold iconfont icon-right"></i>
             资源管理
-            <small>(4)</small>
+            <small>(6)</small>
         </div>
         
             <ul class="sub hide">
@@ -829,7 +831,7 @@
         <div data-rel="资源管理&lt;---&gt;AssetBundle基础">
             
             AssetBundle基础
-            <small>(3)</small>
+            <small>(5)</small>
         </div>
         
     </li>
@@ -865,8 +867,8 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="690">
-<input type="hidden" id="yelog_site_word_count" value="1093.7k">
+<input type="hidden" id="yelog_site_posts_number" value="692">
+<input type="hidden" id="yelog_site_word_count" value="1096.6k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -1341,6 +1343,24 @@
 
     
     <nav id="title-list-nav">
+        
+        
+        <a  class="全部文章 资源管理 AssetBundle基础 "
+           href="/2024/04/01/%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86/02.AssetBundle%E5%9F%BA%E7%A1%80/5.AB%E5%8C%85%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86%E5%99%A8/"
+           data-tag="资源管理,AssetBundle,AssetBundle基础"
+           data-author="" >
+            <span class="post-title" title="5.AB包资源管理器">5.AB包资源管理器</span>
+            <span class="post-date" title="2024-04-01 20:42:43">2024/04/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 资源管理 AssetBundle基础 "
+           href="/2024/04/01/%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86/02.AssetBundle%E5%9F%BA%E7%A1%80/4.AB%E5%8C%85%E7%9A%84%E4%BE%9D%E8%B5%96%E5%8C%85/"
+           data-tag="资源管理,AssetBundle,AssetBundle基础"
+           data-author="" >
+            <span class="post-title" title="4.AB包的依赖包">4.AB包的依赖包</span>
+            <span class="post-date" title="2024-04-01 20:37:05">2024/04/01</span>
+        </a>
         
         
         <a  class="全部文章 资源管理 AssetBundle基础 "
@@ -4630,7 +4650,7 @@
         
         <a  class="全部文章 UI系统 NGUI基础知识 "
            href="/2024/03/06/UI%E7%B3%BB%E7%BB%9F/03.NGUI%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/16.NGUI%E5%9F%BA%E7%A1%80-%E7%BB%84%E5%90%88%E6%8E%A7%E4%BB%B6-ScrollView%E6%BB%9A%E5%8A%A8%E8%A7%86%E5%9B%BE/"
-           data-tag="UI系统,基础知识,组合控件,NGUI"
+           data-tag="UI系统,基础知识,NGUI,组合控件"
            data-author="" >
             <span class="post-title" title="16.ScrollView滚动视图">16.ScrollView滚动视图</span>
             <span class="post-date" title="2024-03-06 20:22:43">2024/03/06</span>
@@ -4639,7 +4659,7 @@
         
         <a  class="全部文章 UI系统 NGUI基础知识 "
            href="/2024/03/06/UI%E7%B3%BB%E7%BB%9F/03.NGUI%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/15.NGUI%E5%9F%BA%E7%A1%80-%E7%BB%84%E5%90%88%E6%8E%A7%E4%BB%B6-ScrollBar%E6%BB%9A%E5%8A%A8%E6%9D%A1%E5%92%8CProgressBar%E8%BF%9B%E5%BA%A6%E6%9D%A1/"
-           data-tag="UI系统,基础知识,组合控件,NGUI"
+           data-tag="UI系统,基础知识,NGUI,组合控件"
            data-author="" >
             <span class="post-title" title="15.ScrollBar滚动条和ProgressBar进度条">15.ScrollBar滚动条和ProgressBar进度条</span>
             <span class="post-date" title="2024-03-06 20:12:36">2024/03/06</span>
@@ -4648,7 +4668,7 @@
         
         <a  class="全部文章 UI系统 NGUI基础知识 "
            href="/2024/03/06/UI%E7%B3%BB%E7%BB%9F/03.NGUI%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/14.NGUI%E5%9F%BA%E7%A1%80-%E7%BB%84%E5%90%88%E6%8E%A7%E4%BB%B6-Slider%E6%BB%91%E5%8A%A8%E6%9D%A1/"
-           data-tag="UI系统,基础知识,组合控件,NGUI"
+           data-tag="UI系统,基础知识,NGUI,组合控件"
            data-author="" >
             <span class="post-title" title="14.Slider滑动条">14.Slider滑动条</span>
             <span class="post-date" title="2024-03-06 20:02:25">2024/03/06</span>
@@ -4657,7 +4677,7 @@
         
         <a  class="全部文章 UI系统 NGUI基础知识 "
            href="/2024/03/06/UI%E7%B3%BB%E7%BB%9F/03.NGUI%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/13.NGUI%E5%9F%BA%E7%A1%80-%E7%BB%84%E5%90%88%E6%8E%A7%E4%BB%B6-PopupList%E4%B8%8B%E6%8B%89%E5%88%97%E8%A1%A8/"
-           data-tag="UI系统,基础知识,组合控件,NGUI"
+           data-tag="UI系统,基础知识,NGUI,组合控件"
            data-author="" >
             <span class="post-title" title="13.PopupList下拉列表">13.PopupList下拉列表</span>
             <span class="post-date" title="2024-03-06 19:50:14">2024/03/06</span>
@@ -4666,7 +4686,7 @@
         
         <a  class="全部文章 UI系统 NGUI基础知识 "
            href="/2024/03/06/UI%E7%B3%BB%E7%BB%9F/03.NGUI%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/12.NGUI%E5%9F%BA%E7%A1%80-%E7%BB%84%E5%90%88%E6%8E%A7%E4%BB%B6-Input%E6%96%87%E6%9C%AC%E8%BE%93%E5%85%A5/"
-           data-tag="UI系统,基础知识,组合控件,NGUI"
+           data-tag="UI系统,基础知识,NGUI,组合控件"
            data-author="" >
             <span class="post-title" title="12.Input文本输入">12.Input文本输入</span>
             <span class="post-date" title="2024-03-06 19:37:04">2024/03/06</span>
@@ -4675,7 +4695,7 @@
         
         <a  class="全部文章 UI系统 NGUI基础知识 "
            href="/2024/03/06/UI%E7%B3%BB%E7%BB%9F/03.NGUI%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/11.NGUI%E5%9F%BA%E7%A1%80-%E7%BB%84%E5%90%88%E6%8E%A7%E4%BB%B6-Toggle%E5%8D%95%E9%80%89%E6%A1%86%E5%A4%9A%E9%80%89%E6%A1%86/"
-           data-tag="UI系统,基础知识,组合控件,NGUI"
+           data-tag="UI系统,基础知识,NGUI,组合控件"
            data-author="" >
             <span class="post-title" title="11.Toggle单选框多选框">11.Toggle单选框多选框</span>
             <span class="post-date" title="2024-03-06 13:04:55">2024/03/06</span>
@@ -4684,7 +4704,7 @@
         
         <a  class="全部文章 UI系统 NGUI基础知识 "
            href="/2024/03/06/UI%E7%B3%BB%E7%BB%9F/03.NGUI%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/10.NGUI%E5%9F%BA%E7%A1%80-%E7%BB%84%E5%90%88%E6%8E%A7%E4%BB%B6-Button%E6%8C%89%E9%92%AE/"
-           data-tag="UI系统,基础知识,组合控件,NGUI"
+           data-tag="UI系统,基础知识,NGUI,组合控件"
            data-author="" >
             <span class="post-title" title="10.Button按钮">10.Button按钮</span>
             <span class="post-date" title="2024-03-06 12:48:44">2024/03/06</span>
@@ -7230,19 +7250,19 @@
         
         
         <a  class="全部文章 CSharp CSharp入门实践项目 "
-           href="/2024/01/08/CSharp/02.CSharp%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/12.%E6%B8%B8%E6%88%8F%E5%9C%BA%E6%99%AF-%E5%85%AC%E4%B8%BB%E7%9B%B8%E5%85%B3/"
+           href="/2024/01/08/CSharp/02.CSharp%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/11.%E6%B8%B8%E6%88%8F%E5%9C%BA%E6%99%AF-%E7%8E%A9%E5%AE%B6%E6%88%98%E6%96%97%E7%9B%B8%E5%85%B3/"
            data-tag="CSharp,CSharp入门,实践项目"
            data-author="" >
-            <span class="post-title" title="12.公主相关">12.公主相关</span>
+            <span class="post-title" title="11.玩家战斗相关">11.玩家战斗相关</span>
             <span class="post-date" title="2024-01-08 21:53:48">2024/01/08</span>
         </a>
         
         
         <a  class="全部文章 CSharp CSharp入门实践项目 "
-           href="/2024/01/08/CSharp/02.CSharp%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/11.%E6%B8%B8%E6%88%8F%E5%9C%BA%E6%99%AF-%E7%8E%A9%E5%AE%B6%E6%88%98%E6%96%97%E7%9B%B8%E5%85%B3/"
+           href="/2024/01/08/CSharp/02.CSharp%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/12.%E6%B8%B8%E6%88%8F%E5%9C%BA%E6%99%AF-%E5%85%AC%E4%B8%BB%E7%9B%B8%E5%85%B3/"
            data-tag="CSharp,CSharp入门,实践项目"
            data-author="" >
-            <span class="post-title" title="11.玩家战斗相关">11.玩家战斗相关</span>
+            <span class="post-title" title="12.公主相关">12.公主相关</span>
             <span class="post-date" title="2024-01-08 21:53:48">2024/01/08</span>
         </a>
         
