@@ -6,24 +6,22 @@
   <meta name="keywords" content=" 语法知识 , 热更新 , Lua ">
   <meta name="description" content="2.开发环境搭建 | 人间自有韬哥在的游戏开发博客">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="4.CSharp调用Lua-Lua文件加载重定向 4.1 知识点加载重定向方法声明自定义加载路径函数&#x2F;&#x2F;自定义加载路径 private byte[] MyCustomLoader(ref string filePath) &#123;  &#125;  初始化Lua解析器&#x2F;&#x2F; Lua解析器 LuaEnv luaEnv &#x3D; new LuaEnv();  LuaEnv.AddLoader 自定义加载L">
+<meta name="description" content="29.xLua热补丁-泛型类替换 29.1 知识点准备工作准备泛型类并设置一个泛型函数[Hotfix] public class Lesson29_Test&lt;T&gt; &#123;     public void Test(T t)     &#123;         Debug.Log(t);     &#125; &#125;  启动Lua脚本并且调用泛型类的函数LuaManager">
 <meta property="og:type" content="article">
-<meta property="og:title" content="4.自定义加载Lua脚本路径">
-<meta property="og:url" content="https://linwentao785293209.github.io/2024/04/03/%E7%83%AD%E6%9B%B4%E6%96%B0/04.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/4.CSharp%E8%B0%83%E7%94%A8Lua-Lua%E6%96%87%E4%BB%B6%E5%8A%A0%E8%BD%BD%E9%87%8D%E5%AE%9A%E5%90%91/index.html">
+<meta property="og:title" content="29.热补丁替换泛型类">
+<meta property="og:url" content="https://linwentao785293209.github.io/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/04.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/29.xLua%E7%83%AD%E8%A1%A5%E4%B8%81-%E6%B3%9B%E5%9E%8B%E7%B1%BB%E6%9B%BF%E6%8D%A2/index.html">
 <meta property="og:site_name" content="人间自有韬哥在的游戏开发博客">
-<meta property="og:description" content="4.CSharp调用Lua-Lua文件加载重定向 4.1 知识点加载重定向方法声明自定义加载路径函数&#x2F;&#x2F;自定义加载路径 private byte[] MyCustomLoader(ref string filePath) &#123;  &#125;  初始化Lua解析器&#x2F;&#x2F; Lua解析器 LuaEnv luaEnv &#x3D; new LuaEnv();  LuaEnv.AddLoader 自定义加载L">
+<meta property="og:description" content="29.xLua热补丁-泛型类替换 29.1 知识点准备工作准备泛型类并设置一个泛型函数[Hotfix] public class Lesson29_Test&lt;T&gt; &#123;     public void Test(T t)     &#123;         Debug.Log(t);     &#125; &#125;  启动Lua脚本并且调用泛型类的函数LuaManager">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/%E7%83%AD%E6%9B%B4%E6%96%B0/04.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/4.CSharp%E8%B0%83%E7%94%A8Lua-Lua%E6%96%87%E4%BB%B6%E5%8A%A0%E8%BD%BD%E9%87%8D%E5%AE%9A%E5%90%91/1.png">
-<meta property="article:published_time" content="2024-04-03T13:30:58.000Z">
-<meta property="article:modified_time" content="2024-04-03T13:46:12.266Z">
+<meta property="article:published_time" content="2024-04-04T09:38:31.000Z">
+<meta property="article:modified_time" content="2024-04-04T09:41:35.284Z">
 <meta property="article:author" content="人间自有韬哥在">
 <meta property="article:tag" content="基础知识">
 <meta property="article:tag" content="热更新">
 <meta property="article:tag" content="Lua">
 <meta property="article:tag" content="xLua">
-<meta property="article:tag" content="CSharp调用Lua">
+<meta property="article:tag" content="热补丁">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://linwentao785293209.github.io/images/%E7%83%AD%E6%9B%B4%E6%96%B0/04.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/4.CSharp%E8%B0%83%E7%94%A8Lua-Lua%E6%96%87%E4%BB%B6%E5%8A%A0%E8%BD%BD%E9%87%8D%E5%AE%9A%E5%90%91/1.png">
 
 
 <link rel="icon" href="/img/avatar.jpg">
@@ -150,7 +148,7 @@
     <li>
         <div class="all active" data-rel="全部文章">全部文章
             
-                <small>(715)</small>
+                <small>(740)</small>
             
         </div>
     </li>
@@ -1184,7 +1182,7 @@
         <div data-rel="热更新">
             <i class="fold iconfont icon-right"></i>
             热更新
-            <small>(23)</small>
+            <small>(48)</small>
         </div>
         
             <ul class="sub hide">
@@ -1205,7 +1203,7 @@
         <div data-rel="热更新&lt;---&gt;Lua">
             <i class="fold iconfont icon-right"></i>
             Lua
-            <small>(22)</small>
+            <small>(47)</small>
         </div>
         
             <ul class="sub hide">
@@ -1237,7 +1235,7 @@
         <div data-rel="热更新&lt;---&gt;Lua&lt;---&gt;xLua基础知识">
             
             xLua基础知识
-            <small>(4)</small>
+            <small>(29)</small>
         </div>
         
     </li>
@@ -1290,8 +1288,8 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="715">
-<input type="hidden" id="yelog_site_word_count" value="1130.6k">
+<input type="hidden" id="yelog_site_posts_number" value="740">
+<input type="hidden" id="yelog_site_word_count" value="1160.3k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -1501,6 +1499,10 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>热补丁</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>热更新</a>
             </li>
         
@@ -1681,6 +1683,10 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Lua调用CSharp</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>MonoBehavior中的重要内容</a>
             </li>
         
@@ -1789,10 +1795,235 @@
         
         
         <a  class="全部文章 热更新 Lua xLua基础知识 "
+           href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/04.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/29.xLua%E7%83%AD%E8%A1%A5%E4%B8%81-%E6%B3%9B%E5%9E%8B%E7%B1%BB%E6%9B%BF%E6%8D%A2/"
+           data-tag="基础知识,热更新,Lua,xLua,热补丁"
+           data-author="" >
+            <span class="post-title" title="29.热补丁替换泛型类">29.热补丁替换泛型类</span>
+            <span class="post-date" title="2024-04-04 17:38:31">2024/04/04</span>
+        </a>
+        
+        
+        <a  class="全部文章 热更新 Lua xLua基础知识 "
+           href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/04.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/28.xLua%E7%83%AD%E8%A1%A5%E4%B8%81-%E4%BA%8B%E4%BB%B6%E5%8A%A0%E5%87%8F%E6%93%8D%E4%BD%9C%E6%9B%BF%E6%8D%A2/"
+           data-tag="基础知识,热更新,Lua,xLua,热补丁"
+           data-author="" >
+            <span class="post-title" title="28.热补丁替换委托事件加减操作">28.热补丁替换委托事件加减操作</span>
+            <span class="post-date" title="2024-04-04 15:07:42">2024/04/04</span>
+        </a>
+        
+        
+        <a  class="全部文章 热更新 Lua xLua基础知识 "
+           href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/04.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/27.xLua%E7%83%AD%E8%A1%A5%E4%B8%81-%E5%B1%9E%E6%80%A7%E5%92%8C%E7%B4%A2%E5%BC%95%E5%99%A8%E6%9B%BF%E6%8D%A2/"
+           data-tag="基础知识,热更新,Lua,xLua,热补丁"
+           data-author="" >
+            <span class="post-title" title="27.热补丁替换属性和索引器">27.热补丁替换属性和索引器</span>
+            <span class="post-date" title="2024-04-04 15:02:13">2024/04/04</span>
+        </a>
+        
+        
+        <a  class="全部文章 热更新 Lua xLua基础知识 "
+           href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/04.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/26.xLua%E7%83%AD%E8%A1%A5%E4%B8%81-%E5%8D%8F%E7%A8%8B%E5%87%BD%E6%95%B0%E6%9B%BF%E6%8D%A2/"
+           data-tag="基础知识,热更新,Lua,xLua,热补丁"
+           data-author="" >
+            <span class="post-title" title="26.热补丁替换协程函数">26.热补丁替换协程函数</span>
+            <span class="post-date" title="2024-04-04 14:53:40">2024/04/04</span>
+        </a>
+        
+        
+        <a  class="全部文章 热更新 Lua xLua基础知识 "
+           href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/04.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/25.xLua%E7%83%AD%E8%A1%A5%E4%B8%81-%E5%A4%9A%E5%87%BD%E6%95%B0%E6%9B%BF%E6%8D%A2/"
+           data-tag="基础知识,热更新,Lua,xLua,热补丁"
+           data-author="" >
+            <span class="post-title" title="25.热补丁替换多函数">25.热补丁替换多函数</span>
+            <span class="post-date" title="2024-04-04 14:45:31">2024/04/04</span>
+        </a>
+        
+        
+        <a  class="全部文章 热更新 Lua xLua基础知识 "
+           href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/04.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/24.xLua%E7%83%AD%E8%A1%A5%E4%B8%81-%E5%8D%95%E5%87%BD%E6%95%B0%E6%9B%BF%E6%8D%A2/"
+           data-tag="基础知识,热更新,Lua,xLua,热补丁"
+           data-author="" >
+            <span class="post-title" title="24.热补丁替换单函数">24.热补丁替换单函数</span>
+            <span class="post-date" title="2024-04-04 14:24:55">2024/04/04</span>
+        </a>
+        
+        
+        <a  class="全部文章 热更新 Lua xLua基础知识 "
+           href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/04.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/23.Lua%E8%B0%83%E7%94%A8CSharp-%E6%B3%9B%E5%9E%8B/"
+           data-tag="基础知识,热更新,Lua,xLua,Lua调用CSharp"
+           data-author="" >
+            <span class="post-title" title="23.Lua调用C#的泛型">23.Lua调用C#的泛型</span>
+            <span class="post-date" title="2024-04-04 13:27:51">2024/04/04</span>
+        </a>
+        
+        
+        <a  class="全部文章 热更新 Lua xLua基础知识 "
+           href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/04.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/22.Lua%E8%B0%83%E7%94%A8CSharp-%E5%8D%8F%E5%90%8C%E7%A8%8B%E5%BA%8F/"
+           data-tag="基础知识,热更新,Lua,xLua,Lua调用CSharp"
+           data-author="" >
+            <span class="post-title" title="22.Lua调用Unity的协同程序">22.Lua调用Unity的协同程序</span>
+            <span class="post-date" title="2024-04-04 13:15:59">2024/04/04</span>
+        </a>
+        
+        
+        <a  class="全部文章 热更新 Lua xLua基础知识 "
+           href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/04.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/21.Lua%E8%B0%83%E7%94%A8CSharp-%E7%B3%BB%E7%BB%9F%E4%BB%A3%E7%A0%81%E4%BA%A4%E4%BA%92/"
+           data-tag="基础知识,热更新,Lua,xLua,Lua调用CSharp"
+           data-author="" >
+            <span class="post-title" title="21.Lua和C#对系统代码交互处理">21.Lua和C#对系统代码交互处理</span>
+            <span class="post-date" title="2024-04-04 13:06:38">2024/04/04</span>
+        </a>
+        
+        
+        <a  class="全部文章 热更新 Lua xLua基础知识 "
+           href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/04.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/20.Lua%E8%B0%83%E7%94%A8CSharp-%E5%88%A4%E7%A9%BA/"
+           data-tag="基础知识,热更新,Lua,xLua,Lua调用CSharp"
+           data-author="" >
+            <span class="post-title" title="20.Lua和C#的判空相关">20.Lua和C#的判空相关</span>
+            <span class="post-date" title="2024-04-04 13:04:39">2024/04/04</span>
+        </a>
+        
+        
+        <a  class="全部文章 热更新 Lua xLua基础知识 "
+           href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/04.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/19.Lua%E8%B0%83%E7%94%A8CSharp-%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84/"
+           data-tag="基础知识,热更新,Lua,xLua,Lua调用CSharp"
+           data-author="" >
+            <span class="post-title" title="19.Lua调用C#的二维数组">19.Lua调用C#的二维数组</span>
+            <span class="post-date" title="2024-04-04 12:54:09">2024/04/04</span>
+        </a>
+        
+        
+        <a  class="全部文章 热更新 Lua xLua基础知识 "
+           href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/04.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/18.Lua%E8%B0%83%E7%94%A8CSharp-%E5%A7%94%E6%89%98%E5%92%8C%E4%BA%8B%E4%BB%B6/"
+           data-tag="基础知识,热更新,Lua,xLua,Lua调用CSharp"
+           data-author="" >
+            <span class="post-title" title="18.Lua调用C#的委托和事件">18.Lua调用C#的委托和事件</span>
+            <span class="post-date" title="2024-04-04 11:57:07">2024/04/04</span>
+        </a>
+        
+        
+        <a  class="全部文章 热更新 Lua xLua基础知识 "
+           href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/04.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/17.Lua%E8%B0%83%E7%94%A8CSharp-%E9%87%8D%E8%BD%BD%E5%87%BD%E6%95%B0/"
+           data-tag="基础知识,热更新,Lua,xLua,Lua调用CSharp"
+           data-author="" >
+            <span class="post-title" title="17.Lua调用C#的重载函数">17.Lua调用C#的重载函数</span>
+            <span class="post-date" title="2024-04-04 11:51:29">2024/04/04</span>
+        </a>
+        
+        
+        <a  class="全部文章 热更新 Lua xLua基础知识 "
+           href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/04.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/16.Lua%E8%B0%83%E7%94%A8CSharp-ref%E5%92%8Cout%E5%87%BD%E6%95%B0/"
+           data-tag="基础知识,热更新,Lua,xLua,Lua调用CSharp"
+           data-author="" >
+            <span class="post-title" title="16.Lua调用C#的ref和out函数">16.Lua调用C#的ref和out函数</span>
+            <span class="post-date" title="2024-04-04 11:50:39">2024/04/04</span>
+        </a>
+        
+        
+        <a  class="全部文章 热更新 Lua xLua基础知识 "
+           href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/04.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/15.Lua%E8%B0%83%E7%94%A8CSharp-%E6%8B%93%E5%B1%95%E6%96%B9%E6%B3%95/"
+           data-tag="基础知识,热更新,Lua,xLua,Lua调用CSharp"
+           data-author="" >
+            <span class="post-title" title="15.Lua调用C#的拓展方法">15.Lua调用C#的拓展方法</span>
+            <span class="post-date" title="2024-04-04 11:35:07">2024/04/04</span>
+        </a>
+        
+        
+        <a  class="全部文章 热更新 Lua xLua基础知识 "
+           href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/04.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/14.Lua%E8%B0%83%E7%94%A8CSharp-%E6%95%B0%E6%8D%AE%E9%9B%86%E5%90%88/"
+           data-tag="基础知识,热更新,Lua,xLua,Lua调用CSharp"
+           data-author="" >
+            <span class="post-title" title="14.Lua调用C#的数据集合">14.Lua调用C#的数据集合</span>
+            <span class="post-date" title="2024-04-04 11:11:12">2024/04/04</span>
+        </a>
+        
+        
+        <a  class="全部文章 热更新 Lua xLua基础知识 "
+           href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/04.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/13.Lua%E8%B0%83%E7%94%A8CSharp-%E6%9E%9A%E4%B8%BE/"
+           data-tag="基础知识,热更新,Lua,xLua,Lua调用CSharp"
+           data-author="" >
+            <span class="post-title" title="13.Lua调用C#的枚举">13.Lua调用C#的枚举</span>
+            <span class="post-date" title="2024-04-04 11:09:44">2024/04/04</span>
+        </a>
+        
+        
+        <a  class="全部文章 热更新 Lua xLua基础知识 "
+           href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/04.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/12.Lua%E8%B0%83%E7%94%A8CSharp-%E7%B1%BB/"
+           data-tag="基础知识,热更新,Lua,xLua,Lua调用CSharp"
+           data-author="" >
+            <span class="post-title" title="12.Lua调用C#的类">12.Lua调用C#的类</span>
+            <span class="post-date" title="2024-04-04 11:04:10">2024/04/04</span>
+        </a>
+        
+        
+        <a  class="全部文章 热更新 Lua xLua基础知识 "
+           href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/04.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/11.CSharp%E8%B0%83%E7%94%A8Lua-%E8%A1%A8%E6%98%A0%E5%B0%84%E5%88%B0LuaTable/"
+           data-tag="基础知识,热更新,Lua,xLua,CSharp调用Lua"
+           data-author="" >
+            <span class="post-title" title="11.C#把Lua表映射到LuaTable">11.C#把Lua表映射到LuaTable</span>
+            <span class="post-date" title="2024-04-04 10:51:03">2024/04/04</span>
+        </a>
+        
+        
+        <a  class="全部文章 热更新 Lua xLua基础知识 "
+           href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/04.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/10.CSharp%E8%B0%83%E7%94%A8Lua-%E8%A1%A8%E6%98%A0%E5%B0%84%E5%88%B0%E6%8E%A5%E5%8F%A3/"
+           data-tag="基础知识,热更新,Lua,xLua,CSharp调用Lua"
+           data-author="" >
+            <span class="post-title" title="10.C#把Lua表映射到接口">10.C#把Lua表映射到接口</span>
+            <span class="post-date" title="2024-04-04 10:45:54">2024/04/04</span>
+        </a>
+        
+        
+        <a  class="全部文章 热更新 Lua xLua基础知识 "
+           href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/04.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/9.CSharp%E8%B0%83%E7%94%A8Lua-%E8%A1%A8%E6%98%A0%E5%B0%84%E5%88%B0%E7%B1%BB/"
+           data-tag="基础知识,热更新,Lua,xLua,CSharp调用Lua"
+           data-author="" >
+            <span class="post-title" title="9.C#把Lua表映射到类">9.C#把Lua表映射到类</span>
+            <span class="post-date" title="2024-04-04 10:32:53">2024/04/04</span>
+        </a>
+        
+        
+        <a  class="全部文章 热更新 Lua xLua基础知识 "
+           href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/04.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/8.CSharp%E8%B0%83%E7%94%A8Lua-%E8%A1%A8%E6%98%A0%E5%B0%84%E5%88%B0List%E5%92%8CDictionary/"
+           data-tag="基础知识,热更新,Lua,xLua,CSharp调用Lua"
+           data-author="" >
+            <span class="post-title" title="8.C#把Lua表映射到List和Dictionary">8.C#把Lua表映射到List和Dictionary</span>
+            <span class="post-date" title="2024-04-04 10:28:33">2024/04/04</span>
+        </a>
+        
+        
+        <a  class="全部文章 热更新 Lua xLua基础知识 "
+           href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/04.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/7.CSharp%E8%B0%83%E7%94%A8Lua-%E5%87%BD%E6%95%B0%E7%9A%84%E8%8E%B7%E5%8F%96%E5%92%8C%E8%B0%83%E7%94%A8/"
+           data-tag="基础知识,热更新,Lua,xLua,CSharp调用Lua"
+           data-author="" >
+            <span class="post-title" title="7.C#调用Lua函数">7.C#调用Lua函数</span>
+            <span class="post-date" title="2024-04-04 09:58:44">2024/04/04</span>
+        </a>
+        
+        
+        <a  class="全部文章 热更新 Lua xLua基础知识 "
+           href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/04.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/6.CSharp%E8%B0%83%E7%94%A8Lua-%E5%8F%98%E9%87%8F%E7%9A%84%E8%8E%B7%E5%8F%96%E5%92%8C%E8%B5%8B%E5%80%BC/"
+           data-tag="基础知识,热更新,Lua,xLua,CSharp调用Lua"
+           data-author="" >
+            <span class="post-title" title="6.C#调用Lua变量">6.C#调用Lua变量</span>
+            <span class="post-date" title="2024-04-04 09:57:16">2024/04/04</span>
+        </a>
+        
+        
+        <a  class="全部文章 热更新 Lua xLua基础知识 "
+           href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/04.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/5.CSharp%E8%B0%83%E7%94%A8Lua-Lua%E7%AE%A1%E7%90%86%E5%99%A8/"
+           data-tag="基础知识,热更新,Lua,xLua,CSharp调用Lua"
+           data-author="" >
+            <span class="post-title" title="5.Lua管理器和加载AB包中的Lua脚本">5.Lua管理器和加载AB包中的Lua脚本</span>
+            <span class="post-date" title="2024-04-04 09:08:02">2024/04/04</span>
+        </a>
+        
+        
+        <a  class="全部文章 热更新 Lua xLua基础知识 "
            href="/2024/04/03/%E7%83%AD%E6%9B%B4%E6%96%B0/04.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/4.CSharp%E8%B0%83%E7%94%A8Lua-Lua%E6%96%87%E4%BB%B6%E5%8A%A0%E8%BD%BD%E9%87%8D%E5%AE%9A%E5%90%91/"
            data-tag="基础知识,热更新,Lua,xLua,CSharp调用Lua"
            data-author="" >
-            <span class="post-title" title="4.自定义加载Lua脚本路径">4.自定义加载Lua脚本路径</span>
+            <span class="post-title" title="4.加载自定义路径下的Lua脚本">4.加载自定义路径下的Lua脚本</span>
             <span class="post-date" title="2024-04-03 21:30:58">2024/04/03</span>
         </a>
         
@@ -1801,7 +2032,7 @@
            href="/2024/04/03/%E7%83%AD%E6%9B%B4%E6%96%B0/04.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/3.CSharp%E8%B0%83%E7%94%A8Lua-Lua%E8%A7%A3%E6%9E%90%E5%99%A8/"
            data-tag="基础知识,热更新,Lua,xLua,CSharp调用Lua"
            data-author="" >
-            <span class="post-title" title="3.Lua解析器">3.Lua解析器</span>
+            <span class="post-title" title="3.Lua解析器执行Lua脚本">3.Lua解析器执行Lua脚本</span>
             <span class="post-date" title="2024-04-03 21:16:35">2024/04/03</span>
         </a>
         
@@ -8275,12 +8506,12 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2024-04-03 20:01:03'>2024-04-02 08:18</time>
+            发布时间 : <time class="date" title='最后更新: 2024-04-04 17:53:04'>2024-04-02 08:18</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:280</span>
+        <span>字数:458</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -8310,7 +8541,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#2-%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA"><span class="toc-text">2.开发环境搭建</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-%E7%9F%A5%E8%AF%86%E7%82%B9"><span class="toc-text">2.1 知识点</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Lua%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85"><span class="toc-text">Lua环境安装</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%89%93%E5%BC%80https-github-com-rjpcomputing-luaforwindows%EF%BC%8C%E7%82%B9%E5%87%BBGithub"><span class="toc-text">打开https:&#x2F;&#x2F;github.com&#x2F;rjpcomputing&#x2F;luaforwindows，点击Github</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%B7%B3%E8%BD%AC%E5%88%B0https-github-com-rjpcomputing-luaforwindows-releases%EF%BC%8C%E7%82%B9%E5%87%BB%E4%B8%8B%E8%BD%BDLuaForWindows-exe%E6%96%87%E4%BB%B6"><span class="toc-text">跳转到https:&#x2F;&#x2F;github.com&#x2F;rjpcomputing&#x2F;luaforwindows&#x2F;releases，点击下载LuaForWindows.exe文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%8C%E5%87%BB%E6%89%93%E5%BC%80%E4%B8%8B%E8%BD%BD%E7%9A%84exe%E6%96%87%E4%BB%B6%EF%BC%8C%E6%97%A0%E8%84%91%E4%B8%8B%E4%B8%80%E6%AD%A5%E5%8D%B3%E5%8F%AF%E3%80%82%E6%B3%A8%E6%84%8F%E6%9C%80%E5%A5%BD%E4%B8%8D%E8%A6%81%E6%94%B9%E5%8F%98%E5%AE%89%E8%A3%85%E8%B7%AF%E5%BE%84%E3%80%82"><span class="toc-text">双击打开下载的exe文件，无脑下一步即可。注意最好不要改变安装路径。</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#win-r%E6%89%93%E5%BC%80%E8%BF%90%E8%A1%8C%E8%BE%93%E5%85%A5cmd%E6%89%93%E5%BC%80%E5%91%BD%E4%BB%A4%E8%A1%8C%E7%AA%97%E5%8F%A3%E8%BE%93%E5%85%A5lua%EF%BC%8C%E5%BC%B9%E5%87%BA%E7%89%88%E6%9C%AC%E4%BB%A3%E8%A1%A8lua%E5%AE%89%E8%A3%85%E6%88%90%E5%8A%9F"><span class="toc-text">win+r打开运行输入cmd打开命令行窗口输入lua，弹出版本代表lua安装成功</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#IDE%E9%80%89%E6%8B%A9"><span class="toc-text">IDE选择</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9E%E9%99%85%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91%E6%97%B6%E5%B8%B8%E7%94%A8%E7%9A%84IDE"><span class="toc-text">实际项目开发时常用的IDE</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AD%A6%E4%B9%A0%E6%97%B6%E5%8F%AF%E4%BB%A5%E4%BD%BF%E7%94%A8%E7%9A%84%E7%BC%96%E8%BE%91%E5%99%A8"><span class="toc-text">学习时可以使用的编辑器</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Lua%E8%84%9A%E6%9C%AC%E7%9A%84%E5%88%9B%E5%BB%BA"><span class="toc-text">Lua脚本的创建</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SublimeText%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE"><span class="toc-text">SublimeText环境配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#VSCode%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA"><span class="toc-text">VSCode环境搭建</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%9B%B4%E6%8E%A5%E5%8E%BB%E5%AE%98%E7%BD%91%E4%B8%8B%E8%BD%BDVSCode"><span class="toc-text">直接去官网下载VSCode</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E4%B8%AD%E6%96%87%E6%8F%92%E4%BB%B6"><span class="toc-text">安装中文插件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E8%A3%85Lua%E6%8F%92%E4%BB%B6"><span class="toc-text">安装Lua插件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E8%A3%85LuaDebug%E6%8F%92%E4%BB%B6"><span class="toc-text">安装LuaDebug插件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E8%A3%85CodeRunner%EF%BC%8C%E5%B9%B6%E9%80%89%E6%8B%A9%E5%90%AF%E7%94%A8%E5%9C%A8%E7%BB%88%E7%AB%AF%E8%BF%90%E8%A1%8C"><span class="toc-text">安装CodeRunner，并选择启用在终端运行</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E8%A3%85vscode-icons"><span class="toc-text">安装vscode-icons</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BF%90%E8%A1%8Clua%E8%84%9A%E6%9C%AC%E7%9A%84%E6%96%B9%E6%B3%95"><span class="toc-text">运行lua脚本的方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%AF%E4%BB%A5%E5%8F%82%E8%80%83%E5%8D%9A%E5%AE%A2https-blog-csdn-net-yanwennian-article-details-103480938"><span class="toc-text">可以参考博客https:&#x2F;&#x2F;blog.csdn.net&#x2F;yanwennian&#x2F;article&#x2F;details&#x2F;103480938</span></a></li></ol></li></ol></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#2-%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA"><span class="toc-text">2.开发环境搭建</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-%E7%9F%A5%E8%AF%86%E7%82%B9"><span class="toc-text">2.1 知识点</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Lua%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85"><span class="toc-text">Lua环境安装</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%89%93%E5%BC%80https-github-com-rjpcomputing-luaforwindows%EF%BC%8C%E7%82%B9%E5%87%BBGithub"><span class="toc-text">打开https:&#x2F;&#x2F;github.com&#x2F;rjpcomputing&#x2F;luaforwindows，点击Github</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%B7%B3%E8%BD%AC%E5%88%B0https-github-com-rjpcomputing-luaforwindows-releases%EF%BC%8C%E7%82%B9%E5%87%BB%E4%B8%8B%E8%BD%BDLuaForWindows-exe%E6%96%87%E4%BB%B6"><span class="toc-text">跳转到https:&#x2F;&#x2F;github.com&#x2F;rjpcomputing&#x2F;luaforwindows&#x2F;releases，点击下载LuaForWindows.exe文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%8C%E5%87%BB%E6%89%93%E5%BC%80%E4%B8%8B%E8%BD%BD%E7%9A%84exe%E6%96%87%E4%BB%B6%EF%BC%8C%E6%97%A0%E8%84%91%E4%B8%8B%E4%B8%80%E6%AD%A5%E5%8D%B3%E5%8F%AF%E3%80%82%E6%B3%A8%E6%84%8F%E6%9C%80%E5%A5%BD%E4%B8%8D%E8%A6%81%E6%94%B9%E5%8F%98%E5%AE%89%E8%A3%85%E8%B7%AF%E5%BE%84%E3%80%82"><span class="toc-text">双击打开下载的exe文件，无脑下一步即可。注意最好不要改变安装路径。</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#win-r%E6%89%93%E5%BC%80%E8%BF%90%E8%A1%8C%E8%BE%93%E5%85%A5cmd%E6%89%93%E5%BC%80%E5%91%BD%E4%BB%A4%E8%A1%8C%E7%AA%97%E5%8F%A3%E8%BE%93%E5%85%A5lua%EF%BC%8C%E5%BC%B9%E5%87%BA%E7%89%88%E6%9C%AC%E4%BB%A3%E8%A1%A8lua%E5%AE%89%E8%A3%85%E6%88%90%E5%8A%9F"><span class="toc-text">win+r打开运行输入cmd打开命令行窗口输入lua，弹出版本代表lua安装成功</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#IDE%E9%80%89%E6%8B%A9"><span class="toc-text">IDE选择</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9E%E9%99%85%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91%E6%97%B6%E5%B8%B8%E7%94%A8%E7%9A%84IDE"><span class="toc-text">实际项目开发时常用的IDE</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AD%A6%E4%B9%A0%E6%97%B6%E5%8F%AF%E4%BB%A5%E4%BD%BF%E7%94%A8%E7%9A%84%E7%BC%96%E8%BE%91%E5%99%A8"><span class="toc-text">学习时可以使用的编辑器</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Lua%E8%84%9A%E6%9C%AC%E7%9A%84%E5%88%9B%E5%BB%BA"><span class="toc-text">Lua脚本的创建</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SublimeText%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE"><span class="toc-text">SublimeText环境配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#VSCode%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA"><span class="toc-text">VSCode环境搭建</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%9B%B4%E6%8E%A5%E5%8E%BB%E5%AE%98%E7%BD%91%E4%B8%8B%E8%BD%BDVSCode"><span class="toc-text">直接去官网下载VSCode</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E4%B8%AD%E6%96%87%E6%8F%92%E4%BB%B6"><span class="toc-text">安装中文插件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E8%A3%85Lua%E6%8F%92%E4%BB%B6"><span class="toc-text">安装Lua插件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E8%A3%85LuaDebug%E6%8F%92%E4%BB%B6"><span class="toc-text">安装LuaDebug插件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E8%A3%85CodeRunner%EF%BC%8C%E5%B9%B6%E9%80%89%E6%8B%A9%E5%90%AF%E7%94%A8%E5%9C%A8%E7%BB%88%E7%AB%AF%E8%BF%90%E8%A1%8C"><span class="toc-text">安装CodeRunner，并选择启用在终端运行</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E8%A3%85vscode-icons"><span class="toc-text">安装vscode-icons</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BF%90%E8%A1%8Clua%E8%84%9A%E6%9C%AC%E7%9A%84%E6%96%B9%E6%B3%95"><span class="toc-text">运行lua脚本的方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%AF%E4%BB%A5%E5%8F%82%E8%80%83%E5%8D%9A%E5%AE%A2https-blog-csdn-net-yanwennian-article-details-103480938"><span class="toc-text">可以参考博客https:&#x2F;&#x2F;blog.csdn.net&#x2F;yanwennian&#x2F;article&#x2F;details&#x2F;103480938</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E8%A3%85EmmyLua%E6%8F%92%E4%BB%B6%EF%BC%8C%E8%AE%A9Lua%E8%84%9A%E6%9C%AC%E4%B9%9F%E8%83%BD%E9%99%84%E5%8A%A0Unity%E8%BF%9B%E8%A1%8C%E6%96%AD%E7%82%B9%E8%B0%83%E8%AF%95"><span class="toc-text">安装EmmyLua插件，让Lua脚本也能附加Unity进行断点调试</span></a></li></ol></li></ol></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -8358,7 +8589,20 @@
 </ul>
 <h3 id="VSCode环境搭建"><a href="#VSCode环境搭建" class="headerlink" title="VSCode环境搭建"></a>VSCode环境搭建</h3><h4 id="直接去官网下载VSCode"><a href="#直接去官网下载VSCode" class="headerlink" title="直接去官网下载VSCode"></a>直接去官网下载VSCode</h4><h4 id="安装中文插件"><a href="#安装中文插件" class="headerlink" title="安装中文插件"></a>安装中文插件</h4><h4 id="安装Lua插件"><a href="#安装Lua插件" class="headerlink" title="安装Lua插件"></a>安装Lua插件</h4><h4 id="安装LuaDebug插件"><a href="#安装LuaDebug插件" class="headerlink" title="安装LuaDebug插件"></a>安装LuaDebug插件</h4><h4 id="安装CodeRunner，并选择启用在终端运行"><a href="#安装CodeRunner，并选择启用在终端运行" class="headerlink" title="安装CodeRunner，并选择启用在终端运行"></a>安装CodeRunner，并选择启用在终端运行</h4><p><img src="/../../../images/%E7%83%AD%E6%9B%B4%E6%96%B0/03.Lua%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/2.%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/7.png"></p>
 <h4 id="安装vscode-icons"><a href="#安装vscode-icons" class="headerlink" title="安装vscode-icons"></a>安装vscode-icons</h4><h4 id="运行lua脚本的方法"><a href="#运行lua脚本的方法" class="headerlink" title="运行lua脚本的方法"></a>运行lua脚本的方法</h4><p><img src="/../../../images/%E7%83%AD%E6%9B%B4%E6%96%B0/03.Lua%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/2.%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/8.png"></p>
-<h4 id="可以参考博客https-blog-csdn-net-yanwennian-article-details-103480938"><a href="#可以参考博客https-blog-csdn-net-yanwennian-article-details-103480938" class="headerlink" title="可以参考博客https://blog.csdn.net/yanwennian/article/details/103480938"></a>可以参考博客<a target="_blank" rel="noopener" href="https://blog.csdn.net/yanwennian/article/details/103480938">https://blog.csdn.net/yanwennian/article/details/103480938</a></h4><hr>
+<h4 id="可以参考博客https-blog-csdn-net-yanwennian-article-details-103480938"><a href="#可以参考博客https-blog-csdn-net-yanwennian-article-details-103480938" class="headerlink" title="可以参考博客https://blog.csdn.net/yanwennian/article/details/103480938"></a>可以参考博客<a target="_blank" rel="noopener" href="https://blog.csdn.net/yanwennian/article/details/103480938">https://blog.csdn.net/yanwennian/article/details/103480938</a></h4><h4 id="安装EmmyLua插件，让Lua脚本也能附加Unity进行断点调试"><a href="#安装EmmyLua插件，让Lua脚本也能附加Unity进行断点调试" class="headerlink" title="安装EmmyLua插件，让Lua脚本也能附加Unity进行断点调试"></a>安装EmmyLua插件，让Lua脚本也能附加Unity进行断点调试</h4><ul>
+<li>需要安装JDK1.8以上</li>
+<li>配置环境变量<ul>
+<li>计算机——右键属性——左上角高级系统该设置——环境变量</li>
+<li>系统环境变量——新建<br>JAVA_HOME<br>JDK路径：C:\Program Files\Java\jdk1.8.0_191</li>
+<li>系统环境变量——找到Path<br>新建<br>%JAVA_HOME%\bin</li>
+<li>系统环境变量——新建<br>CLASSPATH<br>.;%Java_Home%\bin;%Java_Home%\lib\dt.jar;%Java_Home%\lib\tools.jar</li>
+</ul>
+</li>
+<li>安装完点击添加调试的配置，选择通过进程ID添加<br><img src="/../../../images/%E7%83%AD%E6%9B%B4%E6%96%B0/03.Lua%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/2.%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/10.png"><br><img src="/../../../images/%E7%83%AD%E6%9B%B4%E6%96%B0/03.Lua%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/2.%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/9.png"></li>
+<li>配置完点击运行，搜索要附加的unity工程，然后运行unity工程就能断点lua脚本了<br><img src="/../../../images/%E7%83%AD%E6%9B%B4%E6%96%B0/03.Lua%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/2.%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/11.png"></li>
+<li>出现EmmyLua找不到Java环境的情况，可以手动改设置文件进行设置<br><img src="/../../../images/%E7%83%AD%E6%9B%B4%E6%96%B0/03.Lua%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/2.%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/12.png"><br><img src="/../../../images/%E7%83%AD%E6%9B%B4%E6%96%B0/03.Lua%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/2.%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/13.png"></li>
+</ul>
+<hr>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 785293209@qq.com </span>
