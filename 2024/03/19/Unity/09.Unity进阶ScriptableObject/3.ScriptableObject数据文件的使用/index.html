@@ -6,30 +6,19 @@
   <meta name="keywords" content=" 基础知识 , Unity , Unity进阶 , ScriptableObject ">
   <meta name="description" content="3.使用ScriptableObject数据文件 | 人间自有韬哥在的博客">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="1.概述 1.1 知识点 概述主要讲解内容 学习Addressables的前提（建议） Addressables是什么 如何学习Addressable 主要学习方式 总结">
+<meta name="description" content="15.其他_资源加载相关_根据资源定位信息加载资源 15.1 知识点回顾学过的加载可寻址资源的方式 通过标识类进行加载(指定资源加载)  AssetReference.LoadAssetAsync&lt;GameObject&gt;();   通过资源名或标签名加载单个资源(动态加载)  Addressables.LoadAssetAsync&lt;GameObject&gt;(&quot;Cub">
 <meta property="og:type" content="article">
-<meta property="og:title" content="1.概述">
-<meta property="og:url" content="https://linwentao785293209.github.io/2024/04/23/%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86/04.Addressables/1.%E6%A6%82%E8%BF%B0/index.html">
+<meta property="og:title" content="15.根据资源定位信息加载资源">
+<meta property="og:url" content="https://linwentao785293209.github.io/2024/04/23/%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86/04.Addressables/15.%E5%85%B6%E4%BB%96_%E8%B5%84%E6%BA%90%E5%8A%A0%E8%BD%BD%E7%9B%B8%E5%85%B3_%E6%A0%B9%E6%8D%AE%E8%B5%84%E6%BA%90%E5%AE%9A%E4%BD%8D%E4%BF%A1%E6%81%AF%E5%8A%A0%E8%BD%BD%E8%B5%84%E6%BA%90/index.html">
 <meta property="og:site_name" content="人间自有韬哥在的博客">
-<meta property="og:description" content="1.概述 1.1 知识点 概述主要讲解内容 学习Addressables的前提（建议） Addressables是什么 如何学习Addressable 主要学习方式 总结">
+<meta property="og:description" content="15.其他_资源加载相关_根据资源定位信息加载资源 15.1 知识点回顾学过的加载可寻址资源的方式 通过标识类进行加载(指定资源加载)  AssetReference.LoadAssetAsync&lt;GameObject&gt;();   通过资源名或标签名加载单个资源(动态加载)  Addressables.LoadAssetAsync&lt;GameObject&gt;(&quot;Cub">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86/04.Addressables/1.%E6%A6%82%E8%BF%B0/1.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86/04.Addressables/1.%E6%A6%82%E8%BF%B0/2.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86/04.Addressables/1.%E6%A6%82%E8%BF%B0/3.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86/04.Addressables/1.%E6%A6%82%E8%BF%B0/4.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86/04.Addressables/1.%E6%A6%82%E8%BF%B0/5.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86/04.Addressables/1.%E6%A6%82%E8%BF%B0/6.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86/04.Addressables/1.%E6%A6%82%E8%BF%B0/7.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86/04.Addressables/1.%E6%A6%82%E8%BF%B0/8.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86/04.Addressables/1.%E6%A6%82%E8%BF%B0/9.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86/04.Addressables/1.%E6%A6%82%E8%BF%B0/10.png">
-<meta property="article:published_time" content="2024-04-23T06:19:38.000Z">
-<meta property="article:modified_time" content="2024-04-23T06:36:41.106Z">
+<meta property="article:published_time" content="2024-04-23T14:57:04.000Z">
+<meta property="article:modified_time" content="2024-04-23T15:12:03.890Z">
 <meta property="article:author" content="人间自有韬哥在">
 <meta property="article:tag" content="资源管理">
 <meta property="article:tag" content="Addressables">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://linwentao785293209.github.io/images/%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86/04.Addressables/1.%E6%A6%82%E8%BF%B0/1.png">
 
 
 <link rel="icon" href="/img/avatar.jpg">
@@ -156,7 +145,7 @@
     <li>
         <div class="all active" data-rel="全部文章">全部文章
             
-                <small>(950)</small>
+                <small>(964)</small>
             
         </div>
     </li>
@@ -1122,7 +1111,7 @@
         <div data-rel="资源管理">
             <i class="fold iconfont icon-right"></i>
             资源管理
-            <small>(24)</small>
+            <small>(38)</small>
         </div>
         
             <ul class="sub hide">
@@ -1180,7 +1169,7 @@
         <div data-rel="资源管理&lt;---&gt;Addressables">
             
             Addressables
-            <small>(1)</small>
+            <small>(15)</small>
         </div>
         
     </li>
@@ -1631,8 +1620,8 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="950">
-<input type="hidden" id="yelog_site_word_count" value="1517.9k">
+<input type="hidden" id="yelog_site_posts_number" value="964">
+<input type="hidden" id="yelog_site_word_count" value="1541.2k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -2251,6 +2240,132 @@
     </div>
     
     <nav id="title-list-nav">
+        
+        
+        <a  class="全部文章 资源管理 Addressables "
+           href="/2024/04/23/%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86/04.Addressables/15.%E5%85%B6%E4%BB%96_%E8%B5%84%E6%BA%90%E5%8A%A0%E8%BD%BD%E7%9B%B8%E5%85%B3_%E6%A0%B9%E6%8D%AE%E8%B5%84%E6%BA%90%E5%AE%9A%E4%BD%8D%E4%BF%A1%E6%81%AF%E5%8A%A0%E8%BD%BD%E8%B5%84%E6%BA%90/"
+           data-tag="资源管理,Addressables"
+           data-author="" >
+            <span class="post-title" title="15.根据资源定位信息加载资源">15.根据资源定位信息加载资源</span>
+            <span class="post-date" title="2024-04-23 22:57:04">2024/04/23</span>
+        </a>
+        
+        
+        <a  class="全部文章 资源管理 Addressables "
+           href="/2024/04/23/%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86/04.Addressables/14.%E8%B5%84%E6%BA%90%E6%89%93%E5%8C%85%E5%8A%A0%E8%BD%BD-%E8%B5%84%E6%BA%90%E6%9B%B4%E6%96%B0/"
+           data-tag="资源管理,Addressables"
+           data-author="" >
+            <span class="post-title" title="14.资源更新">14.资源更新</span>
+            <span class="post-date" title="2024-04-23 21:36:30">2024/04/23</span>
+        </a>
+        
+        
+        <a  class="全部文章 资源管理 Addressables "
+           href="/2024/04/23/%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86/04.Addressables/13.%E8%B5%84%E6%BA%90%E6%89%93%E5%8C%85%E5%8A%A0%E8%BD%BD-%E6%89%93%E5%8C%85%E5%8A%A0%E8%BD%BD/"
+           data-tag="资源管理,Addressables"
+           data-author="" >
+            <span class="post-title" title="13.资源打包加载">13.资源打包加载</span>
+            <span class="post-date" title="2024-04-23 19:58:10">2024/04/23</span>
+        </a>
+        
+        
+        <a  class="全部文章 资源管理 Addressables "
+           href="/2024/04/23/%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86/04.Addressables/12.%E8%B5%84%E6%BA%90%E6%89%93%E5%8C%85%E5%8A%A0%E8%BD%BD-%E7%90%86%E8%AE%BA/"
+           data-tag="资源管理,Addressables"
+           data-author="" >
+            <span class="post-title" title="12.资源打包加载更新理论">12.资源打包加载更新理论</span>
+            <span class="post-date" title="2024-04-23 19:53:22">2024/04/23</span>
+        </a>
+        
+        
+        <a  class="全部文章 资源管理 Addressables "
+           href="/2024/04/23/%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86/04.Addressables/11.%E9%85%8D%E7%BD%AE%E7%9B%B8%E5%85%B3-AddressablesHosting%E5%8F%AF%E5%AF%BB%E5%9D%80%E6%89%98%E7%AE%A1%E7%AA%97%E5%8F%A3%E9%85%8D%E7%BD%AE/"
+           data-tag="资源管理,Addressables"
+           data-author="" >
+            <span class="post-title" title="11.Hosting窗口">11.Hosting窗口</span>
+            <span class="post-date" title="2024-04-23 19:46:49">2024/04/23</span>
+        </a>
+        
+        
+        <a  class="全部文章 资源管理 Addressables "
+           href="/2024/04/23/%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86/04.Addressables/10.%E9%85%8D%E7%BD%AE%E7%9B%B8%E5%85%B3-PackedAssets%E6%89%93%E5%8C%85%E8%B5%84%E6%BA%90%E6%95%B0%E6%8D%AE%E9%85%8D%E7%BD%AE/"
+           data-tag="资源管理,Addressables"
+           data-author="" >
+            <span class="post-title" title="10.PackedAssets配置文件">10.PackedAssets配置文件</span>
+            <span class="post-date" title="2024-04-23 19:19:44">2024/04/23</span>
+        </a>
+        
+        
+        <a  class="全部文章 资源管理 Addressables "
+           href="/2024/04/23/%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86/04.Addressables/9.%E9%85%8D%E7%BD%AE%E7%9B%B8%E5%85%B3-AddressableAssetSettings%E5%8F%AF%E5%AF%BB%E5%9D%80%E8%B5%84%E6%BA%90%E6%95%B0%E6%8D%AE%E8%AE%BE%E7%BD%AE/"
+           data-tag="资源管理,Addressables"
+           data-author="" >
+            <span class="post-title" title="9.AddressableAssetSettings配置文件">9.AddressableAssetSettings配置文件</span>
+            <span class="post-date" title="2024-04-23 18:51:47">2024/04/23</span>
+        </a>
+        
+        
+        <a  class="全部文章 资源管理 Addressables "
+           href="/2024/04/23/%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86/04.Addressables/8.%E9%85%8D%E7%BD%AE%E7%9B%B8%E5%85%B3-Profile%E6%A6%82%E8%BF%B0%E7%AA%97%E5%8F%A3%E9%85%8D%E7%BD%AE/"
+           data-tag="资源管理,Addressables"
+           data-author="" >
+            <span class="post-title" title="8.Profile窗口">8.Profile窗口</span>
+            <span class="post-date" title="2024-04-23 18:33:09">2024/04/23</span>
+        </a>
+        
+        
+        <a  class="全部文章 资源管理 Addressables "
+           href="/2024/04/23/%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86/04.Addressables/7.%E8%B5%84%E6%BA%90%E5%8A%A0%E8%BD%BD%E5%9F%BA%E7%A1%80-%E5%8A%A8%E6%80%81%E5%8A%A0%E8%BD%BD%E5%A4%9A%E4%B8%AA%E8%B5%84%E6%BA%90/"
+           data-tag="资源管理,Addressables"
+           data-author="" >
+            <span class="post-title" title="7.动态加载释放多个资源">7.动态加载释放多个资源</span>
+            <span class="post-date" title="2024-04-23 18:05:26">2024/04/23</span>
+        </a>
+        
+        
+        <a  class="全部文章 资源管理 Addressables "
+           href="/2024/04/23/%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86/04.Addressables/6.%E8%B5%84%E6%BA%90%E5%8A%A0%E8%BD%BD%E5%9F%BA%E7%A1%80-%E5%8A%A8%E6%80%81%E5%8A%A0%E8%BD%BD%E5%8D%95%E4%B8%AA%E8%B5%84%E6%BA%90/"
+           data-tag="资源管理,Addressables"
+           data-author="" >
+            <span class="post-title" title="6.动态加载释放单个资源">6.动态加载释放单个资源</span>
+            <span class="post-date" title="2024-04-23 16:30:44">2024/04/23</span>
+        </a>
+        
+        
+        <a  class="全部文章 资源管理 Addressables "
+           href="/2024/04/23/%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86/04.Addressables/5.%E8%B5%84%E6%BA%90%E5%8A%A0%E8%BD%BD%E5%9F%BA%E7%A1%80-Label%E6%A0%87%E7%AD%BE%E7%9A%84%E4%BD%9C%E7%94%A8/"
+           data-tag="资源管理,Addressables"
+           data-author="" >
+            <span class="post-title" title="5.Group窗口Label标签的作用">5.Group窗口Label标签的作用</span>
+            <span class="post-date" title="2024-04-23 16:29:11">2024/04/23</span>
+        </a>
+        
+        
+        <a  class="全部文章 资源管理 Addressables "
+           href="/2024/04/23/%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86/04.Addressables/4.%E8%B5%84%E6%BA%90%E5%8A%A0%E8%BD%BD%E5%9F%BA%E7%A1%80-%E6%8C%87%E5%AE%9A%E8%B5%84%E6%BA%90%E5%8A%A0%E8%BD%BD/"
+           data-tag="资源管理,Addressables"
+           data-author="" >
+            <span class="post-title" title="4.AssetReference类指定资源加载">4.AssetReference类指定资源加载</span>
+            <span class="post-date" title="2024-04-23 15:49:04">2024/04/23</span>
+        </a>
+        
+        
+        <a  class="全部文章 资源管理 Addressables "
+           href="/2024/04/23/%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86/04.Addressables/3.%E8%B5%84%E6%BA%90%E5%8A%A0%E8%BD%BD%E5%9F%BA%E7%A1%80-%E5%AF%BB%E5%9D%80%E8%B5%84%E6%BA%90%E8%AE%BE%E7%BD%AE/"
+           data-tag="资源管理,Addressables"
+           data-author="" >
+            <span class="post-title" title="3.Group窗口可寻址资源设置相关">3.Group窗口可寻址资源设置相关</span>
+            <span class="post-date" title="2024-04-23 15:11:39">2024/04/23</span>
+        </a>
+        
+        
+        <a  class="全部文章 资源管理 Addressables "
+           href="/2024/04/23/%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86/04.Addressables/2.%E5%AF%BC%E5%85%A5Addressables/"
+           data-tag="资源管理,Addressables"
+           data-author="" >
+            <span class="post-title" title="2.导入Addressables">2.导入Addressables</span>
+            <span class="post-date" title="2024-04-23 15:09:27">2024/04/23</span>
+        </a>
         
         
         <a  class="全部文章 资源管理 Addressables "
@@ -5198,7 +5313,7 @@
         
         <a  class="全部文章 UI系统 FGUI FGUI基础知识 "
            href="/2024/03/24/UI%E7%B3%BB%E7%BB%9F/07.FGUI%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/38.FGUI%E5%9F%BA%E7%A1%80-Unity%E4%B8%AD%E7%9A%84%E4%BD%BF%E7%94%A8%E5%BF%85%E5%A4%87-%E5%9D%90%E6%A0%87%E7%B3%BB%E7%BB%9F/"
-           data-tag="UI系统,基础知识,FGUI,坐标"
+           data-tag="UI系统,基础知识,坐标,FGUI"
            data-author="" >
             <span class="post-title" title="38.坐标系统">38.坐标系统</span>
             <span class="post-date" title="2024-03-24 15:56:43">2024/03/24</span>
@@ -8636,7 +8751,7 @@
         
         <a  class="全部文章 Unity Unity入门 Unity入门实践项目 "
            href="/2024/02/27/Unity/02.Unity%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/3.%E5%BF%85%E5%A4%87%E7%9F%A5%E8%AF%86%E7%82%B9-%E9%9A%8F%E6%9C%BA%E6%95%B0%E5%92%8CUnity%E8%87%AA%E5%B8%A6%E5%A7%94%E6%89%98%E7%9B%B8%E5%85%B3/"
-           data-tag="实践项目,必备知识点,随机数,Unity,Unity入门,委托和事件"
+           data-tag="实践项目,必备知识点,随机数,委托和事件,Unity,Unity入门"
            data-author="" >
             <span class="post-title" title="3.Unity随机数和UnityAction委托">3.Unity随机数和UnityAction委托</span>
             <span class="post-date" title="2024-02-27 14:49:56">2024/02/27</span>
@@ -9581,7 +9696,7 @@
         
         <a  class="全部文章 CSharp CSharp进阶 CSharp进阶语法知识 "
            href="/2024/02/21/CSharp/07.Csharp%E8%BF%9B%E9%98%B6%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/22.%E5%8F%8D%E5%B0%84%E5%92%8C%E7%89%B9%E6%80%A7-%E7%89%B9%E6%80%A7/"
-           data-tag="CSharp,语法知识,反射和特性,CSharp进阶"
+           data-tag="CSharp,语法知识,CSharp进阶,反射和特性"
            data-author="" >
             <span class="post-title" title="22.特性">22.特性</span>
             <span class="post-date" title="2024-02-21 13:02:24">2024/02/21</span>
@@ -9590,7 +9705,7 @@
         
         <a  class="全部文章 CSharp CSharp进阶 CSharp进阶语法知识 "
            href="/2024/02/21/CSharp/07.Csharp%E8%BF%9B%E9%98%B6%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/21.%E5%8F%8D%E5%B0%84%E5%92%8C%E7%89%B9%E6%80%A7-%E5%8F%8D%E5%B0%84/"
-           data-tag="CSharp,语法知识,反射和特性,CSharp进阶"
+           data-tag="CSharp,语法知识,CSharp进阶,反射和特性"
            data-author="" >
             <span class="post-title" title="21.反射">21.反射</span>
             <span class="post-date" title="2024-02-21 09:49:59">2024/02/21</span>
@@ -9635,7 +9750,7 @@
         
         <a  class="全部文章 CSharp CSharp进阶 CSharp进阶语法知识 "
            href="/2024/02/20/CSharp/07.Csharp%E8%BF%9B%E9%98%B6%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/16.%E5%A7%94%E6%89%98%E5%92%8C%E4%BA%8B%E4%BB%B6-lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F/"
-           data-tag="CSharp,语法知识,委托和事件,CSharp进阶"
+           data-tag="CSharp,语法知识,CSharp进阶,委托和事件"
            data-author="" >
             <span class="post-title" title="16.lambda表达式和闭包">16.lambda表达式和闭包</span>
             <span class="post-date" title="2024-02-20 21:35:37">2024/02/20</span>
@@ -9644,7 +9759,7 @@
         
         <a  class="全部文章 CSharp CSharp进阶 CSharp进阶语法知识 "
            href="/2024/02/20/CSharp/07.Csharp%E8%BF%9B%E9%98%B6%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/15.%E5%A7%94%E6%89%98%E5%92%8C%E4%BA%8B%E4%BB%B6-%E5%8C%BF%E5%90%8D%E5%87%BD%E6%95%B0/"
-           data-tag="CSharp,语法知识,委托和事件,CSharp进阶"
+           data-tag="CSharp,语法知识,CSharp进阶,委托和事件"
            data-author="" >
             <span class="post-title" title="15.匿名函数">15.匿名函数</span>
             <span class="post-date" title="2024-02-20 21:27:10">2024/02/20</span>
@@ -9653,7 +9768,7 @@
         
         <a  class="全部文章 CSharp CSharp进阶 CSharp进阶语法知识 "
            href="/2024/02/20/CSharp/07.Csharp%E8%BF%9B%E9%98%B6%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/14.%E5%A7%94%E6%89%98%E5%92%8C%E4%BA%8B%E4%BB%B6-%E4%BA%8B%E4%BB%B6/"
-           data-tag="CSharp,语法知识,委托和事件,CSharp进阶"
+           data-tag="CSharp,语法知识,CSharp进阶,委托和事件"
            data-author="" >
             <span class="post-title" title="14.事件">14.事件</span>
             <span class="post-date" title="2024-02-20 20:53:30">2024/02/20</span>
@@ -9662,7 +9777,7 @@
         
         <a  class="全部文章 CSharp CSharp进阶 CSharp进阶语法知识 "
            href="/2024/02/20/CSharp/07.Csharp%E8%BF%9B%E9%98%B6%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/13.%E5%A7%94%E6%89%98%E5%92%8C%E4%BA%8B%E4%BB%B6-%E5%A7%94%E6%89%98/"
-           data-tag="CSharp,语法知识,委托和事件,CSharp进阶"
+           data-tag="CSharp,语法知识,CSharp进阶,委托和事件"
            data-author="" >
             <span class="post-title" title="13.委托">13.委托</span>
             <span class="post-date" title="2024-02-20 20:23:46">2024/02/20</span>
