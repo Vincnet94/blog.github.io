@@ -6,34 +6,30 @@
   <meta name="keywords" content=" CSharp , 语法知识 , CSharp进阶 , 委托和事件 ">
   <meta name="description" content="15.匿名函数 | 人间自有韬哥在的博客">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="8.Unity打包安卓-设置相关-OtherSettings-配置 8.1 知识点 Scripting Backend 脚本后端 脚本后端决定Unity如何在项目中编译和执行C#代码。 Mono将C#编译为.Net公共中间语言CIL，并使用公共语言运行时执行中间语言。 IL2CPP将C#编译为CIL，再将CIL转换为C++，再将C++编译为本机代码。 Mono和IL2CPP的具体区别在 Unity">
+<meta name="description" content="21.调试相关-AndroidStudio内调试安卓应用程序 21.1 知识点回顾Unity导出Android Studio工程在进行导出时需要执行以下步骤：  勾选Export Project。 勾选Development Build。 导出到指定目录。 使用Android Studio打开该工程。 更新Gradle版本。 删除android.enableR8。 确保构建成功。   在Andro">
 <meta property="og:type" content="article">
-<meta property="og:title" content="8.OtherSettings-Configuration 其他设置-配置">
-<meta property="og:url" content="https://linwentao785293209.github.io/2024/05/12/%E7%A7%BB%E5%8A%A8%E5%B9%B3%E5%8F%B0/03.Android%E5%9F%BA%E7%A1%80/8.Unity%E6%89%93%E5%8C%85%E5%AE%89%E5%8D%93-%E8%AE%BE%E7%BD%AE%E7%9B%B8%E5%85%B3-OtherSettings-%E9%85%8D%E7%BD%AE/index.html">
+<meta property="og:title" content="21.AndroidStudio内调试安卓应用程序">
+<meta property="og:url" content="https://linwentao785293209.github.io/2024/05/13/%E7%A7%BB%E5%8A%A8%E5%B9%B3%E5%8F%B0/03.Android%E5%9F%BA%E7%A1%80/21.%E8%B0%83%E8%AF%95%E7%9B%B8%E5%85%B3-AndroidStudio%E5%86%85%E8%B0%83%E8%AF%95%E5%AE%89%E5%8D%93%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F/index.html">
 <meta property="og:site_name" content="人间自有韬哥在的博客">
-<meta property="og:description" content="8.Unity打包安卓-设置相关-OtherSettings-配置 8.1 知识点 Scripting Backend 脚本后端 脚本后端决定Unity如何在项目中编译和执行C#代码。 Mono将C#编译为.Net公共中间语言CIL，并使用公共语言运行时执行中间语言。 IL2CPP将C#编译为CIL，再将CIL转换为C++，再将C++编译为本机代码。 Mono和IL2CPP的具体区别在 Unity">
+<meta property="og:description" content="21.调试相关-AndroidStudio内调试安卓应用程序 21.1 知识点回顾Unity导出Android Studio工程在进行导出时需要执行以下步骤：  勾选Export Project。 勾选Development Build。 导出到指定目录。 使用Android Studio打开该工程。 更新Gradle版本。 删除android.enableR8。 确保构建成功。   在Andro">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/%E7%A7%BB%E5%8A%A8%E5%B9%B3%E5%8F%B0/03.Android%E5%9F%BA%E7%A1%80/8.Unity%E6%89%93%E5%8C%85%E5%AE%89%E5%8D%93-%E8%AE%BE%E7%BD%AE%E7%9B%B8%E5%85%B3-OtherSettings-%E9%85%8D%E7%BD%AE/1.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/%E7%A7%BB%E5%8A%A8%E5%B9%B3%E5%8F%B0/03.Android%E5%9F%BA%E7%A1%80/8.Unity%E6%89%93%E5%8C%85%E5%AE%89%E5%8D%93-%E8%AE%BE%E7%BD%AE%E7%9B%B8%E5%85%B3-OtherSettings-%E9%85%8D%E7%BD%AE/2.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/%E7%A7%BB%E5%8A%A8%E5%B9%B3%E5%8F%B0/03.Android%E5%9F%BA%E7%A1%80/8.Unity%E6%89%93%E5%8C%85%E5%AE%89%E5%8D%93-%E8%AE%BE%E7%BD%AE%E7%9B%B8%E5%85%B3-OtherSettings-%E9%85%8D%E7%BD%AE/3.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/%E7%A7%BB%E5%8A%A8%E5%B9%B3%E5%8F%B0/03.Android%E5%9F%BA%E7%A1%80/8.Unity%E6%89%93%E5%8C%85%E5%AE%89%E5%8D%93-%E8%AE%BE%E7%BD%AE%E7%9B%B8%E5%85%B3-OtherSettings-%E9%85%8D%E7%BD%AE/4.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/%E7%A7%BB%E5%8A%A8%E5%B9%B3%E5%8F%B0/03.Android%E5%9F%BA%E7%A1%80/8.Unity%E6%89%93%E5%8C%85%E5%AE%89%E5%8D%93-%E8%AE%BE%E7%BD%AE%E7%9B%B8%E5%85%B3-OtherSettings-%E9%85%8D%E7%BD%AE/5.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/%E7%A7%BB%E5%8A%A8%E5%B9%B3%E5%8F%B0/03.Android%E5%9F%BA%E7%A1%80/8.Unity%E6%89%93%E5%8C%85%E5%AE%89%E5%8D%93-%E8%AE%BE%E7%BD%AE%E7%9B%B8%E5%85%B3-OtherSettings-%E9%85%8D%E7%BD%AE/6.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/%E7%A7%BB%E5%8A%A8%E5%B9%B3%E5%8F%B0/03.Android%E5%9F%BA%E7%A1%80/8.Unity%E6%89%93%E5%8C%85%E5%AE%89%E5%8D%93-%E8%AE%BE%E7%BD%AE%E7%9B%B8%E5%85%B3-OtherSettings-%E9%85%8D%E7%BD%AE/7.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/%E7%A7%BB%E5%8A%A8%E5%B9%B3%E5%8F%B0/03.Android%E5%9F%BA%E7%A1%80/8.Unity%E6%89%93%E5%8C%85%E5%AE%89%E5%8D%93-%E8%AE%BE%E7%BD%AE%E7%9B%B8%E5%85%B3-OtherSettings-%E9%85%8D%E7%BD%AE/8.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/%E7%A7%BB%E5%8A%A8%E5%B9%B3%E5%8F%B0/03.Android%E5%9F%BA%E7%A1%80/8.Unity%E6%89%93%E5%8C%85%E5%AE%89%E5%8D%93-%E8%AE%BE%E7%BD%AE%E7%9B%B8%E5%85%B3-OtherSettings-%E9%85%8D%E7%BD%AE/9.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/%E7%A7%BB%E5%8A%A8%E5%B9%B3%E5%8F%B0/03.Android%E5%9F%BA%E7%A1%80/8.Unity%E6%89%93%E5%8C%85%E5%AE%89%E5%8D%93-%E8%AE%BE%E7%BD%AE%E7%9B%B8%E5%85%B3-OtherSettings-%E9%85%8D%E7%BD%AE/10.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/%E7%A7%BB%E5%8A%A8%E5%B9%B3%E5%8F%B0/03.Android%E5%9F%BA%E7%A1%80/8.Unity%E6%89%93%E5%8C%85%E5%AE%89%E5%8D%93-%E8%AE%BE%E7%BD%AE%E7%9B%B8%E5%85%B3-OtherSettings-%E9%85%8D%E7%BD%AE/11.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/%E7%A7%BB%E5%8A%A8%E5%B9%B3%E5%8F%B0/03.Android%E5%9F%BA%E7%A1%80/8.Unity%E6%89%93%E5%8C%85%E5%AE%89%E5%8D%93-%E8%AE%BE%E7%BD%AE%E7%9B%B8%E5%85%B3-OtherSettings-%E9%85%8D%E7%BD%AE/12.png">
-<meta property="article:published_time" content="2024-05-12T09:14:00.000Z">
-<meta property="article:modified_time" content="2024-05-12T09:24:44.958Z">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/%E7%A7%BB%E5%8A%A8%E5%B9%B3%E5%8F%B0/03.Android%E5%9F%BA%E7%A1%80/21.%E8%B0%83%E8%AF%95%E7%9B%B8%E5%85%B3-AndroidStudio%E5%86%85%E8%B0%83%E8%AF%95%E5%AE%89%E5%8D%93%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F/1.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/%E7%A7%BB%E5%8A%A8%E5%B9%B3%E5%8F%B0/03.Android%E5%9F%BA%E7%A1%80/21.%E8%B0%83%E8%AF%95%E7%9B%B8%E5%85%B3-AndroidStudio%E5%86%85%E8%B0%83%E8%AF%95%E5%AE%89%E5%8D%93%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F/2.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/%E7%A7%BB%E5%8A%A8%E5%B9%B3%E5%8F%B0/03.Android%E5%9F%BA%E7%A1%80/21.%E8%B0%83%E8%AF%95%E7%9B%B8%E5%85%B3-AndroidStudio%E5%86%85%E8%B0%83%E8%AF%95%E5%AE%89%E5%8D%93%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F/3.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/%E7%A7%BB%E5%8A%A8%E5%B9%B3%E5%8F%B0/03.Android%E5%9F%BA%E7%A1%80/21.%E8%B0%83%E8%AF%95%E7%9B%B8%E5%85%B3-AndroidStudio%E5%86%85%E8%B0%83%E8%AF%95%E5%AE%89%E5%8D%93%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F/4.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/%E7%A7%BB%E5%8A%A8%E5%B9%B3%E5%8F%B0/03.Android%E5%9F%BA%E7%A1%80/21.%E8%B0%83%E8%AF%95%E7%9B%B8%E5%85%B3-AndroidStudio%E5%86%85%E8%B0%83%E8%AF%95%E5%AE%89%E5%8D%93%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F/5.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/%E7%A7%BB%E5%8A%A8%E5%B9%B3%E5%8F%B0/03.Android%E5%9F%BA%E7%A1%80/21.%E8%B0%83%E8%AF%95%E7%9B%B8%E5%85%B3-AndroidStudio%E5%86%85%E8%B0%83%E8%AF%95%E5%AE%89%E5%8D%93%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F/6.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/%E7%A7%BB%E5%8A%A8%E5%B9%B3%E5%8F%B0/03.Android%E5%9F%BA%E7%A1%80/21.%E8%B0%83%E8%AF%95%E7%9B%B8%E5%85%B3-AndroidStudio%E5%86%85%E8%B0%83%E8%AF%95%E5%AE%89%E5%8D%93%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F/7.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/%E7%A7%BB%E5%8A%A8%E5%B9%B3%E5%8F%B0/03.Android%E5%9F%BA%E7%A1%80/21.%E8%B0%83%E8%AF%95%E7%9B%B8%E5%85%B3-AndroidStudio%E5%86%85%E8%B0%83%E8%AF%95%E5%AE%89%E5%8D%93%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F/8.png">
+<meta property="article:published_time" content="2024-05-13T03:57:48.000Z">
+<meta property="article:modified_time" content="2024-05-13T04:13:23.830Z">
 <meta property="article:author" content="人间自有韬哥在">
 <meta property="article:tag" content="移动平台">
 <meta property="article:tag" content="Android">
 <meta property="article:tag" content="Android基础">
-<meta property="article:tag" content="Unity打包Android">
+<meta property="article:tag" content="安卓调试相关">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://linwentao785293209.github.io/images/%E7%A7%BB%E5%8A%A8%E5%B9%B3%E5%8F%B0/03.Android%E5%9F%BA%E7%A1%80/8.Unity%E6%89%93%E5%8C%85%E5%AE%89%E5%8D%93-%E8%AE%BE%E7%BD%AE%E7%9B%B8%E5%85%B3-OtherSettings-%E9%85%8D%E7%BD%AE/1.png">
+<meta name="twitter:image" content="https://linwentao785293209.github.io/images/%E7%A7%BB%E5%8A%A8%E5%B9%B3%E5%8F%B0/03.Android%E5%9F%BA%E7%A1%80/21.%E8%B0%83%E8%AF%95%E7%9B%B8%E5%85%B3-AndroidStudio%E5%86%85%E8%B0%83%E8%AF%95%E5%AE%89%E5%8D%93%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F/1.png">
 
 
 <link rel="icon" href="/img/avatar.jpg">
@@ -160,7 +156,7 @@
     <li>
         <div class="all active" data-rel="全部文章">全部文章
             
-                <small>(1017)</small>
+                <small>(1030)</small>
             
         </div>
     </li>
@@ -1676,7 +1672,7 @@
         <div data-rel="移动平台">
             <i class="fold iconfont icon-right"></i>
             移动平台
-            <small>(10)</small>
+            <small>(23)</small>
         </div>
         
             <ul class="sub hide">
@@ -1697,7 +1693,7 @@
         <div data-rel="移动平台&lt;---&gt;Android">
             <i class="fold iconfont icon-right"></i>
             Android
-            <small>(9)</small>
+            <small>(22)</small>
         </div>
         
             <ul class="sub hide">
@@ -1718,7 +1714,7 @@
         <div data-rel="移动平台&lt;---&gt;Android&lt;---&gt;Android基础">
             
             Android基础
-            <small>(8)</small>
+            <small>(21)</small>
         </div>
         
     </li>
@@ -1767,8 +1763,8 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="1017">
-<input type="hidden" id="yelog_site_word_count" value="1631.6k">
+<input type="hidden" id="yelog_site_posts_number" value="1030">
+<input type="hidden" id="yelog_site_word_count" value="1642.9k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -1843,6 +1839,10 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>3D数学</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>安卓调试相关</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -2214,6 +2214,10 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>AndroidStudio打包Android应用程序</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>AssetBundle</a>
             </li>
         
@@ -2370,7 +2374,7 @@
             </li>
         
             <li class="article-tag-list-item">
-                <i class="iconfont icon-tag"></i><a>Unity打包Android</a>
+                <i class="iconfont icon-tag"></i><a>Unity打包Android应用程序</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -2442,8 +2446,125 @@
         
         
         <a  class="全部文章 移动平台 Android Android基础 "
+           href="/2024/05/13/%E7%A7%BB%E5%8A%A8%E5%B9%B3%E5%8F%B0/03.Android%E5%9F%BA%E7%A1%80/21.%E8%B0%83%E8%AF%95%E7%9B%B8%E5%85%B3-AndroidStudio%E5%86%85%E8%B0%83%E8%AF%95%E5%AE%89%E5%8D%93%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F/"
+           data-tag="移动平台,Android,Android基础,安卓调试相关"
+           data-author="" >
+            <span class="post-title" title="21.AndroidStudio内调试安卓应用程序">21.AndroidStudio内调试安卓应用程序</span>
+            <span class="post-date" title="2024-05-13 11:57:48">2024/05/13</span>
+        </a>
+        
+        
+        <a  class="全部文章 移动平台 Android Android基础 "
+           href="/2024/05/13/%E7%A7%BB%E5%8A%A8%E5%B9%B3%E5%8F%B0/03.Android%E5%9F%BA%E7%A1%80/20.%E8%B0%83%E8%AF%95%E7%9B%B8%E5%85%B3-AndroidLogcat-ADB%E8%B0%83%E8%AF%95%E7%9B%B8%E5%85%B3/"
+           data-tag="移动平台,Android,Android基础,安卓调试相关"
+           data-author="" >
+            <span class="post-title" title="20.AndroidLogcatADB安卓调试桥接">20.AndroidLogcatADB安卓调试桥接</span>
+            <span class="post-date" title="2024-05-13 11:46:20">2024/05/13</span>
+        </a>
+        
+        
+        <a  class="全部文章 移动平台 Android Android基础 "
+           href="/2024/05/13/%E7%A7%BB%E5%8A%A8%E5%B9%B3%E5%8F%B0/03.Android%E5%9F%BA%E7%A1%80/19.%E8%B0%83%E8%AF%95%E7%9B%B8%E5%85%B3-AndroidLogcat-%E5%86%85%E5%AD%98%E7%AA%97%E5%8F%A3%E5%B7%A5%E5%85%B7/"
+           data-tag="移动平台,Android,Android基础,安卓调试相关"
+           data-author="" >
+            <span class="post-title" title="19.AndroidLogcat内存窗口">19.AndroidLogcat内存窗口</span>
+            <span class="post-date" title="2024-05-13 11:38:26">2024/05/13</span>
+        </a>
+        
+        
+        <a  class="全部文章 移动平台 Android Android基础 "
+           href="/2024/05/13/%E7%A7%BB%E5%8A%A8%E5%B9%B3%E5%8F%B0/03.Android%E5%9F%BA%E7%A1%80/18.%E8%B0%83%E8%AF%95%E7%9B%B8%E5%85%B3-AndroidLogcat-%E5%A0%86%E6%A0%88%E8%B7%9F%E8%B8%AA%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7/"
+           data-tag="移动平台,Android,Android基础,安卓调试相关"
+           data-author="" >
+            <span class="post-title" title="18.AndroidLogcat堆栈跟踪实用窗口">18.AndroidLogcat堆栈跟踪实用窗口</span>
+            <span class="post-date" title="2024-05-13 11:17:36">2024/05/13</span>
+        </a>
+        
+        
+        <a  class="全部文章 移动平台 Android Android基础 "
+           href="/2024/05/12/%E7%A7%BB%E5%8A%A8%E5%B9%B3%E5%8F%B0/03.Android%E5%9F%BA%E7%A1%80/17.%E8%B0%83%E8%AF%95%E7%9B%B8%E5%85%B3-AndroidLogcat-%E5%B1%8F%E5%B9%95%E6%8D%95%E8%8E%B7%E5%B7%A5%E5%85%B7/"
+           data-tag="移动平台,Android,Android基础,安卓调试相关"
+           data-author="" >
+            <span class="post-title" title="17.AndroidLogcat屏幕截图窗口">17.AndroidLogcat屏幕截图窗口</span>
+            <span class="post-date" title="2024-05-12 23:21:46">2024/05/12</span>
+        </a>
+        
+        
+        <a  class="全部文章 移动平台 Android Android基础 "
+           href="/2024/05/12/%E7%A7%BB%E5%8A%A8%E5%B9%B3%E5%8F%B0/03.Android%E5%9F%BA%E7%A1%80/16.%E8%B0%83%E8%AF%95%E7%9B%B8%E5%85%B3-AndroidLogcat-%E5%9F%BA%E7%A1%80%E5%86%85%E5%AE%B9%E5%AD%A6%E4%B9%A0/"
+           data-tag="移动平台,Android,Android基础,安卓调试相关"
+           data-author="" >
+            <span class="post-title" title="16.AndroidLogcat基础内容学习">16.AndroidLogcat基础内容学习</span>
+            <span class="post-date" title="2024-05-12 23:14:26">2024/05/12</span>
+        </a>
+        
+        
+        <a  class="全部文章 移动平台 Android Android基础 "
+           href="/2024/05/12/%E7%A7%BB%E5%8A%A8%E5%B9%B3%E5%8F%B0/03.Android%E5%9F%BA%E7%A1%80/15.%E8%B0%83%E8%AF%95%E7%9B%B8%E5%85%B3-UnityRemote/"
+           data-tag="移动平台,Android,Android基础,安卓调试相关"
+           data-author="" >
+            <span class="post-title" title="15.UnityRemote">15.UnityRemote</span>
+            <span class="post-date" title="2024-05-12 23:09:14">2024/05/12</span>
+        </a>
+        
+        
+        <a  class="全部文章 移动平台 Android Android基础 "
+           href="/2024/05/12/%E7%A7%BB%E5%8A%A8%E5%B9%B3%E5%8F%B0/03.Android%E5%9F%BA%E7%A1%80/14.%E8%B0%83%E8%AF%95%E7%9B%B8%E5%85%B3-Unity%E5%86%85%E8%B0%83%E8%AF%95%E5%AE%89%E5%8D%93%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F/"
+           data-tag="移动平台,Android,Android基础,安卓调试相关"
+           data-author="" >
+            <span class="post-title" title="14.Unity内调试安卓应用程序">14.Unity内调试安卓应用程序</span>
+            <span class="post-date" title="2024-05-12 19:35:46">2024/05/12</span>
+        </a>
+        
+        
+        <a  class="全部文章 移动平台 Android Android基础 "
+           href="/2024/05/12/%E7%A7%BB%E5%8A%A8%E5%B9%B3%E5%8F%B0/03.Android%E5%9F%BA%E7%A1%80/13.AndroidStudio%E6%89%93%E5%8C%85%E5%AE%89%E5%8D%93/"
+           data-tag="移动平台,Android,Android基础,AndroidStudio打包Android应用程序"
+           data-author="" >
+            <span class="post-title" title="13.AndroidStudio打包安卓应用程序">13.AndroidStudio打包安卓应用程序</span>
+            <span class="post-date" title="2024-05-12 19:26:42">2024/05/12</span>
+        </a>
+        
+        
+        <a  class="全部文章 移动平台 Android Android基础 "
+           href="/2024/05/12/%E7%A7%BB%E5%8A%A8%E5%B9%B3%E5%8F%B0/03.Android%E5%9F%BA%E7%A1%80/12.Unity%E6%89%93%E5%8C%85%E5%AE%89%E5%8D%93-%E8%AE%BE%E7%BD%AE%E7%9B%B8%E5%85%B3-PublishingSettings-%E5%85%B6%E4%BB%96/"
+           data-tag="移动平台,Android,Android基础,Unity打包Android应用程序"
+           data-author="" >
+            <span class="post-title" title="12.PublishingSettings-Other 发布设置-其他">12.PublishingSettings-Other 发布设置-其他</span>
+            <span class="post-date" title="2024-05-12 19:15:57">2024/05/12</span>
+        </a>
+        
+        
+        <a  class="全部文章 移动平台 Android Android基础 "
+           href="/2024/05/12/%E7%A7%BB%E5%8A%A8%E5%B9%B3%E5%8F%B0/03.Android%E5%9F%BA%E7%A1%80/11.Unity%E6%89%93%E5%8C%85%E5%AE%89%E5%8D%93-%E8%AE%BE%E7%BD%AE%E7%9B%B8%E5%85%B3-PublishingSettings-%E5%AF%86%E9%92%A5%E7%AE%A1%E7%90%86%E5%99%A8/"
+           data-tag="移动平台,Android,Android基础,Unity打包Android应用程序"
+           data-author="" >
+            <span class="post-title" title="11.PublishingSettings-KeystoreManager 发布设置-密钥管理器">11.PublishingSettings-KeystoreManager 发布设置-密钥管理器</span>
+            <span class="post-date" title="2024-05-12 19:11:32">2024/05/12</span>
+        </a>
+        
+        
+        <a  class="全部文章 移动平台 Android Android基础 "
+           href="/2024/05/12/%E7%A7%BB%E5%8A%A8%E5%B9%B3%E5%8F%B0/03.Android%E5%9F%BA%E7%A1%80/10.Unity%E6%89%93%E5%8C%85%E5%AE%89%E5%8D%93-%E8%AE%BE%E7%BD%AE%E7%9B%B8%E5%85%B3-OtherSettings-%E4%BC%98%E5%8C%96%E5%92%8C%E5%A0%86%E6%A0%88%E8%B7%9F%E8%B8%AA/"
+           data-tag="移动平台,Android,Android基础,Unity打包Android应用程序"
+           data-author="" >
+            <span class="post-title" title="10.OtherSettings-Optimization和Stack Trace 其他设置-优化和堆栈跟踪">10.OtherSettings-Optimization和Stack Trace 其他设置-优化和堆栈跟踪</span>
+            <span class="post-date" title="2024-05-12 19:04:22">2024/05/12</span>
+        </a>
+        
+        
+        <a  class="全部文章 移动平台 Android Android基础 "
+           href="/2024/05/12/%E7%A7%BB%E5%8A%A8%E5%B9%B3%E5%8F%B0/03.Android%E5%9F%BA%E7%A1%80/9.Unity%E6%89%93%E5%8C%85%E5%AE%89%E5%8D%93-%E8%AE%BE%E7%BD%AE%E7%9B%B8%E5%85%B3-OtherSettings-%E8%84%9A%E6%9C%AC%E7%BC%96%E8%AF%91/"
+           data-tag="移动平台,Android,Android基础,Unity打包Android应用程序"
+           data-author="" >
+            <span class="post-title" title="9.OtherSettings-ScriptCompilation 其他设置-脚本编译">9.OtherSettings-ScriptCompilation 其他设置-脚本编译</span>
+            <span class="post-date" title="2024-05-12 18:54:07">2024/05/12</span>
+        </a>
+        
+        
+        <a  class="全部文章 移动平台 Android Android基础 "
            href="/2024/05/12/%E7%A7%BB%E5%8A%A8%E5%B9%B3%E5%8F%B0/03.Android%E5%9F%BA%E7%A1%80/8.Unity%E6%89%93%E5%8C%85%E5%AE%89%E5%8D%93-%E8%AE%BE%E7%BD%AE%E7%9B%B8%E5%85%B3-OtherSettings-%E9%85%8D%E7%BD%AE/"
-           data-tag="移动平台,Android,Android基础,Unity打包Android"
+           data-tag="移动平台,Android,Android基础,Unity打包Android应用程序"
            data-author="" >
             <span class="post-title" title="8.OtherSettings-Configuration 其他设置-配置">8.OtherSettings-Configuration 其他设置-配置</span>
             <span class="post-date" title="2024-05-12 17:14:00">2024/05/12</span>
@@ -2452,7 +2573,7 @@
         
         <a  class="全部文章 移动平台 Android Android基础 "
            href="/2024/05/12/%E7%A7%BB%E5%8A%A8%E5%B9%B3%E5%8F%B0/03.Android%E5%9F%BA%E7%A1%80/7.Unity%E6%89%93%E5%8C%85%E5%AE%89%E5%8D%93-%E8%AE%BE%E7%BD%AE%E7%9B%B8%E5%85%B3-OtherSettings-Vulkan%E8%AE%BE%E7%BD%AE%E5%92%8C%E8%BA%AB%E4%BB%BD%E8%AF%81%E6%98%8E/"
-           data-tag="移动平台,Android,Android基础,Unity打包Android"
+           data-tag="移动平台,Android,Android基础,Unity打包Android应用程序"
            data-author="" >
             <span class="post-title" title="7.OtherSettings-VulkanSetting和Identification 其他设置-Vulkan设置和身份证明">7.OtherSettings-VulkanSetting和Identification 其他设置-Vulkan设置和身份证明</span>
             <span class="post-date" title="2024-05-12 17:07:31">2024/05/12</span>
@@ -2461,7 +2582,7 @@
         
         <a  class="全部文章 移动平台 Android Android基础 "
            href="/2024/05/12/%E7%A7%BB%E5%8A%A8%E5%B9%B3%E5%8F%B0/03.Android%E5%9F%BA%E7%A1%80/6.Unity%E6%89%93%E5%8C%85%E5%AE%89%E5%8D%93-%E8%AE%BE%E7%BD%AE%E7%9B%B8%E5%85%B3-OtherSettings-%E6%B8%B2%E6%9F%93/"
-           data-tag="移动平台,Android,Android基础,Unity打包Android"
+           data-tag="移动平台,Android,Android基础,Unity打包Android应用程序"
            data-author="" >
             <span class="post-title" title="6.OtherSettings-Rendering 其他设置-渲染">6.OtherSettings-Rendering 其他设置-渲染</span>
             <span class="post-date" title="2024-05-12 16:56:22">2024/05/12</span>
@@ -2470,7 +2591,7 @@
         
         <a  class="全部文章 移动平台 Android Android基础 "
            href="/2024/05/12/%E7%A7%BB%E5%8A%A8%E5%B9%B3%E5%8F%B0/03.Android%E5%9F%BA%E7%A1%80/5.Unity%E6%89%93%E5%8C%85%E5%AE%89%E5%8D%93-%E8%AE%BE%E7%BD%AE%E7%9B%B8%E5%85%B3-PlayerSettings/"
-           data-tag="移动平台,Android,Android基础,Unity打包Android"
+           data-tag="移动平台,Android,Android基础,Unity打包Android应用程序"
            data-author="" >
             <span class="post-title" title="5.PlayerSettings玩家设置">5.PlayerSettings玩家设置</span>
             <span class="post-date" title="2024-05-12 16:28:53">2024/05/12</span>
@@ -2479,7 +2600,7 @@
         
         <a  class="全部文章 移动平台 Android Android基础 "
            href="/2024/05/12/%E7%A7%BB%E5%8A%A8%E5%B9%B3%E5%8F%B0/03.Android%E5%9F%BA%E7%A1%80/4.Unity%E6%89%93%E5%8C%85%E5%AE%89%E5%8D%93-%E8%AE%BE%E7%BD%AE%E7%9B%B8%E5%85%B3-BuildSettings/"
-           data-tag="移动平台,Android,Android基础,Unity打包Android"
+           data-tag="移动平台,Android,Android基础,Unity打包Android应用程序"
            data-author="" >
             <span class="post-title" title="4.BuildSettings生成设置">4.BuildSettings生成设置</span>
             <span class="post-date" title="2024-05-12 16:16:04">2024/05/12</span>
@@ -2488,7 +2609,7 @@
         
         <a  class="全部文章 移动平台 Android Android基础 "
            href="/2024/05/12/%E7%A7%BB%E5%8A%A8%E5%B9%B3%E5%8F%B0/03.Android%E5%9F%BA%E7%A1%80/3.Unity%E6%89%93%E5%8C%85%E5%AE%89%E5%8D%93-%E8%80%81%E7%89%88Unity2018%E5%8F%8A%E4%BB%A5%E4%B8%8B%E6%89%93%E5%8C%85%E5%AE%89%E5%8D%93%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F/"
-           data-tag="移动平台,Android,Android基础,Unity打包Android"
+           data-tag="移动平台,Android,Android基础,Unity打包Android应用程序"
            data-author="" >
             <span class="post-title" title="3.Unity2018以下打包安卓应用程序">3.Unity2018以下打包安卓应用程序</span>
             <span class="post-date" title="2024-05-12 15:57:39">2024/05/12</span>
@@ -2497,7 +2618,7 @@
         
         <a  class="全部文章 移动平台 Android Android基础 "
            href="/2024/05/12/%E7%A7%BB%E5%8A%A8%E5%B9%B3%E5%8F%B0/03.Android%E5%9F%BA%E7%A1%80/2.Unity%E6%89%93%E5%8C%85%E5%AE%89%E5%8D%93-%E6%96%B0%E7%89%88Unity2019%E5%8F%8A%E4%BB%A5%E4%B8%8A%E6%89%93%E5%8C%85%E5%AE%89%E5%8D%93%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F/"
-           data-tag="移动平台,Android,Android基础,Unity打包Android"
+           data-tag="移动平台,Android,Android基础,Unity打包Android应用程序"
            data-author="" >
             <span class="post-title" title="2.Unity2019以上打包安卓应用程序">2.Unity2019以上打包安卓应用程序</span>
             <span class="post-date" title="2024-05-12 15:47:54">2024/05/12</span>
@@ -2513,18 +2634,18 @@
         </a>
         
         
-        <a  class="全部文章 移动平台 Android Android概述 "
-           href="/2024/05/12/%E7%A7%BB%E5%8A%A8%E5%B9%B3%E5%8F%B0/02.Android%E6%A6%82%E8%BF%B0/1.%E6%A6%82%E8%BF%B0/"
-           data-tag="移动平台,Android,Android概述"
+        <a  class="全部文章 移动平台 移动平台概述 "
+           href="/2024/05/12/%E7%A7%BB%E5%8A%A8%E5%B9%B3%E5%8F%B0/01.%E7%A7%BB%E5%8A%A8%E5%B9%B3%E5%8F%B0%E6%A6%82%E8%BF%B0/1.%E6%A6%82%E8%BF%B0/"
+           data-tag="移动平台,移动平台概述"
            data-author="" >
             <span class="post-title" title="1.概述">1.概述</span>
             <span class="post-date" title="2024-05-12 15:15:32">2024/05/12</span>
         </a>
         
         
-        <a  class="全部文章 移动平台 移动平台概述 "
-           href="/2024/05/12/%E7%A7%BB%E5%8A%A8%E5%B9%B3%E5%8F%B0/01.%E7%A7%BB%E5%8A%A8%E5%B9%B3%E5%8F%B0%E6%A6%82%E8%BF%B0/1.%E6%A6%82%E8%BF%B0/"
-           data-tag="移动平台,移动平台概述"
+        <a  class="全部文章 移动平台 Android Android概述 "
+           href="/2024/05/12/%E7%A7%BB%E5%8A%A8%E5%B9%B3%E5%8F%B0/02.Android%E6%A6%82%E8%BF%B0/1.%E6%A6%82%E8%BF%B0/"
+           data-tag="移动平台,Android,Android概述"
            data-author="" >
             <span class="post-title" title="1.概述">1.概述</span>
             <span class="post-date" title="2024-05-12 15:15:32">2024/05/12</span>
@@ -10984,7 +11105,7 @@
         
         <a  class="全部文章 CSharp CSharp基础 CSharp基础实践项目 "
            href="/2024/01/11/CSharp/04.CSharp%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/12.%E6%80%BB%E7%BB%93/"
-           data-tag="CSharp,实践项目,CSharp基础"
+           data-tag="CSharp,CSharp基础,实践项目"
            data-author="" >
             <span class="post-title" title="12.总结">12.总结</span>
             <span class="post-date" title="2024-01-11 21:13:38">2024/01/11</span>
@@ -10993,7 +11114,7 @@
         
         <a  class="全部文章 CSharp CSharp基础 CSharp基础实践项目 "
            href="/2024/01/11/CSharp/04.CSharp%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/11.%E4%BB%A3%E7%A0%81%E6%B1%87%E6%80%BB/"
-           data-tag="CSharp,实践项目,CSharp基础"
+           data-tag="CSharp,CSharp基础,实践项目"
            data-author="" >
             <span class="post-title" title="11.代码汇总">11.代码汇总</span>
             <span class="post-date" title="2024-01-11 21:07:59">2024/01/11</span>
@@ -11002,7 +11123,7 @@
         
         <a  class="全部文章 CSharp CSharp基础 CSharp基础实践项目 "
            href="/2024/01/11/CSharp/04.CSharp%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/10.%E7%BB%93%E6%9D%9F%E5%9C%BA%E6%99%AF/"
-           data-tag="CSharp,实践项目,CSharp基础"
+           data-tag="CSharp,CSharp基础,实践项目"
            data-author="" >
             <span class="post-title" title="10.结束场景">10.结束场景</span>
             <span class="post-date" title="2024-01-11 20:57:28">2024/01/11</span>
@@ -11011,7 +11132,7 @@
         
         <a  class="全部文章 CSharp CSharp基础 CSharp基础实践项目 "
            href="/2024/01/11/CSharp/04.CSharp%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/9.%E6%B8%B8%E6%88%8F%E5%9C%BA%E6%99%AF-%E6%89%94%E9%AA%B0%E5%AD%90/"
-           data-tag="CSharp,实践项目,CSharp基础"
+           data-tag="CSharp,CSharp基础,实践项目"
            data-author="" >
             <span class="post-title" title="9.扔骰子">9.扔骰子</span>
             <span class="post-date" title="2024-01-11 20:32:31">2024/01/11</span>
@@ -11020,7 +11141,7 @@
         
         <a  class="全部文章 CSharp CSharp基础 CSharp基础实践项目 "
            href="/2024/01/11/CSharp/04.CSharp%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/8.%E6%B8%B8%E6%88%8F%E5%9C%BA%E6%99%AF-%E7%8E%A9%E5%AE%B6%E5%92%8C%E7%94%B5%E8%84%91%E7%BB%93%E6%9E%84%E4%BD%93/"
-           data-tag="CSharp,实践项目,CSharp基础"
+           data-tag="CSharp,CSharp基础,实践项目"
            data-author="" >
             <span class="post-title" title="8.玩家和电脑结构体">8.玩家和电脑结构体</span>
             <span class="post-date" title="2024-01-11 20:25:32">2024/01/11</span>
@@ -11029,7 +11150,7 @@
         
         <a  class="全部文章 CSharp CSharp基础 CSharp基础实践项目 "
            href="/2024/01/11/CSharp/04.CSharp%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/7.%E6%B8%B8%E6%88%8F%E5%9C%BA%E6%99%AF-%E5%9C%B0%E5%9B%BE%E7%BB%93%E6%9E%84%E4%BD%93/"
-           data-tag="CSharp,实践项目,CSharp基础"
+           data-tag="CSharp,CSharp基础,实践项目"
            data-author="" >
             <span class="post-title" title="7.地图结构体">7.地图结构体</span>
             <span class="post-date" title="2024-01-11 20:22:00">2024/01/11</span>
@@ -11038,7 +11159,7 @@
         
         <a  class="全部文章 CSharp CSharp基础 CSharp基础实践项目 "
            href="/2024/01/11/CSharp/04.CSharp%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/6.%E6%B8%B8%E6%88%8F%E5%9C%BA%E6%99%AF-%E6%A0%BC%E5%AD%90%E7%B1%BB%E5%9E%8B%E6%9E%9A%E4%B8%BE%E5%92%8C%E6%A0%BC%E5%AD%90%E7%BB%93%E6%9E%84%E4%BD%93/"
-           data-tag="CSharp,实践项目,CSharp基础"
+           data-tag="CSharp,CSharp基础,实践项目"
            data-author="" >
             <span class="post-title" title="6.格子类型枚举和格子结构体">6.格子类型枚举和格子结构体</span>
             <span class="post-date" title="2024-01-11 13:02:56">2024/01/11</span>
@@ -11047,7 +11168,7 @@
         
         <a  class="全部文章 CSharp CSharp基础 CSharp基础实践项目 "
            href="/2024/01/11/CSharp/04.CSharp%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/5.%E6%B8%B8%E6%88%8F%E5%9C%BA%E6%99%AF-%E4%B8%8D%E5%8F%98%E7%9A%84%E7%BA%A2%E5%A2%99/"
-           data-tag="CSharp,实践项目,CSharp基础"
+           data-tag="CSharp,CSharp基础,实践项目"
            data-author="" >
             <span class="post-title" title="5.不变的红墙">5.不变的红墙</span>
             <span class="post-date" title="2024-01-11 13:02:47">2024/01/11</span>
@@ -11056,7 +11177,7 @@
         
         <a  class="全部文章 CSharp CSharp基础 CSharp基础实践项目 "
            href="/2024/01/11/CSharp/04.CSharp%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/4.%E5%BC%80%E5%A7%8B%E5%9C%BA%E6%99%AF/"
-           data-tag="CSharp,实践项目,CSharp基础"
+           data-tag="CSharp,CSharp基础,实践项目"
            data-author="" >
             <span class="post-title" title="4.开始场景">4.开始场景</span>
             <span class="post-date" title="2024-01-11 00:05:38">2024/01/11</span>
@@ -11065,7 +11186,7 @@
         
         <a  class="全部文章 CSharp CSharp基础 CSharp基础实践项目 "
            href="/2024/01/10/CSharp/04.CSharp%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/3.%E5%A4%9A%E4%B8%AA%E5%9C%BA%E6%99%AF/"
-           data-tag="CSharp,实践项目,CSharp基础"
+           data-tag="CSharp,CSharp基础,实践项目"
            data-author="" >
             <span class="post-title" title="3.多个场景">3.多个场景</span>
             <span class="post-date" title="2024-01-10 23:58:28">2024/01/10</span>
@@ -11074,7 +11195,7 @@
         
         <a  class="全部文章 CSharp CSharp基础 CSharp基础实践项目 "
            href="/2024/01/10/CSharp/04.CSharp%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/2.%E6%8E%A7%E5%88%B6%E5%8F%B0%E5%9F%BA%E7%A1%80%E8%AE%BE%E7%BD%AE/"
-           data-tag="CSharp,实践项目,CSharp基础"
+           data-tag="CSharp,CSharp基础,实践项目"
            data-author="" >
             <span class="post-title" title="2.控制台基础设置">2.控制台基础设置</span>
             <span class="post-date" title="2024-01-10 23:58:23">2024/01/10</span>
@@ -11083,7 +11204,7 @@
         
         <a  class="全部文章 CSharp CSharp基础 CSharp基础实践项目 "
            href="/2024/01/10/CSharp/04.CSharp%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/1.%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90/"
-           data-tag="CSharp,实践项目,CSharp基础"
+           data-tag="CSharp,CSharp基础,实践项目"
            data-author="" >
             <span class="post-title" title="1.需求分析">1.需求分析</span>
             <span class="post-date" title="2024-01-10 23:10:40">2024/01/10</span>
