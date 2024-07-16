@@ -2,22 +2,34 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>人间自有韬哥在的博客</title>
-  <meta name="keywords" content="">
-  <meta name="description" content="人间自有韬哥在的博客">
+  <title>134.C#中怎么计算对象占用多少内存 | 人间自有韬哥在的博客</title>
+  <meta name="keywords" content=" CSharp , 面试 ">
+  <meta name="description" content="134.C#中怎么计算对象占用多少内存 | 人间自有韬哥在的博客">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="CSharp和Lua以及Python基础语法对比1. 变量和数据类型变量声明和初始化C# int number &#x3D; 10; string text &#x3D; &quot;Hello&quot;; float pi &#x3D; 3.14f; bool isActive &#x3D; true;  Lua number &#x3D; 10 text &#x3D; &quot;Hello&quot; pi &#x3D; 3.14 isActive &#x3D; tr">
+<meta name="description" content="1.概述 1.1 知识点 主要讲解内容 游戏框架是什么 游戏框架是基于什么进行设计的 本套课程的学习目标 总结">
 <meta property="og:type" content="article">
-<meta property="og:title" content="C#和Lua以及Python基础语法对比">
-<meta property="og:url" content="https://linwentao785293209.github.io/2024/07/04/%E6%9D%82%E8%B0%88/1.CSharp%E5%92%8CLua%E4%BB%A5%E5%8F%8APython%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E5%AF%B9%E6%AF%94/index.html">
+<meta property="og:title" content="1.概述">
+<meta property="og:url" content="https://linwentao785293209.github.io/2024/06/15/%E6%A1%86%E6%9E%B6/03.%E8%BF%9B%E9%98%B6%E6%A1%86%E6%9E%B6/1.%E6%A6%82%E8%BF%B0/index.html">
 <meta property="og:site_name" content="人间自有韬哥在的博客">
-<meta property="og:description" content="CSharp和Lua以及Python基础语法对比1. 变量和数据类型变量声明和初始化C# int number &#x3D; 10; string text &#x3D; &quot;Hello&quot;; float pi &#x3D; 3.14f; bool isActive &#x3D; true;  Lua number &#x3D; 10 text &#x3D; &quot;Hello&quot; pi &#x3D; 3.14 isActive &#x3D; tr">
+<meta property="og:description" content="1.概述 1.1 知识点 主要讲解内容 游戏框架是什么 游戏框架是基于什么进行设计的 本套课程的学习目标 总结">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-07-04T00:56:28.000Z">
-<meta property="article:modified_time" content="2024-07-04T05:28:54.723Z">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/%E6%A1%86%E6%9E%B6/03.%E8%BF%9B%E9%98%B6%E6%A1%86%E6%9E%B6/1.%E6%A6%82%E8%BF%B0/1.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/%E6%A1%86%E6%9E%B6/03.%E8%BF%9B%E9%98%B6%E6%A1%86%E6%9E%B6/1.%E6%A6%82%E8%BF%B0/2.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/%E6%A1%86%E6%9E%B6/03.%E8%BF%9B%E9%98%B6%E6%A1%86%E6%9E%B6/1.%E6%A6%82%E8%BF%B0/3.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/%E6%A1%86%E6%9E%B6/03.%E8%BF%9B%E9%98%B6%E6%A1%86%E6%9E%B6/1.%E6%A6%82%E8%BF%B0/4.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/%E6%A1%86%E6%9E%B6/03.%E8%BF%9B%E9%98%B6%E6%A1%86%E6%9E%B6/1.%E6%A6%82%E8%BF%B0/5.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/%E6%A1%86%E6%9E%B6/03.%E8%BF%9B%E9%98%B6%E6%A1%86%E6%9E%B6/1.%E6%A6%82%E8%BF%B0/6.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/%E6%A1%86%E6%9E%B6/03.%E8%BF%9B%E9%98%B6%E6%A1%86%E6%9E%B6/1.%E6%A6%82%E8%BF%B0/7.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/%E6%A1%86%E6%9E%B6/03.%E8%BF%9B%E9%98%B6%E6%A1%86%E6%9E%B6/1.%E6%A6%82%E8%BF%B0/8.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/%E6%A1%86%E6%9E%B6/03.%E8%BF%9B%E9%98%B6%E6%A1%86%E6%9E%B6/1.%E6%A6%82%E8%BF%B0/9.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/%E6%A1%86%E6%9E%B6/03.%E8%BF%9B%E9%98%B6%E6%A1%86%E6%9E%B6/1.%E6%A6%82%E8%BF%B0/10.png">
+<meta property="article:published_time" content="2024-06-15T12:10:23.000Z">
+<meta property="article:modified_time" content="2024-06-15T12:10:30.660Z">
 <meta property="article:author" content="人间自有韬哥在">
-<meta property="article:tag" content="杂谈">
+<meta property="article:tag" content="框架">
+<meta property="article:tag" content="进阶框架">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://linwentao785293209.github.io/images/%E6%A1%86%E6%9E%B6/03.%E8%BF%9B%E9%98%B6%E6%A1%86%E6%9E%B6/1.%E6%A6%82%E8%BF%B0/1.png">
 
 
 <link rel="icon" href="/img/avatar.jpg">
@@ -61,7 +73,7 @@
 
 
 <body>
-<aside class="nav mobile">
+<aside class="nav">
     <div class="nav-left">
         <a href="/"
    class="avatar_target">
@@ -148,7 +160,7 @@
     <li>
         <div class="all active" data-rel="全部文章">全部文章
             
-                <small>(1618)</small>
+                <small>(1622)</small>
             
         </div>
     </li>
@@ -2040,7 +2052,7 @@
         <div data-rel="面试">
             <i class="fold iconfont icon-right"></i>
             面试
-            <small>(315)</small>
+            <small>(320)</small>
         </div>
         
             <ul class="sub hide">
@@ -2050,7 +2062,7 @@
         <div data-rel="面试&lt;---&gt;CSharp">
             
             CSharp
-            <small>(131)</small>
+            <small>(136)</small>
         </div>
         
     </li>
@@ -2210,21 +2222,6 @@
             
         
     
-        
-            
-                
-    <li>
-        <div data-rel="杂谈">
-            
-            杂谈
-            <small>(1)</small>
-        </div>
-        
-    </li>
-
-            
-        
-    
 </ul>
 <div class="left-bottom">
     <div class="menus">
@@ -2240,8 +2237,8 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="1618">
-<input type="hidden" id="yelog_site_word_count" value="2132.2k">
+<input type="hidden" id="yelog_site_posts_number" value="1622">
+<input type="hidden" id="yelog_site_word_count" value="2130.9k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -2829,10 +2826,6 @@
             </li>
         
             <li class="article-tag-list-item">
-                <i class="iconfont icon-tag"></i><a>杂谈</a>
-            </li>
-        
-            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>栈</a>
             </li>
         
@@ -3230,15 +3223,6 @@
     </div>
     
     <nav id="title-list-nav">
-        
-        
-        <a  class="全部文章 杂谈 "
-           href="/2024/07/04/%E6%9D%82%E8%B0%88/1.CSharp%E5%92%8CLua%E4%BB%A5%E5%8F%8APython%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E5%AF%B9%E6%AF%94/"
-           data-tag="杂谈"
-           data-author="" >
-            <span class="post-title" title="C#和Lua以及Python基础语法对比">C#和Lua以及Python基础语法对比</span>
-            <span class="post-date" title="2024-07-04 08:56:28">2024/07/04</span>
-        </a>
         
         
         <a  class="全部文章 框架 进阶框架 "
@@ -13628,19 +13612,19 @@
         
         
         <a  class="全部文章 CSharp CSharp入门 CSharp入门实践项目 "
-           href="/2024/01/08/CSharp/02.CSharp%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/12.%E6%B8%B8%E6%88%8F%E5%9C%BA%E6%99%AF-%E5%85%AC%E4%B8%BB%E7%9B%B8%E5%85%B3/"
+           href="/2024/01/08/CSharp/02.CSharp%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/11.%E6%B8%B8%E6%88%8F%E5%9C%BA%E6%99%AF-%E7%8E%A9%E5%AE%B6%E6%88%98%E6%96%97%E7%9B%B8%E5%85%B3/"
            data-tag="CSharp,CSharp入门,实践项目"
            data-author="" >
-            <span class="post-title" title="12.公主相关">12.公主相关</span>
+            <span class="post-title" title="11.玩家战斗相关">11.玩家战斗相关</span>
             <span class="post-date" title="2024-01-08 21:53:48">2024/01/08</span>
         </a>
         
         
         <a  class="全部文章 CSharp CSharp入门 CSharp入门实践项目 "
-           href="/2024/01/08/CSharp/02.CSharp%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/11.%E6%B8%B8%E6%88%8F%E5%9C%BA%E6%99%AF-%E7%8E%A9%E5%AE%B6%E6%88%98%E6%96%97%E7%9B%B8%E5%85%B3/"
+           href="/2024/01/08/CSharp/02.CSharp%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/12.%E6%B8%B8%E6%88%8F%E5%9C%BA%E6%99%AF-%E5%85%AC%E4%B8%BB%E7%9B%B8%E5%85%B3/"
            data-tag="CSharp,CSharp入门,实践项目"
            data-author="" >
-            <span class="post-title" title="11.玩家战斗相关">11.玩家战斗相关</span>
+            <span class="post-title" title="12.公主相关">12.公主相关</span>
             <span class="post-date" title="2024-01-08 21:53:48">2024/01/08</span>
         </a>
         
@@ -13962,7 +13946,7 @@
         
         <a  class="全部文章 面试 资源管理 "
            href="/2012/01/01/%E9%9D%A2%E8%AF%95/12.%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86/2.AssetBundle%E5%92%8CAddressables%E7%9A%84%E9%80%89%E6%8B%A9/"
-           data-tag="资源管理,面试"
+           data-tag="面试,资源管理"
            data-author="" >
             <span class="post-title" title="2.AssetBundle和Addressables的选择">2.AssetBundle和Addressables的选择</span>
             <span class="post-date" title="2012-01-01 00:00:02">2012/01/01</span>
@@ -13971,7 +13955,7 @@
         
         <a  class="全部文章 面试 资源管理 "
            href="/2012/01/01/%E9%9D%A2%E8%AF%95/12.%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86/1.%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86%E4%B8%ADAssetBundle%E7%9A%84%E5%8E%8B%E7%BC%A9%E6%96%B9%E5%BC%8F/"
-           data-tag="资源管理,面试"
+           data-tag="面试,资源管理"
            data-author="" >
             <span class="post-title" title="1.资源管理中AssetBundle的压缩方式">1.资源管理中AssetBundle的压缩方式</span>
             <span class="post-date" title="2012-01-01 00:00:01">2012/01/01</span>
@@ -15604,6 +15588,51 @@
            data-author="" >
             <span class="post-title" title="1.Unity中点乘和叉乘的作用">1.Unity中点乘和叉乘的作用</span>
             <span class="post-date" title="2002-01-01 00:00:01">2002/01/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 面试 CSharp "
+           href="/2001/01/01/%E9%9D%A2%E8%AF%95/01.CSharp/136.CSharp%E5%92%8CLua%E7%9A%84%E5%85%B1%E5%90%8C%E7%82%B9%E5%92%8C%E5%8C%BA%E5%88%AB/"
+           data-tag="CSharp,面试"
+           data-author="" >
+            <span class="post-title" title="136.C#和Lua的共同点和区别">136.C#和Lua的共同点和区别</span>
+            <span class="post-date" title="2001-01-01 01:03:06">2001/01/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 面试 CSharp "
+           href="/2001/01/01/%E9%9D%A2%E8%AF%95/01.CSharp/135.CSharp%E4%B8%AD%E5%A0%86%E5%86%85%E5%AD%98%E4%BC%98%E5%8C%96%E7%9A%84%E5%A4%A7%E6%96%B9%E5%90%91%E5%8F%8A%E5%85%B7%E4%BD%93%E6%96%B9%E6%A1%88/"
+           data-tag="CSharp,面试"
+           data-author="" >
+            <span class="post-title" title="135.C#中堆内存优化的大方向及具体方案">135.C#中堆内存优化的大方向及具体方案</span>
+            <span class="post-date" title="2001-01-01 01:03:05">2001/01/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 面试 CSharp "
+           href="/2001/01/01/%E9%9D%A2%E8%AF%95/01.CSharp/134.CSharp%E4%B8%AD%E6%80%8E%E4%B9%88%E8%AE%A1%E7%AE%97%E5%AF%B9%E8%B1%A1%E5%8D%A0%E7%94%A8%E5%A4%9A%E5%B0%91%E5%86%85%E5%AD%98/"
+           data-tag="CSharp,面试"
+           data-author="" >
+            <span class="post-title" title="134.C#中怎么计算对象占用多少内存">134.C#中怎么计算对象占用多少内存</span>
+            <span class="post-date" title="2001-01-01 01:03:04">2001/01/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 面试 CSharp "
+           href="/2001/01/01/%E9%9D%A2%E8%AF%95/01.CSharp/133.%E5%86%85%E5%AD%98%E5%AF%B9%E9%BD%90%E7%9A%84%E5%AE%9A%E4%B9%89%E5%8F%8A%E4%BD%9C%E7%94%A8/"
+           data-tag="CSharp,面试"
+           data-author="" >
+            <span class="post-title" title="133.内存对齐的定义及作用">133.内存对齐的定义及作用</span>
+            <span class="post-date" title="2001-01-01 01:03:03">2001/01/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 面试 CSharp "
+           href="/2001/01/01/%E9%9D%A2%E8%AF%95/01.CSharp/132.CSharp%E4%B8%ADnew%E4%B8%80%E4%B8%AA%E5%BC%95%E7%94%A8%E5%AF%B9%E8%B1%A1%E5%81%9A%E4%BA%86%E4%BB%80%E4%B9%88/"
+           data-tag="CSharp,面试"
+           data-author="" >
+            <span class="post-title" title="132.C#中new一个引用对象做了什么">132.C#中new一个引用对象做了什么</span>
+            <span class="post-date" title="2001-01-01 01:03:02">2001/01/01</span>
         </a>
         
         
@@ -17809,12 +17838,75 @@
         </div>
     </div>
 </aside>
-<div id="post" class="index">
+<div id="post">
     <div class="pjax">
-        <article class="index">
-            <div class="toc-ref">
+        <article id="post-面试/01.CSharp/134.CSharp中怎么计算对象占用多少内存" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%88%91%E6%98%AF%E8%B0%81"><span class="toc-text">我是谁</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E5%86%99%E5%8D%9A%E5%AE%A2"><span class="toc-text">为什么写博客</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%88%91%E7%9A%84%E5%8D%9A%E5%AE%A2%E6%98%AF%E5%90%A6%E6%98%AF%E5%8E%9F%E5%88%9B"><span class="toc-text">我的博客是否是原创</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%AF%8F%E4%B8%80%E4%B8%AA%E5%AD%97%E9%83%BD%E6%98%AF%E6%88%91%E8%87%AA%E5%B7%B1%E6%89%93%E7%9A%84%E5%90%97"><span class="toc-text">每一个字都是我自己打的吗</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%96%87%E7%AB%A0%E6%97%A5%E6%9C%9F%E6%98%AF%E5%90%A6%E6%98%AF%E7%9C%9F%E5%AE%9E%E6%97%A5%E6%9C%9F"><span class="toc-text">文章日期是否是真实日期</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8D%9A%E5%AE%A2%E6%98%AF%E6%80%8E%E4%B9%88%E7%94%9F%E6%88%90%E7%9A%84"><span class="toc-text">博客是怎么生成的</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%9B%AE%E5%89%8D%E4%B8%BA%E6%AD%A2%E5%86%99%E4%BA%86%E5%A4%9A%E5%B0%91%E5%8D%9A%E5%AE%A2%E4%BA%86"><span class="toc-text">目前为止写了多少博客了</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%E5%8D%9A%E5%AE%A2"><span class="toc-text">如何使用博客</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%BF%98%E8%A6%81%E5%AD%A6%E4%B9%A0%E7%9A%84%E5%86%85%E5%AE%B9"><span class="toc-text">还要学习的内容</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Shader"><span class="toc-text">Shader</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A1%8C%E4%B8%BA%E6%A0%91"><span class="toc-text">行为树</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%9B%E9%98%B6%E6%A1%86%E6%9E%B6"><span class="toc-text">进阶框架</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#GameFramework%E6%A1%86%E6%9E%B6"><span class="toc-text">GameFramework框架</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ET%E6%A1%86%E6%9E%B6"><span class="toc-text">ET框架</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Yooasset"><span class="toc-text">Yooasset</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Hybrid"><span class="toc-text">Hybrid</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AD%89"><span class="toc-text">等</span></a></li></ol></li></ol>
+        <h1 class="article-title">134.C#中怎么计算对象占用多少内存</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            <i class="iconfont icon-category"></i>
+            
+            
+            <a  data-rel="面试">面试</a> > 
+            
+            <a  data-rel="面试&lt;---&gt;CSharp">CSharp</a>
+            
+        </span>
+        
+        
+        <span class="tag">
+            <i class="iconfont icon-tag"></i>
+            
+            <a class="color2">CSharp</a>
+            
+            <a class="color3">面试</a>
+            
+        </span>
+        
+    </div>
+    <div class="article-meta">
+        
+            发布时间 : <time class="date" title='最后更新: 2024-07-16 13:07:13'>2001-01-01 01:03</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        <span>字数:593</span>
+        
+        
+        <span id="busuanzi_container_page_pv">
+            阅读 :<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+        <span class="top-comment" title="跳转至评论区">
+            <a href="#comments">
+                评论:<span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </a>
+        </span>
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#134-C-%E4%B8%AD%E6%80%8E%E4%B9%88%E8%AE%A1%E7%AE%97%E5%AF%B9%E8%B1%A1%E5%8D%A0%E7%94%A8%E5%A4%9A%E5%B0%91%E5%86%85%E5%AD%98"><span class="toc-text">134. C#中怎么计算对象占用多少内存</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#134-1-%E9%A2%98%E7%9B%AE"><span class="toc-text">134.1 题目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#134-2-%E7%AD%94%E6%A1%88"><span class="toc-text">134.2 答案</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%80%BC%E7%B1%BB%E5%9E%8B%E5%AF%B9%E8%B1%A1"><span class="toc-text">值类型对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B%E5%AF%B9%E8%B1%A1"><span class="toc-text">引用类型对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B%E4%BB%A3%E7%A0%81"><span class="toc-text">示例代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9C%80%E8%A6%81%E6%B3%A8%E6%84%8F%E7%9A%84%E4%BA%8B%E9%A1%B9"><span class="toc-text">需要注意的事项</span></a></li></ol></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -17827,42 +17919,66 @@
     }
 </style>
 </div>
-            <h1 id="我是谁"><a href="#我是谁" class="headerlink" title="我是谁"></a>我是谁</h1><ul>
-<li>我是<strong>人间自有韬哥在</strong>，是一名游戏开发者。致力于学习各种游戏开发技术。</li>
-</ul>
-<h1 id="为什么写博客"><a href="#为什么写博客" class="headerlink" title="为什么写博客"></a>为什么写博客</h1><ul>
-<li>学习游戏开发过程中，意识到知识点实在是太多了。如果学完就忘，其实意义不大。使用博客记录自己的学习过程，可以避免捡了芝麻丢了西瓜。同时开发中遇到问题，可以<strong>快速定位问题</strong>，<strong>基于自己学习过的知识点解决问题</strong>。</li>
-</ul>
-<h1 id="我的博客是否是原创"><a href="#我的博客是否是原创" class="headerlink" title="我的博客是否是原创"></a>我的博客是否是原创</h1><ul>
-<li><strong>每一篇博客都是我的原创</strong>。我是把我学过的课程，看过的博客，看过的书（例如设计模式）用自己通俗易懂的话写一遍出来。自己写的自己当然能看懂。当然不排除有些高深的理论或者面试题，只是把他先记录下来，等以后学了对应的知识点后，再回头看，会有更深刻的体会。</li>
-</ul>
-<h1 id="每一个字都是我自己打的吗"><a href="#每一个字都是我自己打的吗" class="headerlink" title="每一个字都是我自己打的吗"></a>每一个字都是我自己打的吗</h1><ul>
-<li><strong>不是</strong>。我是先把知识点记录到OneNote上，再通过AI帮我转化成Markdown文档。有时会叫AI给出更通俗易懂的示例代码。</li>
-</ul>
-<h1 id="文章日期是否是真实日期"><a href="#文章日期是否是真实日期" class="headerlink" title="文章日期是否是真实日期"></a>文章日期是否是真实日期</h1><ul>
-<li><strong>2024年开始的是真实的</strong>。可以看到，有些文章备注的日期非常久远。例如2000几年，1900年。原因是<strong>想让不同分类保持一定的顺序排序</strong>。例如刷Leetcode题，今天刷的100题，明天刷50题，后天刷150题。这样查看Leetcode分栏题号的顺序是乱序。</li>
-</ul>
-<h1 id="博客是怎么生成的"><a href="#博客是怎么生成的" class="headerlink" title="博客是怎么生成的"></a>博客是怎么生成的</h1><ul>
-<li>这个博客通过 <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> 生成，部署在 <a target="_blank" rel="noopener" href="https://pages.github.com/">GitHub Pages</a>主题 <a target="_blank" rel="noopener" href="https://github.com/yelog/hexo-theme-3-hexo">3-hexo</a> 已经在github上开源。</li>
-</ul>
-<h1 id="目前为止写了多少博客了"><a href="#目前为止写了多少博客了" class="headerlink" title="目前为止写了多少博客了"></a>目前为止写了多少博客了</h1><ul>
-<li>到目前为止已经写了<code class="article_number"></code>篇文章， 共<code class="site_word_count"></code>字。</li>
-</ul>
-<!-- - 本站访问人数：<code class="site_uv"></code>人次 ， 访问量：<code class="site_pv"></code>次 -->
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="134-C-中怎么计算对象占用多少内存"><a href="#134-C-中怎么计算对象占用多少内存" class="headerlink" title="134. C#中怎么计算对象占用多少内存"></a>134. C#中怎么计算对象占用多少内存</h1><hr>
+<h2 id="134-1-题目"><a href="#134-1-题目" class="headerlink" title="134.1 题目"></a>134.1 题目</h2><p>C#中怎么计算对象占用多少内存？</p>
+<hr>
+<h2 id="134-2-答案"><a href="#134-2-答案" class="headerlink" title="134.2 答案"></a>134.2 答案</h2><p>在C#中，计算对象占用的内存空间涉及到值类型和引用类型的不同处理方式：</p>
+<h3 id="值类型对象"><a href="#值类型对象" class="headerlink" title="值类型对象"></a>值类型对象</h3><p>值类型对象的内存空间由其所有字段的内存空间总和，以及可能的对齐填充决定。CLR 会对值类型进行内存对齐，内存对齐会插入填充字节，使每个字段的起始位置对齐到特定的字节边界（通常是 4 或 8 字节）。</p>
+<h3 id="引用类型对象"><a href="#引用类型对象" class="headerlink" title="引用类型对象"></a>引用类型对象</h3><p>引用类型对象的内存空间由其实例字段的大小、对象头的大小，以及可能的对齐填充决定。引用类型对象的对象头包含同步块索引和类型对象指针。在32位平台上，通常占8个字节；在64位平台上，通常占16个字节。</p>
+<h3 id="示例代码"><a href="#示例代码" class="headerlink" title="示例代码"></a>示例代码</h3><p>以下是计算简单对象内存大小的示例代码：</p>
+<pre><code class="csharp">using System;
+using System.Runtime.InteropServices;
 
-<h1 id="如何使用博客"><a href="#如何使用博客" class="headerlink" title="如何使用博客"></a>如何使用博客</h1><ul>
-<li>搜索支持文章标题、标签(#标签)、作者(@作者)，文章内部关键字搜索（in:）</li>
-<li>左侧分栏切换不同分类，下拉框下拉子分类</li>
-<li>页面全局快捷键 <a target="_blank" rel="noopener" href='http://yelog.org/2017/03/24/3-hexo-shortcuts/'>3-hexo快捷键说明</a></li>
-</ul>
-<h1 id="还要学习的内容"><a href="#还要学习的内容" class="headerlink" title="还要学习的内容"></a>还要学习的内容</h1><h2 id="Shader"><a href="#Shader" class="headerlink" title="Shader"></a>Shader</h2><h2 id="行为树"><a href="#行为树" class="headerlink" title="行为树"></a>行为树</h2><h2 id="进阶框架"><a href="#进阶框架" class="headerlink" title="进阶框架"></a>进阶框架</h2><h2 id="GameFramework框架"><a href="#GameFramework框架" class="headerlink" title="GameFramework框架"></a>GameFramework框架</h2><h2 id="ET框架"><a href="#ET框架" class="headerlink" title="ET框架"></a>ET框架</h2><h2 id="Yooasset"><a href="#Yooasset" class="headerlink" title="Yooasset"></a>Yooasset</h2><h2 id="Hybrid"><a href="#Hybrid" class="headerlink" title="Hybrid"></a>Hybrid</h2><h2 id="等"><a href="#等" class="headerlink" title="等"></a>等</h2>
-        </article>
-        
-        <p>
-            <a  class="dashang" onclick="dashangToggle()">赏</a>
-        </p>
-        
-        
+class Program
+&#123;
+    // 定义一个简单的类
+    class MyClass
+    &#123;
+        public int a;
+        public double b;
+    &#125;
+
+    static void Main()
+    &#123;
+        // 计算值类型的大小
+        Console.WriteLine($&quot;int 类型的大小: &#123;Marshal.SizeOf(typeof(int))&#125; 字节&quot;);
+        Console.WriteLine($&quot;double 类型的大小: &#123;Marshal.SizeOf(typeof(double))&#125; 字节&quot;);
+
+        // 计算引用类型的大小
+        MyClass myClass = new MyClass();
+        int objectHeaderSize = IntPtr.Size * 2; // 对象头的大小（同步块索引和类型对象指针）
+        int instanceSize = Marshal.SizeOf(myClass.a) + Marshal.SizeOf(myClass.b); // 实例字段的大小
+        int totalSize = objectHeaderSize + instanceSize; // 总大小
+        Console.WriteLine($&quot;MyClass 对象的大小: &#123;totalSize&#125; 字节&quot;);
+
+        // 注意内存对齐和填充字节
+        // 在32位平台上，IntPtr.Size 为 4；在64位平台上，IntPtr.Size 为 8
+    &#125;
+&#125;
+</code></pre>
+<h3 id="需要注意的事项"><a href="#需要注意的事项" class="headerlink" title="需要注意的事项"></a>需要注意的事项</h3><ol>
+<li>在32位平台上，指针大小为4字节；在64位平台上，指针大小为8字节。这影响到对象头的大小和引用类型字段的大小。</li>
+<li>编译器可能会进行优化，以减少内存对齐所需的填充字节。不同的CLR实现可能会有所不同。</li>
+</ol>
+<p>通过上述方式，可以初步了解C#中对象的内存占用情况。在实际应用中，还需考虑具体的编译器和平台优化。</p>
+<hr>
+
+      
+       <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 785293209@qq.com </span>
+    </div>
+</article>
+
+
+<p>
+    <a  class="dashang" onclick="dashangToggle()">赏</a>
+</p>
+
+
+
+
     <div id="comments"></div>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
 <script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.js"></script>
@@ -17886,6 +18002,53 @@
 </script>
 
 
+
+
+    
+        <!-- MathJax配置，可通过单美元符号书写行内公式等 -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+    "HTML-CSS": {
+        preferredFont: "TeX",
+        availableFonts: ["STIX","TeX"],
+        linebreaks: { automatic:true },
+        EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
+    },
+    tex2jax: {
+        inlineMath: [ ["$", "$"], ["\\(","\\)"] ],
+        processEscapes: true,
+        ignoreClass: "tex2jax_ignore|dno",
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+        equationNumbers: { autoNumber: "AMS" },
+        noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } },
+        Macros: { href: "{}" }
+    },
+    messageStyle: "none"
+    });
+</script>
+<!-- 给MathJax元素添加has-jax class -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<!-- 通过连接CDN加载MathJax的js代码 -->
+<script type="text/javascript" async
+        src="//cdn.jsdelivr.net/npm/mathjax@2.7.8/unpacked/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+<input type="hidden" id="MathJax-js"
+        value="//cdn.jsdelivr.net/npm/mathjax@2.7.8/unpacked/MathJax.js?config=TeX-MML-AM_CHTML">
+</input>
+    
+
+
+
+
     </div>
     <div class="copyright">
         <p class="footer-entry">
@@ -17894,11 +18057,11 @@
 <p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
 
     </div>
-</div>
-<div class="full-toc">
-    <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
+    <div class="full-toc">
+        <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
 <a class="" id="rocket" ></a>
 
+    </div>
 </div>
 
 <div class="hide_box" onclick="dashangToggle()"></div>

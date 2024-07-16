@@ -2,22 +2,34 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>C#和Lua以及Python基础语法对比 | 人间自有韬哥在的博客</title>
-  <meta name="keywords" content=" 杂谈 ">
-  <meta name="description" content="C#和Lua以及Python基础语法对比 | 人间自有韬哥在的博客">
+  <title>135.C#中堆内存优化的大方向及具体方案 | 人间自有韬哥在的博客</title>
+  <meta name="keywords" content=" CSharp , 面试 ">
+  <meta name="description" content="135.C#中堆内存优化的大方向及具体方案 | 人间自有韬哥在的博客">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="CSharp和Lua以及Python基础语法对比1. 变量和数据类型变量声明和初始化C# int number &#x3D; 10; string text &#x3D; &quot;Hello&quot;; float pi &#x3D; 3.14f; bool isActive &#x3D; true;  Lua number &#x3D; 10 text &#x3D; &quot;Hello&quot; pi &#x3D; 3.14 isActive &#x3D; tr">
+<meta name="description" content="1.概述 1.1 知识点 主要讲解内容 游戏框架是什么 游戏框架是基于什么进行设计的 本套课程的学习目标 总结">
 <meta property="og:type" content="article">
-<meta property="og:title" content="C#和Lua以及Python基础语法对比">
-<meta property="og:url" content="https://linwentao785293209.github.io/2024/07/04/%E6%9D%82%E8%B0%88/1.CSharp%E5%92%8CLua%E4%BB%A5%E5%8F%8APython%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E5%AF%B9%E6%AF%94/index.html">
+<meta property="og:title" content="1.概述">
+<meta property="og:url" content="https://linwentao785293209.github.io/2024/06/15/%E6%A1%86%E6%9E%B6/03.%E8%BF%9B%E9%98%B6%E6%A1%86%E6%9E%B6/1.%E6%A6%82%E8%BF%B0/index.html">
 <meta property="og:site_name" content="人间自有韬哥在的博客">
-<meta property="og:description" content="CSharp和Lua以及Python基础语法对比1. 变量和数据类型变量声明和初始化C# int number &#x3D; 10; string text &#x3D; &quot;Hello&quot;; float pi &#x3D; 3.14f; bool isActive &#x3D; true;  Lua number &#x3D; 10 text &#x3D; &quot;Hello&quot; pi &#x3D; 3.14 isActive &#x3D; tr">
+<meta property="og:description" content="1.概述 1.1 知识点 主要讲解内容 游戏框架是什么 游戏框架是基于什么进行设计的 本套课程的学习目标 总结">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-07-04T00:56:28.000Z">
-<meta property="article:modified_time" content="2024-07-04T05:28:54.723Z">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/%E6%A1%86%E6%9E%B6/03.%E8%BF%9B%E9%98%B6%E6%A1%86%E6%9E%B6/1.%E6%A6%82%E8%BF%B0/1.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/%E6%A1%86%E6%9E%B6/03.%E8%BF%9B%E9%98%B6%E6%A1%86%E6%9E%B6/1.%E6%A6%82%E8%BF%B0/2.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/%E6%A1%86%E6%9E%B6/03.%E8%BF%9B%E9%98%B6%E6%A1%86%E6%9E%B6/1.%E6%A6%82%E8%BF%B0/3.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/%E6%A1%86%E6%9E%B6/03.%E8%BF%9B%E9%98%B6%E6%A1%86%E6%9E%B6/1.%E6%A6%82%E8%BF%B0/4.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/%E6%A1%86%E6%9E%B6/03.%E8%BF%9B%E9%98%B6%E6%A1%86%E6%9E%B6/1.%E6%A6%82%E8%BF%B0/5.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/%E6%A1%86%E6%9E%B6/03.%E8%BF%9B%E9%98%B6%E6%A1%86%E6%9E%B6/1.%E6%A6%82%E8%BF%B0/6.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/%E6%A1%86%E6%9E%B6/03.%E8%BF%9B%E9%98%B6%E6%A1%86%E6%9E%B6/1.%E6%A6%82%E8%BF%B0/7.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/%E6%A1%86%E6%9E%B6/03.%E8%BF%9B%E9%98%B6%E6%A1%86%E6%9E%B6/1.%E6%A6%82%E8%BF%B0/8.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/%E6%A1%86%E6%9E%B6/03.%E8%BF%9B%E9%98%B6%E6%A1%86%E6%9E%B6/1.%E6%A6%82%E8%BF%B0/9.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/%E6%A1%86%E6%9E%B6/03.%E8%BF%9B%E9%98%B6%E6%A1%86%E6%9E%B6/1.%E6%A6%82%E8%BF%B0/10.png">
+<meta property="article:published_time" content="2024-06-15T12:10:23.000Z">
+<meta property="article:modified_time" content="2024-06-15T12:10:30.660Z">
 <meta property="article:author" content="人间自有韬哥在">
-<meta property="article:tag" content="杂谈">
+<meta property="article:tag" content="框架">
+<meta property="article:tag" content="进阶框架">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://linwentao785293209.github.io/images/%E6%A1%86%E6%9E%B6/03.%E8%BF%9B%E9%98%B6%E6%A1%86%E6%9E%B6/1.%E6%A6%82%E8%BF%B0/1.png">
 
 
 <link rel="icon" href="/img/avatar.jpg">
@@ -148,7 +160,7 @@
     <li>
         <div class="all active" data-rel="全部文章">全部文章
             
-                <small>(1618)</small>
+                <small>(1622)</small>
             
         </div>
     </li>
@@ -2040,7 +2052,7 @@
         <div data-rel="面试">
             <i class="fold iconfont icon-right"></i>
             面试
-            <small>(315)</small>
+            <small>(320)</small>
         </div>
         
             <ul class="sub hide">
@@ -2050,7 +2062,7 @@
         <div data-rel="面试&lt;---&gt;CSharp">
             
             CSharp
-            <small>(131)</small>
+            <small>(136)</small>
         </div>
         
     </li>
@@ -2210,21 +2222,6 @@
             
         
     
-        
-            
-                
-    <li>
-        <div data-rel="杂谈">
-            
-            杂谈
-            <small>(1)</small>
-        </div>
-        
-    </li>
-
-            
-        
-    
 </ul>
 <div class="left-bottom">
     <div class="menus">
@@ -2240,8 +2237,8 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="1618">
-<input type="hidden" id="yelog_site_word_count" value="2132.2k">
+<input type="hidden" id="yelog_site_posts_number" value="1622">
+<input type="hidden" id="yelog_site_word_count" value="2130.9k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -2829,10 +2826,6 @@
             </li>
         
             <li class="article-tag-list-item">
-                <i class="iconfont icon-tag"></i><a>杂谈</a>
-            </li>
-        
-            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>栈</a>
             </li>
         
@@ -3230,15 +3223,6 @@
     </div>
     
     <nav id="title-list-nav">
-        
-        
-        <a  class="全部文章 杂谈 "
-           href="/2024/07/04/%E6%9D%82%E8%B0%88/1.CSharp%E5%92%8CLua%E4%BB%A5%E5%8F%8APython%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E5%AF%B9%E6%AF%94/"
-           data-tag="杂谈"
-           data-author="" >
-            <span class="post-title" title="C#和Lua以及Python基础语法对比">C#和Lua以及Python基础语法对比</span>
-            <span class="post-date" title="2024-07-04 08:56:28">2024/07/04</span>
-        </a>
         
         
         <a  class="全部文章 框架 进阶框架 "
@@ -13628,19 +13612,19 @@
         
         
         <a  class="全部文章 CSharp CSharp入门 CSharp入门实践项目 "
-           href="/2024/01/08/CSharp/02.CSharp%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/12.%E6%B8%B8%E6%88%8F%E5%9C%BA%E6%99%AF-%E5%85%AC%E4%B8%BB%E7%9B%B8%E5%85%B3/"
+           href="/2024/01/08/CSharp/02.CSharp%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/11.%E6%B8%B8%E6%88%8F%E5%9C%BA%E6%99%AF-%E7%8E%A9%E5%AE%B6%E6%88%98%E6%96%97%E7%9B%B8%E5%85%B3/"
            data-tag="CSharp,CSharp入门,实践项目"
            data-author="" >
-            <span class="post-title" title="12.公主相关">12.公主相关</span>
+            <span class="post-title" title="11.玩家战斗相关">11.玩家战斗相关</span>
             <span class="post-date" title="2024-01-08 21:53:48">2024/01/08</span>
         </a>
         
         
         <a  class="全部文章 CSharp CSharp入门 CSharp入门实践项目 "
-           href="/2024/01/08/CSharp/02.CSharp%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/11.%E6%B8%B8%E6%88%8F%E5%9C%BA%E6%99%AF-%E7%8E%A9%E5%AE%B6%E6%88%98%E6%96%97%E7%9B%B8%E5%85%B3/"
+           href="/2024/01/08/CSharp/02.CSharp%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/12.%E6%B8%B8%E6%88%8F%E5%9C%BA%E6%99%AF-%E5%85%AC%E4%B8%BB%E7%9B%B8%E5%85%B3/"
            data-tag="CSharp,CSharp入门,实践项目"
            data-author="" >
-            <span class="post-title" title="11.玩家战斗相关">11.玩家战斗相关</span>
+            <span class="post-title" title="12.公主相关">12.公主相关</span>
             <span class="post-date" title="2024-01-08 21:53:48">2024/01/08</span>
         </a>
         
@@ -13962,7 +13946,7 @@
         
         <a  class="全部文章 面试 资源管理 "
            href="/2012/01/01/%E9%9D%A2%E8%AF%95/12.%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86/2.AssetBundle%E5%92%8CAddressables%E7%9A%84%E9%80%89%E6%8B%A9/"
-           data-tag="资源管理,面试"
+           data-tag="面试,资源管理"
            data-author="" >
             <span class="post-title" title="2.AssetBundle和Addressables的选择">2.AssetBundle和Addressables的选择</span>
             <span class="post-date" title="2012-01-01 00:00:02">2012/01/01</span>
@@ -13971,7 +13955,7 @@
         
         <a  class="全部文章 面试 资源管理 "
            href="/2012/01/01/%E9%9D%A2%E8%AF%95/12.%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86/1.%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86%E4%B8%ADAssetBundle%E7%9A%84%E5%8E%8B%E7%BC%A9%E6%96%B9%E5%BC%8F/"
-           data-tag="资源管理,面试"
+           data-tag="面试,资源管理"
            data-author="" >
             <span class="post-title" title="1.资源管理中AssetBundle的压缩方式">1.资源管理中AssetBundle的压缩方式</span>
             <span class="post-date" title="2012-01-01 00:00:01">2012/01/01</span>
@@ -15604,6 +15588,51 @@
            data-author="" >
             <span class="post-title" title="1.Unity中点乘和叉乘的作用">1.Unity中点乘和叉乘的作用</span>
             <span class="post-date" title="2002-01-01 00:00:01">2002/01/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 面试 CSharp "
+           href="/2001/01/01/%E9%9D%A2%E8%AF%95/01.CSharp/136.CSharp%E5%92%8CLua%E7%9A%84%E5%85%B1%E5%90%8C%E7%82%B9%E5%92%8C%E5%8C%BA%E5%88%AB/"
+           data-tag="CSharp,面试"
+           data-author="" >
+            <span class="post-title" title="136.C#和Lua的共同点和区别">136.C#和Lua的共同点和区别</span>
+            <span class="post-date" title="2001-01-01 01:03:06">2001/01/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 面试 CSharp "
+           href="/2001/01/01/%E9%9D%A2%E8%AF%95/01.CSharp/135.CSharp%E4%B8%AD%E5%A0%86%E5%86%85%E5%AD%98%E4%BC%98%E5%8C%96%E7%9A%84%E5%A4%A7%E6%96%B9%E5%90%91%E5%8F%8A%E5%85%B7%E4%BD%93%E6%96%B9%E6%A1%88/"
+           data-tag="CSharp,面试"
+           data-author="" >
+            <span class="post-title" title="135.C#中堆内存优化的大方向及具体方案">135.C#中堆内存优化的大方向及具体方案</span>
+            <span class="post-date" title="2001-01-01 01:03:05">2001/01/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 面试 CSharp "
+           href="/2001/01/01/%E9%9D%A2%E8%AF%95/01.CSharp/134.CSharp%E4%B8%AD%E6%80%8E%E4%B9%88%E8%AE%A1%E7%AE%97%E5%AF%B9%E8%B1%A1%E5%8D%A0%E7%94%A8%E5%A4%9A%E5%B0%91%E5%86%85%E5%AD%98/"
+           data-tag="CSharp,面试"
+           data-author="" >
+            <span class="post-title" title="134.C#中怎么计算对象占用多少内存">134.C#中怎么计算对象占用多少内存</span>
+            <span class="post-date" title="2001-01-01 01:03:04">2001/01/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 面试 CSharp "
+           href="/2001/01/01/%E9%9D%A2%E8%AF%95/01.CSharp/133.%E5%86%85%E5%AD%98%E5%AF%B9%E9%BD%90%E7%9A%84%E5%AE%9A%E4%B9%89%E5%8F%8A%E4%BD%9C%E7%94%A8/"
+           data-tag="CSharp,面试"
+           data-author="" >
+            <span class="post-title" title="133.内存对齐的定义及作用">133.内存对齐的定义及作用</span>
+            <span class="post-date" title="2001-01-01 01:03:03">2001/01/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 面试 CSharp "
+           href="/2001/01/01/%E9%9D%A2%E8%AF%95/01.CSharp/132.CSharp%E4%B8%ADnew%E4%B8%80%E4%B8%AA%E5%BC%95%E7%94%A8%E5%AF%B9%E8%B1%A1%E5%81%9A%E4%BA%86%E4%BB%80%E4%B9%88/"
+           data-tag="CSharp,面试"
+           data-author="" >
+            <span class="post-title" title="132.C#中new一个引用对象做了什么">132.C#中new一个引用对象做了什么</span>
+            <span class="post-date" title="2001-01-01 01:03:02">2001/01/01</span>
         </a>
         
         
@@ -17811,9 +17840,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-杂谈/1.CSharp和Lua以及Python基础语法对比" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-面试/01.CSharp/135.CSharp中堆内存优化的大方向及具体方案" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">C#和Lua以及Python基础语法对比</h1>
+        <h1 class="article-title">135.C#中堆内存优化的大方向及具体方案</h1>
     
     <div class="article-meta">
         
@@ -17823,7 +17852,9 @@
             <i class="iconfont icon-category"></i>
             
             
-            <a  data-rel="杂谈">杂谈</a>
+            <a  data-rel="面试">面试</a> > 
+            
+            <a  data-rel="面试&lt;---&gt;CSharp">CSharp</a>
             
         </span>
         
@@ -17831,19 +17862,21 @@
         <span class="tag">
             <i class="iconfont icon-tag"></i>
             
-            <a class="color3">杂谈</a>
+            <a class="color2">CSharp</a>
+            
+            <a class="color3">面试</a>
             
         </span>
         
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2024-07-04 13:28:54'>2024-07-04 08:56</time>
+            发布时间 : <time class="date" title='最后更新: 2024-07-16 13:10:09'>2001-01-01 01:03</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:4.2k</span>
+        <span>字数:553</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -17873,7 +17906,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#CSharp%E5%92%8CLua%E4%BB%A5%E5%8F%8APython%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E5%AF%B9%E6%AF%94"><span class="toc-text">CSharp和Lua以及Python基础语法对比</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%8F%98%E9%87%8F%E5%92%8C%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-text">1. 变量和数据类型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%98%E9%87%8F%E5%A3%B0%E6%98%8E%E5%92%8C%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-text">变量声明和初始化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%98%E9%87%8F%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2"><span class="toc-text">变量类型转换</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E6%9D%A1%E4%BB%B6%E8%AF%AD%E5%8F%A5"><span class="toc-text">2. 条件语句</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%80%E5%8D%95%E6%9D%A1%E4%BB%B6%E5%88%A4%E6%96%AD"><span class="toc-text">简单条件判断</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%9A%E9%87%8D%E6%9D%A1%E4%BB%B6%E5%88%A4%E6%96%AD"><span class="toc-text">多重条件判断</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E5%BE%AA%E7%8E%AF"><span class="toc-text">3. 循环</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#for-%E5%BE%AA%E7%8E%AF"><span class="toc-text">for 循环</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%81%8D%E5%8E%86%E6%95%B0%E7%BB%84"><span class="toc-text">遍历数组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#while-%E5%BE%AA%E7%8E%AF"><span class="toc-text">while 循环</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E5%87%BD%E6%95%B0"><span class="toc-text">4. 函数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E5%AE%9A%E4%B9%89%E5%92%8C%E8%B0%83%E7%94%A8"><span class="toc-text">函数定义和调用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E5%B8%A6%E9%BB%98%E8%AE%A4%E5%8F%82%E6%95%B0"><span class="toc-text">函数带默认参数</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E7%B1%BB%E5%92%8C%E5%AF%B9%E8%B1%A1"><span class="toc-text">5. 类和对象</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B1%BB%E5%AE%9A%E4%B9%89%E5%92%8C%E5%AF%B9%E8%B1%A1%E5%AE%9E%E4%BE%8B%E5%8C%96"><span class="toc-text">类定义和对象实例化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%A7%E6%89%BF"><span class="toc-text">继承</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%9A%E6%80%81"><span class="toc-text">多态</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E9%9B%86%E5%90%88"><span class="toc-text">6. 集合</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E7%BB%84"><span class="toc-text">数组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%97%E8%A1%A8%EF%BC%88List%EF%BC%89"><span class="toc-text">列表（List）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%97%E5%85%B8%EF%BC%88Dictionary%EF%BC%89"><span class="toc-text">字典（Dictionary）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9B%86%E5%90%88%EF%BC%88Set%EF%BC%89"><span class="toc-text">集合（Set）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86"><span class="toc-text">7. 异常处理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-%E6%8E%A5%E5%8F%A3"><span class="toc-text">8. 接口</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-%E6%9E%9A%E4%B8%BE"><span class="toc-text">9. 枚举</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10-%E4%BA%8B%E4%BB%B6%E5%A7%94%E6%89%98"><span class="toc-text">10. 事件委托</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#11-%E6%A8%A1%E5%9D%97%E5%AF%BC%E5%85%A5"><span class="toc-text">11. 模块导入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#12-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86%E7%9A%84%E4%B8%8D%E5%90%8C"><span class="toc-text">12. 内存管理的不同</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#13-%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C"><span class="toc-text">13. 文件操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#14-%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B"><span class="toc-text">14. 并发编程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#15-%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B%E6%94%AF%E6%8C%81"><span class="toc-text">15. 函数式编程支持</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#16-%E5%8A%A8%E6%80%81%E6%80%A7%E5%92%8C%E9%9D%99%E6%80%81%E6%80%A7"><span class="toc-text">16. 动态性和静态性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#17-%E5%86%85%E7%BD%AE%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="toc-text">17. 内置数据结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#18-%E5%8C%85%E7%AE%A1%E7%90%86%E5%92%8C%E7%94%9F%E6%80%81%E7%B3%BB%E7%BB%9F"><span class="toc-text">18. 包管理和生态系统</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#19-%E7%BC%96%E8%AF%91%E5%92%8C%E6%89%A7%E8%A1%8C"><span class="toc-text">19. 编译和执行</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#135-C-%E4%B8%AD%E5%A0%86%E5%86%85%E5%AD%98%E4%BC%98%E5%8C%96%E7%9A%84%E5%A4%A7%E6%96%B9%E5%90%91%E5%8F%8A%E5%85%B7%E4%BD%93%E6%96%B9%E6%A1%88"><span class="toc-text">135. C#中堆内存优化的大方向及具体方案</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#135-1-%E9%A2%98%E7%9B%AE"><span class="toc-text">135.1 题目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#135-2-%E7%AD%94%E6%A1%88"><span class="toc-text">135.2 答案</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B7%E4%BD%93%E6%96%B9%E6%A1%88"><span class="toc-text">具体方案</span></a></li></ol></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -17889,940 +17922,87 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="CSharp和Lua以及Python基础语法对比"><a href="#CSharp和Lua以及Python基础语法对比" class="headerlink" title="CSharp和Lua以及Python基础语法对比"></a>CSharp和Lua以及Python基础语法对比</h1><h2 id="1-变量和数据类型"><a href="#1-变量和数据类型" class="headerlink" title="1. 变量和数据类型"></a>1. 变量和数据类型</h2><h3 id="变量声明和初始化"><a href="#变量声明和初始化" class="headerlink" title="变量声明和初始化"></a>变量声明和初始化</h3><p><strong>C#</strong></p>
-<pre><code class="csharp">int number = 10;
-string text = &quot;Hello&quot;;
-float pi = 3.14f;
-bool isActive = true;
-</code></pre>
-<p><strong>Lua</strong></p>
-<pre><code class="lua">number = 10
-text = &quot;Hello&quot;
-pi = 3.14
-isActive = true
-</code></pre>
-<p><strong>Python</strong></p>
-<pre><code class="python">number = 10
-text = &quot;Hello&quot;
-pi = 3.14
-is_active = True
-</code></pre>
-<h3 id="变量类型转换"><a href="#变量类型转换" class="headerlink" title="变量类型转换"></a>变量类型转换</h3><p><strong>C#</strong></p>
-<pre><code class="csharp">int num = int.Parse(&quot;123&quot;);
-string str = 123.ToString();
-</code></pre>
-<p><strong>Lua</strong></p>
-<pre><code class="lua">num = tonumber(&quot;123&quot;)
-str = tostring(123)
-</code></pre>
-<p><strong>Python</strong></p>
-<pre><code class="python">num = int(&quot;123&quot;)
-str = str(123)
-</code></pre>
+        <h1 id="135-C-中堆内存优化的大方向及具体方案"><a href="#135-C-中堆内存优化的大方向及具体方案" class="headerlink" title="135. C#中堆内存优化的大方向及具体方案"></a>135. C#中堆内存优化的大方向及具体方案</h1><hr>
+<h2 id="135-1-题目"><a href="#135-1-题目" class="headerlink" title="135.1 题目"></a>135.1 题目</h2><p>C#中堆内存优化的大方向是什么？再说3点具体方案？</p>
 <hr>
-<h2 id="2-条件语句"><a href="#2-条件语句" class="headerlink" title="2. 条件语句"></a>2. 条件语句</h2><h3 id="简单条件判断"><a href="#简单条件判断" class="headerlink" title="简单条件判断"></a>简单条件判断</h3><p><strong>C#</strong></p>
-<pre><code class="csharp">int number = 10;
-if (number &gt; 5)
+<h2 id="135-2-答案"><a href="#135-2-答案" class="headerlink" title="135.2 答案"></a>135.2 答案</h2><p>总体思路：尽量控制内存占用的大小，减少内存分配和释放的频率。</p>
+<h3 id="具体方案"><a href="#具体方案" class="headerlink" title="具体方案"></a>具体方案</h3><ol>
+<li><p><strong>减少临时对象的分配</strong></p>
+<ul>
+<li>临时对象会增加内存分配的频率，从而增加垃圾回收的压力。应尽量复用对象，避免频繁创建和销毁临时对象。</li>
+</ul>
+</li>
+<li><p><strong>使用结构体代替类</strong></p>
+<ul>
+<li>对于小而简单的数据结构，可以使用结构体（struct）代替类（class）。结构体在栈上分配内存，可以减少堆内存的使用，降低垃圾回收的压力。</li>
+<li>示例代码：<pre><code class="csharp">struct Point
 &#123;
-    Console.WriteLine(&quot;Number is greater than 5&quot;);
-&#125;
-else
-&#123;
-    Console.WriteLine(&quot;Number is less than or equal to 5&quot;);
-&#125;
-</code></pre>
-<p><strong>Lua</strong></p>
-<pre><code class="lua">number = 10
-if number &gt; 5 then
-    print(&quot;Number is greater than 5&quot;)
-else
-    print(&quot;Number is less than or equal to 5&quot;)
-end
-</code></pre>
-<p><strong>Python</strong></p>
-<pre><code class="python">number = 10
-if number &gt; 5:
-    print(&quot;Number is greater than 5&quot;)
-else:
-    print(&quot;Number is less than or equal to 5&quot;)
-</code></pre>
-<h3 id="多重条件判断"><a href="#多重条件判断" class="headerlink" title="多重条件判断"></a>多重条件判断</h3><p><strong>C#</strong></p>
-<pre><code class="csharp">int number = 10;
-if (number &gt; 10)
-&#123;
-    Console.WriteLine(&quot;Greater than 10&quot;);
-&#125;
-else if (number == 10)
-&#123;
-    Console.WriteLine(&quot;Equal to 10&quot;);
-&#125;
-else
-&#123;
-    Console.WriteLine(&quot;Less than 10&quot;);
+    public int X;
+    public int Y;
 &#125;
 </code></pre>
-<p><strong>Lua</strong></p>
-<pre><code class="lua">number = 10
-if number &gt; 10 then
-    print(&quot;Greater than 10&quot;)
-elseif number == 10 then
-    print(&quot;Equal to 10&quot;)
-else
-    print(&quot;Less than 10&quot;)
-end
-</code></pre>
-<p><strong>Python</strong></p>
-<pre><code class="python">number = 10
-if number &gt; 10:
-    print(&quot;Greater than 10&quot;)
-elif number == 10:
-    print(&quot;Equal to 10&quot;)
-else:
-    print(&quot;Less than 10&quot;)
-</code></pre>
-<hr>
-<h2 id="3-循环"><a href="#3-循环" class="headerlink" title="3. 循环"></a>3. 循环</h2><h3 id="for-循环"><a href="#for-循环" class="headerlink" title="for 循环"></a><code>for</code> 循环</h3><p><strong>C#</strong></p>
-<pre><code class="csharp">for (int i = 0; i &lt; 5; i++)
+</li>
+</ul>
+</li>
+<li><p><strong>使用缓存池（对象池）</strong></p>
+<ul>
+<li>缓存池（对象池）技术可以复用对象，避免频繁分配和释放内存。通过维护一个对象池，可以显著减少内存分配和垃圾回收的次数。</li>
+<li>示例代码：<pre><code class="csharp">public class ObjectPool&lt;T&gt; where T : new()
 &#123;
-    Console.WriteLine(i);
-&#125;
-</code></pre>
-<p><strong>Lua</strong></p>
-<pre><code class="lua">for i = 0, 4 do
-    print(i)
-end
-</code></pre>
-<p><strong>Python</strong></p>
-<pre><code class="python">for i in range(5):
-    print(i)
-</code></pre>
-<h3 id="遍历数组"><a href="#遍历数组" class="headerlink" title="遍历数组"></a>遍历数组</h3><p><strong>C#</strong></p>
-<pre><code class="csharp">int[] numbers = &#123;1, 2, 3, 4, 5&#125;;
-foreach (int num in numbers)
-&#123;
-    Console.WriteLine(num);
-&#125;
-</code></pre>
-<p><strong>Lua</strong></p>
-<pre><code class="lua">numbers = &#123;1, 2, 3, 4, 5&#125;
-for _, num in ipairs(numbers) do
-    print(num)
-end
-</code></pre>
-<p><strong>Python</strong></p>
-<pre><code class="python">numbers = [1, 2, 3, 4, 5]
-for num in numbers:
-    print(num)
-</code></pre>
-<h3 id="while-循环"><a href="#while-循环" class="headerlink" title="while 循环"></a><code>while</code> 循环</h3><p><strong>C#</strong></p>
-<pre><code class="csharp">int i = 0;
-while (i &lt; 5)
-&#123;
-    Console.WriteLine(i);
-    i++;
-&#125;
-</code></pre>
-<p><strong>Lua</strong></p>
-<pre><code class="lua">i = 0
-while i &lt; 5 do
-    print(i)
-    i = i + 1
-end
-</code></pre>
-<p><strong>Python</strong></p>
-<pre><code class="python">i = 0
-while i &lt; 5:
-    print(i)
-    i += 1
-</code></pre>
-<hr>
-<h2 id="4-函数"><a href="#4-函数" class="headerlink" title="4. 函数"></a>4. 函数</h2><h3 id="函数定义和调用"><a href="#函数定义和调用" class="headerlink" title="函数定义和调用"></a>函数定义和调用</h3><p><strong>C#</strong></p>
-<pre><code class="csharp">int Add(int a, int b)
-&#123;
-    return a + b;
-&#125;
+    private readonly Stack&lt;T&gt; _objects = new Stack&lt;T&gt;();
 
-Console.WriteLine(Add(3, 4));
-</code></pre>
-<p><strong>Lua</strong></p>
-<pre><code class="lua">function Add(a, b)
-    return a + b
-end
-
-print(Add(3, 4))
-</code></pre>
-<p><strong>Python</strong></p>
-<pre><code class="python">def add(a, b):
-    return a + b
-
-print(add(3, 4))
-</code></pre>
-<h3 id="函数带默认参数"><a href="#函数带默认参数" class="headerlink" title="函数带默认参数"></a>函数带默认参数</h3><p><strong>C#</strong></p>
-<pre><code class="csharp">int Add(int a, int b = 5)
-&#123;
-    return a + b;
-&#125;
-
-Console.WriteLine(Add(3)); // 输出 8
-</code></pre>
-<p><strong>Lua</strong></p>
-<pre><code class="lua">function Add(a, b)
-    b = b or 5
-    return a + b
-end
-
-print(Add(3)) -- 输出 8
-</code></pre>
-<p><strong>Python</strong></p>
-<pre><code class="python">def add(a, b=5):
-    return a + b
-
-print(add(3)) # 输出 8
-</code></pre>
-<hr>
-<h2 id="5-类和对象"><a href="#5-类和对象" class="headerlink" title="5. 类和对象"></a>5. 类和对象</h2><h3 id="类定义和对象实例化"><a href="#类定义和对象实例化" class="headerlink" title="类定义和对象实例化"></a>类定义和对象实例化</h3><p><strong>C#</strong></p>
-<pre><code class="csharp">// 定义一个名为 Person 的类
-public class Person
-&#123;
-    // 公共属性 Name
-    public string Name &#123; get; set; &#125;
-
-    // 构造函数，初始化 Name 属性
-    public Person(string name)
+    public T GetObject()
     &#123;
-        Name = name;
-    &#125;
-
-    // 一个公共方法 Greet，用于打印问候语
-    public void Greet()
-    &#123;
-        Console.WriteLine(&quot;Hello, &quot; + Name);
-    &#125;
-&#125;
-
-// 创建一个 Person 类的实例，名为 person，传入名字 &quot;Alice&quot;
-Person person = new Person(&quot;Alice&quot;);
-// 调用 person 实例的 Greet 方法，输出 &quot;Hello, Alice&quot;
-person.Greet();
-</code></pre>
-<p><strong>Lua</strong></p>
-<pre><code class="lua">-- 定义一个名为 Person 的表
-Person = &#123;&#125;
--- 设置 Person 表的元表为自身，实现类似类的概念
-Person.__index = Person
-
--- 构造函数，创建一个新的 Person 实例，并初始化 name 属性
-function Person:new(name)
-    local self = setmetatable(&#123;&#125;, Person)
-    self.name = name
-    return self
-end
-
--- 定义 Person 类的方法 Greet，用于打印问候语
-function Person:Greet()
-    print(&quot;Hello, &quot; .. self.name)
-end
-
--- 创建一个 Person 类的实例，名为 person，传入名字 &quot;Alice&quot;
-person = Person:new(&quot;Alice&quot;)
--- 调用 person 实例的 Greet 方法，输出 &quot;Hello, Alice&quot;
-person:Greet()
-</code></pre>
-<p><strong>Python</strong></p>
-<pre><code class="python"># 定义一个名为 Person 的类
-class Person:
-    # 初始化方法，用于设置 name 属性
-    def __init__(self, name):
-        self.name = name
-
-    # 定义一个方法 greet，用于打印问候语
-    def greet(self):
-        print(&quot;Hello, &quot; + self.name)
-
-# 创建一个 Person 类的实例，名为 person，传入名字 &quot;Alice&quot;
-person = Person(&quot;Alice&quot;)
-# 调用 person 实例的 greet 方法，输出 &quot;Hello, Alice&quot;
-person.greet()
-</code></pre>
-<h3 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h3><p><strong>C#</strong></p>
-<pre><code class="csharp">// 定义一个名为 Animal 的基类
-public class Animal
-&#123;
-    // 虚方法 Speak，用于输出动物的声音
-    public virtual void Speak()
-    &#123;
-        Console.WriteLine(&quot;Animal sound&quot;);
-    &#125;
-&#125;
-
-// Dog 类继承自 Animal 类
-public class Dog : Animal
-&#123;
-    // 重写父类的 Speak 方法，输出狗的叫声
-    public override void Speak()
-    &#123;
-        Console.WriteLine(&quot;Bark&quot;);
-    &#125;
-&#125;
-
-// 创建一个 Animal 类型的引用指向 Dog 类的实例
-Animal myDog = new Dog();
-// 调用 myDog 实例的 Speak 方法，输出 &quot;Bark&quot;
-myDog.Speak();
-</code></pre>
-<p><strong>Lua</strong></p>
-<pre><code class="lua">-- 定义一个名为 Animal 的表作为基类
-Animal = &#123;&#125;
-Animal.__index = Animal
-
--- Animal 类的构造函数，用于创建新的 Animal 实例
-function Animal:new()
-    local self = setmetatable(&#123;&#125;, Animal)
-    return self
-end
-
--- Animal 类的方法 Speak，用于输出动物的声音
-function Animal:Speak()
-    print(&quot;Animal sound&quot;)
-end
-
--- Dog 类继承自 Animal 类
-Dog = setmetatable(&#123;&#125;, &#123;__index = Animal&#125;)
-
--- Dog 类的方法 Speak，重写父类 Animal 的 Speak 方法，输出狗的叫声
-function Dog:Speak()
-    print(&quot;Bark&quot;)
-end
-
--- 创建一个 Dog 类的实例，名为 myDog
-local myDog = setmetatable(&#123;&#125;, &#123;__index = Dog&#125;)
--- 调用 myDog 实例的 Speak 方法，输出 &quot;Bark&quot;
-myDog:Speak()
-</code></pre>
-<p><strong>Python</strong></p>
-<pre><code class="python"># 定义一个名为 Animal 的基类
-class Animal:
-    # 定义一个方法 speak，用于输出动物的声音
-    def speak(self):
-        print(&quot;Animal sound&quot;)
-
-# Dog 类继承自 Animal 类
-class Dog(Animal):
-    # 重写父类 Animal 的 speak 方法，输出狗的叫声
-    def speak(self):
-        print(&quot;Bark&quot;)
-
-# 创建一个 Dog 类的实例，名为 my_dog
-my_dog = Dog()
-# 调用 my_dog 实例的 speak 方法，输出 &quot;Bark&quot;
-my_dog.speak()
-</code></pre>
-<p>多态是面向对象编程中的一个重要概念，它允许子类对象在运行时表现出与其父类对象不同的行为。在多态的情况下，同样的方法调用可以根据对象的实际类型（而非引用或指针的类型）来执行不同的操作。下面我会为你详细展示在 C#、Lua 和 Python 中如何实现多态，并添加注释和输出结果说明。</p>
-<h3 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h3><p><strong>C#</strong></p>
-<pre><code class="csharp">using System;
-
-// 定义一个名为 Animal 的基类
-public class Animal
-&#123;
-    // 虚方法 Speak，用于输出动物的声音
-    public virtual void Speak()
-    &#123;
-        Console.WriteLine(&quot;Animal sound&quot;);
-    &#125;
-&#125;
-
-// Dog 类继承自 Animal 类
-public class Dog : Animal
-&#123;
-    // 重写父类的 Speak 方法，输出狗的叫声
-    public override void Speak()
-    &#123;
-        Console.WriteLine(&quot;Bark&quot;);
-    &#125;
-&#125;
-
-// Cat 类继承自 Animal 类
-public class Cat : Animal
-&#123;
-    // 重写父类的 Speak 方法，输出猫的叫声
-    public override void Speak()
-    &#123;
-        Console.WriteLine(&quot;Meow&quot;);
-    &#125;
-&#125;
-
-// 创建一个 Animal 类型的引用指向不同的子类实例，并调用其 Speak 方法
-class Program
-&#123;
-    static void Main()
-    &#123;
-        Animal myAnimal = new Animal(); // Animal 类的实例
-        Animal myDog = new Dog();       // Dog 类的实例
-        Animal myCat = new Cat();       // Cat 类的实例
-
-        myAnimal.Speak();  // 输出 &quot;Animal sound&quot;
-        myDog.Speak();     // 输出 &quot;Bark&quot;
-        myCat.Speak();     // 输出 &quot;Meow&quot;
-    &#125;
-&#125;
-</code></pre>
-<p><strong>Lua</strong> </p>
-<pre><code class="lua">-- 定义一个名为 Animal 的表作为基类
-Animal = &#123;&#125;
-Animal.__index = Animal
-
--- Animal 类的构造函数，用于创建新的 Animal 实例
-function Animal:new()
-    local self = setmetatable(&#123;&#125;, Animal)
-    return self
-end
-
--- Animal 类的方法 Speak，用于输出动物的声音
-function Animal:Speak()
-    print(&quot;Animal sound&quot;)
-end
-
--- Dog 类继承自 Animal 类
-Dog = setmetatable(&#123;&#125;, &#123;__index = Animal&#125;)
-
--- Dog 类的方法 Speak，重写父类 Animal 的 Speak 方法，输出狗的叫声
-function Dog:Speak()
-    print(&quot;Bark&quot;)
-end
-
--- Cat 类继承自 Animal 类
-Cat = setmetatable(&#123;&#125;, &#123;__index = Animal&#125;)
-
--- Cat 类的方法 Speak，重写父类 Animal 的 Speak 方法，输出猫的叫声
-function Cat:Speak()
-    print(&quot;Meow&quot;)
-end
-
--- 创建一个 Animal 类的实例，名为 my_animal
-local my_animal = Animal:new()
-my_animal:Speak()  -- 输出 &quot;Animal sound&quot;
-
--- 创建一个 Dog 类的实例，名为 my_dog
-local my_dog = Dog:new()
-my_dog:Speak()      -- 输出 &quot;Bark&quot;
-
--- 创建一个 Cat 类的实例，名为 my_cat
-local my_cat = Cat:new()
-my_cat:Speak()      -- 输出 &quot;Meow&quot;
-</code></pre>
-<p><strong>Python</strong> </p>
-<pre><code class="python"># 定义一个名为 Animal 的基类
-class Animal:
-    # 定义一个方法 speak，用于输出动物的声音
-    def speak(self):
-        print(&quot;Animal sound&quot;)
-
-# Dog 类继承自 Animal 类
-class Dog(Animal):
-    # 重写父类 Animal 的 speak 方法，输出狗的叫声
-    def speak(self):
-        super().speak()  # 调用父类 Animal 的 speak 方法
-        print(&quot;Bark&quot;)
-
-# Cat 类继承自 Animal 类
-class Cat(Animal):
-    # 重写父类 Animal 的 speak 方法，输出猫的叫声
-    def speak(self):
-        super().speak()  # 调用父类 Animal 的 speak 方法
-        print(&quot;Meow&quot;)
-
-# 创建一个 Dog 类的实例，名为 my_dog
-my_dog = Dog()
-my_dog.speak()      # 输出 &quot;Animal sound&quot; 和 &quot;Bark&quot;
-
-# 创建一个 Cat 类的实例，名为 my_cat
-my_cat = Cat()
-my_cat.speak()      # 输出 &quot;Animal sound&quot; 和 &quot;Meow&quot;
-</code></pre>
-<hr>
-<h2 id="6-集合"><a href="#6-集合" class="headerlink" title="6. 集合"></a>6. 集合</h2><h3 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h3><p><strong>C#</strong></p>
-<pre><code class="csharp">int[] numbers = &#123;1, 2, 3, 4, 5&#125;;
-Console.WriteLine(numbers[0]); // 输出 1
-</code></pre>
-<p><strong>Lua</strong></p>
-<pre><code class="lua">numbers = &#123;1, 2, 3, 4, 5&#125;
-print(numbers[1]) -- 输出 1 (Lua 数组索引从 1 开始)
-</code></pre>
-<p><strong>Python</strong></p>
-<pre><code class="python">numbers = [1, 2, 3, 4, 5]
-print(numbers[0]) # 输出 1
-</code></pre>
-<h3 id="列表（List）"><a href="#列表（List）" class="headerlink" title="列表（List）"></a>列表（List）</h3><p><strong>C#</strong></p>
-<pre><code class="csharp">List&lt;int&gt; numbers = new List&lt;int&gt; &#123;1, 2, 3, 4, 5&#125;;
-numbers.Add(6);
-Console.WriteLine(numbers[5]); // 输出 6
-</code></pre>
-<p><strong>Lua</strong></p>
-<pre><code class="lua">numbers = &#123;1, 2, 3, 4, 5&#125;
-table.insert(numbers, 6)
-print(numbers[6]) -- 输出 6 (Lua 数组索引从 1 开始)
-</code></pre>
-<p><strong>Python</strong></p>
-<pre><code class="python">numbers = [1, 2, 3, 4, 5]
-numbers.append(6)
-print(numbers[5]) # 输出 6
-</code></pre>
-<h3 id="字典（Dictionary）"><a href="#字典（Dictionary）" class="headerlink" title="字典（Dictionary）"></a>字典（Dictionary）</h3><p><strong>C#</strong></p>
-<pre><code class="csharp">Dictionary&lt;string, int&gt; ages = new Dictionary&lt;string, int&gt;();
-ages[&quot;Alice&quot;] = 30;
-ages[&quot;Bob&quot;] = 25;
-Console.WriteLine(ages[&quot;Alice&quot;]); // 输出 30
-</code></pre>
-<p><strong>Lua</strong></p>
-<pre><code class="lua">ages = &#123;Alice = 30, Bob = 25&#125;
-print(ages[&quot;Alice&quot;]) -- 输出 30
-</code></pre>
-<p><strong>Python</strong></p>
-<pre><code class="python">ages = &#123;&quot;Alice&quot;: 30, &quot;Bob&quot;: 25&#125;
-print(ages[&quot;Alice&quot;]) # 输出 30
-</code></pre>
-<h3 id="集合（Set）"><a href="#集合（Set）" class="headerlink" title="集合（Set）"></a>集合（Set）</h3><p><strong>C#</strong></p>
-<pre><code class="csharp">HashSet&lt;int&gt; uniqueNumbers = new HashSet&lt;int&gt; &#123;1, 
-
-2, 3, 4, 5&#125;;
-uniqueNumbers.Add(3); // 不会重复添加
-Console.WriteLine(uniqueNumbers.Contains(3)); // 输出 True
-</code></pre>
-<p><strong>Lua</strong></p>
-<pre><code class="lua">-- Lua 里没有原生的 Set 类型，可以使用 table 实现
-uniqueNumbers = &#123;1,2, 3, 4, 5&#125;
-uniqueNumbersSet = &#123;&#125;
-for _, v in ipairs(uniqueNumbers) do
-    uniqueNumbersSet[v] = true
-end
-
-uniqueNumbersSet[3] = nil -- 移除元素
-
-if uniqueNumbersSet[3] then
-    print(&quot;Contains 3&quot;)
-else
-    print(&quot;Does not contain 3&quot;)
-end
-</code></pre>
-<p><strong>Python</strong></p>
-<pre><code class="python">unique_numbers = &#123;1, 2, 3, 4, 5&#125;
-unique_numbers.add(3)  # 不会重复添加
-print(3 in unique_numbers)  # 输出 True
-</code></pre>
-<hr>
-<h2 id="7-异常处理"><a href="#7-异常处理" class="headerlink" title="7. 异常处理"></a>7. 异常处理</h2><p><strong>C#</strong></p>
-<pre><code class="csharp">try
-&#123;
-    int[] numbers = &#123; 1, 2, 3 &#125;;
-    Console.WriteLine(numbers[5]);
-&#125;
-catch (IndexOutOfRangeException e)
-&#123;
-    Console.WriteLine(&quot;Index out of range: &quot; + e.Message);
-&#125;
-finally
-&#123;
-    Console.WriteLine(&quot;This is always executed&quot;);
-&#125;
-</code></pre>
-<p><strong>Lua</strong></p>
-<pre><code class="lua">local status, err = pcall(function()
-    local numbers = &#123;1, 2, 3&#125;
-    print(numbers[5])
-end)
-
-if not status then
-    print(&quot;Error: &quot; .. err)
-end
-
-print(&quot;This is always executed&quot;)
-</code></pre>
-<p><strong>Python</strong></p>
-<pre><code class="python">try:
-    numbers = [1, 2, 3]
-    print(numbers[5])
-except IndexError as e:
-    print(&quot;Index out of range:&quot;, e)
-finally:
-    print(&quot;This is always executed&quot;)
-</code></pre>
-<hr>
-<h2 id="8-接口"><a href="#8-接口" class="headerlink" title="8. 接口"></a>8. 接口</h2><p>在 C# 中，接口是一种用于定义类必须实现的成员列表的结构。而 Lua 和 Python 并没有内置的接口概念，但可以通过不同的方式来达到类似的效果。</p>
-<p><strong>C#</strong></p>
-<pre><code class="csharp">// 定义一个简单的接口
-public interface IShape
-&#123;
-    double Area();
-&#125;
-
-// Circle 类实现 IShape 接口
-public class Circle : IShape
-&#123;
-    public double Radius &#123; get; set; &#125;
-
-    public Circle(double radius)
-    &#123;
-        Radius = radius;
-    &#125;
-
-    public double Area()
-    &#123;
-        return Math.PI * Radius * Radius;
-    &#125;
-&#125;
-
-// 使用 Circle 类
-Circle circle = new Circle(5);
-Console.WriteLine($&quot;Circle Area: &#123;circle.Area()&#125;&quot;);
-</code></pre>
-<p><strong>Lua</strong></p>
-<pre><code class="lua">-- Lua 中通过表来实现类似接口的效果
-IShape = &#123;&#125;
-IShape.__index = IShape
-
-function IShape:Area()
-    error(&quot;Area method must be overridden&quot;)
-end
-
--- Circle 类实现 IShape 接口
-Circle = setmetatable(&#123;&#125;, &#123;__index = IShape&#125;)
-
-function Circle:new(radius)
-    local self = setmetatable(&#123;&#125;, Circle)
-    self.radius = radius
-    return self
-end
-
-function Circle:Area()
-    return math.pi * self.radius * self.radius
-end
-
--- 使用 Circle 类
-local circle = Circle:new(5)
-print(string.format(&quot;Circle Area: %.2f&quot;, circle:Area()))
-</code></pre>
-<p><strong>Python</strong></p>
-<pre><code class="python"># Python 中通过抽象基类（Abstract Base Classes，ABC）来定义接口
-from abc import ABC, abstractmethod
-import math
-
-# 定义一个简单的接口 IShape
-class IShape(ABC):
-    @abstractmethod
-    def area(self):
-        pass
-
-# Circle 类实现 IShape 接口
-class Circle(IShape):
-    def __init__(self, radius):
-        self.radius = radius
-
-    def area(self):
-        return math.pi * self.radius * self.radius
-
-# 使用 Circle 类
-circle = Circle(5)
-print(f&quot;Circle Area: &#123;circle.area():.2f&#125;&quot;)
-</code></pre>
-<hr>
-<h2 id="9-枚举"><a href="#9-枚举" class="headerlink" title="9. 枚举"></a>9. 枚举</h2><p>枚举类型在不同语言中用于定义一组命名的常量。下面是 C#、Lua 和 Python 中枚举的对比示例：</p>
-<p><strong>C#</strong></p>
-<pre><code class="csharp">// 定义一个枚举类型
-public enum DaysOfWeek
-&#123;
-    Monday,
-    Tuesday,
-    Wednesday,
-    Thursday,
-    Friday,
-    Saturday,
-    Sunday
-&#125;
-
-// 使用枚举
-DaysOfWeek today = DaysOfWeek.Wednesday;
-Console.WriteLine(&quot;Today is &quot; + today);
-</code></pre>
-<p><strong>Lua</strong></p>
-<pre><code class="lua">-- Lua 中通过表实现类似枚举的效果
-DaysOfWeek = &#123;
-    Monday = 1,
-    Tuesday = 2,
-    Wednesday = 3,
-    Thursday = 4,
-    Friday = 5,
-    Saturday = 6,
-    Sunday = 7
-&#125;
-
--- 使用枚举
-local today = DaysOfWeek.Wednesday
-print(&quot;Today is &quot; .. today)
-</code></pre>
-<p><strong>Python</strong></p>
-<pre><code class="python"># Python 中通过枚举类实现枚举
-from enum import Enum
-
-# 定义一个枚举类 DaysOfWeek
-class DaysOfWeek(Enum):
-    Monday = 1
-    Tuesday = 2
-    Wednesday = 3
-    Thursday = 4
-    Friday = 5
-    Saturday = 6
-    Sunday = 7
-
-# 使用枚举
-today = DaysOfWeek.Wednesday
-print(f&quot;Today is &#123;today.name&#125;&quot;)
-</code></pre>
-<hr>
-<h2 id="10-事件委托"><a href="#10-事件委托" class="headerlink" title="10. 事件委托"></a>10. 事件委托</h2><p>事件委托是 C# 中一种允许类间协作的机制，它允许类通过委托向其他类发送通知。在 Lua 和 Python 中，可以使用回调函数来达到类似的效果。</p>
-<p><strong>C#</strong></p>
-<pre><code class="csharp">// 定义一个简单的事件委托和事件
-public delegate void EventHandler(string message);
-
-public class Publisher
-&#123;
-    // 定义一个事件
-    public event EventHandler Notify;
-
-    // 触发事件的方法
-    public void DoSomething()
-    &#123;
-        Notify?.Invoke(&quot;Event triggered&quot;);
-    &#125;
-&#125;
-
-public class Subscriber
-&#123;
-    public void OnNotify(string message)
-    &#123;
-        Console.WriteLine(&quot;Subscriber received message: &quot; + message);
-    &#125;
-&#125;
-
-// 使用事件委托和事件
-Publisher publisher = new Publisher();
-Subscriber subscriber = new Subscriber();
-
-publisher.Notify += subscriber.OnNotify;
-publisher.DoSomething();
-</code></pre>
-<p><strong>Lua</strong></p>
-<pre><code class="lua">-- Lua 中通过回调函数实现类似事件的机制
-Publisher = &#123;&#125;
-
-function Publisher:new()
-    local obj = &#123;&#125;
-    self.__index = self
-    setmetatable(obj, self)
-    obj.notify = nil
-    return obj
-end
-
-function Publisher:doSomething()
-    if self.notify then
-        self.notify(&quot;Event triggered&quot;)
-    end
-end
-
-Subscriber = &#123;&#125;
-
-function Subscriber:onNotify(message)
-    print(&quot;Subscriber received message: &quot; .. message)
-end
-
--- 使用事件委托和事件
-local publisher = Publisher:new()
-local subscriber = Subscriber
-
-publisher.notify = subscriber.onNotify
-publisher:doSomething()
-</code></pre>
-<p><strong>Python</strong></p>
-<pre><code class="python"># Python 中通过回调函数实现类似事件的机制
-class Publisher:
-    def __init__(self):
-        self.notify = None
-
-    def do_something(self):
-        if self.notify:
-            self.notify(&quot;Event triggered&quot;)
-
-class Subscriber:
-    def on_notify(self, message):
-        print(f&quot;Subscriber received message: &#123;message&#125;&quot;)
-
-# 使用事件委托和事件
-publisher = Publisher()
-subscriber = Subscriber()
-
-publisher.notify = subscriber.on_notify
-publisher.do_something()
-</code></pre>
-<hr>
-<h2 id="11-模块导入"><a href="#11-模块导入" class="headerlink" title="11. 模块导入"></a>11. 模块导入</h2><p>在不同的语言中，模块导入的方式有所不同。以下是 C#、Lua 和 Python 中模块导入的示例和对比：</p>
-<p><strong>C#</strong></p>
-<p>C# 使用 <code>using</code> 关键字来导入命名空间或引用外部程序集：</p>
-<pre><code class="csharp">using System; // 导入 System 命名空间
-
-namespace MyNamespace
-&#123;
-    class Program
-    &#123;
-        static void Main()
+        if (_objects.Count &gt; 0)
         &#123;
-            Console.WriteLine(&quot;Hello, World!&quot;);
+            return _objects.Pop();
+        &#125;
+        else
+        &#123;
+            return new T();
         &#125;
     &#125;
+
+    public void ReturnObject(T obj)
+    &#123;
+        _objects.Push(obj);
+    &#125;
 &#125;
 </code></pre>
-<p><strong>Lua</strong></p>
-<p>Lua 使用 <code>require</code> 函数来加载模块：</p>
-<pre><code class="lua">-- 导入标准库中的 math 模块
-local math = require(&quot;math&quot;)
+</li>
+</ul>
+</li>
+<li><p><strong>尽量避免频繁分配和释放大对象</strong></p>
+<ul>
+<li>大对象的分配和释放会触发较多的垃圾回收，影响程序性能。应尽量复用大对象，避免频繁创建和销毁。</li>
+</ul>
+</li>
+<li><p><strong>避免内存泄漏</strong></p>
+<ul>
+<li>内存泄漏会导致内存占用不断增加，应避免在程序中持有不再使用的对象引用，及时释放不再需要的资源。不要占着茅坑不拉屎。</li>
+<li>示例：<pre><code class="csharp">// 不好的做法，容易导致内存泄漏
+private static List&lt;byte[]&gt; _largeDataList = new List&lt;byte[]&gt;();
 
-print(math.pi)  -- 输出 3.1415926535898
-</code></pre>
-<p><strong>Python</strong></p>
-<p>Python 使用 <code>import</code> 语句来导入模块：</p>
-<pre><code class="python"># 导入标准库中的 math 模块
-import math
-
-print(math.pi)  # 输出 3.141592653589793
-</code></pre>
-<hr>
-<h2 id="12-内存管理的不同"><a href="#12-内存管理的不同" class="headerlink" title="12. 内存管理的不同"></a>12. 内存管理的不同</h2><p>不同的语言在内存管理方面有着各自的机制和策略：</p>
-<p><strong>C#</strong></p>
-<p>C# 使用垃圾回收器（Garbage Collector，GC）来管理内存，它负责自动回收不再使用的对象和释放它们所占用的内存。</p>
-<p><strong>Lua</strong></p>
-<p>Lua 也有垃圾回收器，但它不像 C# 那样完全自动化。Lua 的垃圾收集是基于引用计数和标记清除算法的结合。</p>
-<p><strong>Python</strong></p>
-<p>Python 的内存管理也依赖于垃圾回收机制，主要使用引用计数来追踪对象的引用情况，并在不再需要时自动释放内存。此外，Python 也有循环垃圾收集器来处理循环引用的情况。</p>
-<hr>
-<h2 id="13-文件操作"><a href="#13-文件操作" class="headerlink" title="13. 文件操作"></a>13. 文件操作</h2><p><strong>C#</strong></p>
-<pre><code class="csharp">using System.IO;
-
-string text = File.ReadAllText(&quot;file.txt&quot;);
-File.WriteAllText(&quot;output.txt&quot;, text);
-</code></pre>
-<p><strong>Lua</strong></p>
-<pre><code class="lua">local file = io.open(&quot;file.txt&quot;, &quot;r&quot;)
-local content = file:read(&quot;*all&quot;)
-file:close()
-
-file = io.open(&quot;output.txt&quot;, &quot;w&quot;)
-file:write(content)
-file:close()
-</code></pre>
-<p><strong>Python</strong></p>
-<pre><code class="python">with open(&quot;file.txt&quot;, &quot;r&quot;) as file:
-    content = file.read()
-
-with open(&quot;output.txt&quot;, &quot;w&quot;) as file:
-    file.write(content)
-</code></pre>
-<hr>
-<h2 id="14-并发编程"><a href="#14-并发编程" class="headerlink" title="14. 并发编程"></a>14. 并发编程</h2><p><strong>C#</strong></p>
-<pre><code class="csharp">// 使用 Task 和 async/await 实现异步编程
-async Task&lt;string&gt; DownloadAsync(string url)
+public static void AddLargeData()
 &#123;
-    HttpClient client = new HttpClient();
-    return await client.GetStringAsync(url);
+    byte[] largeData = new byte[1024 * 1024]; // 1MB
+    _largeDataList.Add(largeData);
+&#125;
+
+// 好的做法，使用完后及时释放
+public static void ProcessLargeData()
+&#123;
+    byte[] largeData = new byte[1024 * 1024]; // 1MB
+    // 处理数据
+    // 处理完后及时释放
+    largeData = null;
 &#125;
 </code></pre>
-<p><strong>Lua</strong></p>
-<pre><code class="lua">-- 使用 coroutine 实现协程
-function download(url)
-    local http = require(&quot;socket.http&quot;)
-    return http.request(url)
-end
-</code></pre>
-<p><strong>Python</strong></p>
-<pre><code class="python"># 使用 asyncio 和 await 实现异步编程
-import aiohttp
-import asyncio
-
-async def download(url):
-    async with aiohttp.ClientSession() as session:
-        async with session.get(url) as response:
-            return await response.text()
-</code></pre>
-<hr>
-<h2 id="15-函数式编程支持"><a href="#15-函数式编程支持" class="headerlink" title="15. 函数式编程支持"></a>15. 函数式编程支持</h2><p><strong>C#</strong></p>
-<pre><code class="csharp">// 支持 Lambda 表达式和 LINQ
-var numbers = new List&lt;int&gt; &#123; 1, 2, 3, 4, 5 &#125;;
-var evenNumbers = numbers.Where(x =&gt; x % 2 == 0);
-</code></pre>
-<p><strong>Lua</strong></p>
-<pre><code class="lua">-- 支持匿名函数和函数式编程风格
-local numbers = &#123;1, 2, 3, 4, 5&#125;
-local evenNumbers = &#123;&#125;
-for _, v in ipairs(numbers) do
-    if v % 2 == 0 then
-        table.insert(evenNumbers, v)
-    end
-end
-</code></pre>
-<p><strong>Python</strong></p>
-<pre><code class="python"># 支持匿名函数（lambda）和函数式编程风格
-numbers = [1, 2, 3, 4, 5]
-even_numbers = list(filter(lambda x: x % 2 == 0, numbers))
-</code></pre>
-<hr>
-<h2 id="16-动态性和静态性"><a href="#16-动态性和静态性" class="headerlink" title="16. 动态性和静态性"></a>16. 动态性和静态性</h2><p><strong>C#</strong></p>
-<ul>
-<li>静态类型语言，需要显式声明类型，编译时类型检查。</li>
+</li>
 </ul>
-<p><strong>Lua</strong></p>
-<ul>
-<li>动态类型语言，变量无需声明类型，运行时类型检查。</li>
-</ul>
-<p><strong>Python</strong></p>
-<ul>
-<li>动态类型语言，变量无需声明类型，运行时类型检查。</li>
-</ul>
-<hr>
-<h2 id="17-内置数据结构"><a href="#17-内置数据结构" class="headerlink" title="17. 内置数据结构"></a>17. 内置数据结构</h2><p><strong>C#</strong></p>
-<ul>
-<li>提供强大的泛型集合类如 List、Dictionary 等。</li>
-</ul>
-<p><strong>Lua</strong></p>
-<ul>
-<li>使用 table 作为唯一的内置数据结构，可以作为数组、字典使用。</li>
-</ul>
-<p><strong>Python</strong></p>
-<ul>
-<li>提供丰富的内置数据结构如 list、tuple、dict、set 等。</li>
-</ul>
-<hr>
-<h2 id="18-包管理和生态系统"><a href="#18-包管理和生态系统" class="headerlink" title="18. 包管理和生态系统"></a>18. 包管理和生态系统</h2><p><strong>C#</strong></p>
-<ul>
-<li>使用 NuGet 进行包管理，具有强大的 .NET 生态系统。</li>
-</ul>
-<p><strong>Lua</strong></p>
-<ul>
-<li>使用 LuaRocks 进行包管理，较为轻量的生态系统。</li>
-</ul>
-<p><strong>Python</strong></p>
-<ul>
-<li>使用 pip 进行包管理，拥有广泛而活跃的 PyPI 生态系统。</li>
-</ul>
-<hr>
-<h2 id="19-编译和执行"><a href="#19-编译和执行" class="headerlink" title="19. 编译和执行"></a>19. 编译和执行</h2><p><strong>C#</strong></p>
-<ul>
-<li>需要编译为中间语言（IL），然后在运行时 JIT 编译为机器码。</li>
-</ul>
-<p><strong>Lua</strong></p>
-<ul>
-<li>通常是解释执行，也可以使用 LuaJIT 进行即时编译。</li>
-</ul>
-<p><strong>Python</strong></p>
-<ul>
-<li>解释执行，也可以使用工具如 PyInstaller 将脚本打包为可执行文件。</li>
-</ul>
+</li>
+</ol>
+<p>通过上述方法，可以有效优化C#程序的堆内存使用，提高程序的性能和稳定性。</p>
 <hr>
 
       
